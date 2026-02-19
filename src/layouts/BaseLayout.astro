@@ -46,6 +46,39 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Roske.AI",
+      "url": "https://roske.ai",
+      "author": {
+        "@type": "Person",
+        "name": "Edward Roske",
+        "jobTitle": "CEO",
+        "url": "https://roske.ai",
+        "sameAs": [
+          "https://www.linkedin.com/in/interrel/",
+          "https://x.com/eroske",
+          "https://www.youtube.com/channel/UCOygNSOFfyHIRFvC6hbRpkQ",
+          "https://github.com/eroske",
+          "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW"
+        ],
+        "worksFor": [
+          { "@type": "Organization", "name": "Dawnward" },
+          { "@type": "Organization", "name": "Caprus" }
+        ],
+        "alumniOf": [
+          { "@type": "CollegeOrUniversity", "name": "Southern Methodist University" },
+          { "@type": "CollegeOrUniversity", "name": "Shimer College" }
+        ],
+        "knowsAbout": ["Artificial Intelligence", "Data Science", "Oracle EPM", "MCP Servers", "Finance", "Public Speaking"]
+      }
+    })} />
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/rss+xml" title="Roske.AI Blog" href="/rss.xml" />
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

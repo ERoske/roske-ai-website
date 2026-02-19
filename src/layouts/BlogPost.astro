@@ -40,9 +40,10 @@ const formattedDate = date.toLocaleDateString('en-US', {
           {tags.length > 0 && (
             <div class="flex flex-wrap gap-2">
               {tags.map(tag => (
-                <span class="px-2 py-0.5 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+                <a href={`/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}/`}
+                  class="px-2 py-0.5 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] hover:underline">
                   {tag}
-                </span>
+                </a>
               ))}
             </div>
           )}

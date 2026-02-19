@@ -56,7 +56,8 @@ const posts = (await getCollection('blog'))
                   {post.data.tags.length > 0 && (
                     <div class="flex flex-wrap gap-1.5">
                       {post.data.tags.map(tag => (
-                        <span class="px-2 py-0.5 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+                        <span class="px-2 py-0.5 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] hover:underline"
+                          onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='/blog/tag/${tag.toLowerCase().replace(/\\s+/g, '-')}/';`}>
                           {tag}
                         </span>
                       ))}
