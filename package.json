@@ -1,0 +1,20 @@
+{
+  "name": "roske-ai-website",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Personal website for Edward Roske — roske.ai",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "astro check && astro build"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/sitemap": "^3.7.0",
+    "@tailwindcss/vite": "^4.2.0",
+    "astro": "^5.17.1",
+    "tailwindcss": "^4.2.0"
+  }
+}
