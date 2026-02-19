@@ -1,0 +1,31 @@
+{
+  "title": "Test Presentation - AI for D&D",
+  "duration_minutes": 5,
+  "audience": "Dungeon Masters",
+  "slides": [
+    {
+      "slide_number": 1,
+      "headline": "Using AI to Run Better D&D Campaigns",
+      "visual": "Fantasy tavern interior with glowing magical runes on a table, warm candlelight, dragon miniatures visible, atmospheric and inviting",
+      "speaker_notes": "Good afternoon, fellow DMs. Today I want to share how AI has transformed my campaign preparation from a time-consuming chore into an efficient process that lets me focus on what matters: creating memorable moments for my players. This isn't about replacing your creativity - it's about giving you more time to be creative."
+    },
+    {
+      "slide_number": 2,
+      "headline": "Your Players Don't Care About Your Notes",
+      "visual": "Messy pile of handwritten notes and papers scattered on a desk, coffee stains visible, highlighters and pens strewn about, chaotic organization",
+      "speaker_notes": "Let's be honest: your notes are probably a mess. Mine certainly were. Scribbled NPC names, contradictory character descriptions, that one plot thread you forgot about three sessions ago. But here's the thing - your players don't know your notes are messy. They only know whether the world feels alive and consistent. That's where AI comes in."
+    },
+    {
+      "slide_number": 3,
+      "headline": "AI Handles Logistics So You Can Handle Stories",
+      "visual": "Split screen - left side shows organized digital database with NPC portraits, right side shows a DM laughing with engaged players around a gaming table",
+      "speaker_notes": "AI is brilliant at exactly one thing: organization. It can track forty-seven NPCs without breaking a sweat. It can remember that Barlok the innkeeper mentioned his missing daughter three sessions ago. It can suggest encounter combinations you wouldn't have thought of. But it can't read your table's energy, improvise when players go off-script, or deliver an emotional moment. That's still you."
+    },
+    {
+      "slide_number": 4,
+      "headline": "The Result: Your Table Notices the Difference",
+      "visual": "Group of excited players pointing at a battle map, dice mid-roll, expressions of surprise and joy, dramatic lighting highlighting their faces",
+      "speaker_notes": "My players have never asked if I use AI. But they have noticed that NPCs feel more consistent, the world seems more reactive, and their choices appear to matter more. That's not AI being clever - that's me being slightly more organized, with bandwidth to actually listen and respond to what my players want. Try it for one session. Use AI to track your NPCs or prep encounters. See if you have more time to do the parts of DMing you actually enjoy. I think you will."
+    }
+  ]
+}
