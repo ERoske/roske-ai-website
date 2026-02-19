@@ -1,0 +1,114 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+---
+
+<BaseLayout title="Contact — Edward Roske" description="Get in touch with Edward Roske. Speaking inquiries, partnerships, or just a good question.">
+
+  <section class="relative py-20 md:py-28 px-6">
+    <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
+    <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]">Contact</p>
+      <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-6 dark:text-white text-[var(--color-primary)]">Let's Talk</h1>
+      <p class="text-lg dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] max-w-2xl mb-4">
+        Whether you have a speaking inquiry, partnership idea, or just a really good question — I have 13 minutes.
+      </p>
+    </div>
+  </section>
+
+  <Section>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div class="animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-6 dark:text-white text-[var(--color-primary)]">Send a Message</h2>
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+          <input type="hidden" name="subject" value="New message from roske.ai" />
+          <input type="hidden" name="redirect" value="https://roske.ai/contact/?success=true" />
+
+          <div>
+            <label for="name" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Name</label>
+            <input type="text" id="name" name="name" required
+              class="w-full px-4 py-3 rounded-lg border transition-colors
+                dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
+                bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
+                focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20" />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Email</label>
+            <input type="email" id="email" name="email" required
+              class="w-full px-4 py-3 rounded-lg border transition-colors
+                dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
+                bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
+                focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20" />
+          </div>
+
+          <div>
+            <label for="subject" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Subject</label>
+            <select id="subject" name="topic"
+              class="w-full px-4 py-3 rounded-lg border transition-colors
+                dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
+                bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
+                focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20">
+              <option value="general">General Inquiry</option>
+              <option value="speaking">Speaking Engagement</option>
+              <option value="partnership">Partnership / Business</option>
+              <option value="media">Media / Interview</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="message" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Message</label>
+            <textarea id="message" name="message" rows="5" required
+              class="w-full px-4 py-3 rounded-lg border transition-colors resize-y
+                dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
+                bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
+                focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20"></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <div class="hidden">
+            <input type="text" name="botcheck" />
+          </div>
+
+          <button type="submit"
+            class="w-full px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
+            Send Message
+          </button>
+        </form>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-8">
+        <div class="animate-on-scroll rounded-xl p-6 dark:bg-white/[0.03] dark:border dark:border-white/[0.06] bg-white border border-black/[0.06]">
+          <h3 class="text-lg font-bold mb-3 dark:text-white text-[var(--color-primary)]">Answering a Good Question</h3>
+          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm mb-4">
+            Book a free 13-minute call. Available Tuesdays when I'm not traveling. I call it "Answering a Good Question" — so bring a good one.
+          </p>
+          <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent-hover)] transition-colors">
+            Book 13 Minutes
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
+
+        <div class="animate-on-scroll rounded-xl p-6 dark:bg-white/[0.03] dark:border dark:border-white/[0.06] bg-white border border-black/[0.06]">
+          <h3 class="text-lg font-bold mb-3 dark:text-white text-[var(--color-primary)]">Direct Email</h3>
+          <a href="mailto:Edward@Roske.AI" class="text-[var(--color-accent)] hover:underline font-[var(--font-mono)]">Edward@Roske.AI</a>
+        </div>
+
+        <div class="animate-on-scroll rounded-xl p-6 dark:bg-white/[0.03] dark:border dark:border-white/[0.06] bg-white border border-black/[0.06]">
+          <h3 class="text-lg font-bold mb-3 dark:text-white text-[var(--color-primary)]">Find Me</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="https://x.com/eroske" target="_blank" rel="noopener" class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] hover:text-[var(--color-accent)] transition-colors">X / Twitter →</a></li>
+            <li><a href="https://www.linkedin.com/in/interrel/" target="_blank" rel="noopener" class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] hover:text-[var(--color-accent)] transition-colors">LinkedIn →</a></li>
+            <li><a href="https://www.youtube.com/channel/UCOygNSOFfyHIRFvC6hbRpkQ" target="_blank" rel="noopener" class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] hover:text-[var(--color-accent)] transition-colors">YouTube →</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+</BaseLayout>

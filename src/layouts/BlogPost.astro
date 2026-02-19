@@ -1,0 +1,90 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags?: string[];
+}
+
+const { title, description, date, tags = [] } = Astro.props;
+
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${title} — Roske.AI`} description={description}>
+
+  <article class="relative py-20 md:py-28 px-6">
+    <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
+    <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
+
+    <div class="relative max-w-3xl mx-auto">
+      <!-- Header -->
+      <header class="mb-12">
+        <a href="/blog/" class="inline-flex items-center gap-1 text-sm font-[var(--font-mono)] text-[var(--color-accent)] hover:underline mb-6">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          Back to Blog
+        </a>
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-tight mb-4 dark:text-white text-[var(--color-primary)]"
+          style="animation: fadeInUp 0.6s ease-out forwards;">
+          {title}
+        </h1>
+        <div class="flex flex-wrap items-center gap-4 text-sm dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
+          style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0;">
+          <time datetime={date.toISOString()}>{formattedDate}</time>
+          {tags.length > 0 && (
+            <div class="flex flex-wrap gap-2">
+              {tags.map(tag => (
+                <span class="px-2 py-0.5 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg max-w-none
+        dark:prose-invert
+        prose-headings:font-bold prose-headings:tracking-tight
+        prose-a:text-[var(--color-accent)] prose-a:no-underline hover:prose-a:underline
+        prose-code:font-[var(--font-mono)] prose-code:text-sm
+        prose-code:before:content-[''] prose-code:after:content-['']
+        dark:prose-p:text-[var(--color-text-muted)] prose-p:text-[var(--color-text-dark-muted)]
+        dark:prose-li:text-[var(--color-text-muted)] prose-li:text-[var(--color-text-dark-muted)]
+        dark:prose-strong:text-white prose-strong:text-[var(--color-primary)]
+        prose-pre:rounded-xl prose-pre:border
+        dark:prose-pre:bg-[var(--color-surface)] dark:prose-pre:border-[var(--color-border)]
+        prose-pre:bg-gray-50 prose-pre:border-[var(--color-border-light)]"
+        style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
+        <slot />
+      </div>
+
+      <!-- Footer -->
+      <footer class="mt-16 pt-8 border-t dark:border-[var(--color-border)] border-[var(--color-border-light)]">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <a href="/blog/" class="text-sm font-medium text-[var(--color-accent)] hover:underline">
+            &larr; All Posts
+          </a>
+          <p class="text-sm dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
+            Asking good questions,<br/>Edward
+          </p>
+        </div>
+      </footer>
+    </div>
+  </article>
+
+</BaseLayout>
+
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

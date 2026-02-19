@@ -1,0 +1,158 @@
+---
+import '../styles/global.css';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { currentTheme, themeToCSS } from '../themes/theme-config';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  bodyClass?: string;
+}
+
+const {
+  title = `Roske.AI — Edward Roske`,
+  description = "Edward Roske — CEO, Speaker, Data Scientist, Dungeon Master. Building at the intersection of AI and Finance.",
+  ogImage = "/images/og-default.png",
+  bodyClass = "",
+} = Astro.props;
+
+const theme = currentTheme;
+const cssVars = themeToCSS(theme);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Roske.AI" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@eroske" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href={theme.fonts.googleFontsUrl} rel="stylesheet" />
+
+    <title>{title}</title>
+
+    <!-- Theme variables + dark/light mode initialization (no flash) -->
+    <script is:inline define:vars={{ cssVars }}>
+      // Apply theme before render to prevent flash
+      (function() {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = saved || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
+    <style define:vars={{
+      colorPrimary: theme.colors.primary,
+      colorSecondary: theme.colors.secondary,
+      colorAccent: theme.colors.accent,
+      colorAccentHover: theme.colors.accentHover,
+      colorBg: theme.colors.background,
+      colorBgLight: theme.colors.backgroundLight,
+      colorSurface: theme.colors.surface,
+      colorSurfaceLight: theme.colors.surfaceLight,
+      colorText: theme.colors.text,
+      colorTextMuted: theme.colors.textMuted,
+      colorTextDark: theme.colors.textDark,
+      colorTextDarkMuted: theme.colors.textDarkMuted,
+      colorBorder: theme.colors.border,
+      colorBorderLight: theme.colors.borderLight,
+      fontHeading: theme.fonts.heading,
+      fontBody: theme.fonts.body,
+      fontMono: theme.fonts.mono,
+    }}>
+      :root {
+        --color-primary: var(--colorPrimary);
+        --color-secondary: var(--colorSecondary);
+        --color-accent: var(--colorAccent);
+        --color-accent-hover: var(--colorAccentHover);
+        --color-bg: var(--colorBg);
+        --color-bg-light: var(--colorBgLight);
+        --color-surface: var(--colorSurface);
+        --color-surface-light: var(--colorSurfaceLight);
+        --color-text: var(--colorText);
+        --color-text-muted: var(--colorTextMuted);
+        --color-text-dark: var(--colorTextDark);
+        --color-text-dark-muted: var(--colorTextDarkMuted);
+        --color-border: var(--colorBorder);
+        --color-border-light: var(--colorBorderLight);
+        --font-heading: var(--fontHeading);
+        --font-body: var(--fontBody);
+        --font-mono: var(--fontMono);
+      }
+
+      /* Dark mode (default) */
+      [data-theme="dark"] body {
+        background-color: var(--color-bg);
+        color: var(--color-text);
+      }
+
+      /* Light mode */
+      [data-theme="light"] body {
+        background-color: var(--color-bg-light);
+        color: var(--color-text-dark);
+      }
+
+      /* Transition for theme switch */
+      body {
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      /* Fade-up entrance animation */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body class:list={["min-h-screen font-[var(--font-body)] antialiased", bodyClass]}>
+    <Navigation />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- Scroll animation observer -->
+    <script is:inline>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

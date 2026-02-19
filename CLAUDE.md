@@ -137,7 +137,7 @@ Skills are stored in `.claude/skills/` and invoked via the Skill tool.
 - Bachelor of Arts from Shimer College
 - Oracle ACE Director (15+ years), ODTUG Lifetime Achievement Award
 - First person to score perfectly on Essbase Certification exam
-- Spoken in 47 countries across 6 continents
+- Spoken in 50+ countries across all 7 continents
 - Founded interRel Consulting at age 22, built it over 25 years, merged into Argano in 2020
 
 ### Current Work (as of Feb 2026)

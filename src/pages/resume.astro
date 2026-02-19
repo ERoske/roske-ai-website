@@ -1,0 +1,220 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+---
+
+<BaseLayout title="Resume — Edward Roske" description="CEO, Speaker, Data Scientist. 25+ years building companies at the intersection of AI and finance. MS Data Science (4.0 GPA), 13 books, 50+ countries.">
+
+  <!-- Hero -->
+  <section class="relative py-20 md:py-28 px-6 overflow-hidden">
+    <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
+    <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]"
+          style="animation: fadeInUp 0.6s ease-out forwards;">
+          Resume
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 dark:text-white text-[var(--color-primary)]"
+          style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0;">
+          Edward Roske
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
+          style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
+          CEO. Speaker. Data Scientist. Building at the intersection of AI and finance for 25+ years.
+        </p>
+        <div class="flex flex-wrap gap-3 mt-6"
+          style="animation: fadeInUp 0.6s ease-out 0.3s forwards; opacity: 0;">
+          <a href="mailto:Edward@Roske.AI" class="inline-flex items-center gap-2 text-sm font-[var(--font-mono)] text-[var(--color-accent)] hover:underline">
+            Edward@Roske.AI
+          </a>
+          <span class="dark:text-[var(--color-text-muted)]/30 text-[var(--color-text-dark-muted)]/30">&middot;</span>
+          <span class="text-sm font-[var(--font-mono)] dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">San Juan, Puerto Rico</span>
+          <span class="dark:text-[var(--color-text-muted)]/30 text-[var(--color-text-dark-muted)]/30">&middot;</span>
+          <a href="https://www.linkedin.com/in/interrel/" target="_blank" rel="noopener" class="text-sm font-[var(--font-mono)] text-[var(--color-accent)] hover:underline">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Current Roles -->
+  <Section title="Current Roles">
+    <div class="max-w-3xl space-y-6">
+      {[
+        { role: "CEO", company: "Dawnward", period: "2023 – Present", desc: "Umbrella investment company. Portfolio across AI, technology, and strategic ventures." },
+        { role: "President & Investor", company: "Caprus", period: "2023 – Present", desc: "AI Software & Services firm helping finance teams leverage artificial intelligence for planning, analytics, and operations." },
+        { role: "Co-founder & Stakeholder", company: "Argano", period: "2020 – Present", desc: "Billion-dollar global consulting firm. Formed through the merger of interRel Consulting (which Edward founded in 1997 and led for 25 years) with several other firms." },
+        { role: "Co-chair", company: "Caribbean AI Summit", period: "2025 – Present", desc: "Co-chairing the Caribbean AI Summit (October 16-17, 2026, San Juan) — intended to be the largest AI conference in history." },
+        { role: "President", company: "Puerto Rico AI Community", period: "2024 – Present", desc: "Leading the island's AI community. 850+ attendees across bimonthly events." },
+      ].map(item => (
+        <div class="animate-on-scroll rounded-xl p-6
+          dark:bg-white/[0.03] dark:border dark:border-white/[0.06]
+          bg-white border border-black/[0.06]">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
+            <div>
+              <h3 class="text-lg font-bold dark:text-white text-[var(--color-primary)]">{item.role}</h3>
+              <p class="text-[var(--color-accent)] font-medium text-sm">{item.company}</p>
+            </div>
+            <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60 whitespace-nowrap">{item.period}</span>
+          </div>
+          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Career Timeline -->
+  <Section title="Career History" dark>
+    <div class="max-w-3xl space-y-0">
+      {[
+        { period: "2023 – Present", role: "CEO, Roske.AI / Dawnward", desc: "Building MCP servers for enterprise finance. AI ventures. Speaking and consulting." },
+        { period: "2020 – 2023", role: "CEO, ArganoInterRel → Chief Performance Officer, Argano", desc: "Led the merged entity through integration. Oversaw EPM and analytics practice across the combined firm." },
+        { period: "1997 – 2020", role: "Founder & CEO, interRel Consulting", desc: "Founded at age 22. Built into the longest-standing Oracle Platinum EPM Partner worldwide. Five-time Oracle Partner of the Year. Merged into Argano in 2020." },
+        { period: "1995 – 1997", role: "Senior Analytics Consultant, Technium / Pinnacle", desc: "Early career in analytics consulting. Where the Essbase obsession began." },
+      ].map((item, i) => (
+        <div class="animate-on-scroll flex gap-6 md:gap-8 group">
+          <div class="flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-[var(--color-accent)] group-hover:scale-125 transition-transform mt-2"></div>
+            {i < 3 && <div class="w-px flex-1 dark:bg-[var(--color-border)] bg-[var(--color-border-light)] mt-2"></div>}
+          </div>
+          <div class="pb-10">
+            <div class="text-sm font-[var(--font-mono)] text-[var(--color-accent)] mb-1">{item.period}</div>
+            <h3 class="text-lg font-bold dark:text-white text-[var(--color-primary)] mb-1">{item.role}</h3>
+            <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Education -->
+  <Section title="Education">
+    <div class="max-w-3xl space-y-6">
+      <div class="animate-on-scroll rounded-xl p-6
+        dark:bg-white/[0.03] dark:border dark:border-white/[0.06]
+        bg-white border border-black/[0.06]">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
+          <div>
+            <h3 class="text-lg font-bold dark:text-white text-[var(--color-primary)]">Master of Science in Data Science</h3>
+            <p class="text-[var(--color-accent)] font-medium text-sm">Southern Methodist University (SMU)</p>
+          </div>
+          <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">2019 – 2021</span>
+        </div>
+        <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">
+          Perfect 4.0 GPA. Outstanding Graduate Award. Focus on machine learning, statistical modeling, and applied data science.
+        </p>
+      </div>
+
+      <div class="animate-on-scroll rounded-xl p-6
+        dark:bg-white/[0.03] dark:border dark:border-white/[0.06]
+        bg-white border border-black/[0.06]">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-2">
+          <div>
+            <h3 class="text-lg font-bold dark:text-white text-[var(--color-primary)]">Bachelor of Arts</h3>
+            <p class="text-[var(--color-accent)] font-medium text-sm">Shimer College</p>
+          </div>
+          <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">2016</span>
+        </div>
+        <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">
+          Great Books curriculum. Started at 16, finished after a 20-year detour through entrepreneurship.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Skills & Expertise -->
+  <Section title="Expertise" dark>
+    <div class="max-w-3xl">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {[
+          { area: "AI & Machine Learning", skills: "MCP Servers, AI Agents, LLMs, NLP, Computer Vision, Deep Learning, Prompt Engineering" },
+          { area: "Enterprise Finance", skills: "Oracle EPM, Essbase, Planning, HFM, Financial Consolidation, Budgeting & Forecasting" },
+          { area: "Data Science", skills: "Python, R, SQL, Statistical Modeling, Machine Learning, Data Visualization, ETL" },
+          { area: "Leadership", skills: "Company Building, M&A, Strategic Planning, Public Speaking, Team Building, Board Governance" },
+        ].map(item => (
+          <div class="animate-on-scroll">
+            <h3 class="text-sm font-bold font-[var(--font-mono)] uppercase tracking-wider text-[var(--color-accent)] mb-2">{item.area}</h3>
+            <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">{item.skills}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- Awards -->
+  <Section title="Awards & Recognition">
+    <div class="max-w-3xl space-y-3">
+      {[
+        { award: "ODTUG Lifetime Achievement Award", detail: "Fewer than 5 recipients ever", year: "2025" },
+        { award: "Essbase Speaker of the Year", detail: "Kscope18, voted by attendees", year: "2018" },
+        { award: "Oracle ACE Director", detail: "Held for 15+ years — Oracle's highest community recognition", year: "2008 – Present" },
+        { award: "Five-Time Oracle Partner of the Year", detail: "Through interRel Consulting", year: "Multiple" },
+        { award: "First Perfect Essbase Certification Score", detail: "First person to score perfectly on the exam", year: "Historic" },
+        { award: "Kscope Conference Chair", detail: "ODTUG Board Member", year: "2011 – 2012" },
+        { award: "Two US Patents", detail: "#5836617, #5848810 — custom postage stamp technology", year: "1998" },
+      ].map(item => (
+        <div class="animate-on-scroll flex items-start gap-4 rounded-lg p-4
+          dark:hover:bg-white/[0.03] hover:bg-black/[0.02] transition-colors">
+          <span class="text-xs font-[var(--font-mono)] text-[var(--color-accent)] whitespace-nowrap mt-0.5">{item.year}</span>
+          <div>
+            <h3 class="text-sm font-semibold dark:text-white text-[var(--color-primary)]">{item.award}</h3>
+            <p class="text-xs dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">{item.detail}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Publications & Speaking -->
+  <Section dark>
+    <div class="max-w-3xl grid grid-cols-1 sm:grid-cols-2 gap-8">
+      <div class="animate-on-scroll">
+        <h3 class="text-sm font-bold font-[var(--font-mono)] uppercase tracking-wider text-[var(--color-accent)] mb-4">Publications</h3>
+        <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mb-2">
+          Author/co-author of 13 books in the "Look Smarter Than You Are" series covering Oracle EPM, Essbase, Planning, Smart View, and Analytics Cloud.
+        </p>
+        <a href="/books/" class="text-sm text-[var(--color-accent)] hover:underline">View all books &rarr;</a>
+      </div>
+      <div class="animate-on-scroll">
+        <h3 class="text-sm font-bold font-[var(--font-mono)] uppercase tracking-wider text-[var(--color-accent)] mb-4">Speaking</h3>
+        <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mb-2">
+          300+ presentations across 50+ countries on all 7 continents. Keynotes, workshops, and conference sessions on AI, Data Science, EPM, and leadership.
+        </p>
+        <a href="/speaking/" class="text-sm text-[var(--color-accent)] hover:underline">View speaking history &rarr;</a>
+      </div>
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <Section>
+    <div class="animate-on-scroll text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white text-[var(--color-primary)]">
+        Let's Work Together
+      </h2>
+      <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-8 text-lg">
+        Speaking engagements, consulting, partnerships, or advisory roles.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/contact/"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
+          Get in Touch
+        </a>
+        <a href="https://www.linkedin.com/in/interrel/" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5
+            dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/10
+            bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10">
+          LinkedIn
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
+    </div>
+  </Section>
+
+</BaseLayout>
+
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

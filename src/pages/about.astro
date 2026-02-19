@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+---
+
+<BaseLayout title="About — Edward Roske" description="CEO, Speaker, Data Scientist, Dungeon Master. 25 years building companies, 80+ countries explored, 13 books written.">
+
+  <!-- Hero -->
+  <section class="relative py-20 md:py-28 px-6 overflow-hidden">
+    <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
+    <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]"
+          style="animation: fadeInUp 0.6s ease-out forwards;">
+          About
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 dark:text-white text-[var(--color-primary)]"
+          style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0;">
+          CEO. Speaker. Data&nbsp;Scientist. Dungeon&nbsp;Master.
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
+          style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
+          I build companies and break down complex problems. I've been doing this since I founded my first company at 22. I've spoken in 50+ countries, written 13 books, and somehow convinced Oracle I was worth sending around the world for 15 years. I currently live in San Juan, Puerto Rico, where I spend most of my time at the intersection of AI and finance.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Short Version -->
+  <Section title="The Short Version" subtitle="For people who read executive summaries first.">
+    <div class="animate-on-scroll max-w-3xl">
+      <div class="space-y-6 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-lg leading-relaxed">
+        <p>
+          I'm Edward Roske. I run <strong class="dark:text-white text-[var(--color-primary)]">Dawnward</strong> (my investment company), serve as President of <strong class="dark:text-white text-[var(--color-primary)]">Caprus</strong> (AI for finance teams), and still hold a stake in <strong class="dark:text-white text-[var(--color-primary)]">Argano</strong> — the billion-dollar consulting firm I helped create when I merged my 25-year-old company, interRel, in 2020.
+        </p>
+        <p>
+          These days I spend most of my time building <strong class="dark:text-white text-[var(--color-primary)]">MCP servers</strong> that let AI models talk to enterprise financial systems, and co-chairing the <strong class="dark:text-white text-[var(--color-primary)]">Caribbean AI Summit</strong> — what we intend to be the largest AI conference the world has ever seen (October 16-17, 2026, San Juan).
+        </p>
+        <p>
+          I have a Master of Data Science from SMU (4.0 GPA, Outstanding Graduate — yes, I bring this up), a BA from Shimer College, and I was the first person to score perfectly on the Essbase Certification exam. I host the <strong class="dark:text-white text-[var(--color-primary)]">"Asking Good Questions"</strong> podcast, I've written 13 books, and I'm an Oracle ACE Director, and in 2025 I received ODTUG's Lifetime Achievement Award — fewer than 5 people have ever been given it.
+        </p>
+        <p>
+          Also, I'm a Dungeon Master. I recently ran Keith Baker — the creator of the Eberron campaign setting — through a homebrew adventure. He said I was the best-prepared DM he'd ever seen in Eberron. (I peaked.)
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Career Journey -->
+  <Section title="Career Timeline" subtitle="Thirty years of building things, condensed." dark>
+    <div class="max-w-3xl space-y-0">
+      {[
+        { year: "1997", title: "Founded interRel Consulting", desc: "Age 22. Built it into the longest-standing Oracle Platinum EPM Partner worldwide. Five-time Oracle Partner of the Year." },
+        { year: "2008", title: "First 'Look Smarter' Book", desc: "Started co-authoring the 'Look Smarter Than You Are' series. 13 books total. All before generative AI existed. (Brag.)" },
+        { year: "2016", title: "BA from Shimer College", desc: "Finally finished the degree I started at 16. Took a detour through entrepreneurship first." },
+        { year: "2018", title: "Essbase Speaker of the Year", desc: "Kscope18. Also: first perfect score ever on the Essbase Certification exam." },
+        { year: "2021", title: "MS Data Science — SMU", desc: "Perfect 4.0 GPA. Outstanding Graduate. Decided to get serious about the 'science' in 'Data Science.'" },
+        { year: "2020", title: "Merged interRel into Argano", desc: "After 25 years, merged interRel to help form Argano — now a billion-dollar global consulting firm." },
+        { year: "2023", title: "Launched AI Ventures", desc: "Left Argano. Founded Roske.AI. Became President of Caprus. Started coding MCP servers." },
+        { year: "2025", title: "ODTUG Lifetime Achievement", desc: "Received the award at Kscope25. Fewer than 5 people have ever received it. Announced as my final Kscope." },
+        { year: "2026", title: "Caribbean AI Summit", desc: "Co-chairing what aims to be the largest AI conference in history. San Juan, October 16-17." },
+      ].map((item, i) => (
+        <div class="animate-on-scroll flex gap-6 md:gap-8 group">
+          <div class="flex flex-col items-center">
+            <div class="w-3 h-3 rounded-full bg-[var(--color-accent)] group-hover:scale-125 transition-transform mt-2"></div>
+            {i < 8 && <div class="w-px flex-1 dark:bg-[var(--color-border)] bg-[var(--color-border-light)] mt-2"></div>}
+          </div>
+          <div class="pb-10">
+            <div class="text-sm font-[var(--font-mono)] text-[var(--color-accent)] mb-1">{item.year}</div>
+            <h3 class="text-lg font-bold dark:text-white text-[var(--color-primary)] mb-1">{item.title}</h3>
+            <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Beyond the Resume -->
+  <Section title="Beyond the Resume" subtitle="The parts that don't fit on LinkedIn.">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="animate-on-scroll">
+        <Card title="World Traveler">
+          <p>80+ countries across all 7 continents. Yes, including Antarctica. Currently training for Everest Base Camp. Vegetarian food options at altitude: questionable.</p>
+        </Card>
+      </div>
+
+      <div class="animate-on-scroll">
+        <Card title="Dungeon Master">
+          <p>5th Edition. Eberron setting. I once ran Keith Baker (Eberron's creator) through a vertical chase through Sharn. He loved falling. I loved being validated.</p>
+        </Card>
+      </div>
+
+      <div class="animate-on-scroll">
+        <Card title="Film Producer">
+          <p>IMDB credit as Producer. Credits include BattleBots and How to Plan an Orgy in a Small Town. (One of these is a better conversation starter than the other.)</p>
+        </Card>
+      </div>
+
+      <div class="animate-on-scroll">
+        <Card title="Patent Holder">
+          <p>Two US Patents for custom postage stamps (#5836617, #5848810). Before email killed the postal service. (You're welcome, stamp collectors.)</p>
+        </Card>
+      </div>
+
+      <div class="animate-on-scroll">
+        <Card title="Vegetarian">
+          <p>For decades. My wife Dawn eats everything. She's also an artist — oil painting and watercolors. We live in San Juan, Puerto Rico. Our sons Mycroft and Eliot are in Miami.</p>
+        </Card>
+      </div>
+
+      <div class="animate-on-scroll">
+        <Card title="Competitive by Nature">
+          <p>Biggest Clifton StrengthsFinder result: Competition. Introvert who excels at public speaking. IQ of 180 but more self-deprecating than the number suggests.</p>
+        </Card>
+      </div>
+
+    </div>
+  </Section>
+
+</BaseLayout>
+
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

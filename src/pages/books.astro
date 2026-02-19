@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+
+const books = [
+  {
+    title: "Look Smarter Than You Are with Hyperion Essbase",
+    coauthor: "Tracy McMullen",
+    description: "The original. The one that started a 13-book streak. Essbase for humans.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Essbase 11: An Administrator's Guide",
+    coauthor: "Tracy McMullen",
+    description: "Everything an Essbase admin needs to know. We wrote it so they wouldn't have to read Oracle's documentation.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Smart View and Essbase 11: An End User's Guide",
+    coauthor: "Tracy McMullen",
+    description: "For the people who actually use the software every day. The ones who deserve a book that doesn't put them to sleep.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Essbase 11.1.2: An Administrator's Guide",
+    coauthor: "Tracy McMullen & Robert Gideon",
+    description: "Updated for 11.1.2. More features, more pages, same dry humor.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Smart View 11.1.2",
+    coauthor: "Tracy McMullen",
+    description: "Smart View got smarter. So did the book.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Oracle Hyperion Planning: An End User's Guide",
+    coauthor: "Tracy McMullen",
+    description: "Planning for end users. Because 'just figure it out' is not a training strategy.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Hyperion Planning: An Administrator's Guide",
+    coauthor: "Tracy McMullen",
+    description: "For the people who build the plans everyone else fills out. You're welcome.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Hyperion Planning 11.1.2: An End User's Guide",
+    coauthor: "Tracy McMullen",
+    description: "Updated Planning for end users. Still more useful than the official docs.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Hyperion Planning 11.1.2: Creating Hyperion Planning Applications",
+    coauthor: "Tracy McMullen",
+    description: "The application builder's guide. For when you want to create, not just consume.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Hyperion Planning 11.1.2: Advanced Hyperion Planning",
+    coauthor: "Tracy McMullen",
+    description: "The advanced guide. For people who looked at the basics and said 'I need more.'",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Oracle Enterprise Planning Cloud",
+    coauthor: "Tracy McMullen",
+    description: "Planning moved to the cloud. We followed. Oracle didn't invite us — we just showed up with a book.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Oracle Planning and Budgeting Cloud",
+    coauthor: "Tracy McMullen",
+    description: "PBCS edition. Because Oracle renamed things and we needed another cover.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+  {
+    title: "Look Smarter Than You Are with Oracle Analytics Cloud Standard Edition",
+    coauthor: "Tracy McMullen",
+    description: "The analytics book. Number 13. Written before generative AI could have done it for us.",
+    amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+  },
+];
+---
+
+<BaseLayout title="Books — Edward Roske" description="13 books in the 'Look Smarter Than You Are' series. All written before generative AI existed. Co-authored with Tracy McMullen.">
+
+  <!-- Hero -->
+  <section class="relative py-20 md:py-28 px-6 overflow-hidden">
+    <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
+    <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
+    <div class="relative max-w-7xl mx-auto">
+      <div class="max-w-3xl">
+        <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]"
+          style="animation: fadeInUp 0.6s ease-out forwards;">
+          Books
+        </p>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 dark:text-white text-[var(--color-primary)]"
+          style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0;">
+          Look Smarter Than You&nbsp;Are
+        </h1>
+        <p class="text-lg md:text-xl leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
+          style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
+          13 books. All co-authored primarily with Tracy McMullen. All written before generative AI existed. (We typed every word ourselves, like people used to do.)
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Book List -->
+  <Section>
+    <div class="space-y-4">
+      {books.map((book, i) => (
+        <a href={book.amazon} target="_blank" rel="noopener noreferrer"
+          class="animate-on-scroll block rounded-xl p-6 transition-all duration-300 group hover:-translate-y-0.5
+            dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
+            bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg">
+          <div class="flex items-start gap-5">
+            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center">
+              <span class="text-sm font-bold text-[var(--color-accent)] font-[var(--font-mono)]">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-base md:text-lg font-semibold dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug">
+                {book.title}
+              </h3>
+              <p class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60 mt-1">
+                with {book.coauthor}
+              </p>
+              <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mt-2">
+                {book.description}
+              </p>
+            </div>
+            <div class="flex-shrink-0 hidden sm:flex items-center gap-2 text-xs font-medium dark:text-[var(--color-text-muted)]/50 text-[var(--color-text-dark-muted)]/50 group-hover:text-[var(--color-accent)] transition-colors">
+              Amazon
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </Section>
+
+  <!-- Context -->
+  <Section dark>
+    <div class="animate-on-scroll max-w-3xl">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 dark:text-white text-[var(--color-primary)]">Why 13 Books?</h2>
+      <div class="space-y-4 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-lg leading-relaxed">
+        <p>
+          When Tracy McMullen and I started writing, Oracle's documentation was... optimistic. Users needed practical guides written by people who actually implemented the software. So we wrote one. Then another. Then we couldn't stop.
+        </p>
+        <p>
+          Every book in the series is designed to make enterprise software less intimidating. The title — <strong class="dark:text-white text-[var(--color-primary)]">Look Smarter Than You Are</strong> — is the whole philosophy: you don't need to be an expert to use these tools well. You just need a book that doesn't assume you already know everything.
+        </p>
+        <p>
+          All 13 were written before large language models could generate text. We didn't have AI co-authors. We had caffeine, deadlines, and a shared belief that no one should have to read Oracle's official docs if they don't want to.
+        </p>
+      </div>
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <Section>
+    <div class="animate-on-scroll text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white text-[var(--color-primary)]">
+        All Books on Amazon
+      </h2>
+      <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-8 text-lg">
+        The complete collection. Good for learning. Also good for making your bookshelf look more technical than it probably is.
+      </p>
+      <a href="https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW" target="_blank" rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
+        View on Amazon
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+      </a>
+    </div>
+  </Section>
+
+</BaseLayout>
+
+<style>
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
