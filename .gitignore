@@ -37,6 +37,9 @@ outputs/
 # Personal details should not be in the public repo
 personal-details/
 
+# Local automation scripts (weekly rebuild, content fetchers)
+scripts/
+
 # Claude Code operational files (local only, not part of the website)
 .claude/
 TODO.md
