@@ -24,6 +24,14 @@
     "category": "webinar"
   },
   {
+    "title": "Argano Employee Testimonial: Edward Roske",
+    "url": "https://www.linkedin.com/posts/argano_employee-testimonial-series-edward-roske-activity-7019395713553821696-a6m3",
+    "published": "2023-01-01",
+    "source": "Argano / LinkedIn",
+    "description": "Video testimonial featuring Edward as part of Argano's employee spotlight series.",
+    "category": "interview"
+  },
+  {
     "title": "How AI Helps Take Your Power Back: Reclaiming Your Professional Future",
     "url": "https://www.thefeng.org/chapters/texas/dallas/12",
     "published": "2025-01-01",
@@ -37,6 +45,22 @@
     "published": "2022-09-16",
     "source": "PACE",
     "description": "Discussion panel with Edward Roske and Dr. Prashanth Southekal on leveraging data and analytics for improved business performance.",
+    "category": "conference"
+  },
+  {
+    "title": "AUSOUG & APOUG Tour: Oracle Cloud Sessions Across Australia and Asia",
+    "url": "https://www.interrel.com/news/edward-roske-educating-in-australia-and-asia-with-ausoug-and-apoug/",
+    "published": "2016-01-01",
+    "source": "AUSOUG / APOUG",
+    "description": "Edward presented sessions on Oracle Cloud topics across Australian and Asia-Pacific Oracle User Groups in Australia, Singapore, Kuala Lumpur, and Hong Kong.",
+    "category": "conference"
+  },
+  {
+    "title": "Kscope15: It's a Wrap",
+    "url": "https://www.interrel.com/video/kscope15-its-a-wrap/",
+    "published": "2015-06-01",
+    "source": "interRel / Kscope15",
+    "description": "Wrap-up video from ODTUG Kscope15 featuring Edward Roske.",
     "category": "conference"
   },
   {

@@ -4,7 +4,7 @@ import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
 ---
 
-<BaseLayout title="About | Edward Roske" description="CEO, Speaker, Data Scientist, Dungeon Master. 25 years building companies, 80+ countries explored, 13 books written.">
+<BaseLayout title="About | Edward Roske" description="CEO, Speaker, Data Scientist, Dungeon Master. 25 years building companies, 80+ countries explored, 15 books written.">
 
   <!-- Hero -->
   <section class="relative py-20 md:py-28 px-6 overflow-hidden">
@@ -22,7 +22,7 @@ import Card from '../components/Card.astro';
         </h1>
         <p class="text-lg md:text-xl leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
           style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
-          I build companies and break down complex problems. I've been doing this since I founded my first company at 22. I've spoken in 50+ countries, written 13 books, and somehow convinced Oracle I was worth sending around the world for 15 years. I currently live in San Juan, Puerto Rico, where I spend most of my time at the intersection of AI and finance.
+          I build companies and break down complex problems. I started college at 15, founded my first company at 22, and haven't slowed down since. I've spoken in 50+ countries, written 15 books, and somehow convinced Oracle I was worth sending around the world for 15 years. I currently live in San Juan, Puerto Rico, where I spend most of my time at the intersection of AI and finance.
         </p>
       </div>
     </div>
@@ -36,10 +36,10 @@ import Card from '../components/Card.astro';
           I'm Edward Roske. I run <strong class="dark:text-white text-[var(--color-primary)]">Dawnward</strong> (my investment firm), invest in and contribute to <strong class="dark:text-white text-[var(--color-primary)]">Caprus</strong> (AI for finance teams), and still hold a stake in <strong class="dark:text-white text-[var(--color-primary)]">Argano</strong>, the billion-dollar consulting firm I helped create when I merged my 25-year-old company, interRel, in 2020.
         </p>
         <p>
-          These days I spend most of my time building <strong class="dark:text-white text-[var(--color-primary)]">MCP servers</strong> that let AI models talk to enterprise financial systems, and co-chairing the <strong class="dark:text-white text-[var(--color-primary)]">Caribbean AI Summit</strong>, what we intend to be the largest AI conference the world has ever seen (October 16-17, 2026, San Juan).
+          These days I spend most of my time building <strong class="dark:text-white text-[var(--color-primary)]">MCP servers</strong> that let AI models talk to enterprise financial systems, and co-chairing the <strong class="dark:text-white text-[var(--color-primary)]">Caribbean AI Summit</strong>, what will be the largest AI conference Puerto Rico has ever seen (October 16-17, 2026, San Juan).
         </p>
         <p>
-          I have a Master of Data Science from SMU (4.0 GPA, Outstanding Graduate... yes, I bring this up), a BA from Shimer College, and I was the first person to score perfectly on the Essbase Certification exam. I host the <strong class="dark:text-white text-[var(--color-primary)]">"Asking Good Questions"</strong> podcast, I've written 13 books, and I'm an Oracle ACE Director, and in 2025 I received ODTUG's Lifetime Achievement Award. Fewer than 5 people have ever been given it.
+          I have a Master of Data Science from SMU (4.0 GPA, Outstanding Graduate... yes, I bring this up), a BA from Shimer College (started college at 15, went full-time at 16, then took a 20-year detour through entrepreneurship before finishing), and I was the first person to score perfectly on the Essbase Certification exam. I host the <strong class="dark:text-white text-[var(--color-primary)]">"Asking Good Questions"</strong> podcast, I've written 15 books, and I'm an Oracle ACE Director. In 2025, I received ODTUG's Lifetime Achievement Award. Fewer than 5 people have ever been given it.
         </p>
         <p>
           Also, I'm a Dungeon Master. I recently ran Keith Baker (the creator of the Eberron campaign setting) through a homebrew adventure. He said I was the best-prepared DM he'd ever seen in Eberron. (I peaked.)
@@ -53,14 +53,14 @@ import Card from '../components/Card.astro';
     <div class="max-w-3xl space-y-0">
       {[
         { year: "1997", title: "Founded interRel Consulting", desc: "Age 22. Built it into the longest-standing Oracle Platinum EPM Partner worldwide. Five-time Oracle Partner of the Year." },
-        { year: "2008", title: "First 'Look Smarter' Book", desc: "Started co-authoring the 'Look Smarter Than You Are' series. 13 books total. All before generative AI existed. (Brag.)" },
-        { year: "2016", title: "BA from Shimer College", desc: "Finally finished the degree I started at 16. Took a detour through entrepreneurship first." },
+        { year: "2008", title: "First 'Look Smarter' Book", desc: "Started co-authoring the 'Look Smarter Than You Are' series. 15 books total. All before generative AI existed. (Brag.)" },
+        { year: "2016", title: "BA from Shimer College", desc: "Finally finished the degree I started at 15. (College Calculus and Computer Science at 15. Full-time at Simon's Rock of Bard College at 16. Took a 20-year detour through entrepreneurship before finishing.)" },
         { year: "2018", title: "Essbase Speaker of the Year", desc: "Kscope18. Also: first perfect score ever on the Essbase Certification exam." },
         { year: "2021", title: "MS Data Science, SMU", desc: "Perfect 4.0 GPA. Outstanding Graduate. Decided to get serious about the 'science' in 'Data Science.'" },
         { year: "2020", title: "Merged interRel into Argano", desc: "After 25 years, merged interRel to help form Argano, now a billion-dollar global consulting firm." },
-        { year: "2023", title: "Launched AI Ventures", desc: "Left Argano. Founded Roske.AI. Became President of Caprus. Started coding MCP servers." },
+        { year: "2023", title: "Launched AI Ventures", desc: "Left Argano. Founded Roske.AI. Invested in Caprus. Started coding MCP servers." },
         { year: "2025", title: "ODTUG Lifetime Achievement", desc: "Received the award at Kscope25. Fewer than 5 people have ever received it. Announced as my final Kscope." },
-        { year: "2026", title: "Caribbean AI Summit", desc: "Co-chairing what aims to be the largest AI conference in history. San Juan, October 16-17." },
+        { year: "2026", title: "Caribbean AI Summit", desc: "Co-chairing the largest AI conference Puerto Rico has ever seen. San Juan, October 16-17." },
       ].map((item, i) => (
         <div class="animate-on-scroll flex gap-6 md:gap-8 group">
           <div class="flex flex-col items-center">
