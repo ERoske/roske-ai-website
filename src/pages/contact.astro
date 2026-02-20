@@ -98,6 +98,31 @@ import Section from '../components/Section.astro';
 
       <!-- Sidebar -->
       <div class="space-y-8">
+        <div class="animate-on-scroll rounded-xl p-6
+          dark:bg-gradient-to-br dark:from-[var(--color-accent)]/[0.08] dark:to-white/[0.02] dark:border dark:border-[var(--color-accent)]/20
+          bg-gradient-to-br from-[var(--color-accent)]/[0.06] to-white border border-[var(--color-accent)]/15">
+          <h3 class="text-lg font-bold mb-2 dark:text-white text-[var(--color-primary)]">Stay in the Loop</h3>
+          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm mb-4">
+            Not ready to commit to a conversation? I get it. Drop your email and I'll ping you when something interesting happens. AI, finance, the occasional mountain.
+          </p>
+          <form action="https://api.web3forms.com/submit" method="POST" class="space-y-3">
+            <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+            <input type="hidden" name="subject" value="New mailing list signup from roske.ai" />
+            <input type="hidden" name="from_name" value="Roske.AI Mailing List" />
+            <input type="hidden" name="redirect" value="https://roske.ai/contact/?subscribed=true" />
+            <div class="hidden"><input type="text" name="botcheck" /></div>
+            <input type="email" name="email" required placeholder="your@email.com"
+              class="w-full px-4 py-3 rounded-lg border transition-colors text-sm
+                dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:placeholder-[var(--color-text-muted)]/40 dark:focus:border-[var(--color-accent)]
+                bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] placeholder-[var(--color-text-dark-muted)]/40 focus:border-[var(--color-accent)]
+                focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20" />
+            <button type="submit"
+              class="w-full px-4 py-2.5 rounded-lg bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5">
+              Keep Me Posted
+            </button>
+          </form>
+        </div>
+
         <div class="animate-on-scroll rounded-xl p-6 dark:bg-white/[0.03] dark:border dark:border-white/[0.06] bg-white border border-black/[0.06]">
           <h3 class="text-lg font-bold mb-3 dark:text-white text-[var(--color-primary)]">Answering a Good Question</h3>
           <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm mb-4">
