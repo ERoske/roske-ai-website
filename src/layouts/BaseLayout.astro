@@ -37,7 +37,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
     <meta property="og:site_name" content="Roske.AI" />
 
     <!-- Twitter -->
@@ -45,10 +45,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:site" content="@eroske" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
 
     <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json" set:html={JSON.stringify({
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Roske.AI",
@@ -80,9 +80,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="Roske.AI Blog" href="/rss.xml" />
 
-    <!-- Fonts -->
+    <!-- Fonts (preconnect + preload for performance) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style" href={theme.fonts.googleFontsUrl} />
     <link href={theme.fonts.googleFontsUrl} rel="stylesheet" />
 
     <title>{title}</title>
