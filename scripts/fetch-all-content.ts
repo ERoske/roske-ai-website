@@ -29,8 +29,12 @@ async function main() {
     'scripts/fetch-podcast-episodes.ts'
   );
 
+  results['YouTube Videos'] = await run(
+    'YouTube Videos',
+    'scripts/fetch-youtube-videos.ts'
+  );
+
   // Future fetchers:
-  // results['YouTube Videos'] = await run('YouTube Videos', 'scripts/fetch-youtube-videos.ts');
   // results['Social Media'] = await run('Social Media', 'scripts/fetch-social-media.ts');
   // results['News Mentions'] = await run('News Mentions', 'scripts/fetch-news-mentions.ts');
 

@@ -31,6 +31,21 @@ const theme = currentTheme;
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-32">
       <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+      <!-- Headshot (mobile: shown above text, desktop: hidden here since hero image is on the right) -->
+      <div class="lg:hidden flex justify-center mb-4"
+        style="animation: fadeInUp 0.6s ease-out forwards;"
+      >
+        <img
+          src="/images/Edward_Roske_Headshot.png"
+          alt="Edward Roske"
+          width="160"
+          height="160"
+          loading="eager"
+          class="rounded-full w-32 h-32 sm:w-40 sm:h-40 object-cover shadow-lg ring-4 ring-[var(--color-accent)]/20"
+        />
+      </div>
+
       <div class="max-w-4xl lg:max-w-2xl">
 
         <!-- Status badge -->
@@ -88,10 +103,18 @@ const theme = currentTheme;
 
       </div>
 
-      <!-- Hero image -->
-      <div class="hidden lg:block flex-shrink-0"
+      <!-- Hero image + headshot (desktop) -->
+      <div class="hidden lg:flex flex-col items-center gap-6 flex-shrink-0"
         style="animation: fadeInUp 0.6s ease-out 0.6s forwards; opacity: 0;"
       >
+        <img
+          src="/images/Edward_Roske_Headshot.png"
+          alt="Edward Roske"
+          width="180"
+          height="180"
+          loading="eager"
+          class="rounded-full w-40 h-40 xl:w-44 xl:h-44 object-cover shadow-lg ring-4 ring-[var(--color-accent)]/20"
+        />
         <div class="relative w-80 xl:w-96">
           <div class="absolute -inset-4 rounded-2xl bg-gradient-to-br from-[var(--color-accent)]/20 via-transparent to-[var(--color-secondary)]/20 blur-2xl"></div>
           <picture>
@@ -119,8 +142,8 @@ const theme = currentTheme;
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <div class="animate-on-scroll">
-        <Card title="MCP Servers for Finance">
-          <p>Building Model Context Protocol servers that connect LLMs to Oracle EPM systems. Currently launching Oracle EPM Consolidations MCP — letting Claude, ChatGPT, and Gemini talk directly to enterprise finance data. No hallucinations.</p>
+        <Card title="MCP Servers for Finance" href="https://caprus.ai" external>
+          <p>Building Model Context Protocol servers that connect LLMs to Oracle EPM systems. Already shipping MCP servers for Oracle Essbase and Oracle EPM Planning. Oracle EPM Financial Close & Consolidations is in beta. Letting Claude, ChatGPT, and Gemini talk directly to enterprise finance data. No hallucinations.</p>
           <div class="mt-4 flex flex-wrap gap-2">
             <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">MCP</span>
             <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Oracle EPM</span>
@@ -130,15 +153,15 @@ const theme = currentTheme;
       </div>
 
       <div class="animate-on-scroll">
-        <Card title="Caribbean AI Summit" href="https://caribbeanaisummit.com" external>
+        <Card title="Caribbean AI Summit" href="https://praicommunity.org/" external>
           <p>Co-chairing what will be the largest AI conference the world's ever seen. October 16-17, 2026 in Puerto Rico. Speakers and attendees from around the globe.</p>
           <p class="mt-2 text-[var(--color-accent)] font-medium text-xs">October 16-17, 2026 &middot; San Juan, PR</p>
         </Card>
       </div>
 
       <div class="animate-on-scroll">
-        <Card title="Caprus AI">
-          <p>President and investor at Caprus — an AI Software & Services firm empowering finance teams with AI solutions for smarter, faster, more strategic financial operations.</p>
+        <Card title="Caprus AI" href="https://caprus.ai" external>
+          <p>Investor and contributor at Caprus, an AI Software & Services firm empowering finance teams with AI solutions for smarter, faster, more strategic financial operations.</p>
           <div class="mt-4 flex flex-wrap gap-2">
             <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">AI</span>
             <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Finance</span>
@@ -147,8 +170,8 @@ const theme = currentTheme;
       </div>
 
       <div class="animate-on-scroll">
-        <Card title="Everest Base Camp">
-          <p>Training for a trek to Mt. Everest base camp in Nepal. Currently in the best shape since college. (The mountains don't care about your IQ.)</p>
+        <Card title="Everest Base Camp" href="https://adventureconsultants.com/expeditions/seven-summits/everest" external>
+          <p>Training for a trek to Mt. Everest base camp in Nepal. In 2025, I hiked to and through Son Doong Cave in Vietnam, the largest cave in the world. This is me taking it to the next level. (Pun intended.)</p>
         </Card>
       </div>
 
@@ -163,7 +186,7 @@ const theme = currentTheme;
       </div>
 
       <div class="animate-on-scroll">
-        <Card title="PR AI Community">
+        <Card title="Puerto Rico AI Community" href="https://praicommunity.org/" external>
           <p>President of the Puerto Rico AI Community. Over 850 attendees across our events. We meet every other month to explore what AI means for the island and beyond.</p>
           <p class="mt-2 text-[var(--color-accent)] font-medium text-xs">850+ attendees &middot; Bimonthly</p>
         </Card>
@@ -175,12 +198,12 @@ const theme = currentTheme;
   <!-- ============================================
        COMPANIES
        ============================================ -->
-  <Section id="companies" title="Companies" subtitle="CEO of multiple ventures at the intersection of AI and finance." dark>
+  <Section id="companies" title="Companies" subtitle="Leading at the intersection of AI and Finance." dark>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
       <div class="animate-on-scroll">
         <Card title="Dawnward">
-          <p>Umbrella investment company. Edward's holding entity for investments across AI, technology, and beyond.</p>
+          <p>Edward's investment firm. Portfolio across AI, technology, and beyond.</p>
           <p class="mt-3 text-xs dark:text-[var(--color-text-muted)]/50 text-[var(--color-text-dark-muted)]/50 font-[var(--font-mono)]">Role: CEO</p>
         </Card>
       </div>
@@ -188,13 +211,13 @@ const theme = currentTheme;
       <div class="animate-on-scroll">
         <Card title="Caprus" href="https://caprus.ai" external>
           <p>AI Software & Services firm. Helping finance teams leverage artificial intelligence for smarter operations, planning, and analysis.</p>
-          <p class="mt-3 text-xs dark:text-[var(--color-text-muted)]/50 text-[var(--color-text-dark-muted)]/50 font-[var(--font-mono)]">Role: President & Investor</p>
+          <p class="mt-3 text-xs dark:text-[var(--color-text-muted)]/50 text-[var(--color-text-dark-muted)]/50 font-[var(--font-mono)]">Role: Investor & Contributor</p>
         </Card>
       </div>
 
       <div class="animate-on-scroll">
         <Card title="Argano" href="https://argano.com" external>
-          <p>Billion-dollar worldwide consulting firm. Formed in 2020 when Edward merged interRel — the company he founded at age 22 and ran for 25 years.</p>
+          <p>Billion-dollar worldwide consulting firm. Formed in 2020 when Edward merged interRel, the company he founded at age 22 and ran for 25 years.</p>
           <p class="mt-3 text-xs dark:text-[var(--color-text-muted)]/50 text-[var(--color-text-dark-muted)]/50 font-[var(--font-mono)]">Role: Co-founder & Stakeholder</p>
         </Card>
       </div>
@@ -264,7 +287,7 @@ const theme = currentTheme;
       </h2>
       <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-8 text-lg">
         Whether you need a keynote speaker, want to explore AI for your finance team,
-        or just have a good question — I've got 13 minutes.
+        or just have a good question, I've got 13 minutes.
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
         <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener"

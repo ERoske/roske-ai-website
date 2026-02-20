@@ -78,7 +78,7 @@ export interface ThemeConfig {
 export const currentTheme: ThemeConfig = {
   name: "Launch Week",
   week: "2026-02-22",
-  inspiration: "First launch of roske.ai — futuristic, bold, dark space aesthetic",
+  inspiration: "First launch of roske.ai, futuristic, bold, dark space aesthetic",
   tagline: "CEO. Speaker. Data Scientist. Dungeon Master.",
 
   colors: {
@@ -124,8 +124,8 @@ export const currentTheme: ThemeConfig = {
   hero: {
     title: "ROSKE.AI",
     subtitle: "Building the future at the intersection of AI and Finance",
-    description: "Edward Roske builds things. Companies, MCP servers, conference keynotes, D&D campaigns — and apparently, this website. Every Saturday at 5 AM, an AI completely redesigns this site. You're looking at launch week.",
-    imageAlt: "Edward Roske — CEO, Speaker, Data Scientist",
+    description: "Edward Roske builds things. Companies, MCP servers, conference keynotes, D&D campaigns... and apparently, this website. Every Saturday at 5 AM, an AI completely redesigns this site. You're looking at launch week.",
+    imageAlt: "Edward Roske: CEO, Speaker, Data Scientist",
     ctaText: "See What I'm Building",
     ctaLink: "#current-work",
   },

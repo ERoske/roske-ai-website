@@ -1,0 +1,66 @@
+[
+  {
+    "title": "Devs on Tape x Kscope25: The Inspiring Journey of Edward Roske",
+    "url": "https://devsontape.podigee.io/88-edward-roske",
+    "published": "2025-06-01",
+    "source": "Devs on Tape / Kscope25",
+    "description": "In-depth interview covering Edward's career from founding interRel at 22 through AI ventures at Caprus and Dawnward, plus the intersection of AI, EPM, and data privacy.",
+    "category": "interview"
+  },
+  {
+    "title": "GenAI in the Wild: An Interview with Edward Roske",
+    "url": "https://womaninepm.com/2024/05/15/oracle-ai-series-surprise-bonus-post-genai-in-the-wild-an-interview-with-edward-roske/",
+    "published": "2024-05-15",
+    "source": "Woman in EPM",
+    "description": "Interview covering Edward's use of GenAI tools and his perspective on AI adoption for finance professionals. Part of the Oracle + AI Series.",
+    "category": "interview"
+  },
+  {
+    "title": "The Top Five Strategic EPM Trends in 2023: ChatGPT, Autonomous, and Beyond",
+    "url": "https://argano.com/event/the-top-five-strategic-epm-trends-in-2023-chatgpt-autonomous-and-beyond/",
+    "published": "2023-01-01",
+    "source": "Argano / ODTUG Webinar",
+    "description": "Webinar exploring innovative trends in Oracle Cloud EPM including Narrative Reporting, EDM, Account Reconciliation Cloud, and Scenario Modeling.",
+    "category": "webinar"
+  },
+  {
+    "title": "How AI Helps Take Your Power Back: Reclaiming Your Professional Future",
+    "url": "https://www.thefeng.org/chapters/texas/dallas/12",
+    "published": "2025-01-01",
+    "source": "FENG (Financial Executives Networking Group)",
+    "description": "Presentation on how AI can empower finance executives to reclaim control of their careers and enhance their strategic value.",
+    "category": "conference"
+  },
+  {
+    "title": "PACE Academic IG: Transitioning from Data to Decisions for Analytics Success",
+    "url": "https://www.profitability-analytics.org/event-details/pace-academic-ig-meeting",
+    "published": "2022-09-16",
+    "source": "PACE",
+    "description": "Discussion panel with Edward Roske and Dr. Prashanth Southekal on leveraging data and analytics for improved business performance.",
+    "category": "conference"
+  },
+  {
+    "title": "Kscope14 Interview: Edward Roske (and His Hat)",
+    "url": "https://www.interrel.com/video/kscope14-interview-edward-roske-and-his-hat/",
+    "published": "2014-06-01",
+    "source": "interRel / Kscope14",
+    "description": "Kevin McGinley interviews Edward at the ODTUG Social Media Lounge. Edward presented sessions on Oracle BI Mobile, Essbase Optimization, and Cutting-Edge Essbase.",
+    "category": "interview"
+  },
+  {
+    "title": "Edward Roske on Oracle HPCM at MD Anderson Cancer Center",
+    "url": "https://www.interrel.com/video/edward-roske-of-interrel-talks-about-oracle-hpcm-at-md-anderson-cancer-center-at-collaborate-2014/",
+    "published": "2014-04-01",
+    "source": "interRel / OAUG Collaborate 2014",
+    "description": "Discussing implementing Hyperion Profitability and Cost Management at MD Anderson Cancer Center to determine profitability at the physician level.",
+    "category": "conference"
+  },
+  {
+    "title": "Real Time BI Ep 014: Edward Roske, Unnecessarily Censored",
+    "url": "https://www.interrel.com/video/real-time-bi-with-kevin-stewart-ep-014/",
+    "published": "2014-06-01",
+    "source": "interRel / Kscope14 Livestream",
+    "description": "A humorous segment from the Kscope14 livestream broadcast of Real Time BI with Kevin & Stewart.",
+    "category": "interview"
+  }
+]
