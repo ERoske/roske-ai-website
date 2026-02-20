@@ -125,7 +125,7 @@ export const currentTheme: ThemeConfig = {
     title: "ROSKE.AI",
     subtitle: "Building the future at the intersection of AI and Finance",
     description: "Edward Roske builds things. Companies, MCP servers, conference keynotes, D&D campaigns... and apparently, this website. Every Saturday at 5 AM, an AI completely redesigns this site. You're looking at launch week.",
-    imageAlt: "Edward Roske: CEO, Speaker, Data Scientist",
+    imageAlt: "Edward Roske in a spacesuit, floating in space with a laptop, rocket launching behind him. Because launch week.",
     ctaText: "See What I'm Building",
     ctaLink: "#current-work",
   },
