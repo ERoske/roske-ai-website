@@ -11,19 +11,33 @@ import Card from '../components/Card.astro';
     <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
     <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
     <div class="relative max-w-7xl mx-auto">
-      <div class="max-w-3xl">
-        <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]"
-          style="animation: fadeInUp 0.6s ease-out forwards;">
-          About
-        </p>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 dark:text-white text-[var(--color-primary)]"
-          style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0;">
-          CEO. Speaker. Data&nbsp;Scientist. Dungeon&nbsp;Master.
-        </h1>
-        <p class="text-lg md:text-xl leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
-          style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
-          I build companies and break down complex problems. I started college at 15, founded my first company at 22, and haven't slowed down since. I've spoken in 50+ countries, written 15 books, and somehow convinced Oracle I was worth sending around the world for 15 years. I currently live in San Juan, Puerto Rico, where I spend most of my time at the intersection of AI and finance.
-        </p>
+      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+        <div class="flex-1 max-w-2xl text-center lg:text-left">
+          <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]"
+            style="animation: fadeInUp 0.6s ease-out forwards;">
+            About
+          </p>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 dark:text-white text-[var(--color-primary)]"
+            style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0;">
+            CEO. Speaker. Data&nbsp;Scientist. Dungeon&nbsp;Master.
+          </h1>
+          <p class="text-lg md:text-xl leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
+            style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
+            I build companies and break down complex problems. I started college at 15, founded my first company at 22, and haven't slowed down since. I've spoken in 50+ countries, written 15 books, and somehow convinced Oracle I was worth sending around the world for 15 years. I currently live in San Juan, Puerto Rico, where I spend most of my time at the intersection of AI and finance.
+          </p>
+        </div>
+        <div class="flex-shrink-0" style="animation: fadeInUp 0.8s ease-out 0.3s forwards; opacity: 0;">
+          <div class="relative">
+            <div class="absolute -inset-4 rounded-2xl bg-[var(--color-accent)]/10 blur-2xl"></div>
+            <picture>
+              <source srcset="/images/hero-about.webp" type="image/webp" />
+              <img src="/images/hero-about.png"
+                alt="Edward Roske at an impossibly cluttered desk with books, a D20 dice, globe, laptop, podcast mic, and a Dallas Cowboys pennant"
+                class="relative rounded-2xl w-full max-w-md lg:max-w-lg shadow-2xl ring-1 ring-white/10"
+                loading="eager" />
+            </picture>
+          </div>
+        </div>
       </div>
     </div>
   </section>
