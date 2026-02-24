@@ -4,14 +4,10 @@ import ThemeToggle from './ThemeToggle.astro';
 const currentPath = Astro.url.pathname;
 
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/about/', label: 'About' },
-  { href: '/speaking/', label: 'Speaking' },
-  { href: '/podcast/', label: 'Podcast' },
-  { href: '/videos/', label: 'Videos' },
+  { href: '/work/', label: 'Work' },
+  { href: '/content/', label: 'Content' },
   { href: '/books/', label: 'Books' },
-  { href: '/blog/', label: 'Blog' },
-  { href: '/resume/', label: 'Resume' },
   { href: '/contact/', label: 'Contact' },
 ];
 ---
@@ -39,7 +35,7 @@ const navLinks = [
           href={link.href}
           class:list={[
             "px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200",
-            currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+            currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) || (link.href === '/content/' && currentPath.startsWith('/blog/'))
               ? "text-[var(--color-accent)] dark:bg-white/5 bg-black/5"
               : "dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] hover:text-[var(--color-accent)] dark:hover:bg-white/5 hover:bg-black/5"
           ]}
@@ -82,7 +78,7 @@ const navLinks = [
           href={link.href}
           class:list={[
             "block px-4 py-3 text-base font-medium rounded-lg transition-all duration-200",
-            currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href))
+            currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) || (link.href === '/content/' && currentPath.startsWith('/blog/'))
               ? "text-[var(--color-accent)] dark:bg-white/5 bg-black/5"
               : "dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] hover:text-[var(--color-accent)]"
           ]}
@@ -98,31 +94,39 @@ const navLinks = [
 <div class="h-16"></div>
 
 <script is:inline>
-  // Mobile menu toggle
-  const menuBtn = document.getElementById('mobile-menu-btn');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const openIcon = document.getElementById('menu-open-icon');
-  const closeIcon = document.getElementById('menu-close-icon');
+  document.addEventListener('astro:page-load', () => {
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const openIcon = document.getElementById('menu-open-icon');
+    const closeIcon = document.getElementById('menu-close-icon');
 
-  if (menuBtn && mobileMenu && openIcon && closeIcon) {
-    menuBtn.addEventListener('click', () => {
-      const isOpen = !mobileMenu.classList.contains('hidden');
-      mobileMenu.classList.toggle('hidden');
-      openIcon.classList.toggle('hidden');
-      closeIcon.classList.toggle('hidden');
-      menuBtn.setAttribute('aria-expanded', String(!isOpen));
-    });
-  }
+    if (menuBtn && mobileMenu && openIcon && closeIcon) {
+      menuBtn.addEventListener('click', () => {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+        mobileMenu.classList.toggle('hidden');
+        openIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
 
-  // Shrink nav on scroll
-  const nav = document.getElementById('main-nav');
-  if (nav) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) {
-        nav.classList.add('py-0');
-      } else {
-        nav.classList.remove('py-0');
-      }
-    }, { passive: true });
-  }
+      // Close mobile menu on navigation
+      mobileMenu.classList.add('hidden');
+      openIcon.classList.remove('hidden');
+      closeIcon.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    // Shrink nav on scroll
+    const nav = document.getElementById('main-nav');
+    if (nav) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          nav.classList.add('py-0');
+        } else {
+          nav.classList.remove('py-0');
+        }
+      }, { passive: true });
+    }
+  });
 </script>

@@ -1,0 +1,65 @@
+---
+interface Props {
+  tabs: { label: string; href: string }[];
+}
+
+const { tabs } = Astro.props;
+---
+
+<nav id="tab-nav" class="sticky top-16 z-30 border-b transition-all duration-300
+  dark:bg-[var(--color-bg)]/90 dark:border-[var(--color-border)]/50
+  bg-[var(--color-bg-light)]/90 border-[var(--color-border-light)]/50
+  backdrop-blur-xl">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex gap-1 overflow-x-auto no-scrollbar">
+      {tabs.map(tab => (
+        <a href={tab.href}
+          class="tab-link px-4 py-3 text-sm font-medium whitespace-nowrap border-b-2 border-transparent transition-all duration-200
+            dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]
+            hover:text-[var(--color-accent)] hover:border-[var(--color-accent)]/50"
+          data-section={tab.href.replace('#', '')}>
+          {tab.label}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+document.addEventListener('astro:page-load', () => {
+  const tabLinks = document.querySelectorAll('.tab-link');
+  if (!tabLinks.length) return;
+
+  const sections = [];
+  tabLinks.forEach(link => {
+    const id = link.getAttribute('data-section');
+    const el = document.getElementById(id);
+    if (el) sections.push({ id, el, link });
+  });
+
+  if (!sections.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tabLinks.forEach(l => {
+          l.classList.remove('border-[var(--color-accent)]', 'text-[var(--color-accent)]');
+          l.classList.add('border-transparent');
+        });
+        const match = sections.find(s => s.id === entry.target.id);
+        if (match) {
+          match.link.classList.add('border-[var(--color-accent)]', 'text-[var(--color-accent)]');
+          match.link.classList.remove('border-transparent');
+        }
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '-80px 0px -60% 0px' });
+
+  sections.forEach(s => observer.observe(s.el));
+});
+</script>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+</style>

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
 import { currentTheme, themeToCSS } from '../themes/theme-config';
@@ -91,6 +92,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <title>{title}</title>
 
+    <ClientRouter />
+
     <!-- Theme variables + dark/light mode initialization (no flash) -->
     <script is:inline define:vars={{ cssVars }}>
       // Apply theme before render to prevent flash
@@ -180,16 +183,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
     <!-- Scroll animation observer -->
     <script is:inline>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+      document.addEventListener('astro:page-load', () => {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-      document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+          observer.observe(el);
+        });
       });
     </script>
   </body>

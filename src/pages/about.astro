@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
 import Card from '../components/Card.astro';
+import ExpandableSection from '../components/ExpandableSection.astro';
 ---
 
 <BaseLayout title="About | Edward Roske" description="CEO, Speaker, Data Scientist, Dungeon Master. 25 years building companies, 80+ countries explored, 15 books written.">
@@ -65,7 +66,7 @@ import Card from '../components/Card.astro';
     </div>
   </Section>
 
-  <!-- Career Journey -->
+  <!-- Career Timeline (merged from About + Resume) -->
   <Section title="Career Timeline" subtitle="Thirty years of building things, condensed." dark>
     <div class="max-w-3xl space-y-0">
       {[
@@ -73,16 +74,17 @@ import Card from '../components/Card.astro';
         { year: "2025", title: "ODTUG Lifetime Achievement", desc: "Received the award at Kscope25. Fewer than 5 people have ever received it. Announced as my final Kscope." },
         { year: "2023", title: "Launched AI Ventures", desc: "Left Argano. Founded Roske.AI. Invested in Caprus. Started coding MCP servers." },
         { year: "2021", title: "MS Data Science, SMU", desc: "Perfect 4.0 GPA. Outstanding Graduate. Decided to get serious about the 'science' in 'Data Science.'" },
-        { year: "2020", title: "Merged interRel into Argano", desc: "After 25 years, merged interRel to help form Argano, now a billion-dollar global consulting firm." },
+        { year: "2020", title: "Merged interRel into Argano", desc: "After 25 years, merged interRel to help form Argano, now a billion-dollar global consulting firm. Served as CEO of ArganoInterRel, then Chief Performance Officer." },
         { year: "2018", title: "Essbase Speaker of the Year", desc: "Kscope18. Also: first perfect score ever on the Essbase Certification exam." },
         { year: "2016", title: "BA from Shimer College", desc: "Finally finished the degree I started at 15. (College Calculus and Computer Science at 15. Full-time at Simon's Rock of Bard College at 16. Took a 20-year detour through entrepreneurship before finishing.)" },
         { year: "2008", title: "First 'Look Smarter' Book", desc: "Started co-authoring the 'Look Smarter Than You Are' series. 15 books total. All before generative AI existed. (Brag.)" },
         { year: "1997", title: "Founded interRel Consulting", desc: "Age 22. Built it into the longest-standing Oracle Platinum EPM Partner worldwide. Five-time Oracle Partner of the Year." },
+        { year: "1995", title: "Started in Analytics", desc: "Senior Analytics Consultant at Technium/Pinnacle. Where the Essbase obsession began." },
       ].map((item, i) => (
         <div class="animate-on-scroll flex gap-6 md:gap-8 group">
           <div class="flex flex-col items-center">
             <div class="w-3 h-3 rounded-full bg-[var(--color-accent)] group-hover:scale-125 transition-transform mt-2"></div>
-            {i < 8 && <div class="w-px flex-1 dark:bg-[var(--color-border)] bg-[var(--color-border-light)] mt-2"></div>}
+            {i < 9 && <div class="w-px flex-1 dark:bg-[var(--color-border)] bg-[var(--color-border-light)] mt-2"></div>}
           </div>
           <div class="pb-10">
             <div class="text-sm font-[var(--font-mono)] text-[var(--color-accent)] mb-1">{item.year}</div>
@@ -94,8 +96,120 @@ import Card from '../components/Card.astro';
     </div>
   </Section>
 
+  <!-- Resume Sections (expandable) -->
+  <Section id="resume" title="The Resume" subtitle="For the people who need the details.">
+    <div class="max-w-3xl space-y-4">
+
+      <!-- Current Roles -->
+      <div class="animate-on-scroll">
+        <ExpandableSection title="Current Roles" open>
+          <div class="space-y-4">
+            {[
+              { role: "CEO", company: "Dawnward", period: "2023 - Present", desc: "Edward's investment firm. Portfolio across AI, technology, and strategic ventures." },
+              { role: "Investor & Contributor", company: "Caprus", period: "2023 - Present", desc: "AI Software & Services firm helping finance teams leverage artificial intelligence for planning, analytics, and operations." },
+              { role: "Co-founder & Stakeholder", company: "Argano", period: "2020 - Present", desc: "Billion-dollar global consulting firm. Formed through the merger of interRel Consulting (which Edward founded in 1997 and led for 25 years) with several other firms." },
+              { role: "Co-chair", company: "Caribbean AI Summit", period: "2025 - Present", desc: "Co-chairing the Caribbean AI Summit (October 16-17, 2026, San Juan), the largest AI conference Puerto Rico has ever seen." },
+              { role: "President", company: "Puerto Rico AI Community", period: "2024 - Present", desc: "Leading the island's AI community. 850+ attendees across bimonthly events." },
+            ].map(item => (
+              <div class="rounded-lg p-4
+                dark:bg-white/[0.02] dark:border dark:border-white/[0.04]
+                bg-gray-50 border border-black/[0.04]">
+                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
+                  <div>
+                    <span class="font-semibold dark:text-white text-[var(--color-primary)]">{item.role}</span>
+                    <span class="text-[var(--color-accent)] font-medium text-sm ml-1">{item.company}</span>
+                  </div>
+                  <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60 whitespace-nowrap">{item.period}</span>
+                </div>
+                <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </ExpandableSection>
+      </div>
+
+      <!-- Education -->
+      <div class="animate-on-scroll">
+        <ExpandableSection title="Education">
+          <div class="space-y-4">
+            <div class="rounded-lg p-4 dark:bg-white/[0.02] dark:border dark:border-white/[0.04] bg-gray-50 border border-black/[0.04]">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
+                <div>
+                  <span class="font-semibold dark:text-white text-[var(--color-primary)]">Master of Science in Data Science</span>
+                  <span class="text-[var(--color-accent)] font-medium text-sm ml-1">SMU</span>
+                </div>
+                <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">2019 - 2021</span>
+              </div>
+              <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">
+                Perfect 4.0 GPA. Outstanding Graduate Award. Focus on machine learning, statistical modeling, and applied data science.
+              </p>
+            </div>
+            <div class="rounded-lg p-4 dark:bg-white/[0.02] dark:border dark:border-white/[0.04] bg-gray-50 border border-black/[0.04]">
+              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
+                <div>
+                  <span class="font-semibold dark:text-white text-[var(--color-primary)]">Bachelor of Arts</span>
+                  <span class="text-[var(--color-accent)] font-medium text-sm ml-1">Shimer College</span>
+                </div>
+                <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">2016</span>
+              </div>
+              <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">
+                Great Books curriculum. Started college part-time at 15 (Calculus, Computer Science). Full-time at Simon's Rock of Bard College at 16. Finished after a 20-year detour through entrepreneurship.
+              </p>
+            </div>
+          </div>
+        </ExpandableSection>
+      </div>
+
+      <!-- Expertise -->
+      <div class="animate-on-scroll">
+        <ExpandableSection title="Expertise">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { area: "AI & Machine Learning", skills: "MCP Servers, AI Agents, LLMs, NLP, Computer Vision, Deep Learning, Prompt Engineering" },
+              { area: "Enterprise Finance", skills: "Oracle EPM, Essbase, Planning, HFM, Financial Consolidation, Budgeting & Forecasting" },
+              { area: "Data Science", skills: "Python, R, SQL, Statistical Modeling, Machine Learning, Data Visualization, ETL" },
+              { area: "Leadership", skills: "Company Building, M&A, Strategic Planning, Public Speaking, Team Building, Board Governance" },
+            ].map(item => (
+              <div>
+                <h4 class="text-sm font-bold font-[var(--font-mono)] uppercase tracking-wider text-[var(--color-accent)] mb-2">{item.area}</h4>
+                <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">{item.skills}</p>
+              </div>
+            ))}
+          </div>
+        </ExpandableSection>
+      </div>
+
+      <!-- Awards -->
+      <div class="animate-on-scroll">
+        <ExpandableSection title="Awards & Recognition">
+          <div class="space-y-2">
+            {[
+              { award: "ODTUG Lifetime Achievement Award", detail: "Fewer than 5 recipients ever", year: "2025" },
+              { award: "Essbase Speaker of the Year", detail: "Kscope18, voted by attendees", year: "2018" },
+              { award: "Oracle ACE Director", detail: "Held for 15+ years. Oracle's highest community recognition", year: "2008 - Present" },
+              { award: "Five-Time Oracle Partner of the Year", detail: "Through interRel Consulting", year: "Multiple" },
+              { award: "First Perfect Essbase Certification Score", detail: "First person to score perfectly on the exam", year: "Historic" },
+              { award: "Kscope Conference Chair", detail: "ODTUG Board Member", year: "2011 - 2012" },
+              { award: "Two US Patents", detail: "#5836617, #5848810, custom postage stamp technology", year: "1998" },
+            ].map(item => (
+              <div class="flex items-start gap-4 rounded-lg p-3
+                dark:hover:bg-white/[0.03] hover:bg-black/[0.02] transition-colors">
+                <span class="text-xs font-[var(--font-mono)] text-[var(--color-accent)] whitespace-nowrap mt-0.5">{item.year}</span>
+                <div>
+                  <span class="text-sm font-semibold dark:text-white text-[var(--color-primary)]">{item.award}</span>
+                  <p class="text-xs dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">{item.detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </ExpandableSection>
+      </div>
+
+    </div>
+  </Section>
+
   <!-- Beyond the Resume -->
-  <Section title="Beyond the Resume" subtitle="The parts that don't fit on LinkedIn.">
+  <Section title="Beyond the Resume" subtitle="The parts that don't fit on LinkedIn." dark>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <div class="animate-on-scroll">
@@ -140,6 +254,31 @@ import Card from '../components/Card.astro';
         </Card>
       </div>
 
+    </div>
+  </Section>
+
+  <!-- CTA -->
+  <Section>
+    <div class="animate-on-scroll text-center max-w-2xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white text-[var(--color-primary)]">
+        Get in Touch
+      </h2>
+      <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-8 text-lg">
+        Speaking engagements, consulting, partnerships, or advisory roles.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/contact/"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
+          Get in Touch
+        </a>
+        <a href="https://www.linkedin.com/in/interrel/" target="_blank" rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5
+            dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/10
+            bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10">
+          LinkedIn
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
+      </div>
     </div>
   </Section>
 
