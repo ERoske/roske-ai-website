@@ -6,9 +6,10 @@ interface Props {
   description: string;
   date: Date;
   tags?: string[];
+  slug?: string;
 }
 
-const { title, description, date, tags = [] } = Astro.props;
+const { title, description, date, tags = [], slug = '' } = Astro.props;
 
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -17,7 +18,40 @@ const formattedDate = date.toLocaleDateString('en-US', {
 });
 ---
 
-<BaseLayout title={`${title} | Roske.AI`} description={description}>
+<BaseLayout title={`${title} | Roske.AI`} description={description} ogType="article" articleDate={date}>
+
+  <!-- NewsArticle JSON-LD for Google News -->
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": title,
+    "description": description,
+    "datePublished": date.toISOString(),
+    "dateModified": date.toISOString(),
+    "author": {
+      "@type": "Person",
+      "name": "Edward Roske",
+      "url": "https://roske.ai",
+      "sameAs": [
+        "https://www.linkedin.com/in/interrel/",
+        "https://x.com/eroske"
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Roske.AI",
+      "url": "https://roske.ai",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://roske.ai/icon-512.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://roske.ai/blog/${slug}/`
+    },
+    "image": "https://roske.ai/images/Edward_Roske_Headshot.png"
+  })} />
 
   <article class="relative py-20 md:py-28 px-6">
     <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>

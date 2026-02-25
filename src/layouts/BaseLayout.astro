@@ -10,6 +10,9 @@ interface Props {
   description?: string;
   ogImage?: string;
   bodyClass?: string;
+  ogType?: string;
+  articleDate?: Date;
+  articleAuthor?: string;
 }
 
 const {
@@ -17,6 +20,9 @@ const {
   description = "Edward Roske: CEO, Speaker, Data Scientist, Dungeon Master. Building at the intersection of AI and Finance.",
   ogImage = "/images/og-default.png",
   bodyClass = "",
+  ogType = "website",
+  articleDate,
+  articleAuthor = "Edward Roske",
 } = Astro.props;
 
 const theme = currentTheme;
@@ -39,7 +45,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    {ogType === "article" && articleDate && (
+      <meta property="article:published_time" content={articleDate.toISOString()} />
+    )}
+    {ogType === "article" && (
+      <meta property="article:author" content={articleAuthor} />
+    )}
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
     <meta property="og:site_name" content="Roske.AI" />
@@ -80,6 +92,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "knowsAbout": ["Artificial Intelligence", "Data Science", "Oracle EPM", "MCP Servers", "Finance", "Public Speaking"]
       }
     })} />
+
+    <!-- Additional head content from child layouts -->
+    <slot name="head" />
 
     <!-- RSS -->
     <link rel="alternate" type="application/rss+xml" title="Roske.AI Blog" href="/rss.xml" />
