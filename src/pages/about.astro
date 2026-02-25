@@ -7,6 +7,62 @@ import ExpandableSection from '../components/ExpandableSection.astro';
 
 <BaseLayout title="About | Edward Roske" description="CEO, Speaker, Data Scientist, Dungeon Master. 25 years building companies, 80+ countries explored, 15 books written.">
 
+  <!-- Person JSON-LD for author entity recognition -->
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Edward Roske",
+    "url": "https://roske.ai/about/",
+    "image": "https://roske.ai/images/Edward_Roske_Headshot.png",
+    "jobTitle": "CEO",
+    "description": "CEO, Speaker, Data Scientist, Dungeon Master. Expert in AI, Oracle EPM, and enterprise finance. Author of 15 books. Host of Asking Good Questions podcast.",
+    "sameAs": [
+      "https://www.linkedin.com/in/interrel/",
+      "https://x.com/eroske",
+      "https://www.youtube.com/@Roske-AI",
+      "https://github.com/eroske",
+      "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
+      "https://podcasts.apple.com/podcast/id1783616142",
+      "https://open.spotify.com/show/2MJqqgiNbQGysS6i0MAihh"
+    ],
+    "worksFor": [
+      { "@type": "Organization", "name": "Dawnward", "url": "https://roske.ai" },
+      { "@type": "Organization", "name": "Caprus", "url": "https://caprus.ai" }
+    ],
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Southern Methodist University", "department": "Data Science" },
+      { "@type": "CollegeOrUniversity", "name": "Shimer College" },
+      { "@type": "CollegeOrUniversity", "name": "Simon's Rock of Bard College" }
+    ],
+    "award": [
+      "ODTUG Lifetime Achievement Award (2025)",
+      "Essbase Speaker of the Year (2018)",
+      "Oracle ACE Director (15+ years)",
+      "Five-Time Oracle Partner of the Year",
+      "First Perfect Score on Essbase Certification Exam",
+      "SMU Outstanding Graduate Award"
+    ],
+    "knowsAbout": [
+      "Artificial Intelligence", "Machine Learning", "MCP Servers", "Data Science",
+      "Oracle EPM", "Oracle Essbase", "Financial Planning", "Enterprise Performance Management",
+      "Public Speaking", "AI Agents", "Large Language Models"
+    ],
+    "knowsLanguage": ["English", "Spanish"],
+    "nationality": "American",
+    "homeLocation": {
+      "@type": "Place",
+      "name": "San Juan, Puerto Rico"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Master of Science in Data Science",
+        "credentialCategory": "degree",
+        "educationalLevel": "Master's"
+      }
+    ]
+  })} />
+
   <!-- Hero -->
   <section class="relative py-20 md:py-28 px-6 overflow-hidden">
     <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>

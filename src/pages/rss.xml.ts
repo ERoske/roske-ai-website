@@ -16,7 +16,13 @@ export async function GET(context: APIContext) {
       pubDate: post.data.date,
       description: post.data.description,
       link: `/blog/${post.id}/`,
+      author: 'Edward@Roske.AI (Edward Roske)',
+      categories: post.data.tags,
     })),
-    customData: '<language>en-us</language>',
+    customData: [
+      '<language>en-us</language>',
+      '<managingEditor>Edward@Roske.AI (Edward Roske)</managingEditor>',
+      '<webMaster>Edward@Roske.AI (Edward Roske)</webMaster>',
+    ].join(''),
   });
 }

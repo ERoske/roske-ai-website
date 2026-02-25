@@ -1,0 +1,55 @@
+# Roske.AI
+
+> Edward Roske is a CEO, author of 15 books, data scientist, and public speaker specializing in AI, enterprise performance management (EPM), and finance. He has spoken in 50+ countries across all 7 continents and hosts the "Asking Good Questions" podcast. He is CEO of Dawnward (investments), Investor & Contributor at Caprus (AI software for enterprise finance at caprus.ai), and co-chair of the Caribbean AI Summit (October 16-17, 2026, San Juan, Puerto Rico).
+
+Edward founded interRel Consulting at age 22, built it over 25 years as the longest-standing Oracle Platinum EPM Partner worldwide, and merged it into Argano (a billion-dollar consulting firm) in 2020. He holds a Master of Data Science from SMU (4.0 GPA, Outstanding Graduate) and a BA from Shimer College (Great Books, Socratic Method). He is an Oracle ACE Director (15+ years) and received the ODTUG Lifetime Achievement Award in 2025 (fewer than 5 people have ever received it). He was the first person to score perfectly on the Essbase Certification exam.
+
+Edward is currently building MCP (Model Context Protocol) servers that let AI models talk directly to enterprise financial systems like Oracle Essbase and Oracle EPM Planning. He lives in San Juan, Puerto Rico with his wife Dawn.
+
+## About
+
+- [About Edward Roske](https://roske.ai/about/): Full career story, background, expertise, awards, and personal interests
+- [Resume](https://roske.ai/resume/): Interactive career timeline from age 15 to present
+
+## Companies
+
+- [Work](https://roske.ai/work/): Dawnward (investment firm), Caprus (AI for finance), Argano (global consulting)
+- [Caprus AI](https://caprus.ai/): MCP servers for Oracle Essbase, Oracle EPM Planning, and Oracle EPM Financial Close
+
+## Blog
+
+- [Blog Index](https://roske.ai/blog/): All articles on AI, data science, EPM, and enterprise technology
+- [Seedance 2.0 Is Hollywood's Jazz Singer Moment](https://roske.ai/blog/seedance-hollywood-jazz-singer-moment/): ByteDance's AI video tool and the threshold crossing for AI-generated video in entertainment
+- [The Entertainer's Survival Guide to AI](https://roske.ai/blog/entertainer-survival-guide-to-ai/): How entertainers can adapt to AI disruption, using the silent-to-talkie transition as a framework
+- [AI Will Kill the Video Star and Create a Thousand More](https://roske.ai/blog/ai-will-kill-the-video-star/): AI's impact on video content creation and the entertainment industry
+- [Stop Your Antiquated Digital Transformation Strategy](https://roske.ai/blog/stop-your-antiquated-digital-transformation-strategy/): Why any digital transformation strategy created before 2025 is fundamentally broken
+- [Why I'm Building MCP Servers for Finance](https://roske.ai/blog/why-im-building-mcp-servers-for-finance/): MCP servers that let LLMs talk to Oracle Essbase and EPM Planning systems
+- [Caribbean AI Summit 2026](https://roske.ai/blog/caribbean-ai-summit-2026/): The largest AI conference Puerto Rico has ever seen, October 16-17, 2026
+- [Everest Base Camp Preparation](https://roske.ai/blog/everest-base-camp-preparation/): Training for the Mt. Everest base camp trek after hiking Son Doong Cave
+
+## Content
+
+- [Podcast: Asking Good Questions](https://roske.ai/podcast/): Interviews with global leaders on AI, finance, and technology
+- [Videos](https://roske.ai/videos/): Monthly AI News briefs and conference talks
+- [Books](https://roske.ai/books/): 15 titles in the "Look Smarter Than You Are" series on Oracle EPM, analytics, and enterprise technology
+
+## Speaking
+
+- [Speaking & Education](https://roske.ai/speaking/): Conference keynotes, webinars, speaking inquiry form. 50+ countries, all 7 continents.
+
+## Contact
+
+- [Contact](https://roske.ai/contact/): Contact form and booking link
+- [Book a Call](https://calendar.app.google/udtTerQwcX9Z7QQt7): Schedule a 13-minute "Answering a Good Question" call
+
+## Optional
+
+- [RSS Feed](https://roske.ai/rss.xml): Blog RSS feed
+- [Podcast on Apple](https://podcasts.apple.com/podcast/id1783616142): Apple Podcasts listing
+- [Podcast on Spotify](https://open.spotify.com/show/2MJqqgiNbQGysS6i0MAihh): Spotify listing
+- [Podcast on Amazon](https://music.amazon.com/podcasts/f5a5f18a-4c16-4f89-8735-079d49f49e49): Amazon Music listing
+- [Amazon Author Page](https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW): All books on Amazon
+- [YouTube](https://www.youtube.com/@Roske-AI): Video channel
+- [LinkedIn](https://www.linkedin.com/in/interrel/): Professional profile
+- [X/Twitter](https://x.com/eroske): Social media
+- [GitHub](https://github.com/eroske): Code repositories

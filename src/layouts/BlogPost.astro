@@ -18,7 +18,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
 });
 ---
 
-<BaseLayout title={`${title} | Roske.AI`} description={description} ogType="article" articleDate={date}>
+<BaseLayout title={`${title} | Roske.AI`} description={description} ogType="article" articleDate={date} articleTags={tags}>
 
   <!-- NewsArticle JSON-LD for Google News -->
   <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify({
@@ -51,6 +51,31 @@ const formattedDate = date.toLocaleDateString('en-US', {
       "@id": `https://roske.ai/blog/${slug}/`
     },
     "image": "https://roske.ai/images/Edward_Roske_Headshot.png"
+  })} />
+
+  <!-- BreadcrumbList JSON-LD -->
+  <script is:inline type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://roske.ai"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://roske.ai/blog/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": title
+      }
+    ]
   })} />
 
   <article class="relative py-20 md:py-28 px-6">
@@ -93,8 +118,8 @@ const formattedDate = date.toLocaleDateString('en-US', {
             <img src="/images/Edward_Roske_Headshot.png" alt="Edward Roske"
               class="w-10 h-10 rounded-full object-cover ring-2 ring-[var(--color-accent)]/20" />
             <div>
-              <p class="text-sm font-semibold dark:text-white text-[var(--color-primary)]">Edward Roske</p>
-              <time datetime={date.toISOString()} class="text-xs dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
+              <a href="/about/" class="text-sm font-semibold dark:text-white text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">Edward Roske</a>
+              <time datetime={date.toISOString()} class="text-xs dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] block">
                 {formattedDate}
               </time>
             </div>
