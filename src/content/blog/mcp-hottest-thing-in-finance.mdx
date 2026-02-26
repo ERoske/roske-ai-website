@@ -1,0 +1,55 @@
+---
+title: "MCP Is the Hottest Thing in Finance (and Software Vendors Are Playing Catchup)"
+description: "Anthropic donated MCP to the Linux Foundation. Oracle released MCP servers for their database. But for EPM? They went a different direction. I didn't."
+date: 2026-03-04
+tags: ["AI", "MCP", "Finance", "EPM"]
+draft: true
+---
+
+Anthropic just [donated the Model Context Protocol to the Linux Foundation](https://www.anthropic.com/news/donating-the-model-context-protocol-and-establishing-of-the-agentic-ai-foundation). MCP is now an open standard governed by the new Agentic AI Foundation, alongside contributions from Block, OpenAI, and others. There are over 10,000 published MCP servers. Monthly SDK downloads exceed 97 million. Every major AI player has adopted it.
+
+I've been building MCP servers for enterprise finance since before most of them started.
+
+## What MCP Actually Does for Finance
+
+MCP lets AI models talk to enterprise systems through a standardized protocol. Instead of building custom integrations for every AI tool, you build one MCP server and every AI client can connect to it. Claude, ChatGPT, Copilot, whatever comes next. One connector, universal access.
+
+For finance teams, this means something specific: you can ask questions about your data in plain English. "What's the variance on Q4 revenue for the North America entity?" Instead of logging into Essbase, navigating to the right cube, building a retrieval, and interpreting the result, you just ask. The MCP server handles the connection, the query, the security, and the response.
+
+That's not a small thing. Most finance professionals spend more time retrieving data than analyzing it. MCP flips that ratio.
+
+## The Oracle Situation
+
+Oracle has released MCP servers for their database products. SQLcl, the Autonomous AI Database, OCI infrastructure. Good stuff. For the database layer, they're moving.
+
+For EPM? Different story entirely.
+
+Oracle's strategy for Enterprise Performance Management is AI Agent Studio, embedded directly into Fusion Cloud Applications. They're building AI agents that live inside the Oracle ecosystem: a Planning Agent with a chatbot, a Consolidation Agent that determines when jobs should run, generative AI for IPM Insights. It's all walled inside Oracle's own tooling.
+
+What they're not doing is releasing standalone MCP servers for EPM. No MCP for Planning. No MCP for Consolidation. No MCP for Close. If you want to connect your EPM data to Claude, or ChatGPT, or any other AI tool outside Oracle's ecosystem, Oracle's official answer is (as of today) silence.
+
+Here's what I think Oracle might be missing: adding open MCP access would expand their user base. Right now, Essbase and EPM data is locked behind specialized client tools that require training to use. Put an MCP server in front of it and suddenly anyone with an AI assistant can query that data through natural language. The executive who never learned Smart View can finally get their own answers. The analyst who spends 30 minutes pulling a report can get it in 30 seconds. That's not a threat to Oracle's business. That's growth.
+
+## Why Small Companies Ship Faster
+
+I've been doing Essbase and EPM for over 30 years. When I decided to build MCP servers for these platforms through Caprus, I didn't need to schedule a product review meeting, assemble a cross-functional task force, or wait for three quarters of roadmap alignment. I just started building.
+
+The Caprus Essbase MCP server shipped in November 2025. The Oracle EPM Planning MCP server shipped in December 2025. The Oracle EPM Financial Consolidation and Close server launches in March 2026. Each one is already multiple versions deep with new features, security hardening, and performance optimization.
+
+While Oracle is embedding AI agents inside their own walled garden, we've shipped three open MCP servers that work with any AI client on the market. That's not a knock on Oracle. Large organizations have processes, compliance requirements, and thousands of customers to consider. But the speed gap between a small team with deep domain expertise and a large vendor with a committee has never been wider. AI tooling rewards people who move fast and know their domain cold.
+
+## Security Is the Real Work
+
+The early days of MCP were about making things work. The current phase is about making things safe. Enterprise finance data is exactly the kind of thing you need to get right. Row-level security, attribute-based access control, audit logging, connection encryption. An MCP server that exposes your consolidation data without proper controls is worse than no MCP server at all.
+
+This is where domain expertise matters more than engineering speed. I've spent decades understanding how EPM security models work, who needs access to what, and what happens when someone queries data they shouldn't see. That knowledge doesn't come from reading documentation. It comes from hundreds of implementations across Fortune 500 finance teams. (And from a few security incidents that taught lessons I'd rather not repeat.)
+
+## What Comes Next
+
+Multi-agent orchestration is where this goes. A close agent triggers a variance analysis agent, which feeds a forecasting agent, which updates the board reporting package. All through MCP. All without a human scheduling each step. The real question isn't whether this will happen in finance. It's whether the large vendors will ship it before their customers build it themselves.
+
+MCP is an open standard now. The ecosystem is massive and growing. Oracle is doing great work on their database MCP servers and their AI Agent Studio for EPM. I'm doing something different: open MCP servers that connect EPM data to whatever AI tools you're already using. Three servers shipped, more features every month.
+
+If you're in enterprise finance and you want MCP access to your Essbase or EPM data today (not someday, not inside a single vendor's ecosystem), that's what Caprus does. We're at caprus.ai.
+
+(And if you're from Oracle and you're reading this: I've been an Oracle ACE Director for 15+ years. I say all of this with genuine respect. I just also happen to ship faster than your product committee meets. You could fix that, and I think your customers would thank you for it.)
