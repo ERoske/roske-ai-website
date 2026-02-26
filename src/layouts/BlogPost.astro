@@ -1,15 +1,22 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 
+interface Coauthor {
+  name: string;
+  image?: string;
+  url?: string;
+}
+
 interface Props {
   title: string;
   description: string;
   date: Date;
   tags?: string[];
   slug?: string;
+  coauthors?: Coauthor[];
 }
 
-const { title, description, date, tags = [], slug = '' } = Astro.props;
+const { title, description, date, tags = [], slug = '', coauthors = [] } = Astro.props;
 
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -28,15 +35,22 @@ const formattedDate = date.toLocaleDateString('en-US', {
     "description": description,
     "datePublished": date.toISOString(),
     "dateModified": date.toISOString(),
-    "author": {
-      "@type": "Person",
-      "name": "Edward Roske",
-      "url": "https://roske.ai",
-      "sameAs": [
-        "https://www.linkedin.com/in/interrel/",
-        "https://x.com/eroske"
-      ]
-    },
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Edward Roske",
+        "url": "https://roske.ai",
+        "sameAs": [
+          "https://www.linkedin.com/in/interrel/",
+          "https://x.com/eroske"
+        ]
+      },
+      ...coauthors.map(ca => ({
+        "@type": ca.url?.includes('anthropic') ? "Organization" : "Person",
+        "name": ca.name,
+        ...(ca.url ? { "url": ca.url } : {})
+      }))
+    ],
     "publisher": {
       "@type": "Organization",
       "name": "Roske.AI",
@@ -111,7 +125,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
           {title}
         </h1>
 
-        <div class="flex items-center gap-4"
+        <div class="flex items-center gap-4 flex-wrap"
           style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0;">
           <!-- Author info -->
           <div class="flex items-center gap-3">
@@ -124,6 +138,23 @@ const formattedDate = date.toLocaleDateString('en-US', {
               </time>
             </div>
           </div>
+          {coauthors.length > 0 && coauthors.map(coauthor => (
+            <div class="flex items-center gap-3">
+              <span class="text-xs dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">&</span>
+              {coauthor.image && (
+                <img src={coauthor.image} alt={coauthor.name}
+                  class="w-10 h-10 rounded-full object-cover ring-2 ring-[var(--color-accent)]/20" />
+              )}
+              <div>
+                {coauthor.url ? (
+                  <a href={coauthor.url} class="text-sm font-semibold dark:text-white text-[var(--color-primary)] hover:text-[var(--color-accent)] transition-colors">{coauthor.name}</a>
+                ) : (
+                  <span class="text-sm font-semibold dark:text-white text-[var(--color-primary)]">{coauthor.name}</span>
+                )}
+                <span class="text-xs dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] block">Co-author</span>
+              </div>
+            </div>
+          ))}
         </div>
       </header>
 
