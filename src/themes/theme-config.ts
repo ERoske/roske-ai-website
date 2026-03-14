@@ -76,38 +76,38 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "Launch Week",
-  week: "2026-02-22",
-  inspiration: "First launch of roske.ai, futuristic, bold, dark space aesthetic",
-  tagline: "CEO. Speaker. Data Scientist. Dungeon Master.",
+  name: "St. Patrick's Day",
+  week: "2026-03-14",
+  inspiration: "St. Patrick's Day (March 17) — emerald greens, Celtic gold, and the luck of the Irish",
+  tagline: "CEO. Speaker. Data Scientist. Dungeon Master. Honorary Leprechaun.",
 
   colors: {
-    primary: "#1a1a2e",
-    secondary: "#16213e",
-    accent: "#e94560",
-    accentHover: "#d63851",
-    background: "#0a0a1a",
-    backgroundLight: "#faf9f6",
-    surface: "#111127",
+    primary: "#1a3a2a",
+    secondary: "#2a2510",
+    accent: "#00a651",
+    accentHover: "#008a43",
+    background: "#0a1a10",
+    backgroundLight: "#f8faf5",
+    surface: "#0f2218",
     surfaceLight: "#ffffff",
-    text: "#e0e0e0",
-    textMuted: "#8892b0",
-    textDark: "#1a1a2e",
-    textDarkMuted: "#64748b",
-    border: "#233554",
-    borderLight: "#e2e0dc",
-    gradient: "linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #0a1a2e 100%)",
+    text: "#dce8e0",
+    textMuted: "#7a9b88",
+    textDark: "#1a3a2a",
+    textDarkMuted: "#5a7a68",
+    border: "#2a5540",
+    borderLight: "#cdddd3",
+    gradient: "linear-gradient(135deg, #0a1a10 0%, #0a2a18 50%, #1a2a10 100%)",
   },
 
   fonts: {
-    heading: "'Inter', system-ui, sans-serif",
-    body: "'Inter', system-ui, sans-serif",
+    heading: "'Playfair Display', Georgia, serif",
+    body: "'Source Sans 3', system-ui, sans-serif",
     mono: "'JetBrains Mono', 'Fira Code', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Source+Sans+3:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap",
   },
 
   layout: {
-    heroStyle: "centered",
+    heroStyle: "split",
     navStyle: "fixed",
     cardStyle: "glass",
     sectionStyle: "standard",
@@ -116,17 +116,17 @@ export const currentTheme: ThemeConfig = {
 
   animations: {
     entrance: "fade-up",
-    hover: "lift",
+    hover: "glow",
     background: "gradient",
     pageTransition: "fade",
   },
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Building the future at the intersection of AI and Finance",
-    description: "Edward Roske builds things. Companies, MCP servers, conference keynotes, D&D campaigns... and apparently, this website. Every Saturday at 5 AM, an AI completely redesigns this site. You're looking at launch week.",
-    imageAlt: "Edward Roske in a spacesuit, floating in space with a laptop, rocket launching behind him. Because launch week.",
-    ctaText: "See What I'm Building",
+    subtitle: "At the end of every rainbow is a well-optimized data model",
+    description: "Edward Roske builds AI companies, MCP servers, keynotes, and D&D campaigns. This week, he's also building the Caribbean AI Summit, preparing for Everest Base Camp, and pretending that wearing green counts as a personality trait.",
+    imageAlt: "Edward Roske dressed as a tech leprechaun with a green fedora, sitting at the end of a rainbow in the Irish countryside with a pot of gold coins, laptop open while shamrocks float past",
+    ctaText: "Find the Gold",
     ctaLink: "#current-work",
   },
 };
