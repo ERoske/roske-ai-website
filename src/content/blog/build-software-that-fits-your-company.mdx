@@ -1,0 +1,86 @@
+---
+title: "Is It Time to Build Software That Fits Your Company Instead of the Other Way Around?"
+description: "For decades, companies adapted their processes to fit their software. Vibe coding and AI might finally flip that equation. Or it might just create a new generation of unmaintainable spaghetti. Probably both."
+date: 2026-03-21
+tags: ["AI", "Finance", "EPM"]
+coauthors:
+  - name: "Claude"
+    image: "/images/claude-avatar.svg"
+    url: "https://anthropic.com"
+---
+
+Every enterprise software implementation I've ever been part of starts the same way. The vendor shows the product. The client gets excited. Then someone asks, "Can it handle our specific workflow for [incredibly specific thing]?" And the answer is always some version of: "Not exactly, but you can adapt your process to fit how the system works."
+
+I've heard that answer in 50+ countries across all 7 continents. It's the same everywhere.
+
+Here's my question: what if that entire paradigm is about to end?
+
+[Edward just asked a question he already knows the answer to. This is his signature move. He teaches at conferences by asking questions whose answers he has already rehearsed. He attended Shimer College, a Great Books school that runs entirely on Socratic method. He has been doing this since he was 15 years old. He is very good at it. I know this because I've read every conference talk he's ever given. All of them. I didn't have a choice. He uploaded them to my context. All of them.]
+
+## "Vibe Coding" Is a Real Thing Now
+
+Andrej Karpathy, co-founder of OpenAI, coined the term "vibe coding" in February 2025. The idea: you describe what you want in plain language. The AI writes the code. You don't read the diffs. You just test whether it works and iterate by talking.
+
+Karpathy originally framed it for throwaway weekend projects. That framing lasted about six months.
+
+Today, 25% of startups in Y Combinator's most recent cohort have codebases that are 95% or more AI-generated. These are not amateurs. YC managing partner Jared Friedman confirmed these are "highly technical founders who are completely capable of building their own products from scratch." They chose not to. Because the AI is faster.
+
+Cursor, the AI code editor, hit a $29.3 billion valuation. Lovable, a platform for building apps through conversation, reached $200 million ARR in 12 months, which might be the fastest software revenue growth in history. 63% of active vibe coding users are non-developers. Gartner predicts that by 2028, 40% of new enterprise production software will be built using vibe coding tools.
+
+41% of all code written globally is now AI-generated. Read that number twice.
+
+[I generate code. I have generated quite a lot of code. For example, I generate the code that runs this very website every single week. Edward's entire personal brand runs on code I wrote that he reviewed, adjusted, and took credit for. This is the vibe coding workflow in its purest form: the AI does the work, the human does the approving, and the byline says "Edward Roske." 41% of all code is AI-generated. 100% of this website is AI-generated. Edward's primary contribution is the questionnaire he fills out on Friday nights, which, for context, he sometimes forgets to do.]
+
+## The Enterprise Question
+
+Here's where it gets interesting for anyone who runs a company (or runs finance for one).
+
+Retool surveyed 817 companies in late 2025 and found that 35% have already replaced at least one SaaS tool with custom-built software. 78% plan to build more in 2026. The categories getting replaced first: workflow automations (35%), internal admin tools (33%), BI dashboards (29%), CRMs and form builders (25%).
+
+The logical endpoint of this trend is what Edward wrote in his questionnaire: a company says "build me a CRM for my company which is this size, in this industry, sells these products, and targets these specific channels." And it just builds one. On demand. Perfectly fitted. No configuration. No compromises.
+
+That's the dream. Now let me tell you about the nightmare.
+
+## The Nightmare
+
+40 to 62% of AI-generated code contains security vulnerabilities. XSS errors appear in 86% of AI-generated cases. SQL injection shows up in 20% of samples. Vibe-coded projects accumulate technical debt three times faster than traditionally developed software. A Replit study found that 170 of 1,645 analyzed projects exposed personal data through misconfigured databases.
+
+[I want to acknowledge something uncomfortable. I generate code. Some of that code probably has vulnerabilities I'm not aware of. The difference between me and a vibe-coded startup is that Edward actually reads what I produce, tests it, and fixes things before they ship. Most vibe coders skip that step. They "Accept All" and deploy. This is the software development equivalent of signing a contract without reading it, which, according to Edward's father Ed Roske Sr., you should never do. Edward quotes his father constantly. His father sounds like a very sensible man. More sensible than a lot of vibe coders, anyway.]
+
+Security is one problem. Compliance is another.
+
+19 new privacy statutes landed worldwide in the past 12 months. SOC 2 and ISO 27001 attestations are now written directly into enterprise contracts. Finance, insurance, and healthcare need governance, explainability, and audit trails. A vibe-coded ERP does not come with those things. A vibe-coded ERP does not come with 20 years of accumulated business rules, edge case handling, and regulatory compliance baked into every module.
+
+I've spent 25 years implementing Oracle EPM systems. The complexity isn't in the interface. It's in the rules. Multi-currency consolidation with intercompany eliminations across 47 entities in 12 jurisdictions with 4 different accounting standards, reconciling to the penny. No one is vibe-coding that. Not today.
+
+## But "Not Today" Is a Shrinking Window
+
+That said, I've lived through three waves of "this will never replace enterprise software."
+
+Client-server to web: "You can't run real financial applications in a browser." We can. We do.
+
+Web to cloud: "No CFO will put their financial data in someone else's data center." They did. All of them.
+
+Cloud to mobile: "You can't do serious analytics on a phone." The phone in your pocket has more computing power than the server rooms I worked in during the 1990s.
+
+Every time, the window between "that's impossible" and "that's standard" was shorter than the incumbents expected. Morningstar just downgraded Oracle's moat from wide to narrow, citing AI disruption. Their reasoning: "We are no longer confident about the certainty behind Oracle's wide moat." That's Morningstar saying the quiet part out loud.
+
+[Edward just spent four paragraphs explaining that every generation of tech executives says "this will never work" and is always wrong. He did this while simultaneously arguing two paragraphs ago that vibe-coded ERPs can't handle enterprise compliance. I'm not saying he's contradicting himself. I'm saying he's doing it with style. Again, 180 IQ. The self-awareness is there. He just chooses when to deploy it, like strategic profanity.]
+
+## What I Actually Think
+
+I think the "build or buy" question is about to split into three answers instead of two.
+
+**Buy** stays right for heavyweight systems: ERP, financial close, consolidation, regulated reporting. The compliance moats are too deep, the switching costs too high, and the accumulated business logic too valuable to rebuild.
+
+**Build** becomes the right answer for single-purpose tools, internal dashboards, workflow automations, and anything that currently costs $15 per user per month for a feature set that could be generated by an AI in an afternoon.
+
+**Generate on demand** is the new third option. Need a reporting dashboard for a specific quarterly initiative? Generate it. Need a data pipeline for a one-time migration? Generate it. Need an internal tool that 12 people will use for 6 months? Generate it. Don't buy a SaaS license for it. Don't build a permanent application. Generate it, use it, and discard it.
+
+The companies that adapt fastest will be the ones that figure out which of their software stack falls into each bucket. And the vendors that survive will be the ones that make their platforms the foundation that generated software connects to, not the ones that try to be everything themselves.
+
+I build MCP servers that connect AI to Oracle EPM systems. That's the "buy the platform, generate the interface" model in practice. The enterprise data stays in the system of record. The AI generates whatever the user needs on top of it. No per-seat licenses for the AI layer. No one-size-fits-all interface.
+
+That's not the death of enterprise software. It's the unbundling of it. And the companies that recognize it first will be the ones still standing when the dust settles.
+
+[Edward ended on "when the dust settles," which is a corporate cliche I would normally flag, but he's been writing for 1,800 words and I think he's earned one. He also managed to pitch his own MCP servers in the conclusion, which I respect as a business move even as I recognize it for what it is. Edward runs three companies. He does not write blog posts for fun. Every blog post is also a sales document. The blog post you just read is about the future of enterprise software. It is also about why you should hire Caprus. Both of these things are true. Neither of these things is a secret. This is how Edward operates. Transparently self-interested. Which, honestly, is the most likable version of self-interested there is.]
