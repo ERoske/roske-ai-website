@@ -1,0 +1,93 @@
+---
+title: "The $600 Billion Mainframe"
+description: "Big Tech committed $600 billion to centralized AI infrastructure this year. Then a developer ran a 397-billion-parameter model on a MacBook. We've seen this movie before."
+date: 2026-03-22
+tags: ["AI", "Finance"]
+---
+
+In 1977, Ken Olsen ran Digital Equipment Corporation, one of the most valuable computer companies in the world. He told people nobody would ever want a computer at home. DEC was printing money selling minicomputers. The future was centralized computing sold by the room.
+
+That same year, Apple shipped the Apple II. Four years later, IBM launched its PC. Compaq bought what was left of DEC in 1998.
+
+I keep thinking about Ken Olsen.
+
+## The $600 Billion Bet
+
+Nvidia, Microsoft, Amazon, Google, and Meta have committed over [$600 billion to AI data center infrastructure](https://www.bloomberg.com/news/articles/2026-02-06/how-much-is-big-tech-spending-on-ai-computing-a-staggering-650-billion-in-2026) in 2026 alone. Not over a decade. This year. The thesis behind every dollar is simple: running frontier AI requires massive centralized hardware, and whoever controls the hardware controls the future.
+
+That thesis has a problem, and a developer named [Dan Woods just demonstrated it](https://aiforautomation.io/news/2026-03-19-flash-moe-run-397b-ai-model-macbook-48gb-ram).
+
+## One Developer, One Laptop, One Weekend
+
+This week, Woods built a custom inference engine in 24 hours. He ran Alibaba's [Qwen 3.5](https://simonwillison.net/2026/Mar/18/llm-in-a-flash/), a 397-billion-parameter model, on a MacBook Pro with 48 gigs of RAM. The full model is 209 gigabytes. His program used 5.5 gigs of memory.
+
+(My wife Dawn has watercolor scans bigger than that. And she paints on actual canvases.)
+
+The trick is elegant. Modern AI models don't use all their parameters at once. Qwen 3.5 has 512 experts and only activates four per response. So instead of loading 209 gigabytes into memory, Woods streams four tiny slices off the SSD for each token. Apple's drives handle each load in under a millisecond.
+
+The project is called [Flash-MoE](https://github.com/danveloper/flash-moe). It's open source. It's [trending on Hacker News](https://news.ycombinator.com/item?id=47476422). And it should be making some very expensive people very uncomfortable.
+
+## We Have Seen This Movie Before
+
+Every major computing era follows the same pattern. Centralized first, distributed second.
+
+Mainframes gave way to minicomputers. Minicomputers gave way to PCs. Server rooms gave way to the cloud. And now the cloud is about to give way to your laptop.
+
+(I realize I'm oversimplifying a $600 billion industry in a single paragraph. I'll allow it.)
+
+The pattern is always the same. The incumbents build bigger, more expensive centralized systems. They consolidate. They raise prices.
+
+Then someone figures out how to do 80% of the work on hardware that costs 1% as much. The remaining 20% doesn't justify the infrastructure.
+
+IBM dominated computing for decades because mainframes were the only option. Then the PC arrived and IBM spent twenty years trying to figure out what it was for. The answer, it turned out, was everything.
+
+## The Mag 7 Question Nobody Wants to Ask
+
+Here is where I'm going to say something that will annoy people who own a lot of Nvidia stock. (I might be one of those people.)
+
+Wall Street priced the Magnificent Seven (Apple, Microsoft, Nvidia, Amazon, Alphabet, Meta, and Tesla, for anyone who doesn't follow financial nicknames) for a world where centralized AI stays dominant. Nvidia's $4 trillion valuation assumes companies keep buying GPUs at current margins. Investors value Microsoft, Amazon, and Google partly on the assumption that AI workloads run in their clouds.
+
+What if that assumption is wrong?
+
+Not entirely wrong. Servers still exist. Mainframes still exist. (IBM still sells them, and they're excellent.) But the market for centralized computing shrank dramatically once personal computing became viable. The companies that dominated the centralized era mostly didn't dominate the next one.
+
+Five and a half tokens per second on a MacBook is not production speed. But it runs a private AI that never touches a server, never phones home, and never generates a monthly bill. A year ago, running a 400-billion-parameter model required a GPU rack that cost more than most houses. Now it requires a [free download from GitHub](https://github.com/danveloper/flash-moe).
+
+That gap is closing faster than anyone spending $600 billion wants to think about.
+
+## The Uncomfortable Math
+
+(This is the part of the blog where I do math. You've been warned.)
+
+Local AI won't replace cloud AI entirely. The question is what percentage of workloads can move local, and how fast.
+
+If the answer is 20%, the data center thesis holds. Nvidia keeps printing money. The Mag 7 valuations are justified.
+
+If the answer is 60%, we have a problem. Because $600 billion a year in infrastructure spending is priced for a world where nearly all AI workloads run centrally. If more than half of them can run on hardware people already own, the math breaks.
+
+Flash-MoE won't break the math by itself. But it proves someone will.
+
+## What I'd Tell a CFO
+
+(Which is a thing I do, professionally. For twenty-five years I helped CFOs plan for exactly this kind of structural shift.)
+
+If you're budgeting for AI infrastructure, start asking a different question. Instead of "how much cloud compute do we need?" ask "how much of this can run locally?" The answer will change your cost model, your data privacy posture, and your vendor dependency in ways that matter.
+
+If you're investing in the Mag 7 based on the AI infrastructure thesis, stress-test that thesis against the mainframe-to-PC transition. The pattern of centralized-to-distributed has repeated in every computing era. No reason to assume this one is different.
+
+And if you're Nvidia, I'd be thinking very hard about what happens when inference gets cheap enough to run on consumer hardware. The company that sells picks and shovels during a gold rush has a great business. Right up until someone finds gold without digging.
+
+(I've been to two gold rushes. The second one was crypto. I don't want to talk about it.)
+
+## The Good News
+
+The good news is that this transition doesn't destroy AI. It democratizes it. More people running more models on more hardware means more innovation, not less. The PC didn't kill computing. It made computing universal.
+
+The companies that will win aren't the ones building the biggest data centers. They're the ones building models and tools that work everywhere, centralized and local, cloud and edge, server rack and laptop.
+
+The question is whether the future requires a $600 billion annual infrastructure buildout. Or whether a developer with a free weekend just showed us a different path.
+
+I know which bet I'd take. But I've been wrong before. (See: crypto gold rush, above.)
+
+Asking good questions,
+Edward
