@@ -12,15 +12,16 @@ const theme = currentTheme;
        HERO SECTION
        ============================================ -->
   <section class="relative min-h-[90vh] flex items-center overflow-hidden">
-    <!-- Animated background -->
+    <!-- Animated background: arena-style gradient with court-line grid -->
     <div class="absolute inset-0 dark:block hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-background)] via-[var(--color-surface)] to-[var(--color-secondary)] animate-gradient" style="background-size: 400% 400%; animation: gradientShift 15s ease infinite;"></div>
-      <div class="absolute inset-0" style="background-image: linear-gradient(rgba(0,212,170,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,170,0.04) 1px, transparent 1px); background-size: 60px 60px;"></div>
+      <!-- Court lines grid -->
+      <div class="absolute inset-0" style="background-image: linear-gradient(rgba(232,96,28,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(232,96,28,0.05) 1px, transparent 1px); background-size: 80px 80px;"></div>
+      <!-- Center court circle -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-[var(--color-accent)]/[0.06]"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] h-[200px] rounded-full border border-[var(--color-accent)]/[0.04]"></div>
     </div>
-    <div class="absolute inset-0 dark:hidden block bg-gradient-to-br from-[var(--color-bg-light)] to-gray-100"></div>
-
-    <!-- Astrophage: dark organisms that seek out and devour light (dark mode only) -->
-    <div id="astrophage-container" class="absolute inset-0 overflow-hidden pointer-events-none dark:block hidden"></div>
+    <div class="absolute inset-0 dark:hidden block bg-gradient-to-br from-[var(--color-bg-light)] to-orange-50/30"></div>
 
     <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-32">
       <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -249,8 +250,9 @@ const theme = currentTheme;
             Everest Base Camp
           </h3>
           <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">
-            Training for a trek to Mt. Everest base camp in Nepal. In 2025, I hiked through Son Doong Cave in Vietnam (the largest cave in the world). This is me taking it to the next level. (Pun intended.)
+            Currently in Santa Fe, New Mexico doing altitude acclimation hikes before heading to Nepal on April 4 for the trek to Everest Base Camp. Last year I hiked through Son Doong Cave (the largest cave in the world). This is me taking it to the next level. (Literally.)
           </p>
+          <p class="mt-3 text-[var(--color-accent)] font-medium text-xs">Santa Fe now &middot; Nepal April 4-18</p>
         </div>
       </div>
 
@@ -352,220 +354,4 @@ const theme = currentTheme;
   .animate-gradient {
     background-size: 400% 400%;
   }
-
-  .astrophage {
-    position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(circle, #0a0200 40%, #1a0800 70%, transparent 100%);
-    box-shadow: 0 0 8px 3px rgba(232,160,48,0.4), 0 0 16px 6px rgba(200,120,20,0.15);
-    pointer-events: none;
-    z-index: 20;
-    transition: opacity 0.3s;
-  }
-
-  .astrophage.latched {
-    animation: feed 3s ease-in-out infinite alternate;
-  }
-
-  @keyframes feed {
-    0% { transform: scale(1); box-shadow: 0 0 8px 3px rgba(232,160,48,0.5), 0 0 16px 6px rgba(200,120,20,0.2); }
-    100% { transform: scale(1.3); box-shadow: 0 0 12px 5px rgba(232,160,48,0.6), 0 0 24px 10px rgba(200,120,20,0.3); }
-  }
-
-  #hero-title {
-    position: relative;
-  }
-
-  #hero-title .dimmed {
-    transition: filter 8s ease-in;
-    filter: brightness(0.15);
-  }
-
-  #hero-title .restored {
-    transition: filter 2s ease-out;
-    filter: brightness(1);
-  }
 </style>
-
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('astrophage-container');
-    const title = document.getElementById('hero-title');
-    if (!container || !title) return;
-
-    // Only run in dark mode
-    const isDark = () => document.documentElement.classList.contains('dark') ||
-      document.documentElement.getAttribute('data-theme') === 'dark';
-
-    const ASTROPHAGE_COUNT = 10;
-    const astrophages = [];
-
-    function randomBetween(min, max) {
-      return min + Math.random() * (max - min);
-    }
-
-    function createAstrophage() {
-      const el = document.createElement('div');
-      el.classList.add('astrophage');
-      const size = randomBetween(6, 14);
-      el.style.width = size + 'px';
-      el.style.height = size + 'px';
-
-      // Start from random edges of the hero section
-      const rect = container.getBoundingClientRect();
-      const startX = Math.random() < 0.5 ? randomBetween(-20, rect.width * 0.2) : randomBetween(rect.width * 0.8, rect.width + 20);
-      const startY = randomBetween(0, rect.height);
-      el.style.left = startX + 'px';
-      el.style.top = startY + 'px';
-
-      container.appendChild(el);
-      return {
-        el, x: startX, y: startY, size,
-        vx: randomBetween(-0.3, 0.3), vy: randomBetween(-0.3, 0.3),
-        phase: 'drifting', latchTime: 0
-      };
-    }
-
-    // Spawn astrophages
-    for (let i = 0; i < ASTROPHAGE_COUNT; i++) {
-      astrophages.push(createAstrophage());
-    }
-
-    // Dims applied to title spans
-    let dimming = false;
-    let latchedCount = 0;
-
-    function getTitleRect() {
-      return title.getBoundingClientRect();
-    }
-
-    function getContainerRect() {
-      return container.getBoundingClientRect();
-    }
-
-    function animate() {
-      if (!isDark()) {
-        requestAnimationFrame(animate);
-        return;
-      }
-
-      const titleRect = getTitleRect();
-      const containerRect = getContainerRect();
-
-      // Title position relative to container
-      const titleRelX = titleRect.left - containerRect.left;
-      const titleRelY = titleRect.top - containerRect.top;
-      const titleCenterX = titleRelX + titleRect.width / 2;
-      const titleCenterY = titleRelY + titleRect.height / 2;
-
-      latchedCount = 0;
-
-      astrophages.forEach(a => {
-        if (a.phase === 'drifting') {
-          // Drift randomly but with gentle attraction toward the title
-          const dx = titleCenterX - a.x;
-          const dy = titleCenterY - a.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          // Gentle gravitational pull toward the light source
-          const pull = 0.015;
-          a.vx += (dx / dist) * pull + randomBetween(-0.05, 0.05);
-          a.vy += (dy / dist) * pull + randomBetween(-0.05, 0.05);
-
-          // Dampen velocity
-          a.vx *= 0.99;
-          a.vy *= 0.99;
-
-          a.x += a.vx;
-          a.y += a.vy;
-
-          // Check if we've reached the title
-          if (a.x > titleRelX - 5 && a.x < titleRelX + titleRect.width + 5 &&
-              a.y > titleRelY - 5 && a.y < titleRelY + titleRect.height + 5) {
-            a.phase = 'latched';
-            a.el.classList.add('latched');
-            a.latchTime = Date.now();
-            // Snap to a position on the text surface
-            a.x = Math.max(titleRelX, Math.min(a.x, titleRelX + titleRect.width - a.size));
-            a.y = Math.max(titleRelY, Math.min(a.y, titleRelY + titleRect.height - a.size));
-          }
-        }
-
-        if (a.phase === 'latched') {
-          latchedCount++;
-          const elapsed = Date.now() - a.latchTime;
-
-          // After feeding for 20s, scatter and start over
-          if (elapsed > 20000) {
-            a.phase = 'scattering';
-            a.el.classList.remove('latched');
-            a.vx = randomBetween(-3, 3);
-            a.vy = randomBetween(-3, 3);
-          }
-        }
-
-        if (a.phase === 'scattering') {
-          a.x += a.vx;
-          a.y += a.vy;
-          a.vx *= 0.98;
-          a.vy *= 0.98;
-
-          // Once slowed down, go back to drifting
-          if (Math.abs(a.vx) < 0.4 && Math.abs(a.vy) < 0.4) {
-            a.phase = 'drifting';
-          }
-
-          // Wrap around if out of bounds
-          if (a.x < -30) a.x = containerRect.width + 20;
-          if (a.x > containerRect.width + 30) a.x = -20;
-          if (a.y < -30) a.y = containerRect.height + 20;
-          if (a.y > containerRect.height + 30) a.y = -20;
-        }
-
-        a.el.style.left = a.x + 'px';
-        a.el.style.top = a.y + 'px';
-      });
-
-      // Dim the title based on how many astrophage are latched
-      const spans = title.querySelectorAll('span');
-      if (latchedCount >= 3 && !dimming) {
-        dimming = true;
-        spans.forEach(s => { s.classList.remove('restored'); s.classList.add('dimmed'); });
-      } else if (latchedCount < 2 && dimming) {
-        dimming = false;
-        spans.forEach(s => { s.classList.remove('dimmed'); s.classList.add('restored'); });
-      }
-
-      requestAnimationFrame(animate);
-    }
-
-    // Reset everything when theme toggles
-    function resetAstrophage() {
-      dimming = false;
-      const spans = title.querySelectorAll('span');
-      spans.forEach(s => { s.classList.remove('dimmed'); s.classList.remove('restored'); s.style.filter = ''; });
-      astrophages.forEach(a => {
-        a.phase = 'drifting';
-        a.el.classList.remove('latched');
-        const rect = container.getBoundingClientRect();
-        a.x = Math.random() < 0.5 ? randomBetween(-20, rect.width * 0.2) : randomBetween(rect.width * 0.8, rect.width + 20);
-        a.y = randomBetween(0, rect.height);
-        a.vx = randomBetween(-0.3, 0.3);
-        a.vy = randomBetween(-0.3, 0.3);
-      });
-    }
-
-    // Watch for data-theme changes on <html>
-    const observer = new MutationObserver((mutations) => {
-      for (const m of mutations) {
-        if (m.attributeName === 'data-theme') resetAstrophage();
-      }
-    });
-    observer.observe(document.documentElement, { attributes: true });
-
-    // Wait for the title fade-in animation to complete before starting
-    setTimeout(() => {
-      requestAnimationFrame(animate);
-    }, 1500);
-  });
-</script>
