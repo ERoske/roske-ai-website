@@ -125,18 +125,15 @@ const theme = currentTheme;
           <div class="absolute -inset-8 rounded-3xl bg-gradient-to-br from-[var(--color-accent)]/20 via-[var(--color-accent)]/5 to-[var(--color-secondary)]/20 blur-3xl"></div>
           <!-- Accent border ring -->
           <div class="absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-[var(--color-accent)]/40 via-transparent to-[var(--color-accent)]/20"></div>
-          <picture>
-            <source srcset={`/images/${theme.hero.heroImage.replace('.png', '.webp')}`} type="image/webp" />
-            <img
-              src={`/images/${theme.hero.heroImage}`}
-              alt={theme.hero.imageAlt}
-              width="1200"
-              height="669"
-              loading="eager"
-              decoding="async"
-              class="relative rounded-2xl shadow-2xl shadow-[var(--color-accent)]/10 w-full h-auto"
-            />
-          </picture>
+          <img
+            src={`/images/${theme.hero.heroImage}`}
+            alt={theme.hero.imageAlt}
+            width="1200"
+            height="669"
+            loading="eager"
+            decoding="async"
+            class="relative rounded-2xl shadow-2xl shadow-[var(--color-accent)]/10 w-full h-auto"
+          />
         </div>
       </div>
 
@@ -145,18 +142,15 @@ const theme = currentTheme;
         style="animation: fadeInUp 0.8s ease-out 0.5s forwards; opacity: 0;"
       >
         <div class="absolute -inset-4 rounded-2xl bg-gradient-to-br from-[var(--color-accent)]/15 via-transparent to-[var(--color-secondary)]/15 blur-2xl"></div>
-        <picture>
-          <source srcset={`/images/${theme.hero.heroImage.replace('.png', '.webp')}`} type="image/webp" />
-          <img
-            src={`/images/${theme.hero.heroImage}`}
-            alt={theme.hero.imageAlt}
-            width="1200"
-            height="669"
-            loading="eager"
-            decoding="async"
-            class="relative rounded-2xl shadow-2xl shadow-black/30 w-full h-auto"
-          />
-        </picture>
+        <img
+          src={`/images/${theme.hero.heroImage}`}
+          alt={theme.hero.imageAlt}
+          width="1200"
+          height="669"
+          loading="eager"
+          decoding="async"
+          class="relative rounded-2xl shadow-2xl shadow-black/30 w-full h-auto"
+        />
       </div>
 
       </div>
