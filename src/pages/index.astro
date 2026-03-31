@@ -146,9 +146,9 @@ const theme = currentTheme;
       >
         <div class="absolute -inset-4 rounded-2xl bg-gradient-to-br from-[var(--color-accent)]/15 via-transparent to-[var(--color-secondary)]/15 blur-2xl"></div>
         <picture>
-          <source srcset="/images/hero-current.webp" type="image/webp" />
+          <source srcset={`/images/${theme.hero.heroImage.replace('.png', '.webp')}`} type="image/webp" />
           <img
-            src="/images/hero-current.png"
+            src={`/images/${theme.hero.heroImage}`}
             alt={theme.hero.imageAlt}
             width="1200"
             height="669"
