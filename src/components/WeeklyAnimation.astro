@@ -5,28 +5,17 @@
  * This component is OVERWRITTEN every week during the Saturday redesign.
  * It contains a themed animation that matches the current week's theme.
  *
+ * IMPORTANT: Do NOT use Astro scoped <style> for dynamically created elements.
+ * Astro adds data-astro-cid attributes to scoped CSS selectors, but elements
+ * created via document.createElement won't have those attributes. Apply all
+ * styles directly in JavaScript instead.
+ *
  * Current theme: March Madness 2026
  * Animation: Small basketballs bouncing along the bottom of the screen
  */
 ---
 
 <div id="weekly-animation" style="position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:5;overflow:hidden;" aria-hidden="true"></div>
-
-<style>
-  .basketball {
-    position: absolute;
-    bottom: 0;
-    font-size: 1rem;
-    opacity: 0.35;
-    pointer-events: none;
-    user-select: none;
-    filter: saturate(0.8);
-  }
-
-  :global([data-theme="light"]) .basketball {
-    opacity: 0.2;
-  }
-</style>
 
 <script is:inline>
   (function() {
@@ -35,6 +24,7 @@
       if (!container) return;
       container.innerHTML = '';
 
+      var isLight = document.documentElement.getAttribute('data-theme') === 'light';
       var count = 7;
       var balls = [];
       var gravity = 0.15;
@@ -43,10 +33,10 @@
 
       for (var i = 0; i < count; i++) {
         var el = document.createElement('span');
-        el.className = 'basketball';
         el.textContent = '\u{1F3C0}';
         var size = 0.7 + Math.random() * 0.8;
-        el.style.fontSize = size + 'rem';
+        // Apply all styles inline (no CSS classes - Astro scoping breaks them)
+        el.style.cssText = 'position:absolute;bottom:0;font-size:' + size + 'rem;opacity:' + (isLight ? '0.2' : '0.35') + ';pointer-events:none;user-select:none;filter:saturate(0.8);';
         container.appendChild(el);
 
         balls.push({
