@@ -1,0 +1,115 @@
+---
+/**
+ * WeeklyAnimation.astro
+ *
+ * This component is OVERWRITTEN every week during the Saturday redesign.
+ * It contains a themed animation that matches the current week's theme.
+ *
+ * Current theme: March Madness 2026
+ * Animation: Small basketballs bouncing along the bottom of the screen
+ */
+---
+
+<div id="weekly-animation" class="fixed inset-0 pointer-events-none z-[5] overflow-hidden" aria-hidden="true"></div>
+
+<style>
+  .basketball {
+    position: absolute;
+    bottom: 0;
+    font-size: 1rem;
+    opacity: 0.35;
+    pointer-events: none;
+    user-select: none;
+    filter: saturate(0.8);
+  }
+
+  :global([data-theme="light"]) .basketball {
+    opacity: 0.2;
+  }
+</style>
+
+<script>
+  function initBouncingBalls() {
+    const container = document.getElementById('weekly-animation');
+    if (!container) return;
+    container.innerHTML = '';
+
+    const count = 7;
+    const balls: {
+      el: HTMLSpanElement;
+      x: number;
+      vx: number;
+      y: number;
+      vy: number;
+      size: number;
+      rotation: number;
+      spin: number;
+    }[] = [];
+
+    const gravity = 0.15;
+    const bounceDamping = 0.7;
+    const floorOffset = 8;
+
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement('span');
+      el.className = 'basketball';
+      el.textContent = '\u{1F3C0}';
+      const size = 0.7 + Math.random() * 0.8;
+      el.style.fontSize = `${size}rem`;
+      container.appendChild(el);
+
+      balls.push({
+        el,
+        x: Math.random() * window.innerWidth,
+        vx: (Math.random() - 0.5) * 1.5,
+        y: Math.random() * window.innerHeight * 0.5,
+        vy: 0,
+        size: size * 16,
+        rotation: Math.random() * 360,
+        spin: (Math.random() - 0.5) * 4,
+      });
+    }
+
+    let animId: number;
+    function tick() {
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+
+      for (const b of balls) {
+        b.vy += gravity;
+        b.x += b.vx;
+        b.y += b.vy;
+        b.rotation += b.spin;
+
+        const floor = h - floorOffset - b.size;
+        if (b.y >= floor) {
+          b.y = floor;
+          b.vy = -Math.abs(b.vy) * bounceDamping;
+          if (Math.abs(b.vy) < 0.5) {
+            b.vy = -(2 + Math.random() * 3);
+          }
+          b.spin = (Math.random() - 0.5) * 6;
+        }
+
+        if (b.x < -b.size) b.x = w + b.size;
+        if (b.x > w + b.size) b.x = -b.size;
+
+        b.el.style.transform = `translate(${b.x}px, ${b.y}px) rotate(${b.rotation}deg)`;
+      }
+
+      animId = requestAnimationFrame(tick);
+    }
+
+    animId = requestAnimationFrame(tick);
+
+    return () => cancelAnimationFrame(animId);
+  }
+
+  let cleanup = initBouncingBalls();
+
+  const observer = new MutationObserver(() => {
+    if (cleanup) cleanup();
+    cleanup = initBouncingBalls();
+  });
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+</script>

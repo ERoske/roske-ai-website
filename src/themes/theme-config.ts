@@ -65,6 +65,7 @@ export interface ThemeConfig {
     title: string;         // Main title (usually "ROSKE.AI")
     subtitle: string;      // Subtitle for the week
     description: string;   // Brief themed description
+    heroImage: string;     // Hero image filename (unique per week, e.g. "hero-2026-03-28.png")
     imageAlt: string;      // Alt text for hero image
     ctaText: string;       // Call-to-action button text
     ctaLink: string;       // CTA destination
@@ -125,6 +126,7 @@ export const currentTheme: ThemeConfig = {
     title: "ROSKE.AI",
     subtitle: "Currently filling out a 64-team bracket for 'Which AI Model Will Replace My Job First.'",
     description: "Edward Roske builds AI companies, MCP servers, keynotes, and D&D campaigns. This week he's altitude training in Santa Fe before his Everest Base Camp trek (April 4), building the Caribbean AI Summit, and watching his bracket implode like everyone else's.",
+    heroImage: "hero-2026-03-28.png",
     imageAlt: "Edward Roske as a basketball coach wearing his signature blue fedora instead of a ball cap, clipboard in hand, standing courtside in a packed arena with a giant bracket board behind him",
     ctaText: "Check My Bracket",
     ctaLink: "#current-work",

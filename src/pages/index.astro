@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
+import WeeklyAnimation from '../components/WeeklyAnimation.astro';
 import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 ---
 
 <BaseLayout>
+  <WeeklyAnimation />
 
   <!-- ============================================
        HERO SECTION
@@ -124,9 +126,9 @@ const theme = currentTheme;
           <!-- Accent border ring -->
           <div class="absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-[var(--color-accent)]/40 via-transparent to-[var(--color-accent)]/20"></div>
           <picture>
-            <source srcset="/images/hero-current.webp" type="image/webp" />
+            <source srcset={`/images/${theme.hero.heroImage.replace('.png', '.webp')}`} type="image/webp" />
             <img
-              src="/images/hero-current.png"
+              src={`/images/${theme.hero.heroImage}`}
               alt={theme.hero.imageAlt}
               width="1200"
               height="669"
