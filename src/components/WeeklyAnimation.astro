@@ -28,88 +28,80 @@
   }
 </style>
 
-<script>
-  function initBouncingBalls() {
-    const container = document.getElementById('weekly-animation');
-    if (!container) return;
-    container.innerHTML = '';
+<script is:inline>
+  (function() {
+    function initBouncingBalls() {
+      var container = document.getElementById('weekly-animation');
+      if (!container) return;
+      container.innerHTML = '';
 
-    const count = 7;
-    const balls: {
-      el: HTMLSpanElement;
-      x: number;
-      vx: number;
-      y: number;
-      vy: number;
-      size: number;
-      rotation: number;
-      spin: number;
-    }[] = [];
+      var count = 7;
+      var balls = [];
+      var gravity = 0.15;
+      var bounceDamping = 0.7;
+      var floorOffset = 8;
 
-    const gravity = 0.15;
-    const bounceDamping = 0.7;
-    const floorOffset = 8;
+      for (var i = 0; i < count; i++) {
+        var el = document.createElement('span');
+        el.className = 'basketball';
+        el.textContent = '\u{1F3C0}';
+        var size = 0.7 + Math.random() * 0.8;
+        el.style.fontSize = size + 'rem';
+        container.appendChild(el);
 
-    for (let i = 0; i < count; i++) {
-      const el = document.createElement('span');
-      el.className = 'basketball';
-      el.textContent = '\u{1F3C0}';
-      const size = 0.7 + Math.random() * 0.8;
-      el.style.fontSize = `${size}rem`;
-      container.appendChild(el);
+        balls.push({
+          el: el,
+          x: Math.random() * window.innerWidth,
+          vx: (Math.random() - 0.5) * 1.5,
+          y: Math.random() * window.innerHeight * 0.5,
+          vy: 0,
+          size: size * 16,
+          rotation: Math.random() * 360,
+          spin: (Math.random() - 0.5) * 4
+        });
+      }
 
-      balls.push({
-        el,
-        x: Math.random() * window.innerWidth,
-        vx: (Math.random() - 0.5) * 1.5,
-        y: Math.random() * window.innerHeight * 0.5,
-        vy: 0,
-        size: size * 16,
-        rotation: Math.random() * 360,
-        spin: (Math.random() - 0.5) * 4,
-      });
-    }
+      var animId;
+      function tick() {
+        var w = window.innerWidth;
+        var h = window.innerHeight;
 
-    let animId: number;
-    function tick() {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+        for (var j = 0; j < balls.length; j++) {
+          var b = balls[j];
+          b.vy += gravity;
+          b.x += b.vx;
+          b.y += b.vy;
+          b.rotation += b.spin;
 
-      for (const b of balls) {
-        b.vy += gravity;
-        b.x += b.vx;
-        b.y += b.vy;
-        b.rotation += b.spin;
-
-        const floor = h - floorOffset - b.size;
-        if (b.y >= floor) {
-          b.y = floor;
-          b.vy = -Math.abs(b.vy) * bounceDamping;
-          if (Math.abs(b.vy) < 0.5) {
-            b.vy = -(2 + Math.random() * 3);
+          var floor = h - floorOffset - b.size;
+          if (b.y >= floor) {
+            b.y = floor;
+            b.vy = -Math.abs(b.vy) * bounceDamping;
+            if (Math.abs(b.vy) < 0.5) {
+              b.vy = -(2 + Math.random() * 3);
+            }
+            b.spin = (Math.random() - 0.5) * 6;
           }
-          b.spin = (Math.random() - 0.5) * 6;
+
+          if (b.x < -b.size) b.x = w + b.size;
+          if (b.x > w + b.size) b.x = -b.size;
+
+          b.el.style.transform = 'translate(' + b.x + 'px, ' + b.y + 'px) rotate(' + b.rotation + 'deg)';
         }
 
-        if (b.x < -b.size) b.x = w + b.size;
-        if (b.x > w + b.size) b.x = -b.size;
-
-        b.el.style.transform = `translate(${b.x}px, ${b.y}px) rotate(${b.rotation}deg)`;
+        animId = requestAnimationFrame(tick);
       }
 
       animId = requestAnimationFrame(tick);
+      return function() { cancelAnimationFrame(animId); };
     }
 
-    animId = requestAnimationFrame(tick);
+    var cleanup = initBouncingBalls();
 
-    return () => cancelAnimationFrame(animId);
-  }
-
-  let cleanup = initBouncingBalls();
-
-  const observer = new MutationObserver(() => {
-    if (cleanup) cleanup();
-    cleanup = initBouncingBalls();
-  });
-  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    var observer = new MutationObserver(function() {
+      if (cleanup) cleanup();
+      cleanup = initBouncingBalls();
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
 </script>
