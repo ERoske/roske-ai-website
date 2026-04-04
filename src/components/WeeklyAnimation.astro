@@ -10,8 +10,8 @@
  * created via document.createElement won't have those attributes. Apply all
  * styles directly in JavaScript instead.
  *
- * Current theme: March Madness 2026
- * Animation: Small basketballs bouncing along the bottom of the screen
+ * Current theme: Super Mario Galaxy (April 4, 2026)
+ * Animation: 8-bit Edward (blue fedora, full beard) running around the edges of the screen
  */
 ---
 
@@ -19,78 +19,290 @@
 
 <script is:inline>
   (function() {
-    function initBouncingBalls() {
+    function initMarioEdward() {
       var container = document.getElementById('weekly-animation');
       if (!container) return;
       container.innerHTML = '';
 
       var isLight = document.documentElement.getAttribute('data-theme') === 'light';
-      var count = 7;
-      var balls = [];
-      var gravity = 0.15;
-      var bounceDamping = 0.7;
-      var floorOffset = 8;
 
-      for (var i = 0; i < count; i++) {
-        var el = document.createElement('span');
-        el.textContent = '\u{1F3C0}';
-        var size = 1.2 + Math.random() * 1.0;
-        // Apply all styles inline (no CSS classes - Astro scoping breaks them)
-        el.style.cssText = 'position:absolute;font-size:' + size + 'rem;opacity:' + (isLight ? '0.45' : '0.6') + ';pointer-events:none;user-select:none;';
-        container.appendChild(el);
+      // Canvas for pixel art Edward running around screen edges
+      var canvas = document.createElement('canvas');
+      canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;opacity:' + (isLight ? '0.5' : '0.7') + ';';
+      container.appendChild(canvas);
 
-        balls.push({
-          el: el,
-          x: Math.random() * window.innerWidth,
-          vx: (Math.random() - 0.5) * 1.5,
-          y: Math.random() * window.innerHeight * 0.5,
-          vy: 0,
-          size: size * 16,
-          rotation: Math.random() * 360,
-          spin: (Math.random() - 0.5) * 4
+      var ctx = canvas.getContext('2d');
+      var dpr = window.devicePixelRatio || 1;
+      var w, h;
+
+      function resize() {
+        w = window.innerWidth;
+        h = window.innerHeight;
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      // 8-bit Edward sprite (16x16 pixel art)
+      // Blue fedora, skin face, brown beard, red shirt, blue pants, brown shoes
+      var spriteRight = [
+        '................',
+        '....BBBBBB......',
+        '...BBBBBBBB.....',
+        '...BBBBBBBBB....',
+        '...SSSBSSBBB....',
+        '..SSSSSSSS......',
+        '..SSESSESP......',
+        '..SSSSSSSSP.....',
+        '...SDDDDS.......',
+        '...SDDDDDS......',
+        '....RRRRRR......',
+        '...RRRRRRRR.....',
+        '..RRSRRRRSR.....',
+        '..PPPPPPPP......',
+        '..PP....PP......',
+        '..NN....NN......',
+      ];
+
+      var spriteLeft = spriteRight.map(function(row) {
+        return row.split('').reverse().join('');
+      });
+
+      // Colors for the sprite
+      var colorMap = {
+        'B': '#2070d0',  // Blue fedora
+        'S': '#f0b080',  // Skin
+        'E': '#1a1a1a',  // Eyes
+        'D': '#6b3a1a',  // Brown beard
+        'R': '#e52521',  // Red shirt
+        'P': '#3050a0',  // Blue pants
+        'N': '#6b3a1a',  // Brown shoes
+        '.': null,       // Transparent
+      };
+
+      // Running frames: we alternate leg positions
+      var spriteRightRun = spriteRight.slice();
+      spriteRightRun[14] = '..NP....PN......';
+      spriteRightRun[15] = '.NN......NN.....';
+
+      var spriteLeftRun = spriteRightRun.map(function(row) {
+        return row.split('').reverse().join('');
+      });
+
+      // Edward's state: runs along the edges of the screen
+      var pixelSize = 3;
+      var spriteW = 16 * pixelSize;
+      var spriteH = 16 * pixelSize;
+      var speed = 2.5;
+      var margin = 4; // pixels from edge
+
+      // Path segments: top-right, right-down, bottom-left, left-up
+      // Calculate total perimeter
+      function getPerimeter() {
+        return 2 * (w + h);
+      }
+
+      // Position along perimeter (0 = top-left, going clockwise)
+      var pos = 0;
+      var frame = 0;
+      var frameCounter = 0;
+
+      // Stars floating in background (Galaxy theme)
+      var stars = [];
+      var starCount = 40;
+      for (var i = 0; i < starCount; i++) {
+        stars.push({
+          x: Math.random() * 2000,
+          y: Math.random() * 2000,
+          size: 0.5 + Math.random() * 2,
+          twinkle: Math.random() * Math.PI * 2,
+          speed: 0.01 + Math.random() * 0.03,
         });
       }
 
-      var animId;
-      function tick() {
-        var w = window.innerWidth;
-        var h = window.innerHeight;
+      // Coins floating near Edward's path
+      var coins = [];
+      var coinCount = 5;
+      for (var c = 0; c < coinCount; c++) {
+        coins.push({
+          perimPos: Math.random() * getPerimeter(),
+          bobPhase: Math.random() * Math.PI * 2,
+          collected: false,
+          collectTimer: 0,
+          offset: -30 - Math.random() * 20,
+        });
+      }
 
-        for (var j = 0; j < balls.length; j++) {
-          var b = balls[j];
-          b.vy += gravity;
-          b.x += b.vx;
-          b.y += b.vy;
-          b.rotation += b.spin;
-
-          var floor = h - floorOffset - b.size;
-          if (b.y >= floor) {
-            b.y = floor;
-            b.vy = -Math.abs(b.vy) * bounceDamping;
-            if (Math.abs(b.vy) < 0.5) {
-              b.vy = -(2 + Math.random() * 3);
+      function drawSprite(x, y, sprite) {
+        for (var row = 0; row < sprite.length; row++) {
+          for (var col = 0; col < sprite[row].length; col++) {
+            var ch = sprite[row][col];
+            if (colorMap[ch]) {
+              ctx.fillStyle = colorMap[ch];
+              ctx.fillRect(
+                Math.round(x + col * pixelSize),
+                Math.round(y + row * pixelSize),
+                pixelSize,
+                pixelSize
+              );
             }
-            b.spin = (Math.random() - 0.5) * 6;
+          }
+        }
+      }
+
+      function perimToXY(p) {
+        var per = getPerimeter();
+        p = ((p % per) + per) % per;
+        if (p < w) {
+          // Top edge, going right
+          return { x: p, y: margin, dir: 'right' };
+        }
+        p -= w;
+        if (p < h) {
+          // Right edge, going down
+          return { x: w - margin - spriteW, y: p, dir: 'right' };
+        }
+        p -= h;
+        if (p < w) {
+          // Bottom edge, going left
+          return { x: w - p - spriteW, y: h - margin - spriteH, dir: 'left' };
+        }
+        p -= w;
+        // Left edge, going up
+        return { x: margin, y: h - p - spriteH, dir: 'left' };
+      }
+
+      function drawCoin(x, y, phase) {
+        // Simple animated coin (yellow circle that squishes)
+        var squeeze = Math.abs(Math.cos(phase));
+        var coinW = 8 * pixelSize * squeeze;
+        var coinH = 8 * pixelSize;
+        ctx.fillStyle = '#ffd700';
+        ctx.beginPath();
+        ctx.ellipse(x + 4 * pixelSize, y + 4 * pixelSize, Math.max(coinW / 2, 1), coinH / 2, 0, 0, Math.PI * 2);
+        ctx.fill();
+        // Highlight
+        if (squeeze > 0.3) {
+          ctx.fillStyle = '#fff8a0';
+          ctx.beginPath();
+          ctx.ellipse(x + 3 * pixelSize, y + 3 * pixelSize, Math.max(coinW / 4, 0.5), coinH / 4, 0, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      var animId;
+      var time = 0;
+
+      function tick() {
+        ctx.clearRect(0, 0, w, h);
+        time += 0.016;
+
+        // Draw twinkling stars
+        for (var s = 0; s < stars.length; s++) {
+          var star = stars[s];
+          star.twinkle += star.speed;
+          var alpha = 0.2 + 0.3 * Math.abs(Math.sin(star.twinkle));
+          if (isLight) alpha *= 0.4;
+          ctx.fillStyle = 'rgba(255, 255, 200, ' + alpha + ')';
+          var sx = star.x % w;
+          var sy = star.y % h;
+          ctx.beginPath();
+          ctx.arc(sx, sy, star.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Move Edward along the perimeter
+        pos += speed;
+        frameCounter++;
+        if (frameCounter % 8 === 0) {
+          frame = 1 - frame; // Toggle run frame
+        }
+
+        var ed = perimToXY(pos);
+
+        // Pick the right sprite
+        var currentSprite;
+        if (ed.dir === 'right') {
+          currentSprite = frame === 0 ? spriteRight : spriteRightRun;
+        } else {
+          currentSprite = frame === 0 ? spriteLeft : spriteLeftRun;
+        }
+
+        // Draw coins
+        var per = getPerimeter();
+        for (var c = 0; c < coins.length; c++) {
+          var coin = coins[c];
+          coin.bobPhase += 0.05;
+
+          if (coin.collected) {
+            coin.collectTimer += 0.016;
+            if (coin.collectTimer > 2) {
+              // Respawn
+              coin.perimPos = (pos + 300 + Math.random() * (per - 600)) % per;
+              coin.collected = false;
+              coin.collectTimer = 0;
+            }
+            continue;
           }
 
-          if (b.x < -b.size) b.x = w + b.size;
-          if (b.x > w + b.size) b.x = -b.size;
+          var cpos = perimToXY(coin.perimPos);
+          var bobY = Math.sin(coin.bobPhase) * 5;
+          drawCoin(cpos.x + spriteW / 2 - 4 * pixelSize, cpos.y + coin.offset + bobY, time * 3 + c);
 
-          b.el.style.transform = 'translate(' + b.x + 'px, ' + b.y + 'px) rotate(' + b.rotation + 'deg)';
+          // Check if Edward collected the coin
+          var dist = Math.abs(((pos % per) + per) % per - ((coin.perimPos % per) + per) % per);
+          if (dist < spriteW || dist > per - spriteW) {
+            coin.collected = true;
+            coin.collectTimer = 0;
+          }
+        }
+
+        // Draw Edward
+        drawSprite(ed.x, ed.y, currentSprite);
+
+        // Draw small "question mark" blocks scattered in corners
+        var blockSize = pixelSize * 6;
+        var blocks = [
+          { x: 60, y: 60 },
+          { x: w - 60 - blockSize, y: 60 },
+          { x: 60, y: h - 60 - blockSize },
+          { x: w - 60 - blockSize, y: h - 60 - blockSize },
+        ];
+
+        for (var b = 0; b < blocks.length; b++) {
+          var bk = blocks[b];
+          var bobB = Math.sin(time * 2 + b) * 3;
+          ctx.fillStyle = isLight ? 'rgba(255, 200, 50, 0.25)' : 'rgba(255, 200, 50, 0.15)';
+          ctx.fillRect(bk.x, bk.y + bobB, blockSize, blockSize);
+          ctx.strokeStyle = isLight ? 'rgba(160, 100, 20, 0.3)' : 'rgba(255, 200, 50, 0.2)';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(bk.x, bk.y + bobB, blockSize, blockSize);
+          // Question mark
+          ctx.fillStyle = isLight ? 'rgba(160, 100, 20, 0.4)' : 'rgba(255, 255, 255, 0.25)';
+          ctx.font = (blockSize * 0.6) + 'px "Press Start 2P", monospace';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('?', bk.x + blockSize / 2, bk.y + bobB + blockSize / 2);
         }
 
         animId = requestAnimationFrame(tick);
       }
 
       animId = requestAnimationFrame(tick);
-      return function() { cancelAnimationFrame(animId); };
+
+      return function() {
+        cancelAnimationFrame(animId);
+        window.removeEventListener('resize', resize);
+      };
     }
 
-    var cleanup = initBouncingBalls();
+    var cleanup = initMarioEdward();
 
     var observer = new MutationObserver(function() {
       if (cleanup) cleanup();
-      cleanup = initBouncingBalls();
+      cleanup = initMarioEdward();
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   })();
