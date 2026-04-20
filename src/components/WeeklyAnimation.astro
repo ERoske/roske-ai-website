@@ -125,6 +125,7 @@
         cell.appendChild(wire);
 
         // The bulb itself — tinted with its own color even when "off" so it stays visible.
+        // Transition is set dynamically: fast on, slow fade off (like a real incandescent).
         var bulb = document.createElement('div');
         bulb.style.cssText = [
           'width:clamp(1.6rem, 2.3vw, 2.1rem)',
@@ -132,37 +133,52 @@
           'border-radius:50% 50% 45% 45% / 55% 55% 45% 45%',
           'background:' + offBg,
           'box-shadow:0 0 6px ' + dimOf(color, isLight ? 0.3 : 0.45),
-          'transition:background 0.18s ease-out, box-shadow 0.25s ease-out',
+          'transition:background 1.4s ease-out, box-shadow 1.6s ease-out',
           'position:relative',
           'border:1px solid ' + dimOf(color, isLight ? 0.4 : 0.5)
         ].join(';');
         cell.appendChild(bulb);
 
         wall.appendChild(cell);
-        letters.push({ bulb: bulb, color: color, offBg: offBg, letter: letterChar, lit: false, fadeTimer: null });
+        letters.push({ bulb: bulb, color: color, offBg: offBg, letter: letterChar, lit: false, fadeTimer: null, autoOffTimer: null });
+      }
+
+      function clearTimers(entry) {
+        if (entry.fadeTimer) { clearTimeout(entry.fadeTimer); entry.fadeTimer = null; }
+        if (entry.autoOffTimer) { clearTimeout(entry.autoOffTimer); entry.autoOffTimer = null; }
       }
 
       function lightOn(entry, brightness) {
         brightness = brightness || 1;
         entry.lit = true;
-        if (entry.fadeTimer) {
-          clearTimeout(entry.fadeTimer);
-          entry.fadeTimer = null;
-        }
+        clearTimers(entry);
         var c = entry.color;
+        // Snap ON quickly so the bulb feels like it just switched on
+        entry.bulb.style.transition = 'background 0.08s ease-out, box-shadow 0.12s ease-out';
         entry.bulb.style.background = c;
         entry.bulb.style.boxShadow = [
-          '0 0 ' + (10 * brightness) + 'px ' + c,
-          '0 0 ' + (22 * brightness) + 'px ' + c,
+          '0 0 ' + (12 * brightness) + 'px ' + c,
+          '0 0 ' + (26 * brightness) + 'px ' + c,
           '0 -0.2rem 0.5rem rgba(255,255,255,0.15) inset'
         ].join(', ');
       }
 
-      function lightOff(entry, fadeMs) {
-        fadeMs = fadeMs || 400;
+      function lightOff(entry) {
         entry.lit = false;
+        clearTimers(entry);
+        // Slow fade back to the tinted "off" state — like an incandescent cooling down
+        entry.bulb.style.transition = 'background 1.4s ease-out, box-shadow 1.6s ease-out';
         entry.bulb.style.background = entry.offBg;
-        entry.bulb.style.boxShadow = '0 0 4px ' + dimOf(entry.color, isLight ? 0.2 : 0.3);
+        entry.bulb.style.boxShadow = '0 0 6px ' + dimOf(entry.color, isLight ? 0.3 : 0.45);
+      }
+
+      // Light a bulb and schedule it to auto-fade after a hold period.
+      function lightOnWithFade(entry, brightness, holdMs) {
+        lightOn(entry, brightness);
+        entry.autoOffTimer = setTimeout(function() {
+          if (!running) return;
+          lightOff(entry);
+        }, holdMs);
       }
 
       function flicker(entry, times, then) {
@@ -175,10 +191,14 @@
           if (count % 2 === 0) {
             lightOn(entry, 0.5 + Math.random() * 0.6);
           } else {
-            lightOff(entry);
+            // Instant snap off during flicker, not a long fade
+            entry.lit = false;
+            entry.bulb.style.transition = 'background 0.08s ease-out, box-shadow 0.12s ease-out';
+            entry.bulb.style.background = entry.offBg;
+            entry.bulb.style.boxShadow = '0 0 6px ' + dimOf(entry.color, isLight ? 0.3 : 0.45);
           }
           count++;
-          setTimeout(step, 60 + Math.random() * 100);
+          setTimeout(step, 90 + Math.random() * 120);
         }
         step();
       }
@@ -197,42 +217,32 @@
       var running = true;
       var phraseIdx = 0;
 
-      function turnAllOff() {
-        for (var i = 0; i < letters.length; i++) {
-          lightOff(letters[i]);
-        }
-      }
-
       function playPhrase(phrase, done) {
-        turnAllOff();
         var chars = phrase.split('');
         var i = 0;
+        // Each bulb fades on its own ~2.2s after lighting. Don't snap-off everything.
         function next() {
           if (!running) return;
           if (i >= chars.length) {
-            // Hold the full phrase a moment, then fade all off
-            setTimeout(function() {
-              if (!running) return;
-              turnAllOff();
-              setTimeout(done, 700);
-            }, 1400);
+            // Let the last lit bulbs finish their auto-fade, then call done.
+            setTimeout(done, 2800);
             return;
           }
           var ch = chars[i];
           i++;
           if (ch === ' ') {
-            setTimeout(next, 120);
+            setTimeout(next, 320);
             return;
           }
           var idx = ch.charCodeAt(0) - 65;
           if (idx >= 0 && idx < 26) {
             var entry = letters[idx];
             flicker(entry, 1 + Math.floor(Math.random() * 2), function() {
-              lightOn(entry, 0.9 + Math.random() * 0.3);
-              setTimeout(next, 160 + Math.random() * 120);
+              lightOnWithFade(entry, 0.9 + Math.random() * 0.3, 2000 + Math.random() * 800);
+              setTimeout(next, 380 + Math.random() * 220);
             });
           } else {
-            setTimeout(next, 120);
+            setTimeout(next, 320);
           }
         }
         next();
@@ -248,21 +258,21 @@
             lightOff(entry);
           });
         }
-        idleTimer = setTimeout(idleTwinkle, 800 + Math.random() * 1800);
+        idleTimer = setTimeout(idleTwinkle, 1800 + Math.random() * 2400);
       }
-      idleTimer = setTimeout(idleTwinkle, 1500);
+      idleTimer = setTimeout(idleTwinkle, 2500);
 
       function loop() {
         if (!running) return;
         var phrase = phrases[phraseIdx % phrases.length];
         phraseIdx++;
         playPhrase(phrase, function() {
-          setTimeout(loop, 1200 + Math.random() * 1800);
+          setTimeout(loop, 2400 + Math.random() * 2600);
         });
       }
 
       // Kick off after a brief pause so the page settles
-      setTimeout(loop, 800);
+      setTimeout(loop, 1000);
 
       function onResize() {
         // If screen shrinks below breakpoint, teardown; if grows, re-init
