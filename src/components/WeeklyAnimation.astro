@@ -10,300 +10,281 @@
  * created via document.createElement won't have those attributes. Apply all
  * styles directly in JavaScript instead.
  *
- * Current theme: Super Mario Galaxy (April 4, 2026)
- * Animation: 8-bit Edward (blue fedora, full beard) running around the edges of the screen
+ * Current theme: Stranger Things: Tales from '85 (April 18, 2026)
+ * Animation: Flickering Christmas-lights alphabet wall (Joyce Byers' living room homage).
+ * Lights spell short phrases one letter at a time: ROSKE AI, ASK GOOD QUESTIONS, RUN,
+ * HELLO EDWARD, ROLL FOR INITIATIVE. Anchored to bottom-left on desktop, hidden on mobile.
  */
 ---
 
-<div id="weekly-animation" style="position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:5;overflow:hidden;" aria-hidden="true"></div>
+<div id="weekly-animation" style="position:fixed;left:0;right:0;bottom:0;top:0;pointer-events:none;z-index:5;overflow:hidden;" aria-hidden="true"></div>
 
 <script is:inline>
   (function() {
-    function initMarioEdward() {
+    function initStrangerLights() {
       var container = document.getElementById('weekly-animation');
-      if (!container) return;
+      if (!container) return function(){};
       container.innerHTML = '';
+
+      // Hide on small screens — the alphabet strip needs horizontal room
+      if (window.innerWidth < 768) {
+        return function(){};
+      }
 
       var isLight = document.documentElement.getAttribute('data-theme') === 'light';
 
-      // Canvas for pixel art Edward running around screen edges
-      var canvas = document.createElement('canvas');
-      canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;opacity:' + (isLight ? '0.5' : '0.7') + ';';
-      container.appendChild(canvas);
+      // Wall strip container — anchored to bottom of viewport, full width
+      var strip = document.createElement('div');
+      strip.style.cssText = [
+        'position:absolute',
+        'left:0',
+        'right:0',
+        'bottom:0',
+        'height:7.5rem',
+        'display:flex',
+        'align-items:flex-end',
+        'justify-content:center',
+        'padding:0 2rem 1rem',
+        'opacity:' + (isLight ? '0.45' : '0.6'),
+        'pointer-events:none'
+      ].join(';');
+      container.appendChild(strip);
 
-      var ctx = canvas.getContext('2d');
-      var dpr = window.devicePixelRatio || 1;
-      var w, h;
+      // The wall-painted alphabet: A-Z in a single row
+      var wall = document.createElement('div');
+      wall.style.cssText = [
+        'display:flex',
+        'gap:0.25rem',
+        'align-items:flex-end',
+        'justify-content:center',
+        'flex-wrap:nowrap',
+        'max-width:100%'
+      ].join(';');
+      strip.appendChild(wall);
 
-      function resize() {
-        w = window.innerWidth;
-        h = window.innerHeight;
-        canvas.width = w * dpr;
-        canvas.height = h * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      // 8-bit Edward sprite (16x16 pixel art)
-      // Blue fedora, skin face, brown beard, red shirt, blue pants, brown shoes
-      var spriteRight = [
-        '................',
-        '....BBBBBB......',
-        '...BBBBBBBB.....',
-        '...BBBBBBBBB....',
-        '...SSSBSSBBB....',
-        '..SSSSSSSS......',
-        '..SSESSESP......',
-        '..SSSSSSSSP.....',
-        '...SDDDDS.......',
-        '...SDDDDDS......',
-        '....RRRRRR......',
-        '...RRRRRRRR.....',
-        '..RRSRRRRSR.....',
-        '..PPPPPPPP......',
-        '..PP....PP......',
-        '..NN....NN......',
+      // Classic Christmas-light colors, assigned to each letter in a rotating pattern
+      var bulbColors = [
+        '#ff2a2a', // red
+        '#ffb020', // amber
+        '#2ecc40', // green
+        '#3090ff', // blue
+        '#c040ff', // purple
       ];
 
-      var spriteLeft = spriteRight.map(function(row) {
-        return row.split('').reverse().join('');
-      });
+      var letters = [];
+      for (var i = 0; i < 26; i++) {
+        var letterChar = String.fromCharCode(65 + i);
+        var color = bulbColors[i % bulbColors.length];
 
-      // Colors for the sprite
-      var colorMap = {
-        'B': '#2070d0',  // Blue fedora
-        'S': '#f0b080',  // Skin
-        'E': '#1a1a1a',  // Eyes
-        'D': '#6b3a1a',  // Brown beard
-        'R': '#e52521',  // Red shirt
-        'P': '#3050a0',  // Blue pants
-        'N': '#6b3a1a',  // Brown shoes
-        '.': null,       // Transparent
-      };
+        // Wrapper cell: letter on top, bulb on bottom
+        var cell = document.createElement('div');
+        cell.style.cssText = [
+          'display:flex',
+          'flex-direction:column',
+          'align-items:center',
+          'justify-content:flex-end',
+          'width:clamp(1.5rem, 3.2vw, 2.4rem)',
+          'gap:0.25rem'
+        ].join(';');
 
-      // Running frames: we alternate leg positions
-      var spriteRightRun = spriteRight.slice();
-      spriteRightRun[14] = '..NP....PN......';
-      spriteRightRun[15] = '.NN......NN.....';
+        // Hand-painted letter on the "wall"
+        var letter = document.createElement('div');
+        letter.textContent = letterChar;
+        letter.style.cssText = [
+          'font-family:"Metamorphous", serif',
+          'font-size:clamp(1.2rem, 2.2vw, 1.75rem)',
+          'font-weight:400',
+          'color:' + (isLight ? 'rgba(60, 20, 20, 0.75)' : 'rgba(240, 220, 210, 0.7)'),
+          'letter-spacing:0',
+          'line-height:1',
+          'text-align:center',
+          'user-select:none'
+        ].join(';');
+        cell.appendChild(letter);
 
-      var spriteLeftRun = spriteRightRun.map(function(row) {
-        return row.split('').reverse().join('');
-      });
+        // The wire going down into the bulb
+        var wire = document.createElement('div');
+        wire.style.cssText = [
+          'width:1px',
+          'height:0.25rem',
+          'background:' + (isLight ? 'rgba(60, 40, 30, 0.55)' : 'rgba(180, 160, 140, 0.5)')
+        ].join(';');
+        cell.appendChild(wire);
 
-      // Edward's state: runs along the edges of the screen
-      var pixelSize = 3;
-      var spriteW = 16 * pixelSize;
-      var spriteH = 16 * pixelSize;
-      var speed = 2.5;
-      var margin = 4; // pixels from edge
+        // The bulb itself — dim by default, glows when "on"
+        var bulb = document.createElement('div');
+        bulb.style.cssText = [
+          'width:clamp(0.9rem, 1.6vw, 1.25rem)',
+          'height:clamp(1.1rem, 2vw, 1.5rem)',
+          'border-radius:50% 50% 45% 45% / 55% 55% 45% 45%',
+          'background:' + (isLight ? 'rgba(40, 30, 30, 0.25)' : 'rgba(60, 40, 40, 0.55)'),
+          'box-shadow:none',
+          'transition:background 0.18s ease-out, box-shadow 0.25s ease-out',
+          'position:relative'
+        ].join(';');
+        cell.appendChild(bulb);
 
-      // Path segments: top-right, right-down, bottom-left, left-up
-      // Calculate total perimeter
-      function getPerimeter() {
-        return 2 * (w + h);
+        wall.appendChild(cell);
+        letters.push({ bulb: bulb, color: color, letter: letterChar, lit: false, fadeTimer: null });
       }
 
-      // Position along perimeter (0 = top-left, going clockwise)
-      var pos = 0;
-      var frame = 0;
-      var frameCounter = 0;
+      function lightOn(entry, brightness) {
+        brightness = brightness || 1;
+        entry.lit = true;
+        if (entry.fadeTimer) {
+          clearTimeout(entry.fadeTimer);
+          entry.fadeTimer = null;
+        }
+        var c = entry.color;
+        entry.bulb.style.background = c;
+        entry.bulb.style.boxShadow = [
+          '0 0 ' + (10 * brightness) + 'px ' + c,
+          '0 0 ' + (22 * brightness) + 'px ' + c,
+          '0 -0.2rem 0.5rem rgba(255,255,255,0.15) inset'
+        ].join(', ');
+      }
 
-      // Stars floating in background (Galaxy theme)
-      var stars = [];
-      var starCount = 40;
-      for (var i = 0; i < starCount; i++) {
-        stars.push({
-          x: Math.random() * 2000,
-          y: Math.random() * 2000,
-          size: 0.5 + Math.random() * 2,
-          twinkle: Math.random() * Math.PI * 2,
-          speed: 0.01 + Math.random() * 0.03,
+      function lightOff(entry, fadeMs) {
+        fadeMs = fadeMs || 400;
+        entry.lit = false;
+        entry.bulb.style.background = isLight ? 'rgba(40, 30, 30, 0.25)' : 'rgba(60, 40, 40, 0.55)';
+        entry.bulb.style.boxShadow = 'none';
+      }
+
+      function flicker(entry, times, then) {
+        var count = 0;
+        function step() {
+          if (count >= times * 2) {
+            if (then) then();
+            return;
+          }
+          if (count % 2 === 0) {
+            lightOn(entry, 0.5 + Math.random() * 0.6);
+          } else {
+            lightOff(entry);
+          }
+          count++;
+          setTimeout(step, 60 + Math.random() * 100);
+        }
+        step();
+      }
+
+      // Phrases to spell, one letter at a time, with flicker
+      var phrases = [
+        'ROSKE AI',
+        'ASK GOOD QUESTIONS',
+        'HELLO EDWARD',
+        'ROLL FOR INITIATIVE',
+        'RUN',
+        'YOUR PRINCESS IS IN ANOTHER CASTLE', // leftover Edward-ism, a blink to last week
+        'THIS IS FINE'
+      ];
+
+      var running = true;
+      var phraseIdx = 0;
+
+      function turnAllOff() {
+        for (var i = 0; i < letters.length; i++) {
+          lightOff(letters[i]);
+        }
+      }
+
+      function playPhrase(phrase, done) {
+        turnAllOff();
+        var chars = phrase.split('');
+        var i = 0;
+        function next() {
+          if (!running) return;
+          if (i >= chars.length) {
+            // Hold the full phrase a moment, then fade all off
+            setTimeout(function() {
+              if (!running) return;
+              turnAllOff();
+              setTimeout(done, 700);
+            }, 1400);
+            return;
+          }
+          var ch = chars[i];
+          i++;
+          if (ch === ' ') {
+            setTimeout(next, 120);
+            return;
+          }
+          var idx = ch.charCodeAt(0) - 65;
+          if (idx >= 0 && idx < 26) {
+            var entry = letters[idx];
+            flicker(entry, 1 + Math.floor(Math.random() * 2), function() {
+              lightOn(entry, 0.9 + Math.random() * 0.3);
+              setTimeout(next, 160 + Math.random() * 120);
+            });
+          } else {
+            setTimeout(next, 120);
+          }
+        }
+        next();
+      }
+
+      // Idle twinkle: every so often, a random letter flickers briefly in the background
+      var idleTimer = null;
+      function idleTwinkle() {
+        if (!running) return;
+        var entry = letters[Math.floor(Math.random() * 26)];
+        if (!entry.lit) {
+          flicker(entry, 1, function() {
+            lightOff(entry);
+          });
+        }
+        idleTimer = setTimeout(idleTwinkle, 800 + Math.random() * 1800);
+      }
+      idleTimer = setTimeout(idleTwinkle, 1500);
+
+      function loop() {
+        if (!running) return;
+        var phrase = phrases[phraseIdx % phrases.length];
+        phraseIdx++;
+        playPhrase(phrase, function() {
+          setTimeout(loop, 1200 + Math.random() * 1800);
         });
       }
 
-      // Coins floating near Edward's path
-      var coins = [];
-      var coinCount = 5;
-      for (var c = 0; c < coinCount; c++) {
-        coins.push({
-          perimPos: Math.random() * getPerimeter(),
-          bobPhase: Math.random() * Math.PI * 2,
-          collected: false,
-          collectTimer: 0,
-          offset: -30 - Math.random() * 20,
-        });
-      }
+      // Kick off after a brief pause so the page settles
+      setTimeout(loop, 800);
 
-      function drawSprite(x, y, sprite) {
-        for (var row = 0; row < sprite.length; row++) {
-          for (var col = 0; col < sprite[row].length; col++) {
-            var ch = sprite[row][col];
-            if (colorMap[ch]) {
-              ctx.fillStyle = colorMap[ch];
-              ctx.fillRect(
-                Math.round(x + col * pixelSize),
-                Math.round(y + row * pixelSize),
-                pixelSize,
-                pixelSize
-              );
-            }
-          }
+      function onResize() {
+        // If screen shrinks below breakpoint, teardown; if grows, re-init
+        if (window.innerWidth < 768) {
+          running = false;
+          if (idleTimer) clearTimeout(idleTimer);
+          container.innerHTML = '';
         }
       }
+      window.addEventListener('resize', onResize);
 
-      function perimToXY(p) {
-        var per = getPerimeter();
-        p = ((p % per) + per) % per;
-        if (p < w) {
-          // Top edge, going right
-          return { x: p, y: margin, dir: 'right' };
-        }
-        p -= w;
-        if (p < h) {
-          // Right edge, going down
-          return { x: w - margin - spriteW, y: p, dir: 'right' };
-        }
-        p -= h;
-        if (p < w) {
-          // Bottom edge, going left
-          return { x: w - p - spriteW, y: h - margin - spriteH, dir: 'left' };
-        }
-        p -= w;
-        // Left edge, going up
-        return { x: margin, y: h - p - spriteH, dir: 'left' };
-      }
-
-      function drawCoin(x, y, phase) {
-        // Simple animated coin (yellow circle that squishes)
-        var squeeze = Math.abs(Math.cos(phase));
-        var coinW = 8 * pixelSize * squeeze;
-        var coinH = 8 * pixelSize;
-        ctx.fillStyle = '#ffd700';
-        ctx.beginPath();
-        ctx.ellipse(x + 4 * pixelSize, y + 4 * pixelSize, Math.max(coinW / 2, 1), coinH / 2, 0, 0, Math.PI * 2);
-        ctx.fill();
-        // Highlight
-        if (squeeze > 0.3) {
-          ctx.fillStyle = '#fff8a0';
-          ctx.beginPath();
-          ctx.ellipse(x + 3 * pixelSize, y + 3 * pixelSize, Math.max(coinW / 4, 0.5), coinH / 4, 0, 0, Math.PI * 2);
-          ctx.fill();
-        }
-      }
-
-      var animId;
-      var time = 0;
-
-      function tick() {
-        ctx.clearRect(0, 0, w, h);
-        time += 0.016;
-
-        // Draw twinkling stars
-        for (var s = 0; s < stars.length; s++) {
-          var star = stars[s];
-          star.twinkle += star.speed;
-          var alpha = 0.2 + 0.3 * Math.abs(Math.sin(star.twinkle));
-          if (isLight) alpha *= 0.4;
-          ctx.fillStyle = 'rgba(255, 255, 200, ' + alpha + ')';
-          var sx = star.x % w;
-          var sy = star.y % h;
-          ctx.beginPath();
-          ctx.arc(sx, sy, star.size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        // Move Edward along the perimeter
-        pos += speed;
-        frameCounter++;
-        if (frameCounter % 8 === 0) {
-          frame = 1 - frame; // Toggle run frame
-        }
-
-        var ed = perimToXY(pos);
-
-        // Pick the right sprite
-        var currentSprite;
-        if (ed.dir === 'right') {
-          currentSprite = frame === 0 ? spriteRight : spriteRightRun;
-        } else {
-          currentSprite = frame === 0 ? spriteLeft : spriteLeftRun;
-        }
-
-        // Draw coins
-        var per = getPerimeter();
-        for (var c = 0; c < coins.length; c++) {
-          var coin = coins[c];
-          coin.bobPhase += 0.05;
-
-          if (coin.collected) {
-            coin.collectTimer += 0.016;
-            if (coin.collectTimer > 2) {
-              // Respawn
-              coin.perimPos = (pos + 300 + Math.random() * (per - 600)) % per;
-              coin.collected = false;
-              coin.collectTimer = 0;
-            }
-            continue;
-          }
-
-          var cpos = perimToXY(coin.perimPos);
-          var bobY = Math.sin(coin.bobPhase) * 5;
-          drawCoin(cpos.x + spriteW / 2 - 4 * pixelSize, cpos.y + coin.offset + bobY, time * 3 + c);
-
-          // Check if Edward collected the coin
-          var dist = Math.abs(((pos % per) + per) % per - ((coin.perimPos % per) + per) % per);
-          if (dist < spriteW || dist > per - spriteW) {
-            coin.collected = true;
-            coin.collectTimer = 0;
-          }
-        }
-
-        // Draw Edward
-        drawSprite(ed.x, ed.y, currentSprite);
-
-        // Draw small "question mark" blocks scattered in corners
-        var blockSize = pixelSize * 6;
-        var blocks = [
-          { x: 60, y: 60 },
-          { x: w - 60 - blockSize, y: 60 },
-          { x: 60, y: h - 60 - blockSize },
-          { x: w - 60 - blockSize, y: h - 60 - blockSize },
-        ];
-
-        for (var b = 0; b < blocks.length; b++) {
-          var bk = blocks[b];
-          var bobB = Math.sin(time * 2 + b) * 3;
-          ctx.fillStyle = isLight ? 'rgba(255, 200, 50, 0.25)' : 'rgba(255, 200, 50, 0.15)';
-          ctx.fillRect(bk.x, bk.y + bobB, blockSize, blockSize);
-          ctx.strokeStyle = isLight ? 'rgba(160, 100, 20, 0.3)' : 'rgba(255, 200, 50, 0.2)';
-          ctx.lineWidth = 1;
-          ctx.strokeRect(bk.x, bk.y + bobB, blockSize, blockSize);
-          // Question mark
-          ctx.fillStyle = isLight ? 'rgba(160, 100, 20, 0.4)' : 'rgba(255, 255, 255, 0.25)';
-          ctx.font = (blockSize * 0.6) + 'px "Press Start 2P", monospace';
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'middle';
-          ctx.fillText('?', bk.x + blockSize / 2, bk.y + bobB + blockSize / 2);
-        }
-
-        animId = requestAnimationFrame(tick);
-      }
-
-      animId = requestAnimationFrame(tick);
-
-      return function() {
-        cancelAnimationFrame(animId);
-        window.removeEventListener('resize', resize);
+      return function cleanup() {
+        running = false;
+        if (idleTimer) clearTimeout(idleTimer);
+        window.removeEventListener('resize', onResize);
+        container.innerHTML = '';
       };
     }
 
-    var cleanup = initMarioEdward();
+    var cleanup = initStrangerLights();
 
     var observer = new MutationObserver(function() {
       if (cleanup) cleanup();
-      cleanup = initMarioEdward();
+      cleanup = initStrangerLights();
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+    // Re-init on viewport cross of the 768 breakpoint
+    var wasDesktop = window.innerWidth >= 768;
+    window.addEventListener('resize', function() {
+      var isDesktop = window.innerWidth >= 768;
+      if (isDesktop !== wasDesktop) {
+        wasDesktop = isDesktop;
+        if (cleanup) cleanup();
+        cleanup = initStrangerLights();
+      }
+    });
   })();
 </script>
