@@ -5,310 +5,449 @@ import WeeklyAnimation from '../components/WeeklyAnimation.astro';
 import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
+
+// Active Operations case cards — each pairs with a themed photo header
+// Photos crop a distinctive region from existing Stranger Things scene images
+const operations = [
+  {
+    opNum: 'OP-01',
+    caption: 'EX. A · Terminal Recording',
+    image: '/images/stranger-things/edward-arcade.png',
+    imageOffset: 'center 30%',
+    href: 'https://caprus.ai',
+    external: true,
+    title: 'MCP Servers for Finance',
+    body: "Building Model Context Protocol servers that connect LLMs to Oracle EPM systems. Already shipping for Essbase and Planning. Consolidations in beta.",
+    tags: ['MCP', 'Oracle EPM', 'AI'],
+    meta: null,
+  },
+  {
+    opNum: 'OP-02',
+    caption: 'EX. B · Broadcast, Channel 6',
+    image: '/images/stranger-things/edward-walkie.png',
+    imageOffset: 'center 25%',
+    href: 'https://www.caribbeansummit.ai/',
+    external: true,
+    title: 'Caribbean AI Summit',
+    body: "Co-chairing the largest AI conference Puerto Rico has ever seen. October 9-10, 2026 at the Puerto Rico Convention Center. Speakers and attendees from around the globe.",
+    tags: null,
+    meta: 'October 9-10, 2026 · PR Convention Center',
+  },
+  {
+    opNum: 'OP-03',
+    caption: 'EX. C · Anomalous Transmission',
+    image: '/images/stranger-things/edward-portal.png',
+    imageOffset: 'center 40%',
+    href: 'https://caprus.ai',
+    external: true,
+    title: 'Caprus AI',
+    body: "Investor and contributor at Caprus, an AI Software & Services firm empowering finance teams with AI solutions for smarter, faster, more strategic financial operations.",
+    tags: ['AI', 'Finance'],
+    meta: null,
+  },
+  {
+    opNum: 'OP-04',
+    caption: 'EX. D · Expedition Log',
+    image: '/images/stranger-things/edward-diner.png',
+    imageOffset: 'center 35%',
+    href: '/blog/everest-base-camp-2026/',
+    external: false,
+    title: 'Everest Base Camp',
+    body: "Completed the trek to Everest Base Camp in April. 17,600 feet. Twelve days. No portals to the Upside Down encountered (as far as I know).",
+    tags: null,
+    meta: 'Trek Dispatch →',
+  },
+  {
+    opNum: 'OP-05',
+    caption: 'EX. E · Alphabet Wall Archive',
+    image: '/images/stranger-things/edward-xmas-lights.png',
+    imageOffset: 'center 40%',
+    href: null,
+    external: false,
+    title: 'AI-Powered DM Screen',
+    body: "Building a tool that helps Dungeon Masters run better D&D campaigns using AI. Because if you're going to have an artificial intelligence at your table, it should at least help with initiative tracking.",
+    tags: ['D&D', 'AI'],
+    meta: null,
+  },
+  {
+    opNum: 'OP-06',
+    caption: 'EX. F · Community Assembly',
+    image: `/images/${theme.hero.heroImage}`,
+    imageOffset: 'center 40%',
+    href: 'https://praicommunity.org/',
+    external: true,
+    title: 'Puerto Rico AI Community',
+    body: "President of the Puerto Rico AI Community. Over 850 attendees across our events. We meet every other month to explore what AI means for the island and beyond.",
+    tags: null,
+    meta: '850+ attendees · Bimonthly',
+  },
+];
+
+// Polaroid photos for the Evidence Wall section.
+// Each photo has an intentional rotation and position offset for hand-pinned feel.
+const evidencePhotos = [
+  {
+    src: '/images/stranger-things/edward-arcade.png',
+    alt: "Surveillance photo: subject at the Palace Arcade, playing Dig Dug. Time stamp 22:47.",
+    caption: "EX. 1 — PALACE ARCADE, 10:47 PM. Subject plays Dig Dug. Score: 184,630.",
+    rotate: -4,
+    aspect: '3/4',
+  },
+  {
+    src: '/images/stranger-things/edward-walkie.png',
+    alt: "Surveillance photo: subject in Mirkwood with handheld transmitter, yellow windbreaker, heavy fog.",
+    caption: "EX. 2 — MIRKWOOD WOODS. Transmission intercepted on Channel 6.",
+    rotate: 3,
+    aspect: '4/3',
+  },
+  {
+    src: '/images/stranger-things/edward-xmas-lights.png',
+    alt: "Surveillance photo: subject communicates with entity via painted alphabet wall and Christmas lights.",
+    caption: "EX. 3 — RESIDENCE. Lights spell 'ROLL INITIATIVE.' [REDACTED]",
+    rotate: -2,
+    aspect: '16/9',
+  },
+  {
+    src: '/images/stranger-things/edward-diner.png',
+    alt: "Surveillance photo: subject in booth #4 at Benny's Diner, Monster Manual open on table.",
+    caption: "EX. 4 — BENNY'S DINER, BOOTH #4. Monster Manual. Chocolate milkshake.",
+    rotate: 5,
+    aspect: '4/3',
+  },
+  {
+    src: '/images/stranger-things/edward-portal.png',
+    alt: "Surveillance photo: subject investigates luminous rift in basement floor. Do not attempt contact.",
+    caption: "EX. 5 — BASEMENT ANOMALY. Luminous rift observed. DO NOT APPROACH.",
+    rotate: -6,
+    aspect: '3/4',
+  },
+];
 ---
 
 <BaseLayout>
   <WeeklyAnimation />
 
   <!-- ============================================
-       HERO SECTION
+       HERO SECTION — Classified Dossier Opener
        ============================================ -->
-  <section class="relative min-h-[90vh] flex items-center overflow-hidden">
-    <!-- Animated background: deep space galaxy gradient -->
+  <section class="relative min-h-[90vh] flex items-center overflow-hidden" style="isolation: isolate;">
+    <!-- Background: deep space galaxy gradient (dark mode) -->
     <div class="absolute inset-0 dark:block hidden">
-      <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-background)] via-[var(--color-surface)] to-[var(--color-secondary)] animate-gradient" style="background-size: 400% 400%; animation: gradientShift 15s ease infinite;"></div>
-      <!-- Pixel grid overlay (subtle retro game feel) -->
+      <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-background)] via-[var(--color-surface)] to-[var(--color-secondary)]" style="background-size: 400% 400%; animation: gradientShift 15s ease infinite;"></div>
       <div class="absolute inset-0" style="background-image: linear-gradient(rgba(229,37,33,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(229,37,33,0.03) 1px, transparent 1px); background-size: 32px 32px;"></div>
-      <!-- Orbiting planet rings -->
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-[var(--color-accent)]/[0.04]" style="animation: planetSpin 30s linear infinite;"></div>
-      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full border border-blue-500/[0.05]" style="animation: planetSpin 20s linear infinite reverse;"></div>
+      <!-- Orbiting blood-moon rings -->
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-[var(--color-accent)]/[0.05]" style="animation: planetSpin 30s linear infinite;"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full border border-[var(--color-accent)]/[0.07]" style="animation: planetSpin 20s linear infinite reverse;"></div>
+      <!-- Red emergency pulse from right edge (portal glow) -->
+      <div class="absolute top-0 right-0 w-[40rem] h-full pointer-events-none" style="background: radial-gradient(ellipse at right center, rgba(255,42,42,0.18) 0%, rgba(255,42,42,0.05) 30%, transparent 60%); animation: emergencyPulse 4s ease-in-out infinite;"></div>
     </div>
-    <div class="absolute inset-0 dark:hidden block bg-gradient-to-br from-[var(--color-bg-light)] to-indigo-50/30"></div>
+    <div class="absolute inset-0 dark:hidden block bg-gradient-to-br from-[var(--color-bg-light)] to-red-50/40"></div>
 
-    <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-32">
+    <!-- CRT scanlines overlay (dark mode only) -->
+    <div class="absolute inset-0 pointer-events-none dark:block hidden" style="background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.08) 0px, rgba(0,0,0,0.08) 1px, transparent 1px, transparent 3px); z-index: 1;"></div>
+    <!-- VHS tracking glitch band -->
+    <div class="absolute inset-x-0 pointer-events-none dark:block hidden" style="height: 3rem; background: linear-gradient(180deg, transparent, rgba(255,42,42,0.06), transparent); animation: trackingBand 8s linear infinite; z-index: 2;"></div>
+
+    <!-- CLASSIFIED watermark (very subtle) -->
+    <div class="absolute inset-0 pointer-events-none flex items-center justify-center overflow-hidden" aria-hidden="true" style="z-index: 1;">
+      <div class="font-[var(--font-heading)] font-black tracking-widest opacity-[0.025] dark:opacity-[0.04] select-none" style="font-size: 22vw; transform: rotate(-8deg); color: var(--color-accent);">CLASSIFIED</div>
+    </div>
+
+    <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 md:py-32 w-full">
       <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div class="max-w-4xl lg:max-w-2xl text-center lg:text-left">
 
-      <div class="max-w-4xl lg:max-w-2xl text-center lg:text-left">
+          <!-- Headshot (mobile only) -->
+          <div class="lg:hidden flex justify-center mb-8" style="animation: fadeInUp 0.6s ease-out forwards;">
+            <img src="/images/Edward_Roske_Headshot.png" alt="Edward Roske" width="160" height="160" loading="eager" class="rounded-full w-28 h-28 sm:w-36 sm:h-36 object-cover shadow-xl ring-4 ring-[var(--color-accent)]/30" />
+          </div>
 
-        <!-- Headshot (mobile only, centered above text) -->
-        <div class="lg:hidden flex justify-center mb-8"
-          style="animation: fadeInUp 0.6s ease-out forwards;"
-        >
-          <img
-            src="/images/Edward_Roske_Headshot.png"
-            alt="Edward Roske"
-            width="160"
-            height="160"
-            loading="eager"
-            class="rounded-full w-28 h-28 sm:w-36 sm:h-36 object-cover shadow-xl ring-4 ring-[var(--color-accent)]/30"
-          />
+          <!-- Case file header badge -->
+          <div class="inline-flex items-center gap-3 rounded-none px-5 py-2 mb-8 relative
+            dark:bg-[var(--color-accent)]/[0.08] dark:border dark:border-[var(--color-accent)]/[0.25]
+            bg-white border border-[var(--color-accent)]/30 shadow-sm"
+            style="animation: fadeInUp 0.6s ease-out forwards; font-family: 'JetBrains Mono', monospace;">
+            <div class="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse"></div>
+            <span class="text-[0.65rem] tracking-[0.25em] uppercase dark:text-[var(--color-accent)] text-[var(--color-accent)] font-semibold">
+              CASE FILE #042 &nbsp;·&nbsp; WEEK OF {theme.week} &nbsp;·&nbsp; {theme.name}
+            </span>
+          </div>
+
+          <!-- Main title with red accent bleed -->
+          <h1 id="hero-title" class="text-5xl sm:text-6xl md:text-7xl lg:text-[7.5rem] font-black tracking-tighter leading-[0.85] mb-6" style="animation: fadeInUp 0.6s ease-out 0.15s forwards; opacity: 0; font-family: var(--font-heading);">
+            <span class="dark:text-white text-[var(--color-primary)]" style="text-shadow: 0 0 2px rgba(255,42,42,0.3);">Edward</span>
+            <br/>
+            <span class="dark:text-white text-[var(--color-primary)]" style="text-shadow: 0 0 2px rgba(255,42,42,0.3);">Roske</span>
+            <span class="text-[var(--color-accent)]" style="text-shadow: 0 0 12px var(--color-accent);">.</span>
+          </h1>
+
+          <!-- Subtitle -->
+          <p class="text-xl md:text-2xl font-light leading-relaxed max-w-2xl mb-4 mx-auto lg:mx-0 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]" style="animation: fadeInUp 0.6s ease-out 0.3s forwards; opacity: 0;">
+            {theme.hero.subtitle}
+          </p>
+
+          <!-- Tagline (typewriter mono) -->
+          <p class="text-sm tracking-wide mb-8 dark:text-[var(--color-text-muted)]/70 text-[var(--color-text-dark-muted)]/70" style="animation: fadeInUp 0.6s ease-out 0.4s forwards; opacity: 0; font-family: 'JetBrains Mono', monospace;">
+            {theme.tagline}
+          </p>
+
+          <!-- CTA buttons -->
+          <div class="flex flex-wrap gap-4 justify-center lg:justify-start mb-10" style="animation: fadeInUp 0.6s ease-out 0.5s forwards; opacity: 0;">
+            <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/40" style="font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));">
+              Book 13 Minutes
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+            <a href="/contact/" class="inline-flex items-center gap-2 px-6 py-3 font-medium transition-all duration-200 hover:-translate-y-0.5 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/20 bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10" style="font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.8rem;">
+              Get in Touch
+            </a>
+          </div>
+
+          <!-- Inline stats -->
+          <div class="grid grid-cols-4 gap-4 max-w-md mx-auto lg:mx-0" style="animation: fadeInUp 0.6s ease-out 0.6s forwards; opacity: 0;">
+            {[
+              { value: "80+", label: "Countries" },
+              { value: "50+", label: "Speaking" },
+              { value: "15", label: "Books" },
+              { value: "25+", label: "Years CEO" },
+            ].map(stat => (
+              <div class="text-center lg:text-left">
+                <div class="text-lg md:text-xl font-black text-[var(--color-accent)]" style="text-shadow: 0 0 8px rgba(255,42,42,0.3);">{stat.value}</div>
+                <div class="text-[10px] md:text-xs dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60 uppercase tracking-widest" style="font-family: 'JetBrains Mono', monospace;">{stat.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <!-- Status badge -->
-        <div class="inline-flex items-center gap-3 rounded-full px-5 py-2 mb-8
-          dark:bg-white/[0.03] dark:border dark:border-white/[0.08]
-          bg-white border border-black/[0.06] shadow-sm"
-          style="animation: fadeInUp 0.6s ease-out forwards;"
-        >
-          <div class="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse"></div>
-          <span class="text-xs font-[var(--font-mono)] tracking-widest uppercase dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
-            Week of {theme.week}  &middot;  {theme.name}
-          </span>
-        </div>
-
-        <!-- Main title -->
-        <h1 id="hero-title" class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.9] mb-6"
-          style="animation: fadeInUp 0.6s ease-out 0.15s forwards; opacity: 0;"
-        >
-          <span class="dark:text-white text-[var(--color-primary)]">Edward</span>
-          <br/>
-          <span class="dark:text-white text-[var(--color-primary)]">Roske</span>
-          <span class="text-[var(--color-accent)]">.</span>
-        </h1>
-
-        <!-- Subtitle -->
-        <p class="text-xl md:text-2xl font-light leading-relaxed max-w-2xl mb-4 mx-auto lg:mx-0
-          dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
-          style="animation: fadeInUp 0.6s ease-out 0.3s forwards; opacity: 0;"
-        >
-          {theme.hero.subtitle}
-        </p>
-
-        <!-- Tagline -->
-        <p class="text-sm font-[var(--font-mono)] tracking-wide mb-8
-          dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60"
-          style="animation: fadeInUp 0.6s ease-out 0.4s forwards; opacity: 0;"
-        >
-          {theme.tagline}
-        </p>
-
-        <!-- CTA buttons -->
-        <div class="flex flex-wrap gap-4 justify-center lg:justify-start mb-10"
-          style="animation: fadeInUp 0.6s ease-out 0.5s forwards; opacity: 0;"
-        >
-          <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
-            Book 13 Minutes
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-          <a href="/contact/" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5
-            dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/10
-            bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10">
-            Get in Touch
-          </a>
-        </div>
-
-        <!-- Inline stats -->
-        <div class="grid grid-cols-4 gap-4 max-w-md mx-auto lg:mx-0"
-          style="animation: fadeInUp 0.6s ease-out 0.6s forwards; opacity: 0;"
-        >
-          {[
-            { value: "80+", label: "Countries" },
-            { value: "50+", label: "Speaking" },
-            { value: "15", label: "Books" },
-            { value: "25+", label: "Years CEO" },
-          ].map(stat => (
-            <div class="text-center lg:text-left">
-              <div class="text-lg md:text-xl font-black text-[var(--color-accent)]">{stat.value}</div>
-              <div class="text-[10px] md:text-xs dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60 font-[var(--font-mono)] uppercase tracking-wider">{stat.label}</div>
+        <!-- Hero image (desktop) -->
+        <div class="hidden lg:block flex-shrink-0 relative" style="animation: fadeInUp 0.8s ease-out 0.4s forwards; opacity: 0;">
+          <div class="relative w-[28rem] xl:w-[34rem]">
+            <!-- Red glow behind -->
+            <div class="absolute -inset-10 rounded-3xl bg-gradient-to-br from-[var(--color-accent)]/30 via-[var(--color-accent)]/8 to-[var(--color-secondary)]/20 blur-3xl"></div>
+            <!-- Crosshair corner marks -->
+            <div class="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-[var(--color-accent)]/60 pointer-events-none"></div>
+            <div class="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-[var(--color-accent)]/60 pointer-events-none"></div>
+            <div class="absolute -bottom-2 -left-2 w-6 h-6 border-b-2 border-l-2 border-[var(--color-accent)]/60 pointer-events-none"></div>
+            <div class="absolute -bottom-2 -right-2 w-6 h-6 border-b-2 border-r-2 border-[var(--color-accent)]/60 pointer-events-none"></div>
+            <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="669" loading="eager" decoding="async" class="relative w-full h-auto shadow-2xl shadow-[var(--color-accent)]/20" />
+            <!-- Surveillance metadata -->
+            <div class="absolute bottom-2 left-2 right-2 flex justify-between items-end text-[0.6rem] text-[var(--color-accent)]/90 pointer-events-none uppercase tracking-widest px-2 py-1" style="font-family: 'JetBrains Mono', monospace; text-shadow: 0 0 4px rgba(0,0,0,0.8);">
+              <span>REC &bull; {theme.week}</span>
+              <span>CH.6 &bull; 1985</span>
             </div>
-          ))}
+          </div>
         </div>
 
-      </div>
-
-      <!-- Hero image (desktop: large and prominent, no redundant headshot) -->
-      <div class="hidden lg:block flex-shrink-0 relative"
-        style="animation: fadeInUp 0.8s ease-out 0.4s forwards; opacity: 0;"
-      >
-        <div class="relative w-[28rem] xl:w-[34rem]">
-          <!-- Ambient glow behind image -->
-          <div class="absolute -inset-8 rounded-3xl bg-gradient-to-br from-[var(--color-accent)]/20 via-[var(--color-accent)]/5 to-[var(--color-secondary)]/20 blur-3xl"></div>
-          <!-- Accent border ring -->
-          <div class="absolute -inset-[2px] rounded-2xl bg-gradient-to-br from-[var(--color-accent)]/40 via-transparent to-[var(--color-accent)]/20"></div>
-          <img
-            src={`/images/${theme.hero.heroImage}`}
-            alt={theme.hero.imageAlt}
-            width="1200"
-            height="669"
-            loading="eager"
-            decoding="async"
-            class="relative rounded-2xl shadow-2xl shadow-[var(--color-accent)]/10 w-full h-auto"
-          />
+        <!-- Hero image (mobile) -->
+        <div class="lg:hidden relative w-full max-w-lg mx-auto" style="animation: fadeInUp 0.8s ease-out 0.5s forwards; opacity: 0;">
+          <div class="absolute -inset-4 rounded-2xl bg-gradient-to-br from-[var(--color-accent)]/20 via-transparent to-[var(--color-secondary)]/20 blur-2xl"></div>
+          <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="669" loading="eager" decoding="async" class="relative w-full h-auto shadow-2xl shadow-black/40" />
         </div>
-      </div>
-
-      <!-- Hero image (mobile/tablet: shown below text) -->
-      <div class="lg:hidden relative w-full max-w-lg mx-auto"
-        style="animation: fadeInUp 0.8s ease-out 0.5s forwards; opacity: 0;"
-      >
-        <div class="absolute -inset-4 rounded-2xl bg-gradient-to-br from-[var(--color-accent)]/15 via-transparent to-[var(--color-secondary)]/15 blur-2xl"></div>
-        <img
-          src={`/images/${theme.hero.heroImage}`}
-          alt={theme.hero.imageAlt}
-          width="1200"
-          height="669"
-          loading="eager"
-          decoding="async"
-          class="relative rounded-2xl shadow-2xl shadow-black/30 w-full h-auto"
-        />
-      </div>
-
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       FEATURED WORK
+       EXHIBIT A — SURVEILLANCE PHOTOS
        ============================================ -->
-  <Section id="current-work" title="What I'm Building" subtitle="The intersection of AI and everything else.">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <section class="relative py-24 md:py-32 px-6 overflow-hidden" style="background: linear-gradient(180deg, transparent 0%, rgba(20,8,8,0.4) 10%, rgba(20,8,8,0.4) 90%, transparent 100%);">
+    <!-- Corkboard texture underlay (dark) -->
+    <div class="absolute inset-0 dark:block hidden pointer-events-none opacity-[0.08]" style="background-image: radial-gradient(circle at 20% 30%, rgba(139,69,19,0.4) 2px, transparent 3px), radial-gradient(circle at 70% 60%, rgba(139,69,19,0.3) 2px, transparent 3px), radial-gradient(circle at 40% 80%, rgba(139,69,19,0.35) 2px, transparent 3px); background-size: 120px 120px, 150px 150px, 100px 100px;"></div>
 
-      <div class="animate-on-scroll">
-        <a href="https://caprus.ai" target="_blank" rel="noopener noreferrer"
-          class="block rounded-2xl p-6 h-full transition-all duration-300 group hover:-translate-y-1
-            dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
-            bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-xl">
-          <div class="flex items-start justify-between mb-3">
-            <div class="w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/></svg>
-            </div>
-            <svg class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity dark:text-white text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+    <div class="max-w-7xl mx-auto relative">
+      <!-- Section header styled as a file label -->
+      <div class="animate-on-scroll mb-12 md:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/[0.08]" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--color-accent); text-transform: uppercase;">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse"></span>
+            EXHIBIT A
           </div>
-          <h3 class="text-lg font-bold mb-2 dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">
-            MCP Servers for Finance
-          </h3>
-          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mb-3">
-            Building Model Context Protocol servers that connect LLMs to Oracle EPM systems. Already shipping for Essbase and Planning. Consolidations in beta.
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
+            Surveillance Photos
+          </h2>
+          <p class="mt-4 text-base dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] max-w-xl" style="font-family: 'JetBrains Mono', monospace;">
+            Compiled from Hawkins National Lab, 1985. Subject has been observed engaging in activities consistent with "CEO, Speaker, Data Scientist, Dungeon Master."
           </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">MCP</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Oracle EPM</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">AI</span>
-          </div>
-        </a>
-      </div>
-
-      <div class="animate-on-scroll">
-        <a href="https://www.caribbeansummit.ai/" target="_blank" rel="noopener noreferrer"
-          class="block rounded-2xl p-6 h-full transition-all duration-300 group hover:-translate-y-1
-            dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
-            bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-xl">
-          <div class="flex items-start justify-between mb-3">
-            <div class="w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-            </div>
-            <svg class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity dark:text-white text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2 dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">
-            Caribbean AI Summit
-          </h3>
-          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mb-3">
-            Co-chairing the largest AI conference Puerto Rico has ever seen. October 9-10, 2026 at the Puerto Rico Convention Center. Speakers and attendees from around the globe.
-          </p>
-          <p class="text-[var(--color-accent)] font-medium text-xs">October 9-10, 2026 &middot; Puerto Rico Convention Center</p>
-        </a>
-      </div>
-
-      <div class="animate-on-scroll">
-        <a href="https://caprus.ai" target="_blank" rel="noopener noreferrer"
-          class="block rounded-2xl p-6 h-full transition-all duration-300 group hover:-translate-y-1
-            dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
-            bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-xl">
-          <div class="flex items-start justify-between mb-3">
-            <div class="w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-            </div>
-            <svg class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity dark:text-white text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2 dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">
-            Caprus AI
-          </h3>
-          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mb-3">
-            Investor and contributor at Caprus, an AI Software & Services firm empowering finance teams with AI solutions for smarter, faster, more strategic financial operations.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">AI</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Finance</span>
-          </div>
-        </a>
-      </div>
-
-      <div class="animate-on-scroll">
-        <div class="block rounded-2xl p-6 h-full transition-all duration-300 group
-            dark:bg-white/[0.03] dark:border dark:border-white/[0.06]
-            bg-white border border-black/[0.06]">
-          <div class="mb-3">
-            <div class="w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-          </div>
-          <h3 class="text-lg font-bold mb-2 dark:text-white text-[var(--color-primary)]">
-            AI-Powered DM Screen
-          </h3>
-          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mb-3">
-            Building a tool that helps Dungeon Masters run better D&D campaigns using AI. Because if you're going to have an artificial intelligence at your table, it should at least help with initiative tracking.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">D&D</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">AI</span>
+        </div>
+        <!-- CLASSIFIED stamp -->
+        <div class="hidden md:block" style="font-family: var(--font-heading);">
+          <div class="inline-block px-6 py-2 border-[3px] border-[var(--color-accent)] text-[var(--color-accent)] font-black tracking-[0.2em] text-xl transform -rotate-6 opacity-70" style="text-shadow: 0 0 4px rgba(255,42,42,0.3);">
+            CLASSIFIED
           </div>
         </div>
       </div>
 
-      <div class="animate-on-scroll">
-        <a href="https://praicommunity.org/" target="_blank" rel="noopener noreferrer"
-          class="block rounded-2xl p-6 h-full transition-all duration-300 group hover:-translate-y-1
-            dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
-            bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-xl">
-          <div class="flex items-start justify-between mb-3">
-            <div class="w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center">
-              <svg class="w-5 h-5 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+      <!-- Asymmetric polaroid grid -->
+      <div class="relative grid grid-cols-12 gap-4 md:gap-6" style="min-height: 620px;">
+        {evidencePhotos.map((photo, i) => {
+          // Distribute photos across an asymmetric 12-col grid
+          const layouts = [
+            'col-span-12 md:col-span-5 md:col-start-1 md:row-start-1',
+            'col-span-12 md:col-span-5 md:col-start-7 md:row-start-1 md:mt-12',
+            'col-span-12 md:col-span-6 md:col-start-4 md:row-start-2',
+            'col-span-12 md:col-span-4 md:col-start-1 md:row-start-3 md:mt-8',
+            'col-span-12 md:col-span-4 md:col-start-9 md:row-start-3',
+          ];
+          return (
+            <div class={`animate-on-scroll ${layouts[i]} flex justify-center`} style={`animation-delay: ${i * 100}ms;`}>
+              <figure class="polaroid relative" style={`transform: rotate(${photo.rotate}deg); transition: transform 0.4s ease;`}>
+                <!-- Tape corner (top-left) -->
+                <div class="absolute -top-2 -left-3 w-12 h-5 pointer-events-none z-10" style="background: rgba(232,197,125,0.55); transform: rotate(-20deg); box-shadow: 0 1px 3px rgba(0,0,0,0.3); border: 1px solid rgba(232,197,125,0.3);"></div>
+                <!-- Tape corner (bottom-right) -->
+                <div class="absolute -bottom-1 -right-4 w-10 h-4 pointer-events-none z-10" style="background: rgba(232,197,125,0.5); transform: rotate(28deg); box-shadow: 0 1px 3px rgba(0,0,0,0.3); border: 1px solid rgba(232,197,125,0.3);"></div>
+                <div class="bg-[#fbf3ed] dark:bg-[#1a0e0a] p-3 pb-10 shadow-2xl shadow-black/60" style="max-width: 100%;">
+                  <div class="overflow-hidden relative" style={`aspect-ratio: ${photo.aspect};`}>
+                    <img src={photo.src} alt={photo.alt} loading="lazy" decoding="async" class="w-full h-full object-cover block" style="filter: contrast(1.05) saturate(0.9);" />
+                    <!-- Subtle grain overlay -->
+                    <div class="absolute inset-0 pointer-events-none opacity-20 mix-blend-overlay" style="background-image: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>&quot;);"></div>
+                  </div>
+                  <figcaption class="absolute bottom-2 left-3 right-3 text-[0.65rem] text-[#1a0e0a]/80 dark:text-[#f5e6e0]/70 uppercase tracking-wider leading-snug" style="font-family: 'JetBrains Mono', monospace;">
+                    {photo.caption}
+                  </figcaption>
+                </div>
+              </figure>
             </div>
-            <svg class="w-4 h-4 opacity-40 group-hover:opacity-100 transition-opacity dark:text-white text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </div>
-          <h3 class="text-lg font-bold mb-2 dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">
-            Puerto Rico AI Community
-          </h3>
-          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">
-            President of the Puerto Rico AI Community. Over 850 attendees across our events. We meet every other month to explore what AI means for the island and beyond.
-          </p>
-          <p class="mt-3 text-[var(--color-accent)] font-medium text-xs">850+ attendees &middot; Bimonthly</p>
-        </a>
+          );
+        })}
+
+        <!-- Conspiracy string (decorative SVG overlay, desktop only) -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none hidden md:block opacity-60" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M 15% 18% Q 45% 5%, 70% 22%" stroke="rgba(255,42,42,0.4)" stroke-width="1" fill="none" stroke-dasharray="3,3" />
+          <path d="M 70% 22% Q 50% 42%, 50% 55%" stroke="rgba(255,42,42,0.4)" stroke-width="1" fill="none" stroke-dasharray="3,3" />
+          <path d="M 50% 55% Q 30% 70%, 20% 82%" stroke="rgba(255,42,42,0.4)" stroke-width="1" fill="none" stroke-dasharray="3,3" />
+          <path d="M 50% 55% Q 75% 75%, 85% 82%" stroke="rgba(255,42,42,0.4)" stroke-width="1" fill="none" stroke-dasharray="3,3" />
+        </svg>
       </div>
 
+      <!-- Page-break file signature -->
+      <div class="mt-16 flex items-center gap-4 opacity-60" style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;">
+        <div class="flex-1 h-px bg-[var(--color-accent)]/30"></div>
+        <span class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">End Exhibit A &nbsp;·&nbsp; Page 1 of 3</span>
+        <div class="flex-1 h-px bg-[var(--color-accent)]/30"></div>
+      </div>
     </div>
-    <div class="mt-8 text-center">
-      <a href="/work/" class="text-sm font-medium text-[var(--color-accent)] hover:underline">
-        See all work and speaking history &rarr;
-      </a>
+  </section>
+
+  <!-- ============================================
+       EXHIBIT B — ACTIVE OPERATIONS (projects)
+       ============================================ -->
+  <Section id="current-work">
+    <div class="mb-12 md:mb-16">
+      <div class="inline-flex items-center gap-2 mb-4 px-3 py-1 border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/[0.08]" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--color-accent); text-transform: uppercase;">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse"></span>
+        EXHIBIT B
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
+        Active Operations
+      </h2>
+      <p class="mt-4 text-base dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] max-w-xl" style="font-family: 'JetBrains Mono', monospace;">
+        Ongoing subject activity. The intersection of AI and everything else.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {operations.map((op) => {
+        const cardClasses = "case-card group block h-full transition-all duration-300 hover:-translate-y-1 dark:bg-white/[0.03] dark:border dark:border-white/[0.08] dark:hover:border-[var(--color-accent)]/50 dark:hover:bg-white/[0.05] bg-white border border-black/[0.08] hover:border-[var(--color-accent)]/50 hover:shadow-2xl relative overflow-hidden";
+        const inner = (
+          <>
+            <div class="relative h-36 overflow-hidden">
+              <img src={op.image} alt="" aria-hidden="true" loading="lazy" class="absolute inset-0 w-full h-full object-cover grayscale-[25%] group-hover:grayscale-0 transition-all duration-500" style={`object-position: ${op.imageOffset}; filter: contrast(1.08) saturate(0.9);`} />
+              <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(10,4,4,0.35) 0%, rgba(10,4,4,0.55) 70%, rgba(10,4,4,0.9) 100%);"></div>
+              <div class="absolute inset-0 pointer-events-none opacity-35" style="background-image: repeating-linear-gradient(0deg, rgba(0,0,0,0.25) 0px, rgba(0,0,0,0.25) 1px, transparent 1px, transparent 3px);"></div>
+              <div class="absolute top-3 left-3 px-2.5 py-1 bg-[var(--color-accent)] text-white text-[0.6rem] uppercase tracking-widest shadow-lg" style="font-family: 'JetBrains Mono', monospace;">{op.opNum}</div>
+              {op.external && (
+                <svg class="absolute top-3 right-3 w-4 h-4 text-white/80 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              )}
+              <div class="absolute bottom-2 left-3 text-[0.6rem] text-white/75 uppercase tracking-widest" style="font-family: 'JetBrains Mono', monospace; text-shadow: 0 1px 3px rgba(0,0,0,0.9);">{op.caption}</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-lg font-bold mb-2 dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors" style="font-family: var(--font-heading);">{op.title}</h3>
+              <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mb-3">{op.body}</p>
+              {op.tags && (
+                <div class="flex flex-wrap gap-2">
+                  {op.tags.map((tag) => (
+                    <span class="px-2 py-1 text-[0.65rem] font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] uppercase tracking-wider">{tag}</span>
+                  ))}
+                </div>
+              )}
+              {op.meta && (
+                <p class="text-[var(--color-accent)] font-medium text-xs uppercase tracking-wider" style="font-family: 'JetBrains Mono', monospace;">{op.meta}</p>
+              )}
+            </div>
+          </>
+        );
+        return (
+          <div class="animate-on-scroll">
+            {op.href
+              ? <a href={op.href} target={op.external ? "_blank" : undefined} rel={op.external ? "noopener noreferrer" : undefined} class={cardClasses}>{inner}</a>
+              : <div class={cardClasses}>{inner}</div>
+            }
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="mt-10 flex items-center gap-4 opacity-60" style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;">
+      <div class="flex-1 h-px bg-[var(--color-accent)]/30"></div>
+      <a href="/work/" class="text-[var(--color-accent)] hover:underline">See full operations log &rarr;</a>
+      <div class="flex-1 h-px bg-[var(--color-accent)]/30"></div>
     </div>
   </Section>
 
   <!-- ============================================
-       CTA
+       EXHIBIT C — FROM THE UPSIDE DOWN (teaser)
+       ============================================ -->
+  <section class="relative py-20 md:py-24 px-6 overflow-hidden" style="background: linear-gradient(180deg, transparent 0%, rgba(58,16,16,0.4) 50%, transparent 100%);">
+    <!-- Vine tendrils (decorative, pure CSS) -->
+    <div class="absolute top-0 left-0 w-40 h-40 pointer-events-none opacity-60" aria-hidden="true" style="background-image: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M 5 5 Q 20 15 25 35 Q 30 55 45 60 Q 60 65 70 80' stroke='%23ff2a2a' stroke-width='0.8' fill='none' opacity='0.5'/><path d='M 25 35 Q 15 40 10 50' stroke='%23ff2a2a' stroke-width='0.5' fill='none' opacity='0.4'/><path d='M 45 60 Q 55 50 65 55' stroke='%23ff2a2a' stroke-width='0.5' fill='none' opacity='0.4'/><circle cx='25' cy='35' r='1' fill='%23ff2a2a' opacity='0.6'/><circle cx='45' cy='60' r='1' fill='%23ff2a2a' opacity='0.6'/></svg>&quot;); background-size: contain; background-repeat: no-repeat;"></div>
+    <div class="absolute top-0 right-0 w-40 h-40 pointer-events-none opacity-60 scale-x-[-1]" aria-hidden="true" style="background-image: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M 5 5 Q 20 15 25 35 Q 30 55 45 60 Q 60 65 70 80' stroke='%23ff2a2a' stroke-width='0.8' fill='none' opacity='0.5'/><path d='M 25 35 Q 15 40 10 50' stroke='%23ff2a2a' stroke-width='0.5' fill='none' opacity='0.4'/><path d='M 45 60 Q 55 50 65 55' stroke='%23ff2a2a' stroke-width='0.5' fill='none' opacity='0.4'/></svg>&quot;); background-size: contain; background-repeat: no-repeat;"></div>
+    <div class="absolute bottom-0 left-1/4 w-32 h-32 pointer-events-none opacity-50 rotate-180" aria-hidden="true" style="background-image: url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M 5 5 Q 20 15 25 35 Q 30 55 45 60 Q 60 65 70 80' stroke='%23ff2a2a' stroke-width='0.8' fill='none' opacity='0.5'/></svg>&quot;); background-size: contain; background-repeat: no-repeat;"></div>
+
+    <div class="max-w-5xl mx-auto text-center relative">
+      <div class="inline-flex items-center gap-2 mb-6 px-3 py-1 border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/[0.08]" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--color-accent); text-transform: uppercase;">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse"></span>
+        EXHIBIT C &nbsp;·&nbsp; Restricted
+      </div>
+
+      <!-- Inverted title -->
+      <h2 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 dark:text-white text-[var(--color-primary)] inline-block" style="font-family: var(--font-heading); transform: scaleY(-1); text-shadow: 0 0 20px rgba(255,42,42,0.4);">
+        From the Upside Down
+      </h2>
+      <div class="text-lg md:text-xl mb-8 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] max-w-2xl mx-auto leading-relaxed">
+        Thoughts, dispatches, and the occasional conspiracy theory about AI, enterprise finance, and why CFOs should be paying attention.
+      </div>
+
+      <a href="/blog/" class="inline-flex items-center gap-2 px-6 py-3 border-2 border-[var(--color-accent)] text-[var(--color-accent)] font-medium hover:bg-[var(--color-accent)] hover:text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/30" style="font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.15em; font-size: 0.8rem;">
+        Read the Dispatches
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================
+       EXHIBIT D — REPORT IN (CTA)
        ============================================ -->
   <Section dark>
-    <div class="animate-on-scroll text-center max-w-2xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-6 dark:text-white text-[var(--color-primary)]">
-        Let's Talk
+    <div class="animate-on-scroll text-center max-w-3xl mx-auto relative">
+      <div class="inline-flex items-center gap-2 mb-6 px-3 py-1 border border-[var(--color-accent)]/40 bg-[var(--color-accent)]/[0.08]" style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--color-accent); text-transform: uppercase;">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" style="animation: emergencyBlink 1s ease-in-out infinite;"></span>
+        EMERGENCY BROADCAST
+      </div>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-6 dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
+        Report In
       </h2>
-      <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-8 text-lg">
-        Whether you need a keynote speaker, want to explore AI for your finance team,
-        or just have a good question, I've got 13 minutes.
+      <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-4 text-lg leading-relaxed">
+        Whether you need a keynote speaker, want to explore AI for your finance team, or just have a good question, I've got 13 minutes.
+      </p>
+      <p class="dark:text-[var(--color-text-muted)]/70 text-[var(--color-text-dark-muted)]/70 mb-10 text-sm" style="font-family: 'JetBrains Mono', monospace;">
+        Signal location: San Juan, Puerto Rico &nbsp;·&nbsp; Channel 6 &nbsp;·&nbsp; {theme.week}
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20"
-        >
+        <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/40" style="font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));">
           Book 13 Minutes
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
-        <a href="/contact/"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5
-          dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/10
-          bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10"
-        >
-          Contact Form
+        <a href="/contact/" class="inline-flex items-center gap-2 px-6 py-3 font-medium transition-all duration-200 hover:-translate-y-0.5 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/20 bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10" style="font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem;">
+          Transmit Message
         </a>
       </div>
     </div>
@@ -333,7 +472,40 @@ const theme = currentTheme;
     to { transform: translate(-50%, -50%) rotate(360deg); }
   }
 
-  .animate-gradient {
-    background-size: 400% 400%;
+  @keyframes emergencyPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes emergencyBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.8); }
+  }
+
+  @keyframes trackingBand {
+    0% { top: -5rem; }
+    100% { top: 105%; }
+  }
+
+  /* Polaroid hover (desktop) */
+  .polaroid:hover {
+    transform: rotate(0deg) scale(1.04) !important;
+    z-index: 20;
+    cursor: pointer;
+  }
+
+  /* Case card subtle scanline on hover */
+  .case-card:hover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(255,42,42,0.03) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+  }
+
+  /* Reduce motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
   }
 </style>
