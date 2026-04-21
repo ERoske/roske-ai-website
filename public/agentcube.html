@@ -3,37 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentCube — Your Oracle EPM, Agent-Ready | Caprus.AI</title>
-<meta name="description" content="AgentCube is the unified engine that connects AI agents to Oracle Essbase, EPM Planning, and Financial Consolidation & Close. Built by Caprus.AI.">
+<title>AgentCube — Ask your Oracle data anything. Get answers in seconds. | Caprus.AI</title>
+<meta name="description" content="AgentCube turns Oracle Essbase, Planning, and Financial Consolidation & Close into a conversation. Built by Caprus.AI for finance teams that are done waiting.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  /* ACCURATE Caprus.AI palette (from the real site) */
   --bg: #ffffff;
   --bg-soft: #f6f7f4;
   --bg-section: #f1f4ec;
 
-  --text: #0a0a0a;             /* near-black for headlines */
+  --text: #0a0a0a;
   --text-soft: #383d3b;
   --text-muted: #6a7070;
 
-  --forest: #0a2e2a;           /* dark forest green, primary brand */
+  --forest: #0a2e2a;
   --forest-dark: #06201e;
   --forest-hover: #164239;
 
-  --lime: #a8e640;             /* bright chartreuse/lime accent */
+  --lime: #a8e640;
   --lime-hover: #b8ed51;
   --lime-soft: #dff6a8;
   --lime-wash: #eefad1;
+
+  --red: #c74634;
+  --amber: #eab308;
 
   --line: #d9dcd5;
   --line-soft: #ebeee6;
 
   --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Consolas', monospace;
 
   --radius-pill: 999px;
   --radius-card: 20px;
@@ -90,7 +93,7 @@ a:hover { color: var(--forest-hover); }
   letter-spacing: 0;
 }
 
-.header-nav { display: flex; align-items: center; gap: 36px; }
+.header-nav { display: flex; align-items: center; gap: 32px; }
 .header-nav a {
   color: var(--text-soft);
   font-size: 0.95rem;
@@ -106,82 +109,38 @@ a:hover { color: var(--forest-hover); }
   border-radius: var(--radius-pill);
   font-weight: 500 !important;
   font-size: 0.95rem !important;
-  transition: all 0.2s;
-  display: inline-flex;
-  align-items: center;
 }
-.btn-connect:hover {
-  background: var(--forest-hover) !important;
-  color: white !important;
-}
+.btn-connect:hover { background: var(--forest-hover) !important; color: white !important; }
 
 main { margin-top: 80px; }
 .container { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
-
-/* ═══ Scatter chart background ═══ */
-.scatter-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 0;
-}
+.container-narrow { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
 
 /* ═══ Hero ═══ */
 .hero {
   position: relative;
-  padding: 80px 0 100px;
+  padding: 80px 0 70px;
   overflow: hidden;
-}
-.hero-scatter { opacity: 0.85; }
-.hero-content {
-  position: relative;
-  z-index: 2;
   text-align: center;
-  max-width: 1000px;
-  margin: 0 auto;
 }
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 18px 6px 8px;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--text-soft);
-  margin-bottom: 32px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-}
-.hero-eyebrow-tag {
-  padding: 3px 12px;
-  background: var(--lime);
-  color: var(--forest);
-  border-radius: var(--radius-pill);
-  font-weight: 700;
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-h1.hero-title {
+.hero h1 {
   font-family: var(--font);
-  font-size: clamp(2.75rem, 6.5vw, 5.5rem);
+  font-size: clamp(2.75rem, 6vw, 5.25rem);
   font-weight: 900;
   line-height: 1.02;
   letter-spacing: -0.035em;
   color: var(--text);
-  margin-bottom: 32px;
+  margin-bottom: 28px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
-h1.hero-title .lime-highlight {
+.hero h1 .lime-highlight {
   position: relative;
   display: inline-block;
   color: var(--text);
 }
-h1.hero-title .lime-highlight::before {
+.hero h1 .lime-highlight::before {
   content: '';
   position: absolute;
   left: -4px; right: -4px;
@@ -191,16 +150,13 @@ h1.hero-title .lime-highlight::before {
   z-index: -1;
   transform: skewX(-4deg);
 }
-
 .hero-lead {
   font-size: 1.2rem;
   line-height: 1.55;
   color: var(--text-soft);
-  max-width: 720px;
-  margin: 0 auto 42px;
-  font-weight: 400;
+  max-width: 780px;
+  margin: 0 auto 40px;
 }
-
 .hero-actions {
   display: flex;
   gap: 14px;
@@ -212,7 +168,7 @@ h1.hero-title .lime-highlight::before {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 15px 38px;
+  padding: 15px 36px;
   font-family: var(--font);
   font-size: 1rem;
   font-weight: 500;
@@ -221,7 +177,6 @@ h1.hero-title .lime-highlight::before {
   cursor: pointer;
   transition: all 0.25s;
   text-decoration: none;
-  letter-spacing: 0;
 }
 .btn-primary {
   background: var(--forest);
@@ -239,63 +194,130 @@ h1.hero-title .lime-highlight::before {
   color: var(--forest);
   border-color: var(--forest);
 }
-.btn-secondary:hover {
-  background: var(--lime-wash);
-  color: var(--forest);
-}
+.btn-secondary:hover { background: var(--lime-wash); }
 
-/* ═══ Logo lockup visual (hero bottom) ═══ */
-.hero-visual-row {
-  margin-top: 80px;
+/* ═══ Architecture diagram ═══ */
+.arch {
+  margin: 72px auto 0;
   position: relative;
   z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  max-width: 880px;
+  padding: 0 20px;
 }
-.lockup-card {
+.arch-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 720px) {
+  .arch-row { grid-template-columns: repeat(2, 1fr); }
+}
+.arch-node {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-pill);
+  padding: 12px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  transition: all 0.25s;
+  min-height: 74px;
+}
+.arch-node:hover {
+  border-color: var(--forest);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(10,46,42,0.08);
+}
+.arch-node .brand-logo {
+  width: 22px;
+  height: 22px;
+  display: block;
+  flex-shrink: 0;
+}
+.arch-node .brand-logo.oracle {
+  width: auto;
+  height: 14px;
+}
+.arch-node.more {
+  background: var(--lime-wash);
+  border-style: dashed;
+  border-color: var(--forest);
+  color: var(--forest);
+}
+.arch-node.more .more-plus {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--forest);
+  line-height: 1;
+}
+.arch-middle {
+  position: relative;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.arch-hub {
+  background: var(--forest);
+  color: white;
+  padding: 16px 32px;
+  border-radius: var(--radius-pill);
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 16px 28px;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-pill);
-  font-weight: 500;
-  color: var(--text);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-  transition: all 0.25s;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  box-shadow: 0 10px 32px rgba(10,46,42,0.25), 0 0 0 6px rgba(168,230,64,0.15);
+  position: relative;
+  z-index: 3;
 }
-.lockup-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
-.lockup-card .mark {
-  width: 30px; height: 30px;
-  border-radius: 6px;
-  background: var(--forest);
-  color: var(--lime);
+.arch-hub .mark {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: var(--lime);
+  color: var(--forest);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 0.9rem;
+  font-weight: 900;
+  font-size: 0.85rem;
 }
-.lockup-card.cube .mark { background: var(--lime); color: var(--forest); }
+.arch-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+.arch-caption {
+  margin-top: 24px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-align: center;
+}
+.arch-caption strong { color: var(--forest); font-weight: 700; }
 
 /* ═══ Sections ═══ */
-section.block {
-  padding: 110px 0;
-  position: relative;
-}
-section.block.tinted {
-  background: var(--bg-soft);
-}
+section.block { padding: 100px 0; position: relative; }
+section.block.tinted { background: var(--bg-soft); }
+section.block.dark { background: var(--forest); color: white; }
 
 .section-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-family: var(--font);
   font-size: 0.82rem;
   font-weight: 600;
   color: var(--forest);
@@ -309,10 +331,12 @@ section.block.tinted {
   border-radius: 50%;
   background: var(--lime);
 }
+section.block.dark .section-eyebrow { color: var(--lime); }
+section.block.dark .section-eyebrow::before { background: var(--lime); }
 
 .section-title {
   font-family: var(--font);
-  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-size: clamp(2rem, 4vw, 3.25rem);
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -0.03em;
@@ -320,351 +344,559 @@ section.block.tinted {
   margin-bottom: 20px;
   max-width: 900px;
 }
+section.block.dark .section-title { color: white; }
+
 .section-lead {
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   color: var(--text-soft);
   max-width: 720px;
   line-height: 1.6;
   margin-bottom: 56px;
 }
+section.block.dark .section-lead { color: rgba(255,255,255,0.8); }
 
-/* ═══ Problem flow ═══ */
-.two-col {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-@media (max-width: 960px) { .two-col { grid-template-columns: 1fr; gap: 48px; } }
-
-.flow-card {
-  background: white;
-  border: 1px solid var(--line);
+/* ═══ Scenario block ═══ */
+.scenario {
+  background: linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%);
+  color: white;
   border-radius: var(--radius-card);
-  padding: 12px;
-  box-shadow: 0 8px 32px rgba(10, 46, 42, 0.05);
+  padding: 56px 64px;
+  position: relative;
+  overflow: hidden;
 }
-.flow-row {
-  display: flex;
-  gap: 20px;
-  padding: 22px 24px;
-  border-radius: 14px;
-  transition: background 0.2s;
+.scenario::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(168,230,64,0.18) 0%, transparent 70%);
+  pointer-events: none;
 }
-.flow-row:hover { background: var(--lime-wash); }
-.flow-step {
-  flex-shrink: 0;
-  width: 38px; height: 38px;
-  background: var(--forest);
+.scenario-time {
+  display: inline-block;
+  padding: 5px 14px;
+  background: rgba(168,230,64,0.15);
   color: var(--lime);
+  border-radius: var(--radius-pill);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-bottom: 24px;
+  letter-spacing: 0.02em;
+}
+.scenario h2 {
+  font-family: var(--font);
+  font-size: clamp(1.75rem, 3vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: white;
+  margin-bottom: 22px;
+  position: relative;
+}
+.scenario-body {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.85);
+  max-width: 760px;
+  position: relative;
+}
+.scenario-body p { margin-bottom: 18px; }
+.scenario-body p:last-child { margin-bottom: 0; }
+.scenario-body .hl { color: var(--lime); font-weight: 600; }
+@media (max-width: 700px) { .scenario { padding: 40px 28px; } }
+
+/* ═══ Before / After ═══ */
+.compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 900px) { .compare { grid-template-columns: 1fr; } }
+.compare-col {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 40px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.compare-col.before { background: white; }
+.compare-col.after {
+  background: var(--forest);
+  border-color: var(--forest);
+  color: white;
+}
+.compare-col.after::before {
+  content: '';
+  position: absolute;
+  top: -50px; right: -50px;
+  width: 240px; height: 240px;
+  background: radial-gradient(circle, rgba(168,230,64,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.compare-label {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.compare-col.before .compare-label {
+  background: rgba(199,70,52,0.08);
+  color: var(--red);
+  border: 1px solid rgba(199,70,52,0.2);
+}
+.compare-col.after .compare-label {
+  background: rgba(168,230,64,0.15);
+  color: var(--lime);
+  border: 1px solid rgba(168,230,64,0.3);
+}
+.compare-col h3 {
+  font-family: var(--font);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 24px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  position: relative;
+}
+.compare-col.after h3 { color: white; }
+.compare-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+.compare-col li {
+  font-size: 1rem;
+  line-height: 1.5;
+  padding-left: 30px;
+  position: relative;
+  color: var(--text-soft);
+}
+.compare-col.after li { color: rgba(255,255,255,0.88); }
+.compare-col.before li::before {
+  content: '✕';
+  position: absolute;
+  left: 0; top: 0;
+  color: var(--red);
+  font-weight: 700;
+  font-size: 1.1rem;
+  width: 22px; height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(199,70,52,0.1);
+  border-radius: 50%;
+}
+.compare-col.after li::before {
+  content: '✓';
+  position: absolute;
+  left: 0; top: 0;
+  color: var(--forest);
+  font-weight: 700;
+  font-size: 0.95rem;
+  width: 22px; height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--lime);
+  border-radius: 50%;
+}
+
+/* ═══ Metrics ═══ */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 900px) { .metrics { grid-template-columns: repeat(2, 1fr); } }
+.metric {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 36px 32px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+.metric:hover {
+  transform: translateY(-4px);
+  border-color: var(--forest);
+  box-shadow: 0 16px 40px rgba(10,46,42,0.08);
+}
+.metric::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 48px; height: 4px;
+  background: var(--lime);
+}
+.metric-value {
+  font-family: var(--font);
+  font-size: clamp(2.75rem, 5vw, 3.75rem);
+  font-weight: 900;
+  color: var(--forest);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  margin-bottom: 12px;
+}
+.metric-label {
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+/* ═══ Demo preview ═══ */
+.demo-frame {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 8px;
+  box-shadow: 0 20px 60px rgba(10,46,42,0.12);
+  position: relative;
+}
+.demo-chrome {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line-soft);
+  background: var(--bg-soft);
+  border-radius: 14px 14px 0 0;
+}
+.demo-chrome .dot {
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.demo-chrome .dot:nth-child(1) { background: #ff5f57; }
+.demo-chrome .dot:nth-child(2) { background: #febc2e; }
+.demo-chrome .dot:nth-child(3) { background: #28c840; }
+.demo-chrome .url {
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: white;
+  padding: 4px 16px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--line);
+}
+.demo-body {
+  padding: 32px 28px;
+  min-height: 280px;
+}
+.demo-msg {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+  animation: fadeSlide 0.6s ease both;
+}
+@keyframes fadeSlide { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+.demo-msg.delay-1 { animation-delay: 0.2s; }
+.demo-msg.delay-2 { animation-delay: 0.4s; }
+.demo-msg.delay-3 { animation-delay: 0.6s; }
+.demo-avatar {
+  width: 32px; height: 32px;
+  flex-shrink: 0;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 0.95rem;
-}
-.flow-text h4 {
+  font-weight: 700;
+  font-size: 0.85rem;
   font-family: var(--font);
-  font-size: 1.05rem;
+}
+.demo-avatar.user {
+  background: var(--forest);
+  color: white;
+}
+.demo-avatar.ai {
+  background: var(--lime);
+  color: var(--forest);
+  font-family: var(--font);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.demo-content { flex: 1; min-width: 0; }
+.demo-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.demo-text {
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+.demo-tool-call {
+  display: inline-block;
+  margin-top: 6px;
+  margin-right: 6px;
+  padding: 5px 12px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+.demo-tool-call .fn { color: var(--forest); font-weight: 600; }
+.demo-table {
+  margin-top: 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+}
+.demo-table table { width: 100%; border-collapse: collapse; }
+.demo-table th, .demo-table td {
+  padding: 8px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--line-soft);
+}
+.demo-table th {
+  background: var(--bg-soft);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.demo-table tr:last-child td { border-bottom: none; }
+.demo-table td.num { text-align: right; color: var(--text); font-weight: 600; }
+.demo-table td.neg { color: var(--red); }
+
+.demo-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.demo-tab {
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  background: white;
+  border: 1.5px solid var(--line);
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: var(--font);
+}
+.demo-tab.active {
+  background: var(--forest);
+  color: white;
+  border-color: var(--forest);
+}
+.demo-tab:hover:not(.active) { border-color: var(--forest); color: var(--forest); }
+
+/* ═══ Role grid ═══ */
+.roles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 1100px) { .roles { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .roles { grid-template-columns: 1fr; } }
+.role {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 32px 28px;
+  transition: all 0.3s;
+}
+.role:hover {
+  transform: translateY(-4px);
+  border-color: var(--forest);
+  box-shadow: 0 16px 40px rgba(10,46,42,0.08);
+}
+.role-icon {
+  width: 52px; height: 52px;
+  background: var(--lime);
+  color: var(--forest);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+.role h3 {
+  font-family: var(--font);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 8px;
+  letter-spacing: -0.015em;
+}
+.role-tag {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.role p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ═══ Trust bar ═══ */
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+@media (max-width: 900px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+.trust {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px 20px;
+  text-align: center;
+}
+.trust-icon {
+  width: 40px; height: 40px;
+  margin: 0 auto 14px;
+  background: var(--forest);
+  color: var(--lime);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.trust h4 {
+  font-family: var(--font);
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text);
   margin-bottom: 4px;
   letter-spacing: -0.01em;
 }
-.flow-text p {
-  font-size: 0.95rem;
-  color: var(--text-soft);
-  line-height: 1.55;
-}
-
-/* ═══ Value Props ═══ */
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-@media (max-width: 900px) { .values-grid { grid-template-columns: 1fr; } }
-
-.value {
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  padding: 36px 32px;
-  transition: all 0.3s;
-  position: relative;
-}
-.value:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(10,46,42,0.08);
-  border-color: var(--forest);
-}
-.value-number {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 48px; height: 48px;
-  background: var(--lime);
-  color: var(--forest);
-  border-radius: 12px;
-  font-weight: 900;
-  font-size: 1.1rem;
-  margin-bottom: 24px;
-}
-.value h3 {
-  font-family: var(--font);
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--text);
-  margin-bottom: 12px;
-  letter-spacing: -0.015em;
-  line-height: 1.2;
-}
-.value p {
-  color: var(--text-soft);
-  font-size: 0.98rem;
-  line-height: 1.6;
-}
-
-/* ═══ Providers ═══ */
-.providers-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-@media (max-width: 900px) { .providers-grid { grid-template-columns: 1fr; } }
-
-.provider {
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  transition: all 0.3s;
-}
-.provider:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(10,46,42,0.08);
-  border-color: var(--forest);
-}
-.provider-hero {
-  padding: 32px 32px 24px;
-  border-bottom: 1px solid var(--line-soft);
-  position: relative;
-}
-.provider-logo {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.provider-mark {
-  width: 48px; height: 48px;
-  border-radius: 12px;
-  background: var(--forest);
-  color: var(--lime);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font);
-  font-weight: 900;
-  font-size: 1.2rem;
-}
-.provider h3 {
-  font-family: var(--font);
-  font-size: 1.25rem;
-  font-weight: 800;
-  color: var(--text);
-  margin-bottom: 2px;
-  letter-spacing: -0.015em;
-}
-.provider-meta {
-  font-size: 0.82rem;
+.trust p {
+  font-size: 0.8rem;
   color: var(--text-muted);
-  font-weight: 500;
+  line-height: 1.4;
 }
 
-.provider-body { padding: 24px 32px 32px; }
-.provider-body p {
-  color: var(--text-soft);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 18px;
-}
-.provider ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.provider li {
-  font-size: 0.9rem;
-  color: var(--text-soft);
-  padding-left: 24px;
-  position: relative;
-  line-height: 1.5;
-}
-.provider li::before {
-  content: '';
-  position: absolute;
-  left: 0; top: 8px;
-  width: 14px; height: 14px;
-  background: var(--lime);
-  border-radius: 50%;
-}
-.provider li::after {
-  content: '';
-  position: absolute;
-  left: 4px; top: 10px;
-  width: 6px; height: 10px;
-  border: solid var(--forest);
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg) translate(-1px, -2px);
-}
-
-/* ═══ Use Cases ═══ */
-.cases-grid {
+/* ═══ Urgency section ═══ */
+.urgency-inner {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-@media (max-width: 800px) { .cases-grid { grid-template-columns: 1fr; } }
-
-.case {
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  padding: 32px 34px;
-  position: relative;
-  transition: all 0.2s;
-}
-.case:hover {
-  border-color: var(--forest);
-  box-shadow: 0 8px 32px rgba(10,46,42,0.06);
-}
-.case::before {
-  content: '';
-  position: absolute;
-  top: 32px; left: 34px;
-  width: 10px; height: 10px;
-  background: var(--lime);
-  border-radius: 50%;
-  box-shadow: 0 0 0 5px var(--lime-wash);
-}
-.case-q {
-  font-family: var(--font);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text);
-  line-height: 1.35;
-  margin-bottom: 14px;
-  padding-left: 26px;
-  letter-spacing: -0.015em;
-}
-.case-a {
-  color: var(--text-soft);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  padding-left: 26px;
-}
-
-/* ═══ Creator ═══ */
-.creator-inner {
-  display: grid;
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 64px;
   align-items: center;
 }
-@media (max-width: 900px) { .creator-inner { grid-template-columns: 1fr; text-align: center; } }
-
-.creator-photo-wrap {
-  position: relative;
-  aspect-ratio: 1;
-  max-width: 320px;
-  margin: 0 auto;
-}
-.creator-photo {
-  position: relative;
-  aspect-ratio: 1;
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  background: var(--bg-soft);
-  box-shadow: 0 12px 40px rgba(10,46,42,0.1);
-}
-.creator-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.creator-photo-wrap::before {
-  content: '';
-  position: absolute;
-  bottom: -16px; right: -16px;
-  width: 80px; height: 80px;
-  background: var(--lime);
-  border-radius: 50%;
-  z-index: -1;
-}
-.creator-photo-wrap::after {
-  content: '';
-  position: absolute;
-  top: -16px; left: -16px;
-  width: 60px; height: 60px;
-  border: 2px dashed var(--forest);
-  border-radius: 50%;
-  z-index: -1;
-  opacity: 0.3;
-}
-
-.creator h3 {
-  font-family: var(--font);
-  font-size: clamp(1.75rem, 3vw, 2.5rem);
-  font-weight: 900;
-  color: var(--text);
-  margin-bottom: 22px;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-}
-.creator h3 .lime-highlight {
+@media (max-width: 900px) { .urgency-inner { grid-template-columns: 1fr; } }
+.urgency h2 { color: white; }
+.urgency h2 .lime-highlight {
   position: relative;
   display: inline-block;
+  color: white;
 }
-.creator h3 .lime-highlight::before {
+.urgency h2 .lime-highlight::before {
   content: '';
   position: absolute;
-  left: -3px; right: -3px;
-  bottom: 10%;
-  height: 30%;
+  left: -4px; right: -4px;
+  bottom: 8%;
+  height: 34%;
   background: var(--lime);
   z-index: -1;
   transform: skewX(-4deg);
 }
-.creator p {
-  color: var(--text-soft);
-  font-size: 1.02rem;
-  line-height: 1.65;
-  margin-bottom: 14px;
+.urgency h2 .lime-highlight span { color: var(--forest); position: relative; z-index: 1; }
+.urgency p { color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.6; }
+.urgency-visual {
+  background: rgba(168,230,64,0.08);
+  border: 1px solid rgba(168,230,64,0.2);
+  border-radius: var(--radius-card);
+  padding: 36px;
 }
-.creator-stats {
-  display: flex;
-  gap: 40px;
-  margin-top: 28px;
-  flex-wrap: wrap;
-}
-@media (max-width: 900px) { .creator-stats { justify-content: center; } }
-.stat .v {
+.urgency-quote {
   font-family: var(--font);
-  font-size: 2rem;
-  font-weight: 900;
-  color: var(--forest);
-  line-height: 1;
-  letter-spacing: -0.02em;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1.45;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
 }
-.stat .l {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  margin-top: 8px;
+.urgency-quote::before { content: '"'; color: var(--lime); font-size: 2.2rem; line-height: 0; display: block; margin-bottom: 10px; }
+.urgency-attr {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.04em;
 }
 
-/* ═══ CTA ═══ */
-.cta {
+/* ═══ FAQ ═══ */
+.faq-list { display: flex; flex-direction: column; gap: 14px; }
+.faq-item {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+.faq-item[open] { border-color: var(--forest); }
+.faq-q {
+  padding: 20px 28px;
+  font-family: var(--font);
+  font-size: 1.08rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  letter-spacing: -0.01em;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after {
+  content: '+';
+  flex-shrink: 0;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: var(--lime-wash);
+  color: var(--forest);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+.faq-item[open] .faq-q::after { content: '−'; }
+.faq-a {
+  padding: 0 28px 22px;
+  color: var(--text-soft);
+  line-height: 1.6;
+  font-size: 0.98rem;
+}
+
+/* ═══ Final CTA ═══ */
+.final-cta {
   padding: 120px 0;
   background: var(--forest);
   color: white;
@@ -672,10 +904,17 @@ section.block.tinted {
   position: relative;
   overflow: hidden;
 }
-.cta .scatter-bg { opacity: 0.35; }
-.cta-inner { position: relative; z-index: 1; }
-
-.cta h2 {
+.final-cta::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(168,230,64,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.final-cta-inner { position: relative; z-index: 1; }
+.final-cta h2 {
   font-family: var(--font);
   font-size: clamp(2.25rem, 5vw, 4rem);
   font-weight: 900;
@@ -684,39 +923,31 @@ section.block.tinted {
   color: white;
   margin-bottom: 24px;
 }
-.cta h2 .lime-highlight {
-  color: var(--lime);
-  display: inline-block;
-}
-.cta h2 .lime-highlight span { color: var(--lime); }
-.cta p {
+.final-cta h2 .lime-highlight { color: var(--lime); }
+.final-cta p {
   color: rgba(255,255,255,0.82);
   font-size: 1.2rem;
   max-width: 680px;
   margin: 0 auto 44px;
   line-height: 1.55;
 }
-.cta .btn-primary {
+.final-cta .btn-primary {
   background: var(--lime);
   color: var(--forest);
   border-color: var(--lime);
   font-weight: 700;
 }
-.cta .btn-primary:hover {
+.final-cta .btn-primary:hover {
   background: var(--lime-hover);
   color: var(--forest);
   border-color: var(--lime-hover);
 }
-.cta .btn-secondary {
+.final-cta .btn-secondary {
   background: transparent;
   color: white;
   border-color: rgba(255,255,255,0.4);
 }
-.cta .btn-secondary:hover {
-  border-color: white;
-  background: rgba(255,255,255,0.08);
-  color: white;
-}
+.final-cta .btn-secondary:hover { background: rgba(255,255,255,0.08); color: white; border-color: white; }
 
 /* ═══ Footer ═══ */
 .site-footer {
@@ -750,9 +981,10 @@ section.block.tinted {
       <small>&middot; AgentCube</small>
     </a>
     <nav class="header-nav">
-      <a href="#how">How It Works</a>
-      <a href="#providers">Providers</a>
-      <a href="#use-cases">Use Cases</a>
+      <a href="#scenario">Why</a>
+      <a href="#demo">Demo</a>
+      <a href="#how">How</a>
+      <a href="#faq">FAQ</a>
       <a href="https://caprus.ai" target="_blank" rel="noopener">Caprus.AI</a>
       <a href="#cta" class="btn-connect">Connect</a>
     </nav>
@@ -763,221 +995,484 @@ section.block.tinted {
 
   <!-- ═════════ HERO ═════════ -->
   <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-eyebrow">
-          <span class="hero-eyebrow-tag">New</span>
-          Built by Caprus.AI
-        </div>
-        <h1 class="hero-title">
-          Your Oracle EPM.<br>
-          Now <span class="lime-highlight">Agent-Ready.</span>
-        </h1>
-        <p class="hero-lead">
-          AgentCube is the unified engine that lets AI agents actually use your Oracle Essbase, EPM Planning, and Financial Consolidation &amp; Close systems. One package. Every provider. Enterprise-grade from day one.
-        </p>
-        <div class="hero-actions">
-          <a href="#cta" class="btn btn-primary">
-            Book a 13-Minute Demo
-            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
+    <div class="container-narrow">
+      <h1>
+        Ask your Oracle data anything.<br>
+        Get answers in <span class="lime-highlight">seconds.</span>
+      </h1>
+      <p class="hero-lead">
+        AgentCube turns Oracle Essbase, Planning, and Financial Consolidation &amp; Close into a conversation. Plug in the AI your team already uses. Skip the custom integrations, the consultants, and the stale reports.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary">
+          Book a 13-Minute Demo
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#demo" class="btn btn-secondary">See It Work</a>
+      </div>
+
+      <!-- Architecture diagram -->
+      <div class="arch">
+        <div class="arch-row arch-top">
+          <div class="arch-node">
+            <svg class="brand-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#D97757" d="M13.827 3.52h3.603L24 20h-3.603l-6.57-16.48zm-7.177 0h3.7L16.4 20h-3.77l-1.454-3.74H5.44L3.985 20H.218L6.65 3.52zm4.428 9.646L8.514 6.929l-2.564 6.237h4.128z"/>
+            </svg>
+            Claude
+          </div>
+          <div class="arch-node">
+            <svg class="brand-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#10a37f" d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A6.065 6.065 0 0 0 4.981 4.18a5.985 5.985 0 0 0-3.998 2.9 6.046 6.046 0 0 0 .743 7.097 5.98 5.98 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.515 2.9A5.985 5.985 0 0 0 13.26 24a6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 6.056 6.056 0 0 0-.747-7.073zM13.26 22.43a4.476 4.476 0 0 1-2.876-1.04l.141-.081 4.779-2.758a.795.795 0 0 0 .392-.681v-6.737l2.02 1.168a.071.071 0 0 1 .038.052v5.583a4.504 4.504 0 0 1-4.494 4.494zM3.6 18.304a4.47 4.47 0 0 1-.535-3.014l.142.085 4.783 2.759a.771.771 0 0 0 .78 0l5.843-3.369v2.332a.08.08 0 0 1-.033.062L9.74 19.95a4.5 4.5 0 0 1-6.14-1.646zM2.34 7.896a4.485 4.485 0 0 1 2.366-1.973V11.6a.766.766 0 0 0 .388.676l5.815 3.355-2.02 1.168a.076.076 0 0 1-.071 0l-4.83-2.786A4.504 4.504 0 0 1 2.34 7.872zm16.597 3.855-5.833-3.387L15.119 7.2a.076.076 0 0 1 .071 0l4.83 2.791a4.494 4.494 0 0 1-.676 8.105v-5.678a.79.79 0 0 0-.407-.667zm2.01-3.023-.141-.085-4.774-2.782a.776.776 0 0 0-.785 0L9.409 9.23V6.897a.066.066 0 0 1 .028-.061l4.83-2.787a4.5 4.5 0 0 1 6.68 4.66zm-12.64 4.135-2.02-1.164a.08.08 0 0 1-.038-.057V6.075a4.5 4.5 0 0 1 7.375-3.453l-.142.08L8.704 5.46a.795.795 0 0 0-.393.681zm1.097-2.365 2.602-1.5 2.607 1.5v2.999l-2.597 1.5-2.607-1.5z"/>
+            </svg>
+            ChatGPT
+          </div>
+          <div class="arch-node">
+            <svg class="brand-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <defs>
+                <linearGradient id="cg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#26d2de"/><stop offset="100%" stop-color="#166fff"/></linearGradient>
+                <linearGradient id="cg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ff6b9a"/><stop offset="100%" stop-color="#c04cff"/></linearGradient>
+              </defs>
+              <path fill="url(#cg1)" d="M3 12c0-4.42 3.58-8 8-8h2c1.1 0 2 .9 2 2s-.9 2-2 2h-2c-2.21 0-4 1.79-4 4s1.79 4 4 4h.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5H11c-4.42 0-8-3.58-8-8z"/>
+              <path fill="url(#cg2)" d="M21 12c0 4.42-3.58 8-8 8h-2c-1.1 0-2-.9-2-2s.9-2 2-2h2c2.21 0 4-1.79 4-4s-1.79-4-4-4h-.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5H13c4.42 0 8 3.58 8 8z"/>
+            </svg>
+            Copilot
+          </div>
+          <div class="arch-node">
+            <svg class="brand-logo" viewBox="0 0 24 24" aria-hidden="true">
+              <defs>
+                <linearGradient id="gg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4285F4"/><stop offset="50%" stop-color="#9b72cb"/><stop offset="100%" stop-color="#d96570"/></linearGradient>
+              </defs>
+              <path fill="url(#gg)" d="M12 0c0 6.627-5.373 12-12 12 6.627 0 12 5.373 12 12 0-6.627 5.373-12 12-12-6.627 0-12-5.373-12-12z"/>
+            </svg>
+            Gemini
+          </div>
         </div>
 
-        <!-- Lockup row -->
-        <div class="hero-visual-row">
-          <div class="lockup-card"><span class="mark">E</span>Oracle Essbase</div>
-          <div class="lockup-card cube"><span class="mark">AC</span>AgentCube</div>
-          <div class="lockup-card"><span class="mark">P</span>EPM Planning</div>
-          <div class="lockup-card"><span class="mark">F</span>Financial Close</div>
+        <div class="arch-middle">
+          <svg class="arch-svg" viewBox="0 0 880 110" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 110 0 Q 110 40 440 55" fill="none" stroke="#0a2e2a" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.35"/>
+            <path d="M 330 0 Q 330 35 440 55" fill="none" stroke="#0a2e2a" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.35"/>
+            <path d="M 550 0 Q 550 35 440 55" fill="none" stroke="#0a2e2a" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.35"/>
+            <path d="M 770 0 Q 770 40 440 55" fill="none" stroke="#0a2e2a" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.35"/>
+            <path d="M 440 55 Q 110 70 110 110" fill="none" stroke="#0a2e2a" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.35"/>
+            <path d="M 440 55 Q 330 75 330 110" fill="none" stroke="#0a2e2a" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.35"/>
+            <path d="M 440 55 Q 550 75 550 110" fill="none" stroke="#0a2e2a" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.35"/>
+            <path d="M 440 55 Q 770 70 770 110" fill="none" stroke="#0a2e2a" stroke-width="1.3" stroke-dasharray="4 4" opacity="0.35"/>
+          </svg>
+          <div class="arch-hub">
+            <span class="mark">AC</span>
+            AgentCube
+          </div>
+        </div>
+
+        <div class="arch-row arch-bottom">
+          <div class="arch-node">
+            <svg class="brand-logo oracle" viewBox="0 0 120 20" aria-hidden="true"><text x="0" y="16" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#C74634" letter-spacing="0.5">ORACLE</text></svg>
+            Essbase
+          </div>
+          <div class="arch-node">
+            <svg class="brand-logo oracle" viewBox="0 0 120 20" aria-hidden="true"><text x="0" y="16" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#C74634" letter-spacing="0.5">ORACLE</text></svg>
+            EPM Planning
+          </div>
+          <div class="arch-node">
+            <svg class="brand-logo oracle" viewBox="0 0 120 20" aria-hidden="true"><text x="0" y="16" font-family="Arial Black, Arial, sans-serif" font-size="18" font-weight="900" fill="#C74634" letter-spacing="0.5">ORACLE</text></svg>
+            Financial Close
+          </div>
+          <div class="arch-node more">
+            <span class="more-plus">+</span>
+            your stack
+          </div>
+        </div>
+
+        <p class="arch-caption">Any AI, <strong>one engine</strong>, every system your finance team runs on.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ SCENARIO ═════════ -->
+  <section class="block" id="scenario">
+    <div class="container-narrow">
+      <div class="scenario reveal">
+        <span class="scenario-time">Tuesday &middot; 9:47 AM</span>
+        <h2>Your CFO just asked why Germany missed Q3 plan by $4.2M. The board meets at 2:00.</h2>
+        <div class="scenario-body">
+          <p>Your FP&amp;A lead opens Smart View. Another analyst pulls the actuals cube. Someone emails Controlling for the forecast file. Someone else starts a VLOOKUP across four spreadsheets.</p>
+          <p>It's 11:30. You have an answer. Half of it. The other half is someone's best guess.</p>
+          <p><span class="hl">With AgentCube, the same question takes one prompt and 30 seconds.</span> Your agent queries Planning for the forecast, pulls actuals from Essbase, compares, and returns the top three variance drivers with entity-level detail. Ready for the board. Before lunch.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═════════ THE PROBLEM ═════════ -->
-  <section class="block tinted" id="how">
+  <!-- ═════════ BEFORE / AFTER ═════════ -->
+  <section class="block tinted">
     <div class="container">
-      <div class="two-col">
-        <div class="reveal">
-          <div class="section-eyebrow">The Problem</div>
-          <h2 class="section-title">Your CFO wants AI. Your finance stack doesn't speak AI.</h2>
-          <p class="section-lead">
-            Oracle Essbase, EPM Planning, and Financial Consolidation &amp; Close run the world's largest enterprises. Getting AI agents to actually talk to them has meant building brittle custom integrations for every model, every provider, every tenant.
-          </p>
-          <p class="section-lead" style="margin-bottom:0;">
-            AgentCube replaces the mess with one engine. Configure once, deploy anywhere, scale to the enterprise.
-          </p>
+      <div class="reveal" style="margin-bottom:48px;">
+        <div class="section-eyebrow">The Shift</div>
+        <h2 class="section-title">From spreadsheet archaeology to conversation.</h2>
+        <p class="section-lead">The same question. Two very different Tuesdays.</p>
+      </div>
+      <div class="compare">
+        <div class="compare-col before reveal">
+          <span class="compare-label">Before AgentCube</span>
+          <h3>3 days. 4 analysts. 47 spreadsheets.</h3>
+          <ul>
+            <li>Variance digs that take 3 to 5 business days</li>
+            <li>Smart View exports stitched with VLOOKUPs</li>
+            <li>Answers that arrive after the meeting ends</li>
+            <li>FP&amp;A analysts doing 70% spreadsheet plumbing, 30% strategy</li>
+            <li>Board deck data that's already 6 days stale when it ships</li>
+          </ul>
         </div>
-        <div class="flow-card reveal">
-          <div class="flow-row">
-            <div class="flow-step">1</div>
-            <div class="flow-text">
-              <h4>Your AI agent asks a business question</h4>
-              <p>"Why did Q3 EBITDA miss forecast by $4.2M?"</p>
-            </div>
-          </div>
-          <div class="flow-row">
-            <div class="flow-step">2</div>
-            <div class="flow-text">
-              <h4>AgentCube routes the request</h4>
-              <p>One engine decides which Oracle system to query, authenticates securely, and executes the right tool.</p>
-            </div>
-          </div>
-          <div class="flow-row">
-            <div class="flow-step">3</div>
-            <div class="flow-text">
-              <h4>Oracle responds. Your agent answers.</h4>
-              <p>Planning, Essbase, and FCC return structured data. Your agent reasons, explains, and acts. In seconds, not days.</p>
-            </div>
-          </div>
+        <div class="compare-col after reveal">
+          <span class="compare-label">With AgentCube</span>
+          <h3>30 seconds. 1 prompt. Live data.</h3>
+          <ul>
+            <li>Variance answers in the time it takes to ask the question</li>
+            <li>Your AI agent talks to Essbase, Planning, and FCC directly</li>
+            <li>Answers ready before the meeting starts</li>
+            <li>FP&amp;A analysts doing the strategic work you hired them for</li>
+            <li>Board decks with data pulled minutes before you present</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═════════ VALUE PROPS ═════════ -->
+  <!-- ═════════ VALUE METRICS ═════════ -->
   <section class="block">
     <div class="container">
       <div class="reveal" style="margin-bottom:56px;">
-        <div class="section-eyebrow">Why AgentCube</div>
-        <h2 class="section-title">Built for enterprise finance. Not for demos.</h2>
+        <div class="section-eyebrow">The Payoff</div>
+        <h2 class="section-title">What a conversational Oracle stack actually unlocks.</h2>
       </div>
-
-      <div class="values-grid">
-        <div class="value reveal">
-          <div class="value-number">01</div>
-          <h3>One Engine, Every System</h3>
-          <p>Essbase, Planning, and FCC all run on the same core. No duplicate integrations. No drift. Fix a bug once, it propagates everywhere.</p>
+      <div class="metrics">
+        <div class="metric reveal">
+          <div class="metric-value">95%</div>
+          <div class="metric-label">Faster variance analysis. Minutes, not multi-day Smart View digs.</div>
         </div>
-        <div class="value reveal">
-          <div class="value-number">02</div>
-          <h3>Enterprise Security by Default</h3>
-          <p>Basic, OAuth, and OIDC/SSO auth on every provider. Multi-tenant session isolation. Deploy via STDIO, SSE, or Streamable HTTP with a single flag.</p>
+        <div class="metric reveal">
+          <div class="metric-value">60%</div>
+          <div class="metric-label">Of FP&amp;A analyst hours reclaimed from spreadsheet plumbing for strategy.</div>
         </div>
-        <div class="value reveal">
-          <div class="value-number">03</div>
-          <h3>Works With Any AI Agent</h3>
-          <p>Claude, ChatGPT, your in-house agent, or the one your vendor just pitched. AgentCube speaks the Model Context Protocol, so it plugs into whatever stack your team is running.</p>
+        <div class="metric reveal">
+          <div class="metric-value">0</div>
+          <div class="metric-label">Custom model integrations to build, version, and maintain.</div>
+        </div>
+        <div class="metric reveal">
+          <div class="metric-value">3&nbsp;in&nbsp;1</div>
+          <div class="metric-label">Essbase, Planning, and Financial Close behind a single conversational interface.</div>
         </div>
       </div>
+      <p style="margin-top: 32px; font-size: 0.85rem; color: var(--text-muted); font-style: italic;">
+        Targets based on AgentCube pilot engagements. Your mileage will depend on close cycle complexity and adoption.
+      </p>
     </div>
   </section>
 
-  <!-- ═════════ PROVIDERS ═════════ -->
-  <section class="block tinted" id="providers">
+  <!-- ═════════ DEMO PREVIEW ═════════ -->
+  <section class="block tinted" id="demo">
     <div class="container">
-      <div class="reveal" style="margin-bottom:56px;">
-        <div class="section-eyebrow">Supported Oracle Systems</div>
-        <h2 class="section-title">Every Oracle EPM system your finance team runs.</h2>
-        <p class="section-lead">
-          AgentCube ships with production-ready integrations for the three Oracle systems your finance team depends on. Each exposes a focused set of tools your AI agents can actually use.
-        </p>
+      <div class="reveal" style="margin-bottom:48px; text-align:center;">
+        <div class="section-eyebrow" style="justify-content:center; display:inline-flex;">Live Preview</div>
+        <h2 class="section-title" style="margin-left:auto; margin-right:auto; text-align:center;">See it ask a real question.</h2>
+        <p class="section-lead" style="margin-left:auto; margin-right:auto; text-align:center;">Three conversations that would take your finance team hours. Each takes AgentCube seconds.</p>
       </div>
 
-      <div class="providers-grid">
-        <div class="provider reveal">
-          <div class="provider-hero">
-            <div class="provider-logo">
-              <div class="provider-mark">E</div>
-              <div>
-                <h3>Oracle Essbase</h3>
-                <div class="provider-meta">8 tools &middot; REST API</div>
-              </div>
-            </div>
-          </div>
-          <div class="provider-body">
-            <p>Multi-dimensional analytics. Query cubes with MDX in plain English. Reveal drivers without writing a calc script.</p>
-            <ul>
-              <li>List applications and databases</li>
-              <li>Execute MDX queries from natural language</li>
-              <li>Inspect dimensions and metadata</li>
-            </ul>
-          </div>
-        </div>
+      <div class="demo-tabs reveal">
+        <button class="demo-tab active" data-tab="variance">Variance Analysis</button>
+        <button class="demo-tab" data-tab="close">Close Status</button>
+        <button class="demo-tab" data-tab="forecast">Driver-Based Forecast</button>
+      </div>
 
-        <div class="provider reveal">
-          <div class="provider-hero">
-            <div class="provider-logo">
-              <div class="provider-mark">P</div>
-              <div>
-                <h3>Oracle EPM Planning</h3>
-                <div class="provider-meta">10 tools &middot; Cloud REST</div>
+      <div class="demo-frame reveal">
+        <div class="demo-chrome">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="url">your-finance-agent.company.com</span>
+        </div>
+        <div class="demo-body" id="demo-pane">
+          <!-- Tab 1: Variance -->
+          <div class="demo-tab-content" data-content="variance">
+            <div class="demo-msg">
+              <div class="demo-avatar user">E</div>
+              <div class="demo-content">
+                <div class="demo-name">CFO</div>
+                <div class="demo-text">Why did Germany miss Q3 EBITDA plan by $4.2M?</div>
+              </div>
+            </div>
+            <div class="demo-msg delay-1">
+              <div class="demo-avatar ai">AC</div>
+              <div class="demo-content">
+                <div class="demo-name">AgentCube</div>
+                <div class="demo-text">Pulling Q3 actuals and the plan scenario for Germany.</div>
+                <span class="demo-tool-call"><span class="fn">planning.query_data</span>(entity="DE", scenario="Plan_Q3_FY26")</span>
+                <span class="demo-tool-call"><span class="fn">essbase.mdx</span>(cube="Actuals", filter="DE_Q3")</span>
+              </div>
+            </div>
+            <div class="demo-msg delay-2">
+              <div class="demo-avatar ai">AC</div>
+              <div class="demo-content">
+                <div class="demo-name">AgentCube</div>
+                <div class="demo-text">Germany came in $4.2M below plan on Q3 EBITDA. Three drivers account for $3.9M of the gap:</div>
+                <div class="demo-table">
+                  <table>
+                    <thead><tr><th>Driver</th><th>Entity</th><th style="text-align:right;">Variance</th></tr></thead>
+                    <tbody>
+                      <tr><td>Raw material COGS</td><td>DE-Manufacturing</td><td class="num neg">-$2.1M</td></tr>
+                      <tr><td>FX (EUR/USD)</td><td>DE-Consolidated</td><td class="num neg">-$1.1M</td></tr>
+                      <tr><td>Channel mix, retail</td><td>DE-Sales</td><td class="num neg">-$0.7M</td></tr>
+                      <tr><td>All other</td><td>DE (residual)</td><td class="num neg">-$0.3M</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="demo-text" style="margin-top:12px;">Want me to drill into raw material COGS by supplier, or pull last year's Q3 for context?</div>
               </div>
             </div>
           </div>
-          <div class="provider-body">
-            <p>Driver-based planning at conversational speed. Query forecasts, compare scenarios, and explain variances from your AI assistant.</p>
-            <ul>
-              <li>Browse applications, cubes, and dimensions</li>
-              <li>Execute data queries on the fly</li>
-              <li>Inspect forms and metadata</li>
-            </ul>
-          </div>
-        </div>
 
-        <div class="provider reveal">
-          <div class="provider-hero">
-            <div class="provider-logo">
-              <div class="provider-mark">F</div>
-              <div>
-                <h3>EPM Financial Close</h3>
-                <div class="provider-meta">14 tools &middot; Cloud REST</div>
+          <!-- Tab 2: Close -->
+          <div class="demo-tab-content" data-content="close" style="display:none;">
+            <div class="demo-msg">
+              <div class="demo-avatar user">C</div>
+              <div class="demo-content">
+                <div class="demo-name">Controller</div>
+                <div class="demo-text">Where does the October close stand? Any entities still open?</div>
+              </div>
+            </div>
+            <div class="demo-msg delay-1">
+              <div class="demo-avatar ai">AC</div>
+              <div class="demo-content">
+                <div class="demo-name">AgentCube</div>
+                <div class="demo-text">Checking FCC for period FY26-Oct.</div>
+                <span class="demo-tool-call"><span class="fn">fcc.get_close_status</span>(period="FY26-10")</span>
+              </div>
+            </div>
+            <div class="demo-msg delay-2">
+              <div class="demo-avatar ai">AC</div>
+              <div class="demo-content">
+                <div class="demo-name">AgentCube</div>
+                <div class="demo-text">October close is 18 of 22 entities complete. Four still open:</div>
+                <div class="demo-table">
+                  <table>
+                    <thead><tr><th>Entity</th><th>Status</th><th>Blocker</th></tr></thead>
+                    <tbody>
+                      <tr><td>DE-Sales</td><td>Pending Review</td><td>3 unposted journals</td></tr>
+                      <tr><td>BR-Consolidated</td><td>Rejected</td><td>Reconciliation variance $180K</td></tr>
+                      <tr><td>UK-Holdings</td><td>In Progress</td><td>Intercompany elim &middot; pending</td></tr>
+                      <tr><td>APAC-Elim</td><td>Not Started</td><td>Awaiting JP close</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="demo-text" style="margin-top:12px;">Want me to send the preparers a reminder, or pull the Brazil reconciliation detail?</div>
               </div>
             </div>
           </div>
-          <div class="provider-body">
-            <p>Consolidations. Journals. Close cycles. Ask your agent where the period stands and get answers before your next status meeting.</p>
-            <ul>
-              <li>Run and monitor consolidation jobs</li>
-              <li>Query and post journal entries</li>
-              <li>Track close status across entities</li>
-            </ul>
+
+          <!-- Tab 3: Forecast -->
+          <div class="demo-tab-content" data-content="forecast" style="display:none;">
+            <div class="demo-msg">
+              <div class="demo-avatar user">F</div>
+              <div class="demo-content">
+                <div class="demo-name">FP&amp;A Lead</div>
+                <div class="demo-text">Build me a 2027 Germany forecast that assumes we hold FY26 drivers flat except volume grows 4%.</div>
+              </div>
+            </div>
+            <div class="demo-msg delay-1">
+              <div class="demo-avatar ai">AC</div>
+              <div class="demo-content">
+                <div class="demo-name">AgentCube</div>
+                <div class="demo-text">Loading Germany FY26 driver set from Planning and applying the 4% volume assumption.</div>
+                <span class="demo-tool-call"><span class="fn">planning.get_form</span>(form="DE_Driver_Forecast")</span>
+                <span class="demo-tool-call"><span class="fn">planning.project_scenario</span>(base="FY26", volume="+4%")</span>
+              </div>
+            </div>
+            <div class="demo-msg delay-2">
+              <div class="demo-avatar ai">AC</div>
+              <div class="demo-content">
+                <div class="demo-name">AgentCube</div>
+                <div class="demo-text">Draft FY27 Germany forecast, FY26 drivers held, volume +4%:</div>
+                <div class="demo-table">
+                  <table>
+                    <thead><tr><th>Metric</th><th style="text-align:right;">FY26</th><th style="text-align:right;">FY27 (draft)</th></tr></thead>
+                    <tbody>
+                      <tr><td>Revenue</td><td class="num">$142.0M</td><td class="num">$147.7M</td></tr>
+                      <tr><td>Gross Margin %</td><td class="num">38.2%</td><td class="num">38.2%</td></tr>
+                      <tr><td>Operating Expense</td><td class="num">$31.4M</td><td class="num">$32.7M</td></tr>
+                      <tr><td>EBITDA</td><td class="num">$22.8M</td><td class="num">$23.7M</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="demo-text" style="margin-top:12px;">Draft saved to a working scenario. Want me to route it to your FP&amp;A lead for refinement, or test a second volume sensitivity?</div>
+              </div>
+            </div>
           </div>
         </div>
+      </div>
+      <p style="margin-top: 20px; text-align: center; font-size: 0.85rem; color: var(--text-muted); font-style: italic;">
+        Illustrative. Actual responses reflect your Oracle configuration and data.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═════════ HOW IT CONNECTS ═════════ -->
+  <section class="block" id="how">
+    <div class="container-narrow">
+      <div class="reveal" style="margin-bottom:16px;">
+        <div class="section-eyebrow">How It Connects</div>
+        <h2 class="section-title">One engine. Any agent. Every Oracle system.</h2>
+        <p class="section-lead">AgentCube is the Model Context Protocol layer your Oracle EPM stack has been waiting for. Whatever AI your team standardizes on, it plugs into the same engine. When your data stack expands, AgentCube expands with it.</p>
       </div>
     </div>
   </section>
 
-  <!-- ═════════ USE CASES ═════════ -->
-  <section class="block" id="use-cases">
+  <!-- ═════════ ROLES ═════════ -->
+  <section class="block tinted">
     <div class="container">
       <div class="reveal" style="margin-bottom:48px;">
-        <div class="section-eyebrow">What You Can Actually Do</div>
-        <h2 class="section-title">Real questions your team will ask an AI agent.</h2>
-        <p class="section-lead">
-          AgentCube is not a chat demo. It is the connective tissue between your AI agents and the Oracle systems that run your close.
-        </p>
+        <div class="section-eyebrow">Who It's For</div>
+        <h2 class="section-title">Built for the people running the close.</h2>
       </div>
-
-      <div class="cases-grid">
-        <div class="case reveal">
-          <p class="case-q">Why did Q3 EBITDA miss forecast by $4.2M?</p>
-          <p class="case-a">Your agent queries Planning for the forecast, pulls actuals from Essbase, and returns the top three variance drivers with entity-level detail. In seconds, not days.</p>
+      <div class="roles">
+        <div class="role reveal">
+          <div class="role-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div class="role-tag">CFOs</div>
+          <h3>Stop waiting for answers.</h3>
+          <p>You ask the question. The answer comes back in the time it used to take to schedule a meeting to get it.</p>
         </div>
-        <div class="case reveal">
-          <p class="case-q">Kick off the October consolidation run.</p>
-          <p class="case-a">Your agent triggers the consolidation job in FCC, monitors progress, and alerts you when it's complete or when an entity errors out.</p>
+        <div class="role reveal">
+          <div class="role-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <div class="role-tag">FP&amp;A Leaders</div>
+          <h3>Free your analysts from VLOOKUPs.</h3>
+          <p>The senior people you fought to hire are finally doing the senior work. Not stitching spreadsheets at 10pm on a Thursday.</p>
         </div>
-        <div class="case reveal">
-          <p class="case-q">Show journals posted against Account 60100 last week.</p>
-          <p class="case-a">Your agent queries FCC for the period, filters by account, and returns the journal list with posting dates, amounts, and preparers.</p>
+        <div class="role reveal">
+          <div class="role-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <div class="role-tag">Controllers</div>
+          <h3>Close faster, with confidence.</h3>
+          <p>Track close status across every entity in real time. Find the blocker before the blocker finds you at 11:55 PM on day 5.</p>
         </div>
-        <div class="case reveal">
-          <p class="case-q">Build a driver-based forecast for Germany for 2027.</p>
-          <p class="case-a">Your agent pulls the right form in Planning, loads the current drivers, and returns a scenario your FP&amp;A team can refine instead of rebuild.</p>
+        <div class="role reveal">
+          <div class="role-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <div class="role-tag">IT &amp; Security</div>
+          <h3>One integration. Not fifty.</h3>
+          <p>OAuth, OIDC, or SSO. Multi-tenant isolation. Deploy STDIO, SSE, or Streamable HTTP. Your team integrates once; every AI your business adopts just works.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═════════ CTA ═════════ -->
-  <section class="cta" id="cta">
-    <div class="container cta-inner">
+  <!-- ═════════ ENTERPRISE TRUST ═════════ -->
+  <section class="block">
+    <div class="container">
+      <div class="reveal" style="margin-bottom:16px;">
+        <div class="section-eyebrow">Enterprise-Grade</div>
+        <h2 class="section-title">Finance data deserves more than a demo-ware integration.</h2>
+        <p class="section-lead">AgentCube was built for the audit committee, not the hackathon. Security, isolation, and observability are the floor, not the upsell.</p>
+      </div>
+      <div class="trust-grid">
+        <div class="trust reveal">
+          <div class="trust-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+          <h4>SSO &amp; OAuth</h4>
+          <p>Basic, OAuth, OIDC on every provider.</p>
+        </div>
+        <div class="trust reveal">
+          <div class="trust-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div>
+          <h4>Multi-Tenant</h4>
+          <p>Session isolation for enterprise deployments.</p>
+        </div>
+        <div class="trust reveal">
+          <div class="trust-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
+          <h4>Audit Logs</h4>
+          <p>Every query, tool call, and response traced.</p>
+        </div>
+        <div class="trust reveal">
+          <div class="trust-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/></svg></div>
+          <h4>Deploy Anywhere</h4>
+          <p>STDIO, SSE, or Streamable HTTP. On-prem or cloud.</p>
+        </div>
+        <div class="trust reveal">
+          <div class="trust-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <h4>Oracle-Native</h4>
+          <p>Built on official Oracle REST APIs, not scraping.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ URGENCY ═════════ -->
+  <section class="block dark urgency">
+    <div class="container">
+      <div class="urgency-inner">
+        <div class="reveal">
+          <div class="section-eyebrow">The Question Behind the Question</div>
+          <h2 class="section-title">Your board <span class="lime-highlight"><span>already asked</span></span> about AI. When will you have an answer?</h2>
+          <p>Every CFO you've met in the last six months has been asked the same thing. "What is our AI strategy?" Some of them gave a long, careful answer about exploratory pilots. The rest said the short version: nothing yet.</p>
+          <p style="margin-top: 16px;">AgentCube is the specific, demo-ready, audit-defensible answer. Built on the Oracle systems you already paid for. Running on the AI your team already uses.</p>
+        </div>
+        <div class="urgency-visual reveal">
+          <p class="urgency-quote">A 12-month RFP to connect AI to our Oracle stack, or 13 minutes on a call to see it work today.</p>
+          <p class="urgency-attr">The math tends to pick itself.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ FAQ ═════════ -->
+  <section class="block" id="faq">
+    <div class="container-narrow">
+      <div class="reveal" style="margin-bottom:48px;">
+        <div class="section-eyebrow">Objections, Answered</div>
+        <h2 class="section-title">The questions every CFO asks before buying.</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary class="faq-q">Will it hallucinate on our financial data?</summary>
+          <div class="faq-a">AgentCube does not generate financial figures. It retrieves them, via official Oracle APIs, and hands the structured data back to your AI. The AI explains what the numbers mean; it does not invent them. Every query is a real call to your Essbase, Planning, or FCC system, and every response is auditable.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">How long does it take to deploy?</summary>
+          <div class="faq-a">Weeks, not quarters. AgentCube connects to your Oracle systems using the authentication your team already runs (Basic, OAuth, OIDC/SSO). There is no schema migration, no data warehouse, and no rip-and-replace. Most of the time is your security review, not the implementation.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Does it work with our existing Oracle security model?</summary>
+          <div class="faq-a">Yes. AgentCube respects your existing provisioning. If a user can see an entity in Planning, the agent can see it on their behalf. If they can't, it can't. Role-based access, row-level security, and identity federation all carry through.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Which AI models does it support?</summary>
+          <div class="faq-a">Anything that speaks the Model Context Protocol. Claude, ChatGPT, Microsoft Copilot, Gemini, and your in-house agents all plug in using the same interface. When your standard changes, AgentCube does not need to.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Is our data sent to OpenAI, Anthropic, or Google?</summary>
+          <div class="faq-a">That is entirely your choice. AgentCube is the connector, not the model. Deploy it on-premises and point it at your own private AI. Deploy it in your cloud and use your enterprise AI contract. The data leaves your boundary only if you configure it to.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">What does pricing look like?</summary>
+          <div class="faq-a">AgentCube is sold by Caprus.AI as a licensed engine with enterprise deployment support. Pricing scales by the number of Oracle providers connected and the scope of rollout. We walk through it on the demo call, when we know which systems you actually need.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">What's the catch?</summary>
+          <div class="faq-a">The catch is that it only works as well as the data in your Oracle systems. AgentCube cannot fix a broken close process or a forecasting model your team does not trust. What it will do is stop hiding those problems behind three-day Smart View digs.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════ FINAL CTA ═════════ -->
+  <section class="final-cta" id="cta">
+    <div class="container final-cta-inner">
       <h2>
-        Ready to make your Oracle data<br/>
-        <span class="lime-highlight"><span>talk?</span></span>
+        The next question your CFO asks.<br>
+        <span class="lime-highlight">Have an answer ready.</span>
       </h2>
-      <p>Book a short call with the Caprus.AI team. We'll show you exactly what AgentCube can do with your Oracle stack, and whether it's a fit for your close cycle.</p>
+      <p>Thirteen minutes on a call with the Caprus.AI team. We'll show you exactly what AgentCube can do with your Oracle stack, how it deploys, and whether it fits your close cycle. No slideware.</p>
       <div class="hero-actions" style="justify-content:center;">
         <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn btn-primary">
           Book 13 Minutes
@@ -1007,10 +1502,22 @@ section.block.tinted {
 </footer>
 
 <script>
+  // Reveal on scroll
   const io = new IntersectionObserver((entries) => {
     for (const e of entries) if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); }
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Demo tab switcher
+  document.querySelectorAll('.demo-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.demo-tab').forEach(t => t.classList.toggle('active', t === tab));
+      document.querySelectorAll('.demo-tab-content').forEach(c => {
+        c.style.display = (c.dataset.content === target) ? 'block' : 'none';
+      });
+    });
+  });
 </script>
 
 </body>
