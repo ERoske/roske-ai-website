@@ -809,22 +809,8 @@ section.block.dark .section-lead { color: rgba(255,255,255,0.8); }
 }
 @media (max-width: 900px) { .urgency-inner { grid-template-columns: 1fr; } }
 .urgency h2 { color: white; }
-.urgency h2 .lime-highlight {
-  position: relative;
-  display: inline-block;
-  color: white;
-}
-.urgency h2 .lime-highlight::before {
-  content: '';
-  position: absolute;
-  left: -4px; right: -4px;
-  bottom: 8%;
-  height: 34%;
-  background: var(--lime);
-  z-index: -1;
-  transform: skewX(-4deg);
-}
-.urgency h2 .lime-highlight span { color: var(--forest); position: relative; z-index: 1; }
+.urgency h2 .lime-highlight { color: var(--lime); display: inline-block; }
+.urgency h2 .lime-highlight span { color: var(--lime); }
 .urgency p { color: rgba(255,255,255,0.85); font-size: 1.1rem; line-height: 1.6; }
 .urgency-visual {
   background: rgba(168,230,64,0.08);
