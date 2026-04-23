@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCube Pilot Program | 30 Days. One Use Case. Real Answers. | Caprus.AI</title>
+<meta name="description" content="Try AgentCube on one Oracle system, one finance use case, in 30 days. Fixed scope, fixed fee, real data. No full commitment until you see it work.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #ffffff; --bg-soft: #f6f7f4; --bg-section: #f1f4ec;
+  --text: #0a0a0a; --text-soft: #383d3b; --text-muted: #6a7070;
+  --forest: #0a2e2a; --forest-dark: #06201e; --forest-hover: #164239;
+  --lime: #a8e640; --lime-hover: #b8ed51; --lime-soft: #dff6a8; --lime-wash: #eefad1;
+  --red: #c74634;
+  --line: #d9dcd5; --line-soft: #ebeee6;
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Consolas', monospace;
+  --radius-pill: 999px; --radius-card: 20px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); line-height: 1.6; color: var(--text-soft); background: var(--bg); overflow-x: hidden; }
+::selection { background: var(--lime-soft); color: var(--text); }
+a { color: var(--forest); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--forest-hover); }
+
+.site-header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(14px); z-index: 1000; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 22px 40px; }
+.logo { display: flex; align-items: center; font-weight: 800; font-size: 1.55rem; color: var(--text); letter-spacing: -0.02em; }
+.logo .a-first { color: var(--lime); }
+.logo small { font-weight: 400; color: var(--text-muted); font-size: 0.8rem; margin-left: 10px; }
+.header-nav { display: flex; align-items: center; gap: 32px; }
+.header-nav a { color: var(--text-soft); font-size: 0.95rem; }
+.header-nav a:hover { color: var(--text); }
+.btn-connect { padding: 12px 32px !important; background: var(--forest) !important; color: white !important; border-radius: var(--radius-pill); font-weight: 500 !important; font-size: 0.95rem !important; }
+.btn-connect:hover { background: var(--forest-hover) !important; }
+
+main { margin-top: 80px; }
+.container { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+.container-narrow { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 36px; font-family: var(--font); font-size: 1rem; font-weight: 500; border-radius: var(--radius-pill); border: 1.5px solid transparent; cursor: pointer; transition: all 0.25s; text-decoration: none; }
+.btn-primary { background: var(--forest); color: white; border-color: var(--forest); }
+.btn-primary:hover { background: var(--forest-hover); color: white; transform: translateY(-1px); }
+.btn-secondary { background: white; color: var(--forest); border-color: var(--forest); }
+.btn-secondary:hover { background: var(--lime-wash); }
+
+/* Hero */
+.hero { padding: 80px 0 70px; text-align: center; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 6px 18px 6px 10px; background: var(--lime-wash); border: 1px solid rgba(168,230,64,0.5); border-radius: var(--radius-pill); font-size: 0.82rem; font-weight: 600; color: var(--forest); margin-bottom: 32px; }
+.hero-eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); margin-left: 6px; }
+.hero h1 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.035em; color: var(--text); margin-bottom: 28px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+.hero h1 .lime-highlight { position: relative; display: inline-block; color: var(--text); }
+.hero h1 .lime-highlight::before { content: ''; position: absolute; left: -4px; right: -4px; bottom: 8%; height: 36%; background: var(--lime); z-index: -1; transform: skewX(-4deg); }
+.hero-lead { font-size: 1.2rem; line-height: 1.55; color: var(--text-soft); max-width: 780px; margin: 0 auto 40px; }
+.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* Sections */
+section.block { padding: 100px 0; position: relative; }
+section.block.tinted { background: var(--bg-soft); }
+section.block.dark { background: var(--forest); color: white; }
+.section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 0.82rem; font-weight: 600; color: var(--forest); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+.section-eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
+section.block.dark .section-eyebrow { color: var(--lime); }
+.section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; color: var(--text); margin-bottom: 20px; max-width: 900px; }
+section.block.dark .section-title { color: white; }
+.section-lead { font-size: 1.12rem; color: var(--text-soft); max-width: 720px; line-height: 1.6; margin-bottom: 56px; }
+section.block.dark .section-lead { color: rgba(255,255,255,0.8); }
+
+/* Timeline */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+}
+@media (max-width: 900px) { .timeline { grid-template-columns: 1fr; } }
+.tl-step {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 28px 24px;
+  position: relative;
+}
+.tl-week {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--forest);
+  background: var(--lime);
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+.tl-step h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+}
+.tl-step p {
+  color: var(--text-soft);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.tl-step .deliverable {
+  padding-top: 14px;
+  border-top: 1px dashed var(--line);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.tl-step .deliverable strong { color: var(--forest); font-weight: 700; }
+
+/* Scope card */
+.scope {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 900px) { .scope { grid-template-columns: 1fr; } }
+.scope-col {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 36px 32px;
+}
+.scope-col.in { border-color: var(--forest); }
+.scope-col.out { background: var(--bg-soft); }
+.scope-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px;
+  border-radius: var(--radius-pill);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.scope-col.in .scope-label {
+  background: var(--lime);
+  color: var(--forest);
+}
+.scope-col.out .scope-label {
+  background: rgba(199,70,52,0.1);
+  color: var(--red);
+  border: 1px solid rgba(199,70,52,0.25);
+}
+.scope-col h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 20px;
+  letter-spacing: -0.015em;
+}
+.scope-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.scope-col li {
+  padding-left: 28px;
+  position: relative;
+  font-size: 0.95rem;
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+.scope-col.in li::before {
+  content: '✓';
+  position: absolute;
+  left: 0; top: 0;
+  width: 20px; height: 20px;
+  background: var(--lime);
+  color: var(--forest);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.scope-col.out li::before {
+  content: '✕';
+  position: absolute;
+  left: 0; top: 0;
+  width: 20px; height: 20px;
+  background: rgba(199,70,52,0.1);
+  color: var(--red);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+/* Use case cards */
+.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .cases-grid { grid-template-columns: 1fr; } }
+.case-card {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 32px 28px;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.case-card:hover {
+  border-color: var(--forest);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(10,46,42,0.08);
+}
+.case-icon {
+  width: 48px; height: 48px;
+  background: var(--lime);
+  color: var(--forest);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.case-card h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -0.015em;
+}
+.case-card p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-bottom: 12px;
+}
+.case-card .outcome {
+  font-size: 0.85rem;
+  color: var(--forest);
+  font-weight: 600;
+  padding-top: 12px;
+  border-top: 1px dashed var(--line);
+}
+
+/* Requirements checklist */
+.req-card {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 40px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.req-card h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 24px;
+  letter-spacing: -0.015em;
+}
+.req-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.req-card li {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px dashed var(--line-soft);
+}
+.req-card li:last-child { border-bottom: none; padding-bottom: 0; }
+.req-num {
+  flex-shrink: 0;
+  width: 34px; height: 34px;
+  background: var(--forest);
+  color: var(--lime);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.req-content { flex: 1; }
+.req-content h4 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.req-content p { font-size: 0.9rem; color: var(--text-soft); line-height: 1.5; }
+
+/* Pricing block */
+.pricing-card {
+  background: var(--forest);
+  color: white;
+  border-radius: var(--radius-card);
+  padding: 56px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.pricing-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(168,230,64,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.pricing-label {
+  display: inline-block;
+  padding: 4px 14px;
+  background: rgba(168,230,64,0.15);
+  color: var(--lime);
+  border-radius: var(--radius-pill);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+  position: relative;
+}
+.pricing-amount {
+  font-size: clamp(2.5rem, 5vw, 3.75rem);
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  margin-bottom: 12px;
+  position: relative;
+}
+.pricing-amount .lime { color: var(--lime); }
+.pricing-amount .unit { font-size: 1rem; font-weight: 500; color: rgba(255,255,255,0.7); margin-left: 4px; vertical-align: middle; }
+.pricing-desc {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.85);
+  max-width: 560px;
+  margin: 0 auto 36px;
+  line-height: 1.6;
+  position: relative;
+}
+.pricing-includes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: left;
+  position: relative;
+}
+@media (max-width: 700px) { .pricing-includes { grid-template-columns: 1fr; } }
+.pricing-item h4 {
+  font-size: 0.78rem;
+  color: var(--lime);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: var(--mono);
+  margin-bottom: 6px;
+}
+.pricing-item p {
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+}
+
+/* After pilot paths */
+.paths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .paths-grid { grid-template-columns: 1fr; } }
+.path {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 32px 28px;
+  position: relative;
+}
+.path::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 60px; height: 4px;
+  background: var(--lime);
+}
+.path-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.path h3 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.015em;
+}
+.path p {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 14px; }
+.faq-item { background: white; border: 1.5px solid var(--line); border-radius: 14px; overflow: hidden; }
+.faq-item[open] { border-color: var(--forest); }
+.faq-q { padding: 20px 28px; font-size: 1.05rem; font-weight: 600; color: var(--text); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; letter-spacing: -0.01em; }
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after { content: '+'; flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--lime-wash); color: var(--forest); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; }
+.faq-item[open] .faq-q::after { content: '−'; }
+.faq-a { padding: 0 28px 22px; color: var(--text-soft); line-height: 1.6; font-size: 0.98rem; }
+
+/* CTA */
+.final-cta { padding: 120px 0; background: var(--forest); color: white; text-align: center; position: relative; overflow: hidden; }
+.final-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(168,230,64,0.15) 0%, transparent 60%); pointer-events: none; }
+.final-cta-inner { position: relative; z-index: 1; }
+.final-cta h2 { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; color: white; margin-bottom: 24px; }
+.final-cta h2 .lime-text { color: var(--lime); }
+.final-cta p { color: rgba(255,255,255,0.82); font-size: 1.15rem; max-width: 680px; margin: 0 auto 44px; line-height: 1.55; }
+.final-cta .btn-primary { background: var(--lime); color: var(--forest); border-color: var(--lime); font-weight: 700; }
+.final-cta .btn-primary:hover { background: var(--lime-hover); color: var(--forest); border-color: var(--lime-hover); }
+.final-cta .btn-secondary { background: transparent; color: white; border-color: rgba(255,255,255,0.4); }
+.final-cta .btn-secondary:hover { background: rgba(255,255,255,0.08); color: white; border-color: white; }
+
+.site-footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); padding: 48px 0 44px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; font-size: 0.9rem; }
+.footer-inner a { color: rgba(255,255,255,0.7); font-weight: 500; }
+.footer-inner a:hover { color: var(--lime); }
+.footer-links { display: flex; gap: 28px; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.shown { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/agentcube.html" class="logo">
+      <span>C<span class="a-first">A</span>PRUS</span>
+      <small>&middot; AgentCube Pilot</small>
+    </a>
+    <nav class="header-nav">
+      <a href="/agentcube.html">Overview</a>
+      <a href="/agentcube-security.html">Security</a>
+      <a href="/agentcube-technical.html">Technical</a>
+      <a href="/agentcube-roi.html">ROI</a>
+      <a href="/agentcube-partners.html">Partners</a>
+      <a href="#cta" class="btn-connect">Start a Pilot</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container-narrow">
+      <div class="hero-eyebrow">
+        30-Day Pilot &middot; Bounded Scope &middot; Fixed Fee
+      </div>
+      <h1>
+        See AgentCube work on <span class="lime-highlight">your data,</span> before you commit to a license.
+      </h1>
+      <p class="hero-lead">
+        Most finance teams don't want to spend nine months on an AI RFP. They want to see it work, on their own Oracle system, against their own use case. The pilot program is exactly that. Thirty days. One Oracle provider. One real finance use case. Fixed scope, fixed fee, real data.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary">Start a Pilot
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#scope" class="btn btn-secondary">See the Scope</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="block tinted">
+    <div class="container">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">The 30-Day Timeline</div>
+        <h2 class="section-title">Four weeks from kickoff to real answers.</h2>
+        <p class="section-lead">We've run this process enough times to know the rhythm. Your team's time commitment is modest; Caprus's engineering team does the heavy lifting.</p>
+      </div>
+      <div class="timeline">
+        <div class="tl-step reveal">
+          <span class="tl-week">Week 1</span>
+          <h3>Scoping &amp; Security Review</h3>
+          <p>Kickoff call. Pick the one Oracle system, one use case. Your security team reviews our posture. We document the specific question the pilot will answer.</p>
+          <div class="deliverable"><strong>Deliverable:</strong> signed pilot scope, security approval, use case brief</div>
+        </div>
+        <div class="tl-step reveal">
+          <span class="tl-week">Week 2</span>
+          <h3>Environment &amp; Connectivity</h3>
+          <p>AgentCube deployed to your environment (on-prem, private cloud, or managed). Auth configured. Connectivity to your Oracle system validated. First successful tool call.</p>
+          <div class="deliverable"><strong>Deliverable:</strong> working environment with one provider connected</div>
+        </div>
+        <div class="tl-step reveal">
+          <span class="tl-week">Week 3</span>
+          <h3>Agent Integration &amp; Tuning</h3>
+          <p>Your AI of choice plugged in. Finance use case tested against real data. Edge cases captured. Prompts and system instructions tuned with your FP&amp;A lead.</p>
+          <div class="deliverable"><strong>Deliverable:</strong> working agent answering real questions</div>
+        </div>
+        <div class="tl-step reveal">
+          <span class="tl-week">Week 4</span>
+          <h3>Demo, Review &amp; Next Steps</h3>
+          <p>Live demo to your stakeholders, CFO included. Walk through what worked, what didn't, and what it would take to roll out broadly. Decide what's next.</p>
+          <div class="deliverable"><strong>Deliverable:</strong> executive readout &amp; recommendation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCOPE -->
+  <section class="block" id="scope">
+    <div class="container">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">What's In, What's Out</div>
+        <h2 class="section-title">Pilot scope is intentionally narrow. That's why it works.</h2>
+        <p class="section-lead">The common mistake with AI pilots is trying to prove everything at once. We don't. We prove one thing, with real data, in a month. Breadth comes after you've seen it work.</p>
+      </div>
+      <div class="scope">
+        <div class="scope-col in reveal">
+          <span class="scope-label">Included</span>
+          <h3>What the pilot covers</h3>
+          <ul>
+            <li>One Oracle provider of your choice (Essbase, Planning, or FCC)</li>
+            <li>One finance use case (variance analysis, close status, forecast build, or your specific ask)</li>
+            <li>Integration with your AI agent of choice (Claude, ChatGPT, Copilot, Gemini, or an in-house model)</li>
+            <li>Deployment in your environment (on-prem, private cloud, or Caprus-managed)</li>
+            <li>Auth configuration using your existing identity provider</li>
+            <li>Structured logging and audit output to your observability stack</li>
+            <li>Up to four working sessions with Caprus engineering</li>
+            <li>Executive readout with CFO and stakeholders</li>
+          </ul>
+        </div>
+        <div class="scope-col out reveal">
+          <span class="scope-label">Not Included</span>
+          <h3>What comes later (if you want it)</h3>
+          <ul>
+            <li>Connecting multiple Oracle providers (pilot covers one)</li>
+            <li>Custom tool development beyond the pilot use case</li>
+            <li>Integration with non-Oracle systems (custom provider work)</li>
+            <li>Enterprise-wide rollout and change management</li>
+            <li>Custom training programs for FP&amp;A teams</li>
+            <li>24/7 production support SLA</li>
+            <li>Long-term license (the pilot covers the 30 days)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASE STARTERS -->
+  <section class="block tinted">
+    <div class="container">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">Pilot Starters</div>
+        <h2 class="section-title">Pick one. Prove it. Expand later.</h2>
+        <p class="section-lead">These are the three most common pilot use cases. Each is narrow enough to finish in 30 days and valuable enough to justify the full rollout afterwards. You can also propose your own.</p>
+      </div>
+      <div class="cases-grid">
+        <div class="case-card reveal">
+          <div class="case-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3>Variance Analysis on Demand</h3>
+          <p>Your agent compares any actuals against any plan for any entity, and returns the top drivers of the variance. Common starting point for teams running Planning and Essbase.</p>
+          <div class="outcome">Outcome: same-day variance answers instead of multi-day Smart View digs.</div>
+        </div>
+        <div class="case-card reveal">
+          <div class="case-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3>Close Status &amp; Blocker Tracking</h3>
+          <p>Your Controller asks where the close stands; your agent pulls entity status from FCC, identifies blockers, and lists the owners who need to act. Ideal for teams running FCC.</p>
+          <div class="outcome">Outcome: real-time close visibility without chasing preparers.</div>
+        </div>
+        <div class="case-card reveal">
+          <div class="case-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <h3>Driver-Based Forecast Sandbox</h3>
+          <p>Your FP&amp;A lead adjusts a driver and gets back a projected forecast. Your agent writes to a working scenario in Planning, without touching the official model.</p>
+          <div class="outcome">Outcome: scenario modeling in minutes instead of days.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REQUIREMENTS -->
+  <section class="block">
+    <div class="container-narrow">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">What You Bring</div>
+        <h2 class="section-title">Four things from you. The rest is on us.</h2>
+      </div>
+      <div class="req-card reveal">
+        <h3>The pilot requires:</h3>
+        <ul>
+          <li>
+            <div class="req-num">1</div>
+            <div class="req-content">
+              <h4>One Oracle system with a test or sandbox environment</h4>
+              <p>We won't touch production data. You provide access to a non-production instance of Essbase, Planning, or FCC with representative data.</p>
+            </div>
+          </li>
+          <li>
+            <div class="req-num">2</div>
+            <div class="req-content">
+              <h4>One executive sponsor (typically CFO or VP Finance)</h4>
+              <p>Someone senior enough to pick the use case, greenlight the security review, and be in the room for the final readout.</p>
+            </div>
+          </li>
+          <li>
+            <div class="req-num">3</div>
+            <div class="req-content">
+              <h4>One FP&amp;A lead or controller as the day-to-day champion</h4>
+              <p>Two to four hours a week, mostly in week 3. They test the agent, flag edge cases, and help tune prompts.</p>
+            </div>
+          </li>
+          <li>
+            <div class="req-num">4</div>
+            <div class="req-content">
+              <h4>A specific, measurable question to answer</h4>
+              <p>"We want to try AI" is not a pilot. "Can an agent explain our Q2 variance faster than our current process?" is. We'll help you scope it in the kickoff.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="block tinted">
+    <div class="container-narrow">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">Pilot Investment</div>
+        <h2 class="section-title">One fixed fee. No procurement theater.</h2>
+      </div>
+
+      <div class="pricing-card reveal">
+        <span class="pricing-label">30-Day Pilot</span>
+        <div class="pricing-amount">Fixed <span class="lime">fee</span></div>
+        <p class="pricing-desc">A single fixed investment covers the full 30-day pilot, including environment setup, provider integration, agent integration, Caprus engineering time, and executive readout. Exact pricing depends on which provider and deployment model; we quote it on the scoping call.</p>
+        <div class="pricing-includes">
+          <div class="pricing-item">
+            <h4>Crediting</h4>
+            <p>100% of the pilot fee is credited against your first-year license if you move forward.</p>
+          </div>
+          <div class="pricing-item">
+            <h4>Timeline</h4>
+            <p>Four weeks from kickoff. Scoping call to readout, fixed.</p>
+          </div>
+          <div class="pricing-item">
+            <h4>Commitment</h4>
+            <p>The pilot does not commit you to a license. If it doesn't deliver, you walk.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AFTER PILOT PATHS -->
+  <section class="block">
+    <div class="container">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">What Happens After</div>
+        <h2 class="section-title">Three honest paths. You choose.</h2>
+        <p class="section-lead">At the end of week 4, you decide what's next. There's no pressure, no auto-renew, no "well, you already paid for the pilot, might as well continue."</p>
+      </div>
+      <div class="paths-grid">
+        <div class="path reveal">
+          <div class="path-label">Path A</div>
+          <h3>Roll Out Broadly</h3>
+          <p>The pilot worked. You want AgentCube across more providers, more use cases, and more of your finance team. We move to a full license agreement, pilot fee credited, and start planning the rollout with or without a services partner.</p>
+        </div>
+        <div class="path reveal">
+          <div class="path-label">Path B</div>
+          <h3>Extend the Pilot</h3>
+          <p>Promising but not quite conclusive. Add a second provider, try a second use case, bring in another team. We extend the pilot for another bounded period at a reduced fee.</p>
+        </div>
+        <div class="path reveal">
+          <div class="path-label">Path C</div>
+          <h3>Walk Away</h3>
+          <p>It didn't fit your organization, your data, or your priorities. We shake hands and part ways. You keep the documentation, we keep the lessons, no hard feelings.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block tinted">
+    <div class="container-narrow">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">Pilot Questions</div>
+        <h2 class="section-title">The things teams ask before signing the pilot scope.</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary class="faq-q">Can we run the pilot against production data?</summary>
+          <div class="faq-a">We strongly recommend against it. Pilots should run in test or sandbox environments with representative data. Production rollouts come later, after security review and change management. Your data is safe either way, but pilot scope is cleaner in test.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Who runs the technical work?</summary>
+          <div class="faq-a">Caprus engineering does the installation, provider integration, and agent configuration. Your team provides access, picks the use case, and tests. If you have a certified partner firm on retainer, they can do the implementation work instead, and we support.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">What AI model should we use for the pilot?</summary>
+          <div class="faq-a">Whatever your organization already has access to. If you're standardized on Claude, we use Claude. If you have an Azure OpenAI tenant, we use that. If you've deployed a model on-prem, we use that. The pilot is about proving the integration, not picking a model.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">What if our Oracle environment is custom or heavily modified?</summary>
+          <div class="faq-a">Most Oracle EPM deployments have some customization; that's normal. The pilot surfaces what works out of the box and what needs configuration. If your environment needs custom provider extensions, we'll tell you in week 1 and adjust scope accordingly.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Can we involve our Oracle partner or systems integrator?</summary>
+          <div class="faq-a">Yes, and we encourage it. Bringing your existing EPM partner into the pilot makes the rollout path smoother; they learn AgentCube while we're still in scope. Certified Caprus partners get full access during pilots.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">What if the pilot exposes a problem with our Oracle setup, not AgentCube?</summary>
+          <div class="faq-a">Happens occasionally. We document what we find and include it in the readout. Sometimes the right next step is a pause to clean up upstream before rolling out AgentCube. That's a real outcome, and we'd rather surface it in week 4 than bury it.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Is the pilot fee negotiable?</summary>
+          <div class="faq-a">The pilot fee is fixed because the scope is fixed. If the scope changes (additional provider, second use case, extended timeline), pricing adjusts transparently. We don't negotiate on the base fee because we're not optimizing for pilot revenue, we're optimizing for a clean path to the full license.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="final-cta" id="cta">
+    <div class="container final-cta-inner">
+      <h2>Stop wondering. <span class="lime-text">Start proving.</span></h2>
+      <p>Book a scoping call with the Caprus.AI team. We'll define the pilot together in 30 minutes. One provider, one use case, one month. If it works, you have your AI answer. If it doesn't, you've lost a month, not a quarter.</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn btn-primary">
+          Book a Scoping Call
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/agentcube.html" class="btn btn-secondary">See the Full Product</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>AgentCube Pilot &nbsp;·&nbsp; Built by <a href="https://caprus.ai" target="_blank" rel="noopener">Caprus.AI</a> &nbsp;·&nbsp; © 2026</div>
+      <div class="footer-links">
+        <a href="/agentcube.html">AgentCube</a>
+        <a href="/agentcube-security.html">Security</a>
+        <a href="/agentcube-technical.html">Technical</a>
+        <a href="/agentcube-partners.html">Partners</a>
+        <a href="/">roske.ai</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); }
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCube Technical Overview | For EPM Admins &amp; Architects | Caprus.AI</title>
+<meta name="description" content="Under the hood of AgentCube. MCP architecture, transports, auth patterns, provider extensibility, deployment topologies, observability. For the people who have to approve it.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #ffffff; --bg-soft: #f6f7f4; --bg-section: #f1f4ec;
+  --text: #0a0a0a; --text-soft: #383d3b; --text-muted: #6a7070;
+  --forest: #0a2e2a; --forest-dark: #06201e; --forest-hover: #164239;
+  --lime: #a8e640; --lime-hover: #b8ed51; --lime-soft: #dff6a8; --lime-wash: #eefad1;
+  --red: #c74634;
+  --line: #d9dcd5; --line-soft: #ebeee6;
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Consolas', monospace;
+  --radius-pill: 999px; --radius-card: 20px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); line-height: 1.6; color: var(--text-soft); background: var(--bg); overflow-x: hidden; }
+::selection { background: var(--lime-soft); color: var(--text); }
+a { color: var(--forest); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--forest-hover); }
+
+.site-header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(14px); z-index: 1000; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 22px 40px; }
+.logo { display: flex; align-items: center; font-weight: 800; font-size: 1.55rem; color: var(--text); letter-spacing: -0.02em; }
+.logo .a-first { color: var(--lime); }
+.logo small { font-weight: 400; color: var(--text-muted); font-size: 0.8rem; margin-left: 10px; }
+.header-nav { display: flex; align-items: center; gap: 32px; }
+.header-nav a { color: var(--text-soft); font-size: 0.95rem; }
+.header-nav a:hover { color: var(--text); }
+.btn-connect { padding: 12px 32px !important; background: var(--forest) !important; color: white !important; border-radius: var(--radius-pill); font-weight: 500 !important; font-size: 0.95rem !important; }
+.btn-connect:hover { background: var(--forest-hover) !important; }
+
+main { margin-top: 80px; }
+.container { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+.container-narrow { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 36px; font-family: var(--font); font-size: 1rem; font-weight: 500; border-radius: var(--radius-pill); border: 1.5px solid transparent; cursor: pointer; transition: all 0.25s; text-decoration: none; }
+.btn-primary { background: var(--forest); color: white; border-color: var(--forest); }
+.btn-primary:hover { background: var(--forest-hover); color: white; transform: translateY(-1px); }
+.btn-secondary { background: white; color: var(--forest); border-color: var(--forest); }
+.btn-secondary:hover { background: var(--lime-wash); }
+
+/* Hero */
+.hero { padding: 80px 0 70px; text-align: center; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 6px 18px 6px 10px; background: white; border: 1px solid var(--line); border-radius: var(--radius-pill); font-size: 0.82rem; font-weight: 500; color: var(--text-soft); margin-bottom: 32px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+.hero-eyebrow-tag { padding: 3px 12px; background: var(--forest); color: var(--lime); border-radius: var(--radius-pill); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; font-family: var(--mono); }
+.hero h1 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.035em; color: var(--text); margin-bottom: 28px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+.hero h1 .lime-highlight { position: relative; display: inline-block; color: var(--text); }
+.hero h1 .lime-highlight::before { content: ''; position: absolute; left: -4px; right: -4px; bottom: 8%; height: 36%; background: var(--lime); z-index: -1; transform: skewX(-4deg); }
+.hero-lead { font-size: 1.2rem; line-height: 1.55; color: var(--text-soft); max-width: 780px; margin: 0 auto 40px; }
+.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* Sections */
+section.block { padding: 100px 0; position: relative; }
+section.block.tinted { background: var(--bg-soft); }
+section.block.dark { background: var(--forest); color: white; }
+.section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 0.82rem; font-weight: 600; color: var(--forest); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; font-family: var(--mono); }
+.section-eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
+section.block.dark .section-eyebrow { color: var(--lime); }
+.section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; color: var(--text); margin-bottom: 20px; max-width: 900px; }
+section.block.dark .section-title { color: white; }
+.section-lead { font-size: 1.12rem; color: var(--text-soft); max-width: 720px; line-height: 1.6; margin-bottom: 56px; }
+section.block.dark .section-lead { color: rgba(255,255,255,0.8); }
+
+/* Architecture diagram */
+.arch-layers { display: flex; flex-direction: column; gap: 12px; max-width: 820px; margin: 0 auto; }
+.arch-layer {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+.arch-layer.featured {
+  background: var(--forest);
+  color: white;
+  border-color: var(--forest);
+}
+.arch-layer.featured .arch-layer-name { color: var(--lime); }
+.arch-layer.featured .arch-layer-desc { color: rgba(255,255,255,0.85); }
+.arch-layer-label {
+  flex-shrink: 0;
+  width: 90px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.arch-layer.featured .arch-layer-label { color: var(--lime); }
+.arch-layer-name { font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 4px; letter-spacing: -0.01em; }
+.arch-layer-desc { font-size: 0.9rem; color: var(--text-soft); line-height: 1.5; }
+.arch-arrow { display: flex; justify-content: center; color: var(--text-muted); font-size: 0.9rem; }
+
+/* Code block */
+.code-block {
+  background: var(--forest-dark);
+  color: #e6edf3;
+  border-radius: var(--radius-card);
+  padding: 32px;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  overflow-x: auto;
+  position: relative;
+}
+.code-block::before {
+  content: 'example.py';
+  position: absolute;
+  top: 12px; right: 20px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.05em;
+}
+.code-block .kw { color: #ff7b72; }
+.code-block .str { color: #a8e640; }
+.code-block .cm { color: #8b949e; font-style: italic; }
+.code-block .fn { color: #d2a8ff; }
+.code-block .dc { color: #ffa657; }
+.code-block .var { color: #79c0ff; }
+
+/* Transport cards */
+.transports { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .transports { grid-template-columns: 1fr; } }
+.transport { background: white; border: 1.5px solid var(--line); border-radius: var(--radius-card); padding: 28px; }
+.transport-flag {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--forest);
+  background: var(--lime);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
+}
+.transport h3 { font-size: 1.15rem; font-weight: 800; color: var(--text); margin-bottom: 10px; letter-spacing: -0.015em; }
+.transport p { color: var(--text-soft); font-size: 0.92rem; line-height: 1.55; margin-bottom: 12px; }
+.transport .when { font-size: 0.82rem; color: var(--text-muted); }
+.transport .when strong { color: var(--forest); font-weight: 700; }
+
+/* Detail row */
+.detail { display: grid; grid-template-columns: 240px 1fr; gap: 48px; padding: 40px 0; border-bottom: 1px solid var(--line); align-items: start; }
+@media (max-width: 800px) { .detail { grid-template-columns: 1fr; gap: 16px; } }
+.detail:first-of-type { padding-top: 0; }
+.detail:last-of-type { border-bottom: none; }
+.detail-label { font-family: var(--mono); font-size: 0.78rem; font-weight: 600; color: var(--forest); letter-spacing: 0.1em; text-transform: uppercase; padding-top: 4px; }
+.detail h3 { font-size: 1.35rem; font-weight: 800; color: var(--text); margin-bottom: 12px; letter-spacing: -0.015em; line-height: 1.25; }
+.detail p { color: var(--text-soft); font-size: 1rem; line-height: 1.65; margin-bottom: 12px; }
+.detail code { font-family: var(--mono); font-size: 0.9em; background: var(--bg-soft); border: 1px solid var(--line); padding: 2px 6px; border-radius: 4px; color: var(--text); }
+.detail ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.detail li { padding-left: 26px; position: relative; font-size: 0.95rem; color: var(--text-soft); line-height: 1.55; }
+.detail li::before { content: ''; position: absolute; left: 0; top: 8px; width: 14px; height: 14px; background: var(--lime); border-radius: 50%; }
+.detail li::after { content: ''; position: absolute; left: 4px; top: 10px; width: 6px; height: 10px; border: solid var(--forest); border-width: 0 2px 2px 0; transform: rotate(45deg) translate(-1px, -2px); }
+
+/* Checklist */
+.checklist { background: white; border: 1.5px solid var(--line); border-radius: var(--radius-card); padding: 36px; }
+.checklist h3 { font-size: 1.25rem; font-weight: 800; color: var(--text); margin-bottom: 20px; letter-spacing: -0.015em; }
+.checklist ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.checklist li { padding-left: 36px; position: relative; font-size: 0.98rem; color: var(--text-soft); line-height: 1.55; }
+.checklist li::before { content: ''; position: absolute; left: 0; top: 1px; width: 24px; height: 24px; border: 2px solid var(--forest); border-radius: 6px; background: white; }
+.checklist li.done::before { background: var(--lime); }
+.checklist li.done::after { content: ''; position: absolute; left: 7px; top: 5px; width: 7px; height: 12px; border: solid var(--forest); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg); }
+
+/* Specs grid */
+.specs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+@media (max-width: 900px) { .specs { grid-template-columns: repeat(2, 1fr); } }
+.spec { background: white; border: 1.5px solid var(--line); border-radius: 14px; padding: 24px 20px; }
+.spec-label { font-family: var(--mono); font-size: 0.7rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+.spec-value { font-family: var(--font); font-size: 1.1rem; font-weight: 700; color: var(--forest); letter-spacing: -0.01em; }
+
+/* CTA */
+.final-cta { padding: 120px 0; background: var(--forest); color: white; text-align: center; position: relative; overflow: hidden; }
+.final-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(168,230,64,0.15) 0%, transparent 60%); pointer-events: none; }
+.final-cta-inner { position: relative; z-index: 1; }
+.final-cta h2 { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; color: white; margin-bottom: 24px; }
+.final-cta h2 .lime-text { color: var(--lime); }
+.final-cta p { color: rgba(255,255,255,0.82); font-size: 1.15rem; max-width: 680px; margin: 0 auto 44px; line-height: 1.55; }
+.final-cta .btn-primary { background: var(--lime); color: var(--forest); border-color: var(--lime); font-weight: 700; }
+.final-cta .btn-primary:hover { background: var(--lime-hover); color: var(--forest); border-color: var(--lime-hover); }
+.final-cta .btn-secondary { background: transparent; color: white; border-color: rgba(255,255,255,0.4); }
+.final-cta .btn-secondary:hover { background: rgba(255,255,255,0.08); color: white; border-color: white; }
+
+/* Footer */
+.site-footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); padding: 48px 0 44px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; font-size: 0.9rem; }
+.footer-inner a { color: rgba(255,255,255,0.7); font-weight: 500; }
+.footer-inner a:hover { color: var(--lime); }
+.footer-links { display: flex; gap: 28px; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.shown { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/agentcube.html" class="logo">
+      <span>C<span class="a-first">A</span>PRUS</span>
+      <small>&middot; AgentCube Technical</small>
+    </a>
+    <nav class="header-nav">
+      <a href="/agentcube.html">Overview</a>
+      <a href="/agentcube-security.html">Security</a>
+      <a href="/agentcube-pilot.html">Pilot</a>
+      <a href="/agentcube-roi.html">ROI</a>
+      <a href="/agentcube-partners.html">Partners</a>
+      <a href="#cta" class="btn-connect">Book a Deep Dive</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container-narrow">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-tag">For EPM Admins &amp; Architects</span>
+        Under the Hood
+      </div>
+      <h1>
+        Built on <span class="lime-highlight">MCP.</span> Deploys like a service. Speaks Oracle natively.
+      </h1>
+      <p class="hero-lead">
+        The technical overview of AgentCube. Model Context Protocol layer, Oracle provider integrations, deployment topologies, observability, and the specifics you'd want before approving an integration into your EPM stack.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary">Book a Technical Deep Dive
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#arch" class="btn btn-secondary">See the Architecture</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="block tinted" id="arch">
+    <div class="container-narrow">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">Architecture</div>
+        <h2 class="section-title">One engine, layered for clarity.</h2>
+        <p class="section-lead">AgentCube sits between your AI agent and your Oracle systems. Everything above the engine is pluggable (which AI, which transport); everything below is configurable (which Oracle systems, which auth).</p>
+      </div>
+
+      <div class="arch-layers reveal">
+        <div class="arch-layer">
+          <div class="arch-layer-label">Layer 5</div>
+          <div>
+            <div class="arch-layer-name">AI Agent</div>
+            <div class="arch-layer-desc">Claude, ChatGPT, Copilot, Gemini, your in-house agent. Any MCP-capable client.</div>
+          </div>
+        </div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">Layer 4</div>
+          <div>
+            <div class="arch-layer-name">MCP Transport</div>
+            <div class="arch-layer-desc">STDIO, SSE, or Streamable HTTP. Switchable with a single CLI flag.</div>
+          </div>
+        </div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-layer featured">
+          <div class="arch-layer-label">Layer 3</div>
+          <div>
+            <div class="arch-layer-name">AgentCube Core Engine</div>
+            <div class="arch-layer-desc">Unified Python package. Tool registry, session management, provider orchestration, auth brokering, structured logging.</div>
+          </div>
+        </div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">Layer 2</div>
+          <div>
+            <div class="arch-layer-name">Provider Adapters</div>
+            <div class="arch-layer-desc">Essbase, EPM Planning, FCC. Each exposes a focused set of tools; each respects your existing Oracle security model.</div>
+          </div>
+        </div>
+        <div class="arch-arrow">↓</div>
+        <div class="arch-layer">
+          <div class="arch-layer-label">Layer 1</div>
+          <div>
+            <div class="arch-layer-name">Oracle REST APIs</div>
+            <div class="arch-layer-desc">Essbase REST, EPM Planning Cloud REST, EPM Financial Close Cloud REST. Native interfaces, not scraping.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRANSPORTS -->
+  <section class="block">
+    <div class="container">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">Transports</div>
+        <h2 class="section-title">Three ways to serve. Pick based on where your agent runs.</h2>
+        <p class="section-lead">AgentCube supports the three transports defined by the Model Context Protocol. All three ship in the box; switching is a single CLI argument.</p>
+      </div>
+      <div class="transports">
+        <div class="transport reveal">
+          <span class="transport-flag">--transport stdio</span>
+          <h3>STDIO</h3>
+          <p>Process-pipe transport. The agent launches AgentCube as a subprocess and communicates via stdin/stdout.</p>
+          <p class="when"><strong>Use when:</strong> running locally alongside a desktop AI client (Claude Desktop, local Copilot, Cursor). Zero network surface.</p>
+        </div>
+        <div class="transport reveal">
+          <span class="transport-flag">--transport sse</span>
+          <h3>SSE</h3>
+          <p>Server-Sent Events transport. AgentCube runs as a long-running HTTP service; agents connect and subscribe to a streaming endpoint.</p>
+          <p class="when"><strong>Use when:</strong> single-tenant production deployments with a small number of concurrent agent sessions.</p>
+        </div>
+        <div class="transport reveal">
+          <span class="transport-flag">--transport streamable-http</span>
+          <h3>Streamable HTTP</h3>
+          <p>Modern MCP transport. Bi-directional streaming over HTTP/2. Scales horizontally, plays nicely with standard load balancers and ingress.</p>
+          <p class="when"><strong>Use when:</strong> multi-tenant production, enterprise deployments with load balancers, or behind standard API gateways.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CODE EXAMPLE -->
+  <section class="block tinted">
+    <div class="container-narrow">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">Implementation</div>
+        <h2 class="section-title">A complete MCP server in 15 lines.</h2>
+        <p class="section-lead">A minimal AgentCube-backed MCP server that exposes Essbase application listing to any compatible AI agent. This is the real thing, not an excerpt.</p>
+      </div>
+
+      <div class="code-block reveal">
+<pre><span class="cm"># Complete MCP server for Essbase using AgentCube</span>
+<span class="kw">from</span> fastmcp <span class="kw">import</span> FastMCP
+<span class="kw">from</span> agentcube <span class="kw">import</span> AgentCube
+<span class="kw">from</span> agentcube.providers.essbase <span class="kw">import</span> EssbaseProvider
+<span class="kw">from</span> agentcube.config.essbase <span class="kw">import</span> EssbaseConfig
+
+<span class="var">mcp</span> = <span class="fn">FastMCP</span>(<span class="str">"Finance Ops Agent"</span>)
+<span class="var">engine</span> = <span class="fn">AgentCube</span>()
+<span class="var">engine</span>.<span class="fn">register</span>(<span class="fn">EssbaseProvider</span>(<span class="fn">EssbaseConfig</span>.<span class="fn">from_env</span>()))
+
+<span class="dc">@mcp.tool()</span>
+<span class="kw">def</span> <span class="fn">list_applications</span>() -> <span class="kw">dict</span>:
+    <span class="str">"""List all Essbase applications available to the user."""</span>
+    <span class="kw">return</span> {<span class="str">"apps"</span>: engine.<span class="fn">list_applications</span>(<span class="str">"essbase"</span>)}
+
+<span class="kw">if</span> <span class="var">__name__</span> == <span class="str">"__main__"</span>:
+    mcp.<span class="fn">run</span>(transport=<span class="str">"stdio"</span>)  <span class="cm"># or "sse", "streamable-http"</span></pre>
+      </div>
+
+      <p style="margin-top: 24px; font-size: 0.92rem; color: var(--text-muted); text-align: center;">
+        Swap in <code style="font-family: var(--mono); background: var(--bg-soft); padding: 2px 6px; border-radius: 4px;">PlanningProvider</code> or <code style="font-family: var(--mono); background: var(--bg-soft); padding: 2px 6px; border-radius: 4px;">FCCProvider</code> (or all three) to serve any combination. Mix providers to build domain-specific agents.
+      </p>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="block">
+    <div class="container-narrow">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">Specifics</div>
+        <h2 class="section-title">The things you'd only ask if you were actually going to deploy this.</h2>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">01 &middot; Runtime</div>
+        <div>
+          <h3>Python 3.11+, installed as a package.</h3>
+          <p>AgentCube is distributed as a standard Python package. Install with <code>pip install agentcube</code> or via a private artifact in air-gapped environments. Dependencies are minimal: FastMCP, httpx, pydantic. No framework lock-in. No heavyweight runtime.</p>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">02 &middot; Configuration</div>
+        <div>
+          <h3>Environment variables, config files, or programmatic.</h3>
+          <p>Each provider takes a configuration object that can be built from environment variables (for simple deployments), a YAML or JSON config file (for declarative setups), or programmatically (for integration into your existing service scaffolding).</p>
+          <ul>
+            <li><code>ESSBASE_SERVER_URL</code>, <code>ESSBASE_USERNAME</code>, <code>ESSBASE_PASSWORD</code>, <code>ESSBASE_AUTH_TYPE</code></li>
+            <li><code>PLANNING_SERVER_URL</code>, <code>PLANNING_USERNAME</code>, <code>PLANNING_IDENTITY_DOMAIN</code></li>
+            <li><code>FCC_SERVER_URL</code>, <code>FCC_USERNAME</code>, <code>FCC_IDENTITY_DOMAIN</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">03 &middot; Auth Patterns</div>
+        <div>
+          <h3>Delegated auth, never stored in the engine.</h3>
+          <p>AgentCube does not store credentials. It accepts them per-session from the caller (via config or OAuth token) and uses them to call Oracle. Session tokens are held in memory only. Add a secrets manager (AWS Secrets Manager, Azure Key Vault, HashiCorp Vault) for persistence; AgentCube has hooks for all three.</p>
+          <ul>
+            <li><strong>Basic</strong>: HTTPS-only, best for air-gapped or development</li>
+            <li><strong>OAuth 2.0</strong>: Client credentials or authorization code flow against Oracle IDCS</li>
+            <li><strong>OIDC / SSO</strong>: Federated identity through your enterprise IDP</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">04 &middot; Tool Schemas</div>
+        <div>
+          <h3>Every tool call is typed, validated, and auditable.</h3>
+          <p>AgentCube tools are defined with pydantic models. Every argument is typed; every response schema is known. When an AI agent tries to call a tool with bad arguments, the schema catches it before the call reaches Oracle. When an agent gets a response, it gets structured data, not freeform text it has to parse.</p>
+          <p>This matters for audit: you can reconstruct every interaction from logs because you know exactly what the schema required and what was passed.</p>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">05 &middot; Custom Providers</div>
+        <div>
+          <h3>Extend to your stack in under a day.</h3>
+          <p>A provider is a Python class that implements three things: a config dataclass, an authenticated HTTP client, and a set of tool methods. Add a new provider for your custom EPM extension, your data warehouse, or your home-grown reporting system, and it composes with the Oracle providers automatically.</p>
+          <p>Certified Caprus partners build custom providers for client-specific extensions regularly. Partner SDK and example providers available under NDA.</p>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">06 &middot; Observability</div>
+        <div>
+          <h3>JSON logs, OpenTelemetry traces, Prometheus metrics.</h3>
+          <p>AgentCube emits structured logs to stdout by default. Every session, tool call, and response is logged with identity, timestamps, and metadata (no financial values). Turn on OpenTelemetry tracing to see end-to-end spans from agent prompt through Oracle response. Turn on Prometheus metrics to monitor latency, throughput, and error rates.</p>
+          <ul>
+            <li><code>agentcube.tool.duration_ms</code>: histogram of call latency by provider and function</li>
+            <li><code>agentcube.tool.errors_total</code>: counter of errored calls by error class</li>
+            <li><code>agentcube.session.active</code>: gauge of currently active sessions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">07 &middot; Performance</div>
+        <div>
+          <h3>Bound by Oracle, not by AgentCube.</h3>
+          <p>Tool call latency is dominated by the underlying Oracle API. AgentCube itself adds a few milliseconds of dispatch, validation, and logging overhead per call. A typical Planning dimension query returns in 200-800ms; Essbase MDX queries take 500ms to several seconds depending on cube complexity; FCC consolidation status queries return in under a second.</p>
+          <p>For bulk scenarios, use batching or parallel tool calls from the agent. The engine handles concurrent sessions cleanly; scale horizontally for more throughput.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="block tinted">
+    <div class="container">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">At a Glance</div>
+        <h2 class="section-title">Technical specs.</h2>
+      </div>
+      <div class="specs">
+        <div class="spec reveal"><div class="spec-label">Runtime</div><div class="spec-value">Python 3.11+</div></div>
+        <div class="spec reveal"><div class="spec-label">Protocol</div><div class="spec-value">Model Context Protocol</div></div>
+        <div class="spec reveal"><div class="spec-label">Transports</div><div class="spec-value">STDIO · SSE · HTTP/2</div></div>
+        <div class="spec reveal"><div class="spec-label">Auth</div><div class="spec-value">Basic · OAuth · OIDC</div></div>
+        <div class="spec reveal"><div class="spec-label">Providers (shipped)</div><div class="spec-value">Essbase · Planning · FCC</div></div>
+        <div class="spec reveal"><div class="spec-label">Deployment</div><div class="spec-value">On-prem · Cloud · Hybrid</div></div>
+        <div class="spec reveal"><div class="spec-label">Observability</div><div class="spec-value">OTel · Prometheus · JSON</div></div>
+        <div class="spec reveal"><div class="spec-label">Licensing</div><div class="spec-value">Commercial, per-provider</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRE-DEPLOYMENT CHECKLIST -->
+  <section class="block">
+    <div class="container-narrow">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">Before You Deploy</div>
+        <h2 class="section-title">The pre-deployment checklist your EPM admin will ask about.</h2>
+        <p class="section-lead">If you can check these boxes, you can deploy AgentCube in an afternoon. If you can't, you know exactly what to line up first.</p>
+      </div>
+
+      <div class="checklist reveal">
+        <h3>You need:</h3>
+        <ul>
+          <li class="done">An Oracle EPM system we support (Essbase, Planning, or FCC). Modern Oracle Cloud or on-premises 11.2+.</li>
+          <li class="done">Service account or OAuth application configured in your Oracle identity system with API access.</li>
+          <li class="done">Network path from wherever AgentCube runs to your Oracle APIs (internal network, VPN, or VPC peering).</li>
+          <li class="done">A host with Python 3.11+, 2 vCPU, 2 GB RAM minimum. Container-friendly; runs fine in a small pod.</li>
+          <li class="done">Your AI agent configured to speak MCP. Claude Desktop, Cursor, and Copilot do this natively; others need a thin client.</li>
+          <li class="done">A standard logging destination (stdout capture, journald, a SIEM, or a log aggregator).</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="final-cta" id="cta">
+    <div class="container final-cta-inner">
+      <h2>Want a <span class="lime-text">technical walkthrough</span>?</h2>
+      <p>A working session with the Caprus.AI engineering team. We show you architecture, auth flows, deployment patterns, and live tool calls against our reference Oracle environment. No marketing.</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn btn-primary">
+          Book a Technical Deep Dive
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/agentcube-security.html" class="btn btn-secondary">See Security</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>AgentCube Technical &nbsp;·&nbsp; Built by <a href="https://caprus.ai" target="_blank" rel="noopener">Caprus.AI</a> &nbsp;·&nbsp; © 2026</div>
+      <div class="footer-links">
+        <a href="/agentcube.html">AgentCube</a>
+        <a href="/agentcube-security.html">Security</a>
+        <a href="/agentcube-pilot.html">Pilot</a>
+        <a href="/agentcube-partners.html">Partners</a>
+        <a href="/">roske.ai</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); }
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

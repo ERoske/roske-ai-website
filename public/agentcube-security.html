@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentCube Security &amp; Compliance | Caprus.AI</title>
+<meta name="description" content="How AgentCube secures Oracle EPM data. Auth, isolation, audit, deployment, and compliance posture for enterprise finance.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #ffffff; --bg-soft: #f6f7f4; --bg-section: #f1f4ec;
+  --text: #0a0a0a; --text-soft: #383d3b; --text-muted: #6a7070;
+  --forest: #0a2e2a; --forest-dark: #06201e; --forest-hover: #164239;
+  --lime: #a8e640; --lime-hover: #b8ed51; --lime-soft: #dff6a8; --lime-wash: #eefad1;
+  --red: #c74634;
+  --line: #d9dcd5; --line-soft: #ebeee6;
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', 'Consolas', monospace;
+  --radius-pill: 999px; --radius-card: 20px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font); line-height: 1.6; color: var(--text-soft); background: var(--bg); overflow-x: hidden; }
+::selection { background: var(--lime-soft); color: var(--text); }
+a { color: var(--forest); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--forest-hover); }
+
+/* Header */
+.site-header { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.92); backdrop-filter: blur(14px); z-index: 1000; }
+.header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 22px 40px; }
+.logo { display: flex; align-items: center; font-weight: 800; font-size: 1.55rem; color: var(--text); letter-spacing: -0.02em; }
+.logo .a-first { color: var(--lime); }
+.logo small { font-weight: 400; color: var(--text-muted); font-size: 0.8rem; margin-left: 10px; }
+.header-nav { display: flex; align-items: center; gap: 32px; }
+.header-nav a { color: var(--text-soft); font-size: 0.95rem; }
+.header-nav a:hover { color: var(--text); }
+.btn-connect { padding: 12px 32px !important; background: var(--forest) !important; color: white !important; border-radius: var(--radius-pill); font-weight: 500 !important; font-size: 0.95rem !important; }
+.btn-connect:hover { background: var(--forest-hover) !important; }
+
+main { margin-top: 80px; }
+.container { max-width: 1320px; margin: 0 auto; padding: 0 40px; }
+.container-narrow { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 36px; font-family: var(--font); font-size: 1rem; font-weight: 500; border-radius: var(--radius-pill); border: 1.5px solid transparent; cursor: pointer; transition: all 0.25s; text-decoration: none; }
+.btn-primary { background: var(--forest); color: white; border-color: var(--forest); }
+.btn-primary:hover { background: var(--forest-hover); color: white; border-color: var(--forest-hover); transform: translateY(-1px); }
+.btn-secondary { background: white; color: var(--forest); border-color: var(--forest); }
+.btn-secondary:hover { background: var(--lime-wash); }
+
+/* Hero */
+.hero { padding: 80px 0 70px; text-align: center; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 6px 18px 6px 10px; background: white; border: 1px solid var(--line); border-radius: var(--radius-pill); font-size: 0.82rem; font-weight: 500; color: var(--text-soft); margin-bottom: 32px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+.hero-eyebrow-tag { padding: 3px 12px; background: var(--lime); color: var(--forest); border-radius: var(--radius-pill); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.hero h1 { font-size: clamp(2.5rem, 5.5vw, 4.5rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.035em; color: var(--text); margin-bottom: 28px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+.hero h1 .lime-highlight { position: relative; display: inline-block; color: var(--text); }
+.hero h1 .lime-highlight::before { content: ''; position: absolute; left: -4px; right: -4px; bottom: 8%; height: 36%; background: var(--lime); z-index: -1; transform: skewX(-4deg); }
+.hero-lead { font-size: 1.2rem; line-height: 1.55; color: var(--text-soft); max-width: 780px; margin: 0 auto 40px; }
+.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* Sections */
+section.block { padding: 100px 0; position: relative; }
+section.block.tinted { background: var(--bg-soft); }
+section.block.dark { background: var(--forest); color: white; }
+.section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 0.82rem; font-weight: 600; color: var(--forest); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+.section-eyebrow::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--lime); }
+section.block.dark .section-eyebrow { color: var(--lime); }
+.section-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; color: var(--text); margin-bottom: 20px; max-width: 900px; }
+section.block.dark .section-title { color: white; }
+.section-lead { font-size: 1.12rem; color: var(--text-soft); max-width: 720px; line-height: 1.6; margin-bottom: 56px; }
+section.block.dark .section-lead { color: rgba(255,255,255,0.8); }
+
+/* Pillar grid (6-up) */
+.pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .pillars { grid-template-columns: 1fr; } }
+.pillar { background: white; border: 1.5px solid var(--line); border-radius: var(--radius-card); padding: 32px 28px; transition: all 0.3s; }
+.pillar:hover { transform: translateY(-4px); border-color: var(--forest); box-shadow: 0 12px 32px rgba(10,46,42,0.08); }
+.pillar-icon { width: 48px; height: 48px; background: var(--lime); color: var(--forest); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.pillar h3 { font-size: 1.15rem; font-weight: 800; color: var(--text); margin-bottom: 10px; letter-spacing: -0.015em; }
+.pillar p { color: var(--text-soft); font-size: 0.95rem; line-height: 1.55; }
+
+/* Detail block (left-label, right-detail) */
+.detail { display: grid; grid-template-columns: 240px 1fr; gap: 48px; padding: 40px 0; border-bottom: 1px solid var(--line); align-items: start; }
+@media (max-width: 800px) { .detail { grid-template-columns: 1fr; gap: 16px; } }
+.detail:first-of-type { padding-top: 0; }
+.detail:last-of-type { border-bottom: none; }
+.detail-label { font-family: var(--mono); font-size: 0.78rem; font-weight: 600; color: var(--forest); letter-spacing: 0.1em; text-transform: uppercase; padding-top: 4px; }
+.detail h3 { font-size: 1.35rem; font-weight: 800; color: var(--text); margin-bottom: 12px; letter-spacing: -0.015em; line-height: 1.25; }
+.detail p { color: var(--text-soft); font-size: 1rem; line-height: 1.65; margin-bottom: 12px; }
+.detail ul { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+.detail li { padding-left: 26px; position: relative; font-size: 0.95rem; color: var(--text-soft); line-height: 1.55; }
+.detail li::before { content: ''; position: absolute; left: 0; top: 8px; width: 14px; height: 14px; background: var(--lime); border-radius: 50%; }
+.detail li::after { content: ''; position: absolute; left: 4px; top: 10px; width: 6px; height: 10px; border: solid var(--forest); border-width: 0 2px 2px 0; transform: rotate(45deg) translate(-1px, -2px); }
+.detail code { font-family: var(--mono); font-size: 0.9em; background: var(--bg-soft); border: 1px solid var(--line); padding: 2px 6px; border-radius: 4px; color: var(--text); }
+
+/* Deployment diagram */
+.deploy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .deploy-grid { grid-template-columns: 1fr; } }
+.deploy { background: white; border: 1.5px solid var(--line); border-radius: var(--radius-card); padding: 32px 28px; text-align: center; }
+.deploy-type { font-family: var(--mono); font-size: 0.72rem; font-weight: 600; color: var(--forest); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 20px; }
+.deploy-visual { width: 100%; height: 120px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.deploy h3 { font-size: 1.15rem; font-weight: 800; color: var(--text); margin-bottom: 10px; letter-spacing: -0.015em; }
+.deploy p { color: var(--text-soft); font-size: 0.92rem; line-height: 1.55; }
+
+/* FAQ */
+.faq-list { display: flex; flex-direction: column; gap: 14px; }
+.faq-item { background: white; border: 1.5px solid var(--line); border-radius: 14px; overflow: hidden; }
+.faq-item[open] { border-color: var(--forest); }
+.faq-q { padding: 20px 28px; font-size: 1.05rem; font-weight: 600; color: var(--text); cursor: pointer; list-style: none; display: flex; align-items: center; justify-content: space-between; gap: 16px; letter-spacing: -0.01em; }
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after { content: '+'; flex-shrink: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--lime-wash); color: var(--forest); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; }
+.faq-item[open] .faq-q::after { content: '−'; }
+.faq-a { padding: 0 28px 22px; color: var(--text-soft); line-height: 1.6; font-size: 0.98rem; }
+
+/* CTA */
+.final-cta { padding: 120px 0; background: var(--forest); color: white; text-align: center; position: relative; overflow: hidden; }
+.final-cta::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 900px; height: 900px; background: radial-gradient(circle, rgba(168,230,64,0.15) 0%, transparent 60%); pointer-events: none; }
+.final-cta-inner { position: relative; z-index: 1; }
+.final-cta h2 { font-size: clamp(2.25rem, 5vw, 3.75rem); font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; color: white; margin-bottom: 24px; }
+.final-cta h2 .lime-text { color: var(--lime); }
+.final-cta p { color: rgba(255,255,255,0.82); font-size: 1.15rem; max-width: 680px; margin: 0 auto 44px; line-height: 1.55; }
+.final-cta .btn-primary { background: var(--lime); color: var(--forest); border-color: var(--lime); font-weight: 700; }
+.final-cta .btn-primary:hover { background: var(--lime-hover); color: var(--forest); border-color: var(--lime-hover); }
+.final-cta .btn-secondary { background: transparent; color: white; border-color: rgba(255,255,255,0.4); }
+.final-cta .btn-secondary:hover { background: rgba(255,255,255,0.08); color: white; border-color: white; }
+
+/* Footer */
+.site-footer { background: var(--forest-dark); color: rgba(255,255,255,0.7); padding: 48px 0 44px; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; font-size: 0.9rem; }
+.footer-inner a { color: rgba(255,255,255,0.7); font-weight: 500; }
+.footer-inner a:hover { color: var(--lime); }
+.footer-links { display: flex; gap: 28px; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.shown { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/agentcube.html" class="logo">
+      <span>C<span class="a-first">A</span>PRUS</span>
+      <small>&middot; AgentCube Security</small>
+    </a>
+    <nav class="header-nav">
+      <a href="/agentcube.html">Overview</a>
+      <a href="/agentcube-technical.html">Technical</a>
+      <a href="/agentcube-pilot.html">Pilot</a>
+      <a href="/agentcube-roi.html">ROI</a>
+      <a href="/agentcube-partners.html">Partners</a>
+      <a href="#cta" class="btn-connect">Book a Review</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container-narrow">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-tag">Enterprise</span>
+        Security, Compliance &amp; Data Posture
+      </div>
+      <h1>
+        Finance data deserves more than a <span class="lime-highlight">demo-grade</span> integration.
+      </h1>
+      <p class="hero-lead">
+        AgentCube was built for the audit committee, not the hackathon. Every design decision starts from a simple question: would a Fortune 100 CISO approve this? If the answer is no, we don't ship it.
+      </p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn btn-primary">Book a Security Review
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#pillars" class="btn btn-secondary">See the Posture</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section class="block tinted" id="pillars">
+    <div class="container">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">Security at a Glance</div>
+        <h2 class="section-title">Six pillars. One goal: your finance data never leaves your boundary unless you explicitly choose to let it.</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar reveal">
+          <div class="pillar-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
+          <h3>Identity First</h3>
+          <p>Every agent call runs under a named identity. OAuth, OIDC, SSO, or Basic against your existing IDP. No service accounts with god mode.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+          <h3>Oracle Security Respected</h3>
+          <p>If your user can't see an entity in Planning, the agent can't either. Existing row-level security, role-based access, and identity federation carry through unchanged.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg></div>
+          <h3>Multi-Tenant Isolation</h3>
+          <p>Per-session isolation with no shared state across tenants or users. Configuration, auth tokens, and tool-call history never cross boundaries.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg></div>
+          <h3>Every Call Logged</h3>
+          <p>Structured audit logs for every tool call, every response, every error. Timestamped, identity-attributed, and streamable to your SIEM.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2"/></svg></div>
+          <h3>Deploy Where You Want</h3>
+          <p>On-premises behind your firewall, in your private cloud, or as a managed service. STDIO, SSE, or Streamable HTTP transports. Your infrastructure, your rules.</p>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+          <h3>No Data Retention by Default</h3>
+          <p>AgentCube is a router, not a warehouse. Financial data flows through and is returned to the caller. Optional logging retains metadata only, never business values.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="block">
+    <div class="container-narrow">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">The Specifics</div>
+        <h2 class="section-title">How every security control actually works.</h2>
+        <p class="section-lead">Every area your CISO will ask about, answered before the security review meeting.</p>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">01 &middot; Identity</div>
+        <div>
+          <h3>Authentication to Oracle: your existing mechanism, no exceptions.</h3>
+          <p>AgentCube does not issue credentials to Oracle systems. It delegates authentication to whatever your enterprise already uses. Every provider accepts:</p>
+          <ul>
+            <li><strong>Basic</strong> for local development or air-gapped deployments with service accounts</li>
+            <li><strong>OAuth 2.0</strong> for modern token-based authentication against Oracle Identity Cloud Service</li>
+            <li><strong>OIDC / SSO</strong> for federated identity through Okta, Azure AD, Ping, or your custom IDP</li>
+          </ul>
+          <p style="margin-top: 14px;">The agent acts on behalf of the signed-in user. Tokens are per-session, scoped to the minimum set of Oracle permissions required, and never persisted beyond the session unless you explicitly configure a secure vault.</p>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">02 &middot; Authorization</div>
+        <div>
+          <h3>Oracle's existing access model is the boundary. We don't widen it.</h3>
+          <p>Your Planning, Essbase, and Financial Close systems already enforce row-level security, entity-level access, and cube-level permissions. AgentCube queries through those systems using the authenticated user's identity. If the user can't see Germany's Q3 numbers in Smart View today, they can't see them through an AgentCube-powered agent tomorrow.</p>
+          <p>This has a useful side effect: your existing audit and SOX controls keep working. You are not introducing a new entitlement surface to govern, just a new query interface over the surface you already govern.</p>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">03 &middot; Isolation</div>
+        <div>
+          <h3>Multi-tenant by design, single-tenant by default deployment.</h3>
+          <p>Sessions are isolated at the process or connection level, depending on transport. Configuration, tool schemas, credentials, and pending tool-call state never cross between sessions. When you deploy AgentCube for your organization, you can run it single-tenant (one instance per business unit) or multi-tenant (one instance serving many customers with enforced boundaries). The isolation guarantees hold either way.</p>
+          <p>No shared caches hold financial values between sessions. No background workers fan out across tenants. No cross-tenant telemetry.</p>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">04 &middot; Observability</div>
+        <div>
+          <h3>Every tool call is a structured audit event.</h3>
+          <p>AgentCube emits a structured log entry for every:</p>
+          <ul>
+            <li>Authenticated session (who, when, from where)</li>
+            <li>Tool call (which provider, which function, which arguments)</li>
+            <li>Response summary (status code, byte counts, error classes)</li>
+            <li>Configuration change (who changed what, when)</li>
+          </ul>
+          <p style="margin-top: 14px;">Logs are JSON, stream to stdout by default, and can be routed to Splunk, Datadog, Elastic, or any SIEM that ingests JSON lines. Business values (actual financial figures) are <strong>not</strong> included in logs unless you explicitly opt in for debugging, which we advise against in production.</p>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">05 &middot; Data Handling</div>
+        <div>
+          <h3>AgentCube is a router. It does not store your financial data.</h3>
+          <p>Financial data is pulled from Oracle on demand, passed to the AI agent, and released. There is no AgentCube data warehouse, no training corpus, no retention.</p>
+          <p>Whether the data reaches an LLM hosted by OpenAI, Anthropic, Google, Microsoft, or your own private model is entirely governed by the agent you connect. AgentCube is the integration layer. If your policy is "no data leaves our tenant," point AgentCube at a model running in your tenant and the policy holds.</p>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">06 &middot; Deployment</div>
+        <div>
+          <h3>Run it where your data already lives.</h3>
+          <p>AgentCube is a Python package plus a set of thin server wrappers. Deploy patterns:</p>
+          <ul>
+            <li><strong>On-premises</strong> alongside your Oracle EPM infrastructure, no outbound internet required</li>
+            <li><strong>Private cloud</strong> in your AWS, Azure, or OCI tenant</li>
+            <li><strong>Hybrid</strong> with the engine in your cloud and agents in a customer tenant</li>
+            <li><strong>Managed by Caprus</strong> as a hosted service (select customers only)</li>
+          </ul>
+          <p style="margin-top: 14px;">Transports include STDIO (process-pipe for local development), SSE (server-sent events), and Streamable HTTP (for production). Switch via a single CLI flag.</p>
+        </div>
+      </div>
+
+      <div class="detail reveal">
+        <div class="detail-label">07 &middot; Compliance</div>
+        <div>
+          <h3>Designed to fit into your existing program.</h3>
+          <p>Because AgentCube runs in your environment and defers authentication and authorization to your Oracle systems, it inherits most of your existing compliance posture. The AgentCube layer itself is built for:</p>
+          <ul>
+            <li>SOC 2 Type II alignment for the managed service offering</li>
+            <li>GDPR posture through no-retention-by-default and identity-scoped access</li>
+            <li>SOX audit support via immutable structured logs tied to user identity</li>
+            <li>HIPAA readiness for finance teams in regulated healthcare settings (on-prem deployment)</li>
+          </ul>
+          <p style="margin-top: 14px;">We provide a security questionnaire (CAIQ and SIG Lite available) and a dedicated security review call for enterprise evaluations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPLOYMENT OPTIONS -->
+  <section class="block tinted">
+    <div class="container">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">Deployment Postures</div>
+        <h2 class="section-title">Three ways to run AgentCube. You pick based on your data egress policy.</h2>
+      </div>
+      <div class="deploy-grid">
+        <div class="deploy reveal">
+          <div class="deploy-type">Maximum Control</div>
+          <div class="deploy-visual">
+            <svg width="120" height="100" viewBox="0 0 120 100" fill="none">
+              <rect x="10" y="15" width="100" height="70" rx="6" fill="#0a2e2a" stroke="#0a2e2a"/>
+              <rect x="20" y="28" width="40" height="18" rx="3" fill="#a8e640"/>
+              <rect x="65" y="28" width="35" height="18" rx="3" fill="white"/>
+              <rect x="20" y="52" width="80" height="22" rx="3" fill="white" opacity="0.3"/>
+              <text x="60" y="95" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#0a2e2a">YOUR DATA CENTER</text>
+            </svg>
+          </div>
+          <h3>On-Premises</h3>
+          <p>AgentCube runs alongside your Oracle EPM infrastructure, behind your firewall. No outbound internet connections. Ideal for regulated industries and air-gapped environments.</p>
+        </div>
+        <div class="deploy reveal">
+          <div class="deploy-type">Balanced</div>
+          <div class="deploy-visual">
+            <svg width="120" height="100" viewBox="0 0 120 100" fill="none">
+              <rect x="10" y="15" width="100" height="70" rx="6" fill="#f1f4ec" stroke="#0a2e2a" stroke-dasharray="3 3"/>
+              <rect x="20" y="28" width="40" height="18" rx="3" fill="#a8e640"/>
+              <rect x="65" y="28" width="35" height="18" rx="3" fill="#0a2e2a"/>
+              <rect x="20" y="52" width="80" height="22" rx="3" fill="white"/>
+              <text x="60" y="95" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#0a2e2a">YOUR PRIVATE CLOUD</text>
+            </svg>
+          </div>
+          <h3>Private Cloud</h3>
+          <p>AgentCube in your AWS, Azure, or OCI tenant. Inherits your existing cloud security controls, VPC peering, and identity federation. Most common enterprise deployment.</p>
+        </div>
+        <div class="deploy reveal">
+          <div class="deploy-type">Fastest to Live</div>
+          <div class="deploy-visual">
+            <svg width="120" height="100" viewBox="0 0 120 100" fill="none">
+              <rect x="10" y="15" width="100" height="70" rx="6" fill="white" stroke="#0a2e2a"/>
+              <circle cx="60" cy="50" r="22" fill="#a8e640"/>
+              <text x="60" y="55" text-anchor="middle" font-family="Inter" font-size="14" font-weight="900" fill="#0a2e2a">AC</text>
+              <text x="60" y="95" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#0a2e2a">MANAGED BY CAPRUS</text>
+            </svg>
+          </div>
+          <h3>Managed Service</h3>
+          <p>Caprus.AI operates AgentCube for you in a tenant we manage. SOC 2 Type II environment. Fastest path to production for finance teams without an ops team to spare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block">
+    <div class="container-narrow">
+      <div class="reveal" style="margin-bottom: 48px;">
+        <div class="section-eyebrow">Security Questions</div>
+        <h2 class="section-title">The questions every CISO asks first.</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary class="faq-q">Does our financial data ever leave our tenant?</summary>
+          <div class="faq-a">Only if you explicitly configure it to. AgentCube is the connector between an AI model and your Oracle systems. If you point it at a model running in your private cloud or on-premises, data stays in your tenant end to end. If you point it at a third-party model API, the data traverses whatever boundary that model requires. Your data egress policy governs, not ours.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">How do you handle authentication with Oracle?</summary>
+          <div class="faq-a">We don't create new Oracle credentials. AgentCube accepts whatever your Oracle systems accept (Basic, OAuth 2.0, OIDC/SSO) and delegates auth to your identity provider. The agent calls Oracle under the authenticated user's identity, scoped to the permissions that user already has.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">What's logged, and can we stream it to our SIEM?</summary>
+          <div class="faq-a">Structured JSON logs are emitted for every authenticated session, every tool call, every response status, and every configuration change. Logs include user identity, timestamps, provider, function, and metadata. Business values (actual financial figures) are excluded by default. Logs stream to stdout and can be routed to Splunk, Datadog, Elastic, or any JSON-ingesting SIEM.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Is there a data retention policy we need to worry about?</summary>
+          <div class="faq-a">AgentCube does not retain business data. Financial figures flow through the engine on demand and are returned to the caller. No caching of values between sessions. No training corpus. No background processing. The only retention is the metadata in audit logs, and you control how long those are kept.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">How do you prevent prompt injection from exfiltrating our data?</summary>
+          <div class="faq-a">Prompt injection is a model-layer concern, not a connector-layer concern, but AgentCube includes several mitigations: tool calls are scoped by authenticated user (injection can only access what that user can access); every call is logged (exfiltration attempts are visible in audit); tool argument schemas are enforced (agents can't pass arbitrary SQL or payloads). Your model layer should add input sanitization and output moderation.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Do you have SOC 2, GDPR, or SOX documentation?</summary>
+          <div class="faq-a">Our managed service offering is SOC 2 Type II aligned; documentation is available under NDA during enterprise evaluations. GDPR posture is supported through identity-scoped access and no-retention defaults. SOX audit support is built in through immutable structured logs. We maintain CAIQ and SIG Lite questionnaires and make our security team available for review calls.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">Can we run AgentCube air-gapped?</summary>
+          <div class="faq-a">Yes. Air-gapped deployment is fully supported. AgentCube is a Python package; installation and updates can be delivered via offline artifacts. Pair it with an on-premises model (Llama, Mistral, or your own fine-tuned model) and you have a fully self-contained AI-over-EPM environment with zero outbound connectivity.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary class="faq-q">What happens if AgentCube hallucinates or fabricates a number?</summary>
+          <div class="faq-a">AgentCube does not generate numbers. It retrieves them from Oracle via official APIs and returns the structured response. The AI model that uses AgentCube can summarize or explain, but the figures themselves come from Oracle. If a finance team asks "what was Germany Q3 revenue," the answer is the value Oracle returned, not a model's best guess. Every call is logged and reproducible.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="final-cta" id="cta">
+    <div class="container final-cta-inner">
+      <h2>Ready for a <span class="lime-text">security review</span>?</h2>
+      <p>Bring your security team. We'll walk through authentication, isolation, audit, deployment, and compliance in whatever depth you need. Under NDA, with real documentation, before you commit to a pilot.</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn btn-primary">
+          Book a Security Review
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/agentcube.html" class="btn btn-secondary">Back to Overview</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>AgentCube Security &nbsp;·&nbsp; Built by <a href="https://caprus.ai" target="_blank" rel="noopener">Caprus.AI</a> &nbsp;·&nbsp; © 2026</div>
+      <div class="footer-links">
+        <a href="/agentcube.html">AgentCube</a>
+        <a href="/agentcube-technical.html">Technical</a>
+        <a href="/agentcube-pilot.html">Pilot</a>
+        <a href="/agentcube-partners.html">Partners</a>
+        <a href="/">roske.ai</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) if (e.isIntersecting) { e.target.classList.add('shown'); io.unobserve(e.target); }
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
