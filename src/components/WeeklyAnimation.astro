@@ -10,10 +10,10 @@
  * created via document.createElement won't have those attributes. Apply all
  * styles directly in JavaScript instead.
  *
- * Current theme: Stranger Things: Tales from '85 (April 18, 2026)
- * Animation: Flickering Christmas-lights alphabet wall (Joyce Byers' living room homage).
- * Lights spell short phrases one letter at a time: ROSKE AI, ASK GOOD QUESTIONS, RUN,
- * HELLO EDWARD, ROLL FOR INITIATIVE. Anchored to bottom-left on desktop, hidden on mobile.
+ * Current theme: Roske International: Final Season (April 25, 2026)
+ * Animation: Slow drifting Vought-style propaganda stars and the occasional
+ * glinting "approved" stamp arc, plus rare horizontal lightning streaks
+ * that read as a speedster zooming across the lower viewport.
  */
 ---
 
@@ -21,294 +21,173 @@
 
 <script is:inline>
   (function() {
-    function initStrangerLights() {
+    function init() {
       var container = document.getElementById('weekly-animation');
       if (!container) return function(){};
       container.innerHTML = '';
 
-      // Hide on small screens — the alphabet strip needs horizontal room
-      if (window.innerWidth < 768) {
-        return function(){};
-      }
-
       var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Wall strip container — anchored to bottom of viewport, full width
-      var strip = document.createElement('div');
-      strip.style.cssText = [
-        'position:absolute',
-        'left:0',
-        'right:0',
-        'bottom:0',
-        'height:11rem',
-        'display:flex',
-        'align-items:flex-end',
-        'justify-content:center',
-        'padding:0 2rem 1.25rem',
-        'pointer-events:none',
-        'background:' + (isLight
-          ? 'linear-gradient(to top, rgba(216, 192, 188, 0.75) 0%, rgba(216, 192, 188, 0.15) 55%, rgba(216, 192, 188, 0) 100%)'
-          : 'linear-gradient(to top, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.25) 55%, rgba(0, 0, 0, 0) 100%)')
-      ].join(';');
-      container.appendChild(strip);
+      var STAR_OPACITY = isLight ? 0.32 : 0.55;
+      var BOLT_OPACITY = isLight ? 0.28 : 0.45;
+      var redColor = '#c8102e';
+      var blueColor = '#1b2c5f';
+      var creamColor = '#f7f1e3';
 
-      // The wall-painted alphabet: A-Z in a single row
-      var wall = document.createElement('div');
-      wall.style.cssText = [
-        'display:flex',
-        'gap:0.25rem',
-        'align-items:flex-end',
-        'justify-content:center',
-        'flex-wrap:nowrap',
-        'max-width:100%'
-      ].join(';');
-      strip.appendChild(wall);
-
-      // Classic Christmas-light colors, assigned to each letter in a rotating pattern
-      var bulbColors = [
-        '#ff2a2a', // red
-        '#ffb020', // amber
-        '#2ecc40', // green
-        '#3090ff', // blue
-        '#c040ff', // purple
-      ];
-
-      // Convert hex color to a dim rgba so the "off" bulb is still a visible color hint.
-      function dimOf(hex, alpha) {
-        var h = hex.replace('#', '');
-        var r = parseInt(h.substring(0, 2), 16);
-        var g = parseInt(h.substring(2, 4), 16);
-        var b = parseInt(h.substring(4, 6), 16);
-        return 'rgba(' + r + ', ' + g + ', ' + b + ', ' + alpha + ')';
+      // Five-pointed star SVG path (centered at 0,0, radius ~10)
+      function starSVG(fill, stroke, sizePx) {
+        var s = sizePx || 22;
+        return '<svg width="' + s + '" height="' + s + '" viewBox="-12 -12 24 24" xmlns="http://www.w3.org/2000/svg">' +
+          '<polygon points="0,-10 2.94,-4.05 9.51,-3.09 4.76,1.55 5.88,8.09 0,5 -5.88,8.09 -4.76,1.55 -9.51,-3.09 -2.94,-4.05" ' +
+          'fill="' + fill + '" stroke="' + stroke + '" stroke-width="0.6" stroke-linejoin="round" />' +
+          '</svg>';
       }
 
-      var letters = [];
-      for (var i = 0; i < 26; i++) {
-        var letterChar = String.fromCharCode(65 + i);
-        var color = bulbColors[i % bulbColors.length];
-        var offBg = dimOf(color, isLight ? 0.5 : 0.6);
-
-        // Wrapper cell: letter on top, bulb on bottom
-        var cell = document.createElement('div');
-        cell.style.cssText = [
-          'display:flex',
-          'flex-direction:column',
-          'align-items:center',
-          'justify-content:flex-end',
-          'width:clamp(2.2rem, 4vw, 3.2rem)',
-          'gap:0.35rem'
-        ].join(';');
-
-        // Hand-painted letter on the "wall"
-        var letter = document.createElement('div');
-        letter.textContent = letterChar;
-        letter.style.cssText = [
-          'font-family:"Metamorphous", serif',
-          'font-size:clamp(1.6rem, 2.8vw, 2.25rem)',
-          'font-weight:400',
-          'color:' + (isLight ? 'rgba(60, 20, 20, 0.9)' : 'rgba(245, 230, 224, 0.95)'),
-          'letter-spacing:0',
-          'line-height:1',
-          'text-align:center',
-          'user-select:none',
-          'text-shadow:' + (isLight ? 'none' : '0 0 6px rgba(0,0,0,0.6)')
-        ].join(';');
-        cell.appendChild(letter);
-
-        // The wire going down into the bulb
-        var wire = document.createElement('div');
-        wire.style.cssText = [
-          'width:1.5px',
-          'height:0.4rem',
-          'background:' + (isLight ? 'rgba(60, 40, 30, 0.6)' : 'rgba(200, 180, 160, 0.55)')
-        ].join(';');
-        cell.appendChild(wire);
-
-        // The bulb itself — tinted with its own color even when "off" so it stays visible.
-        // Transition is set dynamically: fast on, slow fade off (like a real incandescent).
-        var bulb = document.createElement('div');
-        bulb.style.cssText = [
-          'width:clamp(1.6rem, 2.3vw, 2.1rem)',
-          'height:clamp(2rem, 2.8vw, 2.6rem)',
-          'border-radius:50% 50% 45% 45% / 55% 55% 45% 45%',
-          'background:' + offBg,
-          'box-shadow:0 0 6px ' + dimOf(color, isLight ? 0.3 : 0.45),
-          'transition:background 1.4s ease-out, box-shadow 1.6s ease-out',
-          'position:relative',
-          'border:1px solid ' + dimOf(color, isLight ? 0.4 : 0.5)
-        ].join(';');
-        cell.appendChild(bulb);
-
-        wall.appendChild(cell);
-        letters.push({ bulb: bulb, color: color, offBg: offBg, letter: letterChar, lit: false, fadeTimer: null, autoOffTimer: null });
+      // Lightning bolt SVG (horizontal-ish jagged streak)
+      function boltSVG(color, sizePx) {
+        var s = sizePx || 100;
+        return '<svg width="' + s + '" height="' + (s * 0.25) + '" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">' +
+          '<polyline points="0,28 30,22 55,32 90,18 130,30 165,16 200,26" ' +
+          'fill="none" stroke="' + color + '" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" ' +
+          'stroke-dasharray="6 4" />' +
+          '</svg>';
       }
-
-      function clearTimers(entry) {
-        if (entry.fadeTimer) { clearTimeout(entry.fadeTimer); entry.fadeTimer = null; }
-        if (entry.autoOffTimer) { clearTimeout(entry.autoOffTimer); entry.autoOffTimer = null; }
-      }
-
-      function lightOn(entry, brightness) {
-        brightness = brightness || 1;
-        entry.lit = true;
-        clearTimers(entry);
-        var c = entry.color;
-        // Snap ON quickly so the bulb feels like it just switched on
-        entry.bulb.style.transition = 'background 0.08s ease-out, box-shadow 0.12s ease-out';
-        entry.bulb.style.background = c;
-        entry.bulb.style.boxShadow = [
-          '0 0 ' + (12 * brightness) + 'px ' + c,
-          '0 0 ' + (26 * brightness) + 'px ' + c,
-          '0 -0.2rem 0.5rem rgba(255,255,255,0.15) inset'
-        ].join(', ');
-      }
-
-      function lightOff(entry) {
-        entry.lit = false;
-        clearTimers(entry);
-        // Slow fade back to the tinted "off" state — like an incandescent cooling down
-        entry.bulb.style.transition = 'background 1.4s ease-out, box-shadow 1.6s ease-out';
-        entry.bulb.style.background = entry.offBg;
-        entry.bulb.style.boxShadow = '0 0 6px ' + dimOf(entry.color, isLight ? 0.3 : 0.45);
-      }
-
-      // Light a bulb and schedule it to auto-fade after a hold period.
-      function lightOnWithFade(entry, brightness, holdMs) {
-        lightOn(entry, brightness);
-        entry.autoOffTimer = setTimeout(function() {
-          if (!running) return;
-          lightOff(entry);
-        }, holdMs);
-      }
-
-      function flicker(entry, times, then) {
-        var count = 0;
-        function step() {
-          if (count >= times * 2) {
-            if (then) then();
-            return;
-          }
-          if (count % 2 === 0) {
-            lightOn(entry, 0.5 + Math.random() * 0.6);
-          } else {
-            // Instant snap off during flicker, not a long fade
-            entry.lit = false;
-            entry.bulb.style.transition = 'background 0.08s ease-out, box-shadow 0.12s ease-out';
-            entry.bulb.style.background = entry.offBg;
-            entry.bulb.style.boxShadow = '0 0 6px ' + dimOf(entry.color, isLight ? 0.3 : 0.45);
-          }
-          count++;
-          setTimeout(step, 90 + Math.random() * 120);
-        }
-        step();
-      }
-
-      // Phrases to spell, one letter at a time, with flicker
-      var phrases = [
-        'ROSKE AI',
-        'ASK GOOD QUESTIONS',
-        'HELLO EDWARD',
-        'ROLL FOR INITIATIVE',
-        'RUN',
-        'YOUR PRINCESS IS IN ANOTHER CASTLE', // leftover Edward-ism, a blink to last week
-        'THIS IS FINE'
-      ];
 
       var running = true;
-      var phraseIdx = 0;
+      var timers = [];
 
-      function playPhrase(phrase, done) {
-        var chars = phrase.split('');
-        var i = 0;
-        // Each bulb fades on its own ~2.2s after lighting. Don't snap-off everything.
-        function next() {
-          if (!running) return;
-          if (i >= chars.length) {
-            // Let the last lit bulbs finish their auto-fade, then call done.
-            setTimeout(done, 2800);
-            return;
-          }
-          var ch = chars[i];
-          i++;
-          if (ch === ' ') {
-            setTimeout(next, 320);
-            return;
-          }
-          var idx = ch.charCodeAt(0) - 65;
-          if (idx >= 0 && idx < 26) {
-            var entry = letters[idx];
-            flicker(entry, 1 + Math.floor(Math.random() * 2), function() {
-              lightOnWithFade(entry, 0.9 + Math.random() * 0.3, 2000 + Math.random() * 800);
-              setTimeout(next, 380 + Math.random() * 220);
-            });
-          } else {
-            setTimeout(next, 320);
-          }
-        }
-        next();
-      }
-
-      // Idle twinkle: every so often, a random letter flickers briefly in the background
-      var idleTimer = null;
-      function idleTwinkle() {
+      // Drift a star slowly upward across the screen, then remove
+      function spawnStar() {
         if (!running) return;
-        var entry = letters[Math.floor(Math.random() * 26)];
-        if (!entry.lit) {
-          flicker(entry, 1, function() {
-            lightOff(entry);
-          });
-        }
-        idleTimer = setTimeout(idleTwinkle, 1800 + Math.random() * 2400);
-      }
-      idleTimer = setTimeout(idleTwinkle, 2500);
 
-      function loop() {
-        if (!running) return;
-        var phrase = phrases[phraseIdx % phrases.length];
-        phraseIdx++;
-        playPhrase(phrase, function() {
-          setTimeout(loop, 2400 + Math.random() * 2600);
+        var color = Math.random() < 0.55 ? redColor : (Math.random() < 0.5 ? blueColor : creamColor);
+        var size = 14 + Math.random() * 28; // 14-42px
+        var startX = Math.random() * window.innerWidth;
+        var startY = window.innerHeight + size;
+        var driftX = (Math.random() - 0.5) * 200; // sideways wander
+        var duration = 12000 + Math.random() * 10000; // 12-22s — slow, propaganda-poster cadence
+        var rotateAmt = (Math.random() - 0.5) * 360;
+
+        var el = document.createElement('div');
+        el.style.cssText = [
+          'position:absolute',
+          'left:' + startX + 'px',
+          'top:' + startY + 'px',
+          'width:' + size + 'px',
+          'height:' + size + 'px',
+          'opacity:0',
+          'pointer-events:none',
+          'will-change:transform,opacity',
+          'filter:drop-shadow(0 0 ' + (size * 0.25) + 'px ' + color + ')',
+          'transition:opacity 1.2s ease-out'
+        ].join(';');
+        el.innerHTML = starSVG(color, isLight ? 'rgba(20,30,60,0.4)' : 'rgba(247,241,227,0.4)', size);
+        container.appendChild(el);
+
+        // Fade in
+        requestAnimationFrame(function() {
+          el.style.opacity = String(STAR_OPACITY);
         });
+
+        // Animate via Web Animations API for smooth GPU-accelerated motion
+        var anim = el.animate(
+          [
+            { transform: 'translate(0px, 0px) rotate(0deg)' },
+            { transform: 'translate(' + driftX + 'px, -' + (window.innerHeight + size * 2) + 'px) rotate(' + rotateAmt + 'deg)' }
+          ],
+          { duration: duration, easing: 'linear', fill: 'forwards' }
+        );
+
+        anim.onfinish = function() {
+          if (el.parentNode) el.parentNode.removeChild(el);
+        };
+
+        // Fade out near the end
+        var fadeT = setTimeout(function() {
+          el.style.opacity = '0';
+        }, duration - 1200);
+        timers.push(fadeT);
       }
 
-      // Kick off after a brief pause so the page settles
-      setTimeout(loop, 1000);
+      // A horizontal lightning streak that flashes across the screen briefly
+      function spawnBolt() {
+        if (!running) return;
 
-      function onResize() {
-        // If screen shrinks below breakpoint, teardown; if grows, re-init
-        if (window.innerWidth < 768) {
-          running = false;
-          if (idleTimer) clearTimeout(idleTimer);
-          container.innerHTML = '';
+        var width = 220 + Math.random() * 220;
+        var startY = window.innerHeight * (0.55 + Math.random() * 0.35); // lower half
+        var goLeftToRight = Math.random() < 0.5;
+        var startX = goLeftToRight ? -width : window.innerWidth + width;
+        var endX = goLeftToRight ? window.innerWidth + width : -width;
+        var color = Math.random() < 0.5 ? redColor : creamColor;
+
+        var el = document.createElement('div');
+        el.style.cssText = [
+          'position:absolute',
+          'left:' + startX + 'px',
+          'top:' + startY + 'px',
+          'width:' + width + 'px',
+          'opacity:0',
+          'pointer-events:none',
+          'will-change:transform,opacity',
+          'filter:drop-shadow(0 0 6px ' + color + ')',
+          'transform-origin:center'
+        ].join(';');
+        el.innerHTML = boltSVG(color, width);
+        container.appendChild(el);
+
+        var duration = 700 + Math.random() * 500;
+
+        // Fade in / out via Web Animations so removal is reliable
+        el.animate(
+          [
+            { opacity: 0, transform: 'translateX(0px)' },
+            { opacity: BOLT_OPACITY, transform: 'translateX(' + ((endX - startX) * 0.4) + 'px)' },
+            { opacity: 0, transform: 'translateX(' + (endX - startX) + 'px)' }
+          ],
+          { duration: duration, easing: 'ease-out', fill: 'forwards' }
+        ).onfinish = function() {
+          if (el.parentNode) el.parentNode.removeChild(el);
+        };
+      }
+
+      // Star spawn cadence: one every 1.4-2.6s
+      function starLoop() {
+        if (!running) return;
+        spawnStar();
+        timers.push(setTimeout(starLoop, 1400 + Math.random() * 1200));
+      }
+
+      // Bolt spawn cadence: one every 7-14s, less frequent than stars
+      function boltLoop() {
+        if (!running) return;
+        spawnBolt();
+        timers.push(setTimeout(boltLoop, 7000 + Math.random() * 7000));
+      }
+
+      if (!prefersReduced) {
+        // Pre-populate a few stars so the screen isn't empty on load
+        for (var i = 0; i < 3; i++) {
+          timers.push(setTimeout(spawnStar, i * 600));
         }
+        timers.push(setTimeout(starLoop, 1500));
+        timers.push(setTimeout(boltLoop, 4500));
       }
-      window.addEventListener('resize', onResize);
 
       return function cleanup() {
         running = false;
-        if (idleTimer) clearTimeout(idleTimer);
-        window.removeEventListener('resize', onResize);
+        for (var i = 0; i < timers.length; i++) clearTimeout(timers[i]);
+        timers = [];
         container.innerHTML = '';
       };
     }
 
-    var cleanup = initStrangerLights();
+    var cleanup = init();
 
     var observer = new MutationObserver(function() {
       if (cleanup) cleanup();
-      cleanup = initStrangerLights();
+      cleanup = init();
     });
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-
-    // Re-init on viewport cross of the 768 breakpoint
-    var wasDesktop = window.innerWidth >= 768;
-    window.addEventListener('resize', function() {
-      var isDesktop = window.innerWidth >= 768;
-      if (isDesktop !== wasDesktop) {
-        wasDesktop = isDesktop;
-        if (cleanup) cleanup();
-        cleanup = initStrangerLights();
-      }
-    });
   })();
 </script>
