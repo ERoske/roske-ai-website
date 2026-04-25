@@ -1,0 +1,135 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Only Recipes — Privacy Policy | Edward Roske"
+  description="Privacy policy for the Only Recipes Chrome extension. Only Recipes runs entirely on your device. It collects no personal data, makes no network requests, and uses no analytics."
+>
+  <article class="prose">
+    <h1>Only Recipes — Privacy Policy</h1>
+    <p class="effective"><strong>Effective:</strong> April 25, 2026</p>
+
+    <p>
+      Only Recipes is a Chrome extension that strips recipe pages down to
+      ingredients and steps. This policy describes — exhaustively — what data
+      the extension touches and what it does with that data.
+    </p>
+
+    <h2>The short version</h2>
+    <p>
+      Only Recipes runs entirely on your device. It collects no personal data,
+      makes no network requests of its own, sends nothing to any server, and
+      uses no analytics or tracking.
+    </p>
+
+    <h2>What the extension reads</h2>
+    <p>
+      When you visit a web page, Only Recipes inspects two things in that
+      page's HTML:
+    </p>
+    <ul>
+      <li>
+        Schema.org Recipe metadata embedded as JSON-LD
+        (<code>&lt;script type="application/ld+json"&gt;</code>) or microdata
+        (<code>itemtype="https://schema.org/Recipe"</code>).
+      </li>
+      <li>
+        The page's URL, used as a key to remember your check-state and
+        preferences for that recipe.
+      </li>
+    </ul>
+    <p>
+      Pages without recipe metadata are ignored entirely — the extension takes
+      no action and stores nothing.
+    </p>
+
+    <h2>What the extension stores</h2>
+    <p>
+      All data lives in <code>chrome.storage.local</code> on your computer.
+      Nothing is uploaded anywhere. Stored data includes:
+    </p>
+    <ul>
+      <li>Recipes you have explicitly saved with the heart button (title, source URL, image URL, save timestamp).</li>
+      <li>Per-recipe state: which ingredients/steps you have checked off, your serving-size adjustment, and your selected unit system.</li>
+      <li>Your global preferences: auto-show toggle and default unit system.</li>
+    </ul>
+    <p>
+      You can clear all of this at any time by removing the extension or by
+      using Chrome's "Clear browsing data" with the Site settings option.
+    </p>
+
+    <h2>What the extension does <em>not</em> do</h2>
+    <ul>
+      <li>No remote requests. The extension never calls a server we control.</li>
+      <li>No analytics or telemetry. Not Google Analytics, not error tracking, not anything.</li>
+      <li>No advertising. No ads are shown and no ad-targeting data is collected.</li>
+      <li>No third-party SDKs or trackers.</li>
+      <li>No selling, sharing, or transferring of any data to anyone.</li>
+    </ul>
+
+    <h2>Permissions explained</h2>
+    <ul>
+      <li>
+        <strong>storage</strong> — to save recipes and preferences locally on
+        your device.
+      </li>
+      <li>
+        <strong>Host access (<code>&lt;all_urls&gt;</code>)</strong> — required
+        for the extension to detect recipe metadata on whatever recipe site
+        you happen to visit. The content script only reads the schema.org
+        markup described above; it never sends page contents anywhere.
+      </li>
+    </ul>
+
+    <h2>Children</h2>
+    <p>
+      The extension is not directed at children under 13 and does not
+      knowingly collect any data about anyone, including children.
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      If this policy changes, the new version will be published at this URL
+      and the effective date above will be updated. Material changes will be
+      noted in the extension's release notes on the Chrome Web Store.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this policy or the extension can be sent to
+      <a href="mailto:edward@dawnwardpr.com">edward@dawnwardpr.com</a>.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 24px 96px;
+    line-height: 1.7;
+  }
+  .prose h1 {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    margin-bottom: 8px;
+  }
+  .prose .effective {
+    color: #8a7e6e;
+    margin-bottom: 32px;
+  }
+  .prose h2 {
+    margin-top: 40px;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+  }
+  .prose ul { margin: 0 0 16px 24px; }
+  .prose li { margin-bottom: 6px; }
+  .prose p { margin-bottom: 16px; }
+  .prose code {
+    background: rgba(0, 0, 0, 0.06);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+</style>
