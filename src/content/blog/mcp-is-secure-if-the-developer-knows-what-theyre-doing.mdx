@@ -1,0 +1,76 @@
+---
+title: "MCP Is Secure (If the Developer Knows What They're Doing)"
+description: "Headlines say 200,000 MCP servers are at risk. The protocol is fine. Most of the developers shipping on top of it are not."
+date: 2026-04-29
+tags: ["AI", "MCP", "Finance"]
+---
+
+Headlines this month: 200,000 MCP servers at risk. 14 CVEs. More than 30 remote code execution issues. Anthropic's response to the security researchers? "That's expected behavior."
+
+Short answer: Anthropic is right. The security researchers are also right. And every CFO trying to figure out whether to install an MCP server next quarter is staring at the same headline with no way to tell which of those things matters more.
+
+Here's the longer answer. MCP is secure. As long as the developer building your MCP server knows what they're doing.
+
+## What Actually Happened
+
+On April 15, OX Security published a [vulnerability disclosure](https://www.theregister.com/2026/04/16/anthropic_mcp_design_flaw/) on the official Anthropic MCP reference implementation. The core finding: STDIO, the standard input/output transport MCP uses for local connections, can be coerced into running arbitrary OS commands. Multiply that across 7,000 publicly reachable servers and 150 million SDK downloads and you get the headline number: 200,000 servers at risk.
+
+[The Register](https://www.theregister.com/2026/04/16/anthropic_mcp_design_flaw/), [The Hacker News](https://thehackernews.com/2026/04/anthropic-mcp-design-vulnerability.html), and Computing UK all verified the report. The CVEs are real. The proof-of-concept exploits work. Flagship products got named: LiteLLM, LangFlow, Cursor, Windsurf, Flowise, DocsGPT, GPT Researcher.
+
+Then Anthropic said "that's expected behavior" and declined to patch the reference SDK.
+
+## Why Anthropic Is Right
+
+STDIO is a transport for local processes on the same machine. When you launch an MCP server over STDIO, you are already running code on your own computer. You handed it the keys. The protocol is doing exactly what you told it to do.
+
+That is like complaining that a kitchen knife is dangerous because it cuts things. Yes. That is, in fact, the design.
+
+The architectural decision Anthropic made (and is defending) is that [MCP itself](https://www.anthropic.com/news/model-context-protocol) is not a sandbox. MCP is a protocol. The sandbox is the developer's job. Anthropic is not going to redesign STDIO because some users handed their kitchen knife to a toddler.
+
+I think they're correct. I also think they're going to lose the PR battle, because "expected behavior" sounds defensive even when it's accurate.
+
+## Why the Researchers Are Also Right
+
+The OX team is not wrong about the impact. Most developers shipping MCP servers right now do not know what they're doing. They downloaded a reference SDK, wrapped a tool function around an existing API, slapped MCP on top, and pushed to GitHub. No authentication. No input validation. No allow list on shell commands. No audit logging. No nothing.
+
+Then they put the server on the public internet, told their users to install it, and now those users are running arbitrary commands from a stranger's repo.
+
+That is not Anthropic's fault. That is the developer's fault.
+
+But the developer is on a hackathon timeline and the user is a finance manager who just wants Claude to talk to Essbase. Nobody in that chain is reading CVE advisories.
+
+## The Real Question for Enterprise Buyers
+
+Stop installing an MCP server because it has the right logo on the README. Ask the developer five questions before you give it access to anything that matters.
+
+1. **What runs the server?** Local process, HTTP service, container? STDIO is fine inside a sandbox, terrible exposed to the network.
+2. **How does it authenticate?** OAuth, API key, SSO? "It just works" means it just works for an attacker too.
+3. **What can the tools actually do?** Read-only queries are different from `execute_command`. If the tool list includes shell access, you are not buying a finance tool. You are buying a backdoor.
+4. **Where do the audit logs go?** Every call should be logged with the user, the input, and the result. If the answer is "we'll add that later," walk away.
+5. **Who's responsible for updates?** A solo developer's side project is not the same as a vendor with a security disclosure process.
+
+That is not a high bar. It is the same bar you already apply to any enterprise software. MCP just feels new because the protocol is six months old in most people's minds.
+
+## What We Do at Caprus
+
+I build MCP servers for Oracle EPM. Three shipped, one in beta. Every server [Caprus](https://caprus.ai/) ships runs on a few rules that should not be controversial:
+
+- The server is local to the user's machine, not a public endpoint
+- Authentication uses the existing EPM security model (so the user can only see what their EPM account can already see)
+- The tool surface is tightly scoped: query data, run reports, check status, no shell access
+- Every call writes to an audit log the customer controls
+- We run our own pen tests, and after this month, we are running more
+
+None of that is innovation. It is table stakes for enterprise software, applied to a new protocol. The reason 200,000 servers are at risk is that most of them did not bother with table stakes.
+
+## The Bigger Picture
+
+MCP is going to win. In some ways it already has. Anthropic donated the protocol to the Linux Foundation, OpenAI adopted it, Block adopted it, every major frontier model speaks it. The shape of the protocol is right for the agentic AI era.
+
+The protocol is also still about six months old in production. Of course the first wave of servers shipped with security holes. The first wave of anything ships with security holes. The first web servers were full of buffer overflows. The first browsers leaked memory like a screen door. We figured those out. We are going to figure this one out too.
+
+The question is whether you want to be the buyer who installed a hackathon-grade MCP server before that figuring-out happened, or the buyer who waited (or hired someone who knew the difference).
+
+MCP is secure. The developer just has to know what they are doing.
+
+(That has always been the catch, in finance and in software. The catch hasn't changed. What changed is how fast we are handing out the knives.)
