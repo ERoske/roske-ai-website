@@ -535,19 +535,14 @@ const editorsNotes = [
       #fbf8f3;
   }
 
-  /* Newsprint grain overlay — sparse diagonal hatch, never a tight grid behind copy */
-  .hero-grain {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-    background-image:
-      repeating-linear-gradient(135deg, transparent 0, transparent 14px, currentColor 14px, currentColor 15px);
-  }
-  [data-theme="dark"] .hero-grain { color: rgba(251, 248, 243, 0.018); }
-  [data-theme="light"] .hero-grain { color: rgba(10, 10, 10, 0.025); }
+  /* Hero grain overlay — disabled. The hatch was creating visible stripes on mobile
+     and competing with hero copy. We rely on the section gradient + reading scrim instead. */
+  .hero-grain { display: none; }
 
-  /* Reading surface behind hero copy — keeps white text legible over any background */
+  /* Reading surface behind hero copy — keeps text legible over any background.
+     On mobile (single column) we use a near-solid panel so the white text never
+     fights the background imagery. Above 1024px we fade to the side so the
+     poster image stays visible next to the column. */
   .hero-text {
     position: relative;
     z-index: 2;
@@ -555,18 +550,32 @@ const editorsNotes = [
   [data-theme="dark"] .hero-text::before {
     content: "";
     position: absolute;
-    inset: -1.5rem -2rem;
-    background: radial-gradient(ellipse at 30% 50%, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.55) 55%, rgba(5, 5, 5, 0) 100%);
+    inset: -1.25rem -1.25rem;
+    background: rgba(5, 5, 5, 0.72);
+    border-radius: 0.25rem;
     z-index: -1;
     pointer-events: none;
   }
   [data-theme="light"] .hero-text::before {
     content: "";
     position: absolute;
-    inset: -1.5rem -2rem;
-    background: radial-gradient(ellipse at 30% 50%, rgba(251, 248, 243, 0.85) 0%, rgba(251, 248, 243, 0.6) 55%, rgba(251, 248, 243, 0) 100%);
+    inset: -1.25rem -1.25rem;
+    background: rgba(251, 248, 243, 0.88);
+    border-radius: 0.25rem;
     z-index: -1;
     pointer-events: none;
+  }
+  @media (min-width: 1024px) {
+    [data-theme="dark"] .hero-text::before {
+      inset: -1.5rem -2rem;
+      background: radial-gradient(ellipse at 30% 50%, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.55) 55%, rgba(5, 5, 5, 0) 100%);
+      border-radius: 0;
+    }
+    [data-theme="light"] .hero-text::before {
+      inset: -1.5rem -2rem;
+      background: radial-gradient(ellipse at 30% 50%, rgba(251, 248, 243, 0.9) 0%, rgba(251, 248, 243, 0.65) 55%, rgba(251, 248, 243, 0) 100%);
+      border-radius: 0;
+    }
   }
 
   .hero-grid {
