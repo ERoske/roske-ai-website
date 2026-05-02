@@ -535,20 +535,39 @@ const editorsNotes = [
       #fbf8f3;
   }
 
-  /* Newsprint grain overlay */
+  /* Newsprint grain overlay — sparse diagonal hatch, never a tight grid behind copy */
   .hero-grain {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 0;
     background-image:
-      repeating-linear-gradient(0deg, transparent 0, transparent 2px, currentColor 2px, currentColor 2.5px),
-      repeating-linear-gradient(90deg, transparent 0, transparent 2px, currentColor 2px, currentColor 2.5px);
-    background-size: 4px 4px;
-    mix-blend-mode: overlay;
+      repeating-linear-gradient(135deg, transparent 0, transparent 14px, currentColor 14px, currentColor 15px);
   }
-  [data-theme="dark"] .hero-grain { color: rgba(251, 248, 243, 0.012); }
+  [data-theme="dark"] .hero-grain { color: rgba(251, 248, 243, 0.018); }
   [data-theme="light"] .hero-grain { color: rgba(10, 10, 10, 0.025); }
+
+  /* Reading surface behind hero copy — keeps white text legible over any background */
+  .hero-text {
+    position: relative;
+    z-index: 2;
+  }
+  [data-theme="dark"] .hero-text::before {
+    content: "";
+    position: absolute;
+    inset: -1.5rem -2rem;
+    background: radial-gradient(ellipse at 30% 50%, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.55) 55%, rgba(5, 5, 5, 0) 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+  [data-theme="light"] .hero-text::before {
+    content: "";
+    position: absolute;
+    inset: -1.5rem -2rem;
+    background: radial-gradient(ellipse at 30% 50%, rgba(251, 248, 243, 0.85) 0%, rgba(251, 248, 243, 0.6) 55%, rgba(251, 248, 243, 0) 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
 
   .hero-grid {
     position: relative;
