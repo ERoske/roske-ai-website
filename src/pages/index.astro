@@ -5,118 +5,128 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// The full Vought-style ensemble — four "Heroes of Roske International"
-// pulled from this week's themed images.
-const ensemble = [
+// "Inside the Issue" — the four supporting scene images, treated as a
+// magazine table-of-contents spread.
+const insideTheIssue = [
   {
-    src: '/images/the-boys/edward-butcher.png',
-    codename: 'THE COUNSELOR',
-    realName: 'Edward Roske',
-    powers: 'Strategic Realism · Cigar Tolerance',
-    blurb: "Found in the alley behind the keynote venue. Allegedly here to clean up the mess after the other Supes spreadsheet themselves into a corner.",
+    src: '/images/devil-fears-ai/edward-intern-office.png',
+    pageNo: '014',
+    section: 'PROFILE',
+    headline: 'A Day in the Life',
+    deck: 'Our intern arrives at 6:42 AM with the wrong oat-milk ratio and a plausible explanation already drafted.',
     aspect: '3/4',
-    rotate: -1.2,
+    rotate: -1.4,
   },
   {
-    src: '/images/the-boys/edward-starlight.png',
-    codename: 'THE LIGHTBRINGER',
-    realName: 'Edward Roske',
-    powers: 'Photonic Q&A · Stagecraft Charisma',
-    blurb: "Hand-picked by HR for the press tour. Conjures coherent answers to vague enterprise questions on demand. Surprisingly comfortable on stage.",
-    aspect: '3/4',
-    rotate: 1.4,
-  },
-  {
-    src: '/images/the-boys/edward-speedster.png',
-    codename: 'AGENT-1',
-    realName: 'Edward Roske',
-    powers: 'Iterative Velocity · Holding His Hat On',
-    blurb: "Late to every standup, on time to every shipping deadline. Specializes in last-mile delivery, occasionally in the literal sense.",
+    src: '/images/devil-fears-ai/edward-binders-stumble.png',
+    pageNo: '022',
+    section: 'STREET STYLE',
+    headline: 'Carry-On Couture',
+    deck: 'Ten binders, three lattes, one fedora. The model leans into the trend like he has a choice.',
     aspect: '4/3',
-    rotate: -0.8,
+    rotate: 1.2,
   },
   {
-    src: '/images/the-boys/edward-deep.png',
-    codename: 'OCEANIC OUTREACH',
-    realName: 'Edward Roske',
-    powers: 'Aquatic Empathy · Plausible Deniability',
-    blurb: "On a court-mandated PR rehab tour. Holds the goldfish, smiles at the cameras, and has not yet been allowed near the spreadsheets.",
+    src: '/images/devil-fears-ai/edward-as-editor.png',
+    pageNo: '038',
+    section: 'EDITOR LETTER',
+    headline: 'From the Desk',
+    deck: 'Reading glasses. Withering stare. The same face you saw three pages ago, now in a wig and unaffordable wool.',
+    aspect: '3/4',
+    rotate: -0.6,
+  },
+  {
+    src: '/images/devil-fears-ai/edward-scolded-sidewalk.png',
+    pageNo: '054',
+    section: 'AFTER HOURS',
+    headline: 'The Sidewalk Note',
+    deck: "A masterclass in mid-stride feedback, delivered curbside with the cab already running. The intern survives. The latte does not.",
     aspect: '3/4',
     rotate: 0.9,
   },
 ];
 
-// Active Operations — the six recurring projects, restyled as Vought-style "active operations" briefs.
-const operations = [
+// "The Atelier" — the six recurring projects, restyled as Vogue-style features.
+const features = [
   {
-    fileNo: 'OP-01',
-    classification: 'PRIORITY · DEPLOYED',
+    fileNo: 'FW.01',
+    section: 'COVER STORY',
     title: 'AgentCube',
     body: "The unified engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus.AI. Already shipping for Essbase and Planning. Consolidations in beta.",
     href: '/agentcube.html',
     external: false,
-    cta: 'Open the file',
+    cta: 'Read the cover',
     badge: 'MCP · ENTERPRISE',
   },
   {
-    fileNo: 'OP-02',
-    classification: 'EVENT · OCT 9-10, 2026',
+    fileNo: 'FW.02',
+    section: 'CALENDAR',
     title: 'Caribbean AI Summit',
     body: "Co-chairing the largest AI conference Puerto Rico has ever seen. Speakers and attendees from around the globe. Submit a talk, sponsor a track, or grab a seat before the island fills up.",
     href: 'https://www.caribbeansummit.ai/',
     external: true,
-    cta: 'See the agenda',
-    badge: 'PR Convention Center',
+    cta: 'See the schedule',
+    badge: 'OCT 9-10 · SAN JUAN',
   },
   {
-    fileNo: 'OP-03',
-    classification: 'INVESTMENT · ACTIVE',
+    fileNo: 'FW.03',
+    section: 'INVESTMENTS',
     title: 'Caprus AI',
     body: "Investor and contributor at Caprus, an AI Software & Services firm empowering finance teams with AI solutions for smarter, faster, more strategic financial operations.",
     href: 'https://caprus.ai',
     external: true,
-    cta: 'Visit Caprus',
+    cta: 'Visit the house',
     badge: 'AI · FINANCE',
   },
   {
-    fileNo: 'OP-04',
-    classification: 'R&D · IN PROGRESS',
+    fileNo: 'FW.04',
+    section: 'BACKSTAGE',
     title: 'AI-Powered DM Screen',
     body: "Building a tool that helps Dungeon Masters run better D&D campaigns using AI. Because if you're going to have an artificial intelligence at your table, it should at least help with initiative tracking.",
     href: null,
     external: false,
-    cta: 'Status: rolling',
+    cta: 'In production',
     badge: 'D&D · AI',
   },
   {
-    fileNo: 'OP-05',
-    classification: 'COMMUNITY · 850+',
+    fileNo: 'FW.05',
+    section: 'COMMUNITY',
     title: 'Puerto Rico AI Community',
     body: "President of the Puerto Rico AI Community. Over 850 attendees across our events. We meet every other month to explore what AI means for the island and beyond.",
     href: 'https://praicommunity.org/',
     external: true,
-    cta: 'Join the next event',
+    cta: 'RSVP for the next show',
     badge: 'BIMONTHLY · SAN JUAN',
+  },
+  {
+    fileNo: 'FW.06',
+    section: 'ADVENTURE',
+    title: 'Everest Base Camp · Cleared',
+    body: "Hiked to Everest Base Camp in April with Dawn after acclimating in Santa Fe. Ten days, twelve thousand vertical feet, one fedora that survived the entire Khumbu Valley. The next summit is undecided.",
+    href: '/blog',
+    external: false,
+    cta: 'Read the dispatch',
+    badge: 'NEPAL · APRIL 2026',
   },
 ];
 
-// Faux corporate Q&A — the "From the Desk of the CEO" section
-const ceoQA = [
+// "Editor's Notes" — Q&A formatted as a fashion magazine letter from the editor
+const editorsNotes = [
   {
-    q: "Q: Roske International. Are you serious?",
-    a: "It is a parody of a corporate-superhero firm. The Boys is wrapping up its final season, and Edward already volunteered (in writing) to play Butcher or Starlight. Nobody asked him. He volunteered. The website is the result.",
+    q: "On the role of the AI intern.",
+    a: "The intern in the poster is fetching coffee, drafting decks, and forwarding emails to the wrong people. He is also shipping production code. Both jobs are accurate. Neither pays particularly well in equity.",
   },
   {
-    q: "Q: Does Edward actually have superpowers?",
-    a: "He has spoken in 50+ countries on all seven continents, written 15 books, and once climbed Everest Base Camp without complaining (much). He is not licensed by any state or federal agency to be called a Supe.",
+    q: "On the silver wig.",
+    a: "Edward volunteered to play both roles. Nobody was going to stop him. The wig is a costume rental. The fedora is his.",
   },
   {
-    q: "Q: Is the AI as heroic as the marketing implies?",
-    a: "Short answer: no. AI is a tool. The Caprus MCP servers are very good at their jobs. They will not fly. They will not save anyone from a burning building. They will close your books faster.",
+    q: "On whether AI is actually scary.",
+    a: "Short answer: not in the way the trailer implies. Long answer: it is, however, very good at closing the books faster than the intern who is currently being yelled at on the sidewalk.",
   },
   {
-    q: "Q: Where do I report misconduct?",
-    a: "Send a tip to Edward@Roske.AI. He reads it. He answers it himself, in his own voice, in roughly the same number of paragraphs you sent.",
+    q: "On corrections and complaints.",
+    a: "Send to Edward@Roske.AI. He reads them himself, in his own voice, in roughly the same number of paragraphs you sent. (Editor: also Edward. Confusingly.)",
   },
 ];
 ---
@@ -125,21 +135,34 @@ const ceoQA = [
   <WeeklyAnimation />
 
   <!-- ============================================
-       HERO — Roske International Propaganda Poster
+       MASTHEAD STRIP — fake Vogue masthead
+       ============================================ -->
+  <div class="masthead">
+    <div class="masthead-inner">
+      <span class="masthead-meta">VOL. XLII · ISS. 18</span>
+      <span class="masthead-meta">MAY 2026 · UNAUTHORIZED</span>
+      <span class="masthead-meta">NEWSSTAND · $0.00</span>
+    </div>
+  </div>
+
+  <!-- ============================================
+       HERO — Movie poster as the cover
        ============================================ -->
   <section class="hero-section">
-    <div class="hero-stars" aria-hidden="true"></div>
+    <div class="hero-grain" aria-hidden="true"></div>
 
     <div class="hero-grid">
       <div class="hero-text">
         <div class="hero-eyebrow">
-          <span class="hero-eyebrow-dot"></span>
-          <span>FILE NO. 042 · WEEK OF {theme.week} · CLEARANCE: SEMI-PUBLIC</span>
+          <span class="hero-eyebrow-line"></span>
+          <span>FILE NO. 052 · WEEK OF {theme.week} · COVER STORY</span>
         </div>
 
         <h1 class="hero-title">
-          <span class="hero-title-line">ROSKE</span>
-          <span class="hero-title-line hero-title-accent">INTERNATIONAL</span>
+          <span class="hero-title-line">The</span>
+          <span class="hero-title-line hero-title-script">Devil</span>
+          <span class="hero-title-line">Fears</span>
+          <span class="hero-title-line hero-title-bold">AI Too.</span>
         </h1>
 
         <p class="hero-deck">{theme.hero.subtitle}</p>
@@ -154,10 +177,10 @@ const ceoQA = [
         <div class="hero-cta-row">
           <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary">
             Book 13 Minutes
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
           </a>
           <a href="#current-work" class="btn-secondary">
-            <span>{theme.hero.ctaText}</span>
+            <span>Open the Issue</span>
           </a>
         </div>
 
@@ -177,73 +200,93 @@ const ceoQA = [
       </div>
 
       <div class="hero-image-wrap">
+        <div class="hero-cover-tag">SUMMER ISSUE · 2026</div>
         <div class="hero-image-frame">
-          <div class="hero-corner hero-corner-tl"></div>
-          <div class="hero-corner hero-corner-tr"></div>
-          <div class="hero-corner hero-corner-bl"></div>
-          <div class="hero-corner hero-corner-br"></div>
           <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="hero-image" />
-          <div class="hero-image-meta">
-            <span>EDITION 04·25·26</span>
-            <span>R-STAR APPROVED</span>
+          <div class="hero-cover-fold">
+            <span class="hero-cover-fold-label">PARODY · UNRATED</span>
+            <span class="hero-cover-fold-issue">No. 052</span>
           </div>
         </div>
         <div class="hero-stamp">
           <div class="hero-stamp-inner">
-            <span class="hero-stamp-line">CERTIFIED</span>
-            <span class="hero-stamp-big">PROBATIONARY</span>
-            <span class="hero-stamp-line">SUPE · 2026</span>
+            <span class="hero-stamp-line">ROLE OF</span>
+            <span class="hero-stamp-big">EDWARD</span>
+            <span class="hero-stamp-line">PLAYED BY EDWARD</span>
           </div>
+        </div>
+        <div class="hero-pull-quote" aria-hidden="true">
+          <span class="hero-pull-mark">"</span>
+          <span class="hero-pull-text">That's all.</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       MARQUEE — Vought-style ticker
+       MARQUEE — Fashion ticker
        ============================================ -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span class="marquee-item">★ HEROES OF THE QUARTER</span>
-      <span class="marquee-item">SAVING THE WORLD ONE MCP SERVER AT A TIME</span>
-      <span class="marquee-item">★ Q3 ROSTER ANNOUNCED</span>
+      <span class="marquee-item">★ COVER STORY · THE DEVIL FEARS AI TOO</span>
+      <span class="marquee-item">EXCLUSIVE · BOTH ROLES PLAYED BY EDWARD</span>
+      <span class="marquee-item">★ SUMMER ISSUE</span>
       <span class="marquee-item">CARIBBEAN AI SUMMIT · OCT 9-10</span>
-      <span class="marquee-item">★ EVEREST BASE CAMP CLEARED</span>
+      <span class="marquee-item">★ AGENTCUBE · NOW SHIPPING</span>
       <span class="marquee-item">FEDORA: STILL BLUE</span>
-      <span class="marquee-item">★ HEROES OF THE QUARTER</span>
-      <span class="marquee-item">SAVING THE WORLD ONE MCP SERVER AT A TIME</span>
-      <span class="marquee-item">★ Q3 ROSTER ANNOUNCED</span>
+      <span class="marquee-item">★ COVER STORY · THE DEVIL FEARS AI TOO</span>
+      <span class="marquee-item">EXCLUSIVE · BOTH ROLES PLAYED BY EDWARD</span>
+      <span class="marquee-item">★ SUMMER ISSUE</span>
       <span class="marquee-item">CARIBBEAN AI SUMMIT · OCT 9-10</span>
-      <span class="marquee-item">★ EVEREST BASE CAMP CLEARED</span>
+      <span class="marquee-item">★ AGENTCUBE · NOW SHIPPING</span>
       <span class="marquee-item">FEDORA: STILL BLUE</span>
     </div>
   </div>
 
   <!-- ============================================
-       ENSEMBLE — Heroes of the Quarter
+       PULL QUOTE — Magazine-style oversized quote
        ============================================ -->
-  <section class="ensemble">
-    <div class="ensemble-inner">
+  <section class="pullquote-section">
+    <div class="pullquote-inner">
+      <div class="pullquote-tag">PAGE 003 · ON THE COVER</div>
+      <blockquote class="pullquote">
+        <span class="pullquote-mark">&ldquo;</span>
+        I auditioned for the intern. I auditioned for the boss. I got both roles.
+        <span class="pullquote-mark pullquote-mark-close">&rdquo;</span>
+      </blockquote>
+      <div class="pullquote-attrib">
+        <span class="pullquote-attrib-name">Edward Roske</span>
+        <span class="pullquote-attrib-role">CEO · Speaker · Data Scientist · Probationary AI Intern</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       INSIDE THE ISSUE — magazine spread of scene images
+       ============================================ -->
+  <section class="issue-section">
+    <div class="issue-inner">
       <header class="section-header">
-        <div class="section-tag">SECTION 02 · ROSTER</div>
-        <h2 class="section-title">Heroes of the Quarter.</h2>
+        <div class="section-tag">SECTION 02 · INSIDE THE ISSUE</div>
+        <h2 class="section-title">A Table of Contents,<br/><em>more or less.</em></h2>
         <p class="section-deck">
-          Four faces of Roske International. The same man, four different press cycles. (Casting call still open. Send headshots. Or don't.)
+          Four pages from a magazine that does not exist, photographed by a crew that no one has paid yet, starring the same man twice. (We assume he had it coming.)
         </p>
       </header>
 
-      <div class="ensemble-grid">
-        {ensemble.map((hero, idx) => (
-          <article class="ensemble-card" style={`--rot:${hero.rotate}deg; --aspect:${hero.aspect};`}>
-            <div class="ensemble-photo">
-              <img src={hero.src} alt={`Edward Roske as ${hero.codename}`} loading="lazy" decoding="async" />
-              <div class="ensemble-stamp">{String(idx + 1).padStart(2, '0')}</div>
+      <div class="issue-grid">
+        {insideTheIssue.map((item, idx) => (
+          <article class="issue-card" style={`--rot:${item.rotate}deg; --aspect:${item.aspect};`}>
+            <div class="issue-photo">
+              <span class="issue-tape issue-tape-tl"></span>
+              <span class="issue-tape issue-tape-br"></span>
+              <img src={item.src} alt={item.headline} loading="lazy" decoding="async" />
+              <div class="issue-pageno">P. {item.pageNo}</div>
             </div>
-            <div class="ensemble-meta">
-              <div class="ensemble-codename">{hero.codename}</div>
-              <div class="ensemble-realname">a/k/a {hero.realName}</div>
-              <div class="ensemble-powers">{hero.powers}</div>
-              <p class="ensemble-blurb">{hero.blurb}</p>
+            <div class="issue-meta">
+              <div class="issue-section-label">{item.section}</div>
+              <h3 class="issue-headline">{item.headline}</h3>
+              <p class="issue-deck">{item.deck}</p>
             </div>
           </article>
         ))}
@@ -252,63 +295,74 @@ const ceoQA = [
   </section>
 
   <!-- ============================================
-       CEO BOARDROOM — pull quote with image
+       EDITOR LETTER — pull quote with image
        ============================================ -->
-  <section class="ceo-section">
-    <div class="ceo-grid">
-      <figure class="ceo-image">
-        <img src="/images/the-boys/edward-boardroom.png" alt="Edward Roske presenting 'AI: The New Heroes' in a corporate boardroom." loading="lazy" decoding="async" />
+  <section class="editor-section">
+    <div class="editor-grid">
+      <figure class="editor-image">
+        <img src="/images/devil-fears-ai/edward-desk-meltdown.png" alt="Edward Roske as a frazzled AI intern at his magazine office desk, surrounded by Starbucks cups and three buzzing iPhones." loading="lazy" decoding="async" />
         <figcaption>
-          <span>EX. A · QUARTERLY BRIEFING</span>
-          <span>FLR 47 · MIDTOWN</span>
+          <span>FIG. A · 6:47 PM</span>
+          <span>OPEN PLAN · FLOOR 14</span>
         </figcaption>
       </figure>
 
-      <div class="ceo-text">
-        <div class="ceo-tag">FROM THE DESK OF THE CEO</div>
-        <blockquote class="ceo-quote">
-          <span class="ceo-quote-mark" aria-hidden="true">"</span>
-          The new heroes are not the ones in capes. They are the ones who can close your books in a week, run a coherent forecast on demand, and answer a follow-up question without sweating through their suit. We sell the spreadsheets. The capes are just for the press kit.
-        </blockquote>
-        <div class="ceo-attrib">
-          <span class="ceo-attrib-name">Edward Roske</span>
-          <span class="ceo-attrib-title">CEO, Roske International (parodically)</span>
+      <div class="editor-text">
+        <div class="editor-tag">FROM THE DESK OF THE EDITOR</div>
+        <h3 class="editor-h3">A note from the editor.<br/>(Also Edward.)</h3>
+        <p class="editor-body">
+          The new heroes are not the ones in capes, and they are not the ones in Prada either. They are the people who can close your books in a week, run a coherent forecast on demand, and answer a follow-up question without sweating through their suit. The capes are theatrical. The latte run is real. The intern is doing both.
+        </p>
+        <p class="editor-body">
+          We are still running the magazine. We are also still shipping the MCP servers. The only person who has been confused by this so far is the intern, and he is busy. (He is also Edward.)
+        </p>
+        <div class="editor-attrib">
+          <span class="editor-attrib-line"></span>
+          <div>
+            <span class="editor-attrib-name">Edward Roske</span>
+            <span class="editor-attrib-title">Editor-in-Chief, ROSKE/MAG (parodically)</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       ACTIVE OPERATIONS — Project briefs
+       THE ATELIER — six features (project cards)
        ============================================ -->
-  <section id="current-work" class="ops-section">
-    <div class="ops-inner">
+  <section id="current-work" class="atelier-section">
+    <div class="atelier-inner">
       <header class="section-header">
-        <div class="section-tag">SECTION 03 · ACTIVE OPERATIONS</div>
-        <h2 class="section-title">What's actually shipping.</h2>
+        <div class="section-tag">SECTION 03 · THE ATELIER</div>
+        <h2 class="section-title">Six things,<br/>currently <em>shipping.</em></h2>
         <p class="section-deck">
-          Six things Edward is building, running, or visibly bothering people about. The marketing is a parody. These are real.
+          The features on the contributor page. Edward is not just the cover model. He is also the writer, the fact-checker, and the person making the spreadsheet that determines whether any of this is profitable.
         </p>
       </header>
 
-      <div class="ops-grid">
-        {operations.map(op => (
-          <article class="op-card">
-            <div class="op-card-header">
-              <span class="op-fileno">{op.fileNo}</span>
-              <span class="op-classification">{op.classification}</span>
+      <div class="atelier-grid">
+        {features.map(feat => (
+          <article class="feat-card">
+            <div class="feat-corner feat-corner-tl"></div>
+            <div class="feat-corner feat-corner-tr"></div>
+            <div class="feat-corner feat-corner-bl"></div>
+            <div class="feat-corner feat-corner-br"></div>
+
+            <div class="feat-card-header">
+              <span class="feat-fileno">{feat.fileNo}</span>
+              <span class="feat-section">{feat.section}</span>
             </div>
-            <h3 class="op-title">{op.title}</h3>
-            <p class="op-body">{op.body}</p>
-            <div class="op-card-footer">
-              <span class="op-badge">{op.badge}</span>
-              {op.href ? (
-                <a href={op.href} target={op.external ? '_blank' : undefined} rel={op.external ? 'noopener' : undefined} class="op-cta">
-                  {op.cta}
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+            <h3 class="feat-title">{feat.title}</h3>
+            <p class="feat-body">{feat.body}</p>
+            <div class="feat-card-footer">
+              <span class="feat-badge">{feat.badge}</span>
+              {feat.href ? (
+                <a href={feat.href} target={feat.external ? '_blank' : undefined} rel={feat.external ? 'noopener' : undefined} class="feat-cta">
+                  {feat.cta}
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
                 </a>
               ) : (
-                <span class="op-cta op-cta-disabled">{op.cta}</span>
+                <span class="feat-cta feat-cta-disabled">{feat.cta}</span>
               )}
             </div>
           </article>
@@ -318,22 +372,22 @@ const ceoQA = [
   </section>
 
   <!-- ============================================
-       Q&A — Faux corporate FAQ
+       EDITOR'S NOTES — Q&A as fashion column
        ============================================ -->
-  <section class="qa-section">
-    <div class="qa-inner">
-      <header class="section-header">
-        <div class="section-tag">SECTION 04 · STOCKHOLDER LETTER</div>
-        <h2 class="section-title">Hard questions, on the record.</h2>
+  <section class="notes-section">
+    <div class="notes-inner">
+      <header class="section-header notes-header">
+        <div class="section-tag">SECTION 04 · EDITOR'S NOTES</div>
+        <h2 class="section-title">A few things,<br/>on the record.</h2>
       </header>
 
-      <div class="qa-list">
-        {ceoQA.map((item, idx) => (
-          <div class="qa-item">
-            <div class="qa-num">{String(idx + 1).padStart(2, '0')}</div>
-            <div class="qa-content">
-              <div class="qa-q">{item.q}</div>
-              <div class="qa-a">{item.a}</div>
+      <div class="notes-list">
+        {editorsNotes.map((item, idx) => (
+          <div class="note-item">
+            <div class="note-num">{String(idx + 1).padStart(2, '0')}</div>
+            <div class="note-content">
+              <div class="note-q">{item.q}</div>
+              <div class="note-a">{item.a}</div>
             </div>
           </div>
         ))}
@@ -342,42 +396,27 @@ const ceoQA = [
   </section>
 
   <!-- ============================================
-       FINAL CTA — Submit a Briefing
+       FINAL CTA — "Submit a Pitch"
        ============================================ -->
   <section class="final-cta">
-    <div class="final-cta-inner">
-      <div class="final-cta-stars" aria-hidden="true">
-        <svg viewBox="0 0 800 120" preserveAspectRatio="none" width="100%" height="100%">
-          {[...Array(28).keys()].map(i => {
-            const x = 20 + (i * 28) + (i % 3) * 4;
-            const y = 30 + ((i * 13) % 60);
-            const size = 6 + (i % 4) * 2;
-            return (
-              <polygon
-                points={`${x},${y - size} ${x + size * 0.3},${y - size * 0.4} ${x + size * 0.95},${y - size * 0.3} ${x + size * 0.5},${y + size * 0.15} ${x + size * 0.6},${y + size * 0.8} ${x},${y + size * 0.5} ${x - size * 0.6},${y + size * 0.8} ${x - size * 0.5},${y + size * 0.15} ${x - size * 0.95},${y - size * 0.3} ${x - size * 0.3},${y - size * 0.4}`}
-                fill="currentColor"
-                opacity={0.18 + (i % 5) * 0.04}
-              />
-            );
-          })}
-        </svg>
-      </div>
+    <div class="final-cta-grain" aria-hidden="true"></div>
 
+    <div class="final-cta-inner">
       <div class="final-cta-content">
-        <div class="section-tag">SECTION 05 · REPORTING</div>
+        <div class="section-tag final-cta-tag">SECTION 05 · MASTHEAD</div>
         <h2 class="final-cta-title">
-          Got a tip?<br/>
-          <span class="final-cta-accent">Send it to the CEO.</span>
+          Submit a pitch.<br/>
+          <span class="final-cta-accent">The editor reads everything.</span>
         </h2>
         <p class="final-cta-body">
-          Edward reads every email. Answers most of them. Personally, in his own voice, in roughly the same number of paragraphs you sent. (No interns. No automated routing. No corporate Supe screening. The fedora is real and the inbox is open.)
+          Edward reads every email. Answers most of them. Personally, in his own voice, in roughly the same number of paragraphs you sent. (No interns. No automated routing. No silver-wigged gatekeepers. The fedora is real and the inbox is open.)
         </p>
         <div class="final-cta-buttons">
           <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary btn-primary-lg">
             Book a 13-Minute Briefing
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
           </a>
-          <a href="/contact/" class="btn-secondary btn-secondary-lg">Submit Intel</a>
+          <a href="/contact/" class="btn-secondary btn-secondary-lg">Submit a Pitch</a>
         </div>
       </div>
     </div>
@@ -386,52 +425,92 @@ const ceoQA = [
 
 <style>
   /* ============================================
-     ROSKE INTERNATIONAL — propaganda magazine
+     THE DEVIL FEARS AI TOO — Vogue-style editorial
      ============================================ */
 
   :global(body) {
     font-family: var(--font-body);
+    font-size: 1.075rem;
+    line-height: 1.6;
   }
 
-  /* CSS vars locally aliased for readability */
   section {
     position: relative;
   }
 
+  /* ===================== SHARED HEADER ===================== */
   .section-header {
     max-width: 56rem;
-    margin: 0 auto 3rem;
+    margin: 0 auto 3.5rem;
     text-align: center;
     padding: 0 1.5rem;
   }
   .section-tag {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.32em;
+    font-size: 0.68rem;
+    letter-spacing: 0.34em;
     text-transform: uppercase;
     color: var(--color-accent);
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
   .section-title {
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(2.6rem, 6.5vw, 5.5rem);
     line-height: 0.95;
-    letter-spacing: -0.01em;
-    text-transform: uppercase;
-    margin: 0 0 1rem;
+    letter-spacing: -0.015em;
+    margin: 0 0 1.25rem;
+    font-weight: 800;
   }
+  .section-title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--color-secondary);
+  }
+  [data-theme="dark"] .section-title em { color: #ff5fa8; }
   [data-theme="dark"] .section-title { color: var(--color-text); }
   [data-theme="light"] .section-title { color: var(--color-text-dark); }
 
   .section-deck {
-    font-size: 1.1rem;
-    line-height: 1.55;
-    max-width: 44rem;
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    line-height: 1.5;
+    max-width: 40rem;
     margin: 0 auto;
+    font-style: italic;
   }
   [data-theme="dark"] .section-deck { color: var(--color-text-muted); }
   [data-theme="light"] .section-deck { color: var(--color-text-dark-muted); }
+
+  /* ===================== MASTHEAD ===================== */
+  .masthead {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    padding: 0.55rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+  }
+  [data-theme="dark"] .masthead {
+    background: #050505;
+    border-color: #2a2521;
+    color: var(--color-text-muted);
+  }
+  [data-theme="light"] .masthead {
+    background: #fff;
+    border-color: var(--color-border-light);
+    color: var(--color-text-dark-muted);
+  }
+  .masthead-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
 
   /* ===================== HERO ===================== */
   .hero-section {
@@ -441,54 +520,35 @@ const ceoQA = [
     isolation: isolate;
     display: flex;
     align-items: center;
-    padding: 6rem 1.5rem 4rem;
+    padding: 5rem 1.5rem 4rem;
   }
   [data-theme="dark"] .hero-section {
     background:
-      radial-gradient(ellipse at 20% 30%, rgba(200, 16, 46, 0.18) 0%, transparent 55%),
-      radial-gradient(ellipse at 80% 70%, rgba(27, 44, 95, 0.35) 0%, transparent 55%),
-      linear-gradient(180deg, #0a0e1c 0%, #050811 100%);
+      radial-gradient(ellipse at 75% 25%, rgba(212, 0, 122, 0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(184, 0, 31, 0.18) 0%, transparent 60%),
+      linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
   }
   [data-theme="light"] .hero-section {
     background:
-      radial-gradient(ellipse at 20% 30%, rgba(200, 16, 46, 0.10) 0%, transparent 55%),
-      radial-gradient(ellipse at 80% 70%, rgba(27, 44, 95, 0.10) 0%, transparent 55%),
-      #f7f1e3;
+      radial-gradient(ellipse at 75% 25%, rgba(212, 0, 122, 0.08) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 80%, rgba(184, 0, 31, 0.07) 0%, transparent 55%),
+      #fbf8f3;
   }
 
-  .hero-stripes {
-    position: absolute;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 28px,
-      currentColor 28px,
-      currentColor 29px
-    );
-    pointer-events: none;
-    z-index: 0;
-  }
-  [data-theme="dark"] .hero-stripes { color: rgba(247, 241, 227, 0.025); }
-  [data-theme="light"] .hero-stripes { color: rgba(10, 14, 28, 0.04); }
-
-  .hero-stars {
+  /* Newsprint grain overlay */
+  .hero-grain {
     position: absolute;
     inset: 0;
     pointer-events: none;
     z-index: 0;
     background-image:
-      radial-gradient(circle at 12% 18%, currentColor 1.2px, transparent 1.5px),
-      radial-gradient(circle at 78% 12%, currentColor 1.4px, transparent 1.7px),
-      radial-gradient(circle at 30% 70%, currentColor 1px, transparent 1.4px),
-      radial-gradient(circle at 90% 60%, currentColor 1.4px, transparent 1.7px),
-      radial-gradient(circle at 55% 88%, currentColor 1.1px, transparent 1.4px),
-      radial-gradient(circle at 8% 52%, currentColor 1px, transparent 1.4px),
-      radial-gradient(circle at 65% 28%, currentColor 1.3px, transparent 1.6px);
-    background-size: 100% 100%;
+      repeating-linear-gradient(0deg, transparent 0, transparent 2px, currentColor 2px, currentColor 2.5px),
+      repeating-linear-gradient(90deg, transparent 0, transparent 2px, currentColor 2px, currentColor 2.5px);
+    background-size: 4px 4px;
+    mix-blend-mode: overlay;
   }
-  [data-theme="dark"] .hero-stars { color: rgba(247, 241, 227, 0.45); }
-  [data-theme="light"] .hero-stars { color: rgba(27, 44, 95, 0.45); }
+  [data-theme="dark"] .hero-grain { color: rgba(251, 248, 243, 0.012); }
+  [data-theme="light"] .hero-grain { color: rgba(10, 10, 10, 0.025); }
 
   .hero-grid {
     position: relative;
@@ -504,70 +564,66 @@ const ceoQA = [
   @media (min-width: 1024px) {
     .hero-grid {
       grid-template-columns: 1.05fr 1fr;
-      gap: 4rem;
+      gap: 4.5rem;
     }
   }
 
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.85rem;
     font-family: var(--font-mono);
-    font-size: 0.65rem;
-    letter-spacing: 0.28em;
+    font-size: 0.66rem;
+    letter-spacing: 0.34em;
     text-transform: uppercase;
-    padding: 0.55rem 0.9rem;
-    border: 1px solid var(--color-accent);
-    color: var(--color-accent);
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.8rem;
     font-weight: 600;
-    background: rgba(200, 16, 46, 0.08);
+    color: var(--color-accent);
   }
-  .hero-eyebrow-dot {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
+  .hero-eyebrow-line {
+    width: 2.5rem;
+    height: 1px;
     background: var(--color-accent);
-    box-shadow: 0 0 8px var(--color-accent);
-    animation: heroPulse 2s ease-in-out infinite;
-  }
-  @keyframes heroPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(0.85); }
   }
 
   .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(3.5rem, 11vw, 9rem);
-    line-height: 0.85;
-    letter-spacing: -0.005em;
-    text-transform: uppercase;
-    margin: 0 0 1.5rem;
-    font-weight: 400;
+    font-size: clamp(3.2rem, 9.5vw, 7.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    margin: 0 0 1.8rem;
+    font-weight: 800;
   }
   .hero-title-line {
     display: block;
   }
   [data-theme="dark"] .hero-title-line { color: var(--color-text); }
   [data-theme="light"] .hero-title-line { color: var(--color-text-dark); }
-  .hero-title-accent {
-    color: var(--color-primary) !important;
+  .hero-title-script {
+    font-family: 'Bodoni Moda', serif;
     font-style: italic;
-    transform: skewX(-5deg);
-    transform-origin: left;
-    text-shadow: 0.18rem 0.18rem 0 rgba(27, 44, 95, 0.25);
+    font-weight: 400;
+    color: var(--color-secondary) !important;
+    padding-left: 0.8em;
+    letter-spacing: -0.01em;
   }
-  [data-theme="light"] .hero-title-accent {
-    text-shadow: 0.18rem 0.18rem 0 rgba(27, 44, 95, 0.18);
+  [data-theme="dark"] .hero-title-script { color: #ff5fa8 !important; }
+  .hero-title-bold {
+    color: var(--color-secondary) !important;
+    padding-left: 1.6em;
+    font-weight: 900;
+    letter-spacing: -0.03em;
   }
+  [data-theme="dark"] .hero-title-bold { color: #ff2a8f !important; }
 
   .hero-deck {
-    font-family: 'DM Serif Display', serif;
+    font-family: var(--font-body);
     font-style: italic;
-    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
-    line-height: 1.35;
-    margin: 0 0 1.2rem;
-    max-width: 36rem;
+    font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0 0 1.4rem;
+    max-width: 38rem;
   }
   [data-theme="dark"] .hero-deck { color: var(--color-text); }
   [data-theme="light"] .hero-deck { color: var(--color-text-dark); }
@@ -577,8 +633,8 @@ const ceoQA = [
     align-items: center;
     gap: 0.85rem;
     font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
+    font-size: 0.74rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     margin-bottom: 1.6rem;
     font-weight: 500;
@@ -587,12 +643,13 @@ const ceoQA = [
   [data-theme="light"] .hero-tagline { color: var(--color-text-dark-muted); }
   .hero-tagline-rule {
     width: 2.5rem;
-    height: 2px;
+    height: 1px;
     background: var(--color-accent);
   }
 
   .hero-body {
-    font-size: 1.025rem;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
     line-height: 1.65;
     margin: 0 0 2rem;
     max-width: 38rem;
@@ -620,121 +677,153 @@ const ceoQA = [
 
   .hero-stat-value {
     font-family: var(--font-heading);
-    font-size: 1.85rem;
+    font-size: 2rem;
     line-height: 1;
-    color: var(--color-accent);
+    color: var(--color-secondary);
+    font-weight: 800;
+    font-style: italic;
   }
+  [data-theme="dark"] .hero-stat-value { color: #ff5fa8; }
   .hero-stat-label {
     font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.22em;
+    font-size: 0.6rem;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    margin-top: 0.35rem;
+    margin-top: 0.4rem;
   }
   [data-theme="dark"] .hero-stat-label { color: var(--color-text-muted); }
   [data-theme="light"] .hero-stat-label { color: var(--color-text-dark-muted); }
 
-  /* Hero image */
+  /* Hero image / cover */
   .hero-image-wrap {
     position: relative;
     width: 100%;
-    max-width: 36rem;
+    max-width: 38rem;
     margin: 0 auto;
+  }
+  .hero-cover-tag {
+    position: absolute;
+    top: -2.2rem;
+    left: 0;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    font-weight: 600;
+    z-index: 3;
   }
   .hero-image-frame {
     position: relative;
-    border: 4px solid var(--color-primary);
-    background: var(--color-secondary);
+    background: #fbf8f3;
     box-shadow:
-      0 0 0 1px var(--color-accent),
-      0.5rem 0.5rem 0 rgba(200, 16, 46, 0.4),
-      1.5rem 1.5rem 3rem rgba(0, 0, 0, 0.5);
+      0 1.5rem 3rem rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(184, 0, 31, 0.4);
   }
   [data-theme="light"] .hero-image-frame {
     box-shadow:
-      0 0 0 1px var(--color-accent),
-      0.5rem 0.5rem 0 rgba(27, 44, 95, 0.25),
-      1.5rem 1.5rem 3rem rgba(0, 0, 0, 0.18);
+      0 1.5rem 3rem rgba(184, 0, 31, 0.15),
+      0 0 0 1px rgba(10, 10, 10, 0.06);
   }
   .hero-image {
     display: block;
     width: 100%;
     height: auto;
   }
-  .hero-image-meta {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 0.6rem 0.85rem;
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 80%);
-    color: rgba(247, 241, 227, 0.95);
+  .hero-cover-fold {
+    background: #050505;
+    color: #fbf8f3;
+    padding: 0.7rem 1rem;
     font-family: var(--font-mono);
     font-size: 0.62rem;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     display: flex;
     justify-content: space-between;
   }
 
-  .hero-corner {
-    position: absolute;
-    width: 1.4rem;
-    height: 1.4rem;
-    border: 3px solid var(--color-accent);
-    z-index: 3;
-  }
-  .hero-corner-tl { top: -0.6rem; left: -0.6rem; border-right: none; border-bottom: none; }
-  .hero-corner-tr { top: -0.6rem; right: -0.6rem; border-left: none; border-bottom: none; }
-  .hero-corner-bl { bottom: -0.6rem; left: -0.6rem; border-right: none; border-top: none; }
-  .hero-corner-br { bottom: -0.6rem; right: -0.6rem; border-left: none; border-top: none; }
-
   .hero-stamp {
     position: absolute;
-    top: -1.25rem;
+    top: -1rem;
     right: -1.25rem;
-    width: 9rem;
-    height: 9rem;
+    width: 8rem;
+    height: 8rem;
     border-radius: 50%;
-    border: 3px solid var(--color-accent);
-    background: rgba(200, 16, 46, 0.94);
-    color: #f7f1e3;
+    background: var(--color-secondary);
+    color: #fbf8f3;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: rotate(12deg);
-    box-shadow: 0 0 0 2px rgba(247, 241, 227, 0.85);
+    transform: rotate(11deg);
+    box-shadow:
+      0 0 0 2px #fbf8f3,
+      0 0 0 4px var(--color-secondary),
+      0.4rem 0.4rem 0.8rem rgba(0, 0, 0, 0.3);
     z-index: 4;
     font-family: var(--font-mono);
     text-transform: uppercase;
   }
   .hero-stamp-inner {
     text-align: center;
-    line-height: 1;
+    line-height: 1.05;
   }
   .hero-stamp-line {
     display: block;
-    font-size: 0.62rem;
+    font-size: 0.58rem;
     letter-spacing: 0.22em;
     margin: 0.18rem 0;
-    font-weight: 600;
+    font-weight: 500;
   }
   .hero-stamp-big {
     display: block;
     font-family: var(--font-heading);
-    font-size: 1.05rem;
-    letter-spacing: 0.05em;
-    margin: 0.25rem 0;
+    font-style: italic;
+    font-size: 1.45rem;
+    letter-spacing: 0.02em;
+    margin: 0.2rem 0;
+    font-weight: 800;
   }
-  @media (max-width: 640px) {
+
+  .hero-pull-quote {
+    position: absolute;
+    left: -1rem;
+    bottom: -2rem;
+    background: #fbf8f3;
+    color: #0a0a0a;
+    padding: 1.1rem 1.4rem 1rem;
+    max-width: 14rem;
+    border: 1px solid #0a0a0a;
+    transform: rotate(-3deg);
+    box-shadow: 0.5rem 0.5rem 0 var(--color-secondary);
+    z-index: 4;
+  }
+  .hero-pull-mark {
+    font-family: 'Bodoni Moda', serif;
+    font-style: italic;
+    font-size: 2.4rem;
+    line-height: 0;
+    color: var(--color-secondary);
+    display: inline-block;
+    vertical-align: -0.15em;
+    margin-right: 0.15em;
+  }
+  .hero-pull-text {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1;
+    font-weight: 500;
+  }
+  @media (max-width: 720px) {
+    .hero-pull-quote { display: none; }
     .hero-stamp {
-      width: 6.5rem;
-      height: 6.5rem;
-      top: -0.75rem;
+      width: 6rem;
+      height: 6rem;
+      top: -0.5rem;
       right: -0.5rem;
     }
-    .hero-stamp-big { font-size: 0.85rem; }
-    .hero-stamp-line { font-size: 0.55rem; }
+    .hero-stamp-big { font-size: 1.05rem; }
+    .hero-stamp-line { font-size: 0.5rem; }
   }
 
   /* ===================== BUTTONS ===================== */
@@ -742,26 +831,32 @@ const ceoQA = [
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    background: var(--color-primary);
-    color: #fff;
+    background: var(--color-secondary);
+    color: #fbf8f3;
     font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
+    font-size: 0.74rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     padding: 0.95rem 1.4rem;
-    border: 2px solid var(--color-primary);
+    border: 2px solid var(--color-secondary);
     text-decoration: none;
-    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     font-weight: 600;
-    box-shadow: 0.3rem 0.3rem 0 var(--color-secondary);
+    box-shadow: 0.3rem 0.3rem 0 #050505;
+  }
+  [data-theme="light"] .btn-primary {
+    box-shadow: 0.3rem 0.3rem 0 #0a0a0a;
   }
   .btn-primary:hover {
     transform: translate(-2px, -2px);
-    box-shadow: 0.5rem 0.5rem 0 var(--color-secondary);
+    box-shadow: 0.5rem 0.5rem 0 #050505;
     background: var(--color-accent);
     border-color: var(--color-accent);
   }
-  .btn-primary-lg { padding: 1.1rem 1.7rem; font-size: 0.85rem; }
+  [data-theme="light"] .btn-primary:hover {
+    box-shadow: 0.5rem 0.5rem 0 #0a0a0a;
+  }
+  .btn-primary-lg { padding: 1.1rem 1.7rem; font-size: 0.82rem; }
 
   .btn-secondary {
     display: inline-flex;
@@ -769,44 +864,46 @@ const ceoQA = [
     gap: 0.55rem;
     background: transparent;
     font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
+    font-size: 0.74rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     padding: 0.95rem 1.4rem;
     border: 2px solid currentColor;
     text-decoration: none;
-    transition: transform 0.18s ease, background 0.18s ease;
+    transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
     font-weight: 600;
   }
   [data-theme="dark"] .btn-secondary { color: var(--color-text); }
   [data-theme="light"] .btn-secondary { color: var(--color-text-dark); }
   .btn-secondary:hover {
     transform: translate(-2px, -2px);
-    background: var(--color-accent);
-    color: #fff;
-    border-color: var(--color-accent);
+    background: var(--color-secondary);
+    color: #fbf8f3;
+    border-color: var(--color-secondary);
   }
-  .btn-secondary-lg { padding: 1.1rem 1.7rem; font-size: 0.85rem; }
+  .btn-secondary-lg { padding: 1.1rem 1.7rem; font-size: 0.82rem; }
 
   /* ===================== MARQUEE ===================== */
   .marquee {
     overflow: hidden;
-    background: var(--color-primary);
-    color: #f7f1e3;
-    border-top: 3px solid var(--color-secondary);
-    border-bottom: 3px solid var(--color-secondary);
-    padding: 0.85rem 0;
+    background: var(--color-secondary);
+    color: #fbf8f3;
+    border-top: 1px solid #050505;
+    border-bottom: 1px solid #050505;
+    padding: 0.9rem 0;
     position: relative;
   }
   .marquee-track {
     display: inline-flex;
     gap: 3rem;
     white-space: nowrap;
-    animation: marqueeScroll 40s linear infinite;
+    animation: marqueeScroll 50s linear infinite;
     font-family: var(--font-heading);
-    font-size: 1.1rem;
-    letter-spacing: 0.12em;
+    font-size: 1.05rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    font-weight: 600;
+    font-style: italic;
   }
   .marquee-item {
     display: inline-block;
@@ -816,325 +913,422 @@ const ceoQA = [
     100% { transform: translateX(-50%); }
   }
 
-  /* ===================== ENSEMBLE ===================== */
-  .ensemble {
+  /* ===================== PULLQUOTE ===================== */
+  .pullquote-section {
+    padding: 6rem 1.5rem 5rem;
+  }
+  [data-theme="dark"] .pullquote-section {
+    background: #050505;
+    border-bottom: 1px solid #2a2521;
+  }
+  [data-theme="light"] .pullquote-section {
+    background: #fff;
+    border-bottom: 1px solid var(--color-border-light);
+  }
+  .pullquote-inner {
+    max-width: 64rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .pullquote-tag {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 2rem;
+    font-weight: 600;
+  }
+  .pullquote {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: clamp(1.8rem, 4.5vw, 3.6rem);
+    line-height: 1.2;
+    margin: 0 0 2rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0 1rem;
+  }
+  [data-theme="dark"] .pullquote { color: var(--color-text); }
+  [data-theme="light"] .pullquote { color: var(--color-text-dark); }
+  .pullquote-mark {
+    color: var(--color-secondary);
+    font-size: 1.2em;
+    line-height: 0;
+    display: inline-block;
+    vertical-align: -0.18em;
+    margin: 0 0.1em;
+  }
+  [data-theme="dark"] .pullquote-mark { color: #ff2a8f; }
+  .pullquote-mark-close { vertical-align: -0.05em; }
+
+  .pullquote-attrib {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 1.5rem;
+  }
+  .pullquote-attrib-name {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  [data-theme="dark"] .pullquote-attrib-name { color: var(--color-text); }
+  [data-theme="light"] .pullquote-attrib-name { color: var(--color-text-dark); }
+  .pullquote-attrib-role {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  [data-theme="dark"] .pullquote-attrib-role { color: var(--color-text-muted); }
+  [data-theme="light"] .pullquote-attrib-role { color: var(--color-text-dark-muted); }
+
+  /* ===================== INSIDE THE ISSUE ===================== */
+  .issue-section {
     padding: 6rem 1.5rem 5rem;
     position: relative;
   }
-  [data-theme="dark"] .ensemble {
-    background: linear-gradient(180deg, #050811 0%, #0a0e1c 100%);
+  [data-theme="dark"] .issue-section {
+    background: #0a0a0a;
   }
-  [data-theme="light"] .ensemble {
-    background: #fffaf0;
+  [data-theme="light"] .issue-section {
+    background: #fbf8f3;
   }
 
-  .ensemble-inner {
+  .issue-inner {
     max-width: 80rem;
     margin: 0 auto;
   }
 
-  .ensemble-grid {
+  .issue-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 3rem 2.5rem;
+    gap: 3.5rem 2.5rem;
   }
   @media (min-width: 640px) {
-    .ensemble-grid { grid-template-columns: repeat(2, 1fr); }
+    .issue-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (min-width: 1024px) {
-    .ensemble-grid { grid-template-columns: repeat(4, 1fr); }
+    .issue-grid {
+      grid-template-columns: repeat(12, 1fr);
+      gap: 4rem 2.5rem;
+    }
+    .issue-grid > .issue-card:nth-child(1) { grid-column: span 5; margin-top: 0; }
+    .issue-grid > .issue-card:nth-child(2) { grid-column: span 7; margin-top: 4rem; }
+    .issue-grid > .issue-card:nth-child(3) { grid-column: span 7; margin-top: 0; }
+    .issue-grid > .issue-card:nth-child(4) { grid-column: span 5; margin-top: 3rem; }
   }
 
-  .ensemble-card {
+  .issue-card {
     transform: rotate(var(--rot, 0deg));
-    transition: transform 0.3s ease;
+    transition: transform 0.35s ease;
   }
-  .ensemble-card:hover {
+  .issue-card:hover {
     transform: rotate(0deg) translateY(-6px);
   }
 
-  .ensemble-photo {
+  .issue-photo {
     position: relative;
     aspect-ratio: var(--aspect, 3/4);
     overflow: hidden;
-    border: 1px solid;
+    background: #fbf8f3;
     box-shadow:
-      0 12px 24px rgba(0, 0, 0, 0.35),
-      inset 0 0 0 4px rgba(247, 241, 227, 0.95);
+      0 14px 28px rgba(0, 0, 0, 0.4),
+      inset 0 0 0 6px #fbf8f3;
   }
-  [data-theme="dark"] .ensemble-photo { border-color: var(--color-border); }
-  [data-theme="light"] .ensemble-photo {
-    border-color: var(--color-border-light);
+  [data-theme="light"] .issue-photo {
     box-shadow:
-      0 8px 18px rgba(27, 44, 95, 0.18),
-      inset 0 0 0 4px #fff;
+      0 12px 24px rgba(184, 0, 31, 0.2),
+      inset 0 0 0 6px #fff;
   }
-  .ensemble-photo img {
+  .issue-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-  .ensemble-stamp {
+  .issue-tape {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    width: 2.5rem;
-    height: 2.5rem;
-    background: var(--color-primary);
-    color: #f7f1e3;
-    font-family: var(--font-heading);
-    font-size: 1.15rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #f7f1e3;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    width: 4.5rem;
+    height: 1.2rem;
+    background: rgba(212, 0, 122, 0.55);
+    z-index: 3;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
   }
+  .issue-tape-tl { top: -0.4rem; left: 1.5rem; transform: rotate(-7deg); }
+  .issue-tape-br { bottom: -0.4rem; right: 1.5rem; transform: rotate(8deg); }
 
-  .ensemble-meta {
-    margin-top: 1rem;
-    padding: 0 0.25rem;
-  }
-  .ensemble-codename {
-    font-family: var(--font-heading);
-    font-size: 1.45rem;
-    line-height: 1;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    color: var(--color-primary);
-  }
-  .ensemble-realname {
+  .issue-pageno {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: #050505;
+    color: #fbf8f3;
     font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.22em;
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    margin-top: 0.35rem;
+    padding: 0.35rem 0.6rem;
+    z-index: 2;
   }
-  [data-theme="dark"] .ensemble-realname { color: var(--color-text-muted); }
-  [data-theme="light"] .ensemble-realname { color: var(--color-text-dark-muted); }
 
-  .ensemble-powers {
-    font-family: 'DM Serif Display', serif;
+  .issue-meta {
+    margin-top: 1.4rem;
+    padding: 0 0.5rem;
+  }
+  .issue-section-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  [data-theme="dark"] .issue-section-label { color: #ff5fa8; }
+
+  .issue-headline {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.7rem;
+    font-weight: 800;
+  }
+  [data-theme="dark"] .issue-headline { color: var(--color-text); }
+  [data-theme="light"] .issue-headline { color: var(--color-text-dark); }
+
+  .issue-deck {
+    font-family: var(--font-body);
     font-style: italic;
-    font-size: 0.95rem;
-    margin-top: 0.5rem;
-  }
-  [data-theme="dark"] .ensemble-powers { color: var(--color-text); }
-  [data-theme="light"] .ensemble-powers { color: var(--color-text-dark); }
-
-  .ensemble-blurb {
-    font-size: 0.92rem;
+    font-size: 1.075rem;
     line-height: 1.5;
-    margin-top: 0.65rem;
+    margin: 0;
   }
-  [data-theme="dark"] .ensemble-blurb { color: var(--color-text-muted); }
-  [data-theme="light"] .ensemble-blurb { color: var(--color-text-dark-muted); }
+  [data-theme="dark"] .issue-deck { color: var(--color-text-muted); }
+  [data-theme="light"] .issue-deck { color: var(--color-text-dark-muted); }
 
-  /* ===================== CEO SECTION ===================== */
-  .ceo-section {
-    padding: 5rem 1.5rem;
+  /* ===================== EDITOR LETTER ===================== */
+  .editor-section {
+    padding: 6rem 1.5rem;
     position: relative;
   }
-  [data-theme="dark"] .ceo-section {
-    background: linear-gradient(135deg, #1b2c5f 0%, #0a0e1c 100%);
+  [data-theme="dark"] .editor-section {
+    background: linear-gradient(135deg, #0d0a0d 0%, #1a0a14 50%, #2a0816 100%);
   }
-  [data-theme="light"] .ceo-section {
-    background: linear-gradient(135deg, #fbeed1 0%, #f7f1e3 100%);
+  [data-theme="light"] .editor-section {
+    background: linear-gradient(135deg, #fff 0%, #f5e8e8 50%, #f7d4d8 100%);
   }
 
-  .ceo-grid {
+  .editor-grid {
     max-width: 80rem;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 3rem;
     align-items: center;
   }
   @media (min-width: 900px) {
-    .ceo-grid { grid-template-columns: 1.1fr 1fr; gap: 4rem; }
+    .editor-grid { grid-template-columns: 1fr 1.05fr; gap: 4.5rem; }
   }
 
-  .ceo-image {
+  .editor-image {
     position: relative;
     margin: 0;
-    border: 6px solid #f7f1e3;
-    box-shadow: 0 24px 40px rgba(0, 0, 0, 0.55);
+    background: #fbf8f3;
+    padding: 0.5rem 0.5rem 0;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
   }
-  [data-theme="light"] .ceo-image {
-    border-color: var(--color-secondary);
-    box-shadow: 0 18px 32px rgba(27, 44, 95, 0.25);
+  [data-theme="light"] .editor-image {
+    box-shadow: 0 18px 32px rgba(184, 0, 31, 0.25);
   }
-  .ceo-image img {
+  .editor-image img {
     width: 100%;
     height: auto;
     display: block;
   }
-  .ceo-image figcaption {
-    background: var(--color-secondary);
-    color: #f7f1e3;
-    padding: 0.7rem 1rem;
+  .editor-image figcaption {
+    background: #fbf8f3;
+    color: #0a0a0a;
+    padding: 0.7rem 0.5rem;
     font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.22em;
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     display: flex;
     justify-content: space-between;
+    border-top: 1px solid #0a0a0a;
+    margin-top: 0.5rem;
   }
 
-  .ceo-tag {
+  .editor-tag {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.32em;
+    font-size: 0.66rem;
+    letter-spacing: 0.34em;
     text-transform: uppercase;
     color: var(--color-accent);
     font-weight: 600;
     margin-bottom: 1.25rem;
   }
-  .ceo-quote {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.4rem, 2.8vw, 2rem);
-    line-height: 1.35;
+  [data-theme="dark"] .editor-tag { color: #ff5fa8; }
+
+  .editor-h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1;
+    letter-spacing: -0.015em;
     margin: 0 0 1.5rem;
-    position: relative;
-    padding-left: 0.25rem;
+    font-weight: 800;
   }
-  [data-theme="dark"] .ceo-quote { color: var(--color-text); }
-  [data-theme="light"] .ceo-quote { color: var(--color-text-dark); }
-  .ceo-quote-mark {
-    font-size: 5rem;
-    line-height: 0;
-    color: var(--color-accent);
-    position: absolute;
-    top: 1.5rem;
-    left: -1.75rem;
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
+  [data-theme="dark"] .editor-h3 { color: var(--color-text); }
+  [data-theme="light"] .editor-h3 { color: var(--color-text-dark); }
+
+  .editor-body {
+    font-family: var(--font-body);
+    font-size: 1.18rem;
+    line-height: 1.55;
+    margin: 0 0 1.2rem;
   }
-  @media (max-width: 640px) {
-    .ceo-quote-mark { display: none; }
+  [data-theme="dark"] .editor-body { color: var(--color-text); }
+  [data-theme="light"] .editor-body { color: var(--color-text-dark); }
+
+  .editor-attrib {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
-  .ceo-attrib {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+  .editor-attrib-line {
+    width: 2.5rem;
+    height: 1px;
+    background: var(--color-accent);
+    flex-shrink: 0;
+  }
+  .editor-attrib > div {
     display: flex;
     flex-direction: column;
-    gap: 0.2rem;
-    border-left: 3px solid var(--color-accent);
-    padding-left: 0.85rem;
+    gap: 0.18rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
   }
-  .ceo-attrib-name { font-weight: 700; color: var(--color-accent); }
-  [data-theme="dark"] .ceo-attrib-title { color: var(--color-text-muted); }
-  [data-theme="light"] .ceo-attrib-title { color: var(--color-text-dark-muted); }
+  .editor-attrib-name { font-weight: 700; color: var(--color-secondary); }
+  [data-theme="dark"] .editor-attrib-name { color: #ff2a8f; }
+  [data-theme="dark"] .editor-attrib-title { color: var(--color-text-muted); }
+  [data-theme="light"] .editor-attrib-title { color: var(--color-text-dark-muted); }
 
-  /* ===================== OPS ===================== */
-  .ops-section {
+  /* ===================== ATELIER (Features) ===================== */
+  .atelier-section {
     padding: 6rem 1.5rem 5rem;
   }
-  [data-theme="dark"] .ops-section {
-    background: #0a0e1c;
+  [data-theme="dark"] .atelier-section {
+    background: #0a0a0a;
   }
-  [data-theme="light"] .ops-section {
-    background: #f7f1e3;
+  [data-theme="light"] .atelier-section {
+    background: #fff;
   }
 
-  .ops-inner {
+  .atelier-inner {
     max-width: 80rem;
     margin: 0 auto;
   }
-  .ops-grid {
+  .atelier-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
   @media (min-width: 640px) {
-    .ops-grid { grid-template-columns: repeat(2, 1fr); }
+    .atelier-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (min-width: 1024px) {
-    .ops-grid { grid-template-columns: repeat(3, 1fr); }
+    .atelier-grid { grid-template-columns: repeat(3, 1fr); }
   }
 
-  .op-card {
+  .feat-card {
     position: relative;
-    padding: 1.6rem 1.4rem;
-    border: 2px solid var(--color-secondary);
-    background: rgba(27, 44, 95, 0.05);
+    padding: 1.8rem 1.6rem;
+    border: 1px solid;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
   }
-  [data-theme="dark"] .op-card {
-    background: rgba(27, 44, 95, 0.18);
+  [data-theme="dark"] .feat-card {
+    background: #141414;
+    border-color: #2a2521;
   }
-  .op-card::before {
-    content: '';
+  [data-theme="light"] .feat-card {
+    background: #fbf8f3;
+    border-color: var(--color-border-light);
+  }
+
+  .feat-corner {
     position: absolute;
-    top: -2px;
-    left: -2px;
-    width: 36px;
-    height: 36px;
-    border-top: 2px solid var(--color-accent);
-    border-left: 2px solid var(--color-accent);
+    width: 14px;
+    height: 14px;
+    border: 1.5px solid var(--color-accent);
     pointer-events: none;
+    transition: width 0.25s ease, height 0.25s ease;
   }
-  .op-card::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    right: -2px;
-    width: 36px;
-    height: 36px;
-    border-bottom: 2px solid var(--color-accent);
-    border-right: 2px solid var(--color-accent);
-    pointer-events: none;
+  .feat-corner-tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+  .feat-corner-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+  .feat-corner-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+  .feat-corner-br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+  .feat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0.7rem 0.7rem 0 var(--color-secondary);
   }
-  .op-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0.6rem 0.6rem 0 var(--color-accent);
-  }
-  .op-card-header {
+  .feat-card:hover .feat-corner { width: 22px; height: 22px; }
+
+  .feat-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.22em;
+    font-size: 0.6rem;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
   }
-  .op-fileno {
-    background: var(--color-accent);
-    color: #fff;
-    padding: 0.2rem 0.5rem;
+  .feat-fileno {
+    background: var(--color-secondary);
+    color: #fbf8f3;
+    padding: 0.25rem 0.55rem;
     font-weight: 700;
   }
-  .op-classification {
+  .feat-section {
     color: var(--color-accent);
     font-weight: 600;
   }
-  .op-title {
-    font-family: var(--font-heading);
-    font-size: 1.85rem;
-    line-height: 1;
-    letter-spacing: 0.005em;
-    text-transform: uppercase;
-    margin: 0;
-  }
-  [data-theme="dark"] .op-title { color: var(--color-text); }
-  [data-theme="light"] .op-title { color: var(--color-text-dark); }
+  [data-theme="dark"] .feat-section { color: #ff5fa8; }
 
-  .op-body {
-    font-size: 0.95rem;
+  .feat-title {
+    font-family: var(--font-heading);
+    font-size: 1.95rem;
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin: 0;
+    font-weight: 800;
+  }
+  [data-theme="dark"] .feat-title { color: var(--color-text); }
+  [data-theme="light"] .feat-title { color: var(--color-text-dark); }
+
+  .feat-body {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
     line-height: 1.55;
     margin: 0;
     flex: 1;
   }
-  [data-theme="dark"] .op-body { color: var(--color-text-muted); }
-  [data-theme="light"] .op-body { color: var(--color-text-dark-muted); }
+  [data-theme="dark"] .feat-body { color: var(--color-text-muted); }
+  [data-theme="light"] .feat-body { color: var(--color-text-dark-muted); }
 
-  .op-card-footer {
+  .feat-card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1144,97 +1338,116 @@ const ceoQA = [
     padding-top: 0.85rem;
     border-top: 1px dashed;
   }
-  [data-theme="dark"] .op-card-footer { border-color: var(--color-border); }
-  [data-theme="light"] .op-card-footer { border-color: var(--color-border-light); }
-  .op-badge {
+  [data-theme="dark"] .feat-card-footer { border-color: #2a2521; }
+  [data-theme="light"] .feat-card-footer { border-color: var(--color-border-light); }
+  .feat-badge {
     font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.22em;
+    font-size: 0.58rem;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    padding: 0.25rem 0.5rem;
+    padding: 0.28rem 0.55rem;
     border: 1px solid currentColor;
   }
-  [data-theme="dark"] .op-badge { color: var(--color-text-muted); }
-  [data-theme="light"] .op-badge { color: var(--color-text-dark-muted); }
+  [data-theme="dark"] .feat-badge { color: var(--color-text-muted); }
+  [data-theme="light"] .feat-badge { color: var(--color-text-dark-muted); }
 
-  .op-cta {
+  .feat-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--color-accent);
+    color: var(--color-secondary);
     text-decoration: none;
     font-weight: 600;
-    transition: gap 0.18s ease;
+    transition: gap 0.18s ease, color 0.18s ease;
   }
-  .op-cta:hover { gap: 0.7rem; }
-  .op-cta-disabled { color: var(--color-text-muted); cursor: default; }
+  [data-theme="dark"] .feat-cta { color: #ff5fa8; }
+  .feat-cta:hover { gap: 0.7rem; color: var(--color-accent); }
+  .feat-cta-disabled {
+    cursor: default;
+  }
+  [data-theme="dark"] .feat-cta-disabled { color: var(--color-text-muted); }
+  [data-theme="light"] .feat-cta-disabled { color: var(--color-text-dark-muted); }
+  .feat-cta-disabled:hover { gap: 0.4rem; color: inherit; }
 
-  /* ===================== Q&A ===================== */
-  .qa-section {
+  /* ===================== EDITOR'S NOTES (Q&A) ===================== */
+  .notes-section {
     padding: 6rem 1.5rem 5rem;
   }
-  [data-theme="dark"] .qa-section { background: #050811; }
-  [data-theme="light"] .qa-section { background: #fffaf0; }
-  .qa-inner { max-width: 60rem; margin: 0 auto; }
-  .qa-list { display: flex; flex-direction: column; gap: 1.5rem; }
-  .qa-item {
+  [data-theme="dark"] .notes-section { background: #050505; }
+  [data-theme="light"] .notes-section { background: #fbf8f3; }
+
+  .notes-header { text-align: left; max-width: 80rem; padding: 0; margin-bottom: 3rem; }
+  .notes-header .section-title {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+  }
+
+  .notes-inner { max-width: 80rem; margin: 0 auto; }
+  .notes-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .notes-list { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 2.5rem; }
+  }
+
+  .note-item {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 1.25rem;
-    padding: 1.5rem;
-    border-left: 4px solid var(--color-accent);
-    background: rgba(27, 44, 95, 0.06);
+    padding: 1.5rem 1.5rem 1.5rem 0;
+    border-top: 1px solid;
     transition: background 0.2s ease;
   }
-  [data-theme="dark"] .qa-item { background: rgba(27, 44, 95, 0.22); }
-  .qa-item:hover { background: rgba(200, 16, 46, 0.08); }
-  .qa-num {
+  [data-theme="dark"] .note-item { border-color: #2a2521; }
+  [data-theme="light"] .note-item { border-color: var(--color-border-light); }
+
+  .note-num {
     font-family: var(--font-heading);
-    font-size: 2.2rem;
-    line-height: 1;
-    color: var(--color-accent);
+    font-style: italic;
+    font-size: 2.6rem;
+    line-height: 0.9;
+    color: var(--color-secondary);
+    font-weight: 800;
   }
-  .qa-q {
+  [data-theme="dark"] .note-num { color: #ff2a8f; }
+
+  .note-q {
     font-family: var(--font-heading);
-    font-size: 1.3rem;
-    line-height: 1.2;
-    text-transform: uppercase;
-    letter-spacing: 0.005em;
-    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    margin-bottom: 0.6rem;
+    font-weight: 700;
   }
-  [data-theme="dark"] .qa-q { color: var(--color-text); }
-  [data-theme="light"] .qa-q { color: var(--color-text-dark); }
-  .qa-a {
-    font-size: 1rem;
-    line-height: 1.6;
+  [data-theme="dark"] .note-q { color: var(--color-text); }
+  [data-theme="light"] .note-q { color: var(--color-text-dark); }
+  .note-a {
+    font-family: var(--font-body);
+    font-size: 1.075rem;
+    line-height: 1.55;
   }
-  [data-theme="dark"] .qa-a { color: var(--color-text-muted); }
-  [data-theme="light"] .qa-a { color: var(--color-text-dark-muted); }
+  [data-theme="dark"] .note-a { color: var(--color-text-muted); }
+  [data-theme="light"] .note-a { color: var(--color-text-dark-muted); }
 
   /* ===================== FINAL CTA ===================== */
   .final-cta {
     padding: 6rem 1.5rem;
-    background: var(--color-primary);
-    color: #f7f1e3;
+    background: var(--color-secondary);
+    color: #fbf8f3;
     position: relative;
     overflow: hidden;
   }
-  .final-cta-stars {
+  .final-cta-grain {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    color: #f7f1e3;
-    opacity: 0.55;
-  }
-  .final-cta-stars svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+    background-image:
+      repeating-linear-gradient(45deg, transparent 0, transparent 2px, rgba(251, 248, 243, 0.05) 2px, rgba(251, 248, 243, 0.05) 3px);
   }
   .final-cta-inner {
     max-width: 60rem;
@@ -1244,38 +1457,40 @@ const ceoQA = [
   }
   .final-cta-content {
     text-align: center;
-    border: 4px solid #f7f1e3;
+    border: 2px solid #fbf8f3;
     padding: 3rem 1.5rem;
-    background: rgba(27, 44, 95, 0.4);
-    box-shadow: 0.7rem 0.7rem 0 var(--color-secondary);
+    background: rgba(10, 10, 10, 0.4);
+    box-shadow: 0.7rem 0.7rem 0 #050505;
   }
   @media (min-width: 640px) {
     .final-cta-content { padding: 4rem 3rem; }
   }
-  .final-cta .section-tag {
-    color: #fff;
-    text-shadow: 0 0 8px rgba(247, 241, 227, 0.4);
+  .final-cta-tag {
+    color: #fbf8f3;
   }
   .final-cta-title {
     font-family: var(--font-heading);
     font-size: clamp(2.5rem, 6.5vw, 5rem);
-    line-height: 0.92;
-    letter-spacing: -0.005em;
-    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
     margin: 0 0 1.5rem;
-    color: #f7f1e3;
+    color: #fbf8f3;
+    font-weight: 800;
   }
   .final-cta-accent {
     font-style: italic;
-    color: #fbeed1;
-    text-shadow: 0.2rem 0.2rem 0 var(--color-secondary);
+    font-weight: 400;
+    color: #fbf8f3;
+    text-shadow: 0.2rem 0.2rem 0 #050505;
   }
   .final-cta-body {
-    font-size: 1.05rem;
-    line-height: 1.65;
+    font-family: var(--font-body);
+    font-size: 1.18rem;
+    line-height: 1.55;
     max-width: 38rem;
     margin: 0 auto 2.2rem;
-    color: rgba(247, 241, 227, 0.92);
+    color: rgba(251, 248, 243, 0.94);
+    font-style: italic;
   }
   .final-cta-buttons {
     display: flex;
@@ -1284,23 +1499,24 @@ const ceoQA = [
     justify-content: center;
   }
   .final-cta .btn-primary {
-    background: #f7f1e3;
-    color: var(--color-primary);
-    border-color: #f7f1e3;
-    box-shadow: 0.3rem 0.3rem 0 var(--color-secondary);
+    background: #fbf8f3;
+    color: var(--color-secondary);
+    border-color: #fbf8f3;
+    box-shadow: 0.3rem 0.3rem 0 #050505;
   }
   .final-cta .btn-primary:hover {
     background: #fff;
-    color: var(--color-primary);
+    color: var(--color-secondary);
     border-color: #fff;
+    box-shadow: 0.5rem 0.5rem 0 #050505;
   }
   .final-cta .btn-secondary {
-    color: #f7f1e3;
-    border-color: #f7f1e3;
+    color: #fbf8f3;
+    border-color: #fbf8f3;
   }
   .final-cta .btn-secondary:hover {
-    background: #f7f1e3;
-    color: var(--color-primary);
-    border-color: #f7f1e3;
+    background: #fbf8f3;
+    color: var(--color-secondary);
+    border-color: #fbf8f3;
   }
 </style>

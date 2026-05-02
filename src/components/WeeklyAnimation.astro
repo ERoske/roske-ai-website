@@ -2,18 +2,10 @@
 /**
  * WeeklyAnimation.astro
  *
- * This component is OVERWRITTEN every week during the Saturday redesign.
- * It contains a themed animation that matches the current week's theme.
- *
- * IMPORTANT: Do NOT use Astro scoped <style> for dynamically created elements.
- * Astro adds data-astro-cid attributes to scoped CSS selectors, but elements
- * created via document.createElement won't have those attributes. Apply all
- * styles directly in JavaScript instead.
- *
- * Current theme: Roske International: Final Season (April 25, 2026)
- * Animation: Slow drifting Vought-style propaganda stars and the occasional
- * glinting "approved" stamp arc, plus rare horizontal lightning streaks
- * that read as a speedster zooming across the lower viewport.
+ * Current theme: The Devil Fears AI Too (May 2, 2026)
+ * Animation: Drifting Vogue-style typographic flourishes — slow falling
+ * lipstick kisses, the occasional floating "FILE NO." stamp, and a rare
+ * camera-flash burst from across the runway.
  */
 ---
 
@@ -29,45 +21,64 @@
       var isLight = document.documentElement.getAttribute('data-theme') === 'light';
       var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      var STAR_OPACITY = isLight ? 0.32 : 0.55;
-      var BOLT_OPACITY = isLight ? 0.28 : 0.45;
-      var redColor = '#c8102e';
-      var blueColor = '#1b2c5f';
-      var creamColor = '#f7f1e3';
+      var KISS_OPACITY = isLight ? 0.45 : 0.6;
+      var STAMP_OPACITY = isLight ? 0.35 : 0.5;
+      var FLASH_OPACITY = isLight ? 0.25 : 0.4;
 
-      // Five-pointed star SVG path (centered at 0,0, radius ~10)
-      function starSVG(fill, stroke, sizePx) {
-        var s = sizePx || 22;
-        return '<svg width="' + s + '" height="' + s + '" viewBox="-12 -12 24 24" xmlns="http://www.w3.org/2000/svg">' +
-          '<polygon points="0,-10 2.94,-4.05 9.51,-3.09 4.76,1.55 5.88,8.09 0,5 -5.88,8.09 -4.76,1.55 -9.51,-3.09 -2.94,-4.05" ' +
-          'fill="' + fill + '" stroke="' + stroke + '" stroke-width="0.6" stroke-linejoin="round" />' +
+      var crimson = '#b8001f';
+      var magenta = '#d4007a';
+      var cream = '#fbf8f3';
+
+      // Lipstick kiss SVG — stylized lips silhouette
+      function kissSVG(fill, sizePx) {
+        var s = sizePx || 30;
+        return '<svg width="' + s + '" height="' + (s * 0.75) + '" viewBox="0 0 100 75" xmlns="http://www.w3.org/2000/svg">' +
+          '<path d="M 50 12 C 38 0 18 4 12 18 C 6 30 18 44 28 50 C 18 48 8 50 8 56 C 16 64 30 70 50 64 C 70 70 84 64 92 56 C 92 50 82 48 72 50 C 82 44 94 30 88 18 C 82 4 62 0 50 12 Z" fill="' + fill + '" />' +
+          '<path d="M 50 22 C 44 16 30 18 28 28 C 30 36 42 40 50 38 C 58 40 70 36 72 28 C 70 18 56 16 50 22 Z" fill="rgba(255,255,255,0.18)" />' +
           '</svg>';
       }
 
-      // Lightning bolt SVG (horizontal-ish jagged streak)
-      function boltSVG(color, sizePx) {
+      // Editorial "stamp" — boxed text floating across
+      function stampSVG(text, color, sizePx) {
         var s = sizePx || 100;
-        return '<svg width="' + s + '" height="' + (s * 0.25) + '" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">' +
-          '<polyline points="0,28 30,22 55,32 90,18 130,30 165,16 200,26" ' +
-          'fill="none" stroke="' + color + '" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" ' +
-          'stroke-dasharray="6 4" />' +
+        return '<svg width="' + s + '" height="' + (s * 0.32) + '" viewBox="0 0 200 64" xmlns="http://www.w3.org/2000/svg">' +
+          '<rect x="2" y="2" width="196" height="60" fill="none" stroke="' + color + '" stroke-width="2" stroke-dasharray="4 3" />' +
+          '<text x="100" y="40" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="22" font-weight="700" letter-spacing="3" fill="' + color + '">' + text + '</text>' +
+          '</svg>';
+      }
+
+      // Camera flash burst — simple radial highlight
+      function flashSVG(color, sizePx) {
+        var s = sizePx || 280;
+        return '<svg width="' + s + '" height="' + s + '" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">' +
+          '<defs><radialGradient id="flashGrad' + Math.floor(Math.random() * 100000) + '" cx="50%" cy="50%" r="50%">' +
+          '<stop offset="0%" stop-color="' + color + '" stop-opacity="0.9" />' +
+          '<stop offset="40%" stop-color="' + color + '" stop-opacity="0.3" />' +
+          '<stop offset="100%" stop-color="' + color + '" stop-opacity="0" />' +
+          '</radialGradient></defs>' +
+          '<circle cx="100" cy="100" r="100" fill="' + color + '" opacity="0.55" />' +
+          '<circle cx="100" cy="100" r="60" fill="white" opacity="0.85" />' +
+          '<circle cx="100" cy="100" r="22" fill="white" />' +
           '</svg>';
       }
 
       var running = true;
       var timers = [];
 
-      // Drift a star slowly upward across the screen, then remove
-      function spawnStar() {
+      var stamps = ['FILE 042', 'EDITORIAL', 'INTERN', 'COVER STORY', 'PROOF', 'NO COMMENT', 'OFF THE RECORD'];
+
+      // Drift a kiss slowly — falling like confetti, gently rotating
+      function spawnKiss() {
         if (!running) return;
 
-        var color = Math.random() < 0.55 ? redColor : (Math.random() < 0.5 ? blueColor : creamColor);
-        var size = 14 + Math.random() * 28; // 14-42px
+        var color = Math.random() < 0.55 ? crimson : (Math.random() < 0.6 ? magenta : (isLight ? '#3a0010' : cream));
+        var size = 22 + Math.random() * 30; // 22-52px
         var startX = Math.random() * window.innerWidth;
-        var startY = window.innerHeight + size;
-        var driftX = (Math.random() - 0.5) * 200; // sideways wander
-        var duration = 12000 + Math.random() * 10000; // 12-22s — slow, propaganda-poster cadence
-        var rotateAmt = (Math.random() - 0.5) * 360;
+        var startY = -size * 2;
+        var driftX = (Math.random() - 0.5) * 240;
+        var endY = window.innerHeight + size * 2;
+        var duration = 14000 + Math.random() * 12000;
+        var rotateAmt = (Math.random() - 0.5) * 540;
 
         var el = document.createElement('div');
         el.style.cssText = [
@@ -75,26 +86,24 @@
           'left:' + startX + 'px',
           'top:' + startY + 'px',
           'width:' + size + 'px',
-          'height:' + size + 'px',
+          'height:' + (size * 0.75) + 'px',
           'opacity:0',
           'pointer-events:none',
           'will-change:transform,opacity',
-          'filter:drop-shadow(0 0 ' + (size * 0.25) + 'px ' + color + ')',
-          'transition:opacity 1.2s ease-out'
+          'filter:drop-shadow(0 0 ' + (size * 0.18) + 'px ' + color + ')',
+          'transition:opacity 1.4s ease-out'
         ].join(';');
-        el.innerHTML = starSVG(color, isLight ? 'rgba(20,30,60,0.4)' : 'rgba(247,241,227,0.4)', size);
+        el.innerHTML = kissSVG(color, size);
         container.appendChild(el);
 
-        // Fade in
         requestAnimationFrame(function() {
-          el.style.opacity = String(STAR_OPACITY);
+          el.style.opacity = String(KISS_OPACITY);
         });
 
-        // Animate via Web Animations API for smooth GPU-accelerated motion
         var anim = el.animate(
           [
             { transform: 'translate(0px, 0px) rotate(0deg)' },
-            { transform: 'translate(' + driftX + 'px, -' + (window.innerHeight + size * 2) + 'px) rotate(' + rotateAmt + 'deg)' }
+            { transform: 'translate(' + driftX + 'px, ' + endY + 'px) rotate(' + rotateAmt + 'deg)' }
           ],
           { duration: duration, easing: 'linear', fill: 'forwards' }
         );
@@ -103,23 +112,23 @@
           if (el.parentNode) el.parentNode.removeChild(el);
         };
 
-        // Fade out near the end
         var fadeT = setTimeout(function() {
           el.style.opacity = '0';
-        }, duration - 1200);
+        }, duration - 1400);
         timers.push(fadeT);
       }
 
-      // A horizontal lightning streak that flashes across the screen briefly
-      function spawnBolt() {
+      // A floating editorial stamp drifts horizontally
+      function spawnStamp() {
         if (!running) return;
 
-        var width = 220 + Math.random() * 220;
-        var startY = window.innerHeight * (0.55 + Math.random() * 0.35); // lower half
+        var width = 160 + Math.random() * 120;
+        var startY = window.innerHeight * (0.18 + Math.random() * 0.65);
         var goLeftToRight = Math.random() < 0.5;
         var startX = goLeftToRight ? -width : window.innerWidth + width;
         var endX = goLeftToRight ? window.innerWidth + width : -width;
-        var color = Math.random() < 0.5 ? redColor : creamColor;
+        var color = Math.random() < 0.55 ? crimson : magenta;
+        var text = stamps[Math.floor(Math.random() * stamps.length)];
 
         var el = document.createElement('div');
         el.style.cssText = [
@@ -130,48 +139,93 @@
           'opacity:0',
           'pointer-events:none',
           'will-change:transform,opacity',
-          'filter:drop-shadow(0 0 6px ' + color + ')',
+          'transform:rotate(' + ((Math.random() - 0.5) * 8) + 'deg)',
           'transform-origin:center'
         ].join(';');
-        el.innerHTML = boltSVG(color, width);
+        el.innerHTML = stampSVG(text, color, width);
         container.appendChild(el);
 
-        var duration = 700 + Math.random() * 500;
+        var duration = 11000 + Math.random() * 6000;
 
-        // Fade in / out via Web Animations so removal is reliable
         el.animate(
           [
-            { opacity: 0, transform: 'translateX(0px)' },
-            { opacity: BOLT_OPACITY, transform: 'translateX(' + ((endX - startX) * 0.4) + 'px)' },
-            { opacity: 0, transform: 'translateX(' + (endX - startX) + 'px)' }
+            { opacity: 0, transform: 'translateX(0px) rotate(' + ((Math.random() - 0.5) * 8) + 'deg)' },
+            { opacity: STAMP_OPACITY, transform: 'translateX(' + ((endX - startX) * 0.3) + 'px) rotate(' + ((Math.random() - 0.5) * 8) + 'deg)' },
+            { opacity: STAMP_OPACITY, transform: 'translateX(' + ((endX - startX) * 0.7) + 'px) rotate(' + ((Math.random() - 0.5) * 8) + 'deg)' },
+            { opacity: 0, transform: 'translateX(' + (endX - startX) + 'px) rotate(' + ((Math.random() - 0.5) * 8) + 'deg)' }
           ],
-          { duration: duration, easing: 'ease-out', fill: 'forwards' }
+          { duration: duration, easing: 'linear', fill: 'forwards' }
         ).onfinish = function() {
           if (el.parentNode) el.parentNode.removeChild(el);
         };
       }
 
-      // Star spawn cadence: one every 1.4-2.6s
-      function starLoop() {
+      // A paparazzi camera-flash bursts briefly somewhere on screen
+      function spawnFlash() {
         if (!running) return;
-        spawnStar();
-        timers.push(setTimeout(starLoop, 1400 + Math.random() * 1200));
+
+        var size = 200 + Math.random() * 240;
+        var startX = Math.random() * (window.innerWidth - size);
+        var startY = Math.random() * (window.innerHeight - size);
+        var color = cream;
+
+        var el = document.createElement('div');
+        el.style.cssText = [
+          'position:absolute',
+          'left:' + startX + 'px',
+          'top:' + startY + 'px',
+          'width:' + size + 'px',
+          'height:' + size + 'px',
+          'opacity:0',
+          'pointer-events:none',
+          'will-change:opacity,transform',
+          'mix-blend-mode:' + (isLight ? 'multiply' : 'screen')
+        ].join(';');
+        el.innerHTML = flashSVG(color, size);
+        container.appendChild(el);
+
+        el.animate(
+          [
+            { opacity: 0, transform: 'scale(0.7)' },
+            { opacity: FLASH_OPACITY, transform: 'scale(1)' },
+            { opacity: 0, transform: 'scale(1.15)' }
+          ],
+          { duration: 360, easing: 'ease-out', fill: 'forwards' }
+        ).onfinish = function() {
+          if (el.parentNode) el.parentNode.removeChild(el);
+        };
       }
 
-      // Bolt spawn cadence: one every 7-14s, less frequent than stars
-      function boltLoop() {
+      function kissLoop() {
         if (!running) return;
-        spawnBolt();
-        timers.push(setTimeout(boltLoop, 7000 + Math.random() * 7000));
+        spawnKiss();
+        timers.push(setTimeout(kissLoop, 1800 + Math.random() * 1600));
+      }
+
+      function stampLoop() {
+        if (!running) return;
+        spawnStamp();
+        timers.push(setTimeout(stampLoop, 9000 + Math.random() * 7000));
+      }
+
+      function flashLoop() {
+        if (!running) return;
+        spawnFlash();
+        // occasional double-flash for that paparazzi feel
+        if (Math.random() < 0.35) {
+          timers.push(setTimeout(spawnFlash, 220 + Math.random() * 200));
+        }
+        timers.push(setTimeout(flashLoop, 11000 + Math.random() * 9000));
       }
 
       if (!prefersReduced) {
-        // Pre-populate a few stars so the screen isn't empty on load
-        for (var i = 0; i < 3; i++) {
-          timers.push(setTimeout(spawnStar, i * 600));
+        // Pre-populate so screen isn't empty on load
+        for (var i = 0; i < 4; i++) {
+          timers.push(setTimeout(spawnKiss, i * 700));
         }
-        timers.push(setTimeout(starLoop, 1500));
-        timers.push(setTimeout(boltLoop, 4500));
+        timers.push(setTimeout(kissLoop, 2200));
+        timers.push(setTimeout(stampLoop, 4500));
+        timers.push(setTimeout(flashLoop, 6500));
       }
 
       return function cleanup() {
