@@ -5,128 +5,141 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// "Inside the Issue" — the four supporting scene images, treated as a
-// magazine table-of-contents spread.
-const insideTheIssue = [
+// The opposing roster — fictional fighters Edward "battles" each week.
+// (Edward plays himself in every match. Casting was a formality.)
+const roster = [
   {
-    src: '/images/devil-fears-ai/edward-intern-office.png',
-    pageNo: '014',
-    section: 'PROFILE',
-    headline: 'A Day in the Life',
-    deck: 'Our intern arrives at 6:42 AM with the wrong oat-milk ratio and a plausible explanation already drafted.',
-    aspect: '3/4',
-    rotate: -1.4,
+    slot: '01',
+    name: 'SCORPION',
+    color: '#ffb800',
+    move: 'GET OVER HERE',
+    counter: 'NO, YOU GET OVER HERE',
+    bio: "Throws a chained spear. Edward catches it, looks at the camera, says the line. Crowd loses its mind. (The chain is detachable.)",
   },
   {
-    src: '/images/devil-fears-ai/edward-binders-stumble.png',
-    pageNo: '022',
-    section: 'STREET STYLE',
-    headline: 'Carry-On Couture',
-    deck: 'Ten binders, three lattes, one fedora. The model leans into the trend like he has a choice.',
-    aspect: '4/3',
-    rotate: 1.2,
+    slot: '02',
+    name: 'SUB-ZERO',
+    color: '#4dd0ff',
+    move: 'ICE BLAST',
+    counter: 'CLOSE THE BOOKS COLD',
+    bio: "Freezes the spreadsheet mid-forecast. Edward freezes the close. Whichever finishes Q4 first wins the round.",
   },
   {
-    src: '/images/devil-fears-ai/edward-as-editor.png',
-    pageNo: '038',
-    section: 'EDITOR LETTER',
-    headline: 'From the Desk',
-    deck: 'Reading glasses. Withering stare. The same face you saw three pages ago, now in a wig and unaffordable wool.',
-    aspect: '3/4',
-    rotate: -0.6,
+    slot: '03',
+    name: 'RAIDEN',
+    color: '#b86dff',
+    move: 'LIGHTNING STRIKE',
+    counter: 'THE FEDORA CONDUCTS',
+    bio: "Calls down lightning from the cloud. Edward routes it through Caprus, bills it back per hour, sends a clean invoice. Round won on procurement.",
   },
   {
-    src: '/images/devil-fears-ai/edward-scolded-sidewalk.png',
-    pageNo: '054',
-    section: 'AFTER HOURS',
-    headline: 'The Sidewalk Note',
-    deck: "A masterclass in mid-stride feedback, delivered curbside with the cab already running. The intern survives. The latte does not.",
-    aspect: '3/4',
-    rotate: 0.9,
+    slot: '04',
+    name: 'LIU KANG',
+    color: '#ff5a3c',
+    move: 'FLYING KICK',
+    counter: 'COUNTERPOINT DECK',
+    bio: "Comes in fast. Edward parries with a forty-slide deck, three of which are appendix, one of which is a Douglas Adams quote. Liu Kang reads it. Wakes up in round 2.",
+  },
+  {
+    slot: '05',
+    name: 'JOHNNY CAGE',
+    color: '#3cff7a',
+    move: 'NUTPUNCH',
+    counter: 'THE RESUME OBJECTION',
+    bio: "Edward responds with a quiet recitation of his actual credentials. Johnny tries to one-up. Edward mentions the Antarctica keynote. Match called.",
+  },
+  {
+    slot: '06',
+    name: 'KANO',
+    color: '#ff2d6f',
+    move: 'CYBER EYE LASER',
+    counter: 'THE COMPLIANCE GLARE',
+    bio: "Cybernetic eye versus a fedora and forty years of audit prep. The laser passes through the brim. The audit does not. Kano takes the L.",
   },
 ];
 
-// "The Atelier" — the six recurring projects, restyled as Vogue-style features.
+// "The Atelier" -> "The Roster" -- the six recurring projects, restyled
+// as Mortal Kombat fighter cards.
 const features = [
   {
-    fileNo: 'FW.01',
-    section: 'COVER STORY',
+    fileNo: 'P1.01',
+    section: 'BOSS FIGHT',
     title: 'AgentCube',
-    body: "The unified engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus.AI. Already shipping for Essbase and Planning. Consolidations in beta.",
+    body: "The unified engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus.AI. Already shipping for Essbase and Planning. Consolidations is in beta and learning new fatalities.",
     href: '/agentcube.html',
     external: false,
-    cta: 'Read the cover',
+    cta: 'Pick Fighter',
     badge: 'MCP · ENTERPRISE',
   },
   {
-    fileNo: 'FW.02',
-    section: 'CALENDAR',
+    fileNo: 'P1.02',
+    section: 'TOURNAMENT',
     title: 'Caribbean AI Summit',
     body: "Co-chairing the largest AI conference Puerto Rico has ever seen. Speakers and attendees from around the globe. Submit a talk, sponsor a track, or grab a seat before the island fills up.",
     href: 'https://www.caribbeansummit.ai/',
     external: true,
-    cta: 'See the schedule',
+    cta: 'Enter the Tournament',
     badge: 'OCT 9-10 · SAN JUAN',
   },
   {
-    fileNo: 'FW.03',
-    section: 'INVESTMENTS',
+    fileNo: 'P1.03',
+    section: 'TAG TEAM',
     title: 'Caprus AI',
     body: "Investor and contributor at Caprus, an AI Software & Services firm empowering finance teams with AI solutions for smarter, faster, more strategic financial operations.",
     href: 'https://caprus.ai',
     external: true,
-    cta: 'Visit the house',
+    cta: 'Visit the Dojo',
     badge: 'AI · FINANCE',
   },
   {
-    fileNo: 'FW.04',
-    section: 'BACKSTAGE',
+    fileNo: 'P1.04',
+    section: 'TRAINING MODE',
     title: 'AI-Powered DM Screen',
     body: "Building a tool that helps Dungeon Masters run better D&D campaigns using AI. Because if you're going to have an artificial intelligence at your table, it should at least help with initiative tracking.",
     href: null,
     external: false,
-    cta: 'In production',
+    cta: 'In Development',
     badge: 'D&D · AI',
   },
   {
-    fileNo: 'FW.05',
-    section: 'COMMUNITY',
+    fileNo: 'P1.05',
+    section: 'CO-OP',
     title: 'Puerto Rico AI Community',
     body: "President of the Puerto Rico AI Community. Over 850 attendees across our events. We meet every other month to explore what AI means for the island and beyond.",
     href: 'https://praicommunity.org/',
     external: true,
-    cta: 'RSVP for the next show',
+    cta: 'Join the Lobby',
     badge: 'BIMONTHLY · SAN JUAN',
   },
   {
-    fileNo: 'FW.06',
-    section: 'ADVENTURE',
+    fileNo: 'P1.06',
+    section: 'BONUS STAGE',
     title: 'Everest Base Camp · Cleared',
     body: "Hiked to Everest Base Camp in April with Dawn after acclimating in Santa Fe. Ten days, twelve thousand vertical feet, one fedora that survived the entire Khumbu Valley. The next summit is undecided.",
     href: '/blog',
     external: false,
-    cta: 'Read the dispatch',
+    cta: 'Read the Dispatch',
     badge: 'NEPAL · APRIL 2026',
   },
 ];
 
-// "Editor's Notes" — Q&A formatted as a fashion magazine letter from the editor
-const editorsNotes = [
+// Fatality FAQ -- Edward's editor's notes, reframed as Kombat Kodes.
+const kombatKodes = [
   {
-    q: "On the role of the AI intern.",
-    a: "The intern in the poster is fetching coffee, drafting decks, and forwarding emails to the wrong people. He is also shipping production code. Both jobs are accurate. Neither pays particularly well in equity.",
+    q: 'On the line.',
+    a: "Edward did not write 'No, you get over here.' He just had a moment of inspiration during the spear toss and the editor kept it. The chain is rented. The fedora is his.",
   },
   {
-    q: "On the silver wig.",
-    a: "Edward volunteered to play both roles. Nobody was going to stop him. The wig is a costume rental. The fedora is his.",
+    q: 'On playing every fighter.',
+    a: 'Casting fell through twice. Edward volunteered for one role, then six. The director said yes because the wardrobe department had already ordered the fedora in seven colors.',
   },
   {
-    q: "On whether AI is actually scary.",
-    a: "Short answer: not in the way the trailer implies. Long answer: it is, however, very good at closing the books faster than the intern who is currently being yelled at on the sidewalk.",
+    q: 'On whether the spreadsheet survives Sub-Zero.',
+    a: 'It freezes around row 412 and resumes thawing in March. The forecast is fine. Q4 is closed. The auditors were notified.',
   },
   {
-    q: "On corrections and complaints.",
-    a: "Send to Edward@Roske.AI. He reads them himself, in his own voice, in roughly the same number of paragraphs you sent. (Editor: also Edward. Confusingly.)",
+    q: 'On corrections and complaints.',
+    a: 'Send to Edward@Roske.AI. He reads them himself, in his own voice, in roughly the same number of paragraphs you sent. (Mail in BABALITY codes go straight to spam.)',
   },
 ];
 ---
@@ -135,34 +148,36 @@ const editorsNotes = [
   <WeeklyAnimation />
 
   <!-- ============================================
-       MASTHEAD STRIP — fake Vogue masthead
+       ARCADE TOP STRIP -- credit display
        ============================================ -->
-  <div class="masthead">
-    <div class="masthead-inner">
-      <span class="masthead-meta">VOL. XLII · ISS. 18</span>
-      <span class="masthead-meta">MAY 2026 · UNAUTHORIZED</span>
-      <span class="masthead-meta">NEWSSTAND · $0.00</span>
+  <div class="arcade-strip">
+    <div class="arcade-strip-inner">
+      <span class="arcade-meta arcade-meta-blink">INSERT COIN</span>
+      <span class="arcade-meta">CREDITS: 99</span>
+      <span class="arcade-meta">1P MODE · TOURNAMENT</span>
+      <span class="arcade-meta arcade-meta-hide-mobile">HIGH SCORE: 9999990</span>
     </div>
   </div>
 
   <!-- ============================================
-       HERO — Movie poster as the cover
+       HERO -- title screen with movie-still poster
        ============================================ -->
   <section class="hero-section">
-    <div class="hero-grain" aria-hidden="true"></div>
+    <div class="hero-scanlines" aria-hidden="true"></div>
+    <div class="hero-crt-glow" aria-hidden="true"></div>
 
     <div class="hero-grid">
       <div class="hero-text">
         <div class="hero-eyebrow">
-          <span class="hero-eyebrow-line"></span>
-          <span>FILE NO. 052 · WEEK OF {theme.week} · COVER STORY</span>
+          <span class="hero-eyebrow-block"></span>
+          <span>SELECT YOUR FIGHTER · WEEK OF {theme.week}</span>
+          <span class="hero-eyebrow-block"></span>
         </div>
 
         <h1 class="hero-title">
-          <span class="hero-title-line">The</span>
-          <span class="hero-title-line hero-title-script">Devil</span>
-          <span class="hero-title-line">Fears</span>
-          <span class="hero-title-line hero-title-bold">AI Too.</span>
+          <span class="hero-title-line hero-title-edward">EDWARD</span>
+          <span class="hero-title-line hero-title-kombat">KOMBAT</span>
+          <span class="hero-title-line hero-title-ii">II</span>
         </h1>
 
         <p class="hero-deck">{theme.hero.subtitle}</p>
@@ -170,17 +185,19 @@ const editorsNotes = [
         <div class="hero-tagline">
           <span class="hero-tagline-rule"></span>
           <span>{theme.tagline}</span>
+          <span class="hero-tagline-rule"></span>
         </div>
 
         <p class="hero-body">{theme.hero.description}</p>
 
         <div class="hero-cta-row">
           <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary">
+            <span class="btn-glyph">▶</span>
             Book 13 Minutes
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
           </a>
-          <a href="#current-work" class="btn-secondary">
-            <span>Open the Issue</span>
+          <a href="#roster" class="btn-secondary">
+            <span class="btn-glyph">◆</span>
+            Choose Fighter
           </a>
         </div>
 
@@ -200,94 +217,106 @@ const editorsNotes = [
       </div>
 
       <div class="hero-image-wrap">
-        <div class="hero-cover-tag">SUMMER ISSUE · 2026</div>
+        <div class="hero-cab-tag">CABINET 09 · MK II PARODY</div>
         <div class="hero-image-frame">
-          <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="hero-image" />
-          <div class="hero-cover-fold">
-            <span class="hero-cover-fold-label">PARODY · UNRATED</span>
-            <span class="hero-cover-fold-issue">No. 052</span>
+          <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1600" height="900" loading="eager" decoding="async" class="hero-image" />
+          <div class="hero-fight-banner">
+            <span class="hero-fight-banner-text">ROUND 1 — FIGHT!</span>
           </div>
         </div>
-        <div class="hero-stamp">
-          <div class="hero-stamp-inner">
-            <span class="hero-stamp-line">ROLE OF</span>
-            <span class="hero-stamp-big">EDWARD</span>
-            <span class="hero-stamp-line">PLAYED BY EDWARD</span>
-          </div>
-        </div>
-        <div class="hero-pull-quote" aria-hidden="true">
-          <span class="hero-pull-mark">"</span>
-          <span class="hero-pull-text">That's all.</span>
+        <div class="hero-vs-stamp">VS</div>
+        <div class="hero-cab-feet">
+          <span>PRESS START</span>
+          <span class="hero-cab-feet-blink">_</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       MARQUEE — Fashion ticker
+       ATTRACT-MODE MARQUEE
        ============================================ -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span class="marquee-item">★ COVER STORY · THE DEVIL FEARS AI TOO</span>
-      <span class="marquee-item">EXCLUSIVE · BOTH ROLES PLAYED BY EDWARD</span>
-      <span class="marquee-item">★ SUMMER ISSUE</span>
+      <span class="marquee-item">★ NOW PLAYING · EDWARD KOMBAT II</span>
+      <span class="marquee-item">EXCLUSIVE · ALL SIX FIGHTERS PLAYED BY EDWARD</span>
+      <span class="marquee-item">★ FATALITY · CLEAN BOOKS</span>
       <span class="marquee-item">CARIBBEAN AI SUMMIT · OCT 9-10</span>
       <span class="marquee-item">★ AGENTCUBE · NOW SHIPPING</span>
-      <span class="marquee-item">FEDORA: STILL BLUE</span>
-      <span class="marquee-item">★ COVER STORY · THE DEVIL FEARS AI TOO</span>
-      <span class="marquee-item">EXCLUSIVE · BOTH ROLES PLAYED BY EDWARD</span>
-      <span class="marquee-item">★ SUMMER ISSUE</span>
+      <span class="marquee-item">FEDORA: STILL BLUE (UNLESS THEMED)</span>
+      <span class="marquee-item">★ NOW PLAYING · EDWARD KOMBAT II</span>
+      <span class="marquee-item">EXCLUSIVE · ALL SIX FIGHTERS PLAYED BY EDWARD</span>
+      <span class="marquee-item">★ FATALITY · CLEAN BOOKS</span>
       <span class="marquee-item">CARIBBEAN AI SUMMIT · OCT 9-10</span>
       <span class="marquee-item">★ AGENTCUBE · NOW SHIPPING</span>
-      <span class="marquee-item">FEDORA: STILL BLUE</span>
+      <span class="marquee-item">FEDORA: STILL BLUE (UNLESS THEMED)</span>
     </div>
   </div>
 
   <!-- ============================================
-       PULL QUOTE — Magazine-style oversized quote
+       SCORPION SCENE -- the line, immortalized
        ============================================ -->
-  <section class="pullquote-section">
-    <div class="pullquote-inner">
-      <div class="pullquote-tag">PAGE 003 · ON THE COVER</div>
-      <blockquote class="pullquote">
-        <span class="pullquote-mark">&ldquo;</span>
-        I auditioned for the intern. I auditioned for the boss. I got both roles.
-        <span class="pullquote-mark pullquote-mark-close">&rdquo;</span>
-      </blockquote>
-      <div class="pullquote-attrib">
-        <span class="pullquote-attrib-name">Edward Roske</span>
-        <span class="pullquote-attrib-role">CEO · Speaker · Data Scientist · Probationary AI Intern</span>
+  <section class="scorpion-section">
+    <div class="scorpion-inner">
+      <div class="scorpion-image-wrap">
+        <img src="/images/edward-kombat/scorpion-get-over-here.png" alt="Edward in his blue fedora yanks the chain back at Scorpion in a misty hellfire arena, mouth open mid-shout." loading="lazy" decoding="async" />
+        <div class="scorpion-image-tag">EXHIBIT A · 0:43 INTO TRAILER</div>
+      </div>
+      <div class="scorpion-text">
+        <div class="scorpion-tag">SIGNATURE LINE · EXCLUSIVE PARODY</div>
+        <h2 class="scorpion-title">
+          <span>"NO,</span>
+          <span class="scorpion-title-emph">YOU</span>
+          <span>GET OVER HERE!"</span>
+        </h2>
+        <p class="scorpion-deck">
+          Scorpion throws his spear. Edward catches the chain, plants his fedora, and yanks. The line was unscripted. The fedora was prepared. The two facts are unrelated and also identical.
+        </p>
+        <ul class="scorpion-stats">
+          <li><span class="scorpion-stat-key">Spear distance</span><span class="scorpion-stat-val">14 ft</span></li>
+          <li><span class="scorpion-stat-key">Chain length</span><span class="scorpion-stat-val">22 ft</span></li>
+          <li><span class="scorpion-stat-key">Crowd reaction</span><span class="scorpion-stat-val">★★★★★</span></li>
+          <li><span class="scorpion-stat-key">Fedoras lost</span><span class="scorpion-stat-val">0</span></li>
+        </ul>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       INSIDE THE ISSUE — magazine spread of scene images
+       ROSTER -- character select grid (the six fights)
        ============================================ -->
-  <section class="issue-section">
-    <div class="issue-inner">
+  <section id="roster" class="roster-section">
+    <div class="roster-inner">
       <header class="section-header">
-        <div class="section-tag">SECTION 02 · INSIDE THE ISSUE</div>
-        <h2 class="section-title">A Table of Contents,<br/><em>more or less.</em></h2>
+        <div class="section-tag">ROUND 02 · CHARACTER SELECT</div>
+        <h2 class="section-title">CHOOSE<br/>YOUR<br/><span class="section-title-emph">OPPONENT.</span></h2>
         <p class="section-deck">
-          Four pages from a magazine that does not exist, photographed by a crew that no one has paid yet, starring the same man twice. (We assume he had it coming.)
+          Six fighters. One Edward. (Casting agreed to it on principle.) Each match-up below describes the move, the counter, and the round in three short sentences. Roster is final, the wardrobe department disagrees.
         </p>
       </header>
 
-      <div class="issue-grid">
-        {insideTheIssue.map((item, idx) => (
-          <article class="issue-card" style={`--rot:${item.rotate}deg; --aspect:${item.aspect};`}>
-            <div class="issue-photo">
-              <span class="issue-tape issue-tape-tl"></span>
-              <span class="issue-tape issue-tape-br"></span>
-              <img src={item.src} alt={item.headline} loading="lazy" decoding="async" />
-              <div class="issue-pageno">P. {item.pageNo}</div>
+      <div class="roster-grid">
+        {roster.map(r => (
+          <article class="roster-card" style={`--rc:${r.color};`}>
+            <div class="roster-slot">SLOT {r.slot}</div>
+            <h3 class="roster-name">{r.name}</h3>
+            <div class="roster-portrait">
+              <span class="roster-portrait-corner roster-portrait-tl"></span>
+              <span class="roster-portrait-corner roster-portrait-tr"></span>
+              <span class="roster-portrait-corner roster-portrait-bl"></span>
+              <span class="roster-portrait-corner roster-portrait-br"></span>
+              <div class="roster-portrait-glyph"></div>
+              <div class="roster-portrait-fedora">FEDORA</div>
             </div>
-            <div class="issue-meta">
-              <div class="issue-section-label">{item.section}</div>
-              <h3 class="issue-headline">{item.headline}</h3>
-              <p class="issue-deck">{item.deck}</p>
+            <div class="roster-move-row">
+              <span class="roster-move-label">MOVE</span>
+              <span class="roster-move-text">{r.move}</span>
             </div>
+            <div class="roster-move-row">
+              <span class="roster-move-label">COUNTER</span>
+              <span class="roster-move-text roster-move-counter">{r.counter}</span>
+            </div>
+            <p class="roster-bio">{r.bio}</p>
           </article>
         ))}
       </div>
@@ -295,52 +324,90 @@ const editorsNotes = [
   </section>
 
   <!-- ============================================
-       EDITOR LETTER — pull quote with image
+       PIXEL ARCADE CABINET -- 16-bit fight screen
        ============================================ -->
-  <section class="editor-section">
-    <div class="editor-grid">
-      <figure class="editor-image">
-        <img src="/images/devil-fears-ai/edward-desk-meltdown.png" alt="Edward Roske as a frazzled AI intern at his magazine office desk, surrounded by Starbucks cups and three buzzing iPhones." loading="lazy" decoding="async" />
-        <figcaption>
-          <span>FIG. A · 6:47 PM</span>
-          <span>OPEN PLAN · FLOOR 14</span>
-        </figcaption>
-      </figure>
+  <section class="cabinet-section">
+    <div class="cabinet-inner">
+      <header class="section-header cabinet-header">
+        <div class="section-tag">ROUND 03 · ARCADE CABINET</div>
+        <h2 class="section-title">FOR THE<br/><span class="section-title-emph">PURISTS.</span></h2>
+        <p class="section-deck">
+          The Genesis cartridge port. Same fight, fewer pixels, exactly as much fedora. (The pit stage rendered in 47 colors, none of which were licensed.)
+        </p>
+      </header>
 
-      <div class="editor-text">
-        <div class="editor-tag">FROM THE DESK OF THE EDITOR</div>
-        <h3 class="editor-h3">A note from the editor.<br/>(Also Edward.)</h3>
-        <p class="editor-body">
-          The new heroes are not the ones in capes, and they are not the ones in Prada either. They are the people who can close your books in a week, run a coherent forecast on demand, and answer a follow-up question without sweating through their suit. The capes are theatrical. The latte run is real. The intern is doing both.
-        </p>
-        <p class="editor-body">
-          We are still running the magazine. We are also still shipping the MCP servers. The only person who has been confused by this so far is the intern, and he is busy. (He is also Edward.)
-        </p>
-        <div class="editor-attrib">
-          <span class="editor-attrib-line"></span>
-          <div>
-            <span class="editor-attrib-name">Edward Roske</span>
-            <span class="editor-attrib-title">Editor-in-Chief, ROSKE/MAG (parodically)</span>
-          </div>
+      <div class="cabinet-screen-frame">
+        <div class="cabinet-bezel-top">
+          <span>1P  EDWARD</span>
+          <span>CREDIT 99</span>
+          <span>2P  SCORPION</span>
+        </div>
+        <img src="/images/edward-kombat/pixel-fight-screen.png" alt="16-bit pixel art fight screen: Edward in a blue pixel fedora faces Scorpion in The Pit stage, with health bars at the top and the word FIGHT in large yellow pixels." loading="lazy" decoding="async" class="cabinet-screen" />
+        <div class="cabinet-bezel-bottom">
+          <span>★ INSERT COIN ★</span>
+          <span>HIGH SCORE 9999990</span>
+        </div>
+      </div>
+
+      <div class="cabinet-grid">
+        <figure class="cabinet-side-figure">
+          <img src="/images/edward-kombat/character-select.png" alt="Pixel art character select grid showing Edward dressed as six different Mortal Kombat fighters, always wearing a small fedora." loading="lazy" decoding="async" />
+          <figcaption>SELECT YOUR EDWARD · ALL SIX SLOTS PRE-CAST</figcaption>
+        </figure>
+        <div class="cabinet-side-text">
+          <h3 class="cabinet-h3">Two Editions.<br/>One Fighter.</h3>
+          <p>The cinematic cut hits theaters this weekend (we have notes). The arcade cabinet is in your basement, possibly. Both ship with Edward in every role and a difficulty setting labeled <em>Q4 CLOSE</em>.</p>
+          <p>(There is no easy mode. There is, however, a tutorial. It is forty pages and shaped like a binder.)</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       THE ATELIER — six features (project cards)
+       SUB-ZERO + RAIDEN STILLS -- secondary scenes
        ============================================ -->
-  <section id="current-work" class="atelier-section">
-    <div class="atelier-inner">
+  <section class="stills-section">
+    <div class="stills-inner">
       <header class="section-header">
-        <div class="section-tag">SECTION 03 · THE ATELIER</div>
-        <h2 class="section-title">Six things,<br/>currently <em>shipping.</em></h2>
+        <div class="section-tag">PRESS KIT · UNCROPPED</div>
+        <h2 class="section-title">TWO MORE<br/><span class="section-title-emph">STILLS.</span></h2>
+      </header>
+
+      <div class="stills-grid">
+        <figure class="still-card">
+          <img src="/images/edward-kombat/sub-zero-spreadsheet.png" alt="Edward in his fedora freezing a glowing financial spreadsheet labeled Q4 FORECAST with ice powers." loading="lazy" decoding="async" />
+          <figcaption>
+            <span class="still-card-tag">EXHIBIT B</span>
+            <h3>The Q4 Freeze.</h3>
+            <p>Sub-Zero froze the spreadsheet. Edward froze the close. The spreadsheet thawed. Q4 did not.</p>
+          </figcaption>
+        </figure>
+        <figure class="still-card">
+          <img src="/images/edward-kombat/raiden-rooftop.png" alt="Edward in his fedora on a rooftop summoning lightning between his palms during a thunderstorm." loading="lazy" decoding="async" />
+          <figcaption>
+            <span class="still-card-tag">EXHIBIT C</span>
+            <h3>The Lightning Routing.</h3>
+            <p>Raiden brought the storm. Edward brought a service contract. The hourly rate is in the appendix.</p>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FEATURE ROSTER -- six recurring projects
+       ============================================ -->
+  <section id="current-work" class="features-section">
+    <div class="features-inner">
+      <header class="section-header">
+        <div class="section-tag">ROUND 04 · CURRENT KAMPAIGNS</div>
+        <h2 class="section-title">SIX FIGHTS,<br/><span class="section-title-emph">CURRENTLY ACTIVE.</span></h2>
         <p class="section-deck">
-          The features on the contributor page. Edward is not just the cover model. He is also the writer, the fact-checker, and the person making the spreadsheet that determines whether any of this is profitable.
+          The actual roster, minus the wig. Each card below is a real project Edward is shipping, sitting on, or summiting. Pick one to read more.
         </p>
       </header>
 
-      <div class="atelier-grid">
+      <div class="features-grid">
         {features.map(feat => (
           <article class="feat-card">
             <div class="feat-corner feat-corner-tl"></div>
@@ -359,7 +426,7 @@ const editorsNotes = [
               {feat.href ? (
                 <a href={feat.href} target={feat.external ? '_blank' : undefined} rel={feat.external ? 'noopener' : undefined} class="feat-cta">
                   {feat.cta}
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
+                  <span class="feat-cta-glyph">▶</span>
                 </a>
               ) : (
                 <span class="feat-cta feat-cta-disabled">{feat.cta}</span>
@@ -372,22 +439,22 @@ const editorsNotes = [
   </section>
 
   <!-- ============================================
-       EDITOR'S NOTES — Q&A as fashion column
+       KOMBAT KODES -- Q&A as cheat codes
        ============================================ -->
-  <section class="notes-section">
-    <div class="notes-inner">
-      <header class="section-header notes-header">
-        <div class="section-tag">SECTION 04 · EDITOR'S NOTES</div>
-        <h2 class="section-title">A few things,<br/>on the record.</h2>
+  <section class="kodes-section">
+    <div class="kodes-inner">
+      <header class="section-header">
+        <div class="section-tag">ROUND 05 · KOMBAT KODES</div>
+        <h2 class="section-title">A FEW NOTES,<br/><span class="section-title-emph">FROM THE BACK OF THE MANUAL.</span></h2>
       </header>
 
-      <div class="notes-list">
-        {editorsNotes.map((item, idx) => (
-          <div class="note-item">
-            <div class="note-num">{String(idx + 1).padStart(2, '0')}</div>
-            <div class="note-content">
-              <div class="note-q">{item.q}</div>
-              <div class="note-a">{item.a}</div>
+      <div class="kodes-list">
+        {kombatKodes.map((item, idx) => (
+          <div class="kode-item">
+            <div class="kode-num">{String(idx + 1).padStart(2, '0')}</div>
+            <div class="kode-content">
+              <div class="kode-q">{item.q}</div>
+              <div class="kode-a">{item.a}</div>
             </div>
           </div>
         ))}
@@ -396,27 +463,34 @@ const editorsNotes = [
   </section>
 
   <!-- ============================================
-       FINAL CTA — "Submit a Pitch"
+       FINAL CTA -- INSERT COIN TO CONTINUE
        ============================================ -->
   <section class="final-cta">
-    <div class="final-cta-grain" aria-hidden="true"></div>
-
+    <div class="final-cta-scanlines" aria-hidden="true"></div>
     <div class="final-cta-inner">
       <div class="final-cta-content">
-        <div class="section-tag final-cta-tag">SECTION 05 · MASTHEAD</div>
+        <div class="final-cta-tag">ROUND 06 · CONTINUE?</div>
         <h2 class="final-cta-title">
-          Submit a pitch.<br/>
-          <span class="final-cta-accent">The editor reads everything.</span>
+          INSERT COIN<br/>
+          <span class="final-cta-accent">TO CONTINUE.</span>
         </h2>
         <p class="final-cta-body">
-          Edward reads every email. Answers most of them. Personally, in his own voice, in roughly the same number of paragraphs you sent. (No interns. No automated routing. No silver-wigged gatekeepers. The fedora is real and the inbox is open.)
+          Thirteen minutes on the calendar. No deck. No charge. The fedora is optional. (Edward will be wearing one.)
         </p>
         <div class="final-cta-buttons">
-          <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary btn-primary-lg">
-            Book a 13-Minute Briefing
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary">
+            <span class="btn-glyph">▶</span>
+            Book 13 Minutes
           </a>
-          <a href="/contact/" class="btn-secondary btn-secondary-lg">Submit a Pitch</a>
+          <a href="mailto:Edward@Roske.AI" class="btn-secondary">
+            <span class="btn-glyph">✉</span>
+            Mail the Cabinet
+          </a>
+        </div>
+        <div class="final-cta-countdown">
+          <span class="final-cta-countdown-label">CONTINUE IN</span>
+          <span class="final-cta-countdown-num">10</span>
+          <span class="final-cta-countdown-blip">_</span>
         </div>
       </div>
     </div>
@@ -424,166 +498,122 @@ const editorsNotes = [
 </BaseLayout>
 
 <style>
-  /* ============================================
-     THE DEVIL FEARS AI TOO — Vogue-style editorial
-     ============================================ */
+  /* ============================================================
+     EDWARD KOMBAT II -- arcade fight game aesthetic
+     Deep red, ice cyan, lightning gold. Press Start 2P for headers.
+     ============================================================ */
 
-  :global(body) {
-    font-family: var(--font-body);
-    font-size: 1.075rem;
-    line-height: 1.6;
+  :global(:root) {
+    color-scheme: dark light;
   }
 
-  section {
+  /* ARCADE TOP STRIP -------------------------------------------- */
+  .arcade-strip {
+    width: 100%;
+    border-bottom: 2px solid var(--color-accent);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 0.6rem 1.5rem;
     position: relative;
+    z-index: 10;
   }
-
-  /* ===================== SHARED HEADER ===================== */
-  .section-header {
-    max-width: 56rem;
-    margin: 0 auto 3.5rem;
-    text-align: center;
-    padding: 0 1.5rem;
-  }
-  .section-tag {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
+  [data-theme="dark"] .arcade-strip {
+    background: #0a0205;
     color: var(--color-accent);
-    font-weight: 600;
-    margin-bottom: 1.25rem;
   }
-  .section-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2.6rem, 6.5vw, 5.5rem);
-    line-height: 0.95;
-    letter-spacing: -0.015em;
-    margin: 0 0 1.25rem;
-    font-weight: 800;
+  [data-theme="light"] .arcade-strip {
+    background: #170306;
+    color: var(--color-accent);
   }
-  .section-title em {
-    font-style: italic;
-    font-weight: 500;
-    color: var(--color-secondary);
-  }
-  [data-theme="dark"] .section-title em { color: #ff5fa8; }
-  [data-theme="dark"] .section-title { color: var(--color-text); }
-  [data-theme="light"] .section-title { color: var(--color-text-dark); }
-
-  .section-deck {
-    font-family: var(--font-body);
-    font-size: 1.2rem;
-    line-height: 1.5;
-    max-width: 40rem;
-    margin: 0 auto;
-    font-style: italic;
-  }
-  [data-theme="dark"] .section-deck { color: var(--color-text-muted); }
-  [data-theme="light"] .section-deck { color: var(--color-text-dark-muted); }
-
-  /* ===================== MASTHEAD ===================== */
-  .masthead {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    padding: 0.55rem 0;
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-  }
-  [data-theme="dark"] .masthead {
-    background: #050505;
-    border-color: #2a2521;
-    color: var(--color-text-muted);
-  }
-  [data-theme="light"] .masthead {
-    background: #fff;
-    border-color: var(--color-border-light);
-    color: var(--color-text-dark-muted);
-  }
-  .masthead-inner {
+  .arcade-strip-inner {
     max-width: 80rem;
     margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  /* ===================== HERO ===================== */
-  .hero-section {
-    position: relative;
-    min-height: 92vh;
-    overflow: hidden;
-    isolation: isolate;
     display: flex;
     align-items: center;
-    padding: 5rem 1.5rem 4rem;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .arcade-meta {
+    font-weight: 600;
+  }
+  .arcade-meta-blink {
+    animation: arcade-blink 1.2s steps(1, end) infinite;
+  }
+  @keyframes arcade-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.15; }
+  }
+  @media (max-width: 768px) {
+    .arcade-meta-hide-mobile { display: none; }
+  }
+
+  /* HERO --------------------------------------------------------- */
+  .hero-section {
+    position: relative;
+    overflow: hidden;
+    padding: 3.5rem 1.5rem 4.5rem;
+    isolation: isolate;
+  }
+  @media (min-width: 768px) {
+    .hero-section { padding: 5rem 2rem 6rem; }
   }
   [data-theme="dark"] .hero-section {
     background:
-      radial-gradient(ellipse at 75% 25%, rgba(212, 0, 122, 0.12) 0%, transparent 60%),
-      radial-gradient(ellipse at 20% 80%, rgba(184, 0, 31, 0.18) 0%, transparent 60%),
-      linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+      radial-gradient(ellipse at 70% 30%, rgba(200, 16, 46, 0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 80%, rgba(255, 184, 0, 0.08) 0%, transparent 55%),
+      linear-gradient(180deg, #0a0205 0%, #160508 100%);
   }
   [data-theme="light"] .hero-section {
     background:
-      radial-gradient(ellipse at 75% 25%, rgba(212, 0, 122, 0.08) 0%, transparent 55%),
-      radial-gradient(ellipse at 20% 80%, rgba(184, 0, 31, 0.07) 0%, transparent 55%),
-      #fbf8f3;
+      radial-gradient(ellipse at 70% 30%, rgba(200, 16, 46, 0.12) 0%, transparent 55%),
+      radial-gradient(ellipse at 20% 80%, rgba(255, 184, 0, 0.10) 0%, transparent 55%),
+      #f4ece0;
   }
 
-  /* Hero grain overlay — disabled. The hatch was creating visible stripes on mobile
-     and competing with hero copy. We rely on the section gradient + reading scrim instead. */
-  .hero-grain { display: none; }
+  .hero-scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.18) 0px,
+      rgba(0, 0, 0, 0.18) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+    opacity: 0.5;
+    mix-blend-mode: multiply;
+  }
+  [data-theme="light"] .hero-scanlines {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(160, 0, 30, 0.07) 0px,
+      rgba(160, 0, 30, 0.07) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+    opacity: 0.7;
+    mix-blend-mode: normal;
+  }
 
-  /* Reading surface behind hero copy — keeps text legible over any background.
-     On mobile (single column) we use a near-solid panel so the white text never
-     fights the background imagery. Above 1024px we fade to the side so the
-     poster image stays visible next to the column. */
-  .hero-text {
-    position: relative;
-    z-index: 2;
-  }
-  [data-theme="dark"] .hero-text::before {
-    content: "";
+  .hero-crt-glow {
     position: absolute;
-    inset: -1.25rem -1.25rem;
-    background: rgba(5, 5, 5, 0.72);
-    border-radius: 0.25rem;
-    z-index: -1;
+    inset: -10%;
     pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.5) 100%);
   }
-  [data-theme="light"] .hero-text::before {
-    content: "";
-    position: absolute;
-    inset: -1.25rem -1.25rem;
-    background: rgba(251, 248, 243, 0.88);
-    border-radius: 0.25rem;
-    z-index: -1;
-    pointer-events: none;
-  }
-  @media (min-width: 1024px) {
-    [data-theme="dark"] .hero-text::before {
-      inset: -1.5rem -2rem;
-      background: radial-gradient(ellipse at 30% 50%, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.55) 55%, rgba(5, 5, 5, 0) 100%);
-      border-radius: 0;
-    }
-    [data-theme="light"] .hero-text::before {
-      inset: -1.5rem -2rem;
-      background: radial-gradient(ellipse at 30% 50%, rgba(251, 248, 243, 0.9) 0%, rgba(251, 248, 243, 0.65) 55%, rgba(251, 248, 243, 0) 100%);
-      border-radius: 0;
-    }
-  }
+  [data-theme="light"] .hero-crt-glow { display: none; }
 
   .hero-grid {
     position: relative;
-    z-index: 2;
+    z-index: 3;
     max-width: 80rem;
     margin: 0 auto;
-    width: 100%;
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -591,99 +621,110 @@ const editorsNotes = [
   }
   @media (min-width: 1024px) {
     .hero-grid {
-      grid-template-columns: 1.05fr 1fr;
-      gap: 4.5rem;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4rem;
     }
   }
+
+  .hero-text { position: relative; }
 
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 0.85rem;
     font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.34em;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
     text-transform: uppercase;
-    margin-bottom: 1.8rem;
+    margin-bottom: 1.6rem;
     font-weight: 600;
     color: var(--color-accent);
   }
-  .hero-eyebrow-line {
-    width: 2.5rem;
-    height: 1px;
+  .hero-eyebrow-block {
+    width: 0.75rem;
+    height: 0.75rem;
     background: var(--color-accent);
+    box-shadow: 0 0 8px var(--color-accent);
   }
 
   .hero-title {
     font-family: var(--font-heading);
-    font-size: clamp(3.2rem, 9.5vw, 7.5rem);
-    line-height: 0.92;
-    letter-spacing: -0.025em;
-    margin: 0 0 1.8rem;
-    font-weight: 800;
+    font-size: clamp(2rem, 6.5vw, 5rem);
+    line-height: 1.1;
+    letter-spacing: 0;
+    margin: 0 0 2rem;
+    text-transform: uppercase;
   }
   .hero-title-line {
     display: block;
   }
-  [data-theme="dark"] .hero-title-line { color: var(--color-text); }
-  [data-theme="light"] .hero-title-line { color: var(--color-text-dark); }
-  .hero-title-script {
-    font-family: 'Bodoni Moda', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--color-secondary) !important;
-    padding-left: 0.8em;
-    letter-spacing: -0.01em;
+  [data-theme="dark"] .hero-title-edward {
+    color: #fff4d9;
+    text-shadow: 0.25rem 0.25rem 0 #c8102e;
   }
-  [data-theme="dark"] .hero-title-script { color: #ff5fa8 !important; }
-  .hero-title-bold {
-    color: var(--color-secondary) !important;
-    padding-left: 1.6em;
-    font-weight: 900;
-    letter-spacing: -0.03em;
+  [data-theme="dark"] .hero-title-kombat {
+    color: var(--color-accent);
+    text-shadow: 0.25rem 0.25rem 0 #c8102e;
   }
-  [data-theme="dark"] .hero-title-bold { color: #ff2a8f !important; }
+  [data-theme="dark"] .hero-title-ii {
+    color: #c8102e;
+    font-size: 1.4em;
+    text-shadow: 0.3rem 0.3rem 0 #160508;
+  }
+  [data-theme="light"] .hero-title-edward {
+    color: #170306;
+    text-shadow: 0.2rem 0.2rem 0 #c8102e;
+  }
+  [data-theme="light"] .hero-title-kombat {
+    color: #c8102e;
+    text-shadow: 0.2rem 0.2rem 0 #170306;
+  }
+  [data-theme="light"] .hero-title-ii {
+    color: #170306;
+    font-size: 1.4em;
+    text-shadow: 0.3rem 0.3rem 0 var(--color-accent);
+  }
 
   .hero-deck {
     font-family: var(--font-body);
-    font-style: italic;
-    font-size: clamp(1.35rem, 2.4vw, 1.7rem);
-    font-weight: 400;
-    line-height: 1.4;
-    margin: 0 0 1.4rem;
+    font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+    font-weight: 500;
+    line-height: 1.45;
+    margin: 0 0 1.6rem;
     max-width: 38rem;
   }
-  [data-theme="dark"] .hero-deck { color: var(--color-text); }
-  [data-theme="light"] .hero-deck { color: var(--color-text-dark); }
+  [data-theme="dark"] .hero-deck { color: #fff4d9; }
+  [data-theme="light"] .hero-deck { color: #170306; }
 
   .hero-tagline {
     display: flex;
     align-items: center;
     gap: 0.85rem;
     font-family: var(--font-mono);
-    font-size: 0.74rem;
+    font-size: 0.78rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
     margin-bottom: 1.6rem;
-    font-weight: 500;
+    font-weight: 600;
+    color: var(--color-accent);
   }
-  [data-theme="dark"] .hero-tagline { color: var(--color-text-muted); }
-  [data-theme="light"] .hero-tagline { color: var(--color-text-dark-muted); }
   .hero-tagline-rule {
-    width: 2.5rem;
-    height: 1px;
+    flex: 1;
+    height: 2px;
     background: var(--color-accent);
+    max-width: 3rem;
   }
 
   .hero-body {
     font-family: var(--font-body);
-    font-size: 1.1rem;
-    line-height: 1.65;
+    font-size: 1.05rem;
+    line-height: 1.6;
     margin: 0 0 2rem;
     max-width: 38rem;
+    font-weight: 400;
   }
-  [data-theme="dark"] .hero-body { color: var(--color-text-muted); }
-  [data-theme="light"] .hero-body { color: var(--color-text-dark-muted); }
+  [data-theme="dark"] .hero-body { color: rgba(255, 244, 217, 0.8); }
+  [data-theme="light"] .hero-body { color: #5a3a3a; }
 
   .hero-cta-row {
     display: flex;
@@ -692,790 +733,828 @@ const editorsNotes = [
     margin-bottom: 2.5rem;
   }
 
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 2px solid var(--color-accent);
+    transition: all 0.15s ease-out;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--color-accent);
+    color: #170306;
+    box-shadow: 0.3rem 0.3rem 0 var(--color-secondary);
+  }
+  .btn-primary:hover {
+    transform: translate(-0.15rem, -0.15rem);
+    box-shadow: 0.45rem 0.45rem 0 var(--color-secondary);
+  }
+  .btn-primary:active {
+    transform: translate(0.15rem, 0.15rem);
+    box-shadow: 0.15rem 0.15rem 0 var(--color-secondary);
+  }
+  .btn-secondary {
+    background: transparent;
+    border-color: var(--color-secondary);
+  }
+  [data-theme="dark"] .btn-secondary { color: #fff4d9; }
+  [data-theme="light"] .btn-secondary { color: #170306; }
+  .btn-secondary:hover {
+    background: var(--color-secondary);
+    color: #fff4d9;
+  }
+  .btn-glyph {
+    font-size: 0.9em;
+    color: inherit;
+  }
+
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-    max-width: 30rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid;
+    gap: 0.75rem;
+    margin-top: 1rem;
   }
-  [data-theme="dark"] .hero-stats { border-color: var(--color-border); }
-  [data-theme="light"] .hero-stats { border-color: var(--color-border-light); }
-
+  .hero-stat {
+    text-align: center;
+    padding: 0.6rem 0.4rem;
+    border: 2px solid var(--color-accent);
+    background: rgba(10, 2, 5, 0.4);
+  }
+  [data-theme="light"] .hero-stat {
+    background: rgba(255, 244, 217, 0.5);
+    border-color: var(--color-secondary);
+  }
   .hero-stat-value {
-    font-family: var(--font-heading);
-    font-size: 2rem;
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    font-weight: 700;
     line-height: 1;
-    color: var(--color-secondary);
-    font-weight: 800;
-    font-style: italic;
+    margin-bottom: 0.3rem;
+    color: var(--color-accent);
   }
-  [data-theme="dark"] .hero-stat-value { color: #ff5fa8; }
+  [data-theme="light"] .hero-stat-value { color: var(--color-secondary); }
   .hero-stat-label {
     font-family: var(--font-mono);
     font-size: 0.6rem;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-top: 0.4rem;
+    font-weight: 500;
   }
-  [data-theme="dark"] .hero-stat-label { color: var(--color-text-muted); }
-  [data-theme="light"] .hero-stat-label { color: var(--color-text-dark-muted); }
+  [data-theme="dark"] .hero-stat-label { color: rgba(255, 244, 217, 0.65); }
+  [data-theme="light"] .hero-stat-label { color: #5a3a3a; }
 
-  /* Hero image / cover */
   .hero-image-wrap {
     position: relative;
-    width: 100%;
-    max-width: 38rem;
-    margin: 0 auto;
+    padding: 1rem;
   }
-  .hero-cover-tag {
+  .hero-cab-tag {
     position: absolute;
-    top: -2.2rem;
-    left: 0;
+    top: -0.4rem;
+    left: 1rem;
     font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--color-accent);
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
     font-weight: 600;
-    z-index: 3;
+    text-transform: uppercase;
+    background: var(--color-accent);
+    color: #170306;
+    padding: 0.35rem 0.65rem;
+    z-index: 4;
+    box-shadow: 0.2rem 0.2rem 0 var(--color-secondary);
   }
+
   .hero-image-frame {
     position: relative;
-    background: #fbf8f3;
-    box-shadow:
-      0 1.5rem 3rem rgba(0, 0, 0, 0.45),
-      0 0 0 1px rgba(184, 0, 31, 0.4);
-  }
-  [data-theme="light"] .hero-image-frame {
-    box-shadow:
-      0 1.5rem 3rem rgba(184, 0, 31, 0.15),
-      0 0 0 1px rgba(10, 10, 10, 0.06);
+    border: 4px solid var(--color-accent);
+    box-shadow: 0.5rem 0.5rem 0 var(--color-secondary);
+    overflow: hidden;
+    background: #000;
   }
   .hero-image {
     display: block;
     width: 100%;
     height: auto;
+    image-rendering: auto;
   }
-  .hero-cover-fold {
-    background: #050505;
-    color: #fbf8f3;
-    padding: 0.7rem 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
+  .hero-fight-banner {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-heading);
+    font-size: clamp(0.85rem, 1.5vw, 1.3rem);
+    background: var(--color-accent);
+    color: #170306;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0.05em;
+    box-shadow: 0.2rem 0.2rem 0 var(--color-secondary);
+    animation: arcade-blink 1.4s steps(1, end) infinite;
   }
 
-  .hero-stamp {
+  .hero-vs-stamp {
     position: absolute;
     top: -1rem;
-    right: -1.25rem;
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
+    right: -1rem;
+    width: 4.5rem;
+    height: 4.5rem;
     background: var(--color-secondary);
-    color: #fbf8f3;
+    color: #fff4d9;
+    border: 4px solid var(--color-accent);
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: rotate(11deg);
-    box-shadow:
-      0 0 0 2px #fbf8f3,
-      0 0 0 4px var(--color-secondary),
-      0.4rem 0.4rem 0.8rem rgba(0, 0, 0, 0.3);
-    z-index: 4;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-  }
-  .hero-stamp-inner {
-    text-align: center;
-    line-height: 1.05;
-  }
-  .hero-stamp-line {
-    display: block;
-    font-size: 0.58rem;
-    letter-spacing: 0.22em;
-    margin: 0.18rem 0;
-    font-weight: 500;
-  }
-  .hero-stamp-big {
-    display: block;
     font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.45rem;
-    letter-spacing: 0.02em;
-    margin: 0.2rem 0;
-    font-weight: 800;
-  }
-
-  .hero-pull-quote {
-    position: absolute;
-    left: -1rem;
-    bottom: -2rem;
-    background: #fbf8f3;
-    color: #0a0a0a;
-    padding: 1.1rem 1.4rem 1rem;
-    max-width: 14rem;
-    border: 1px solid #0a0a0a;
-    transform: rotate(-3deg);
-    box-shadow: 0.5rem 0.5rem 0 var(--color-secondary);
+    font-size: 1.1rem;
+    box-shadow: 0.3rem 0.3rem 0 var(--color-accent);
+    transform: rotate(-8deg);
     z-index: 4;
   }
-  .hero-pull-mark {
-    font-family: 'Bodoni Moda', serif;
-    font-style: italic;
-    font-size: 2.4rem;
-    line-height: 0;
-    color: var(--color-secondary);
-    display: inline-block;
-    vertical-align: -0.15em;
-    margin-right: 0.15em;
-  }
-  .hero-pull-text {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.25rem;
-    line-height: 1;
-    font-weight: 500;
-  }
-  @media (max-width: 720px) {
-    .hero-pull-quote { display: none; }
-    .hero-stamp {
-      width: 6rem;
-      height: 6rem;
-      top: -0.5rem;
-      right: -0.5rem;
-    }
-    .hero-stamp-big { font-size: 1.05rem; }
-    .hero-stamp-line { font-size: 0.5rem; }
-  }
 
-  /* ===================== BUTTONS ===================== */
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    background: var(--color-secondary);
-    color: #fbf8f3;
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    padding: 0.95rem 1.4rem;
-    border: 2px solid var(--color-secondary);
-    text-decoration: none;
-    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    font-weight: 600;
-    box-shadow: 0.3rem 0.3rem 0 #050505;
-  }
-  [data-theme="light"] .btn-primary {
-    box-shadow: 0.3rem 0.3rem 0 #0a0a0a;
-  }
-  .btn-primary:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 0.5rem 0.5rem 0 #050505;
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-  }
-  [data-theme="light"] .btn-primary:hover {
-    box-shadow: 0.5rem 0.5rem 0 #0a0a0a;
-  }
-  .btn-primary-lg { padding: 1.1rem 1.7rem; font-size: 0.82rem; }
-
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    background: transparent;
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    padding: 0.95rem 1.4rem;
-    border: 2px solid currentColor;
-    text-decoration: none;
-    transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
-    font-weight: 600;
-  }
-  [data-theme="dark"] .btn-secondary { color: var(--color-text); }
-  [data-theme="light"] .btn-secondary { color: var(--color-text-dark); }
-  .btn-secondary:hover {
-    transform: translate(-2px, -2px);
-    background: var(--color-secondary);
-    color: #fbf8f3;
-    border-color: var(--color-secondary);
-  }
-  .btn-secondary-lg { padding: 1.1rem 1.7rem; font-size: 0.82rem; }
-
-  /* ===================== MARQUEE ===================== */
-  .marquee {
-    overflow: hidden;
-    background: var(--color-secondary);
-    color: #fbf8f3;
-    border-top: 1px solid #050505;
-    border-bottom: 1px solid #050505;
-    padding: 0.9rem 0;
-    position: relative;
-  }
-  .marquee-track {
-    display: inline-flex;
-    gap: 3rem;
-    white-space: nowrap;
-    animation: marqueeScroll 50s linear infinite;
-    font-family: var(--font-heading);
-    font-size: 1.05rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-style: italic;
-  }
-  .marquee-item {
-    display: inline-block;
-  }
-  @keyframes marqueeScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* ===================== PULLQUOTE ===================== */
-  .pullquote-section {
-    padding: 6rem 1.5rem 5rem;
-  }
-  [data-theme="dark"] .pullquote-section {
-    background: #050505;
-    border-bottom: 1px solid #2a2521;
-  }
-  [data-theme="light"] .pullquote-section {
-    background: #fff;
-    border-bottom: 1px solid var(--color-border-light);
-  }
-  .pullquote-inner {
-    max-width: 64rem;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .pullquote-tag {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 2rem;
-    font-weight: 600;
-  }
-  .pullquote {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: clamp(1.8rem, 4.5vw, 3.6rem);
-    line-height: 1.2;
-    margin: 0 0 2rem;
-    font-weight: 500;
-    position: relative;
-    padding: 0 1rem;
-  }
-  [data-theme="dark"] .pullquote { color: var(--color-text); }
-  [data-theme="light"] .pullquote { color: var(--color-text-dark); }
-  .pullquote-mark {
-    color: var(--color-secondary);
-    font-size: 1.2em;
-    line-height: 0;
-    display: inline-block;
-    vertical-align: -0.18em;
-    margin: 0 0.1em;
-  }
-  [data-theme="dark"] .pullquote-mark { color: #ff2a8f; }
-  .pullquote-mark-close { vertical-align: -0.05em; }
-
-  .pullquote-attrib {
+  .hero-cab-feet {
+    margin-top: 0.85rem;
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 0.3rem;
-    margin-top: 1.5rem;
-  }
-  .pullquote-attrib-name {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  [data-theme="dark"] .pullquote-attrib-name { color: var(--color-text); }
-  [data-theme="light"] .pullquote-attrib-name { color: var(--color-text-dark); }
-  .pullquote-attrib-role {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-  }
-  [data-theme="dark"] .pullquote-attrib-role { color: var(--color-text-muted); }
-  [data-theme="light"] .pullquote-attrib-role { color: var(--color-text-dark-muted); }
-
-  /* ===================== INSIDE THE ISSUE ===================== */
-  .issue-section {
-    padding: 6rem 1.5rem 5rem;
-    position: relative;
-  }
-  [data-theme="dark"] .issue-section {
-    background: #0a0a0a;
-  }
-  [data-theme="light"] .issue-section {
-    background: #fbf8f3;
-  }
-
-  .issue-inner {
-    max-width: 80rem;
-    margin: 0 auto;
-  }
-
-  .issue-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3.5rem 2.5rem;
-  }
-  @media (min-width: 640px) {
-    .issue-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 1024px) {
-    .issue-grid {
-      grid-template-columns: repeat(12, 1fr);
-      gap: 4rem 2.5rem;
-    }
-    .issue-grid > .issue-card:nth-child(1) { grid-column: span 5; margin-top: 0; }
-    .issue-grid > .issue-card:nth-child(2) { grid-column: span 7; margin-top: 4rem; }
-    .issue-grid > .issue-card:nth-child(3) { grid-column: span 7; margin-top: 0; }
-    .issue-grid > .issue-card:nth-child(4) { grid-column: span 5; margin-top: 3rem; }
-  }
-
-  .issue-card {
-    transform: rotate(var(--rot, 0deg));
-    transition: transform 0.35s ease;
-  }
-  .issue-card:hover {
-    transform: rotate(0deg) translateY(-6px);
-  }
-
-  .issue-photo {
-    position: relative;
-    aspect-ratio: var(--aspect, 3/4);
-    overflow: hidden;
-    background: #fbf8f3;
-    box-shadow:
-      0 14px 28px rgba(0, 0, 0, 0.4),
-      inset 0 0 0 6px #fbf8f3;
-  }
-  [data-theme="light"] .issue-photo {
-    box-shadow:
-      0 12px 24px rgba(184, 0, 31, 0.2),
-      inset 0 0 0 6px #fff;
-  }
-  .issue-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .issue-tape {
-    position: absolute;
-    width: 4.5rem;
-    height: 1.2rem;
-    background: rgba(212, 0, 122, 0.55);
-    z-index: 3;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
-  }
-  .issue-tape-tl { top: -0.4rem; left: 1.5rem; transform: rotate(-7deg); }
-  .issue-tape-br { bottom: -0.4rem; right: 1.5rem; transform: rotate(8deg); }
-
-  .issue-pageno {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    background: #050505;
-    color: #fbf8f3;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.6rem;
-    z-index: 2;
-  }
-
-  .issue-meta {
-    margin-top: 1.4rem;
-    padding: 0 0.5rem;
-  }
-  .issue-section-label {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.64rem;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    font-weight: 600;
-    margin-bottom: 0.6rem;
-  }
-  [data-theme="dark"] .issue-section-label { color: #ff5fa8; }
-
-  .issue-headline {
-    font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin: 0 0 0.7rem;
-    font-weight: 800;
-  }
-  [data-theme="dark"] .issue-headline { color: var(--color-text); }
-  [data-theme="light"] .issue-headline { color: var(--color-text-dark); }
-
-  .issue-deck {
-    font-family: var(--font-body);
-    font-style: italic;
-    font-size: 1.075rem;
-    line-height: 1.5;
-    margin: 0;
-  }
-  [data-theme="dark"] .issue-deck { color: var(--color-text-muted); }
-  [data-theme="light"] .issue-deck { color: var(--color-text-dark-muted); }
-
-  /* ===================== EDITOR LETTER ===================== */
-  .editor-section {
-    padding: 6rem 1.5rem;
-    position: relative;
-  }
-  [data-theme="dark"] .editor-section {
-    background: linear-gradient(135deg, #0d0a0d 0%, #1a0a14 50%, #2a0816 100%);
-  }
-  [data-theme="light"] .editor-section {
-    background: linear-gradient(135deg, #fff 0%, #f5e8e8 50%, #f7d4d8 100%);
-  }
-
-  .editor-grid {
-    max-width: 80rem;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    align-items: center;
-  }
-  @media (min-width: 900px) {
-    .editor-grid { grid-template-columns: 1fr 1.05fr; gap: 4.5rem; }
-  }
-
-  .editor-image {
-    position: relative;
-    margin: 0;
-    background: #fbf8f3;
-    padding: 0.5rem 0.5rem 0;
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
-  }
-  [data-theme="light"] .editor-image {
-    box-shadow: 0 18px 32px rgba(184, 0, 31, 0.25);
-  }
-  .editor-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .editor-image figcaption {
-    background: #fbf8f3;
-    color: #0a0a0a;
-    padding: 0.7rem 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid #0a0a0a;
-    margin-top: 0.5rem;
-  }
-
-  .editor-tag {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    font-weight: 600;
-    margin-bottom: 1.25rem;
-  }
-  [data-theme="dark"] .editor-tag { color: #ff5fa8; }
-
-  .editor-h3 {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    line-height: 1;
-    letter-spacing: -0.015em;
-    margin: 0 0 1.5rem;
-    font-weight: 800;
-  }
-  [data-theme="dark"] .editor-h3 { color: var(--color-text); }
-  [data-theme="light"] .editor-h3 { color: var(--color-text-dark); }
-
-  .editor-body {
-    font-family: var(--font-body);
-    font-size: 1.18rem;
-    line-height: 1.55;
-    margin: 0 0 1.2rem;
-  }
-  [data-theme="dark"] .editor-body { color: var(--color-text); }
-  [data-theme="light"] .editor-body { color: var(--color-text-dark); }
-
-  .editor-attrib {
-    margin-top: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  .editor-attrib-line {
-    width: 2.5rem;
-    height: 1px;
-    background: var(--color-accent);
-    flex-shrink: 0;
-  }
-  .editor-attrib > div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.18rem;
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
+    color: var(--color-accent);
   }
-  .editor-attrib-name { font-weight: 700; color: var(--color-secondary); }
-  [data-theme="dark"] .editor-attrib-name { color: #ff2a8f; }
-  [data-theme="dark"] .editor-attrib-title { color: var(--color-text-muted); }
-  [data-theme="light"] .editor-attrib-title { color: var(--color-text-dark-muted); }
+  .hero-cab-feet-blink { animation: arcade-blink 0.7s steps(1, end) infinite; }
 
-  /* ===================== ATELIER (Features) ===================== */
-  .atelier-section {
-    padding: 6rem 1.5rem 5rem;
+  /* MARQUEE ----------------------------------------------------- */
+  .marquee {
+    overflow: hidden;
+    border-top: 2px solid var(--color-accent);
+    border-bottom: 2px solid var(--color-accent);
+    padding: 0.6rem 0;
+    background: var(--color-secondary);
+    color: #fff4d9;
   }
-  [data-theme="dark"] .atelier-section {
-    background: #0a0a0a;
+  .marquee-track {
+    display: flex;
+    gap: 2.5rem;
+    white-space: nowrap;
+    animation: marquee 38s linear infinite;
+    will-change: transform;
   }
-  [data-theme="light"] .atelier-section {
-    background: #fff;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee-item {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    flex-shrink: 0;
   }
 
-  .atelier-inner {
+  /* SCORPION SECTION -------------------------------------------- */
+  .scorpion-section {
+    padding: 4.5rem 1.5rem;
+    position: relative;
+  }
+  [data-theme="dark"] .scorpion-section {
+    background: linear-gradient(135deg, #160508 0%, #2a0510 100%);
+    color: #fff4d9;
+  }
+  [data-theme="light"] .scorpion-section {
+    background: linear-gradient(135deg, #f4ece0 0%, #f8e0d0 100%);
+    color: #170306;
+  }
+  @media (min-width: 768px) {
+    .scorpion-section { padding: 6rem 2rem; }
+  }
+  .scorpion-inner {
+    max-width: 78rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .scorpion-inner { grid-template-columns: 1.1fr 1fr; gap: 4.5rem; }
+  }
+
+  .scorpion-image-wrap {
+    position: relative;
+  }
+  .scorpion-image-wrap img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 4px solid var(--color-accent);
+    box-shadow: 0.6rem 0.6rem 0 var(--color-secondary);
+  }
+  .scorpion-image-tag {
+    position: absolute;
+    bottom: -0.6rem;
+    left: 1rem;
+    background: var(--color-secondary);
+    color: #fff4d9;
+    padding: 0.4rem 0.8rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    text-transform: uppercase;
+    box-shadow: 0.2rem 0.2rem 0 var(--color-accent);
+  }
+
+  .scorpion-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+  .scorpion-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    line-height: 1.1;
+    margin: 0 0 1.6rem;
+    text-transform: uppercase;
+  }
+  .scorpion-title span {
+    display: block;
+  }
+  .scorpion-title-emph {
+    color: var(--color-accent);
+    font-size: 1.5em;
+    text-shadow: 0.3rem 0.3rem 0 var(--color-secondary);
+  }
+  .scorpion-deck {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.55;
+    margin: 0 0 2rem;
+  }
+  .scorpion-stats {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    border: 2px solid var(--color-accent);
+    padding: 1rem;
+  }
+  .scorpion-stats li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.4rem;
+  }
+  .scorpion-stat-key {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    opacity: 0.7;
+  }
+  .scorpion-stat-val {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+
+  /* SECTION HEADER -- shared across sections -------------------- */
+  .section-header {
+    margin-bottom: 3rem;
+    max-width: 50rem;
+  }
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    margin: 0 0 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0;
+  }
+  .section-title-emph {
+    color: var(--color-accent);
+    text-shadow: 0.2rem 0.2rem 0 var(--color-secondary);
+  }
+  [data-theme="light"] .section-title-emph {
+    text-shadow: 0.2rem 0.2rem 0 var(--color-secondary);
+  }
+  .section-deck {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    line-height: 1.55;
+    max-width: 42rem;
+    margin: 0;
+  }
+  [data-theme="dark"] .section-deck { color: rgba(255, 244, 217, 0.85); }
+  [data-theme="light"] .section-deck { color: #5a3a3a; }
+
+  /* ROSTER SECTION --------------------------------------------- */
+  .roster-section {
+    padding: 4.5rem 1.5rem;
+  }
+  [data-theme="dark"] .roster-section { background: #0a0205; color: #fff4d9; }
+  [data-theme="light"] .roster-section { background: #f4ece0; color: #170306; }
+  @media (min-width: 768px) {
+    .roster-section { padding: 6rem 2rem; }
+  }
+  .roster-inner {
     max-width: 80rem;
     margin: 0 auto;
   }
-  .atelier-grid {
+
+  .roster-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+  @media (min-width: 640px) {
+    .roster-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (min-width: 1024px) {
+    .roster-grid { grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+  }
+
+  .roster-card {
+    --rc: var(--color-accent);
+    border: 3px solid var(--rc);
+    padding: 1.4rem;
+    position: relative;
+    box-shadow: 0.4rem 0.4rem 0 var(--color-secondary);
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+  }
+  [data-theme="dark"] .roster-card { background: rgba(22, 5, 8, 0.7); }
+  [data-theme="light"] .roster-card { background: #fff; }
+  .roster-card:hover {
+    transform: translate(-0.2rem, -0.2rem);
+    box-shadow: 0.6rem 0.6rem 0 var(--color-secondary);
+  }
+  .roster-slot {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rc);
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+  }
+  .roster-name {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+    color: var(--rc);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+  .roster-portrait {
+    aspect-ratio: 4 / 3;
+    background:
+      repeating-linear-gradient(0deg, transparent 0, transparent 6px, rgba(255,255,255,0.04) 6px, rgba(255,255,255,0.04) 7px),
+      linear-gradient(135deg, color-mix(in srgb, var(--rc) 25%, transparent), color-mix(in srgb, var(--rc) 5%, transparent));
+    position: relative;
+    margin-bottom: 1rem;
+    border: 2px solid var(--rc);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  [data-theme="light"] .roster-portrait {
+    background:
+      repeating-linear-gradient(0deg, transparent 0, transparent 6px, rgba(0,0,0,0.03) 6px, rgba(0,0,0,0.03) 7px),
+      linear-gradient(135deg, color-mix(in srgb, var(--rc) 30%, white), white);
+  }
+  .roster-portrait-corner {
+    position: absolute;
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 2px solid var(--rc);
+  }
+  .roster-portrait-tl { top: -0.15rem; left: -0.15rem; border-right: none; border-bottom: none; }
+  .roster-portrait-tr { top: -0.15rem; right: -0.15rem; border-left: none; border-bottom: none; }
+  .roster-portrait-bl { bottom: -0.15rem; left: -0.15rem; border-right: none; border-top: none; }
+  .roster-portrait-br { bottom: -0.15rem; right: -0.15rem; border-left: none; border-top: none; }
+  .roster-portrait-glyph {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: var(--rc);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    box-shadow: 0 0 30px var(--rc);
+  }
+  .roster-portrait-fedora {
+    position: absolute;
+    bottom: 0.6rem;
+    right: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    background: var(--rc);
+    color: #170306;
+    padding: 0.2rem 0.4rem;
+    font-weight: 700;
+  }
+
+  .roster-move-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px dashed var(--rc);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+  .roster-move-label {
+    flex-shrink: 0;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    width: 4rem;
+  }
+  .roster-move-text {
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .roster-move-counter { color: var(--rc); }
+
+  .roster-bio {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 1rem 0 0;
+  }
+  [data-theme="dark"] .roster-bio { color: rgba(255, 244, 217, 0.78); }
+  [data-theme="light"] .roster-bio { color: #5a3a3a; }
+
+  /* CABINET SECTION --------------------------------------------- */
+  .cabinet-section {
+    padding: 4.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  [data-theme="dark"] .cabinet-section {
+    background:
+      radial-gradient(ellipse at center, rgba(200, 16, 46, 0.15) 0%, transparent 60%),
+      #160508;
+    color: #fff4d9;
+  }
+  [data-theme="light"] .cabinet-section {
+    background:
+      radial-gradient(ellipse at center, rgba(200, 16, 46, 0.08) 0%, transparent 60%),
+      #f4ece0;
+    color: #170306;
+  }
+  @media (min-width: 768px) {
+    .cabinet-section { padding: 6rem 2rem; }
+  }
+  .cabinet-inner { max-width: 80rem; margin: 0 auto; }
+  .cabinet-header { text-align: center; margin-left: auto; margin-right: auto; }
+  .cabinet-header .section-deck { margin-left: auto; margin-right: auto; }
+
+  .cabinet-screen-frame {
+    border: 6px solid var(--color-accent);
+    background: #000;
+    margin-bottom: 3rem;
+    box-shadow: 0.6rem 0.6rem 0 var(--color-secondary);
+    overflow: hidden;
+  }
+  .cabinet-bezel-top, .cabinet-bezel-bottom {
+    background: var(--color-secondary);
+    color: var(--color-accent);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .cabinet-bezel-top { border-bottom: 2px solid var(--color-accent); }
+  .cabinet-bezel-bottom { border-top: 2px solid var(--color-accent); }
+  .cabinet-screen {
+    display: block;
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+  }
+
+  .cabinet-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    align-items: center;
+  }
+  @media (min-width: 1024px) {
+    .cabinet-grid { grid-template-columns: 1fr 1fr; gap: 4rem; }
+  }
+
+  .cabinet-side-figure { margin: 0; }
+  .cabinet-side-figure img {
+    width: 100%;
+    height: auto;
+    border: 4px solid var(--color-accent);
+    box-shadow: 0.4rem 0.4rem 0 var(--color-secondary);
+    image-rendering: pixelated;
+    display: block;
+  }
+  .cabinet-side-figure figcaption {
+    text-align: center;
+    margin-top: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+  .cabinet-h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    line-height: 1.1;
+    margin: 0 0 1.4rem;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    text-shadow: 0.2rem 0.2rem 0 var(--color-secondary);
+  }
+  .cabinet-side-text p {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin: 0 0 1rem;
+  }
+  [data-theme="dark"] .cabinet-side-text p { color: rgba(255, 244, 217, 0.82); }
+  [data-theme="light"] .cabinet-side-text p { color: #5a3a3a; }
+
+  /* STILLS SECTION ---------------------------------------------- */
+  .stills-section {
+    padding: 4.5rem 1.5rem;
+  }
+  [data-theme="dark"] .stills-section { background: #0a0205; color: #fff4d9; }
+  [data-theme="light"] .stills-section { background: #f4ece0; color: #170306; }
+  @media (min-width: 768px) {
+    .stills-section { padding: 6rem 2rem; }
+  }
+  .stills-inner { max-width: 80rem; margin: 0 auto; }
+  .stills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  @media (min-width: 768px) {
+    .stills-grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+  }
+  .still-card { margin: 0; }
+  .still-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 4px solid var(--color-accent);
+    box-shadow: 0.4rem 0.4rem 0 var(--color-secondary);
+  }
+  .still-card figcaption { padding: 1.4rem 0 0; }
+  .still-card-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    background: var(--color-accent);
+    color: #170306;
+    padding: 0.3rem 0.65rem;
+    margin-bottom: 0.85rem;
+    font-weight: 700;
+  }
+  .still-card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    margin: 0 0 0.75rem;
+    text-transform: uppercase;
+    line-height: 1.1;
+  }
+  .still-card p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+  [data-theme="dark"] .still-card p { color: rgba(255, 244, 217, 0.78); }
+  [data-theme="light"] .still-card p { color: #5a3a3a; }
+
+  /* FEATURES SECTION -------------------------------------------- */
+  .features-section {
+    padding: 4.5rem 1.5rem;
+  }
+  [data-theme="dark"] .features-section { background: #160508; color: #fff4d9; }
+  [data-theme="light"] .features-section { background: #fff; color: #170306; }
+  @media (min-width: 768px) {
+    .features-section { padding: 6rem 2rem; }
+  }
+  .features-inner { max-width: 80rem; margin: 0 auto; }
+  .features-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
   @media (min-width: 640px) {
-    .atelier-grid { grid-template-columns: repeat(2, 1fr); }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (min-width: 1024px) {
-    .atelier-grid { grid-template-columns: repeat(3, 1fr); }
+    .features-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
   }
-
   .feat-card {
     position: relative;
-    padding: 1.8rem 1.6rem;
-    border: 1px solid;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
+    padding: 1.6rem;
+    border: 2px solid var(--color-accent);
+    transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
   }
-  [data-theme="dark"] .feat-card {
-    background: #141414;
-    border-color: #2a2521;
+  [data-theme="dark"] .feat-card { background: rgba(22, 5, 8, 0.6); }
+  [data-theme="light"] .feat-card { background: #f4ece0; }
+  .feat-card:hover {
+    transform: translate(-0.2rem, -0.2rem);
+    box-shadow: 0.4rem 0.4rem 0 var(--color-secondary);
   }
-  [data-theme="light"] .feat-card {
-    background: #fbf8f3;
-    border-color: var(--color-border-light);
-  }
-
   .feat-corner {
     position: absolute;
-    width: 14px;
-    height: 14px;
-    border: 1.5px solid var(--color-accent);
-    pointer-events: none;
-    transition: width 0.25s ease, height 0.25s ease;
+    width: 0.6rem;
+    height: 0.6rem;
+    border: 2px solid var(--color-secondary);
   }
-  .feat-corner-tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
-  .feat-corner-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
-  .feat-corner-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
-  .feat-corner-br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
-
-  .feat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0.7rem 0.7rem 0 var(--color-secondary);
-  }
-  .feat-card:hover .feat-corner { width: 22px; height: 22px; }
+  .feat-corner-tl { top: -0.15rem; left: -0.15rem; border-right: none; border-bottom: none; }
+  .feat-corner-tr { top: -0.15rem; right: -0.15rem; border-left: none; border-bottom: none; }
+  .feat-corner-bl { bottom: -0.15rem; left: -0.15rem; border-right: none; border-top: none; }
+  .feat-corner-br { bottom: -0.15rem; right: -0.15rem; border-left: none; border-top: none; }
 
   .feat-card-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    gap: 0.6rem;
     font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-  }
-  .feat-fileno {
-    background: var(--color-secondary);
-    color: #fbf8f3;
-    padding: 0.25rem 0.55rem;
-    font-weight: 700;
-  }
-  .feat-section {
-    color: var(--color-accent);
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    margin-bottom: 0.85rem;
     font-weight: 600;
   }
-  [data-theme="dark"] .feat-section { color: #ff5fa8; }
+  .feat-fileno { color: var(--color-accent); }
+  .feat-section { color: var(--color-secondary); }
+  [data-theme="dark"] .feat-section { color: var(--color-accent); opacity: 0.6; }
 
   .feat-title {
     font-family: var(--font-heading);
-    font-size: 1.95rem;
-    line-height: 1;
-    letter-spacing: -0.01em;
-    margin: 0;
-    font-weight: 800;
+    font-size: 1.15rem;
+    line-height: 1.2;
+    margin: 0 0 0.85rem;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    letter-spacing: 0.02em;
   }
-  [data-theme="dark"] .feat-title { color: var(--color-text); }
-  [data-theme="light"] .feat-title { color: var(--color-text-dark); }
-
   .feat-body {
     font-family: var(--font-body);
-    font-size: 1.05rem;
-    line-height: 1.55;
-    margin: 0;
-    flex: 1;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0 0 1.4rem;
   }
-  [data-theme="dark"] .feat-body { color: var(--color-text-muted); }
-  [data-theme="light"] .feat-body { color: var(--color-text-dark-muted); }
-
+  [data-theme="dark"] .feat-body { color: rgba(255, 244, 217, 0.82); }
+  [data-theme="light"] .feat-body { color: #5a3a3a; }
   .feat-card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
     gap: 0.6rem;
-    margin-top: 0.4rem;
-    padding-top: 0.85rem;
-    border-top: 1px dashed;
+    flex-wrap: wrap;
   }
-  [data-theme="dark"] .feat-card-footer { border-color: #2a2521; }
-  [data-theme="light"] .feat-card-footer { border-color: var(--color-border-light); }
   .feat-badge {
     font-family: var(--font-mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.24em;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 0.28rem 0.55rem;
-    border: 1px solid currentColor;
+    background: var(--color-secondary);
+    color: #fff4d9;
+    padding: 0.3rem 0.55rem;
+    font-weight: 600;
   }
-  [data-theme="dark"] .feat-badge { color: var(--color-text-muted); }
-  [data-theme="light"] .feat-badge { color: var(--color-text-dark-muted); }
-
   .feat-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--color-secondary);
+    color: var(--color-accent);
     text-decoration: none;
-    font-weight: 600;
-    transition: gap 0.18s ease, color 0.18s ease;
+    font-weight: 700;
+    transition: gap 0.15s ease-out;
   }
-  [data-theme="dark"] .feat-cta { color: #ff5fa8; }
-  .feat-cta:hover { gap: 0.7rem; color: var(--color-accent); }
-  .feat-cta-disabled {
-    cursor: default;
-  }
-  [data-theme="dark"] .feat-cta-disabled { color: var(--color-text-muted); }
-  [data-theme="light"] .feat-cta-disabled { color: var(--color-text-dark-muted); }
-  .feat-cta-disabled:hover { gap: 0.4rem; color: inherit; }
+  .feat-cta:hover { gap: 0.7rem; }
+  .feat-cta-disabled { opacity: 0.55; }
+  .feat-cta-glyph { font-size: 0.85em; }
 
-  /* ===================== EDITOR'S NOTES (Q&A) ===================== */
-  .notes-section {
-    padding: 6rem 1.5rem 5rem;
+  /* KOMBAT KODES ----------------------------------------------- */
+  .kodes-section {
+    padding: 4.5rem 1.5rem;
   }
-  [data-theme="dark"] .notes-section { background: #050505; }
-  [data-theme="light"] .notes-section { background: #fbf8f3; }
-
-  .notes-header { text-align: left; max-width: 80rem; padding: 0; margin-bottom: 3rem; }
-  .notes-header .section-title {
-    font-size: clamp(2.2rem, 5vw, 4rem);
+  [data-theme="dark"] .kodes-section {
+    background: #0a0205;
+    color: #fff4d9;
   }
-
-  .notes-inner { max-width: 80rem; margin: 0 auto; }
-  .notes-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+  [data-theme="light"] .kodes-section {
+    background: #f4ece0;
+    color: #170306;
   }
   @media (min-width: 768px) {
-    .notes-list { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 2.5rem; }
+    .kodes-section { padding: 6rem 2rem; }
   }
-
-  .note-item {
+  .kodes-inner { max-width: 70rem; margin: 0 auto; }
+  .kodes-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  @media (min-width: 768px) {
+    .kodes-list { grid-template-columns: repeat(2, 1fr); gap: 1.6rem 2.5rem; }
+  }
+  .kode-item {
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: 1.25rem;
-    padding: 1.5rem 1.5rem 1.5rem 0;
-    border-top: 1px solid;
-    transition: background 0.2s ease;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-top: 2px solid var(--color-accent);
   }
-  [data-theme="dark"] .note-item { border-color: #2a2521; }
-  [data-theme="light"] .note-item { border-color: var(--color-border-light); }
-
-  .note-num {
+  .kode-num {
     font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 2.6rem;
-    line-height: 0.9;
+    font-size: 1.5rem;
     color: var(--color-secondary);
-    font-weight: 800;
+    line-height: 1;
   }
-  [data-theme="dark"] .note-num { color: #ff2a8f; }
-
-  .note-q {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    line-height: 1.15;
-    letter-spacing: -0.005em;
-    margin-bottom: 0.6rem;
+  .kode-q {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     font-weight: 700;
+    margin-bottom: 0.45rem;
+    color: var(--color-accent);
   }
-  [data-theme="dark"] .note-q { color: var(--color-text); }
-  [data-theme="light"] .note-q { color: var(--color-text-dark); }
-  .note-a {
+  .kode-a {
     font-family: var(--font-body);
-    font-size: 1.075rem;
+    font-size: 1rem;
     line-height: 1.55;
   }
-  [data-theme="dark"] .note-a { color: var(--color-text-muted); }
-  [data-theme="light"] .note-a { color: var(--color-text-dark-muted); }
+  [data-theme="dark"] .kode-a { color: rgba(255, 244, 217, 0.85); }
+  [data-theme="light"] .kode-a { color: #5a3a3a; }
 
-  /* ===================== FINAL CTA ===================== */
+  /* FINAL CTA --------------------------------------------------- */
   .final-cta {
-    padding: 6rem 1.5rem;
+    padding: 4.5rem 1.5rem;
     background: var(--color-secondary);
-    color: #fbf8f3;
+    color: #fff4d9;
     position: relative;
     overflow: hidden;
   }
-  .final-cta-grain {
+  @media (min-width: 768px) {
+    .final-cta { padding: 6rem 2rem; }
+  }
+  .final-cta-scanlines {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image:
-      repeating-linear-gradient(45deg, transparent 0, transparent 2px, rgba(251, 248, 243, 0.05) 2px, rgba(251, 248, 243, 0.05) 3px);
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.18) 0px,
+      rgba(0, 0, 0, 0.18) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+    opacity: 0.5;
   }
   .final-cta-inner {
     max-width: 60rem;
@@ -1485,31 +1564,35 @@ const editorsNotes = [
   }
   .final-cta-content {
     text-align: center;
-    border: 2px solid #fbf8f3;
+    border: 4px solid var(--color-accent);
     padding: 3rem 1.5rem;
-    background: rgba(10, 10, 10, 0.4);
-    box-shadow: 0.7rem 0.7rem 0 #050505;
+    background: rgba(10, 2, 5, 0.55);
+    box-shadow: 0.6rem 0.6rem 0 #050505;
   }
   @media (min-width: 640px) {
     .final-cta-content { padding: 4rem 3rem; }
   }
   .final-cta-tag {
-    color: #fbf8f3;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    margin-bottom: 1.4rem;
+    font-weight: 600;
+    color: var(--color-accent);
   }
   .final-cta-title {
     font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 6.5vw, 5rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.8rem, 5vw, 3.6rem);
+    line-height: 1.05;
+    letter-spacing: 0;
     margin: 0 0 1.5rem;
-    color: #fbf8f3;
-    font-weight: 800;
+    text-transform: uppercase;
+    color: #fff4d9;
   }
   .final-cta-accent {
-    font-style: italic;
-    font-weight: 400;
-    color: #fbf8f3;
-    text-shadow: 0.2rem 0.2rem 0 #050505;
+    color: var(--color-accent);
+    text-shadow: 0.3rem 0.3rem 0 #050505;
   }
   .final-cta-body {
     font-family: var(--font-body);
@@ -1517,34 +1600,43 @@ const editorsNotes = [
     line-height: 1.55;
     max-width: 38rem;
     margin: 0 auto 2.2rem;
-    color: rgba(251, 248, 243, 0.94);
-    font-style: italic;
+    color: rgba(255, 244, 217, 0.92);
   }
   .final-cta-buttons {
     display: flex;
     flex-wrap: wrap;
     gap: 0.85rem;
     justify-content: center;
+    margin-bottom: 2rem;
   }
   .final-cta .btn-primary {
-    background: #fbf8f3;
-    color: var(--color-secondary);
-    border-color: #fbf8f3;
+    background: var(--color-accent);
+    color: #170306;
+    border-color: var(--color-accent);
     box-shadow: 0.3rem 0.3rem 0 #050505;
   }
-  .final-cta .btn-primary:hover {
-    background: #fff;
-    color: var(--color-secondary);
-    border-color: #fff;
-    box-shadow: 0.5rem 0.5rem 0 #050505;
-  }
   .final-cta .btn-secondary {
-    color: #fbf8f3;
-    border-color: #fbf8f3;
+    color: #fff4d9;
+    border-color: #fff4d9;
   }
   .final-cta .btn-secondary:hover {
-    background: #fbf8f3;
+    background: #fff4d9;
     color: var(--color-secondary);
-    border-color: #fbf8f3;
   }
+  .final-cta-countdown {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .final-cta-countdown-label { font-size: 0.7rem; font-weight: 600; }
+  .final-cta-countdown-num {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .final-cta-countdown-blip { animation: arcade-blink 0.65s steps(1, end) infinite; }
 </style>

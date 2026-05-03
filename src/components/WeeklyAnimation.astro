@@ -2,13 +2,196 @@
 /**
  * WeeklyAnimation.astro
  *
- * Disabled by default. Edward's preference: drifting/falling particle
- * animations feel dated. Only re-enable for themes where ambient motion
- * makes obvious sense (e.g., a video-game week, a snow-globe holiday week).
+ * Current theme: Edward Kombat II (May 9, 2026)
+ * Animation: occasional pixel-art "TOASTY!" head pops up from the bottom
+ * corner, and a tiny sprite Edward (in his pixel fedora) dashes across
+ * the bottom of the screen every ~25s, throwing a punch.
  *
- * To re-enable for a specific week: replace the empty render below with the
- * themed animation script and set a self-contained <script is:inline>.
+ * Default state for this component is empty (per Edward's preference).
+ * This week is an explicit opt-in because the arcade theme demands it.
  */
 ---
 
-<!-- intentionally empty -->
+<div id="weekly-animation" style="position:fixed;left:0;right:0;bottom:0;top:0;pointer-events:none;z-index:5;overflow:hidden;" aria-hidden="true"></div>
+
+<script is:inline>
+  (function() {
+    function init() {
+      var container = document.getElementById('weekly-animation');
+      if (!container) return function(){};
+      container.innerHTML = '';
+
+      var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var running = true;
+      var timers = [];
+
+      // SPRITE EDWARD --------------------------------------------------
+      // Tiny pixel-art Edward (bald, goatee, blue fedora) drawn as inline SVG.
+      // Renders at ~64px tall, dashes from left to right or right to left.
+      function edwardSprite(facingRight) {
+        var flip = facingRight ? '' : 'transform="scale(-1,1) translate(-32,0)"';
+        return (
+          '<svg width="64" height="64" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges" ' + flip + '>' +
+          // fedora (blue)
+          '<rect x="9" y="3" width="14" height="2" fill="#1a4d80" />' +
+          '<rect x="11" y="1" width="10" height="2" fill="#1a4d80" />' +
+          '<rect x="11" y="3" width="10" height="1" fill="#2a6da8" />' +
+          // head
+          '<rect x="11" y="5" width="10" height="6" fill="#e8b89a" />' +
+          // eyes
+          '<rect x="13" y="7" width="1" height="1" fill="#000" />' +
+          '<rect x="18" y="7" width="1" height="1" fill="#000" />' +
+          // goatee
+          '<rect x="14" y="10" width="4" height="2" fill="#3a2a1a" />' +
+          // body / shirt
+          '<rect x="10" y="11" width="12" height="8" fill="#c8102e" />' +
+          // belt
+          '<rect x="10" y="19" width="12" height="1" fill="#1a1a1a" />' +
+          // pants
+          '<rect x="11" y="20" width="4" height="6" fill="#2a2a3a" />' +
+          '<rect x="17" y="20" width="4" height="6" fill="#2a2a3a" />' +
+          // shoes
+          '<rect x="10" y="26" width="6" height="2" fill="#000" />' +
+          '<rect x="16" y="26" width="6" height="2" fill="#000" />' +
+          // arm extended (punch)
+          '<rect x="22" y="13" width="6" height="3" fill="#e8b89a" />' +
+          '<rect x="28" y="13" width="2" height="3" fill="#fff4d9" />' +
+          '</svg>'
+        );
+      }
+
+      // TOASTY HEAD ----------------------------------------------------
+      // Small pixel cameo head that pops up in a bottom corner.
+      function toastySprite() {
+        return (
+          '<svg width="80" height="80" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">' +
+          // fedora
+          '<rect x="8" y="6" width="16" height="2" fill="#c8102e" />' +
+          '<rect x="10" y="4" width="12" height="2" fill="#c8102e" />' +
+          '<rect x="10" y="6" width="12" height="1" fill="#ff5a5a" />' +
+          // head
+          '<rect x="10" y="8" width="12" height="9" fill="#e8b89a" />' +
+          // grin
+          '<rect x="13" y="13" width="6" height="1" fill="#000" />' +
+          '<rect x="13" y="14" width="1" height="1" fill="#fff4d9" />' +
+          '<rect x="18" y="14" width="1" height="1" fill="#fff4d9" />' +
+          // eyes (wide)
+          '<rect x="12" y="10" width="2" height="2" fill="#000" />' +
+          '<rect x="18" y="10" width="2" height="2" fill="#000" />' +
+          // goatee
+          '<rect x="14" y="16" width="4" height="2" fill="#3a2a1a" />' +
+          // text bubble
+          '<rect x="2" y="18" width="28" height="10" fill="#ffb800" stroke="#000" stroke-width="1" />' +
+          '<text x="16" y="26" font-family="Press Start 2P, monospace" font-size="6" fill="#170306" text-anchor="middle" font-weight="bold">TOASTY!</text>' +
+          '</svg>'
+        );
+      }
+
+      // ROUND DASH -----------------------------------------------------
+      // Sprite Edward dashes across the bottom of the screen.
+      function spawnDash() {
+        if (!running) return;
+        var goingRight = Math.random() < 0.5;
+        var startX = goingRight ? -80 : window.innerWidth + 80;
+        var endX = goingRight ? window.innerWidth + 80 : -80;
+        var bottomOffset = 18 + Math.random() * 36;
+
+        var el = document.createElement('div');
+        el.style.cssText = [
+          'position:absolute',
+          'left:' + startX + 'px',
+          'bottom:' + bottomOffset + 'px',
+          'width:64px',
+          'height:64px',
+          'opacity:0.85',
+          'pointer-events:none',
+          'will-change:transform',
+          'image-rendering:pixelated'
+        ].join(';');
+        el.innerHTML = edwardSprite(goingRight);
+        container.appendChild(el);
+
+        var duration = 3200 + Math.random() * 800;
+        var anim = el.animate(
+          [
+            { transform: 'translateX(0px) translateY(0px)' },
+            { transform: 'translateX(' + ((endX - startX) * 0.25) + 'px) translateY(-12px)' },
+            { transform: 'translateX(' + ((endX - startX) * 0.5) + 'px) translateY(0px)' },
+            { transform: 'translateX(' + ((endX - startX) * 0.75) + 'px) translateY(-12px)' },
+            { transform: 'translateX(' + (endX - startX) + 'px) translateY(0px)' }
+          ],
+          { duration: duration, easing: 'linear', fill: 'forwards' }
+        );
+        anim.onfinish = function() {
+          if (el.parentNode) el.parentNode.removeChild(el);
+        };
+      }
+
+      // TOASTY POP -----------------------------------------------------
+      function spawnToasty() {
+        if (!running) return;
+        var fromLeft = Math.random() < 0.5;
+        var el = document.createElement('div');
+        el.style.cssText = [
+          'position:absolute',
+          'bottom:0',
+          (fromLeft ? 'left:1.5rem' : 'right:1.5rem'),
+          'width:80px',
+          'height:80px',
+          'transform:translateY(120px)',
+          'pointer-events:none',
+          'will-change:transform',
+          'image-rendering:pixelated',
+          'filter:drop-shadow(0 0 6px rgba(255,184,0,0.8))'
+        ].join(';');
+        el.innerHTML = toastySprite();
+        container.appendChild(el);
+
+        var anim = el.animate(
+          [
+            { transform: 'translateY(120px)' },
+            { transform: 'translateY(-8px)' },
+            { transform: 'translateY(-8px)' },
+            { transform: 'translateY(120px)' }
+          ],
+          { duration: 1400, easing: 'cubic-bezier(.2,.7,.3,1)', fill: 'forwards' }
+        );
+        anim.onfinish = function() {
+          if (el.parentNode) el.parentNode.removeChild(el);
+        };
+      }
+
+      function dashLoop() {
+        if (!running) return;
+        spawnDash();
+        timers.push(setTimeout(dashLoop, 18000 + Math.random() * 12000));
+      }
+
+      function toastyLoop() {
+        if (!running) return;
+        spawnToasty();
+        timers.push(setTimeout(toastyLoop, 32000 + Math.random() * 22000));
+      }
+
+      if (!prefersReduced) {
+        timers.push(setTimeout(dashLoop, 4000));
+        timers.push(setTimeout(toastyLoop, 14000));
+      }
+
+      return function cleanup() {
+        running = false;
+        for (var i = 0; i < timers.length; i++) clearTimeout(timers[i]);
+        timers = [];
+        container.innerHTML = '';
+      };
+    }
+
+    var cleanup = init();
+    var observer = new MutationObserver(function() {
+      if (cleanup) cleanup();
+      cleanup = init();
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+</script>
