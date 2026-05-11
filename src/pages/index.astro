@@ -5,129 +5,150 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// "Inside the Issue" — the four supporting scene images, treated as a
-// magazine table-of-contents spread.
-const insideTheIssue = [
+// "La Selection Officielle" — five scene images, treated as a film-still spread.
+const filmStills = [
   {
-    src: '/images/devil-fears-ai/edward-intern-office.png',
-    pageNo: '014',
-    section: 'PROFILE',
-    headline: 'A Day in the Life',
-    deck: 'Our intern arrives at 6:42 AM with the wrong oat-milk ratio and a plausible explanation already drafted.',
-    aspect: '3/4',
-    rotate: -1.4,
-  },
-  {
-    src: '/images/devil-fears-ai/edward-binders-stumble.png',
-    pageNo: '022',
-    section: 'STREET STYLE',
-    headline: 'Carry-On Couture',
-    deck: 'Ten binders, three lattes, one fedora. The model leans into the trend like he has a choice.',
+    src: '/images/cannes/edward-director-chair.png',
+    sceneNo: '23',
+    slug: 'INT. PLATEAU 4. JOUR.',
+    title: 'Le Realisateur',
+    line: "Take 79. The director clicks the clapperboard a second too early, then a second too late, then claims it was on purpose.",
     aspect: '4/3',
-    rotate: 1.2,
+    rotate: -1.2,
   },
   {
-    src: '/images/devil-fears-ai/edward-as-editor.png',
-    pageNo: '038',
-    section: 'EDITOR LETTER',
-    headline: 'From the Desk',
-    deck: 'Reading glasses. Withering stare. The same face you saw three pages ago, now in a wig and unaffordable wool.',
+    src: '/images/cannes/edward-palais-steps.png',
+    sceneNo: '41',
+    slug: 'EXT. PALAIS DES FESTIVALS. CRÉPUSCULE.',
+    title: "Le Tapis Rouge",
+    line: "He bows. Nobody is here yet. Two security guards exchange a slow, professional glance.",
     aspect: '3/4',
+    rotate: 1.4,
+  },
+  {
+    src: '/images/cannes/edward-yacht-party.png',
+    sceneNo: '57',
+    slug: 'EXT. YACHT. NUIT.',
+    title: "L'Apres-Premiere",
+    line: "The financiers are smiling. The producer is on his fourth glass. Everyone agrees the third act is fine. It is not fine.",
+    aspect: '4/3',
     rotate: -0.6,
   },
   {
-    src: '/images/devil-fears-ai/edward-scolded-sidewalk.png',
-    pageNo: '054',
-    section: 'AFTER HOURS',
-    headline: 'The Sidewalk Note',
-    deck: "A masterclass in mid-stride feedback, delivered curbside with the cab already running. The intern survives. The latte does not.",
+    src: '/images/cannes/edward-press-conference.png',
+    sceneNo: '63',
+    slug: 'INT. SALLE DE PRESSE. JOUR.',
+    title: "La Conference de Presse",
+    line: "A journalist asks a question in French. The headphones are on top of the hat. He answers anyway. The press loves it.",
     aspect: '3/4',
-    rotate: 0.9,
+    rotate: 0.8,
   },
 ];
 
-// "The Atelier" — the six recurring projects, restyled as Vogue-style features.
-const features = [
+// Closing portrait used in the "La Cloture" section
+const closingStill = {
+  src: '/images/cannes/edward-palme-victory.png',
+  alt: "Edward Roske mock-emotional, hoisting a Palme d'Or trophy over his head at a Cannes photocall, eyes closed, blue fedora still firmly in place.",
+};
+
+// "Le Programme" — six festival entries (the recurring projects, restyled).
+const programme = [
   {
-    fileNo: 'FW.01',
-    section: 'COVER STORY',
+    filmNo: 'No. 01',
+    section: 'EN COMPETITION',
     title: 'AgentCube',
     body: "The unified engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus.AI. Already shipping for Essbase and Planning. Consolidations in beta.",
     href: '/agentcube.html',
     external: false,
-    cta: 'Read the cover',
-    badge: 'MCP · ENTERPRISE',
+    cta: 'Lire le synopsis',
+    badge: 'LONG METRAGE · MCP',
+    runtime: '∞ min',
   },
   {
-    fileNo: 'FW.02',
-    section: 'CALENDAR',
+    filmNo: 'No. 02',
+    section: 'HORS COMPETITION',
     title: 'Caribbean AI Summit',
     body: "Co-chairing the largest AI conference Puerto Rico has ever seen. Speakers and attendees from around the globe. Submit a talk, sponsor a track, or grab a seat before the island fills up.",
     href: 'https://www.caribbeansummit.ai/',
     external: true,
-    cta: 'See the schedule',
-    badge: 'OCT 9-10 · SAN JUAN',
+    cta: 'Acheter un billet',
+    badge: '9-10 OCTOBRE · SAN JUAN',
+    runtime: '48 hr',
   },
   {
-    fileNo: 'FW.03',
-    section: 'INVESTMENTS',
+    filmNo: 'No. 03',
+    section: 'UN CERTAIN REGARD',
     title: 'Caprus AI',
     body: "Investor and contributor at Caprus, an AI Software & Services firm empowering finance teams with AI solutions for smarter, faster, more strategic financial operations.",
     href: 'https://caprus.ai',
     external: true,
-    cta: 'Visit the house',
+    cta: 'Voir la maison',
     badge: 'AI · FINANCE',
+    runtime: '24/7',
   },
   {
-    fileNo: 'FW.04',
-    section: 'BACKSTAGE',
-    title: 'AI-Powered DM Screen',
+    filmNo: 'No. 04',
+    section: 'SEANCE SPECIALE',
+    title: 'AI Dungeon Master',
     body: "Building a tool that helps Dungeon Masters run better D&D campaigns using AI. Because if you're going to have an artificial intelligence at your table, it should at least help with initiative tracking.",
     href: null,
     external: false,
-    cta: 'In production',
+    cta: 'En post-production',
     badge: 'D&D · AI',
+    runtime: '4 hr',
   },
   {
-    fileNo: 'FW.05',
-    section: 'COMMUNITY',
+    filmNo: 'No. 05',
+    section: 'QUINZAINE DES REALISATEURS',
     title: 'Puerto Rico AI Community',
     body: "President of the Puerto Rico AI Community. Over 850 attendees across our events. We meet every other month to explore what AI means for the island and beyond.",
     href: 'https://praicommunity.org/',
     external: true,
-    cta: 'RSVP for the next show',
-    badge: 'BIMONTHLY · SAN JUAN',
+    cta: 'Reserver une place',
+    badge: 'TOUS LES 2 MOIS',
+    runtime: '3 hr',
   },
   {
-    fileNo: 'FW.06',
-    section: 'ADVENTURE',
+    filmNo: 'No. 06',
+    section: 'DOCUMENTAIRE',
     title: 'Everest Base Camp · Cleared',
     body: "Hiked to Everest Base Camp in April with Dawn after acclimating in Santa Fe. Ten days, twelve thousand vertical feet, one fedora that survived the entire Khumbu Valley. The next summit is undecided.",
     href: '/blog',
     external: false,
-    cta: 'Read the dispatch',
-    badge: 'NEPAL · APRIL 2026',
+    cta: 'Lire le journal',
+    badge: 'NEPAL · AVRIL 2026',
+    runtime: '10 jours',
   },
 ];
 
-// "Editor's Notes" — Q&A formatted as a fashion magazine letter from the editor
-const editorsNotes = [
+// "L'Entretien" — Q&A formatted as a French film magazine interview.
+const interview = [
   {
-    q: "On the role of the AI intern.",
-    a: "The intern in the poster is fetching coffee, drafting decks, and forwarding emails to the wrong people. He is also shipping production code. Both jobs are accurate. Neither pays particularly well in equity.",
+    q: "On having directed, written, and starred in the same film.",
+    a: "Short answer: yes. Long answer: also yes, but it was unintentional, and at some point during principal photography I also started doing my own catering. The intern is, somehow, also me. (Edward is the only credit on the call sheet. The call sheet is one page long.)",
   },
   {
-    q: "On the silver wig.",
-    a: "Edward volunteered to play both roles. Nobody was going to stop him. The wig is a costume rental. The fedora is his.",
+    q: "On the Palme d'Or in the hero image.",
+    a: "It is a rental. Specifically, it is a prop that arrived in a wooden crate marked 'NE PAS OUVRIR · NE PAS POLIR' and I opened it and polished it anyway. The real one is in a vault in Paris guarded by people who would not return my emails. (I asked.)",
   },
   {
-    q: "On whether AI is actually scary.",
-    a: "Short answer: not in the way the trailer implies. Long answer: it is, however, very good at closing the books faster than the intern who is currently being yelled at on the sidewalk.",
+    q: "On the white dinner jacket.",
+    a: "Strongly inadvisable on a yacht. Strongly inadvisable in a press tent. Strongly inadvisable anywhere within fifty feet of red wine, marinara, or any sauce whatsoever. I wore it anyway. The dry-cleaner in Mougins is now my closest friend in France.",
   },
   {
-    q: "On corrections and complaints.",
-    a: "Send to Edward@Roske.AI. He reads them himself, in his own voice, in roughly the same number of paragraphs you sent. (Editor: also Edward. Confusingly.)",
+    q: "On the fedora at a black-tie event.",
+    a: "The fedora is non-negotiable. I have spoken in fifty countries in this fedora. I summited a Himalayan pass in this fedora. The dress code at the Palais says 'noeud papillon obligatoire' and says nothing whatsoever about hats. I'll allow it.",
   },
+];
+
+// Festival marquee phrases
+const marqueeItems = [
+  "★ 79e FESTIVAL · SELECTION OFFICIELLE",
+  "ROSKE · UN FILM DE EDWARD ROSKE",
+  "★ AVEC EDWARD ROSKE",
+  "AGENTCUBE · MAINTENANT EN SALLES",
+  "★ CARIBBEAN AI SUMMIT · 9-10 OCTOBRE",
+  "LE FEDORA EST TOUJOURS BLEU",
 ];
 ---
 
@@ -135,61 +156,70 @@ const editorsNotes = [
   <WeeklyAnimation />
 
   <!-- ============================================
-       MASTHEAD STRIP — fake Vogue masthead
+       FESTIVAL MASTHEAD — fake Cannes header strip
        ============================================ -->
-  <div class="masthead">
-    <div class="masthead-inner">
-      <span class="masthead-meta">VOL. XLII · ISS. 18</span>
-      <span class="masthead-meta">MAY 2026 · UNAUTHORIZED</span>
-      <span class="masthead-meta">NEWSSTAND · $0.00</span>
+  <div class="festival-bar">
+    <div class="festival-bar-inner">
+      <span class="fb-laurel" aria-hidden="true">❦</span>
+      <span class="fb-meta">79<sup>e</sup> FESTIVAL · SELECTION OFFICIELLE</span>
+      <span class="fb-meta fb-meta-center">12 – 23 MAI · MMXXVI · CANNES</span>
+      <span class="fb-meta fb-meta-end">DOSSIER DE PRESSE · No. 79</span>
+      <span class="fb-laurel" aria-hidden="true">❦</span>
     </div>
   </div>
 
   <!-- ============================================
-       HERO — Movie poster as the cover
+       HERO — French cinema poster
        ============================================ -->
   <section class="hero-section">
     <div class="hero-grain" aria-hidden="true"></div>
-
     <div class="hero-grid">
+
+      <!-- Left: poster typography -->
       <div class="hero-text">
+
         <div class="hero-eyebrow">
-          <span class="hero-eyebrow-line"></span>
-          <span>FILE NO. 052 · WEEK OF {theme.week} · COVER STORY</span>
+          <span class="hero-eyebrow-rule"></span>
+          <span class="hero-eyebrow-text">UN FILM DE EDWARD ROSKE</span>
         </div>
 
-        <h1 class="hero-title">
-          <span class="hero-title-line">The</span>
-          <span class="hero-title-line hero-title-script">Devil</span>
-          <span class="hero-title-line">Fears</span>
-          <span class="hero-title-line hero-title-bold">AI Too.</span>
+        <h1 class="hero-title" aria-label="Roske à Cannes">
+          <span class="hero-title-line hero-title-tiny">presente</span>
+          <span class="hero-title-line hero-title-big">ROSKE</span>
+          <span class="hero-title-line hero-title-script"><em>à&nbsp;Cannes</em></span>
         </h1>
 
         <p class="hero-deck">{theme.hero.subtitle}</p>
 
-        <div class="hero-tagline">
-          <span class="hero-tagline-rule"></span>
-          <span>{theme.tagline}</span>
+        <!-- Poster billing block — vertically tight, all caps, narrow -->
+        <div class="hero-billing" aria-hidden="true">
+          <div class="bill-row bill-big">EDWARD ROSKE</div>
+          <div class="bill-row bill-small">DANS LE ROLE DE EDWARD ROSKE</div>
+          <div class="bill-row bill-tiny">AVEC EDWARD ROSKE &nbsp;·&nbsp; ET EDWARD ROSKE</div>
+          <div class="bill-row bill-tiny">DIRECTEUR DE LA PHOTOGRAPHIE &nbsp; EDWARD ROSKE</div>
+          <div class="bill-row bill-tiny">MUSIQUE ORIGINALE &nbsp; EDWARD ROSKE</div>
+          <div class="bill-row bill-tiny">PRODUIT PAR &nbsp; EDWARD ROSKE</div>
+          <div class="bill-row bill-tiny">ECRIT ET REALISE PAR &nbsp; EDWARD ROSKE</div>
         </div>
 
         <p class="hero-body">{theme.hero.description}</p>
 
         <div class="hero-cta-row">
           <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary">
-            Book 13 Minutes
+            Reserver 13 minutes
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
           </a>
           <a href="#current-work" class="btn-secondary">
-            <span>Open the Issue</span>
+            <span>Voir la selection</span>
           </a>
         </div>
 
         <div class="hero-stats">
           {[
-            { value: '80+', label: 'Countries' },
-            { value: '50+', label: 'Speaking' },
-            { value: '15', label: 'Books' },
-            { value: '25+', label: 'Years CEO' },
+            { value: '80+', label: 'Pays' },
+            { value: '50+', label: 'Conferences' },
+            { value: '15', label: 'Livres' },
+            { value: '25+', label: 'Ans · PDG' },
           ].map(stat => (
             <div class="hero-stat">
               <div class="hero-stat-value">{stat.value}</div>
@@ -199,94 +229,131 @@ const editorsNotes = [
         </div>
       </div>
 
+      <!-- Right: the cover poster -->
       <div class="hero-image-wrap">
-        <div class="hero-cover-tag">SUMMER ISSUE · 2026</div>
-        <div class="hero-image-frame">
-          <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="hero-image" />
-          <div class="hero-cover-fold">
-            <span class="hero-cover-fold-label">PARODY · UNRATED</span>
-            <span class="hero-cover-fold-issue">No. 052</span>
+        <div class="poster-frame">
+          <div class="poster-bar-top">
+            <span>79<sup>e</sup></span>
+            <span>FESTIVAL DE CANNES</span>
+            <span>MMXXVI</span>
+          </div>
+          <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="poster-image" />
+          <div class="poster-laurels" aria-hidden="true">
+            <svg class="laurel laurel-left" viewBox="0 0 100 200" width="44" height="88" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+                <path d="M70 10 C 40 50, 30 110, 50 195"/>
+                <path d="M65 30 C 50 40, 40 50, 35 60"/>
+                <path d="M60 55 C 45 65, 35 75, 30 85"/>
+                <path d="M55 85 C 40 95, 30 105, 25 115"/>
+                <path d="M52 115 C 38 125, 28 135, 23 145"/>
+                <path d="M52 145 C 38 155, 30 165, 28 175"/>
+              </g>
+            </svg>
+            <svg class="laurel laurel-right" viewBox="0 0 100 200" width="44" height="88" xmlns="http://www.w3.org/2000/svg">
+              <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+                <path d="M30 10 C 60 50, 70 110, 50 195"/>
+                <path d="M35 30 C 50 40, 60 50, 65 60"/>
+                <path d="M40 55 C 55 65, 65 75, 70 85"/>
+                <path d="M45 85 C 60 95, 70 105, 75 115"/>
+                <path d="M48 115 C 62 125, 72 135, 77 145"/>
+                <path d="M48 145 C 62 155, 70 165, 72 175"/>
+              </g>
+            </svg>
+            <div class="poster-laurels-text">
+              <span class="laurel-line">SELECTION</span>
+              <span class="laurel-line laurel-line-big">OFFICIELLE</span>
+              <span class="laurel-line">CANNES · 2026</span>
+            </div>
+          </div>
+          <div class="poster-bar-bottom">
+            <span class="poster-credit-blob">UN FILM DE</span>
+            <span class="poster-credit-name">EDWARD ROSKE</span>
+            <span class="poster-credit-blob">EN COMPETITION</span>
           </div>
         </div>
-        <div class="hero-stamp">
-          <div class="hero-stamp-inner">
-            <span class="hero-stamp-line">ROLE OF</span>
-            <span class="hero-stamp-big">EDWARD</span>
-            <span class="hero-stamp-line">PLAYED BY EDWARD</span>
+
+        <!-- Floating tickets -->
+        <div class="ticket ticket-1" aria-hidden="true">
+          <div class="ticket-edge"></div>
+          <div class="ticket-body">
+            <div class="ticket-line ticket-line-tiny">FESTIVAL · 2026</div>
+            <div class="ticket-line ticket-line-big">ADMIT ONE</div>
+            <div class="ticket-line ticket-line-tiny">PALAIS · ROW E · SEAT 23</div>
+            <div class="ticket-line ticket-line-tiny">PRIX · GRATUIT</div>
+          </div>
+          <div class="ticket-stub">
+            <span>79</span>
           </div>
         </div>
-        <div class="hero-pull-quote" aria-hidden="true">
-          <span class="hero-pull-mark">"</span>
-          <span class="hero-pull-text">That's all.</span>
+
+        <div class="poster-stamp" aria-hidden="true">
+          <div class="stamp-ring">
+            <span>OFFICIAL · SELECTION · OFFICIAL · SELECTION</span>
+          </div>
+          <div class="stamp-center">
+            <span class="stamp-num">79</span>
+            <span class="stamp-sub">EDITION</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       MARQUEE — Fashion ticker
+       MARQUEE — Festival ticker
        ============================================ -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
-      <span class="marquee-item">★ COVER STORY · THE DEVIL FEARS AI TOO</span>
-      <span class="marquee-item">EXCLUSIVE · BOTH ROLES PLAYED BY EDWARD</span>
-      <span class="marquee-item">★ SUMMER ISSUE</span>
-      <span class="marquee-item">CARIBBEAN AI SUMMIT · OCT 9-10</span>
-      <span class="marquee-item">★ AGENTCUBE · NOW SHIPPING</span>
-      <span class="marquee-item">FEDORA: STILL BLUE</span>
-      <span class="marquee-item">★ COVER STORY · THE DEVIL FEARS AI TOO</span>
-      <span class="marquee-item">EXCLUSIVE · BOTH ROLES PLAYED BY EDWARD</span>
-      <span class="marquee-item">★ SUMMER ISSUE</span>
-      <span class="marquee-item">CARIBBEAN AI SUMMIT · OCT 9-10</span>
-      <span class="marquee-item">★ AGENTCUBE · NOW SHIPPING</span>
-      <span class="marquee-item">FEDORA: STILL BLUE</span>
+      {[...marqueeItems, ...marqueeItems].map(item => (
+        <span class="marquee-item">{item}</span>
+      ))}
     </div>
   </div>
 
   <!-- ============================================
-       PULL QUOTE — Magazine-style oversized quote
+       PULL QUOTE — auteur statement
        ============================================ -->
   <section class="pullquote-section">
     <div class="pullquote-inner">
-      <div class="pullquote-tag">PAGE 003 · ON THE COVER</div>
+      <div class="pullquote-tag">CAHIER · PAGE 003 · MOT D'AUTEUR</div>
       <blockquote class="pullquote">
-        <span class="pullquote-mark">&ldquo;</span>
-        I auditioned for the intern. I auditioned for the boss. I got both roles.
-        <span class="pullquote-mark pullquote-mark-close">&rdquo;</span>
+        <span class="pullquote-mark">&laquo;</span>
+        I directed, wrote, scored, and starred in the film. Then I went home and closed the books for a Fortune 500 client. The credits ran longer than the film.
+        <span class="pullquote-mark pullquote-mark-close">&raquo;</span>
       </blockquote>
       <div class="pullquote-attrib">
         <span class="pullquote-attrib-name">Edward Roske</span>
-        <span class="pullquote-attrib-role">CEO · Speaker · Data Scientist · Probationary AI Intern</span>
+        <span class="pullquote-attrib-role">Realisateur · Auteur · Probationary Auteur Anyway</span>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       INSIDE THE ISSUE — magazine spread of scene images
+       LA SELECTION — film stills as magazine spread
        ============================================ -->
-  <section class="issue-section">
-    <div class="issue-inner">
+  <section class="stills-section">
+    <div class="stills-inner">
       <header class="section-header">
-        <div class="section-tag">SECTION 02 · INSIDE THE ISSUE</div>
-        <h2 class="section-title">A Table of Contents,<br/><em>more or less.</em></h2>
+        <div class="section-tag">SECTION 02 · LA SELECTION</div>
+        <h2 class="section-title">Quatre images <em>du film</em>,<br/>tirees au hasard.</h2>
         <p class="section-deck">
-          Four pages from a magazine that does not exist, photographed by a crew that no one has paid yet, starring the same man twice. (We assume he had it coming.)
+          Photos de plateau leaked to the press before the jury has finished its lunch. The film has not been screened. The film may not exist. We are committed either way.
         </p>
       </header>
 
-      <div class="issue-grid">
-        {insideTheIssue.map((item, idx) => (
-          <article class="issue-card" style={`--rot:${item.rotate}deg; --aspect:${item.aspect};`}>
-            <div class="issue-photo">
-              <span class="issue-tape issue-tape-tl"></span>
-              <span class="issue-tape issue-tape-br"></span>
-              <img src={item.src} alt={item.headline} loading="lazy" decoding="async" />
-              <div class="issue-pageno">P. {item.pageNo}</div>
+      <div class="stills-grid">
+        {filmStills.map((item) => (
+          <article class="still-card" style={`--rot:${item.rotate}deg; --aspect:${item.aspect};`}>
+            <div class="still-photo">
+              <span class="still-tape still-tape-tl" aria-hidden="true"></span>
+              <span class="still-tape still-tape-br" aria-hidden="true"></span>
+              <img src={item.src} alt={item.title} loading="lazy" decoding="async" />
+              <div class="still-pageno">SCENE {item.sceneNo}</div>
             </div>
-            <div class="issue-meta">
-              <div class="issue-section-label">{item.section}</div>
-              <h3 class="issue-headline">{item.headline}</h3>
-              <p class="issue-deck">{item.deck}</p>
+            <div class="still-meta">
+              <div class="still-slug">{item.slug}</div>
+              <h3 class="still-title">{item.title}</h3>
+              <p class="still-line">{item.line}</p>
             </div>
           </article>
         ))}
@@ -295,32 +362,32 @@ const editorsNotes = [
   </section>
 
   <!-- ============================================
-       EDITOR LETTER — pull quote with image
+       MOT DU REALISATEUR — director's note with portrait
        ============================================ -->
-  <section class="editor-section">
-    <div class="editor-grid">
-      <figure class="editor-image">
-        <img src="/images/devil-fears-ai/edward-desk-meltdown.png" alt="Edward Roske as a frazzled AI intern at his magazine office desk, surrounded by Starbucks cups and three buzzing iPhones." loading="lazy" decoding="async" />
+  <section class="director-section">
+    <div class="director-grid">
+      <figure class="director-image">
+        <img src={closingStill.src} alt={closingStill.alt} loading="lazy" decoding="async" />
         <figcaption>
-          <span>FIG. A · 6:47 PM</span>
-          <span>OPEN PLAN · FLOOR 14</span>
+          <span>FIG. C · 19:14</span>
+          <span>PHOTOCALL · PALAIS</span>
         </figcaption>
       </figure>
 
-      <div class="editor-text">
-        <div class="editor-tag">FROM THE DESK OF THE EDITOR</div>
-        <h3 class="editor-h3">A note from the editor.<br/>(Also Edward.)</h3>
-        <p class="editor-body">
-          The new heroes are not the ones in capes, and they are not the ones in Prada either. They are the people who can close your books in a week, run a coherent forecast on demand, and answer a follow-up question without sweating through their suit. The capes are theatrical. The latte run is real. The intern is doing both.
+      <div class="director-text">
+        <div class="director-tag">MOT DU REALISATEUR</div>
+        <h3 class="director-h3">A note from the director.<br/><em>(Also Edward.)</em></h3>
+        <p class="director-body">
+          The festival is a strange place. You stand on a red carpet that goes on for too long. You wave at people you do not know. You hold up an object you have not earned. Then you go back to your hotel, open your laptop, and the books still need to close.
         </p>
-        <p class="editor-body">
-          We are still running the magazine. We are also still shipping the MCP servers. The only person who has been confused by this so far is the intern, and he is busy. (He is also Edward.)
+        <p class="director-body">
+          The thesis of the film is simple: AI does not replace the auteur. It replaces the intern. The auteur is busy holding the Palme d'Or above his head and crying for the cameras. The intern is reconciling the GL. Both jobs are real. (One of them pays better.)
         </p>
-        <div class="editor-attrib">
-          <span class="editor-attrib-line"></span>
+        <div class="director-attrib">
+          <span class="director-attrib-line"></span>
           <div>
-            <span class="editor-attrib-name">Edward Roske</span>
-            <span class="editor-attrib-title">Editor-in-Chief, ROSKE/MAG (parodically)</span>
+            <span class="director-attrib-name">Edward Roske</span>
+            <span class="director-attrib-title">Realisateur · Roske, ou, La Comptabilite des Reves</span>
           </div>
         </div>
       </div>
@@ -328,42 +395,51 @@ const editorsNotes = [
   </section>
 
   <!-- ============================================
-       THE ATELIER — six features (project cards)
+       LE PROGRAMME — six selections
        ============================================ -->
-  <section id="current-work" class="atelier-section">
-    <div class="atelier-inner">
+  <section id="current-work" class="programme-section">
+    <div class="programme-inner">
       <header class="section-header">
-        <div class="section-tag">SECTION 03 · THE ATELIER</div>
-        <h2 class="section-title">Six things,<br/>currently <em>shipping.</em></h2>
+        <div class="section-tag">SECTION 03 · LE PROGRAMME</div>
+        <h2 class="section-title">Six films <em>en selection.</em><br/>Tous projetes en ce moment.</h2>
         <p class="section-deck">
-          The features on the contributor page. Edward is not just the cover model. He is also the writer, the fact-checker, and the person making the spreadsheet that determines whether any of this is profitable.
+          The programme of the parallel festival running inside Edward's calendar. Some of these will absolutely happen. One of them is fictional. (We will not say which. The fictional one is also being scored as we speak.)
         </p>
       </header>
 
-      <div class="atelier-grid">
-        {features.map(feat => (
-          <article class="feat-card">
-            <div class="feat-corner feat-corner-tl"></div>
-            <div class="feat-corner feat-corner-tr"></div>
-            <div class="feat-corner feat-corner-bl"></div>
-            <div class="feat-corner feat-corner-br"></div>
-
-            <div class="feat-card-header">
-              <span class="feat-fileno">{feat.fileNo}</span>
-              <span class="feat-section">{feat.section}</span>
+      <div class="programme-grid">
+        {programme.map(film => (
+          <article class="film-card">
+            <div class="film-perfs film-perfs-top" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
             </div>
-            <h3 class="feat-title">{feat.title}</h3>
-            <p class="feat-body">{feat.body}</p>
-            <div class="feat-card-footer">
-              <span class="feat-badge">{feat.badge}</span>
-              {feat.href ? (
-                <a href={feat.href} target={feat.external ? '_blank' : undefined} rel={feat.external ? 'noopener' : undefined} class="feat-cta">
-                  {feat.cta}
+
+            <div class="film-card-header">
+              <span class="film-no">{film.filmNo}</span>
+              <span class="film-section">{film.section}</span>
+            </div>
+
+            <h3 class="film-title">{film.title}</h3>
+            <p class="film-body">{film.body}</p>
+
+            <div class="film-meta">
+              <span class="film-badge">{film.badge}</span>
+              <span class="film-runtime">DUREE · {film.runtime}</span>
+            </div>
+
+            <div class="film-card-footer">
+              {film.href ? (
+                <a href={film.href} target={film.external ? '_blank' : undefined} rel={film.external ? 'noopener' : undefined} class="film-cta">
+                  {film.cta}
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
                 </a>
               ) : (
-                <span class="feat-cta feat-cta-disabled">{feat.cta}</span>
+                <span class="film-cta film-cta-disabled">{film.cta}</span>
               )}
+            </div>
+
+            <div class="film-perfs film-perfs-bot" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
             </div>
           </article>
         ))}
@@ -372,22 +448,22 @@ const editorsNotes = [
   </section>
 
   <!-- ============================================
-       EDITOR'S NOTES — Q&A as fashion column
+       L'ENTRETIEN — Q&A in French magazine style
        ============================================ -->
-  <section class="notes-section">
-    <div class="notes-inner">
-      <header class="section-header notes-header">
-        <div class="section-tag">SECTION 04 · EDITOR'S NOTES</div>
-        <h2 class="section-title">A few things,<br/>on the record.</h2>
+  <section class="entretien-section">
+    <div class="entretien-inner">
+      <header class="section-header entretien-header">
+        <div class="section-tag">SECTION 04 · L'ENTRETIEN</div>
+        <h2 class="section-title">A few things,<br/><em>on the record.</em></h2>
       </header>
 
-      <div class="notes-list">
-        {editorsNotes.map((item, idx) => (
-          <div class="note-item">
-            <div class="note-num">{String(idx + 1).padStart(2, '0')}</div>
-            <div class="note-content">
-              <div class="note-q">{item.q}</div>
-              <div class="note-a">{item.a}</div>
+      <div class="entretien-list">
+        {interview.map((item, idx) => (
+          <div class="entretien-item">
+            <div class="entretien-num">{String(idx + 1).padStart(2, '0')}</div>
+            <div class="entretien-content">
+              <div class="entretien-q">— {item.q}</div>
+              <div class="entretien-a">{item.a}</div>
             </div>
           </div>
         ))}
@@ -396,1155 +472,1362 @@ const editorsNotes = [
   </section>
 
   <!-- ============================================
-       FINAL CTA — "Submit a Pitch"
+       FINAL CTA — "Achetez vos billets"
        ============================================ -->
-  <section class="final-cta">
-    <div class="final-cta-grain" aria-hidden="true"></div>
+  <section class="cloture-section">
+    <div class="cloture-inner">
+      <div class="cloture-eyebrow">
+        <span class="cloture-rule"></span>
+        <span>SEANCE DE CLOTURE · 13 MINUTES</span>
+        <span class="cloture-rule"></span>
+      </div>
+      <h2 class="cloture-title">Achetez vos billets.<br/><em class="cloture-em">Or just send an email.</em></h2>
+      <p class="cloture-deck">
+        The closing screening is a thirteen-minute conversation with Edward. No black tie required. No headphones in French. No Palme d'Or. (Bring questions about AI, finance, podcasting, escape rooms, or the Khumbu Valley. He has opinions about all five.)
+      </p>
+      <div class="cloture-cta-row">
+        <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary btn-primary-big">
+          Reserver 13 minutes
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+        <a href="/contact" class="btn-secondary btn-secondary-big">
+          <span>Ecrire au directeur</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <div class="final-cta-inner">
-      <div class="final-cta-content">
-        <div class="section-tag final-cta-tag">SECTION 05 · MASTHEAD</div>
-        <h2 class="final-cta-title">
-          Submit a pitch.<br/>
-          <span class="final-cta-accent">The editor reads everything.</span>
-        </h2>
-        <p class="final-cta-body">
-          Edward reads every email. Answers most of them. Personally, in his own voice, in roughly the same number of paragraphs you sent. (No interns. No automated routing. No silver-wigged gatekeepers. The fedora is real and the inbox is open.)
-        </p>
-        <div class="final-cta-buttons">
-          <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary btn-primary-lg">
-            Book a 13-Minute Briefing
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-          </a>
-          <a href="/contact/" class="btn-secondary btn-secondary-lg">Submit a Pitch</a>
+  <!-- ============================================
+       CLOSING CREDITS — typewriter scroll
+       ============================================ -->
+  <section class="credits-section">
+    <div class="credits-inner">
+      <div class="credits-tag">FIN · GENERIQUE</div>
+      <div class="credits-roll">
+        <div class="credits-block">
+          <span class="credits-role">REALISATEUR</span>
+          <span class="credits-name">EDWARD ROSKE</span>
+        </div>
+        <div class="credits-block">
+          <span class="credits-role">SCENARIO</span>
+          <span class="credits-name">EDWARD ROSKE</span>
+        </div>
+        <div class="credits-block">
+          <span class="credits-role">DANS LE ROLE PRINCIPAL</span>
+          <span class="credits-name">EDWARD ROSKE</span>
+        </div>
+        <div class="credits-block">
+          <span class="credits-role">ASSISTANT</span>
+          <span class="credits-name">EDWARD ROSKE</span>
+        </div>
+        <div class="credits-block">
+          <span class="credits-role">CHAPEAU</span>
+          <span class="credits-name">FEDORA BLEU · CARRIER PERSONNEL</span>
+        </div>
+        <div class="credits-block">
+          <span class="credits-role">REMERCIEMENTS</span>
+          <span class="credits-name">DAWN ROSKE · MYCROFT · ELIOT · LE PEUPLE DE PUERTO RICO</span>
         </div>
       </div>
     </div>
   </section>
+
 </BaseLayout>
 
 <style>
-  /* ============================================
-     THE DEVIL FEARS AI TOO — Vogue-style editorial
-     ============================================ */
+  /* ============================================================
+     ROSKE A CANNES — vintage French cinema poster aesthetic
+     Color palette: ink black / programme cream / Palme gold / Cannes red
+     Typography: Italiana (display), DM Serif Display (h3), EB Garamond (body), Special Elite (mono)
+     ============================================================ */
 
-  :global(body) {
-    font-family: var(--font-body);
-    font-size: 1.075rem;
-    line-height: 1.6;
+  :global([data-theme="dark"]) {
+    --hero-bg: #0a0907;
+    --hero-fg: #f4ecdc;
+    --hero-muted: #b5a78d;
+    --gold: #c8a04a;
+    --gold-soft: #8a6f30;
+    --paper: #f4ecdc;
+    --paper-soft: #ddcfa8;
+    --red: #b8202a;
+    --red-soft: #7d1820;
+    --ink: #0a0907;
+    --film: #15110d;
+    --border-rule: #3a2f24;
+  }
+  :global([data-theme="light"]) {
+    --hero-bg: #f4ecdc;
+    --hero-fg: #15110d;
+    --hero-muted: #5a4a36;
+    --gold: #a07d24;
+    --gold-soft: #c8a04a;
+    --paper: #15110d;
+    --paper-soft: #2a2014;
+    --red: #a01820;
+    --red-soft: #b8202a;
+    --ink: #15110d;
+    --film: #f4ecdc;
+    --border-rule: #c8b48a;
   }
 
-  section {
-    position: relative;
-  }
-
-  /* ===================== SHARED HEADER ===================== */
-  .section-header {
-    max-width: 56rem;
-    margin: 0 auto 3.5rem;
-    text-align: center;
-    padding: 0 1.5rem;
-  }
-  .section-tag {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    font-weight: 600;
-    margin-bottom: 1.25rem;
-  }
-  .section-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2.6rem, 6.5vw, 5.5rem);
-    line-height: 0.95;
-    letter-spacing: -0.015em;
-    margin: 0 0 1.25rem;
-    font-weight: 800;
-  }
-  .section-title em {
-    font-style: italic;
-    font-weight: 500;
-    color: var(--color-secondary);
-  }
-  [data-theme="dark"] .section-title em { color: #ff5fa8; }
-  [data-theme="dark"] .section-title { color: var(--color-text); }
-  [data-theme="light"] .section-title { color: var(--color-text-dark); }
-
-  .section-deck {
-    font-family: var(--font-body);
-    font-size: 1.2rem;
-    line-height: 1.5;
-    max-width: 40rem;
-    margin: 0 auto;
-    font-style: italic;
-  }
-  [data-theme="dark"] .section-deck { color: var(--color-text-muted); }
-  [data-theme="light"] .section-deck { color: var(--color-text-dark-muted); }
-
-  /* ===================== MASTHEAD ===================== */
-  .masthead {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    padding: 0.55rem 0;
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.32em;
+  /* ------------------------------------------------------------
+     FESTIVAL MASTHEAD
+     ------------------------------------------------------------ */
+  .festival-bar {
+    width: 100%;
+    background: var(--ink);
+    color: var(--gold);
+    border-bottom: 1px solid var(--gold-soft);
+    font-family: 'Italiana', serif;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
   }
-  [data-theme="dark"] .masthead {
-    background: #050505;
-    border-color: #2a2521;
-    color: var(--color-text-muted);
-  }
-  [data-theme="light"] .masthead {
-    background: #fff;
-    border-color: var(--color-border-light);
-    color: var(--color-text-dark-muted);
-  }
-  .masthead-inner {
-    max-width: 80rem;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
+  :global([data-theme="light"]) .festival-bar {
+    background: var(--paper);
+    color: var(--gold-soft);
   }
 
-  /* ===================== HERO ===================== */
-  .hero-section {
-    position: relative;
-    min-height: 92vh;
-    overflow: hidden;
-    isolation: isolate;
+  .festival-bar-inner {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 0.55rem 2rem;
     display: flex;
     align-items: center;
-    padding: 5rem 1.5rem 4rem;
+    justify-content: space-between;
+    gap: 1.5rem;
+    font-size: 0.72rem;
   }
-  [data-theme="dark"] .hero-section {
-    background:
-      radial-gradient(ellipse at 75% 25%, rgba(212, 0, 122, 0.12) 0%, transparent 60%),
-      radial-gradient(ellipse at 20% 80%, rgba(184, 0, 31, 0.18) 0%, transparent 60%),
-      linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+  .fb-laurel {
+    color: var(--gold);
+    font-size: 1rem;
   }
-  [data-theme="light"] .hero-section {
-    background:
-      radial-gradient(ellipse at 75% 25%, rgba(212, 0, 122, 0.08) 0%, transparent 55%),
-      radial-gradient(ellipse at 20% 80%, rgba(184, 0, 31, 0.07) 0%, transparent 55%),
-      #fbf8f3;
+  .fb-meta { white-space: nowrap; }
+  .fb-meta-center {
+    flex: 1;
+    text-align: center;
+    letter-spacing: 0.35em;
+  }
+  .fb-meta-end { text-align: right; }
+  @media (max-width: 700px) {
+    .festival-bar-inner { padding: 0.55rem 1rem; gap: 0.6rem; font-size: 0.6rem; }
+    .fb-meta-end, .fb-laurel { display: none; }
   }
 
-  /* Hero grain overlay — disabled. The hatch was creating visible stripes on mobile
-     and competing with hero copy. We rely on the section gradient + reading scrim instead. */
-  .hero-grain { display: none; }
-
-  /* Reading surface behind hero copy — keeps text legible over any background.
-     On mobile (single column) we use a near-solid panel so the white text never
-     fights the background imagery. Above 1024px we fade to the side so the
-     poster image stays visible next to the column. */
-  .hero-text {
+  /* ------------------------------------------------------------
+     HERO POSTER
+     ------------------------------------------------------------ */
+  .hero-section {
     position: relative;
-    z-index: 2;
+    background: var(--hero-bg);
+    color: var(--hero-fg);
+    padding: 5rem 2rem 6rem;
+    overflow: hidden;
   }
-  [data-theme="dark"] .hero-text::before {
-    content: "";
+  :global([data-theme="dark"]) .hero-section {
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(200,160,74,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(184,32,42,0.06) 0%, transparent 60%),
+      linear-gradient(180deg, #0a0907 0%, #161009 50%, #0a0907 100%);
+  }
+  :global([data-theme="light"]) .hero-section {
+    background:
+      radial-gradient(ellipse at 20% 0%, rgba(200,160,74,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 100%, rgba(184,32,42,0.07) 0%, transparent 60%),
+      var(--paper);
+  }
+
+  .hero-grain {
     position: absolute;
-    inset: -1.25rem -1.25rem;
-    background: rgba(5, 5, 5, 0.72);
-    border-radius: 0.25rem;
-    z-index: -1;
+    inset: 0;
     pointer-events: none;
+    opacity: 0.10;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.8 0 0 0 0 0.7 0 0 0 0 0.5 0 0 0 0.85 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
   }
-  [data-theme="light"] .hero-text::before {
-    content: "";
-    position: absolute;
-    inset: -1.25rem -1.25rem;
-    background: rgba(251, 248, 243, 0.88);
-    border-radius: 0.25rem;
-    z-index: -1;
-    pointer-events: none;
-  }
-  @media (min-width: 1024px) {
-    [data-theme="dark"] .hero-text::before {
-      inset: -1.5rem -2rem;
-      background: radial-gradient(ellipse at 30% 50%, rgba(5, 5, 5, 0.78) 0%, rgba(5, 5, 5, 0.55) 55%, rgba(5, 5, 5, 0) 100%);
-      border-radius: 0;
-    }
-    [data-theme="light"] .hero-text::before {
-      inset: -1.5rem -2rem;
-      background: radial-gradient(ellipse at 30% 50%, rgba(251, 248, 243, 0.9) 0%, rgba(251, 248, 243, 0.65) 55%, rgba(251, 248, 243, 0) 100%);
-      border-radius: 0;
-    }
-  }
+  :global([data-theme="light"]) .hero-grain { opacity: 0.06; }
 
   .hero-grid {
     position: relative;
-    z-index: 2;
-    max-width: 80rem;
+    max-width: 1500px;
     margin: 0 auto;
-    width: 100%;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 4rem;
     align-items: center;
   }
-  @media (min-width: 1024px) {
-    .hero-grid {
-      grid-template-columns: 1.05fr 1fr;
-      gap: 4.5rem;
-    }
+  @media (max-width: 1024px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-section { padding: 3rem 1.25rem 4rem; }
   }
 
+  /* Hero left column */
+  .hero-text { max-width: 640px; }
+
   .hero-eyebrow {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 0.85rem;
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.34em;
+    gap: 0.9rem;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 1.8rem;
-    font-weight: 600;
-    color: var(--color-accent);
+    color: var(--gold);
+    margin-bottom: 1.4rem;
   }
-  .hero-eyebrow-line {
-    width: 2.5rem;
+  .hero-eyebrow-rule {
+    width: 38px;
     height: 1px;
-    background: var(--color-accent);
+    background: var(--gold);
+    flex-shrink: 0;
   }
 
   .hero-title {
-    font-family: var(--font-heading);
-    font-size: clamp(3.2rem, 9.5vw, 7.5rem);
-    line-height: 0.92;
-    letter-spacing: -0.025em;
-    margin: 0 0 1.8rem;
-    font-weight: 800;
+    margin: 0 0 1.6rem;
+    line-height: 0.88;
+    font-family: 'Italiana', serif;
+    color: var(--hero-fg);
   }
-  .hero-title-line {
-    display: block;
-  }
-  [data-theme="dark"] .hero-title-line { color: var(--color-text); }
-  [data-theme="light"] .hero-title-line { color: var(--color-text-dark); }
-  .hero-title-script {
-    font-family: 'Bodoni Moda', serif;
+  .hero-title-line { display: block; }
+  .hero-title-tiny {
+    font-family: 'EB Garamond', serif;
     font-style: italic;
     font-weight: 400;
-    color: var(--color-secondary) !important;
-    padding-left: 0.8em;
-    letter-spacing: -0.01em;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    color: var(--hero-muted);
+    margin-bottom: 0.5rem;
   }
-  [data-theme="dark"] .hero-title-script { color: #ff5fa8 !important; }
-  .hero-title-bold {
-    color: var(--color-secondary) !important;
-    padding-left: 1.6em;
-    font-weight: 900;
-    letter-spacing: -0.03em;
+  .hero-title-big {
+    font-size: clamp(5.6rem, 13vw, 11rem);
+    letter-spacing: -0.02em;
+    color: var(--hero-fg);
+    line-height: 0.84;
   }
-  [data-theme="dark"] .hero-title-bold { color: #ff2a8f !important; }
+  .hero-title-script {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+    color: var(--red);
+    margin-top: -0.15em;
+    letter-spacing: -0.005em;
+    line-height: 1;
+  }
 
   .hero-deck {
-    font-family: var(--font-body);
-    font-style: italic;
-    font-size: clamp(1.35rem, 2.4vw, 1.7rem);
-    font-weight: 400;
-    line-height: 1.4;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.18rem;
+    line-height: 1.5;
+    color: var(--hero-fg);
     margin: 0 0 1.4rem;
-    max-width: 38rem;
-  }
-  [data-theme="dark"] .hero-deck { color: var(--color-text); }
-  [data-theme="light"] .hero-deck { color: var(--color-text-dark); }
-
-  .hero-tagline {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    margin-bottom: 1.6rem;
+    max-width: 30em;
+    font-style: italic;
     font-weight: 500;
   }
-  [data-theme="dark"] .hero-tagline { color: var(--color-text-muted); }
-  [data-theme="light"] .hero-tagline { color: var(--color-text-dark-muted); }
-  .hero-tagline-rule {
-    width: 2.5rem;
-    height: 1px;
-    background: var(--color-accent);
+
+  /* Poster billing block — tight, centered, all caps */
+  .hero-billing {
+    border-top: 1px solid var(--gold-soft);
+    border-bottom: 1px solid var(--gold-soft);
+    padding: 1rem 0;
+    margin: 1.8rem 0 1.5rem;
+    text-align: center;
+    color: var(--hero-fg);
+    font-family: 'Italiana', serif;
+    letter-spacing: 0.22em;
+    line-height: 1.5;
+  }
+  .bill-row { display: block; text-transform: uppercase; }
+  .bill-big { font-size: 1.18rem; letter-spacing: 0.32em; }
+  .bill-small { font-size: 0.82rem; color: var(--hero-muted); margin-top: 0.15rem; letter-spacing: 0.28em; }
+  .bill-tiny {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.62rem;
+    color: var(--hero-muted);
+    margin-top: 0.25rem;
+    letter-spacing: 0.14em;
   }
 
   .hero-body {
-    font-family: var(--font-body);
-    font-size: 1.1rem;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.02rem;
     line-height: 1.65;
-    margin: 0 0 2rem;
-    max-width: 38rem;
+    color: var(--hero-muted);
+    margin: 0 0 1.8rem;
+    max-width: 38em;
   }
-  [data-theme="dark"] .hero-body { color: var(--color-text-muted); }
-  [data-theme="light"] .hero-body { color: var(--color-text-dark-muted); }
 
+  /* CTAs */
+  .btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.85rem 1.5rem;
+    font-family: 'Italiana', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid currentColor;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .btn-primary {
+    background: var(--red);
+    color: var(--paper);
+    border-color: var(--red);
+  }
+  .btn-primary:hover {
+    background: var(--ink);
+    color: var(--gold);
+    border-color: var(--gold);
+    transform: translateY(-2px);
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--hero-fg);
+    border-color: var(--hero-fg);
+  }
+  .btn-secondary:hover {
+    background: var(--hero-fg);
+    color: var(--hero-bg);
+    transform: translateY(-2px);
+  }
+  .btn-primary-big, .btn-secondary-big {
+    padding: 1.1rem 2rem;
+    font-size: 0.95rem;
+  }
   .hero-cta-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.85rem;
-    margin-bottom: 2.5rem;
+    gap: 0.8rem;
+    margin-bottom: 2.6rem;
   }
 
+  /* Stats */
   .hero-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.25rem;
-    max-width: 30rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid;
+    gap: 1.2rem;
+    border-top: 1px solid var(--border-rule);
+    padding-top: 1.6rem;
   }
-  [data-theme="dark"] .hero-stats { border-color: var(--color-border); }
-  [data-theme="light"] .hero-stats { border-color: var(--color-border-light); }
-
   .hero-stat-value {
-    font-family: var(--font-heading);
-    font-size: 2rem;
+    font-family: 'Italiana', serif;
+    font-size: 2.2rem;
+    color: var(--gold);
     line-height: 1;
-    color: var(--color-secondary);
-    font-weight: 800;
-    font-style: italic;
   }
-  [data-theme="dark"] .hero-stat-value { color: #ff5fa8; }
   .hero-stat-label {
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.24em;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: var(--hero-muted);
     margin-top: 0.4rem;
   }
-  [data-theme="dark"] .hero-stat-label { color: var(--color-text-muted); }
-  [data-theme="light"] .hero-stat-label { color: var(--color-text-dark-muted); }
+  @media (max-width: 640px) {
+    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  }
 
-  /* Hero image / cover */
+  /* ------------------------------------------------------------
+     POSTER FRAME (hero right column)
+     ------------------------------------------------------------ */
   .hero-image-wrap {
     position: relative;
-    width: 100%;
-    max-width: 38rem;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
   }
-  .hero-cover-tag {
-    position: absolute;
-    top: -2.2rem;
-    left: 0;
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    font-weight: 600;
-    z-index: 3;
-  }
-  .hero-image-frame {
+
+  .poster-frame {
     position: relative;
-    background: #fbf8f3;
+    width: 100%;
+    max-width: 580px;
+    background: var(--film);
+    color: var(--paper);
+    border: 1px solid var(--gold-soft);
     box-shadow:
-      0 1.5rem 3rem rgba(0, 0, 0, 0.45),
-      0 0 0 1px rgba(184, 0, 31, 0.4);
+      0 30px 70px rgba(0,0,0,0.55),
+      0 6px 18px rgba(0,0,0,0.4),
+      inset 0 0 0 4px var(--film),
+      inset 0 0 0 5px var(--gold-soft);
+    display: flex;
+    flex-direction: column;
   }
-  [data-theme="light"] .hero-image-frame {
+  :global([data-theme="light"]) .poster-frame {
+    background: #1a1410;
+    color: var(--paper);
     box-shadow:
-      0 1.5rem 3rem rgba(184, 0, 31, 0.15),
-      0 0 0 1px rgba(10, 10, 10, 0.06);
+      0 24px 60px rgba(40,28,12,0.35),
+      0 6px 14px rgba(40,28,12,0.25),
+      inset 0 0 0 4px #1a1410,
+      inset 0 0 0 5px var(--gold);
   }
-  .hero-image {
+
+  .poster-bar-top, .poster-bar-bottom {
+    padding: 0.7rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    font-family: 'Italiana', serif;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: var(--gold);
+    background: rgba(0,0,0,0.4);
+    border-bottom: 1px solid var(--gold-soft);
+  }
+  .poster-bar-bottom {
+    border-bottom: none;
+    border-top: 1px solid var(--gold-soft);
+    font-size: 0.65rem;
+    color: var(--paper);
+  }
+  .poster-credit-name {
+    font-size: 0.95rem;
+    color: var(--gold);
+    letter-spacing: 0.28em;
+  }
+  .poster-credit-blob {
+    color: var(--paper-soft);
+    font-family: 'Special Elite', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+  }
+
+  .poster-image {
     display: block;
     width: 100%;
     height: auto;
-  }
-  .hero-cover-fold {
-    background: #050505;
-    color: #fbf8f3;
-    padding: 0.7rem 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: space-between;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    filter: contrast(1.05) saturate(0.95);
   }
 
-  .hero-stamp {
-    position: absolute;
-    top: -1rem;
-    right: -1.25rem;
-    width: 8rem;
-    height: 8rem;
-    border-radius: 50%;
-    background: var(--color-secondary);
-    color: #fbf8f3;
+  .poster-laurels {
+    position: relative;
+    padding: 1.5rem 1.2rem 1.3rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: rotate(11deg);
-    box-shadow:
-      0 0 0 2px #fbf8f3,
-      0 0 0 4px var(--color-secondary),
-      0.4rem 0.4rem 0.8rem rgba(0, 0, 0, 0.3);
-    z-index: 4;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
+    gap: 0.8rem;
+    color: var(--gold);
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid var(--gold-soft);
   }
-  .hero-stamp-inner {
+  .laurel { color: var(--gold); flex-shrink: 0; }
+  .poster-laurels-text {
     text-align: center;
-    line-height: 1.05;
+    font-family: 'Italiana', serif;
+    text-transform: uppercase;
+    color: var(--paper);
+    letter-spacing: 0.18em;
+    line-height: 1.3;
   }
-  .hero-stamp-line {
-    display: block;
-    font-size: 0.58rem;
-    letter-spacing: 0.22em;
-    margin: 0.18rem 0;
-    font-weight: 500;
-  }
-  .hero-stamp-big {
-    display: block;
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.45rem;
-    letter-spacing: 0.02em;
-    margin: 0.2rem 0;
-    font-weight: 800;
+  .laurel-line { display: block; font-size: 0.72rem; }
+  .laurel-line-big {
+    font-size: 1.2rem;
+    color: var(--gold);
+    letter-spacing: 0.28em;
+    margin: 0.15rem 0;
   }
 
-  .hero-pull-quote {
+  /* Floating ticket */
+  .ticket {
     position: absolute;
-    left: -1rem;
-    bottom: -2rem;
-    background: #fbf8f3;
-    color: #0a0a0a;
-    padding: 1.1rem 1.4rem 1rem;
-    max-width: 14rem;
-    border: 1px solid #0a0a0a;
-    transform: rotate(-3deg);
-    box-shadow: 0.5rem 0.5rem 0 var(--color-secondary);
-    z-index: 4;
+    bottom: -34px;
+    left: -34px;
+    width: 220px;
+    background: var(--paper);
+    color: var(--ink);
+    display: flex;
+    transform: rotate(-7deg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+    font-family: 'Special Elite', monospace;
+    border: 1px solid var(--gold-soft);
+    z-index: 3;
   }
-  .hero-pull-mark {
-    font-family: 'Bodoni Moda', serif;
-    font-style: italic;
-    font-size: 2.4rem;
-    line-height: 0;
-    color: var(--color-secondary);
-    display: inline-block;
-    vertical-align: -0.15em;
-    margin-right: 0.15em;
+  :global([data-theme="light"]) .ticket {
+    background: #fdf7e7;
+    color: var(--ink);
+    box-shadow: 0 14px 26px rgba(40,28,12,0.25);
   }
-  .hero-pull-text {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.25rem;
-    line-height: 1;
-    font-weight: 500;
+  .ticket-edge {
+    width: 6px;
+    background-image: radial-gradient(circle, var(--hero-bg) 2px, transparent 2.5px);
+    background-size: 6px 8px;
+    background-repeat: repeat-y;
+    background-position: center;
   }
-  @media (max-width: 720px) {
-    .hero-pull-quote { display: none; }
-    .hero-stamp {
-      width: 6rem;
-      height: 6rem;
-      top: -0.5rem;
-      right: -0.5rem;
-    }
-    .hero-stamp-big { font-size: 1.05rem; }
-    .hero-stamp-line { font-size: 0.5rem; }
+  .ticket-body {
+    flex: 1;
+    padding: 0.7rem 0.9rem;
+    text-align: center;
   }
-
-  /* ===================== BUTTONS ===================== */
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    background: var(--color-secondary);
-    color: #fbf8f3;
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    letter-spacing: 0.22em;
+  .ticket-line { display: block; }
+  .ticket-line-tiny {
+    font-size: 0.55rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 0.95rem 1.4rem;
-    border: 2px solid var(--color-secondary);
-    text-decoration: none;
-    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    font-weight: 600;
-    box-shadow: 0.3rem 0.3rem 0 #050505;
+    color: var(--ink);
+    opacity: 0.7;
   }
-  [data-theme="light"] .btn-primary {
-    box-shadow: 0.3rem 0.3rem 0 #0a0a0a;
+  .ticket-line-big {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.18em;
+    margin: 0.2rem 0;
+    color: var(--red);
   }
-  .btn-primary:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 0.5rem 0.5rem 0 #050505;
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-  }
-  [data-theme="light"] .btn-primary:hover {
-    box-shadow: 0.5rem 0.5rem 0 #0a0a0a;
-  }
-  .btn-primary-lg { padding: 1.1rem 1.7rem; font-size: 0.82rem; }
-
-  .btn-secondary {
-    display: inline-flex;
+  .ticket-stub {
+    width: 56px;
+    border-left: 1px dashed var(--ink);
+    display: flex;
     align-items: center;
-    gap: 0.55rem;
-    background: transparent;
-    font-family: var(--font-mono);
-    font-size: 0.74rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    padding: 0.95rem 1.4rem;
-    border: 2px solid currentColor;
-    text-decoration: none;
-    transition: transform 0.18s ease, background 0.18s ease, color 0.18s ease;
-    font-weight: 600;
+    justify-content: center;
+    font-family: 'Italiana', serif;
+    font-size: 1.8rem;
+    color: var(--red);
   }
-  [data-theme="dark"] .btn-secondary { color: var(--color-text); }
-  [data-theme="light"] .btn-secondary { color: var(--color-text-dark); }
-  .btn-secondary:hover {
-    transform: translate(-2px, -2px);
-    background: var(--color-secondary);
-    color: #fbf8f3;
-    border-color: var(--color-secondary);
-  }
-  .btn-secondary-lg { padding: 1.1rem 1.7rem; font-size: 0.82rem; }
 
-  /* ===================== MARQUEE ===================== */
-  .marquee {
+  /* Round official-selection stamp */
+  .poster-stamp {
+    position: absolute;
+    top: -32px;
+    right: -32px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 2px solid var(--red);
+    background: rgba(255, 250, 230, 0.92);
+    color: var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(15deg);
+    z-index: 3;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+    opacity: 0.92;
+  }
+  :global([data-theme="light"]) .poster-stamp {
+    background: rgba(255, 244, 220, 0.98);
+    box-shadow: 0 10px 18px rgba(80,40,20,0.18);
+  }
+  .stamp-ring {
+    position: absolute;
+    inset: 4px;
+    border-radius: 50%;
+    border: 1px solid var(--red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
-    background: var(--color-secondary);
-    color: #fbf8f3;
-    border-top: 1px solid #050505;
-    border-bottom: 1px solid #050505;
-    padding: 0.9rem 0;
-    position: relative;
+  }
+  .stamp-ring span {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-family: 'Italiana', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.32em;
+    color: var(--red);
+    text-transform: uppercase;
+    padding-top: 4px;
+    /* Bend text around top of stamp visually via wide letter-spacing */
+  }
+  .stamp-center {
+    text-align: center;
+    z-index: 1;
+  }
+  .stamp-num {
+    display: block;
+    font-family: 'Italiana', serif;
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--red);
+  }
+  .stamp-sub {
+    display: block;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.55rem;
+    letter-spacing: 0.22em;
+    color: var(--red);
+  }
+
+  @media (max-width: 700px) {
+    .ticket { left: -10px; bottom: -22px; width: 170px; transform: rotate(-5deg); }
+    .poster-stamp { right: -12px; top: -18px; width: 96px; height: 96px; }
+    .stamp-num { font-size: 1.8rem; }
+  }
+
+  /* ------------------------------------------------------------
+     MARQUEE
+     ------------------------------------------------------------ */
+  .marquee {
+    background: var(--red);
+    color: var(--paper);
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    overflow: hidden;
+    padding: 0.55rem 0;
+    font-family: 'Italiana', serif;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+  }
+  :global([data-theme="light"]) .marquee {
+    background: var(--ink);
+    color: var(--paper);
   }
   .marquee-track {
     display: inline-flex;
     gap: 3rem;
     white-space: nowrap;
-    animation: marqueeScroll 50s linear infinite;
-    font-family: var(--font-heading);
-    font-size: 1.05rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-style: italic;
+    animation: marqueeScroll 60s linear infinite;
   }
-  .marquee-item {
-    display: inline-block;
+  .marquee-item::after {
+    content: '·';
+    margin-left: 3rem;
+    color: var(--gold);
   }
   @keyframes marqueeScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
   }
 
-  /* ===================== PULLQUOTE ===================== */
+  /* ------------------------------------------------------------
+     PULL QUOTE
+     ------------------------------------------------------------ */
   .pullquote-section {
-    padding: 6rem 1.5rem 5rem;
+    background: var(--hero-bg);
+    color: var(--hero-fg);
+    padding: 7rem 2rem;
+    border-bottom: 1px solid var(--border-rule);
+    position: relative;
   }
-  [data-theme="dark"] .pullquote-section {
-    background: #050505;
-    border-bottom: 1px solid #2a2521;
+  .pullquote-section::before, .pullquote-section::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 1px;
+    background: var(--gold);
   }
-  [data-theme="light"] .pullquote-section {
-    background: #fff;
-    border-bottom: 1px solid var(--color-border-light);
-  }
+  .pullquote-section::before { top: 3rem; }
+  .pullquote-section::after { bottom: 3rem; }
+
   .pullquote-inner {
-    max-width: 64rem;
+    max-width: 980px;
     margin: 0 auto;
     text-align: center;
   }
   .pullquote-tag {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-    margin-bottom: 2rem;
-    font-weight: 600;
-  }
-  .pullquote {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: clamp(1.8rem, 4.5vw, 3.6rem);
-    line-height: 1.2;
-    margin: 0 0 2rem;
-    font-weight: 500;
-    position: relative;
-    padding: 0 1rem;
-  }
-  [data-theme="dark"] .pullquote { color: var(--color-text); }
-  [data-theme="light"] .pullquote { color: var(--color-text-dark); }
-  .pullquote-mark {
-    color: var(--color-secondary);
-    font-size: 1.2em;
-    line-height: 0;
-    display: inline-block;
-    vertical-align: -0.18em;
-    margin: 0 0.1em;
-  }
-  [data-theme="dark"] .pullquote-mark { color: #ff2a8f; }
-  .pullquote-mark-close { vertical-align: -0.05em; }
-
-  .pullquote-attrib {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    margin-top: 1.5rem;
-  }
-  .pullquote-attrib-name {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    font-weight: 700;
-  }
-  [data-theme="dark"] .pullquote-attrib-name { color: var(--color-text); }
-  [data-theme="light"] .pullquote-attrib-name { color: var(--color-text-dark); }
-  .pullquote-attrib-role {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.24em;
-    text-transform: uppercase;
-  }
-  [data-theme="dark"] .pullquote-attrib-role { color: var(--color-text-muted); }
-  [data-theme="light"] .pullquote-attrib-role { color: var(--color-text-dark-muted); }
-
-  /* ===================== INSIDE THE ISSUE ===================== */
-  .issue-section {
-    padding: 6rem 1.5rem 5rem;
-    position: relative;
-  }
-  [data-theme="dark"] .issue-section {
-    background: #0a0a0a;
-  }
-  [data-theme="light"] .issue-section {
-    background: #fbf8f3;
-  }
-
-  .issue-inner {
-    max-width: 80rem;
-    margin: 0 auto;
-  }
-
-  .issue-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3.5rem 2.5rem;
-  }
-  @media (min-width: 640px) {
-    .issue-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (min-width: 1024px) {
-    .issue-grid {
-      grid-template-columns: repeat(12, 1fr);
-      gap: 4rem 2.5rem;
-    }
-    .issue-grid > .issue-card:nth-child(1) { grid-column: span 5; margin-top: 0; }
-    .issue-grid > .issue-card:nth-child(2) { grid-column: span 7; margin-top: 4rem; }
-    .issue-grid > .issue-card:nth-child(3) { grid-column: span 7; margin-top: 0; }
-    .issue-grid > .issue-card:nth-child(4) { grid-column: span 5; margin-top: 3rem; }
-  }
-
-  .issue-card {
-    transform: rotate(var(--rot, 0deg));
-    transition: transform 0.35s ease;
-  }
-  .issue-card:hover {
-    transform: rotate(0deg) translateY(-6px);
-  }
-
-  .issue-photo {
-    position: relative;
-    aspect-ratio: var(--aspect, 3/4);
-    overflow: hidden;
-    background: #fbf8f3;
-    box-shadow:
-      0 14px 28px rgba(0, 0, 0, 0.4),
-      inset 0 0 0 6px #fbf8f3;
-  }
-  [data-theme="light"] .issue-photo {
-    box-shadow:
-      0 12px 24px rgba(184, 0, 31, 0.2),
-      inset 0 0 0 6px #fff;
-  }
-  .issue-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-  .issue-tape {
-    position: absolute;
-    width: 4.5rem;
-    height: 1.2rem;
-    background: rgba(212, 0, 122, 0.55);
-    z-index: 3;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
-  }
-  .issue-tape-tl { top: -0.4rem; left: 1.5rem; transform: rotate(-7deg); }
-  .issue-tape-br { bottom: -0.4rem; right: 1.5rem; transform: rotate(8deg); }
-
-  .issue-pageno {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    background: #050505;
-    color: #fbf8f3;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    padding: 0.35rem 0.6rem;
-    z-index: 2;
-  }
-
-  .issue-meta {
-    margin-top: 1.4rem;
-    padding: 0 0.5rem;
-  }
-  .issue-section-label {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.64rem;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--color-accent);
-    font-weight: 600;
-    margin-bottom: 0.6rem;
+    color: var(--gold);
+    margin-bottom: 2rem;
   }
-  [data-theme="dark"] .issue-section-label { color: #ff5fa8; }
-
-  .issue-headline {
-    font-family: var(--font-heading);
-    font-size: clamp(1.6rem, 2.4vw, 2.1rem);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin: 0 0 0.7rem;
-    font-weight: 800;
-  }
-  [data-theme="dark"] .issue-headline { color: var(--color-text); }
-  [data-theme="light"] .issue-headline { color: var(--color-text-dark); }
-
-  .issue-deck {
-    font-family: var(--font-body);
+  .pullquote {
+    font-family: 'DM Serif Display', serif;
     font-style: italic;
-    font-size: 1.075rem;
-    line-height: 1.5;
-    margin: 0;
+    font-size: clamp(1.6rem, 3.6vw, 2.9rem);
+    line-height: 1.28;
+    margin: 0 0 2rem;
+    color: var(--hero-fg);
+    position: relative;
+    font-weight: 400;
   }
-  [data-theme="dark"] .issue-deck { color: var(--color-text-muted); }
-  [data-theme="light"] .issue-deck { color: var(--color-text-dark-muted); }
+  .pullquote-mark {
+    color: var(--red);
+    font-family: 'Italiana', serif;
+    font-size: 1.4em;
+    line-height: 0;
+    vertical-align: -0.18em;
+    padding: 0 0.15em;
+    font-style: normal;
+  }
+  .pullquote-attrib-name {
+    display: block;
+    font-family: 'Italiana', serif;
+    font-size: 1.05rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .pullquote-attrib-role {
+    display: block;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--hero-muted);
+    margin-top: 0.35rem;
+  }
 
-  /* ===================== EDITOR LETTER ===================== */
-  .editor-section {
-    padding: 6rem 1.5rem;
+  /* ------------------------------------------------------------
+     SECTION HEADERS (shared)
+     ------------------------------------------------------------ */
+  .section-header {
+    max-width: 820px;
+    margin: 0 auto 3.5rem;
+    text-align: center;
+  }
+  .section-tag {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
+  }
+  .section-title {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    line-height: 1;
+    margin: 0 0 1.2rem;
+    color: var(--hero-fg);
+    letter-spacing: -0.01em;
+  }
+  .section-title em {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    color: var(--red);
+    font-weight: 400;
+  }
+  .section-deck {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: var(--hero-muted);
+    max-width: 38em;
+    margin: 0 auto;
+    font-style: italic;
+  }
+
+  /* ------------------------------------------------------------
+     LA SELECTION (film stills grid)
+     ------------------------------------------------------------ */
+  .stills-section {
+    background: var(--hero-bg);
+    color: var(--hero-fg);
+    padding: 6rem 2rem 7rem;
+    border-bottom: 1px solid var(--border-rule);
     position: relative;
   }
-  [data-theme="dark"] .editor-section {
-    background: linear-gradient(135deg, #0d0a0d 0%, #1a0a14 50%, #2a0816 100%);
+  :global([data-theme="dark"]) .stills-section {
+    background: #08070a;
+    background-image:
+      linear-gradient(180deg, transparent 0%, rgba(200,160,74,0.04) 50%, transparent 100%);
   }
-  [data-theme="light"] .editor-section {
-    background: linear-gradient(135deg, #fff 0%, #f5e8e8 50%, #f7d4d8 100%);
+  :global([data-theme="light"]) .stills-section {
+    background: #efe4c8;
   }
 
-  .editor-grid {
-    max-width: 80rem;
+  .stills-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .stills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3.5rem 4rem;
+    align-items: start;
+  }
+  @media (max-width: 800px) {
+    .stills-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .stills-section { padding: 4rem 1.25rem 5rem; }
+  }
+
+  .still-card {
+    transform: rotate(var(--rot));
+    transition: transform 0.4s ease;
+  }
+  .still-card:hover {
+    transform: rotate(0deg) translateY(-4px);
+  }
+  .still-photo {
+    position: relative;
+    background: var(--paper);
+    padding: 14px 14px 56px;
+    box-shadow:
+      0 22px 50px rgba(0,0,0,0.45),
+      0 4px 12px rgba(0,0,0,0.3);
+    border: 1px solid var(--gold-soft);
+  }
+  :global([data-theme="light"]) .still-photo {
+    background: #fdf7e7;
+    box-shadow:
+      0 18px 38px rgba(40,28,12,0.2),
+      0 4px 10px rgba(40,28,12,0.15);
+  }
+  .still-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--aspect);
+    object-fit: cover;
+    filter: contrast(1.05) saturate(0.95) sepia(0.04);
+  }
+  .still-pageno {
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    right: 14px;
+    text-align: center;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding-top: 12px;
+  }
+  .still-tape {
+    position: absolute;
+    width: 70px;
+    height: 22px;
+    background: rgba(200, 160, 74, 0.35);
+    border: 1px solid rgba(200, 160, 74, 0.5);
+  }
+  .still-tape-tl { top: -8px; left: -10px; transform: rotate(-12deg); }
+  .still-tape-br { bottom: 36px; right: -10px; transform: rotate(8deg); }
+
+  .still-meta {
+    padding: 1.2rem 0.3rem 0;
+  }
+  .still-slug {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .still-title {
+    font-family: 'Italiana', serif;
+    font-size: 1.7rem;
+    color: var(--hero-fg);
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.02em;
+  }
+  .still-line {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--hero-muted);
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ------------------------------------------------------------
+     MOT DU REALISATEUR (director note)
+     ------------------------------------------------------------ */
+  .director-section {
+    background: var(--hero-bg);
+    color: var(--hero-fg);
+    padding: 7rem 2rem;
+    border-bottom: 1px solid var(--border-rule);
+  }
+  :global([data-theme="dark"]) .director-section {
+    background:
+      linear-gradient(180deg, rgba(200,160,74,0.03) 0%, transparent 100%),
+      var(--hero-bg);
+  }
+  :global([data-theme="light"]) .director-section {
+    background: var(--hero-bg);
+  }
+
+  .director-grid {
+    max-width: 1300px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
+    grid-template-columns: 0.85fr 1fr;
+    gap: 4rem;
     align-items: center;
   }
-  @media (min-width: 900px) {
-    .editor-grid { grid-template-columns: 1fr 1.05fr; gap: 4.5rem; }
+  @media (max-width: 900px) {
+    .director-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .director-section { padding: 4rem 1.25rem; }
   }
 
-  .editor-image {
-    position: relative;
+  .director-image {
     margin: 0;
-    background: #fbf8f3;
-    padding: 0.5rem 0.5rem 0;
-    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
+    background: var(--paper);
+    padding: 12px 12px 50px;
+    border: 1px solid var(--gold-soft);
+    box-shadow: 0 24px 50px rgba(0,0,0,0.45);
+    transform: rotate(-1.5deg);
   }
-  [data-theme="light"] .editor-image {
-    box-shadow: 0 18px 32px rgba(184, 0, 31, 0.25);
+  :global([data-theme="light"]) .director-image {
+    background: #fdf7e7;
+    box-shadow: 0 18px 36px rgba(40,28,12,0.18);
   }
-  .editor-image img {
-    width: 100%;
-    height: auto;
+  .director-image img {
     display: block;
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: contrast(1.05) saturate(0.95) sepia(0.04);
   }
-  .editor-image figcaption {
-    background: #fbf8f3;
-    color: #0a0a0a;
-    padding: 0.7rem 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
+  .director-image figcaption {
     display: flex;
     justify-content: space-between;
-    border-top: 1px solid #0a0a0a;
-    margin-top: 0.5rem;
-  }
-
-  .editor-tag {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.34em;
+    align-items: center;
+    margin-top: 0.9rem;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--color-accent);
-    font-weight: 600;
-    margin-bottom: 1.25rem;
+    color: var(--ink);
+    padding: 0 0.2rem;
   }
-  [data-theme="dark"] .editor-tag { color: #ff5fa8; }
 
-  .editor-h3 {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    line-height: 1;
-    letter-spacing: -0.015em;
-    margin: 0 0 1.5rem;
-    font-weight: 800;
+  .director-tag {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.2rem;
   }
-  [data-theme="dark"] .editor-h3 { color: var(--color-text); }
-  [data-theme="light"] .editor-h3 { color: var(--color-text-dark); }
-
-  .editor-body {
-    font-family: var(--font-body);
-    font-size: 1.18rem;
-    line-height: 1.55;
+  .director-h3 {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+    line-height: 1.05;
+    margin: 0 0 1.4rem;
+    color: var(--hero-fg);
+  }
+  .director-h3 em {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    color: var(--red);
+    font-weight: 400;
+  }
+  .director-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--hero-fg);
     margin: 0 0 1.2rem;
   }
-  [data-theme="dark"] .editor-body { color: var(--color-text); }
-  [data-theme="light"] .editor-body { color: var(--color-text-dark); }
-
-  .editor-attrib {
-    margin-top: 1.5rem;
+  .director-attrib {
     display: flex;
     align-items: center;
     gap: 1rem;
+    margin-top: 1.6rem;
   }
-  .editor-attrib-line {
-    width: 2.5rem;
+  .director-attrib-line {
+    width: 50px;
     height: 1px;
-    background: var(--color-accent);
-    flex-shrink: 0;
+    background: var(--gold);
   }
-  .editor-attrib > div {
-    display: flex;
-    flex-direction: column;
-    gap: 0.18rem;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
+  .director-attrib-name {
+    display: block;
+    font-family: 'Italiana', serif;
+    font-size: 1.05rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
+    color: var(--gold);
   }
-  .editor-attrib-name { font-weight: 700; color: var(--color-secondary); }
-  [data-theme="dark"] .editor-attrib-name { color: #ff2a8f; }
-  [data-theme="dark"] .editor-attrib-title { color: var(--color-text-muted); }
-  [data-theme="light"] .editor-attrib-title { color: var(--color-text-dark-muted); }
-
-  /* ===================== ATELIER (Features) ===================== */
-  .atelier-section {
-    padding: 6rem 1.5rem 5rem;
-  }
-  [data-theme="dark"] .atelier-section {
-    background: #0a0a0a;
-  }
-  [data-theme="light"] .atelier-section {
-    background: #fff;
+  .director-attrib-title {
+    display: block;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--hero-muted);
+    margin-top: 0.25rem;
   }
 
-  .atelier-inner {
-    max-width: 80rem;
+  /* ------------------------------------------------------------
+     LE PROGRAMME (project cards as film entries)
+     ------------------------------------------------------------ */
+  .programme-section {
+    background: var(--hero-bg);
+    color: var(--hero-fg);
+    padding: 7rem 2rem;
+    border-bottom: 1px solid var(--border-rule);
+  }
+  :global([data-theme="dark"]) .programme-section {
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(184,32,42,0.08) 0%, transparent 60%),
+      var(--hero-bg);
+  }
+
+  .programme-inner {
+    max-width: 1400px;
     margin: 0 auto;
   }
-  .atelier-grid {
+  .programme-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
   }
-  @media (min-width: 640px) {
-    .atelier-grid { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 1100px) {
+    .programme-grid { grid-template-columns: repeat(2, 1fr); }
   }
-  @media (min-width: 1024px) {
-    .atelier-grid { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 700px) {
+    .programme-grid { grid-template-columns: 1fr; }
+    .programme-section { padding: 4rem 1.25rem; }
   }
 
-  .feat-card {
+  .film-card {
     position: relative;
-    padding: 1.8rem 1.6rem;
-    border: 1px solid;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    background: var(--film);
+    border: 1px solid var(--gold-soft);
+    padding: 2rem 1.6rem;
+    color: var(--paper);
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 1rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
-  [data-theme="dark"] .feat-card {
-    background: #141414;
-    border-color: #2a2521;
+  :global([data-theme="light"]) .film-card {
+    background: #fbf5e4;
+    color: var(--ink);
+    border-color: var(--gold-soft);
   }
-  [data-theme="light"] .feat-card {
-    background: #fbf8f3;
-    border-color: var(--color-border-light);
-  }
-
-  .feat-corner {
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    border: 1.5px solid var(--color-accent);
-    pointer-events: none;
-    transition: width 0.25s ease, height 0.25s ease;
-  }
-  .feat-corner-tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
-  .feat-corner-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
-  .feat-corner-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
-  .feat-corner-br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
-
-  .feat-card:hover {
+  .film-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0.7rem 0.7rem 0 var(--color-secondary);
+    border-color: var(--red);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.4);
   }
-  .feat-card:hover .feat-corner { width: 22px; height: 22px; }
+  :global([data-theme="light"]) .film-card:hover {
+    box-shadow: 0 14px 26px rgba(40,28,12,0.15);
+  }
 
-  .feat-card-header {
+  /* film perforations (top/bottom) — like 35mm film edge */
+  .film-perfs {
+    position: absolute;
+    left: 8px;
+    right: 8px;
+    height: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: var(--font-mono);
-    font-size: 0.6rem;
-    letter-spacing: 0.28em;
+    pointer-events: none;
+  }
+  .film-perfs-top { top: 6px; }
+  .film-perfs-bot { bottom: 6px; }
+  .film-perfs span {
+    width: 8px;
+    height: 6px;
+    background: var(--hero-bg);
+    border-radius: 1px;
+  }
+  :global([data-theme="light"]) .film-perfs span {
+    background: var(--hero-bg);
+  }
+
+  .film-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 0.6rem;
+    border-bottom: 1px solid var(--gold-soft);
+    padding-bottom: 0.8rem;
+  }
+  .film-no {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.12em;
+  }
+  .film-section {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: var(--paper);
+    text-align: right;
+    max-width: 60%;
+    line-height: 1.3;
   }
-  .feat-fileno {
-    background: var(--color-secondary);
-    color: #fbf8f3;
-    padding: 0.25rem 0.55rem;
-    font-weight: 700;
-  }
-  .feat-section {
-    color: var(--color-accent);
-    font-weight: 600;
-  }
-  [data-theme="dark"] .feat-section { color: #ff5fa8; }
+  :global([data-theme="light"]) .film-section { color: var(--ink); }
 
-  .feat-title {
-    font-family: var(--font-heading);
-    font-size: 1.95rem;
-    line-height: 1;
-    letter-spacing: -0.01em;
+  .film-title {
+    font-family: 'Italiana', serif;
+    font-size: 1.85rem;
+    line-height: 1.05;
     margin: 0;
-    font-weight: 800;
+    color: var(--paper);
+    letter-spacing: 0.01em;
   }
-  [data-theme="dark"] .feat-title { color: var(--color-text); }
-  [data-theme="light"] .feat-title { color: var(--color-text-dark); }
+  :global([data-theme="light"]) .film-title { color: var(--ink); }
 
-  .feat-body {
-    font-family: var(--font-body);
-    font-size: 1.05rem;
-    line-height: 1.55;
+  .film-body {
+    font-family: 'EB Garamond', serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--paper);
+    opacity: 0.85;
     margin: 0;
-    flex: 1;
+    flex-grow: 1;
   }
-  [data-theme="dark"] .feat-body { color: var(--color-text-muted); }
-  [data-theme="light"] .feat-body { color: var(--color-text-dark-muted); }
+  :global([data-theme="light"]) .film-body { color: var(--ink); opacity: 0.75; }
 
-  .feat-card-footer {
+  .film-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 0.4rem;
-    padding-top: 0.85rem;
-    border-top: 1px dashed;
+    gap: 0.5rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--gold-soft);
   }
-  [data-theme="dark"] .feat-card-footer { border-color: #2a2521; }
-  [data-theme="light"] .feat-card-footer { border-color: var(--color-border-light); }
-  .feat-badge {
-    font-family: var(--font-mono);
-    font-size: 0.58rem;
-    letter-spacing: 0.24em;
+  .film-badge {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    padding: 0.28rem 0.55rem;
-    border: 1px solid currentColor;
+    color: var(--gold);
   }
-  [data-theme="dark"] .feat-badge { color: var(--color-text-muted); }
-  [data-theme="light"] .feat-badge { color: var(--color-text-dark-muted); }
+  .film-runtime {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper);
+    opacity: 0.6;
+  }
+  :global([data-theme="light"]) .film-runtime { color: var(--ink); opacity: 0.6; }
 
-  .feat-cta {
+  .film-card-footer {
+    padding-bottom: 0.6rem;
+  }
+  .film-cta {
+    font-family: 'Italiana', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--red);
+    text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--color-secondary);
-    text-decoration: none;
-    font-weight: 600;
-    transition: gap 0.18s ease, color 0.18s ease;
+    transition: color 0.2s ease, gap 0.2s ease;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
   }
-  [data-theme="dark"] .feat-cta { color: #ff5fa8; }
-  .feat-cta:hover { gap: 0.7rem; color: var(--color-accent); }
-  .feat-cta-disabled {
+  .film-cta:hover {
+    color: var(--gold);
+    gap: 0.7rem;
+  }
+  .film-cta-disabled {
+    color: var(--paper);
+    opacity: 0.45;
     cursor: default;
+    border-bottom-color: transparent;
   }
-  [data-theme="dark"] .feat-cta-disabled { color: var(--color-text-muted); }
-  [data-theme="light"] .feat-cta-disabled { color: var(--color-text-dark-muted); }
-  .feat-cta-disabled:hover { gap: 0.4rem; color: inherit; }
+  :global([data-theme="light"]) .film-cta-disabled { color: var(--ink); }
 
-  /* ===================== EDITOR'S NOTES (Q&A) ===================== */
-  .notes-section {
-    padding: 6rem 1.5rem 5rem;
+  /* ------------------------------------------------------------
+     L'ENTRETIEN (interview Q&A)
+     ------------------------------------------------------------ */
+  .entretien-section {
+    background: var(--hero-bg);
+    color: var(--hero-fg);
+    padding: 7rem 2rem;
+    border-bottom: 1px solid var(--border-rule);
   }
-  [data-theme="dark"] .notes-section { background: #050505; }
-  [data-theme="light"] .notes-section { background: #fbf8f3; }
-
-  .notes-header { text-align: left; max-width: 80rem; padding: 0; margin-bottom: 3rem; }
-  .notes-header .section-title {
-    font-size: clamp(2.2rem, 5vw, 4rem);
+  :global([data-theme="dark"]) .entretien-section {
+    background: #07060a;
+  }
+  :global([data-theme="light"]) .entretien-section {
+    background: #efe4c8;
   }
 
-  .notes-inner { max-width: 80rem; margin: 0 auto; }
-  .notes-list {
+  .entretien-inner {
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .entretien-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .entretien-item {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: 80px 1fr;
+    gap: 1.6rem;
+    padding: 2.2rem 0;
+    border-top: 1px solid var(--border-rule);
   }
-  @media (min-width: 768px) {
-    .notes-list { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 2.5rem; }
+  .entretien-item:last-child {
+    border-bottom: 1px solid var(--border-rule);
   }
-
-  .note-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.25rem;
-    padding: 1.5rem 1.5rem 1.5rem 0;
-    border-top: 1px solid;
-    transition: background 0.2s ease;
+  @media (max-width: 700px) {
+    .entretien-item { grid-template-columns: 1fr; gap: 0.8rem; padding: 1.6rem 0; }
   }
-  [data-theme="dark"] .note-item { border-color: #2a2521; }
-  [data-theme="light"] .note-item { border-color: var(--color-border-light); }
-
-  .note-num {
-    font-family: var(--font-heading);
+  .entretien-num {
+    font-family: 'Italiana', serif;
+    font-size: 2.4rem;
+    color: var(--gold);
+    line-height: 1;
+    letter-spacing: 0.08em;
+  }
+  .entretien-q {
+    font-family: 'DM Serif Display', serif;
     font-style: italic;
-    font-size: 2.6rem;
-    line-height: 0.9;
-    color: var(--color-secondary);
-    font-weight: 800;
+    font-size: 1.3rem;
+    line-height: 1.35;
+    color: var(--hero-fg);
+    margin-bottom: 0.8rem;
   }
-  [data-theme="dark"] .note-num { color: #ff2a8f; }
+  .entretien-a {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--hero-muted);
+  }
 
-  .note-q {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
-    line-height: 1.15;
-    letter-spacing: -0.005em;
-    margin-bottom: 0.6rem;
-    font-weight: 700;
-  }
-  [data-theme="dark"] .note-q { color: var(--color-text); }
-  [data-theme="light"] .note-q { color: var(--color-text-dark); }
-  .note-a {
-    font-family: var(--font-body);
-    font-size: 1.075rem;
-    line-height: 1.55;
-  }
-  [data-theme="dark"] .note-a { color: var(--color-text-muted); }
-  [data-theme="light"] .note-a { color: var(--color-text-dark-muted); }
-
-  /* ===================== FINAL CTA ===================== */
-  .final-cta {
-    padding: 6rem 1.5rem;
-    background: var(--color-secondary);
-    color: #fbf8f3;
+  /* ------------------------------------------------------------
+     SEANCE DE CLOTURE (closing CTA)
+     ------------------------------------------------------------ */
+  .cloture-section {
+    background: var(--red);
+    color: var(--paper);
+    padding: 7rem 2rem;
+    text-align: center;
     position: relative;
     overflow: hidden;
   }
-  .final-cta-grain {
+  .cloture-section::before {
+    content: '';
     position: absolute;
     inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.85 0 0 0 0 0.7 0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.14;
+    mix-blend-mode: overlay;
     pointer-events: none;
-    background-image:
-      repeating-linear-gradient(45deg, transparent 0, transparent 2px, rgba(251, 248, 243, 0.05) 2px, rgba(251, 248, 243, 0.05) 3px);
   }
-  .final-cta-inner {
-    max-width: 60rem;
-    margin: 0 auto;
+  .cloture-inner {
     position: relative;
-    z-index: 2;
+    max-width: 880px;
+    margin: 0 auto;
   }
-  .final-cta-content {
-    text-align: center;
-    border: 2px solid #fbf8f3;
-    padding: 3rem 1.5rem;
-    background: rgba(10, 10, 10, 0.4);
-    box-shadow: 0.7rem 0.7rem 0 #050505;
+  .cloture-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    color: var(--paper);
+    font-family: 'Special Elite', monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
   }
-  @media (min-width: 640px) {
-    .final-cta-content { padding: 4rem 3rem; }
+  .cloture-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--paper);
   }
-  .final-cta-tag {
-    color: #fbf8f3;
+  .cloture-title {
+    font-family: 'Italiana', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 0.98;
+    margin: 0 0 1.4rem;
+    color: var(--paper);
   }
-  .final-cta-title {
-    font-family: var(--font-heading);
-    font-size: clamp(2.5rem, 6.5vw, 5rem);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    margin: 0 0 1.5rem;
-    color: #fbf8f3;
-    font-weight: 800;
-  }
-  .final-cta-accent {
+  .cloture-em {
+    font-family: 'DM Serif Display', serif;
     font-style: italic;
     font-weight: 400;
-    color: #fbf8f3;
-    text-shadow: 0.2rem 0.2rem 0 #050505;
+    color: var(--gold);
   }
-  .final-cta-body {
-    font-family: var(--font-body);
-    font-size: 1.18rem;
-    line-height: 1.55;
-    max-width: 38rem;
-    margin: 0 auto 2.2rem;
-    color: rgba(251, 248, 243, 0.94);
+  .cloture-deck {
+    font-family: 'EB Garamond', serif;
     font-style: italic;
+    font-size: 1.18rem;
+    line-height: 1.65;
+    color: var(--paper);
+    opacity: 0.92;
+    max-width: 42em;
+    margin: 0 auto 2.4rem;
   }
-  .final-cta-buttons {
+  .cloture-cta-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.85rem;
+    gap: 1rem;
     justify-content: center;
   }
-  .final-cta .btn-primary {
-    background: #fbf8f3;
-    color: var(--color-secondary);
-    border-color: #fbf8f3;
-    box-shadow: 0.3rem 0.3rem 0 #050505;
+  .cloture-section .btn-primary {
+    background: var(--paper);
+    color: var(--red);
+    border-color: var(--paper);
   }
-  .final-cta .btn-primary:hover {
-    background: #fff;
-    color: var(--color-secondary);
-    border-color: #fff;
-    box-shadow: 0.5rem 0.5rem 0 #050505;
+  .cloture-section .btn-primary:hover {
+    background: var(--ink);
+    color: var(--gold);
+    border-color: var(--gold);
   }
-  .final-cta .btn-secondary {
-    color: #fbf8f3;
-    border-color: #fbf8f3;
+  .cloture-section .btn-secondary {
+    color: var(--paper);
+    border-color: var(--paper);
   }
-  .final-cta .btn-secondary:hover {
-    background: #fbf8f3;
-    color: var(--color-secondary);
-    border-color: #fbf8f3;
+  .cloture-section .btn-secondary:hover {
+    background: var(--paper);
+    color: var(--red);
+  }
+
+  /* ------------------------------------------------------------
+     GENERIQUE (closing credits)
+     ------------------------------------------------------------ */
+  .credits-section {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--gold-soft);
+  }
+  :global([data-theme="light"]) .credits-section {
+    background: #15110d;
+    color: var(--paper);
+  }
+  .credits-inner {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .credits-tag {
+    font-family: 'Italiana', serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 2.5rem;
+  }
+  .credits-roll {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .credits-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .credits-role {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--paper-soft);
+    opacity: 0.7;
+  }
+  :global([data-theme="light"]) .credits-role { color: #c8b48a; }
+  .credits-name {
+    font-family: 'Italiana', serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--paper);
   }
 </style>
