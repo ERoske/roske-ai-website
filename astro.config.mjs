@@ -15,5 +15,20 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeClaudeCommentary]
   },
-  integrations: [mdx(), sitemap()]
+  integrations: [
+    mdx(),
+    sitemap({
+      // Static HTML pages under public/ aren't Astro routes, so the sitemap
+      // integration doesn't pick them up automatically. Include them here
+      // so Google can index them.
+      customPages: [
+        'https://roske.ai/agentcube.html',
+        'https://roske.ai/agentcube-partners.html',
+        'https://roske.ai/agentcube-pilot.html',
+        'https://roske.ai/agentcube-roi.html',
+        'https://roske.ai/agentcube-security.html',
+        'https://roske.ai/agentcube-technical.html',
+      ],
+    }),
+  ]
 });
