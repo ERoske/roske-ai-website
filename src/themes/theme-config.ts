@@ -77,61 +77,64 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "Roske à Cannes",
-  week: "2026-05-11",
-  inspiration: "The 79th Cannes Film Festival opens May 12 on the Croisette. Roske.ai is rebuilt this week as the official press kit for an unauthorized parody competition entry from a director nobody has ever heard of, in which Edward Roske is the auteur, the leading man, the unpaid intern, and (somehow) the gentleman holding the Palme d'Or above his head with tears in his eyes.",
-  tagline: "Une Sélection Officielle. Officieusement.",
+  name: "Yosemite: Roske Ranch",
+  week: "2026-05-16",
+  inspiration: "The Dutton Ranch — the Beth-and-Rip Yellowstone spinoff — premiered on Paramount+ on Friday, May 15. So roske.ai becomes a working ranch: 'Yosemite: Roske Ranch', a parody of the whole franchise where the cattle are AI companies and the only ranch hand is an AI agent. The conceit is barely a stretch. Edward grew up riding horses and going to rodeos in the Pacific Northwest, later owned a North Texas ranch that raised drum horses, rode a quarterhorse named Thomas Jefferson, founded interRel out of Arlington, Texas, and earned his Master of Data Science at SMU in Dallas. The Texas is real. The longhorns are not.",
+  tagline: "Running the spread since 1997. The cattle are AI companies.",
 
   colors: {
-    primary: "#0a0907",         // ink black
-    secondary: "#c8a04a",        // worn brass / Palme d'Or
-    accent: "#b8202a",            // Cannes red / programme red
-    accentHover: "#e23a45",
-    background: "#0a0907",
-    backgroundLight: "#f4ecdc",  // aged paper / programme cream
-    surface: "#15110d",
-    surfaceLight: "#fbf5e4",
-    text: "#f4ecdc",
-    textMuted: "#b5a78d",
-    textDark: "#15110d",
-    textDarkMuted: "#5a4a36",
-    border: "#3a2f24",
-    borderLight: "#d8c69e",
-    gradient: "linear-gradient(180deg, #0a0907 0%, #161009 50%, #261810 100%)",
+    // Western ranch at golden hour. Earth tones: oxblood brand-iron red,
+    // weathered denim blue, dusty sage, bone parchment, amber dusk.
+    primary: "#231a10",          // dark walnut
+    secondary: "#4a6678",        // weathered denim blue (the fedora's cousin)
+    accent: "#9a3324",           // oxblood / branding-iron red
+    accentHover: "#b8412f",
+    background: "#17120d",       // ranch night
+    backgroundLight: "#ebe1cd",  // sun-bleached bone / canvas
+    surface: "#211a12",          // lifted dark brown (cards, dark)
+    surfaceLight: "#f5eedd",     // light parchment (cards, light)
+    text: "#ece3d1",             // warm bone
+    textMuted: "#a08e76",        // dusty taupe
+    textDark: "#2a2014",         // dark walnut text
+    textDarkMuted: "#6a5942",    // muted saddle brown
+    border: "#3a2d20",           // dark fence-wood
+    borderLight: "#cebf9e",      // weathered light wood
+    gradient: "linear-gradient(180deg, #17120d 0%, #3a2412 55%, #6b3a18 100%)",
   },
 
   fonts: {
-    // Italiana: high-contrast French display, perfect for festival posters.
-    // DM Serif Display: oversized editorial serif for headlines.
-    // EB Garamond: classic body serif. Special Elite: typewriter mono for credits.
-    heading: "'Italiana', 'DM Serif Display', 'Didot', serif",
-    body: "'EB Garamond', 'Garamond', Georgia, serif",
+    // Alfa Slab One: fat wood-type slab, the branding-iron / ranch-signage display.
+    // Zilla Slab: characterful slab serif with italics, for decked headlines.
+    // Spectral: warm editorial serif with real italics, for body and asides.
+    // Special Elite: typewriter mono, for ledger lines, lot numbers, brand tags.
+    heading: "'Alfa Slab One', 'Rockwell', Georgia, serif",
+    body: "'Spectral', Georgia, 'Times New Roman', serif",
     mono: "'Special Elite', 'Courier Prime', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Italiana&family=DM+Serif+Display:ital@0;1&family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Special+Elite&family=Inter:wght@400;500;600&display=swap",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Special+Elite&display=swap",
   },
 
   layout: {
-    heroStyle: "editorial",
+    heroStyle: "split",
     navStyle: "fixed",
-    cardStyle: "minimal",
-    sectionStyle: "magazine",
-    footerStyle: "minimal",
+    cardStyle: "outlined",
+    sectionStyle: "alternating",
+    footerStyle: "detailed",
   },
 
   animations: {
     entrance: "fade-up",
     hover: "lift",
-    background: "noise",
+    background: "none",
     pageTransition: "fade",
   },
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Une selection officielle (mais pas vraiment). On the Croisette this week, in spirit, in spreadsheets, and in an unwisely white dinner jacket.",
-    description: "The 79th Cannes Film Festival opens this week, so roske.ai is rebuilt as the official press kit for a film no jury has ever screened: 'Roske', a French-language autobiographical fever dream in which Edward plays the director, the leading man, the sound mixer, and (in one bewildering scene) the catering. The Palme d'Or in the hero image is a rental. Edward is paying for it in installments. (The fedora, of course, is his.)",
-    heroImage: "hero-2026-05-11.png",
-    imageAlt: "Cannes Film Festival 2026 press photo: Edward Roske in a black tuxedo and his signature blue fedora, holding a Palme d'Or trophy on the red carpet outside the Palais des Festivals, paparazzi flashbulbs bursting around him at golden hour.",
-    ctaText: "Voir la Selection",
+    subtitle: "A working ranch where the livestock are AI companies and the only hand on the payroll is an AI agent. The boss still closes the books by sundown.",
+    description: "The newest show in the Yellowstone universe premiered last night, so roske.ai is a working ranch this week. This is not a stretch I reached for: I grew up riding horses and going to rodeos in the Pacific Northwest, and I later owned a North Texas ranch that raised drum horses. The cattle, these days, are AI companies. (The fedora stays. It was never a cowboy hat, and it is not starting now.)",
+    heroImage: "hero-2026-05-16.png",
+    imageAlt: "Edward Roske as a Texas rancher at golden hour, leaning on a weathered cedar fence rail in his signature blue fedora, a working ranch and longhorn cattle behind him under a wide Texas sky.",
+    ctaText: "Tour the Spread",
     ctaLink: "#current-work",
   },
 };

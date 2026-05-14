@@ -5,150 +5,175 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// "La Selection Officielle" — five scene images, treated as a film-still spread.
-const filmStills = [
+// The line Edward is delivering to the horse in the hero photograph.
+const heroQuote = "An AI agent isn't going to replace you. A horse using an AI agent is going to replace you.";
+
+// "The Spread" — four ranch photographs, treated as framed film stills.
+const ranchStills = [
   {
-    src: '/images/cannes/edward-director-chair.png',
-    sceneNo: '23',
-    slug: 'INT. PLATEAU 4. JOUR.',
-    title: 'Le Realisateur',
-    line: "Take 79. The director clicks the clapperboard a second too early, then a second too late, then claims it was on purpose.",
+    src: '/images/roske-ranch/edward-branding-iron.png',
+    lot: 'No. 17',
+    slug: 'EXT. THE BRANDING FIRE. DUSK.',
+    title: 'Registering the Brand',
+    line: "He holds the iron up to the light and reads it like a quarterly report. It is, in fairness, both.",
     aspect: '4/3',
-    rotate: -1.2,
+    rotate: -1.4,
   },
   {
-    src: '/images/cannes/edward-palais-steps.png',
-    sceneNo: '41',
-    slug: 'EXT. PALAIS DES FESTIVALS. CRÉPUSCULE.',
-    title: "Le Tapis Rouge",
-    line: "He bows. Nobody is here yet. Two security guards exchange a slow, professional glance.",
-    aspect: '3/4',
-    rotate: 1.4,
-  },
-  {
-    src: '/images/cannes/edward-yacht-party.png',
-    sceneNo: '57',
-    slug: 'EXT. YACHT. NUIT.',
-    title: "L'Apres-Premiere",
-    line: "The financiers are smiling. The producer is on his fourth glass. Everyone agrees the third act is fine. It is not fine.",
+    src: '/images/roske-ranch/edward-ranch-office.png',
+    lot: 'No. 23',
+    slug: 'INT. THE RANCH HOUSE. NIGHT.',
+    title: 'Closing the Books',
+    line: "Spurs on the desk, ledger open, laptop running. The job changed less than the wardrobe suggests.",
     aspect: '4/3',
-    rotate: -0.6,
+    rotate: 1.2,
   },
   {
-    src: '/images/cannes/edward-press-conference.png',
-    sceneNo: '63',
-    slug: 'INT. SALLE DE PRESSE. JOUR.',
-    title: "La Conference de Presse",
-    line: "A journalist asks a question in French. The headphones are on top of the hat. He answers anyway. The press loves it.",
+    src: '/images/roske-ranch/edward-drum-horse.png',
+    lot: 'No. 31',
+    slug: 'EXT. THE STABLE YARD. GOLDEN HOUR.',
+    title: 'A Proper Drum Horse',
+    line: "We raised these in North Texas. Enormous, gentle, and entirely unbothered by how small they make a person feel.",
     aspect: '3/4',
-    rotate: 0.8,
+    rotate: 0.9,
+  },
+  {
+    src: '/images/roske-ranch/edward-on-horseback.png',
+    lot: 'No. 08',
+    slug: 'EXT. THE NORTH PASTURE. SUNSET.',
+    title: 'Riding the Line',
+    line: "A man who genuinely knows how to ride, holding the reins like he is aware of the camera. Both things are true.",
+    aspect: '3/4',
+    rotate: -0.7,
   },
 ];
 
-// Closing portrait used in the "La Cloture" section
-const closingStill = {
-  src: '/images/cannes/edward-palme-victory.png',
-  alt: "Edward Roske mock-emotional, hoisting a Palme d'Or trophy over his head at a Cannes photocall, eyes closed, blue fedora still firmly in place.",
+// Portrait used in "The Rancher's Note" section.
+const noteImage = {
+  src: '/images/roske-ranch/edward-porch-sunset.png',
+  alt: "Edward Roske on the porch of a Texas ranch house at sunset, coffee in hand, blue fedora on, surveying the pasture.",
 };
 
-// "Le Programme" — six festival entries (the recurring projects, restyled).
-const programme = [
+// "The Ledger" — six head of stock (the recurring projects, restyled as a livestock register).
+const ledger = [
   {
-    filmNo: 'No. 01',
-    section: 'EN COMPETITION',
+    lot: 'LOT 001',
+    brand: 'PRIME STOCK · MCP',
     title: 'AgentCube',
-    body: "The unified engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus.AI. Already shipping for Essbase and Planning. Consolidations in beta.",
+    body: "The engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus. Essbase and Planning are shipping. Consolidations is in beta.",
+    badge: 'ESSBASE · PLANNING · CLOSE',
+    head: 'Best in the herd',
     href: '/agentcube.html',
     external: false,
-    cta: 'Lire le synopsis',
-    badge: 'LONG METRAGE · MCP',
-    runtime: '∞ min',
+    cta: 'Read the brand book',
   },
   {
-    filmNo: 'No. 02',
-    section: 'HORS COMPETITION',
+    lot: 'LOT 002',
+    brand: 'THE BIG DRIVE',
     title: 'Caribbean AI Summit',
-    body: "Co-chairing the largest AI conference Puerto Rico has ever seen. Speakers and attendees from around the globe. Submit a talk, sponsor a track, or grab a seat before the island fills up.",
-    href: 'https://www.caribbeansummit.ai/',
+    body: "Co-chairing the largest AI conference Puerto Rico has ever hosted, October 9-10 in San Juan. I am out rounding up speakers and sponsors from across the AI world. If you build, fund, or run AI, ride in.",
+    badge: '9-10 OCT 2026 · SAN JUAN',
+    head: 'Open range',
+    href: 'https://www.caribbeansummit.ai/en/speakers/submit',
     external: true,
-    cta: 'Acheter un billet',
-    badge: '9-10 OCTOBRE · SAN JUAN',
-    runtime: '48 hr',
+    cta: 'Send a speaker up',
   },
   {
-    filmNo: 'No. 03',
-    section: 'UN CERTAIN REGARD',
-    title: 'Caprus AI',
-    body: "Investor and contributor at Caprus, an AI Software & Services firm empowering finance teams with AI solutions for smarter, faster, more strategic financial operations.",
+    lot: 'LOT 003',
+    brand: 'REGISTERED PARTNER',
+    title: 'Caprus',
+    body: "Investor and contributor at Caprus, an AI software and services outfit that gives finance teams faster, smarter, more strategic operations. The working herd behind the MCP servers.",
+    badge: 'AI · FINANCE',
+    head: 'Working herd',
     href: 'https://caprus.ai',
     external: true,
-    cta: 'Voir la maison',
-    badge: 'AI · FINANCE',
-    runtime: '24/7',
+    cta: 'Visit the outfit',
   },
   {
-    filmNo: 'No. 04',
-    section: 'SEANCE SPECIALE',
-    title: 'AI Dungeon Master',
-    body: "Building a tool that helps Dungeon Masters run better D&D campaigns using AI. Because if you're going to have an artificial intelligence at your table, it should at least help with initiative tracking.",
+    lot: 'LOT 004',
+    brand: 'NIGHT WORK',
+    title: "AI Dungeon Master's Screen",
+    body: "An AI-driven DM's screen for running better D&D 5e campaigns. Initiative, lore, and improv support for the person behind the screen. If there is going to be an AI at the table, it can earn its seat.",
+    badge: 'D&D · 5E · EBERRON',
+    head: 'Still being broke in',
     href: null,
     external: false,
-    cta: 'En post-production',
-    badge: 'D&D · AI',
-    runtime: '4 hr',
+    cta: 'In the round pen',
   },
   {
-    filmNo: 'No. 05',
-    section: 'QUINZAINE DES REALISATEURS',
+    lot: 'LOT 005',
+    brand: 'THE COMMUNITY PEN',
     title: 'Puerto Rico AI Community',
-    body: "President of the Puerto Rico AI Community. Over 850 attendees across our events. We meet every other month to explore what AI means for the island and beyond.",
+    body: "President of the Puerto Rico AI Community. Over 850 people across our events. We meet every other month to work out what AI means for the island and everyone watching it.",
+    badge: '850+ · EVERY 2 MONTHS',
+    head: 'Growing herd',
     href: 'https://praicommunity.org/',
     external: true,
-    cta: 'Reserver une place',
-    badge: 'TOUS LES 2 MOIS',
-    runtime: '3 hr',
+    cta: 'Join the roundup',
   },
   {
-    filmNo: 'No. 06',
-    section: 'DOCUMENTAIRE',
-    title: 'Everest Base Camp · Cleared',
-    body: "Hiked to Everest Base Camp in April with Dawn after acclimating in Santa Fe. Ten days, twelve thousand vertical feet, one fedora that survived the entire Khumbu Valley. The next summit is undecided.",
+    lot: 'LOT 006',
+    brand: 'TRAIL LOGGED',
+    title: 'Everest Base Camp',
+    body: "Cleared in April. Almost two weeks trekking at altitude, a high point of 18,570 feet at Kala Pattar, and a nightly reminder that teahouses do not heat the rooms. The altitude was hard. The cold was worse.",
+    badge: 'NEPAL · APRIL 2026',
+    head: 'Cleared',
     href: '/blog',
     external: false,
-    cta: 'Lire le journal',
-    badge: 'NEPAL · AVRIL 2026',
-    runtime: '10 jours',
+    cta: 'Read the trail log',
   },
 ];
 
-// "L'Entretien" — Q&A formatted as a French film magazine interview.
-const interview = [
+// "Fresh Off The Ranch" — this week's new stock, straight from the weekly questionnaire.
+const freshStock = [
   {
-    q: "On having directed, written, and starred in the same film.",
-    a: "Short answer: yes. Long answer: also yes, but it was unintentional, and at some point during principal photography I also started doing my own catering. The intern is, somehow, also me. (Edward is the only credit on the call sheet. The call sheet is one page long.)",
+    tag: 'NEW STOCK · 01',
+    title: 'Only Recipes',
+    kind: 'Chrome extension. Free.',
+    body: "My first Chrome extension. When it sees you are on a recipe page, it strips away everything that is not the recipe. No life story, no fourteen ads, no scroll. Ridiculously fast, genuinely useful.",
+    cta: 'Get it from the Chrome store',
+    href: 'https://chromewebstore.google.com/detail/only-recipes/jddinhkkkjbplpoefcilhdhaenphnjep',
+    external: true,
   },
   {
-    q: "On the Palme d'Or in the hero image.",
-    a: "It is a rental. Specifically, it is a prop that arrived in a wooden crate marked 'NE PAS OUVRIR · NE PAS POLIR' and I opened it and polished it anyway. The real one is in a vault in Paris guarded by people who would not return my emails. (I asked.)",
-  },
-  {
-    q: "On the white dinner jacket.",
-    a: "Strongly inadvisable on a yacht. Strongly inadvisable in a press tent. Strongly inadvisable anywhere within fifty feet of red wine, marinara, or any sauce whatsoever. I wore it anyway. The dry-cleaner in Mougins is now my closest friend in France.",
-  },
-  {
-    q: "On the fedora at a black-tie event.",
-    a: "The fedora is non-negotiable. I have spoken in fifty countries in this fedora. I summited a Himalayan pass in this fedora. The dress code at the Palais says 'noeud papillon obligatoire' and says nothing whatsoever about hats. I'll allow it.",
+    tag: 'NEW STOCK · 02',
+    title: 'The Home Library Project',
+    kind: 'In beta. Quiet for now.',
+    body: "A new app and site that digitizes a home library: books, board games, music, media, basically anything on your shelves, all categorized. A full reveal comes after beta. There will be a free library tier. Want an early look? Send an email.",
+    cta: 'Email for early access',
+    href: 'mailto:Edward@Roske.AI',
+    external: false,
   },
 ];
 
-// Festival marquee phrases
+// Ledger ticker phrases.
 const marqueeItems = [
-  "★ 79e FESTIVAL · SELECTION OFFICIELLE",
-  "ROSKE · UN FILM DE EDWARD ROSKE",
-  "★ AVEC EDWARD ROSKE",
-  "AGENTCUBE · MAINTENANT EN SALLES",
-  "★ CARIBBEAN AI SUMMIT · 9-10 OCTOBRE",
-  "LE FEDORA EST TOUJOURS BLEU",
+  "YOSEMITE: ROSKE RANCH",
+  "EST. 1997",
+  "SIX HEAD OF AI COMPANIES",
+  "ONE FEDORA, NEVER A STETSON",
+  "THE BRAND IS AN R",
+  "BOOKS CLOSED BY SUNDOWN",
+  "NORTH TEXAS, SPIRITUALLY",
+  "★ ASKING GOOD QUESTIONS",
+];
+
+// The tally (preserved stats, restyled).
+const tally = [
+  { value: '80+', label: 'Countries Crossed' },
+  { value: '50+', label: 'Speaking Stages' },
+  { value: '15', label: 'Books Branded' },
+  { value: '25+', label: 'Years On The Spread' },
+];
+
+// Brand registry (closing credits).
+const brandRegistry = [
+  { role: 'REGISTERED BRAND', name: 'THE CIRCLE R' },
+  { role: 'THE RANCHER', name: 'EDWARD ROSKE' },
+  { role: 'RANCH HAND', name: 'ONE (1) AI AGENT, UNPAID' },
+  { role: 'LIVESTOCK', name: 'SIX HEAD, ALL ARTIFICIAL' },
+  { role: 'HEADGEAR', name: 'BLUE FEDORA · PERSONAL PROPERTY · NOT A STETSON' },
+  { role: 'WITH THANKS', name: 'DAWN ROSKE · MYCROFT · ELIOT · THE PEOPLE OF PUERTO RICO' },
 ];
 ---
 
@@ -156,143 +181,98 @@ const marqueeItems = [
   <WeeklyAnimation />
 
   <!-- ============================================
-       FESTIVAL MASTHEAD — fake Cannes header strip
+       BRAND BAR — ranch ledger masthead
        ============================================ -->
-  <div class="festival-bar">
-    <div class="festival-bar-inner">
-      <span class="fb-laurel" aria-hidden="true">❦</span>
-      <span class="fb-meta">79<sup>e</sup> FESTIVAL · SELECTION OFFICIELLE</span>
-      <span class="fb-meta fb-meta-center">12 – 23 MAI · MMXXVI · CANNES</span>
-      <span class="fb-meta fb-meta-end">DOSSIER DE PRESSE · No. 79</span>
-      <span class="fb-laurel" aria-hidden="true">❦</span>
+  <div class="brand-bar">
+    <div class="brand-bar-inner">
+      <span class="bb-mark" aria-hidden="true"><span class="brand-r">R</span></span>
+      <span class="bb-meta">YOSEMITE: ROSKE RANCH</span>
+      <span class="bb-meta bb-meta-center">A YELLOWSTONE-UNIVERSE PARODY · UNAUTHORIZED · UNFENCED</span>
+      <span class="bb-meta bb-meta-end">RANCH LEDGER · MMXXVI</span>
+      <span class="bb-mark" aria-hidden="true"><span class="brand-r">R</span></span>
     </div>
   </div>
 
   <!-- ============================================
-       HERO — French cinema poster
+       HERO — the rancher and the horse
        ============================================ -->
   <section class="hero-section">
-    <div class="hero-grain" aria-hidden="true"></div>
+    <div class="hero-dust" aria-hidden="true"></div>
     <div class="hero-grid">
 
-      <!-- Left: poster typography -->
+      <!-- Left: the title and the line he is delivering -->
       <div class="hero-text">
-
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-rule"></span>
-          <span class="hero-eyebrow-text">UN FILM DE EDWARD ROSKE</span>
+          <span class="hero-eyebrow-text">Premiered Friday on the back forty</span>
         </div>
 
-        <h1 class="hero-title" aria-label="Roske à Cannes">
-          <span class="hero-title-line hero-title-tiny">presente</span>
-          <span class="hero-title-line hero-title-big">ROSKE</span>
-          <span class="hero-title-line hero-title-script"><em>à&nbsp;Cannes</em></span>
+        <h1 class="hero-title" aria-label="Yosemite: Roske Ranch">
+          <span class="hero-title-small">Yosemite:</span>
+          <span class="hero-title-big">Roske Ranch</span>
         </h1>
 
-        <p class="hero-deck">{theme.hero.subtitle}</p>
-
-        <!-- Poster billing block — vertically tight, all caps, narrow -->
-        <div class="hero-billing" aria-hidden="true">
-          <div class="bill-row bill-big">EDWARD ROSKE</div>
-          <div class="bill-row bill-small">DANS LE ROLE DE EDWARD ROSKE</div>
-          <div class="bill-row bill-tiny">AVEC EDWARD ROSKE &nbsp;·&nbsp; ET EDWARD ROSKE</div>
-          <div class="bill-row bill-tiny">DIRECTEUR DE LA PHOTOGRAPHIE &nbsp; EDWARD ROSKE</div>
-          <div class="bill-row bill-tiny">MUSIQUE ORIGINALE &nbsp; EDWARD ROSKE</div>
-          <div class="bill-row bill-tiny">PRODUIT PAR &nbsp; EDWARD ROSKE</div>
-          <div class="bill-row bill-tiny">ECRIT ET REALISE PAR &nbsp; EDWARD ROSKE</div>
-        </div>
+        <figure class="hero-quote">
+          <blockquote>{heroQuote}</blockquote>
+          <figcaption>Edward Roske, to the horse, who took it well</figcaption>
+        </figure>
 
         <p class="hero-body">{theme.hero.description}</p>
 
         <div class="hero-cta-row">
           <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary">
-            Reserver 13 minutes
+            Book 13 minutes
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
           </a>
           <a href="#current-work" class="btn-secondary">
-            <span>Voir la selection</span>
+            <span>{theme.hero.ctaText}</span>
           </a>
         </div>
 
-        <div class="hero-stats">
-          {[
-            { value: '80+', label: 'Pays' },
-            { value: '50+', label: 'Conferences' },
-            { value: '15', label: 'Livres' },
-            { value: '25+', label: 'Ans · PDG' },
-          ].map(stat => (
-            <div class="hero-stat">
-              <div class="hero-stat-value">{stat.value}</div>
-              <div class="hero-stat-label">{stat.label}</div>
+        <div class="hero-tally">
+          {tally.map(stat => (
+            <div class="tally-item">
+              <div class="tally-value">{stat.value}</div>
+              <div class="tally-label">{stat.label}</div>
             </div>
           ))}
         </div>
       </div>
 
-      <!-- Right: the cover poster -->
+      <!-- Right: the framed ranch photograph -->
       <div class="hero-image-wrap">
-        <div class="poster-frame">
-          <div class="poster-bar-top">
-            <span>79<sup>e</sup></span>
-            <span>FESTIVAL DE CANNES</span>
-            <span>MMXXVI</span>
+        <figure class="ranch-frame">
+          <div class="ranch-frame-plank">
+            <span class="brand-r" aria-hidden="true">R</span>
+            <span class="ranch-frame-plank-name">YOSEMITE: ROSKE RANCH</span>
+            <span class="ranch-frame-plank-est">EST. 1997</span>
           </div>
-          <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="poster-image" />
-          <div class="poster-laurels" aria-hidden="true">
-            <svg class="laurel laurel-left" viewBox="0 0 100 200" width="44" height="88" xmlns="http://www.w3.org/2000/svg">
-              <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-                <path d="M70 10 C 40 50, 30 110, 50 195"/>
-                <path d="M65 30 C 50 40, 40 50, 35 60"/>
-                <path d="M60 55 C 45 65, 35 75, 30 85"/>
-                <path d="M55 85 C 40 95, 30 105, 25 115"/>
-                <path d="M52 115 C 38 125, 28 135, 23 145"/>
-                <path d="M52 145 C 38 155, 30 165, 28 175"/>
-              </g>
-            </svg>
-            <svg class="laurel laurel-right" viewBox="0 0 100 200" width="44" height="88" xmlns="http://www.w3.org/2000/svg">
-              <g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-                <path d="M30 10 C 60 50, 70 110, 50 195"/>
-                <path d="M35 30 C 50 40, 60 50, 65 60"/>
-                <path d="M40 55 C 55 65, 65 75, 70 85"/>
-                <path d="M45 85 C 60 95, 70 105, 75 115"/>
-                <path d="M48 115 C 62 125, 72 135, 77 145"/>
-                <path d="M48 145 C 62 155, 70 165, 72 175"/>
-              </g>
-            </svg>
-            <div class="poster-laurels-text">
-              <span class="laurel-line">SELECTION</span>
-              <span class="laurel-line laurel-line-big">OFFICIELLE</span>
-              <span class="laurel-line">CANNES · 2026</span>
-            </div>
-          </div>
-          <div class="poster-bar-bottom">
-            <span class="poster-credit-blob">UN FILM DE</span>
-            <span class="poster-credit-name">EDWARD ROSKE</span>
-            <span class="poster-credit-blob">EN COMPETITION</span>
+          <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="ranch-frame-image" />
+          <figcaption class="ranch-frame-caption">
+            <span class="ranch-frame-slug">EXT. THE PADDOCK · GOLDEN HOUR</span>
+            <span class="ranch-frame-scene">Scene 01 &middot; the rancher explains job security to a horse</span>
+          </figcaption>
+        </figure>
+
+        <!-- Hanging livestock tag -->
+        <div class="lot-tag" aria-hidden="true">
+          <div class="lot-tag-hole"></div>
+          <div class="lot-tag-body">
+            <span class="lot-tag-tiny">ROSKE RANCH · STOCK TAG</span>
+            <span class="lot-tag-big">LOT 01</span>
+            <span class="lot-tag-tiny">HEAD: 1 RANCHER, 1 HORSE</span>
+            <span class="lot-tag-tiny">DISPOSITION: TALKATIVE</span>
           </div>
         </div>
 
-        <!-- Floating tickets -->
-        <div class="ticket ticket-1" aria-hidden="true">
-          <div class="ticket-edge"></div>
-          <div class="ticket-body">
-            <div class="ticket-line ticket-line-tiny">FESTIVAL · 2026</div>
-            <div class="ticket-line ticket-line-big">ADMIT ONE</div>
-            <div class="ticket-line ticket-line-tiny">PALAIS · ROW E · SEAT 23</div>
-            <div class="ticket-line ticket-line-tiny">PRIX · GRATUIT</div>
+        <!-- Branded stamp -->
+        <div class="brand-stamp" aria-hidden="true">
+          <div class="brand-stamp-ring">
+            <span>REGISTERED BRAND · NORTH TEXAS ·</span>
           </div>
-          <div class="ticket-stub">
-            <span>79</span>
-          </div>
-        </div>
-
-        <div class="poster-stamp" aria-hidden="true">
-          <div class="stamp-ring">
-            <span>OFFICIAL · SELECTION · OFFICIAL · SELECTION</span>
-          </div>
-          <div class="stamp-center">
-            <span class="stamp-num">79</span>
-            <span class="stamp-sub">EDITION</span>
+          <div class="brand-stamp-center">
+            <span class="brand-r brand-r-big">R</span>
+            <span class="brand-stamp-sub">THE CIRCLE R</span>
           </div>
         </div>
       </div>
@@ -300,7 +280,7 @@ const marqueeItems = [
   </section>
 
   <!-- ============================================
-       MARQUEE — Festival ticker
+       MARQUEE — ledger ticker
        ============================================ -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
@@ -311,44 +291,44 @@ const marqueeItems = [
   </div>
 
   <!-- ============================================
-       PULL QUOTE — auteur statement
+       PULL QUOTE — the rancher's thesis
        ============================================ -->
   <section class="pullquote-section">
+    <div class="barbwire" aria-hidden="true"></div>
     <div class="pullquote-inner">
-      <div class="pullquote-tag">CAHIER · PAGE 003 · MOT D'AUTEUR</div>
+      <div class="pullquote-tag">RANCH LEDGER · PAGE 003 · A WORD FROM THE OWNER</div>
       <blockquote class="pullquote">
-        <span class="pullquote-mark">&laquo;</span>
-        I directed, wrote, scored, and starred in the film. Then I went home and closed the books for a Fortune 500 client. The credits ran longer than the film.
-        <span class="pullquote-mark pullquote-mark-close">&raquo;</span>
+        Everyone wants to know whether AI replaces people. On a ranch the question is simpler. The AI is the ranch hand, not the rancher. It mends the fence. It does not get to decide where the fence goes.
       </blockquote>
       <div class="pullquote-attrib">
         <span class="pullquote-attrib-name">Edward Roske</span>
-        <span class="pullquote-attrib-role">Realisateur · Auteur · Probationary Auteur Anyway</span>
+        <span class="pullquote-attrib-role">Owner, operator, and only human on the payroll</span>
       </div>
     </div>
+    <div class="barbwire" aria-hidden="true"></div>
   </section>
 
   <!-- ============================================
-       LA SELECTION — film stills as magazine spread
+       THE SPREAD — ranch photographs as a spread
        ============================================ -->
-  <section class="stills-section">
-    <div class="stills-inner">
+  <section class="spread-section">
+    <div class="spread-inner">
       <header class="section-header">
-        <div class="section-tag">SECTION 02 · LA SELECTION</div>
-        <h2 class="section-title">Quatre images <em>du film</em>,<br/>tirees au hasard.</h2>
+        <div class="section-tag"><span class="brand-r" aria-hidden="true">R</span> SECTION 02 · THE SPREAD</div>
+        <h2 class="section-title">Four photographs <em>off the property.</em></h2>
         <p class="section-deck">
-          Photos de plateau leaked to the press before the jury has finished its lunch. The film has not been screened. The film may not exist. We are committed either way.
+          Pulled from the ranch records before anyone thought to file them properly. The ranch may be a metaphor. The horses, the ledger, and the cold nights at altitude were not.
         </p>
       </header>
 
-      <div class="stills-grid">
-        {filmStills.map((item) => (
+      <div class="spread-grid">
+        {ranchStills.map((item) => (
           <article class="still-card" style={`--rot:${item.rotate}deg; --aspect:${item.aspect};`}>
             <div class="still-photo">
               <span class="still-tape still-tape-tl" aria-hidden="true"></span>
               <span class="still-tape still-tape-br" aria-hidden="true"></span>
               <img src={item.src} alt={item.title} loading="lazy" decoding="async" />
-              <div class="still-pageno">SCENE {item.sceneNo}</div>
+              <div class="still-lot">{item.lot}</div>
             </div>
             <div class="still-meta">
               <div class="still-slug">{item.slug}</div>
@@ -362,32 +342,35 @@ const marqueeItems = [
   </section>
 
   <!-- ============================================
-       MOT DU REALISATEUR — director's note with portrait
+       THE RANCHER'S NOTE — the real story
        ============================================ -->
-  <section class="director-section">
-    <div class="director-grid">
-      <figure class="director-image">
-        <img src={closingStill.src} alt={closingStill.alt} loading="lazy" decoding="async" />
+  <section class="note-section">
+    <div class="note-grid">
+      <figure class="note-image">
+        <img src={noteImage.src} alt={noteImage.alt} loading="lazy" decoding="async" />
         <figcaption>
-          <span>FIG. C · 19:14</span>
-          <span>PHOTOCALL · PALAIS</span>
+          <span>FIG. R</span>
+          <span>SUNDOWN ON THE SPREAD</span>
         </figcaption>
       </figure>
 
-      <div class="director-text">
-        <div class="director-tag">MOT DU REALISATEUR</div>
-        <h3 class="director-h3">A note from the director.<br/><em>(Also Edward.)</em></h3>
-        <p class="director-body">
-          The festival is a strange place. You stand on a red carpet that goes on for too long. You wave at people you do not know. You hold up an object you have not earned. Then you go back to your hotel, open your laptop, and the books still need to close.
+      <div class="note-text">
+        <div class="note-tag">THE RANCHER'S NOTE</div>
+        <h3 class="note-h3">I did not reach far <em>for this one.</em></h3>
+        <p class="note-body">
+          I grew up riding horses and going to rodeos in the Pacific Northwest. Years later I owned a ranch in North Texas, where we raised drum horses, the enormous gentle ones with feathered feet that the British cavalry uses to carry kettle drums. My own horse, the one I actually rode, was a quarterhorse named Thomas Jefferson. Tommy, for short. (Naming a quarterhorse after a Founding Father is a decision that makes sense at the time and keeps making sense forever after.)
         </p>
-        <p class="director-body">
-          The thesis of the film is simple: AI does not replace the auteur. It replaces the intern. The auteur is busy holding the Palme d'Or above his head and crying for the cameras. The intern is reconciling the GL. Both jobs are real. (One of them pays better.)
+        <p class="note-body">
+          So when the newest Yellowstone show rode in this week, the ranch was not a costume. It was a Tuesday I had already lived. interRel, the firm I started in Arlington, Texas in 1997 and ran for 25 years, was the first spread. The herd is just AI companies now, the ranch hand is an AI agent, and the brand is still an R.
         </p>
-        <div class="director-attrib">
-          <span class="director-attrib-line"></span>
+        <p class="note-body">
+          The work rhymes more than you would expect. You tend the stock, you mend the fences, you close the books by sundown, and you try not to lose anything to the weather.
+        </p>
+        <div class="note-attrib">
+          <span class="note-attrib-line"></span>
           <div>
-            <span class="director-attrib-name">Edward Roske</span>
-            <span class="director-attrib-title">Realisateur · Roske, ou, La Comptabilite des Reves</span>
+            <span class="note-attrib-name">Edward Roske</span>
+            <span class="note-attrib-title">Owner, Yosemite: Roske Ranch</span>
           </div>
         </div>
       </div>
@@ -395,51 +378,40 @@ const marqueeItems = [
   </section>
 
   <!-- ============================================
-       LE PROGRAMME — six selections
+       THE LEDGER — six head of stock (projects)
        ============================================ -->
-  <section id="current-work" class="programme-section">
-    <div class="programme-inner">
+  <section id="current-work" class="ledger-section">
+    <div class="ledger-inner">
       <header class="section-header">
-        <div class="section-tag">SECTION 03 · LE PROGRAMME</div>
-        <h2 class="section-title">Six films <em>en selection.</em><br/>Tous projetes en ce moment.</h2>
+        <div class="section-tag"><span class="brand-r" aria-hidden="true">R</span> SECTION 03 · THE LEDGER</div>
+        <h2 class="section-title">Six head of stock, <em>all accounted for.</em></h2>
         <p class="section-deck">
-          The programme of the parallel festival running inside Edward's calendar. Some of these will absolutely happen. One of them is fictional. (We will not say which. The fictional one is also being scored as we speak.)
+          The current livestock register. Five of these are working operations. One is a trail already ridden. None of them are cattle, but the accounting is the same.
         </p>
       </header>
 
-      <div class="programme-grid">
-        {programme.map(film => (
-          <article class="film-card">
-            <div class="film-perfs film-perfs-top" aria-hidden="true">
-              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+      <div class="ledger-grid">
+        {ledger.map(entry => (
+          <article class="ledger-card">
+            <div class="ledger-card-head">
+              <span class="ledger-lot">{entry.lot}</span>
+              <span class="ledger-brand">{entry.brand}</span>
             </div>
-
-            <div class="film-card-header">
-              <span class="film-no">{film.filmNo}</span>
-              <span class="film-section">{film.section}</span>
+            <h3 class="ledger-title">{entry.title}</h3>
+            <p class="ledger-body">{entry.body}</p>
+            <div class="ledger-meta">
+              <span class="ledger-badge">{entry.badge}</span>
+              <span class="ledger-head">{entry.head}</span>
             </div>
-
-            <h3 class="film-title">{film.title}</h3>
-            <p class="film-body">{film.body}</p>
-
-            <div class="film-meta">
-              <span class="film-badge">{film.badge}</span>
-              <span class="film-runtime">DUREE · {film.runtime}</span>
-            </div>
-
-            <div class="film-card-footer">
-              {film.href ? (
-                <a href={film.href} target={film.external ? '_blank' : undefined} rel={film.external ? 'noopener' : undefined} class="film-cta">
-                  {film.cta}
+            <div class="ledger-card-foot">
+              {entry.href ? (
+                <a href={entry.href} target={entry.external ? '_blank' : undefined} rel={entry.external ? 'noopener' : undefined} class="ledger-cta">
+                  {entry.cta}
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
                 </a>
               ) : (
-                <span class="film-cta film-cta-disabled">{film.cta}</span>
+                <span class="ledger-cta ledger-cta-disabled">{entry.cta}</span>
               )}
-            </div>
-
-            <div class="film-perfs film-perfs-bot" aria-hidden="true">
-              <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
             </div>
           </article>
         ))}
@@ -448,86 +420,71 @@ const marqueeItems = [
   </section>
 
   <!-- ============================================
-       L'ENTRETIEN — Q&A in French magazine style
+       FRESH OFF THE RANCH — this week's new stock
        ============================================ -->
-  <section class="entretien-section">
-    <div class="entretien-inner">
-      <header class="section-header entretien-header">
-        <div class="section-tag">SECTION 04 · L'ENTRETIEN</div>
-        <h2 class="section-title">A few things,<br/><em>on the record.</em></h2>
+  <section class="fresh-section">
+    <div class="fresh-inner">
+      <header class="section-header fresh-header">
+        <div class="section-tag fresh-tag"><span class="brand-r" aria-hidden="true">R</span> SECTION 04 · FRESH OFF THE RANCH</div>
+        <h2 class="section-title">Two new arrivals <em>this week.</em></h2>
       </header>
 
-      <div class="entretien-list">
-        {interview.map((item, idx) => (
-          <div class="entretien-item">
-            <div class="entretien-num">{String(idx + 1).padStart(2, '0')}</div>
-            <div class="entretien-content">
-              <div class="entretien-q">— {item.q}</div>
-              <div class="entretien-a">{item.a}</div>
-            </div>
-          </div>
+      <div class="fresh-grid">
+        {freshStock.map(item => (
+          <article class="fresh-card">
+            <div class="fresh-card-tag">{item.tag}</div>
+            <h3 class="fresh-card-title">{item.title}</h3>
+            <div class="fresh-card-kind">{item.kind}</div>
+            <p class="fresh-card-body">{item.body}</p>
+            <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener' : undefined} class="fresh-cta">
+              {item.cta}
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+          </article>
         ))}
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       FINAL CTA — "Achetez vos billets"
+       CLOSING CTA — ride out to the ranch
        ============================================ -->
-  <section class="cloture-section">
-    <div class="cloture-inner">
-      <div class="cloture-eyebrow">
-        <span class="cloture-rule"></span>
-        <span>SEANCE DE CLOTURE · 13 MINUTES</span>
-        <span class="cloture-rule"></span>
+  <section class="closing-section">
+    <div class="closing-inner">
+      <div class="closing-eyebrow">
+        <span class="closing-rule"></span>
+        <span>THE GATE IS OPEN · 13 MINUTES</span>
+        <span class="closing-rule"></span>
       </div>
-      <h2 class="cloture-title">Achetez vos billets.<br/><em class="cloture-em">Or just send an email.</em></h2>
-      <p class="cloture-deck">
-        The closing screening is a thirteen-minute conversation with Edward. No black tie required. No headphones in French. No Palme d'Or. (Bring questions about AI, finance, podcasting, escape rooms, or the Khumbu Valley. He has opinions about all five.)
+      <h2 class="closing-title">Ride out to the ranch.<br/><em class="closing-em">Or just send an email.</em></h2>
+      <p class="closing-deck">
+        The thirteen-minute conversation is the front porch of this operation. No boots required, no horse to address. Bring questions about AI, finance, MCP servers, escape rooms, D&D, or what it actually feels like at 18,570 feet. The answers are free. (The opinions are included whether you ask or not.)
       </p>
-      <div class="cloture-cta-row">
+      <div class="closing-cta-row">
         <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary btn-primary-big">
-          Reserver 13 minutes
+          Book 13 minutes
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
         </a>
         <a href="/contact" class="btn-secondary btn-secondary-big">
-          <span>Ecrire au directeur</span>
+          <span>Write to the ranch</span>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       CLOSING CREDITS — typewriter scroll
+       BRAND REGISTRY — closing credits
        ============================================ -->
-  <section class="credits-section">
-    <div class="credits-inner">
-      <div class="credits-tag">FIN · GENERIQUE</div>
-      <div class="credits-roll">
-        <div class="credits-block">
-          <span class="credits-role">REALISATEUR</span>
-          <span class="credits-name">EDWARD ROSKE</span>
-        </div>
-        <div class="credits-block">
-          <span class="credits-role">SCENARIO</span>
-          <span class="credits-name">EDWARD ROSKE</span>
-        </div>
-        <div class="credits-block">
-          <span class="credits-role">DANS LE ROLE PRINCIPAL</span>
-          <span class="credits-name">EDWARD ROSKE</span>
-        </div>
-        <div class="credits-block">
-          <span class="credits-role">ASSISTANT</span>
-          <span class="credits-name">EDWARD ROSKE</span>
-        </div>
-        <div class="credits-block">
-          <span class="credits-role">CHAPEAU</span>
-          <span class="credits-name">FEDORA BLEU · CARRIER PERSONNEL</span>
-        </div>
-        <div class="credits-block">
-          <span class="credits-role">REMERCIEMENTS</span>
-          <span class="credits-name">DAWN ROSKE · MYCROFT · ELIOT · LE PEUPLE DE PUERTO RICO</span>
-        </div>
+  <section class="registry-section">
+    <div class="registry-inner">
+      <div class="registry-tag">RANCH LEDGER · BRAND REGISTRY</div>
+      <div class="registry-roll">
+        {brandRegistry.map(entry => (
+          <div class="registry-block">
+            <span class="registry-role">{entry.role}</span>
+            <span class="registry-name">{entry.name}</span>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -536,303 +493,298 @@ const marqueeItems = [
 
 <style>
   /* ============================================================
-     ROSKE A CANNES — vintage French cinema poster aesthetic
-     Color palette: ink black / programme cream / Palme gold / Cannes red
-     Typography: Italiana (display), DM Serif Display (h3), EB Garamond (body), Special Elite (mono)
+     YOSEMITE: ROSKE RANCH — elevated modern Western
+     Palette: oxblood brand-iron red / weathered denim blue /
+              dusty sage / bone parchment / amber dusk / fence wood
+     Type: Alfa Slab One (display), Zilla Slab (decked italics),
+           Spectral (body), Special Elite (ledger mono)
      ============================================================ */
 
   :global([data-theme="dark"]) {
-    --hero-bg: #0a0907;
-    --hero-fg: #f4ecdc;
-    --hero-muted: #b5a78d;
-    --gold: #c8a04a;
-    --gold-soft: #8a6f30;
-    --paper: #f4ecdc;
-    --paper-soft: #ddcfa8;
-    --red: #b8202a;
-    --red-soft: #7d1820;
-    --ink: #0a0907;
-    --film: #15110d;
-    --border-rule: #3a2f24;
+    --rr-bg: #17120d;
+    --rr-bg-deep: #100c08;
+    --rr-surface: #221a11;
+    --rr-surface-2: #2b2014;
+    --rr-fg: #ece3d1;
+    --rr-muted: #a8957a;
+    --rr-line: #3c2e1f;
+    --rr-line-soft: #2c2117;
+    --rr-oxblood: #cf5236;
+    --rr-oxblood-deep: #9a3324;
+    --rr-denim: #7ba6bc;
+    --rr-sage: #9aae86;
+    --rr-amber: #dca35a;
+    --rr-stamp-bg: #ece3d1;
+    --rr-stamp-fg: #17120d;
   }
   :global([data-theme="light"]) {
-    --hero-bg: #f4ecdc;
-    --hero-fg: #15110d;
-    --hero-muted: #5a4a36;
-    --gold: #a07d24;
-    --gold-soft: #c8a04a;
-    --paper: #15110d;
-    --paper-soft: #2a2014;
-    --red: #a01820;
-    --red-soft: #b8202a;
-    --ink: #15110d;
-    --film: #f4ecdc;
-    --border-rule: #c8b48a;
+    --rr-bg: #e9dec6;
+    --rr-bg-deep: #ddd0b2;
+    --rr-surface: #f4ecd8;
+    --rr-surface-2: #fbf5e6;
+    --rr-fg: #2a2014;
+    --rr-muted: #6a5942;
+    --rr-line: #cabe9b;
+    --rr-line-soft: #d7ccab;
+    --rr-oxblood: #9a3324;
+    --rr-oxblood-deep: #7d2a1e;
+    --rr-denim: #3f5d70;
+    --rr-sage: #5f7050;
+    --rr-amber: #a5752a;
+    --rr-stamp-bg: #2a2014;
+    --rr-stamp-fg: #f4ecd8;
   }
 
   /* ------------------------------------------------------------
-     FESTIVAL MASTHEAD
+     THE CIRCLE R BRAND MARK
      ------------------------------------------------------------ */
-  .festival-bar {
-    width: 100%;
-    background: var(--ink);
-    color: var(--gold);
-    border-bottom: 1px solid var(--gold-soft);
-    font-family: 'Italiana', serif;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
+  .brand-r {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7em;
+    height: 1.7em;
+    border-radius: 50%;
+    border: 0.14em solid currentColor;
+    font-family: 'Alfa Slab One', serif;
+    font-size: 0.7em;
+    line-height: 1;
+    padding-top: 0.06em;
+    flex-shrink: 0;
   }
-  :global([data-theme="light"]) .festival-bar {
-    background: var(--paper);
-    color: var(--gold-soft);
+  .brand-r-big {
+    font-size: 2.4rem;
+    border-width: 4px;
   }
 
-  .festival-bar-inner {
+  /* ------------------------------------------------------------
+     BARBED WIRE DIVIDER (theme-aware via mask)
+     ------------------------------------------------------------ */
+  .barbwire {
+    height: 14px;
+    width: 100%;
+    background-color: var(--rr-line);
+    opacity: 0.85;
+    -webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='14'><g fill='none' stroke='black' stroke-width='1.3'><path d='M0 7 H60'/><path d='M24 7 l5 -3.5 M24 7 l5 3.5 M36 7 l-5 -3.5 M36 7 l-5 3.5'/><path d='M27 2 L33 12 M33 2 L27 12'/></g></svg>");
+    mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='60' height='14'><g fill='none' stroke='black' stroke-width='1.3'><path d='M0 7 H60'/><path d='M24 7 l5 -3.5 M24 7 l5 3.5 M36 7 l-5 -3.5 M36 7 l-5 3.5'/><path d='M27 2 L33 12 M33 2 L27 12'/></g></svg>");
+    -webkit-mask-repeat: repeat-x;
+    mask-repeat: repeat-x;
+    -webkit-mask-size: 60px 14px;
+    mask-size: 60px 14px;
+  }
+
+  /* ------------------------------------------------------------
+     BRAND BAR — ranch ledger masthead
+     ------------------------------------------------------------ */
+  .brand-bar {
+    width: 100%;
+    background: var(--rr-bg-deep);
+    color: var(--rr-amber);
+    border-bottom: 1px solid var(--rr-line);
+    font-family: 'Special Elite', monospace;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  .brand-bar-inner {
     max-width: 1500px;
     margin: 0 auto;
-    padding: 0.55rem 2rem;
+    padding: 0.5rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
   }
-  .fb-laurel {
-    color: var(--gold);
-    font-size: 1rem;
-  }
-  .fb-meta { white-space: nowrap; }
-  .fb-meta-center {
-    flex: 1;
-    text-align: center;
-    letter-spacing: 0.35em;
-  }
-  .fb-meta-end { text-align: right; }
-  @media (max-width: 700px) {
-    .festival-bar-inner { padding: 0.55rem 1rem; gap: 0.6rem; font-size: 0.6rem; }
-    .fb-meta-end, .fb-laurel { display: none; }
+  .bb-mark { color: var(--rr-oxblood); font-size: 0.78rem; }
+  .bb-meta { white-space: nowrap; }
+  .bb-meta-center { flex: 1; text-align: center; letter-spacing: 0.2em; color: var(--rr-muted); }
+  .bb-meta-end { text-align: right; }
+  @media (max-width: 760px) {
+    .brand-bar-inner { padding: 0.5rem 1rem; gap: 0.6rem; font-size: 0.56rem; }
+    .bb-meta-end, .bb-mark { display: none; }
   }
 
   /* ------------------------------------------------------------
-     HERO POSTER
+     HERO
      ------------------------------------------------------------ */
   .hero-section {
     position: relative;
-    background: var(--hero-bg);
-    color: var(--hero-fg);
+    background: var(--rr-bg);
+    color: var(--rr-fg);
     padding: 5rem 2rem 6rem;
     overflow: hidden;
   }
   :global([data-theme="dark"]) .hero-section {
     background:
-      radial-gradient(ellipse at 20% 0%, rgba(200,160,74,0.07) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 100%, rgba(184,32,42,0.06) 0%, transparent 60%),
-      linear-gradient(180deg, #0a0907 0%, #161009 50%, #0a0907 100%);
+      radial-gradient(ellipse at 15% 0%, rgba(220,163,90,0.10) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 100%, rgba(207,82,54,0.08) 0%, transparent 55%),
+      linear-gradient(180deg, #17120d 0%, #1f160e 55%, #17120d 100%);
   }
   :global([data-theme="light"]) .hero-section {
     background:
-      radial-gradient(ellipse at 20% 0%, rgba(200,160,74,0.12) 0%, transparent 60%),
-      radial-gradient(ellipse at 80% 100%, rgba(184,32,42,0.07) 0%, transparent 60%),
-      var(--paper);
+      radial-gradient(ellipse at 15% 0%, rgba(165,117,42,0.16) 0%, transparent 55%),
+      radial-gradient(ellipse at 85% 100%, rgba(154,51,36,0.10) 0%, transparent 55%),
+      var(--rr-bg);
   }
-
-  .hero-grain {
+  .hero-dust {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.10;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.8 0 0 0 0 0.7 0 0 0 0 0.5 0 0 0 0.85 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.55 0 0 0 0 0.42 0 0 0 0 0.25 0 0 0 0.5 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
     mix-blend-mode: overlay;
   }
-  :global([data-theme="light"]) .hero-grain { opacity: 0.06; }
+  :global([data-theme="light"]) .hero-dust { opacity: 0.35; }
 
   .hero-grid {
     position: relative;
     max-width: 1500px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1.05fr 1fr;
+    grid-template-columns: 1.04fr 1fr;
     gap: 4rem;
     align-items: center;
   }
   @media (max-width: 1024px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 3.5rem; }
     .hero-section { padding: 3rem 1.25rem 4rem; }
   }
 
-  /* Hero left column */
-  .hero-text { max-width: 640px; }
+  .hero-text { max-width: 660px; }
 
   .hero-eyebrow {
     display: flex;
     align-items: center;
     gap: 0.9rem;
     font-family: 'Special Elite', monospace;
-    font-size: 0.74rem;
-    letter-spacing: 0.18em;
+    font-size: 0.76rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.4rem;
+    color: var(--rr-amber);
+    margin-bottom: 1.5rem;
   }
-  .hero-eyebrow-rule {
-    width: 38px;
-    height: 1px;
-    background: var(--gold);
-    flex-shrink: 0;
-  }
+  .hero-eyebrow-rule { width: 42px; height: 2px; background: var(--rr-oxblood); flex-shrink: 0; }
 
-  .hero-title {
-    margin: 0 0 1.6rem;
-    line-height: 0.88;
-    font-family: 'Italiana', serif;
-    color: var(--hero-fg);
-  }
-  .hero-title-line { display: block; }
-  .hero-title-tiny {
-    font-family: 'EB Garamond', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: 1rem;
-    letter-spacing: 0.04em;
-    color: var(--hero-muted);
-    margin-bottom: 0.5rem;
-  }
-  .hero-title-big {
-    font-size: clamp(5.6rem, 13vw, 11rem);
-    letter-spacing: -0.02em;
-    color: var(--hero-fg);
-    line-height: 0.84;
-  }
-  .hero-title-script {
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(2.4rem, 5.5vw, 4.4rem);
-    color: var(--red);
-    margin-top: -0.15em;
-    letter-spacing: -0.005em;
-    line-height: 1;
-  }
-
-  .hero-deck {
-    font-family: 'EB Garamond', serif;
-    font-size: 1.18rem;
-    line-height: 1.5;
-    color: var(--hero-fg);
-    margin: 0 0 1.4rem;
-    max-width: 30em;
+  .hero-title { margin: 0 0 1.8rem; line-height: 0.9; }
+  .hero-title-small {
+    display: block;
+    font-family: 'Zilla Slab', serif;
     font-style: italic;
     font-weight: 500;
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    color: var(--rr-denim);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.1rem;
+  }
+  .hero-title-big {
+    display: block;
+    font-family: 'Alfa Slab One', serif;
+    font-size: clamp(3.4rem, 8vw, 6.6rem);
+    color: var(--rr-fg);
+    letter-spacing: -0.01em;
+    line-height: 0.95;
+    text-shadow: 0.04em 0.05em 0 var(--rr-oxblood-deep);
   }
 
-  /* Poster billing block — tight, centered, all caps */
-  .hero-billing {
-    border-top: 1px solid var(--gold-soft);
-    border-bottom: 1px solid var(--gold-soft);
-    padding: 1rem 0;
-    margin: 1.8rem 0 1.5rem;
-    text-align: center;
-    color: var(--hero-fg);
-    font-family: 'Italiana', serif;
-    letter-spacing: 0.22em;
-    line-height: 1.5;
+  .hero-quote {
+    margin: 0 0 1.8rem;
+    padding: 1.4rem 0 1.4rem 1.6rem;
+    border-left: 4px solid var(--rr-oxblood);
   }
-  .bill-row { display: block; text-transform: uppercase; }
-  .bill-big { font-size: 1.18rem; letter-spacing: 0.32em; }
-  .bill-small { font-size: 0.82rem; color: var(--hero-muted); margin-top: 0.15rem; letter-spacing: 0.28em; }
-  .bill-tiny {
+  .hero-quote blockquote {
+    margin: 0;
+    font-family: 'Zilla Slab', serif;
+    font-weight: 500;
+    font-size: clamp(1.35rem, 2.5vw, 1.95rem);
+    line-height: 1.32;
+    color: var(--rr-fg);
+  }
+  .hero-quote figcaption {
+    margin-top: 0.85rem;
     font-family: 'Special Elite', monospace;
-    font-size: 0.62rem;
-    color: var(--hero-muted);
-    margin-top: 0.25rem;
-    letter-spacing: 0.14em;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rr-muted);
   }
 
   .hero-body {
-    font-family: 'EB Garamond', serif;
-    font-size: 1.02rem;
-    line-height: 1.65;
-    color: var(--hero-muted);
-    margin: 0 0 1.8rem;
-    max-width: 38em;
+    font-family: 'Spectral', serif;
+    font-size: 1.06rem;
+    line-height: 1.7;
+    color: var(--rr-muted);
+    margin: 0 0 1.9rem;
+    max-width: 40em;
   }
 
-  /* CTAs */
+  /* Buttons */
   .btn-primary, .btn-secondary {
     display: inline-flex;
     align-items: center;
     gap: 0.55rem;
-    padding: 0.85rem 1.5rem;
-    font-family: 'Italiana', serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.22em;
+    padding: 0.85rem 1.6rem;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     text-decoration: none;
-    border: 1px solid currentColor;
-    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    border: 2px solid currentColor;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     cursor: pointer;
     line-height: 1;
   }
   .btn-primary {
-    background: var(--red);
-    color: var(--paper);
-    border-color: var(--red);
+    background: var(--rr-oxblood);
+    color: #f6ede0;
+    border-color: var(--rr-oxblood);
   }
   .btn-primary:hover {
-    background: var(--ink);
-    color: var(--gold);
-    border-color: var(--gold);
+    background: var(--rr-oxblood-deep);
+    border-color: var(--rr-oxblood-deep);
     transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.35);
   }
   .btn-secondary {
     background: transparent;
-    color: var(--hero-fg);
-    border-color: var(--hero-fg);
+    color: var(--rr-fg);
+    border-color: var(--rr-fg);
   }
   .btn-secondary:hover {
-    background: var(--hero-fg);
-    color: var(--hero-bg);
+    background: var(--rr-fg);
+    color: var(--rr-bg);
     transform: translateY(-2px);
   }
-  .btn-primary-big, .btn-secondary-big {
-    padding: 1.1rem 2rem;
-    font-size: 0.95rem;
-  }
-  .hero-cta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-    margin-bottom: 2.6rem;
-  }
+  .btn-primary-big, .btn-secondary-big { padding: 1.05rem 2.1rem; font-size: 0.92rem; }
+  .hero-cta-row { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-bottom: 2.6rem; }
 
-  /* Stats */
-  .hero-stats {
+  /* Tally */
+  .hero-tally {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.2rem;
-    border-top: 1px solid var(--border-rule);
-    padding-top: 1.6rem;
+    border-top: 1px solid var(--rr-line);
+    padding-top: 1.7rem;
   }
-  .hero-stat-value {
-    font-family: 'Italiana', serif;
-    font-size: 2.2rem;
-    color: var(--gold);
+  .tally-value {
+    font-family: 'Alfa Slab One', serif;
+    font-size: 2.3rem;
+    color: var(--rr-amber);
     line-height: 1;
   }
-  .hero-stat-label {
+  .tally-label {
     font-family: 'Special Elite', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--hero-muted);
-    margin-top: 0.4rem;
+    color: var(--rr-muted);
+    margin-top: 0.45rem;
   }
-  @media (max-width: 640px) {
-    .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 620px) {
+    .hero-tally { grid-template-columns: repeat(2, 1fr); gap: 1.4rem 1rem; }
   }
 
   /* ------------------------------------------------------------
-     POSTER FRAME (hero right column)
+     RANCH FRAME (hero photograph)
      ------------------------------------------------------------ */
   .hero-image-wrap {
     position: relative;
@@ -840,260 +792,185 @@ const marqueeItems = [
     justify-content: center;
     align-items: flex-start;
   }
-
-  .poster-frame {
+  .ranch-frame {
     position: relative;
+    margin: 0;
     width: 100%;
-    max-width: 580px;
-    background: var(--film);
-    color: var(--paper);
-    border: 1px solid var(--gold-soft);
+    max-width: 600px;
+    background: var(--rr-surface-2);
+    border: 1px solid var(--rr-line);
     box-shadow:
-      0 30px 70px rgba(0,0,0,0.55),
-      0 6px 18px rgba(0,0,0,0.4),
-      inset 0 0 0 4px var(--film),
-      inset 0 0 0 5px var(--gold-soft);
+      0 30px 70px rgba(0,0,0,0.5),
+      0 6px 16px rgba(0,0,0,0.4),
+      inset 0 0 0 6px var(--rr-surface),
+      inset 0 0 0 8px var(--rr-line);
     display: flex;
     flex-direction: column;
   }
-  :global([data-theme="light"]) .poster-frame {
-    background: #1a1410;
-    color: var(--paper);
+  :global([data-theme="light"]) .ranch-frame {
     box-shadow:
-      0 24px 60px rgba(40,28,12,0.35),
-      0 6px 14px rgba(40,28,12,0.25),
-      inset 0 0 0 4px #1a1410,
-      inset 0 0 0 5px var(--gold);
+      0 24px 54px rgba(60,40,20,0.32),
+      0 6px 14px rgba(60,40,20,0.22),
+      inset 0 0 0 6px var(--rr-surface),
+      inset 0 0 0 8px var(--rr-line);
   }
-
-  .poster-bar-top, .poster-bar-bottom {
-    padding: 0.7rem 1.2rem;
+  .ranch-frame-plank {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-    font-family: 'Italiana', serif;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    font-size: 0.78rem;
-    color: var(--gold);
-    background: rgba(0,0,0,0.4);
-    border-bottom: 1px solid var(--gold-soft);
-  }
-  .poster-bar-bottom {
-    border-bottom: none;
-    border-top: 1px solid var(--gold-soft);
-    font-size: 0.65rem;
-    color: var(--paper);
-  }
-  .poster-credit-name {
-    font-size: 0.95rem;
-    color: var(--gold);
-    letter-spacing: 0.28em;
-  }
-  .poster-credit-blob {
-    color: var(--paper-soft);
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.7rem 1rem;
+    background: var(--rr-bg-deep);
+    border-bottom: 1px solid var(--rr-line);
+    color: var(--rr-amber);
     font-family: 'Special Elite', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
-
-  .poster-image {
+  .ranch-frame-plank .brand-r { color: var(--rr-oxblood); font-size: 0.62rem; }
+  .ranch-frame-plank-name { font-size: 0.8rem; letter-spacing: 0.12em; flex: 1; }
+  .ranch-frame-plank-est { font-size: 0.66rem; letter-spacing: 0.1em; color: var(--rr-muted); }
+  .ranch-frame-image {
     display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 16/9;
     object-fit: cover;
-    filter: contrast(1.05) saturate(0.95);
+    filter: contrast(1.04) saturate(1.02);
   }
-
-  .poster-laurels {
-    position: relative;
-    padding: 1.5rem 1.2rem 1.3rem;
+  .ranch-frame-caption {
+    padding: 0.85rem 1rem 0.95rem;
+    background: var(--rr-bg-deep);
+    border-top: 1px solid var(--rr-line);
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.8rem;
-    color: var(--gold);
-    background: rgba(0,0,0,0.3);
-    border-top: 1px solid var(--gold-soft);
+    flex-direction: column;
+    gap: 0.2rem;
   }
-  .laurel { color: var(--gold); flex-shrink: 0; }
-  .poster-laurels-text {
-    text-align: center;
-    font-family: 'Italiana', serif;
-    text-transform: uppercase;
-    color: var(--paper);
-    letter-spacing: 0.18em;
-    line-height: 1.3;
-  }
-  .laurel-line { display: block; font-size: 0.72rem; }
-  .laurel-line-big {
-    font-size: 1.2rem;
-    color: var(--gold);
-    letter-spacing: 0.28em;
-    margin: 0.15rem 0;
-  }
-
-  /* Floating ticket */
-  .ticket {
-    position: absolute;
-    bottom: -34px;
-    left: -34px;
-    width: 220px;
-    background: var(--paper);
-    color: var(--ink);
-    display: flex;
-    transform: rotate(-7deg);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  .ranch-frame-slug {
     font-family: 'Special Elite', monospace;
-    border: 1px solid var(--gold-soft);
-    z-index: 3;
-  }
-  :global([data-theme="light"]) .ticket {
-    background: #fdf7e7;
-    color: var(--ink);
-    box-shadow: 0 14px 26px rgba(40,28,12,0.25);
-  }
-  .ticket-edge {
-    width: 6px;
-    background-image: radial-gradient(circle, var(--hero-bg) 2px, transparent 2.5px);
-    background-size: 6px 8px;
-    background-repeat: repeat-y;
-    background-position: center;
-  }
-  .ticket-body {
-    flex: 1;
-    padding: 0.7rem 0.9rem;
-    text-align: center;
-  }
-  .ticket-line { display: block; }
-  .ticket-line-tiny {
-    font-size: 0.55rem;
-    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ink);
-    opacity: 0.7;
+    color: var(--rr-amber);
   }
-  .ticket-line-big {
-    font-family: 'Italiana', serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.18em;
-    margin: 0.2rem 0;
-    color: var(--red);
-  }
-  .ticket-stub {
-    width: 56px;
-    border-left: 1px dashed var(--ink);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Italiana', serif;
-    font-size: 1.8rem;
-    color: var(--red);
+  .ranch-frame-scene {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--rr-muted);
   }
 
-  /* Round official-selection stamp */
-  .poster-stamp {
+  /* Hanging livestock tag */
+  .lot-tag {
     position: absolute;
-    top: -32px;
-    right: -32px;
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    border: 2px solid var(--red);
-    background: rgba(255, 250, 230, 0.92);
-    color: var(--red);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(15deg);
+    bottom: 66px;
+    left: -34px;
+    width: 188px;
+    background: var(--rr-stamp-bg);
+    color: var(--rr-stamp-fg);
+    padding: 0.7rem 0.85rem 0.8rem;
+    transform: rotate(-7deg);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+    border: 1px solid var(--rr-line);
     z-index: 3;
-    box-shadow: 0 8px 22px rgba(0,0,0,0.35);
-    opacity: 0.92;
+    text-align: center;
   }
-  :global([data-theme="light"]) .poster-stamp {
-    background: rgba(255, 244, 220, 0.98);
-    box-shadow: 0 10px 18px rgba(80,40,20,0.18);
-  }
-  .stamp-ring {
-    position: absolute;
-    inset: 4px;
+  .lot-tag-hole {
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    border: 1px solid var(--red);
+    border: 2px solid var(--rr-stamp-fg);
+    background: var(--rr-bg);
+    margin: 0 auto 0.45rem;
+  }
+  .lot-tag-tiny {
+    display: block;
+    font-family: 'Special Elite', monospace;
+    font-size: 0.54rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.78;
+  }
+  .lot-tag-big {
+    display: block;
+    font-family: 'Alfa Slab One', serif;
+    font-size: 1.5rem;
+    margin: 0.15rem 0;
+    color: var(--rr-oxblood);
+  }
+
+  /* Branded round stamp */
+  .brand-stamp {
+    position: absolute;
+    top: -34px;
+    right: -28px;
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    border: 2px solid var(--rr-oxblood);
+    background: var(--rr-stamp-bg);
+    color: var(--rr-oxblood);
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    transform: rotate(13deg);
+    z-index: 3;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
   }
-  .stamp-ring span {
+  .brand-stamp-ring {
     position: absolute;
-    inset: 0;
+    inset: 5px;
+    border-radius: 50%;
+    border: 1px solid var(--rr-oxblood);
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    font-family: 'Italiana', serif;
-    font-size: 0.55rem;
-    letter-spacing: 0.32em;
-    color: var(--red);
-    text-transform: uppercase;
-    padding-top: 4px;
-    /* Bend text around top of stamp visually via wide letter-spacing */
+    overflow: hidden;
   }
-  .stamp-center {
-    text-align: center;
-    z-index: 1;
-  }
-  .stamp-num {
-    display: block;
-    font-family: 'Italiana', serif;
-    font-size: 2.4rem;
-    line-height: 1;
-    color: var(--red);
-  }
-  .stamp-sub {
-    display: block;
+  .brand-stamp-ring span {
     font-family: 'Special Elite', monospace;
-    font-size: 0.55rem;
-    letter-spacing: 0.22em;
-    color: var(--red);
+    font-size: 0.5rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding-top: 6px;
   }
-
-  @media (max-width: 700px) {
-    .ticket { left: -10px; bottom: -22px; width: 170px; transform: rotate(-5deg); }
-    .poster-stamp { right: -12px; top: -18px; width: 96px; height: 96px; }
-    .stamp-num { font-size: 1.8rem; }
+  .brand-stamp-center { text-align: center; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+  .brand-stamp-center .brand-r-big { color: var(--rr-oxblood); }
+  .brand-stamp-sub {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.5rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-top: 0.15rem;
+  }
+  @media (max-width: 720px) {
+    .lot-tag { left: -8px; bottom: 48px; width: 150px; transform: rotate(-5deg); }
+    .brand-stamp { right: -8px; top: -20px; width: 100px; height: 100px; }
   }
 
   /* ------------------------------------------------------------
      MARQUEE
      ------------------------------------------------------------ */
   .marquee {
-    background: var(--red);
-    color: var(--paper);
-    border-top: 1px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
+    background: var(--rr-oxblood);
+    color: #f6ede0;
+    border-top: 2px solid var(--rr-bg-deep);
+    border-bottom: 2px solid var(--rr-bg-deep);
     overflow: hidden;
-    padding: 0.55rem 0;
-    font-family: 'Italiana', serif;
-    letter-spacing: 0.32em;
+    padding: 0.6rem 0;
+    font-family: 'Alfa Slab One', serif;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    font-size: 0.78rem;
-  }
-  :global([data-theme="light"]) .marquee {
-    background: var(--ink);
-    color: var(--paper);
+    font-size: 0.82rem;
   }
   .marquee-track {
     display: inline-flex;
-    gap: 3rem;
+    gap: 2.6rem;
     white-space: nowrap;
-    animation: marqueeScroll 60s linear infinite;
+    animation: marqueeScroll 48s linear infinite;
   }
   .marquee-item::after {
     content: '·';
-    margin-left: 3rem;
-    color: var(--gold);
+    margin-left: 2.6rem;
+    color: var(--rr-amber);
   }
   @keyframes marqueeScroll {
     from { transform: translateX(0); }
@@ -1104,179 +981,135 @@ const marqueeItems = [
      PULL QUOTE
      ------------------------------------------------------------ */
   .pullquote-section {
-    background: var(--hero-bg);
-    color: var(--hero-fg);
-    padding: 7rem 2rem;
-    border-bottom: 1px solid var(--border-rule);
+    background: var(--rr-bg-deep);
+    color: var(--rr-fg);
+    padding: 4rem 2rem;
     position: relative;
   }
-  .pullquote-section::before, .pullquote-section::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-  }
-  .pullquote-section::before { top: 3rem; }
-  .pullquote-section::after { bottom: 3rem; }
-
+  .pullquote-section .barbwire { color: var(--rr-oxblood); margin: 0 auto; max-width: 1200px; }
   .pullquote-inner {
-    max-width: 980px;
+    max-width: 960px;
     margin: 0 auto;
     text-align: center;
+    padding: 3.5rem 0;
   }
   .pullquote-tag {
     font-family: 'Special Elite', monospace;
     font-size: 0.7rem;
-    letter-spacing: 0.32em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 2rem;
+    color: var(--rr-amber);
+    margin-bottom: 1.8rem;
   }
   .pullquote {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Zilla Slab', serif;
     font-style: italic;
-    font-size: clamp(1.6rem, 3.6vw, 2.9rem);
-    line-height: 1.28;
-    margin: 0 0 2rem;
-    color: var(--hero-fg);
-    position: relative;
-    font-weight: 400;
-  }
-  .pullquote-mark {
-    color: var(--red);
-    font-family: 'Italiana', serif;
-    font-size: 1.4em;
-    line-height: 0;
-    vertical-align: -0.18em;
-    padding: 0 0.15em;
-    font-style: normal;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 3.3vw, 2.6rem);
+    line-height: 1.32;
+    margin: 0 0 1.8rem;
+    color: var(--rr-fg);
   }
   .pullquote-attrib-name {
     display: block;
-    font-family: 'Italiana', serif;
+    font-family: 'Alfa Slab One', serif;
     font-size: 1.05rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
+    letter-spacing: 0.02em;
+    color: var(--rr-oxblood);
   }
   .pullquote-attrib-role {
     display: block;
     font-family: 'Special Elite', monospace;
     font-size: 0.74rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--hero-muted);
-    margin-top: 0.35rem;
+    color: var(--rr-muted);
+    margin-top: 0.45rem;
   }
 
   /* ------------------------------------------------------------
      SECTION HEADERS (shared)
      ------------------------------------------------------------ */
-  .section-header {
-    max-width: 820px;
-    margin: 0 auto 3.5rem;
-    text-align: center;
-  }
+  .section-header { max-width: 820px; margin: 0 auto 3.5rem; text-align: center; }
   .section-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
     font-family: 'Special Elite', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.32em;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.2rem;
+    color: var(--rr-amber);
+    margin-bottom: 1.1rem;
   }
+  .section-tag .brand-r { color: var(--rr-oxblood); font-size: 0.6rem; }
   .section-title {
-    font-family: 'Italiana', serif;
-    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-    line-height: 1;
+    font-family: 'Alfa Slab One', serif;
+    font-size: clamp(2.1rem, 4.8vw, 3.7rem);
+    line-height: 1.05;
     margin: 0 0 1.2rem;
-    color: var(--hero-fg);
+    color: var(--rr-fg);
     letter-spacing: -0.01em;
   }
   .section-title em {
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Zilla Slab', serif;
     font-style: italic;
-    color: var(--red);
-    font-weight: 400;
+    font-weight: 600;
+    color: var(--rr-oxblood);
   }
   .section-deck {
-    font-family: 'EB Garamond', serif;
+    font-family: 'Spectral', serif;
     font-size: 1.08rem;
-    line-height: 1.65;
-    color: var(--hero-muted);
-    max-width: 38em;
+    line-height: 1.7;
+    color: var(--rr-muted);
+    max-width: 40em;
     margin: 0 auto;
-    font-style: italic;
   }
 
   /* ------------------------------------------------------------
-     LA SELECTION (film stills grid)
+     THE SPREAD (ranch photographs)
      ------------------------------------------------------------ */
-  .stills-section {
-    background: var(--hero-bg);
-    color: var(--hero-fg);
+  .spread-section {
+    background: var(--rr-bg);
+    color: var(--rr-fg);
     padding: 6rem 2rem 7rem;
-    border-bottom: 1px solid var(--border-rule);
-    position: relative;
+    border-top: 1px solid var(--rr-line);
+    border-bottom: 1px solid var(--rr-line);
   }
-  :global([data-theme="dark"]) .stills-section {
-    background: #08070a;
-    background-image:
-      linear-gradient(180deg, transparent 0%, rgba(200,160,74,0.04) 50%, transparent 100%);
-  }
-  :global([data-theme="light"]) .stills-section {
-    background: #efe4c8;
-  }
-
-  .stills-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-
-  .stills-grid {
+  .spread-inner { max-width: 1320px; margin: 0 auto; }
+  .spread-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 3.5rem 4rem;
+    gap: 3.6rem 4rem;
     align-items: start;
   }
-  @media (max-width: 800px) {
-    .stills-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .stills-section { padding: 4rem 1.25rem 5rem; }
+  @media (max-width: 820px) {
+    .spread-grid { grid-template-columns: 1fr; gap: 2.8rem; }
+    .spread-section { padding: 4rem 1.25rem 5rem; }
   }
-
   .still-card {
     transform: rotate(var(--rot));
     transition: transform 0.4s ease;
   }
-  .still-card:hover {
-    transform: rotate(0deg) translateY(-4px);
-  }
+  .still-card:hover { transform: rotate(0deg) translateY(-5px); }
   .still-photo {
     position: relative;
-    background: var(--paper);
-    padding: 14px 14px 56px;
-    box-shadow:
-      0 22px 50px rgba(0,0,0,0.45),
-      0 4px 12px rgba(0,0,0,0.3);
-    border: 1px solid var(--gold-soft);
+    background: var(--rr-surface-2);
+    padding: 14px 14px 52px;
+    border: 1px solid var(--rr-line);
+    box-shadow: 0 22px 48px rgba(0,0,0,0.42), 0 4px 12px rgba(0,0,0,0.3);
   }
   :global([data-theme="light"]) .still-photo {
-    background: #fdf7e7;
-    box-shadow:
-      0 18px 38px rgba(40,28,12,0.2),
-      0 4px 10px rgba(40,28,12,0.15);
+    box-shadow: 0 18px 36px rgba(60,40,20,0.2), 0 4px 10px rgba(60,40,20,0.14);
   }
   .still-photo img {
     display: block;
     width: 100%;
     aspect-ratio: var(--aspect);
     object-fit: cover;
-    filter: contrast(1.05) saturate(0.95) sepia(0.04);
+    filter: contrast(1.04) saturate(1.02) sepia(0.05);
   }
-  .still-pageno {
+  .still-lot {
     position: absolute;
     bottom: 14px;
     left: 14px;
@@ -1284,550 +1117,453 @@ const marqueeItems = [
     text-align: center;
     font-family: 'Special Elite', monospace;
     font-size: 0.78rem;
-    letter-spacing: 0.32em;
+    letter-spacing: 0.24em;
     text-transform: uppercase;
-    color: var(--ink);
+    color: var(--rr-fg);
     padding-top: 12px;
   }
   .still-tape {
     position: absolute;
-    width: 70px;
-    height: 22px;
-    background: rgba(200, 160, 74, 0.35);
-    border: 1px solid rgba(200, 160, 74, 0.5);
+    width: 74px;
+    height: 24px;
+    background: rgba(207,82,54,0.28);
+    border: 1px solid rgba(207,82,54,0.4);
+    z-index: 2;
   }
-  .still-tape-tl { top: -8px; left: -10px; transform: rotate(-12deg); }
-  .still-tape-br { bottom: 36px; right: -10px; transform: rotate(8deg); }
-
-  .still-meta {
-    padding: 1.2rem 0.3rem 0;
+  :global([data-theme="light"]) .still-tape {
+    background: rgba(154,51,36,0.2);
+    border-color: rgba(154,51,36,0.32);
   }
+  .still-tape-tl { top: -9px; left: -11px; transform: rotate(-13deg); }
+  .still-tape-br { bottom: 34px; right: -11px; transform: rotate(7deg); }
+  .still-meta { padding: 1.3rem 0.3rem 0; }
   .still-slug {
     font-family: 'Special Elite', monospace;
     font-size: 0.7rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--rr-amber);
     margin-bottom: 0.5rem;
   }
   .still-title {
-    font-family: 'Italiana', serif;
-    font-size: 1.7rem;
-    color: var(--hero-fg);
+    font-family: 'Alfa Slab One', serif;
+    font-size: 1.55rem;
+    color: var(--rr-fg);
     margin: 0 0 0.6rem;
-    letter-spacing: 0.02em;
+    line-height: 1.1;
   }
   .still-line {
-    font-family: 'EB Garamond', serif;
-    font-size: 1rem;
-    line-height: 1.55;
-    color: var(--hero-muted);
+    font-family: 'Spectral', serif;
     font-style: italic;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--rr-muted);
     margin: 0;
   }
 
   /* ------------------------------------------------------------
-     MOT DU REALISATEUR (director note)
+     THE RANCHER'S NOTE
      ------------------------------------------------------------ */
-  .director-section {
-    background: var(--hero-bg);
-    color: var(--hero-fg);
+  .note-section {
+    background: var(--rr-bg-deep);
+    color: var(--rr-fg);
     padding: 7rem 2rem;
-    border-bottom: 1px solid var(--border-rule);
+    border-bottom: 1px solid var(--rr-line);
   }
-  :global([data-theme="dark"]) .director-section {
-    background:
-      linear-gradient(180deg, rgba(200,160,74,0.03) 0%, transparent 100%),
-      var(--hero-bg);
-  }
-  :global([data-theme="light"]) .director-section {
-    background: var(--hero-bg);
-  }
-
-  .director-grid {
-    max-width: 1300px;
+  .note-grid {
+    max-width: 1240px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 0.85fr 1fr;
+    grid-template-columns: 0.92fr 1fr;
     gap: 4rem;
     align-items: center;
   }
   @media (max-width: 900px) {
-    .director-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .director-section { padding: 4rem 1.25rem; }
+    .note-grid { grid-template-columns: 1fr; gap: 2.6rem; }
+    .note-section { padding: 4rem 1.25rem; }
   }
-
-  .director-image {
+  .note-image {
     margin: 0;
-    background: var(--paper);
-    padding: 12px 12px 50px;
-    border: 1px solid var(--gold-soft);
+    background: var(--rr-surface-2);
+    padding: 12px 12px 12px;
+    border: 1px solid var(--rr-line);
     box-shadow: 0 24px 50px rgba(0,0,0,0.45);
-    transform: rotate(-1.5deg);
+    transform: rotate(-1.4deg);
   }
-  :global([data-theme="light"]) .director-image {
-    background: #fdf7e7;
-    box-shadow: 0 18px 36px rgba(40,28,12,0.18);
-  }
-  .director-image img {
+  :global([data-theme="light"]) .note-image { box-shadow: 0 18px 36px rgba(60,40,20,0.2); }
+  .note-image img {
     display: block;
     width: 100%;
-    aspect-ratio: 3/4;
+    aspect-ratio: 16/10;
     object-fit: cover;
-    filter: contrast(1.05) saturate(0.95) sepia(0.04);
+    filter: contrast(1.04) saturate(1.02) sepia(0.05);
   }
-  .director-image figcaption {
+  .note-image figcaption {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: 0.9rem;
-    font-family: 'Special Elite', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ink);
+    margin-top: 0.8rem;
     padding: 0 0.2rem;
-  }
-
-  .director-tag {
     font-family: 'Special Elite', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.32em;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 1.2rem;
+    color: var(--rr-muted);
   }
-  .director-h3 {
-    font-family: 'Italiana', serif;
-    font-size: clamp(2rem, 4.5vw, 3.2rem);
-    line-height: 1.05;
-    margin: 0 0 1.4rem;
-    color: var(--hero-fg);
+  .note-tag {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rr-amber);
+    margin-bottom: 1.1rem;
   }
-  .director-h3 em {
-    font-family: 'DM Serif Display', serif;
+  .note-h3 {
+    font-family: 'Alfa Slab One', serif;
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    line-height: 1.08;
+    margin: 0 0 1.5rem;
+    color: var(--rr-fg);
+  }
+  .note-h3 em {
+    font-family: 'Zilla Slab', serif;
     font-style: italic;
-    color: var(--red);
-    font-weight: 400;
+    font-weight: 600;
+    color: var(--rr-oxblood);
   }
-  .director-body {
-    font-family: 'EB Garamond', serif;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--hero-fg);
-    margin: 0 0 1.2rem;
+  .note-body {
+    font-family: 'Spectral', serif;
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: var(--rr-fg);
+    margin: 0 0 1.15rem;
   }
-  .director-attrib {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1.6rem;
-  }
-  .director-attrib-line {
-    width: 50px;
-    height: 1px;
-    background: var(--gold);
-  }
-  .director-attrib-name {
+  :global([data-theme="dark"]) .note-body { color: #d8cdb8; }
+  .note-attrib { display: flex; align-items: center; gap: 1rem; margin-top: 1.7rem; }
+  .note-attrib-line { width: 52px; height: 2px; background: var(--rr-oxblood); }
+  .note-attrib-name {
     display: block;
-    font-family: 'Italiana', serif;
-    font-size: 1.05rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--gold);
+    font-family: 'Alfa Slab One', serif;
+    font-size: 1.02rem;
+    color: var(--rr-fg);
   }
-  .director-attrib-title {
+  .note-attrib-title {
     display: block;
     font-family: 'Special Elite', monospace;
     font-size: 0.72rem;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--hero-muted);
+    color: var(--rr-muted);
     margin-top: 0.25rem;
   }
 
   /* ------------------------------------------------------------
-     LE PROGRAMME (project cards as film entries)
+     THE LEDGER (project cards)
      ------------------------------------------------------------ */
-  .programme-section {
-    background: var(--hero-bg);
-    color: var(--hero-fg);
+  .ledger-section {
+    background: var(--rr-bg);
+    color: var(--rr-fg);
     padding: 7rem 2rem;
-    border-bottom: 1px solid var(--border-rule);
+    border-bottom: 1px solid var(--rr-line);
   }
-  :global([data-theme="dark"]) .programme-section {
-    background:
-      radial-gradient(ellipse at 50% 100%, rgba(184,32,42,0.08) 0%, transparent 60%),
-      var(--hero-bg);
-  }
-
-  .programme-inner {
-    max-width: 1400px;
-    margin: 0 auto;
-  }
-  .programme-grid {
+  .ledger-inner { max-width: 1320px; margin: 0 auto; }
+  .ledger-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 1.8rem;
   }
-  @media (max-width: 1100px) {
-    .programme-grid { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 1080px) { .ledger-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 680px) {
+    .ledger-grid { grid-template-columns: 1fr; }
+    .ledger-section { padding: 4rem 1.25rem; }
   }
-  @media (max-width: 700px) {
-    .programme-grid { grid-template-columns: 1fr; }
-    .programme-section { padding: 4rem 1.25rem; }
-  }
-
-  .film-card {
+  .ledger-card {
     position: relative;
-    background: var(--film);
-    border: 1px solid var(--gold-soft);
-    padding: 2rem 1.6rem;
-    color: var(--paper);
+    background: var(--rr-surface);
+    border: 1px solid var(--rr-line);
+    border-left: 4px solid var(--rr-oxblood);
+    padding: 1.8rem 1.6rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    gap: 0.95rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   }
-  :global([data-theme="light"]) .film-card {
-    background: #fbf5e4;
-    color: var(--ink);
-    border-color: var(--gold-soft);
+  .ledger-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 38px rgba(0,0,0,0.4);
+    border-left-color: var(--rr-amber);
   }
-  .film-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--red);
-    box-shadow: 0 18px 36px rgba(0,0,0,0.4);
-  }
-  :global([data-theme="light"]) .film-card:hover {
-    box-shadow: 0 14px 26px rgba(40,28,12,0.15);
-  }
-
-  /* film perforations (top/bottom) — like 35mm film edge */
-  .film-perfs {
-    position: absolute;
-    left: 8px;
-    right: 8px;
-    height: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    pointer-events: none;
-  }
-  .film-perfs-top { top: 6px; }
-  .film-perfs-bot { bottom: 6px; }
-  .film-perfs span {
-    width: 8px;
-    height: 6px;
-    background: var(--hero-bg);
-    border-radius: 1px;
-  }
-  :global([data-theme="light"]) .film-perfs span {
-    background: var(--hero-bg);
-  }
-
-  .film-card-header {
+  :global([data-theme="light"]) .ledger-card:hover { box-shadow: 0 14px 28px rgba(60,40,20,0.18); }
+  .ledger-card-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    padding-top: 0.6rem;
-    border-bottom: 1px solid var(--gold-soft);
+    gap: 0.8rem;
     padding-bottom: 0.8rem;
+    border-bottom: 1px dashed var(--rr-line);
   }
-  .film-no {
-    font-family: 'Italiana', serif;
-    font-size: 1.4rem;
-    color: var(--gold);
-    letter-spacing: 0.12em;
+  .ledger-lot {
+    font-family: 'Alfa Slab One', serif;
+    font-size: 0.95rem;
+    color: var(--rr-amber);
+    letter-spacing: 0.04em;
   }
-  .film-section {
+  .ledger-brand {
     font-family: 'Special Elite', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.18em;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--paper);
+    color: var(--rr-muted);
     text-align: right;
-    max-width: 60%;
-    line-height: 1.3;
   }
-  :global([data-theme="light"]) .film-section { color: var(--ink); }
-
-  .film-title {
-    font-family: 'Italiana', serif;
-    font-size: 1.85rem;
-    line-height: 1.05;
+  .ledger-title {
+    font-family: 'Alfa Slab One', serif;
+    font-size: 1.5rem;
+    line-height: 1.1;
     margin: 0;
-    color: var(--paper);
-    letter-spacing: 0.01em;
+    color: var(--rr-fg);
   }
-  :global([data-theme="light"]) .film-title { color: var(--ink); }
-
-  .film-body {
-    font-family: 'EB Garamond', serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--paper);
-    opacity: 0.85;
+  .ledger-body {
+    font-family: 'Spectral', serif;
+    font-size: 0.99rem;
+    line-height: 1.62;
+    color: var(--rr-muted);
     margin: 0;
     flex-grow: 1;
   }
-  :global([data-theme="light"]) .film-body { color: var(--ink); opacity: 0.75; }
-
-  .film-meta {
+  .ledger-meta {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 0.5rem;
-    padding-top: 0.8rem;
-    border-top: 1px solid var(--gold-soft);
+    padding-top: 0.85rem;
+    border-top: 1px dashed var(--rr-line);
   }
-  .film-badge {
+  .ledger-badge {
     font-family: 'Special Elite', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--rr-denim);
   }
-  .film-runtime {
+  .ledger-head {
     font-family: 'Special Elite', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--paper);
-    opacity: 0.6;
+    color: var(--rr-muted);
+    font-style: normal;
   }
-  :global([data-theme="light"]) .film-runtime { color: var(--ink); opacity: 0.6; }
-
-  .film-card-footer {
-    padding-bottom: 0.6rem;
-  }
-  .film-cta {
-    font-family: 'Italiana', serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.22em;
+  .ledger-cta {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--red);
+    color: var(--rr-oxblood);
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    transition: color 0.2s ease, gap 0.2s ease;
-    border-bottom: 1px solid currentColor;
+    border-bottom: 2px solid currentColor;
     padding-bottom: 2px;
+    transition: gap 0.2s ease, color 0.2s ease;
   }
-  .film-cta:hover {
-    color: var(--gold);
-    gap: 0.7rem;
-  }
-  .film-cta-disabled {
-    color: var(--paper);
-    opacity: 0.45;
-    cursor: default;
+  .ledger-cta:hover { gap: 0.7rem; color: var(--rr-amber); }
+  .ledger-cta-disabled {
+    color: var(--rr-muted);
     border-bottom-color: transparent;
+    cursor: default;
   }
-  :global([data-theme="light"]) .film-cta-disabled { color: var(--ink); }
 
   /* ------------------------------------------------------------
-     L'ENTRETIEN (interview Q&A)
+     FRESH OFF THE RANCH
      ------------------------------------------------------------ */
-  .entretien-section {
-    background: var(--hero-bg);
-    color: var(--hero-fg);
+  .fresh-section {
+    background: var(--rr-bg-deep);
+    color: var(--rr-fg);
     padding: 7rem 2rem;
-    border-bottom: 1px solid var(--border-rule);
+    border-bottom: 1px solid var(--rr-line);
   }
-  :global([data-theme="dark"]) .entretien-section {
-    background: #07060a;
+  :global([data-theme="dark"]) .fresh-section {
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(220,163,90,0.08) 0%, transparent 60%),
+      var(--rr-bg-deep);
   }
-  :global([data-theme="light"]) .entretien-section {
-    background: #efe4c8;
+  .fresh-inner { max-width: 1100px; margin: 0 auto; }
+  .fresh-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
   }
-
-  .entretien-inner {
-    max-width: 980px;
-    margin: 0 auto;
+  @media (max-width: 760px) {
+    .fresh-grid { grid-template-columns: 1fr; }
+    .fresh-section { padding: 4rem 1.25rem; }
   }
-  .entretien-list {
+  .fresh-card {
+    background: var(--rr-surface-2);
+    border: 2px solid var(--rr-line);
+    padding: 2.2rem 2rem;
+    position: relative;
     display: flex;
     flex-direction: column;
+    gap: 0.9rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
   }
-  .entretien-item {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    gap: 1.6rem;
-    padding: 2.2rem 0;
-    border-top: 1px solid var(--border-rule);
+  .fresh-card:hover { transform: translateY(-5px); box-shadow: 0 18px 38px rgba(0,0,0,0.4); }
+  :global([data-theme="light"]) .fresh-card:hover { box-shadow: 0 14px 28px rgba(60,40,20,0.18); }
+  .fresh-card-tag {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rr-oxblood);
   }
-  .entretien-item:last-child {
-    border-bottom: 1px solid var(--border-rule);
+  .fresh-card-title {
+    font-family: 'Alfa Slab One', serif;
+    font-size: 1.85rem;
+    line-height: 1.05;
+    margin: 0;
+    color: var(--rr-fg);
   }
-  @media (max-width: 700px) {
-    .entretien-item { grid-template-columns: 1fr; gap: 0.8rem; padding: 1.6rem 0; }
-  }
-  .entretien-num {
-    font-family: 'Italiana', serif;
-    font-size: 2.4rem;
-    color: var(--gold);
-    line-height: 1;
-    letter-spacing: 0.08em;
-  }
-  .entretien-q {
-    font-family: 'DM Serif Display', serif;
+  .fresh-card-kind {
+    font-family: 'Zilla Slab', serif;
     font-style: italic;
-    font-size: 1.3rem;
-    line-height: 1.35;
-    color: var(--hero-fg);
-    margin-bottom: 0.8rem;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--rr-denim);
   }
-  .entretien-a {
-    font-family: 'EB Garamond', serif;
-    font-size: 1.08rem;
-    line-height: 1.7;
-    color: var(--hero-muted);
+  .fresh-card-body {
+    font-family: 'Spectral', serif;
+    font-size: 1.02rem;
+    line-height: 1.66;
+    color: var(--rr-muted);
+    margin: 0;
+    flex-grow: 1;
   }
+  .fresh-cta {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rr-fg);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    align-self: flex-start;
+    border-bottom: 2px solid var(--rr-oxblood);
+    padding-bottom: 3px;
+    transition: gap 0.2s ease, color 0.2s ease;
+  }
+  .fresh-cta:hover { gap: 0.7rem; color: var(--rr-oxblood); }
 
   /* ------------------------------------------------------------
-     SEANCE DE CLOTURE (closing CTA)
+     CLOSING CTA
      ------------------------------------------------------------ */
-  .cloture-section {
-    background: var(--red);
-    color: var(--paper);
+  .closing-section {
+    background: var(--rr-oxblood);
+    color: #f6ede0;
     padding: 7rem 2rem;
     text-align: center;
     position: relative;
     overflow: hidden;
   }
-  .cloture-section::before {
+  .closing-section::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.95 0 0 0 0 0.85 0 0 0 0 0.7 0 0 0 0.35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    opacity: 0.14;
-    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.05 0 0 0 0 0.02 0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    opacity: 0.4;
+    mix-blend-mode: multiply;
     pointer-events: none;
   }
-  .cloture-inner {
-    position: relative;
-    max-width: 880px;
-    margin: 0 auto;
-  }
-  .cloture-eyebrow {
+  .closing-inner { position: relative; max-width: 880px; margin: 0 auto; }
+  .closing-eyebrow {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 2rem;
-    color: var(--paper);
+    margin-bottom: 1.8rem;
     font-family: 'Special Elite', monospace;
     font-size: 0.74rem;
-    letter-spacing: 0.32em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: #f6ede0;
   }
-  .cloture-rule {
-    width: 48px;
-    height: 1px;
-    background: var(--paper);
-  }
-  .cloture-title {
-    font-family: 'Italiana', serif;
-    font-size: clamp(2.8rem, 6vw, 5rem);
-    line-height: 0.98;
+  .closing-rule { width: 46px; height: 2px; background: #f6ede0; opacity: 0.8; }
+  .closing-title {
+    font-family: 'Alfa Slab One', serif;
+    font-size: clamp(2.5rem, 5.6vw, 4.4rem);
+    line-height: 1.02;
     margin: 0 0 1.4rem;
-    color: var(--paper);
+    color: #f9f2e6;
   }
-  .cloture-em {
-    font-family: 'DM Serif Display', serif;
+  .closing-em {
+    font-family: 'Zilla Slab', serif;
     font-style: italic;
-    font-weight: 400;
-    color: var(--gold);
+    font-weight: 600;
+    color: #1c1009;
   }
-  .cloture-deck {
-    font-family: 'EB Garamond', serif;
-    font-style: italic;
-    font-size: 1.18rem;
-    line-height: 1.65;
-    color: var(--paper);
-    opacity: 0.92;
-    max-width: 42em;
+  .closing-deck {
+    font-family: 'Spectral', serif;
+    font-size: 1.14rem;
+    line-height: 1.7;
+    color: #f3e6d4;
+    max-width: 44em;
     margin: 0 auto 2.4rem;
   }
-  .cloture-cta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
+  .closing-cta-row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .closing-section .btn-primary {
+    background: #1c1009;
+    color: var(--rr-amber);
+    border-color: #1c1009;
   }
-  .cloture-section .btn-primary {
-    background: var(--paper);
-    color: var(--red);
-    border-color: var(--paper);
+  .closing-section .btn-primary:hover {
+    background: #000;
+    border-color: #000;
   }
-  .cloture-section .btn-primary:hover {
-    background: var(--ink);
-    color: var(--gold);
-    border-color: var(--gold);
+  .closing-section .btn-secondary {
+    color: #f6ede0;
+    border-color: #f6ede0;
   }
-  .cloture-section .btn-secondary {
-    color: var(--paper);
-    border-color: var(--paper);
-  }
-  .cloture-section .btn-secondary:hover {
-    background: var(--paper);
-    color: var(--red);
+  .closing-section .btn-secondary:hover {
+    background: #f6ede0;
+    color: var(--rr-oxblood);
   }
 
   /* ------------------------------------------------------------
-     GENERIQUE (closing credits)
+     BRAND REGISTRY (closing credits)
      ------------------------------------------------------------ */
-  .credits-section {
-    background: var(--ink);
-    color: var(--paper);
-    padding: 4rem 2rem;
+  .registry-section {
+    background: var(--rr-bg-deep);
+    color: var(--rr-fg);
+    padding: 4.5rem 2rem;
     text-align: center;
-    border-top: 1px solid var(--gold-soft);
+    border-top: 1px solid var(--rr-line);
   }
-  :global([data-theme="light"]) .credits-section {
-    background: #15110d;
-    color: var(--paper);
-  }
-  .credits-inner {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-  .credits-tag {
-    font-family: 'Italiana', serif;
-    font-size: 1.4rem;
-    letter-spacing: 0.42em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin-bottom: 2.5rem;
-  }
-  .credits-roll {
-    display: flex;
-    flex-direction: column;
-    gap: 1.1rem;
-  }
-  .credits-block {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-  }
-  .credits-role {
-    font-family: 'Special Elite', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.32em;
-    text-transform: uppercase;
-    color: var(--paper-soft);
-    opacity: 0.7;
-  }
-  :global([data-theme="light"]) .credits-role { color: #c8b48a; }
-  .credits-name {
-    font-family: 'Italiana', serif;
+  .registry-inner { max-width: 760px; margin: 0 auto; }
+  .registry-tag {
+    font-family: 'Alfa Slab One', serif;
     font-size: 1.15rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--paper);
+    color: var(--rr-amber);
+    margin-bottom: 2.4rem;
+  }
+  .registry-roll { display: flex; flex-direction: column; gap: 1.05rem; }
+  .registry-block { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+  .registry-role {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rr-muted);
+  }
+  .registry-name {
+    font-family: 'Special Elite', monospace;
+    font-size: 0.92rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rr-fg);
   }
 </style>
