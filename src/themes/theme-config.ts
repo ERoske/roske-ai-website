@@ -133,7 +133,7 @@ export const currentTheme: ThemeConfig = {
     subtitle: "A working ranch where the livestock are AI companies and the only hand on the payroll is an AI agent. The boss still closes the books by sundown.",
     description: "The newest show in the Yellowstone universe premiered last night, so roske.ai is a working ranch this week. This is not a stretch I reached for: I grew up riding horses and going to rodeos in the Pacific Northwest, and I later owned a North Texas ranch that raised drum horses. The cattle, these days, are AI companies. (The fedora stays. It was never a cowboy hat, and it is not starting now.)",
     heroImage: "hero-2026-05-16.png",
-    imageAlt: "Edward Roske as a Texas rancher at golden hour, leaning on a weathered cedar fence rail in his signature blue fedora, a working ranch and longhorn cattle behind him under a wide Texas sky.",
+    imageAlt: "Edward Roske at a Texas paddock fence in his signature blue fedora, in conversation with a horse. The horse asks 'Is an AI Agent going to replace me?' in a speech bubble; Edward replies 'No, a horse using an AI agent is going to replace you.' Golden hour, ranch behind.",
     ctaText: "Tour the Spread",
     ctaLink: "#current-work",
   },
