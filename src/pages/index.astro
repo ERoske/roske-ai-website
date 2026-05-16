@@ -5,12 +5,12 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// "The Spread" — four ranch photographs, treated as framed film stills.
+// "The Spread": four framed ranch photographs.
 const ranchStills = [
   {
     src: '/images/roske-ranch/edward-branding-iron.png',
     lot: 'No. 17',
-    slug: 'EXT. THE BRANDING FIRE. DUSK.',
+    slug: 'THE BRANDING FIRE · DUSK',
     title: 'Registering the Brand',
     line: "He holds the iron up to the light and reads it like a quarterly report. It is, in fairness, both.",
     aspect: '4/3',
@@ -19,7 +19,7 @@ const ranchStills = [
   {
     src: '/images/roske-ranch/edward-ranch-office.png',
     lot: 'No. 23',
-    slug: 'INT. THE RANCH HOUSE. NIGHT.',
+    slug: 'THE RANCH HOUSE · NIGHT',
     title: 'Closing the Books',
     line: "Spurs on the desk, ledger open, laptop running. The job changed less than the wardrobe suggests.",
     aspect: '4/3',
@@ -28,7 +28,7 @@ const ranchStills = [
   {
     src: '/images/roske-ranch/edward-drum-horse.png',
     lot: 'No. 31',
-    slug: 'EXT. THE STABLE YARD. GOLDEN HOUR.',
+    slug: 'THE STABLE YARD · GOLDEN HOUR',
     title: 'A Proper Drum Horse',
     line: "We raised these in North Texas. Enormous, gentle, and entirely unbothered by how small they make a person feel.",
     aspect: '3/4',
@@ -37,7 +37,7 @@ const ranchStills = [
   {
     src: '/images/roske-ranch/edward-on-horseback.png',
     lot: 'No. 08',
-    slug: 'EXT. THE NORTH PASTURE. SUNSET.',
+    slug: 'THE NORTH PASTURE · SUNSET',
     title: 'Riding the Line',
     line: "A man who genuinely knows how to ride, holding the reins like he is aware of the camera. Both things are true.",
     aspect: '3/4',
@@ -241,8 +241,7 @@ const brandRegistry = [
           </div>
           <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="ranch-frame-image" />
           <figcaption class="ranch-frame-caption">
-            <span class="ranch-frame-slug">EXT. THE PADDOCK · GOLDEN HOUR</span>
-            <span class="ranch-frame-scene">Scene 01 &middot; the rancher explains job security to a horse</span>
+            <span class="ranch-frame-slug">THE PADDOCK · GOLDEN HOUR</span>
           </figcaption>
         </figure>
 
