@@ -1,0 +1,58 @@
+---
+title: "There Are Two AI Job Markets Now"
+description: "May 2025 BLS data dropped, and a year of real AI hiring is finally legible. Applied AI engineering rewards you for leaving California. Frontier labs hardened to the coasts."
+date: 2026-05-16
+tags: ["AI", "careers", "data analysis", "geography", "BLS"]
+draft: false
+---
+
+The May 2025 BLS data dropped this week and a year of real AI hiring is finally legible. The picture changed enough that the old career-advice articles need new disclaimers. The biggest one: there are two AI job markets now, and they no longer trade talent the way they did a year ago.
+
+I [re-ran my own pull](/blog/how-i-built-the-ai-hub-heatmaps/) against the new release to see how much the numbers actually moved. The methodology and the public repo are in [that post](/blog/how-i-built-the-ai-hub-heatmaps/). This one is about what the year-over-year tells you that the snapshot did not.
+
+## Real hiring shows up in the absolute column
+
+New York added roughly four thousand AI workers in twelve months (21,240 to 25,260, up nineteen percent). Chicago added 2,360 (up thirty-nine percent). Seattle added 1,820 (up twenty-two percent). Washington DC added another thousand on top of an already large base. These markets hired more AI people in twelve months than most cities employ in total.
+
+Then there are two outliers that look spectacular and are not.
+
+## Read the absolute column, not the percentage column
+
+The percentage column shows Salt Lake City up three thousand six hundred and twelve percent and Warner Robins up eight hundred and fifty percent. Neither is real growth in the way you want it to be. Both metros had their prior-year baselines suppressed by BLS confidentiality rules. The current-year number is real. The prior-year number was a floor near eighty workers because the actual count fell below the disclosure threshold. The percentage column is the gap between suppression and reality, not a year of hiring.
+
+(I caught this only by re-pulling May 2024 and joining the two files. The lesson, for anyone reading their own BLS data: when the prior-year value is 80 or null, treat the percentage as cosmetic and the absolute delta as the real number.)
+
+## Top 10 absolute gainers, May 2024 to May 2025
+
+| # | Metro | 2024 | 2025 | Δ workers | Δ % |
+|---|---|---|---|---|---|
+| 1 | New York-Newark-Jersey City | 21,240 | 25,260 | +4,020 | +18.9% |
+| 2 | Salt Lake City-Murray | 80 | 2,970 | +2,890 | artifact |
+| 3 | Chicago-Naperville-Elgin | 6,070 | 8,430 | +2,360 | +38.9% |
+| 4 | Seattle-Tacoma-Bellevue | 8,170 | 9,990 | +1,820 | +22.3% |
+| 5 | Dallas-Fort Worth-Arlington | 9,500 | 10,550 | +1,050 | +11.1% |
+| 6 | Detroit-Warren-Dearborn | 2,930 | 3,960 | +1,030 | +35.2% |
+| 7 | Washington-Arlington-Alexandria | 11,680 | 12,680 | +1,000 | +8.6% |
+| 8 | San Francisco-Oakland-Fremont | 11,210 | 12,130 | +920 | +8.2% |
+| 9 | Atlanta-Sandy Springs-Roswell | 6,040 | 6,930 | +890 | +14.7% |
+| 10 | Philadelphia-Camden-Wilmington | 5,970 | 6,830 | +860 | +14.4% |
+
+Source: BLS OEWS May 2024 and May 2025 releases. SOC 15-1221 (Computer and Information Research Scientists) plus 15-2051 (Data Scientists), aggregated by Metropolitan Statistical Area. The full table, including losers and percentage growers with the suppression caveat, is in the [public repo](https://github.com/ERoske/where-is-ai/blob/main/data/usa_yoy_findings.md).
+
+## A new #1 by concentration, and it is not who you think
+
+Warner Robins, Georgia tops the concentration chart at 9.99 AI workers per thousand. That is not a typo and that is not a tech-startup town. It is anchored by [Robins Air Force Base](https://www.robins.af.mil/) and the Warner Robins Air Logistics Complex (which is a real place, not a contractor brochure). Lexington Park, Maryland (Naval Air Station Patuxent River) shows up fourth on the same list. Huntsville dropped out of the top ten this cycle. The defense AI cluster runs in parallel to the commercial one, with its own funding, its own clearances, and almost none of the press.
+
+If you are looking for the AI hiring story most listicles miss, it is the one with security badges.
+
+## The real shift: applied AI vs frontier labs
+
+The cost-of-living math has not changed in the direction the [late-2024 articles](https://www.kore1.com/blog/ai-engineer-salary-guide-2026/) predicted. A senior AI engineer earning 220,000 in Austin still keeps roughly the buying power of someone earning 310,000 in San Francisco once you back out California's thirteen percent top rate and rent near 3,400 for a one bedroom. Raleigh, Atlanta, Houston, and Nashville clear the same hurdle. Three of them have no state income tax. For applied AI work, the cost-adjusted winner is still Austin, and the spread widened with another year of Bay Area rent growth.
+
+What did change in 2026 is the other half of the market. Frontier lab work hardened to coastal cities. [OpenAI](https://openai.com/careers/) lists about four percent of its roles as remote. [Anthropic](https://www.anthropic.com/careers) lists about seven percent. The rest expect you within commuting distance of San Francisco, Seattle, or New York, three days a week, with a forty-five day relocation clock if you got hired from somewhere else. If your career goal is to publish papers under a lab logo most people recognize, the cost-adjusted math becomes irrelevant, because you do not get a choice about where to live.
+
+So there are two AI job markets now, and they no longer trade talent the way they did a year ago. Applied AI engineering rewards you for leaving California. Frontier lab research punishes you for it. (I have watched a lot of friends make this choice in the past year. The ones who chose the coast wanted the logo. The ones who chose the cost-adjusted city wanted the house.)
+
+The right answer to "where should I move" depends entirely on which of the two markets you actually want to be in.
+
+The data is in the [public repo](https://github.com/ERoske/where-is-ai), updated this week. If I have the numbers wrong, I would rather correct them than defend them.
