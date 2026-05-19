@@ -11,18 +11,23 @@ interface Props {
   title: string;
   description: string;
   date: Date;
+  updatedDate?: Date;
   tags?: string[];
   slug?: string;
   coauthors?: Coauthor[];
 }
 
-const { title, description, date, tags = [], slug = '', coauthors = [] } = Astro.props;
+const { title, description, date, updatedDate, tags = [], slug = '', coauthors = [] } = Astro.props;
 
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
 });
+const formattedUpdatedDate = updatedDate
+  ? updatedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })
+  : null;
+const showUpdated = updatedDate && updatedDate.getTime() !== date.getTime();
 ---
 
 <BaseLayout title={`${title} | Roske.AI`} description={description} ogType="article" articleDate={date} articleTags={tags}>
@@ -34,7 +39,7 @@ const formattedDate = date.toLocaleDateString('en-US', {
     "headline": title,
     "description": description,
     "datePublished": date.toISOString(),
-    "dateModified": date.toISOString(),
+    "dateModified": (updatedDate ?? date).toISOString(),
     "author": [
       {
         "@type": "Person",
@@ -136,6 +141,11 @@ const formattedDate = date.toLocaleDateString('en-US', {
               <time datetime={date.toISOString()} class="text-xs dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] block">
                 {formattedDate}
               </time>
+              {showUpdated && (
+                <time datetime={updatedDate!.toISOString()} class="text-xs italic dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] block">
+                  Updated {formattedUpdatedDate}
+                </time>
+              )}
             </div>
           </div>
           {coauthors.length > 0 && coauthors.map(coauthor => (
