@@ -8,6 +8,22 @@
     "category": "interview"
   },
   {
+    "title": "Edward Roske Interviews Paul Lepine at Kscope25",
+    "url": "https://www.youtube.com/watch?v=2U-hCR0DuPE",
+    "published": "2026-04-16",
+    "source": "ODTUG / Kscope25",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Paul Lepine, Grant Thornton's Alliance Director for Oracle and NetSuite across North America, with 15+ years inside Oracle before that.",
+    "category": "interview"
+  },
+  {
+    "title": "Edward Roske Interviews Tim Tow at Kscope25",
+    "url": "https://www.youtube.com/watch?v=LY7k0VgBRGM",
+    "published": "2026-03-26",
+    "source": "ODTUG / Kscope25",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Tim Tow, founder and president of Applied OLAP, creator of Dodeca, and the first Oracle ACE Director in the Hyperion / Essbase community.",
+    "category": "interview"
+  },
+  {
     "title": "Edward Roske Interviews the Accordion Crew at Kscope25",
     "url": "https://www.youtube.com/watch?v=6x1xRMJF9Yc",
     "published": "2026-03-26",
@@ -24,28 +40,108 @@
     "category": "interview"
   },
   {
-    "title": "Edward Roske Interviews Mia Urman at Kscope25",
-    "url": "https://www.youtube.com/watch?v=UA34DOZ59OE",
+    "title": "Edward Roske Interviews Abhi Nerurkar at Kscope25",
+    "url": "https://www.youtube.com/watch?v=4lObaZ1KAnA",
     "published": "2026-03-26",
     "source": "ODTUG / Kscope25",
-    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Oracle ACE Director Mia Urman, CEO of AuraPlayer and a leading voice on Oracle Forms modernization and the migration paths off legacy enterprise apps.",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Abhi Nerurkar of EPMware, a recent Kscope speaker on enterprise master data and Oracle PCMCS integrations.",
     "category": "interview"
   },
   {
-    "title": "Edward Roske Interviews Paul Lepine at Kscope25",
-    "url": "https://www.youtube.com/watch?v=2U-hCR0DuPE",
+    "title": "Edward Roske Interviews Charlie Yousef at Kscope25",
+    "url": "https://www.youtube.com/watch?v=NQYRoiYQ8cg",
     "published": "2026-03-26",
     "source": "ODTUG / Kscope25",
-    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Paul Lepine, Grant Thornton's Alliance Director for Oracle and NetSuite across North America, on the partner side of the EPM ecosystem and a long Oracle career before that.",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Charlie Yousef (Oracle and Version 1 background) for the conference highlights series.",
+    "category": "interview"
+  },
+  {
+    "title": "Edward Roske Interviews Dimpy Sharma at Kscope25",
+    "url": "https://www.youtube.com/watch?v=myYIomj2a74",
+    "published": "2026-03-26",
+    "source": "ODTUG / Kscope25",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Dimpy Sharma for the conference highlights series.",
+    "category": "interview"
+  },
+  {
+    "title": "Edward Roske Interviews Matthew Clymer at Kscope25",
+    "url": "https://www.youtube.com/watch?v=6xx_9n-3UgA",
+    "published": "2026-03-26",
+    "source": "ODTUG / Kscope25",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Matthew Clymer for the conference highlights series.",
+    "category": "interview"
+  },
+  {
+    "title": "Edward Roske Interviews Julie Bouchard at Kscope25",
+    "url": "https://www.youtube.com/watch?v=TxD3cQthxXc",
+    "published": "2026-03-26",
+    "source": "ODTUG / Kscope25",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Julie Bouchard for the conference highlights series.",
+    "category": "interview"
+  },
+  {
+    "title": "Edward Roske Interviews Moe Gohary of Donyati at Kscope25",
+    "url": "https://www.youtube.com/watch?v=EO7wy45SI50",
+    "published": "2026-02-11",
+    "source": "ODTUG / Kscope25",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Moe Gohary, founder and CEO of Donyati, the Oracle EPM and ERP consulting firm he started in 2015 after senior roles at PwC, GM, and KPMG.",
     "category": "interview"
   },
   {
     "title": "Edward Roske Interviews Brock Ray at Kscope25",
     "url": "https://www.youtube.com/watch?v=tCIy4qZH4xo",
-    "published": "2026-03-26",
+    "published": "2026-02-11",
     "source": "ODTUG / Kscope25",
     "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Brock Ray for the conference highlights series.",
     "category": "interview"
+  },
+  {
+    "title": "Edward Roske Interviews Danielle White at Kscope25",
+    "url": "https://www.youtube.com/watch?v=qGs9QuNN0AY",
+    "published": "2025-08-28",
+    "source": "ODTUG / Kscope25",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Danielle White, an 18-year Oracle EPM veteran now at Donyati and the newly-elected Secretary of the ODTUG Executive Committee for FY26.",
+    "category": "interview"
+  },
+  {
+    "title": "Edward Roske Interviews Mia Urman at Kscope25",
+    "url": "https://www.youtube.com/watch?v=UA34DOZ59OE",
+    "published": "2025-08-21",
+    "source": "ODTUG / Kscope25",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Oracle ACE Director Mia Urman, CEO of AuraPlayer and a leading voice on Oracle Forms modernization and the migration paths off legacy enterprise apps.",
+    "category": "interview"
+  },
+  {
+    "title": "Edward Roske Interviews Monty Latiolais at Kscope25",
+    "url": "https://www.youtube.com/watch?v=jYYnxTYGz34",
+    "published": "2025-08-14",
+    "source": "ODTUG / Kscope25",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Monty Latiolais, Director of Business Development at Insum (now part of Talan, the largest APEX consultancy in North America) and former ODTUG President from 2012 to 2015.",
+    "category": "interview"
+  },
+  {
+    "title": "Edward Roske Interviews Kellyn Gorman at Kscope25",
+    "url": "https://www.youtube.com/watch?v=ld5rwJe4Qec",
+    "published": "2025-07-31",
+    "source": "ODTUG / Kscope25",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Kellyn Gorman, Database and AI Advocate at Redgate, Oracle ACE Director, Oak Table Network member, and Kscope18/19 Conference Chair.",
+    "category": "interview"
+  },
+  {
+    "title": "Edward Roske Interviews Ryan McWhorter at Kscope25",
+    "url": "https://www.youtube.com/watch?v=Yvp1G-2SxbQ",
+    "published": "2025-07-25",
+    "source": "ODTUG / Kscope25",
+    "description": "From the ODTUG podcast booth at Kscope25. Edward sits down with Ryan McWhorter for the conference highlights series.",
+    "category": "interview"
+  },
+  {
+    "title": "ODTUG Lifetime Achievement Award: Edward Roske at Kscope25",
+    "url": "https://www.youtube.com/watch?v=PZBIZxQGtBc",
+    "published": "2025-06-23",
+    "source": "ODTUG / Kscope25",
+    "description": "Edward receives the ODTUG Lifetime Achievement Award at Kscope25, an honor given to fewer than five people in ODTUG's history. He announced this would be his final Kscope as a conference regular.",
+    "category": "conference"
   },
   {
     "title": "Devs on Tape x Kscope25: The Inspiring Journey of Edward Roske",
