@@ -77,40 +77,40 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "Yosemite: Roske Ranch",
-  week: "2026-05-16",
-  inspiration: "The Dutton Ranch — the Beth-and-Rip Yellowstone spinoff — premiered on Paramount+ on Friday, May 15. So roske.ai becomes a working ranch: 'Yosemite: Roske Ranch', a parody of the whole franchise where the cattle are AI companies and the only ranch hand is an AI agent. The conceit is barely a stretch. Edward grew up riding horses and going to rodeos in the Pacific Northwest, later owned a North Texas ranch that raised drum horses, rode a quarterhorse named Thomas Jefferson, founded interRel out of Arlington, Texas, and earned his Master of Data Science at SMU in Dallas. The Texas is real. The longhorns are not.",
-  tagline: "Running the spread since 1997. The cattle are AI companies.",
+  name: "This Is the Way",
+  week: "2026-05-24",
+  inspiration: "Star Wars: The Mandalorian and Grogu opened in theaters on Friday, May 22, 2026, the first theatrical Star Wars release since 2019, and also (in a coincidence the universe arranged on its own) Edward's birthday. So roske.ai becomes a Mandalorian bounty hunter's logbook for the week: Edward as a Mando who flatly refuses to swap the blue fedora for the beskar helmet, Grogu in a side satchel, and the targets are AI companies. The fedora-versus-helmet schism is the whole bit. (Memorial Day on Monday gets a brief, sober tip of the same fedora.)",
+  tagline: "A bounty hunter in a blue fedora. The marks are AI companies. The kid stays in the satchel.",
 
   colors: {
-    // Western ranch at golden hour. Earth tones: oxblood brand-iron red,
-    // weathered denim blue, dusty sage, bone parchment, amber dusk.
-    primary: "#231a10",          // dark walnut
-    secondary: "#4a6678",        // weathered denim blue (the fedora's cousin)
-    accent: "#9a3324",           // oxblood / branding-iron red
-    accentHover: "#b8412f",
-    background: "#17120d",       // ranch night
-    backgroundLight: "#ebe1cd",  // sun-bleached bone / canvas
-    surface: "#211a12",          // lifted dark brown (cards, dark)
-    surfaceLight: "#f5eedd",     // light parchment (cards, light)
-    text: "#ece3d1",             // warm bone
-    textMuted: "#a08e76",        // dusty taupe
-    textDark: "#2a2014",         // dark walnut text
-    textDarkMuted: "#6a5942",    // muted saddle brown
-    border: "#3a2d20",           // dark fence-wood
-    borderLight: "#cebf9e",      // weathered light wood
-    gradient: "linear-gradient(180deg, #17120d 0%, #3a2412 55%, #6b3a18 100%)",
+    // Tatooine night and beskar steel. Deep indigo space, cool steel,
+    // a sharp Mando-red accent stripe, warm bone parchment for daylight.
+    primary: "#0e1422",          // deep Tatooine night
+    secondary: "#8a96a3",        // beskar steel
+    accent: "#b03a2e",           // Mando shoulder-stripe red
+    accentHover: "#cf4a3a",
+    background: "#0a0d14",       // deep space black-blue
+    backgroundLight: "#e9dcb8",  // sun-warmed parchment / Tatooine sand
+    surface: "#141a2a",          // lifted indigo (cards, dark)
+    surfaceLight: "#f3e8c6",     // pale sand parchment (cards, light)
+    text: "#ece2c4",             // warm bone
+    textMuted: "#8a8474",        // muted dust
+    textDark: "#1a1f30",         // dark navy text on light
+    textDarkMuted: "#5a5240",    // muted saddle on light
+    border: "#2c3345",           // night-edge blue
+    borderLight: "#c4b58a",      // warm sand line
+    gradient: "linear-gradient(180deg, #0a0d14 0%, #1b1322 45%, #8a3a1c 85%, #c46a26 100%)",
   },
 
   fonts: {
-    // Alfa Slab One: fat wood-type slab, the branding-iron / ranch-signage display.
-    // Zilla Slab: characterful slab serif with italics, for decked headlines.
-    // Spectral: warm editorial serif with real italics, for body and asides.
-    // Special Elite: typewriter mono, for ledger lines, lot numbers, brand tags.
-    heading: "'Alfa Slab One', 'Rockwell', Georgia, serif",
-    body: "'Spectral', Georgia, 'Times New Roman', serif",
-    mono: "'Special Elite', 'Courier Prime', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Zilla+Slab:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Special+Elite&display=swap",
+    // Black Ops One: stencil/military display for big beskar headlines.
+    // Cormorant Garamond italic: noble serif for creed phrasing and pull quotes.
+    // Manrope: clean modern sans for body, readable in both modes.
+    // Share Tech Mono: HUD/console look for ledger tags, lot numbers, beskar plate stamps.
+    heading: "'Black Ops One', 'Bebas Neue', Impact, sans-serif",
+    body: "'Manrope', 'Inter', system-ui, -apple-system, sans-serif",
+    mono: "'Share Tech Mono', 'Courier Prime', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap",
   },
 
   layout: {
@@ -130,11 +130,11 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "A working ranch where the livestock are AI companies and the only hand on the payroll is an AI agent. The boss still closes the books by sundown.",
-    description: "The newest show in the Yellowstone universe premiered on May 15, 2026, so roske.ai is a working ranch this week. This is not a stretch I reached for: I grew up riding horses and going to rodeos in the Pacific Northwest, and I later owned a North Texas ranch that raised drum horses. The cattle, these days, are AI companies. (The fedora stays. It was never a cowboy hat, and it is not starting now.)",
-    heroImage: "hero-2026-05-16.png",
-    imageAlt: "Edward Roske at a Texas paddock fence in his signature blue fedora, in conversation with a horse. The horse asks 'Is an AI Agent going to replace me?' in a speech bubble; Edward replies 'No, a horse using an AI agent is going to replace you.' Golden hour, ranch behind.",
-    ctaText: "Tour the Spread",
+    subtitle: "A Mandalorian bounty hunter who refuses the helmet. The targets are AI companies. The apprentice in the satchel uses the Force only to lift snacks.",
+    description: "Star Wars: The Mandalorian and Grogu opened in theaters on Friday, May 22, the same day I turned a year older. (The universe arranged that on its own. I take no credit.) So roske.ai is a bounty hunter's logbook this week: beskar where the suit jacket usually goes, Grogu where the laptop bag usually sits, and the targets are AI companies that have not yet been brought in. The fedora stays. The fedora was never up for negotiation.",
+    heroImage: "hero-2026-05-24.png",
+    imageAlt: "Edward Roske in full beskar Mandalorian armor standing on a Tatooine ridge at twin-sunset, wearing his signature blue fedora hat instead of a Mandalorian helmet, the helmet held under one arm. Grogu sits in a leather satchel at Edward's hip, looking up. Twin suns on the horizon, blaster on his hip, cape moving in the wind.",
+    ctaText: "Open the bounty board",
     ctaLink: "#current-work",
   },
 };
