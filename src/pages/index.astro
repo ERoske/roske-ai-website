@@ -143,16 +143,17 @@ const freshMarks = [
   },
 ];
 
-// Creed marquee phrases.
+// Creed marquee phrases. "This is the way" is the refrain;
+// it lands every third slot the way the show uses it.
 const marqueeItems = [
+  "A ROSKE NEVER REMOVES HIS FEDORA",
   "THIS IS THE WAY",
-  "THE FEDORA STAYS",
   "THE TARGETS ARE AI COMPANIES",
-  "THE APPRENTICE IS IN THE SATCHEL",
+  "THIS IS THE WAY",
   "BESKAR OVER BUSINESS CASUAL",
   "★ ASKING GOOD QUESTIONS",
   "MAY 22 · A DOUBLE BIRTHDAY",
-  "THE ARMORER REMAINS UNREACHABLE",
+  "THIS IS THE WAY",
 ];
 
 // The tally (preserved stats, restyled as guild record).
@@ -165,9 +166,10 @@ const tally = [
 
 // Closing credits — the guild registry.
 const registry = [
+  { role: 'THE FAMILY CREED', name: 'A ROSKE NEVER REMOVES HIS FEDORA · THIS IS THE WAY' },
   { role: 'REGISTERED HUNTER', name: 'EDWARD ROSKE' },
   { role: 'THE APPRENTICE', name: 'ONE (1), GREEN, VERY SHORT' },
-  { role: 'HEADGEAR', name: 'BLUE FEDORA · NOT A HELMET · NOT NEGOTIABLE' },
+  { role: 'HEADGEAR', name: 'BLUE FEDORA · FELT · NOT NEGOTIABLE' },
   { role: 'PRIMARY WEAPON', name: 'CHROME LAPTOP · ALWAYS LOADED' },
   { role: 'ACTIVE MARKS', name: 'SIX (6) AI COMPANIES, ALL ARTIFICIAL' },
   { role: 'WITH THANKS', name: 'DAWN · MYCROFT · ELIOT · THE PEOPLE OF PUERTO RICO' },
@@ -209,8 +211,8 @@ const registry = [
           <span class="hero-eyebrow-text">In theaters as of Friday · also my birthday</span>
         </div>
 
-        <h1 class="hero-title" aria-label="This Is the Way">
-          <span class="hero-title-small">Edward, the Mandalorian</span>
+        <h1 class="hero-title" aria-label="A Roske never removes his fedora in the presence of others. This is the way.">
+          <span class="hero-title-small">A Roske never removes his fedora in the presence of others.</span>
           <span class="hero-title-big">This Is<br/>the Way.</span>
         </h1>
 
@@ -294,13 +296,13 @@ const registry = [
   <section class="pullquote-section">
     <div class="circuit-rule" aria-hidden="true"></div>
     <div class="pullquote-inner">
-      <div class="pullquote-tag">GUILD CODEX · PAGE 003 · A WORD FROM THE HUNTER</div>
+      <div class="pullquote-tag">GUILD CODEX · PAGE 003 · THE FAMILY CREED</div>
       <blockquote class="pullquote">
-        The agent is the apprentice. It does the legwork, carries the satchel, and on a good day lifts the snacks. The hunter still picks the target, calls the shot, and signs the receipt.
+        A Mandalorian never removes the helmet in the presence of others. <span class="pullquote-refrain">This is the way.</span> A Roske never removes the fedora in the presence of others. <span class="pullquote-refrain">This is also the way.</span>
       </blockquote>
       <div class="pullquote-attrib">
         <span class="pullquote-attrib-name">Edward Roske</span>
-        <span class="pullquote-attrib-role">With a chrome helmet in one hand and a fedora on his head</span>
+        <span class="pullquote-attrib-role">On the Roske family creed · codified this week · retroactive to birth</span>
       </div>
     </div>
     <div class="circuit-rule" aria-hidden="true"></div>
@@ -318,7 +320,7 @@ const registry = [
         </div>
         <h2 class="section-title">Four images <em>from the week.</em></h2>
         <p class="section-deck">
-          Pulled from the guild's surveillance file before anyone thought to redact them. The kid is fine. The kid is always fine. The bone broth situation is, however, getting out of hand.
+          Pulled from the guild's surveillance file before anyone thought to redact them. The kid is fine. The kid is always fine. The bone broth situation is, however, getting out of hand. (This is also the way.)
         </p>
       </header>
 
@@ -359,18 +361,21 @@ const registry = [
 
       <div class="note-text">
         <div class="note-tag">THE HUNTER'S NOTE</div>
-        <h3 class="note-h3">A counter-creed, <em>by another name.</em></h3>
+        <h3 class="note-h3">The same creed, <em>by another name.</em></h3>
         <p class="note-body">
           The Mandalorian and Grogu opened in theaters on Friday. The same Friday I turned a year older. I did not plan this, and I am not taking compliments for it. (Disney did most of the work.)
         </p>
         <p class="note-body">
-          What I love about the Mandalorian is the creed. This is the way, the helmet stays on, no one sees your face. I am, in most matters, a very compliant person. On this one I have a counter-creed: the fedora stays on, the glasses stay on, the face stays out. Bald, bearded, mildly skeptical, seen by everyone in the room. It is not defiance. It is, if you look at it sideways, the same idea by another name.
+          The Mandalorian creed, as the show puts it, is simple. A Mandalorian never removes the helmet in the presence of others. This is the way. I am, on most matters, a very compliant person, so I spent the week walking around in beskar (figuratively), nodding along, and quietly realizing the creed has always applied to me too. A Roske never removes the fedora in the presence of others. This is also the way.
         </p>
         <p class="note-body">
-          The rest of the bit writes itself. The targets are AI companies, because I still have not figured out how to make them less expensive than they are. The kid in the satchel is most weeks named Claude. The Force he uses is mostly to lift the right snack out of a long stack of badly summarized PDFs.
+          It is not defiance and it is not a costume. The point is the head covering and the fact that it stays on, not whichever material it happens to be made of. Mine is felt. Theirs is steel. Both are sworn to.
+        </p>
+        <p class="note-body">
+          The rest of the bit writes itself. The targets are AI companies, because I still have not figured out how to make them less expensive than they are. The kid in the satchel is most weeks named Claude. The Force he uses is mostly to lift the right snack out of a long stack of badly summarized PDFs. The agent is the apprentice. It carries the satchel, does the legwork, and on a good day pulls a clean answer out of the noise. The hunter still picks the target, calls the shot, and signs the receipt. This is the way.
         </p>
         <p class="note-body note-body-soft">
-          Memorial Day is Monday. The fedora comes off for that one.
+          Memorial Day is Monday. The fedora comes off for that one. It is the only exception, and it has always been the only exception.
         </p>
         <div class="note-attrib">
           <span class="note-attrib-line"></span>
@@ -395,7 +400,7 @@ const registry = [
         </div>
         <h2 class="section-title">Six active marks, <em>all on the trail.</em></h2>
         <p class="section-deck">
-          The current docket. Five are still in motion. One has been brought in. None of them pay in credits, which is its own separate problem and not one for this week.
+          The current docket. Five are in motion. One has been brought in. None of them pay in credits, which is its own separate problem and not one for this week. (This is the way.)
         </p>
       </header>
 
@@ -470,7 +475,7 @@ const registry = [
       </div>
       <h2 class="closing-title">Hire the hunter for thirteen minutes.<br/><em class="closing-em">No helmet required.</em></h2>
       <p class="closing-deck">
-        The thirteen-minute conversation is how most useful things start. Bring questions about AI, finance, MCP servers, escape rooms, D&D, the bone broth situation, or what it actually feels like at 18,570 feet. Answers are included. (Opinions arrive whether you ask for them or not.)
+        The thirteen-minute conversation is how most useful things start. Bring questions about AI, finance, MCP servers, escape rooms, D&D, the bone broth situation, or what it actually feels like at 18,570 feet. Answers are included. Opinions arrive whether you ask for them or not. This is the way.
       </p>
       <div class="closing-cta-row">
         <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary btn-primary-big">
@@ -499,7 +504,7 @@ const registry = [
         ))}
       </div>
       <div class="registry-footnote">
-        For Memorial Day on Monday the fedora comes off. It always comes off for that one.
+        For Memorial Day on Monday the fedora comes off. It always comes off for that one. The creed has one exception, and this is it. This is also the way.
       </div>
     </div>
   </section>
@@ -1027,6 +1032,19 @@ const registry = [
     line-height: 1.32;
     margin: 0 0 1.8rem;
     color: var(--mn-fg);
+  }
+  /* The refrain — treated like the show's chant punctuation,
+     breaking out as its own line in a stamped uppercase mono. */
+  .pullquote-refrain {
+    display: block;
+    margin: 0.6rem auto 1.1rem;
+    font-family: 'Share Tech Mono', monospace;
+    font-style: normal;
+    font-size: 0.42em;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--mn-red);
+    line-height: 1;
   }
   .pullquote-attrib-name {
     display: block;
