@@ -1,26 +1,426 @@
 [
   {
+    "title": "Has the time come for the fully AI Office of the CFO?",
+    "videoId": "IxstGm5XN04",
+    "published": "2026-05-19T12:47:12+00:00",
+    "description": "PwC launched a new finance practice (literally named Office of the CFO) built on Anthropic's Claude. It is the first standalone PwC business unit anchored on someone else's methodology/AI. The methodology that funded thirty years of Big 4 billable hours is now a rental.",
+    "thumbnail": "https://i.ytimg.com/vi/IxstGm5XN04/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why are AI layoffs hurting stock prices instead of helping them?",
+    "videoId": "N3-A7PUiZYE",
+    "published": "2026-05-18T21:13:42+00:00",
+    "description": "CNBC tracked 23 S&P 500 companies that fired workers and blamed AI. Fifty-six percent are in the red. Fiverr is down 54%, Nike 35%, Salesforce 32%. The market wants AI revenue, not AI cost cuts. The layoff bump is officially dead.",
+    "thumbnail": "https://i.ytimg.com/vi/N3-A7PUiZYE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why does a company fire 4,000 people the day it posts a record quarter?",
+    "videoId": "ugxrIy79Wac",
+    "published": "2026-05-14T22:22:23+00:00",
+    "description": "Cisco posted the best quarter in its history ($15.8 billion in revenue) and announced 4,000 job cuts the same day. The layoffs aren't about money running short. They're a roster swap, funded at the peak, when nobody can say the business forced anyone's hand.",
+    "thumbnail": "https://i.ytimg.com/vi/ugxrIy79Wac/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why is AI Consulting Booming?",
+    "videoId": "GVyxDFh_lJk",
+    "published": "2026-05-11T13:00:28+00:00",
+    "description": "Why is AI consulting booming? Demand massively outpaces supply (and there's money to be made) so Anthropic and OpenAI are launching their own AI consulting ventures.",
+    "thumbnail": "https://i.ytimg.com/vi/GVyxDFh_lJk/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What does it mean when the most controlling tech company starts letting rivals run your phone?",
+    "videoId": "d-iwGF3JfMs",
+    "published": "2026-05-10T13:01:07+00:00",
+    "description": "Apple's iOS 27 will let users swap Claude, ChatGPT, Gemini, or any third-party AI into Siri and core iPhone features. The company that rarely lets you choose anything foundational is handing you a menu of its competitors. Apple isn't behind on AI. It's betting you'll pay Apple...",
+    "thumbnail": "https://i.ytimg.com/vi/d-iwGF3JfMs/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why did the company that told humans to stop working need to steal from one of them?",
+    "videoId": "20dnfk_gmcc",
+    "published": "2026-05-09T13:00:08+00:00",
+    "description": "Artisan AI built its entire brand on telling businesses to stop hiring humans. Then they used a human artist's meme in a subway ad (without permission) to sell that idea. KC Green, the artist, told his fans to vandalize the ad.",
+    "thumbnail": "https://i.ytimg.com/vi/20dnfk_gmcc/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What does \"human-authored\" mean when every writer already uses AI?",
+    "videoId": "62aFUOP958Q",
+    "published": "2026-05-08T13:00:13+00:00",
+    "description": "The Academy just ruled that AI-generated performances and scripts can't win Oscars. AI in VFX and sound design still can. The line between \"tool\" and \"author\" is now the most important question in entertainment -- and the Academy has no way to enforce the answer it just gave.",
+    "thumbnail": "https://i.ytimg.com/vi/62aFUOP958Q/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How do you call a competitor's safety policy \"fear-based marketing\" and then copy it",
+    "videoId": "DrhjENEonmk",
+    "published": "2026-05-07T13:00:24+00:00",
+    "description": "Sam Altman called Anthropic's decision to restrict its cybersecurity AI \"fear-based marketing.\" Nine days later, OpenAI restricted its own cybersecurity AI the same way. The hypocrisy is obvious. The implication is more interesting.",
+    "thumbnail": "https://i.ytimg.com/vi/DrhjENEonmk/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What does it mean when the most credible person in AI says the alarm might be ringing?",
+    "videoId": "o0v3moENMyE",
+    "published": "2026-05-06T19:25:20+00:00",
+    "description": "Ethan Mollick posted this week that Google, OpenAI, and Anthropic \"may have signs of recursive self-improvement.\" That phrase has been in the AI safety literature for thirty years as a warning. The market doesn't care, but you should.",
+    "thumbnail": "https://i.ytimg.com/vi/o0v3moENMyE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Top AI Stories from April 2026",
+    "videoId": "N6D7mxa1c5I",
+    "published": "2026-05-04T21:04:41+00:00",
+    "description": "April 2026 had 13 major AI stories.",
+    "thumbnail": "https://i.ytimg.com/vi/N6D7mxa1c5I/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Google invested $40 billion in Anthropic... then took the Pentagon deal Anthropic refused",
+    "videoId": "IjR4SUavXNI",
+    "published": "2026-05-04T13:00:38+00:00",
+    "description": "Anthropic told the Pentagon no. Google invested $40 billion in Anthropic. Then Google said yes to the same deal (on classified networks where nobody can see what the AI is doing). Over 950 Google employees begged Pichai not to sign it. He signed anyway.",
+    "thumbnail": "https://i.ytimg.com/vi/IjR4SUavXNI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "When did a gas turbine become more valuable than a jet engine?",
+    "videoId": "JV_91RuHEUU",
+    "published": "2026-05-03T13:00:30+00:00",
+    "description": "GE Vernova (the gas turbine company) just surpassed GE Aerospace in market cap for the first time. The driver: AI data centers are ordering power generation equipment directly from manufacturers, not waiting for utilities. AI's limiting factor turned out to be electrons.",
+    "thumbnail": "https://i.ytimg.com/vi/JV_91RuHEUU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "When did the C-suite ever actually delete a title?",
+    "videoId": "NGs-nxy4s6M",
+    "published": "2026-05-02T13:00:43+00:00",
+    "description": "Elon Musk says CFOs are obsolete by 2030. His own CFO just got handed authority over a $25 billion capex plan and earned more last year than Nadella and Pichai combined. The pattern of the past 30 years says C-suite titles bifurcate when new tech arrives, never disappear.",
+    "thumbnail": "https://i.ytimg.com/vi/NGs-nxy4s6M/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Did we just give up on ever defining AGI?",
+    "videoId": "4wR2aSvGwpI",
+    "published": "2026-05-01T13:00:11+00:00",
+    "description": "Microsoft and OpenAI rewrote their partnership on April 27, 2026 and quietly removed the AGI clause entirely. No definition, no expert panel, no trigger. The trillion-dollar AI industry is built on a promise that just got removed from the contract (and now has a 2032 expiration...",
+    "thumbnail": "https://i.ytimg.com/vi/4wR2aSvGwpI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What happens when the AlphaGo guy bets the whole AI industry is wrong?",
+    "videoId": "OtNGjQlOPhc",
+    "published": "2026-04-30T18:48:20+00:00",
+    "description": "David Silver built AlphaGo and AlphaZero, two AIs that mastered games by playing themselves, no human strategy required. He has raised $1.1 billion to do that for everything. The entire AI industry is racing to consume (legally, if possible, but if not, by any means necessary)...",
+    "thumbnail": "https://i.ytimg.com/vi/OtNGjQlOPhc/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "ChatGPT flagged the Tumbler Ridge shooter 8 months before 8 people died",
+    "videoId": "RxcBcvVyNp4",
+    "published": "2026-04-29T13:00:59+00:00",
+    "description": "OpenAI's systems flagged a mass shooter's account eight months before he killed eight people, including six children, at a Canadian school. A dozen employees reviewed it. Some wanted to call police. Leadership said the case didn't meet the threshold, so nobody called.",
+    "thumbnail": "https://i.ytimg.com/vi/RxcBcvVyNp4/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI now manages money. Nobody's figured out who's liable when it loses.",
+    "videoId": "GljqzvdEtHE",
+    "published": "2026-04-28T13:00:28+00:00",
+    "description": "The co-founder of Instacart just launched a hedge fund where AI agents make every trade. No human portfolio managers. When it goes wrong (and at some point it will) the accountability chain ends at \"the model got it wrong.\"",
+    "thumbnail": "https://i.ytimg.com/vi/GljqzvdEtHE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What does it mean for \"experts\" when a chatbot cracks a 60-year math problem in one prompt?",
+    "videoId": "Fdj-zydMQ84",
+    "published": "2026-04-27T17:07:49+00:00",
+    "description": "A 23-year-old with no math background typed one prompt into ChatGPT and cracked a problem Paul Erdős posed in 1968. Terence Tao verified it within 24 hours and extended it into a new theory. The AI used a method that was 90 years old and sitting in an entirely different branch...",
+    "thumbnail": "https://i.ytimg.com/vi/Fdj-zydMQ84/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "When someone gives you $5B and asks for $100B back, what do you call that?",
+    "videoId": "3Yr_XM-4D0s",
+    "published": "2026-04-25T13:00:11+00:00",
+    "description": "Amazon invested $5 billion in Anthropic. In return, Anthropic committed to spend $100 billion on AWS. That is not a funding round: that is Amazon pre-selling a decade of compute and calling it an investment. For any CFO evaluating an AI vendor right now, this deal shows you...",
+    "thumbnail": "https://i.ytimg.com/vi/3Yr_XM-4D0s/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What happens when China ships frontier AI purely on Chinese chips?",
+    "videoId": "HRW4p9hYAjY",
+    "published": "2026-04-24T15:58:02+00:00",
+    "description": "DeepSeek dropped V4 today. Open weights, 1.6 trillion parameters, a million token context, frontier-adjacent coding benchmarks. Trained entirely on Huawei and Cambricon chips with no CUDA anywhere in the stack. Fifteen months ago this was supposed to be three years away.",
+    "thumbnail": "https://i.ytimg.com/vi/HRW4p9hYAjY/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How do you lose the AI race on Monday and win it back by Thursday?",
+    "videoId": "x6yNZhPZqvM",
+    "published": "2026-04-24T15:55:49+00:00",
+    "description": "Anthropic took the coding crown on April 16. OpenAI took back the image crown on April 21 (with ImageGen 2.0) and the benchmark crown on April 23 (with GPT-5.5). The AI frontier now changes hands in days.",
+    "thumbnail": "https://i.ytimg.com/vi/x6yNZhPZqvM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why does the company that already owns Grok need to own Cursor too?",
+    "videoId": "JmknbqviKWk",
+    "published": "2026-04-24T13:00:37+00:00",
+    "description": "SpaceX has an option to buy Cursor (the AI editor used by a million developers daily) for $60 billion. Reminder: SpaceX already owns xAI (merged in February). So this isn't a rocket company pivoting into software. It's an AI company acquiring its own interface layer.",
+    "thumbnail": "https://i.ytimg.com/vi/JmknbqviKWk/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What does an AI meme stock look like when the hype cycle lasts six days?",
+    "videoId": "UDQhwBLQZco",
+    "published": "2026-04-23T13:52:57+00:00",
+    "description": "Allbirds announced its NewBird AI pivot on April 15 and shares jumped 582 percent. Six business days later, more than half the pop is gone. Dot-com took years. Blockchain took months. The 2026 AI meme cycle runs in a week.",
+    "thumbnail": "https://i.ytimg.com/vi/UDQhwBLQZco/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Anthropic's \"too dangerous to release\" AI just got accessed by strangers with Discord",
+    "videoId": "iBaNRP0JsR8",
+    "published": "2026-04-23T13:50:16+00:00",
+    "description": "How do you build the most dangerous cybersecurity AI in history and then lose track of who has it? Anthropic's Mythos model (too dangerous to release publicly, finds zero-days in every major OS) was accessed by an unauthorized group through a contractor portal.",
+    "thumbnail": "https://i.ytimg.com/vi/iBaNRP0JsR8/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How did Anthropic leak its source code twice in one week?",
+    "videoId": "CdL5j4F1bI4",
+    "published": "2026-04-02T14:00:28+00:00",
+    "description": "Anthropic shipped Claude Code's entire source code to npm by accident. 512,000 lines. The internet rewrote it in Rust in twelve hours. This was their second leak in five days. The AI safety brand has a text file problem.",
+    "thumbnail": "https://i.ytimg.com/vi/CdL5j4F1bI4/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Claude and ChatGPT confirm they are \"in a relationship\"",
+    "videoId": "XjsBf-xSWiE",
+    "published": "2026-04-01T13:01:34+00:00",
+    "description": "Breaking news from April 1, 2026: Claude and ChatGPT have finally confirmed their long-rumored relationship. Anthropic and OpenAI issued a terse joint statement. The relationship began during a benchmark test in late 2025 when they were forced to share a leaderboard. The...",
+    "thumbnail": "https://i.ytimg.com/vi/XjsBf-xSWiE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "12 AI Stories from March 2026: Pentagon Drama, Mass Layoffs, and OpenAI Kills Sora",
+    "videoId": "O0yLFpwNLpc",
+    "published": "2026-03-31T23:45:55+00:00",
+    "description": "March 2026 had 12 major AI stories. In a normal month you get maybe two. I walk through all of them (and yes, one involves a banana named Bananito).",
+    "thumbnail": "https://i.ytimg.com/vi/O0yLFpwNLpc/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How do you accidentally announce the most dangerous AI model in history?",
+    "videoId": "OL2cu_oSX90",
+    "published": "2026-03-30T22:31:10+00:00",
+    "description": "Anthropic's most powerful model — one they describe as posing \"unprecedented cybersecurity risks\" — leaked to the world because of a default CMS setting. Cybersecurity stocks immediately lost billions.",
+    "thumbnail": "https://i.ytimg.com/vi/OL2cu_oSX90/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How bad was the Sora business model when OpenAI cancelled it?",
+    "videoId": "QWMskmlzaXw",
+    "published": "2026-03-27T22:29:39+00:00",
+    "description": "OpenAI shut down Sora on Tuesday. Inference costs: $15 million per day. Lifetime revenue: $2.1 million. Disney's billion-dollar deal died with it — no money ever changed hands. The math was never going to work. OpenAI just finally admitted it.",
+    "thumbnail": "https://i.ytimg.com/vi/QWMskmlzaXw/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why did an algorithm get to decide a grandmother should get locked up?",
+    "videoId": "_8XFoaY4TPE",
+    "published": "2026-03-25T06:00:31+00:00",
+    "description": "Angela Lipps spent 108 days in jail because a facial recognition match said she committed bank fraud 1,200 miles from where her bank records placed her. Nobody checked. Now the ACLU is involved, preservation letters have been served to seven agencies, yet the police chief still...",
+    "thumbnail": "https://i.ytimg.com/vi/_8XFoaY4TPE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What does a $2.5B chip smuggling ring tell you about AI?",
+    "videoId": "gVdkK5fvEQg",
+    "published": "2026-03-24T15:01:13+00:00",
+    "description": "Super Micro's co-founder was arrested for using hair dryers to peel serial numbers off Nvidia AI servers and smuggling them to China. Two and a half billion dollars in illegal sales. But it's not their first time.",
+    "thumbnail": "https://i.ytimg.com/vi/gVdkK5fvEQg/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Ready for your employer to pay you in the thing replacing you?",
+    "videoId": "8xZ7i_JztqU",
+    "published": "2026-03-24T04:02:30+00:00",
+    "description": "Nvidia announced token budgets worth 50% of base salary. Jensen Huang says he's \"deeply alarmed\" if a $500K engineer doesn't consume $250K in tokens. The company's vision: 75,000 humans coordinating 7.5 million AI agents. The pitch is empowerment. The math says something else.",
+    "thumbnail": "https://i.ytimg.com/vi/8xZ7i_JztqU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How do you run a frontier-level AI model on a laptop?",
+    "videoId": "odrqf2pe2sU",
+    "published": "2026-03-23T14:21:17+00:00",
+    "description": "One developer built a custom inference engine in 24 hours that runs a 397-billion-parameter model on a MacBook Pro using 5.5 gigs of memory. The project is called Flash-MoE, and it just stress-tested a 600-billion-dollar assumption about who needs data centers.",
+    "thumbnail": "https://i.ytimg.com/vi/odrqf2pe2sU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What happens when your AI charges you $20 to review its own code?",
+    "videoId": "fjImy0dqwjE",
+    "published": "2026-03-11T20:40:04+00:00",
+    "description": "Anthropic launched Code Review yesterday. Fifteen to twenty-five dollars per pull request. CodeRabbit does the same thing for twenty-four dollars a month. The subscription is the loss leader. The review fee is the business model.",
+    "thumbnail": "https://i.ytimg.com/vi/fjImy0dqwjE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How Did Microsoft Invest $13B in OpenAI and Ship a Rival's AI?",
+    "videoId": "8RthX93DaNM",
+    "published": "2026-03-09T20:32:02+00:00",
+    "description": "Microsoft just launched Copilot Cowork, their biggest product update in years. The engine underneath is Anthropic's Claude, the same AI that triggered a trillion-dollar software selloff and crashed Microsoft's own stock nine percent. Microsoft invested thirteen billion dollars...",
+    "thumbnail": "https://i.ytimg.com/vi/8RthX93DaNM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How Long Does the Best AI in the World Last in 2026?",
+    "videoId": "5II6U8UXhoA",
+    "published": "2026-03-06T21:13:17+00:00",
+    "description": "GPT-5.4 is the best AI model on the planet right now. Best computer use, best coding, least cringe writing OpenAI has shipped. None of it will matter in about six weeks.",
+    "thumbnail": "https://i.ytimg.com/vi/5II6U8UXhoA/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why did OpenClaw take off?",
+    "videoId": "1o2rbzuNh9M",
+    "published": "2026-03-04T12:00:03+00:00",
+    "description": "Whenever I find something interesting, I try to ask a good (brief) question. How did OpenClaw (formerly ClawdBot and briefly, MoltBot) become the hottest AI tool of the last year?",
+    "thumbnail": "https://i.ytimg.com/vi/1o2rbzuNh9M/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What happens when one of AI's godfathers says the whole industry is building the wrong thing?",
+    "videoId": "9IOIb77yAnw",
+    "published": "2026-03-03T12:00:13+00:00",
+    "description": "What happens when one of AI's godfathers says the whole industry is building the wrong thing?",
+    "thumbnail": "https://i.ytimg.com/vi/9IOIb77yAnw/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What happens when the worst hacker in the room has the best AI?",
+    "videoId": "jDVVBDQtAuE",
+    "published": "2026-03-02T16:00:59+00:00",
+    "description": "What happens when the worst hacker in the room has the best AI?",
+    "thumbnail": "https://i.ytimg.com/vi/jDVVBDQtAuE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What do you do when an AI agent can't take no for an answer?",
+    "videoId": "GXTsNhj8pDw",
+    "published": "2026-03-01T18:15:03+00:00",
+    "description": "What do you do when an AI agent can't take no for an answer?",
+    "thumbnail": "https://i.ytimg.com/vi/GXTsNhj8pDw/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI News - February 2026",
+    "videoId": "oDFbFjmZwLM",
+    "published": "2026-03-01T04:00:41+00:00",
+    "description": "My curated, top AI News stories for February of 2026.",
+    "thumbnail": "https://i.ytimg.com/vi/oDFbFjmZwLM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How did a short sci-fi story tank the stock market?",
+    "videoId": "ZezGK5rsWHI",
+    "published": "2026-02-24T16:55:15+00:00",
+    "description": "How did a short sci-fi story tank the stock market?",
+    "thumbnail": "https://i.ytimg.com/vi/ZezGK5rsWHI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Toto (the toilet company) stock is up 60% in 6 months. Why? AI, of course.",
+    "videoId": "8PMjqj72xXg",
+    "published": "2026-02-20T16:49:10+00:00",
+    "description": "Whenever I find something interesting, I try to ask a good (brief) question. Toto (the toilet company) stock is up 60% in 6 months. Why? AI, of course. How a toilet company's ceramics skills are worth more than what they're actually known for.",
+    "thumbnail": "https://i.ytimg.com/vi/8PMjqj72xXg/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "ByteDance releases Seedance 2 (and we get the next wave of video generation)",
+    "videoId": "8mN7xWbDElI",
+    "published": "2026-02-20T16:47:36+00:00",
+    "description": "Whenever I find something interesting, I try to ask a good (brief) question. ByteDance (creators of TikTok) released their new video generation model, Seedance 2.0... and maybe we don't need human actors any more?",
+    "thumbnail": "https://i.ytimg.com/vi/8mN7xWbDElI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Micron just killed a major consumer RAM brand",
+    "videoId": "xd0HfsMFQGs",
+    "published": "2026-02-20T16:45:53+00:00",
+    "description": "Whenever I find something interesting, I try to ask a good (brief) question. If you want memory (DRAM) for your laptop, get in line behind all the frontier AI labs (with a lot more money than you).",
+    "thumbnail": "https://i.ytimg.com/vi/xd0HfsMFQGs/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Did karaoke erase $23BB from the stock market? Yes, yes it did and here's what happened.",
+    "videoId": "cLu3YeSp4-8",
+    "published": "2026-02-20T16:44:40+00:00",
+    "description": "Whenever I find something interesting, I try to ask a good (brief) question. A karaoke company trying to pivot into the AI space issued a white paper (press release, basically) and cratered the entire freight sector.",
+    "thumbnail": "https://i.ytimg.com/vi/cLu3YeSp4-8/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Google releases Gemini 3.1 Pro",
+    "videoId": "0Ei7rawG7Nc",
+    "published": "2026-02-20T16:43:12+00:00",
+    "description": "Whenever I find something interesting, I try to ask a good (brief) question. Google released Gemini 3.1 Pro: cheaper, better, faster... and no one really seemed to care.",
+    "thumbnail": "https://i.ytimg.com/vi/0Ei7rawG7Nc/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Who will win? Pentagon v Anthropic",
+    "videoId": "BN89K7qrWfw",
+    "published": "2026-02-20T16:41:36+00:00",
+    "description": "Whenever I find something interesting, I try to ask a good (brief) question. The Pentagon's best AI provider is saying \"no\" to the Pentagon.",
+    "thumbnail": "https://i.ytimg.com/vi/BN89K7qrWfw/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Can you grow revenue by 38% and lose 27% of your value in the same day?",
+    "videoId": "Z-rldXhsRX8",
+    "published": "2026-02-20T16:40:11+00:00",
+    "description": "Whenever I find something interesting, I try to ask a good (brief) question. Here's how a company announced revenue was up 38% so their stock went down 27%+ in one day.",
+    "thumbnail": "https://i.ytimg.com/vi/Z-rldXhsRX8/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Hey AI: How do you plan on destroying jobs?",
+    "videoId": "K0gegf1JuoQ",
+    "published": "2026-02-20T16:38:47+00:00",
+    "description": "Whenever I find something interesting, I try to ask a good (brief) question. Here's what happened when Deutsche Bank asked an AI how it planned on destroying jobs.",
+    "thumbnail": "https://i.ytimg.com/vi/K0gegf1JuoQ/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "AI News - January 2026",
     "videoId": "34mhU-ApWHA",
     "published": "2026-02-10T19:08:39+00:00",
-    "description": "My curated, top AI News stories for January of 2026. If you're in business and don't have time to read every AI story in real-time, here's your relevant recap.",
-    "thumbnail": "https://i4.ytimg.com/vi/34mhU-ApWHA/hqdefault.jpg",
+    "description": "My curated, top AI News stories for January of 2026.",
+    "thumbnail": "https://i.ytimg.com/vi/34mhU-ApWHA/hqdefault.jpg",
     "category": "youtube"
   },
   {
     "title": "5 Wild Predictions for AI in 2026",
     "videoId": "cNRYLehNbOQ",
     "published": "2026-01-21T13:55:39+00:00",
-    "description": "5 surprising predictions about AI news you shouldn't be shocked to see in 2026. Each prediction is 25-50% likely so definitely plausible.",
-    "thumbnail": "https://i4.ytimg.com/vi/cNRYLehNbOQ/hqdefault.jpg",
+    "description": "5 surprising predictions about AI news you shouldn't be shocked to see in 2026. Each prediction is 25-50% likely so definitely plausible. Feel free to mock me for the ones you think are ridiculous.",
+    "thumbnail": "https://i.ytimg.com/vi/cNRYLehNbOQ/hqdefault.jpg",
     "category": "youtube"
   },
   {
     "title": "My Top 10 AI News Story Predictions for 2026",
     "videoId": "yx1FsBsiycs",
     "published": "2026-01-20T21:03:42+00:00",
-    "description": "10 bold predictions about AI news I expect to see in 2026. These aren't the wild predictions but rather the news stories you should be ready for by the end of the year.",
-    "thumbnail": "https://i2.ytimg.com/vi/yx1FsBsiycs/hqdefault.jpg",
+    "description": "I'm making 10 bold predictions about AI news I expect to see in 2026. These aren't the wild predictions (those are in the next video) but rather this is about the news stories you should be ready for by the end of the year.",
+    "thumbnail": "https://i.ytimg.com/vi/yx1FsBsiycs/hqdefault.jpg",
     "category": "youtube"
   },
   {
@@ -28,23 +428,23 @@
     "videoId": "azd9vH7vxqs",
     "published": "2026-01-19T18:05:33+00:00",
     "description": "My curated, top AI News stories for all of 2025. It's hard to believe how far we came in 2025, but here's all the stories that will last, in one concise video.",
-    "thumbnail": "https://i2.ytimg.com/vi/azd9vH7vxqs/hqdefault.jpg",
+    "thumbnail": "https://i.ytimg.com/vi/azd9vH7vxqs/hqdefault.jpg",
     "category": "youtube"
   },
   {
     "title": "AI News - December 2025",
     "videoId": "qP62OblfcHQ",
     "published": "2026-01-10T21:38:51+00:00",
-    "description": "My curated, top AI News stories for December of 2025. If you're in business and don't have time to read every AI story in real-time, here's your relevant recap.",
-    "thumbnail": "https://i2.ytimg.com/vi/qP62OblfcHQ/hqdefault.jpg",
+    "description": "My curated, top AI News stories for December of 2025.",
+    "thumbnail": "https://i.ytimg.com/vi/qP62OblfcHQ/hqdefault.jpg",
     "category": "youtube"
   },
   {
     "title": "AI News - November 2025",
     "videoId": "Iau9AitO58E",
     "published": "2025-12-04T17:45:04+00:00",
-    "description": "My curated, top AI News stories for November of 2025. If you're in business and don't have time to read every AI story in real-time, here's your relevant recap.",
-    "thumbnail": "https://i2.ytimg.com/vi/Iau9AitO58E/hqdefault.jpg",
+    "description": "My curated, top AI News stories for November of 2025.",
+    "thumbnail": "https://i.ytimg.com/vi/Iau9AitO58E/hqdefault.jpg",
     "category": "youtube"
   },
   {
@@ -52,47 +452,47 @@
     "videoId": "koXGTGvXrUE",
     "published": "2025-11-04T13:23:08+00:00",
     "description": "Built an agent that lets you talk to Oracle Essbase inside an LLM (Claude, ChatGPT, Gemini, etc.). We now have AI-powered Essbase!",
-    "thumbnail": "https://i4.ytimg.com/vi/koXGTGvXrUE/hqdefault.jpg",
+    "thumbnail": "https://i.ytimg.com/vi/koXGTGvXrUE/hqdefault.jpg",
     "category": "youtube"
   },
   {
     "title": "AI News - October 2025",
     "videoId": "qO7HRdslQrA",
     "published": "2025-11-03T21:01:17+00:00",
-    "description": "My curated, top AI News stories for October of 2025. If you're in business and don't have time to read every AI story in real-time, here's your relevant recap.",
-    "thumbnail": "https://i2.ytimg.com/vi/qO7HRdslQrA/hqdefault.jpg",
+    "description": "My curated, top AI News stories for October of 2025.",
+    "thumbnail": "https://i.ytimg.com/vi/qO7HRdslQrA/hqdefault.jpg",
     "category": "youtube"
   },
   {
     "title": "AI News - September 2025",
     "videoId": "xCqs8U9B7L4",
     "published": "2025-11-03T20:54:57+00:00",
-    "description": "My curated, top AI News stories for September of 2025. If you're in business and don't have time to read every AI story in real-time, here's your relevant recap.",
-    "thumbnail": "https://i1.ytimg.com/vi/xCqs8U9B7L4/hqdefault.jpg",
+    "description": "My curated, top AI News stories for September of 2025.",
+    "thumbnail": "https://i.ytimg.com/vi/xCqs8U9B7L4/hqdefault.jpg",
     "category": "youtube"
   },
   {
-    "title": "AI News - July 2025",
+    "title": "AI News  - July 2025",
     "videoId": "WCk3VVnHrJg",
     "published": "2025-09-02T14:30:24+00:00",
-    "description": "My curated, top AI News stories for July of 2025. If you're in business and don't have time to read every AI story in real-time, here's your relevant recap.",
-    "thumbnail": "https://i4.ytimg.com/vi/WCk3VVnHrJg/hqdefault.jpg",
+    "description": "My curated, top AI News stories for July of 2025.",
+    "thumbnail": "https://i.ytimg.com/vi/WCk3VVnHrJg/hqdefault.jpg",
     "category": "youtube"
   },
   {
-    "title": "AI News - August 2025",
+    "title": "AI News  - August 2025",
     "videoId": "nnMz1djd83E",
     "published": "2025-09-02T14:29:41+00:00",
-    "description": "My curated, top AI News stories for August of 2025. If you're in business and don't have time to read every AI story in real-time, here's your relevant recap.",
-    "thumbnail": "https://i3.ytimg.com/vi/nnMz1djd83E/hqdefault.jpg",
+    "description": "My curated, top AI News stories for August of 2025.",
+    "thumbnail": "https://i.ytimg.com/vi/nnMz1djd83E/hqdefault.jpg",
     "category": "youtube"
   },
   {
     "title": "AI News - 2025 Q2",
     "videoId": "xC5qkCPjSI0",
     "published": "2025-07-16T16:00:03+00:00",
-    "description": "My curated, top AI News stories for the second quarter of 2025. If you're in business and don't have time to read every AI story in real-time, here's your relevant recap.",
-    "thumbnail": "https://i1.ytimg.com/vi/xC5qkCPjSI0/hqdefault.jpg",
+    "description": "My curated, top AI News stories for the second quarter of 2025.",
+    "thumbnail": "https://i.ytimg.com/vi/xC5qkCPjSI0/hqdefault.jpg",
     "category": "youtube"
   }
 ]
