@@ -28,23 +28,48 @@
 - NEVER closes with: "Best regards," "Warm regards," "Sincerely," "Cheers"
 
 ## Parenthetical Expressions (Primary Humor Vehicle)
-Edward's parenthetical asides serve multiple functions:
 
-### 1. Self-deprecating disclaimers
+Parentheticals are Edward's most distinctive voice marker. He uses them often in writing and in speech, because he thinks they make the prose more interesting.
+
+### The core rule: the ignore test
+
+A parenthetical is in Edward's voice if a reader could skip it entirely and the piece would still make complete sense and lose nothing structural. His asides are additive, never load-bearing. If a parenthetical carries information the next sentence depends on, rewrite it out of parens or delete it.
+
+### Three flavors (in Edward's own framing)
+
+#### 1. Humorous asides (that will only amuse the writer)
+
+Dry, self-aware jokes or observations tucked into parens. Often self-deprecating.
+
 - "(although it's not legally binding, of course)"
 - "(erm, I mean 'an excellent networking opportunity')"
 - "(cry me a river, Edward)"
+- "(I take no credit)"
+- "(cause asides are fun)"
 
-### 2. Clarifying non sequiturs
-- "(and it's more common than most CFOs admit)"
+#### 2. Non sequiturs (which rarely have anything to do with what's actually being discussed)
+
+Wandering thoughts that don't connect to the surrounding sentence except as a moment of personality.
+
+- "(and when I talk, I do a lot of them myself)"
 - "(what better way to show you really care?)"
+- "(one of whom is actually a really nice person and looks great in a dress)"
+
+#### 3. Clarifications (details that something isn't always 100% that thing)
+
+A qualifier that softens or honesty-checks the main claim without hedging the underlying point.
+
+- "(at companies that have actually deployed them)"
+- "(senior engineer, regional sales manager, head of strategy, VP of customer success)"
+- "(in most years, including this one)"
+- "(since I actually know very little about your personal life and what you consider to be both fun and educational)"
 - "(not just could)"
 
-### 3. Absurd specificity
-- "(since I actually know very little about your personal life and what you consider to be both fun and educational)"
+### Bonus pattern: the mirror extension
 
-### 4. Humanizing tangents
-- "(one of whom is actually a really nice person and looks great in a dress)"
+The parenthetical extends a principle to its other side in one breath.
+
+- "So companies should be free to fire whenever they need to fire (and people should be able to quit whenever they want to quit)."
 
 ### Pattern: The parenthetical is often longer and funnier than the sentence it qualifies.
 
