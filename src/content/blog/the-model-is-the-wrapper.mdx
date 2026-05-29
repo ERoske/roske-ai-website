@@ -1,0 +1,65 @@
+---
+title: "The Model Is the Wrapper"
+description: "Anthropic shipped Claude Opus 4.8 forty-one days after Opus 4.7. The model is now infrastructure. The orchestration layer is the product. What a CFO should ask next."
+date: 2026-05-28
+tags: ["AI", "Anthropic", "Claude", "Model Wars", "Office of the CFO"]
+draft: false
+---
+
+In 2007, I made a living explaining Essbase to CFOs. Hyperion sold a multidimensional database called Essbase, and for fifteen years, controlling the cube was how a planning team won. I helped build practices around it. I co-wrote books about it. (One of them still gets ordered occasionally. I assume by very specific people.) Then Oracle bought Hyperion, and the world started changing.
+
+The cube didn't disappear. It got commoditized. Snowflake and Databricks and BigQuery showed up and the OLAP-cube argument got boring. What didn't get boring was the layer above. Anaplan, OneStream, and Workday Adaptive built workflow platforms that orchestrated planning across the organization. Cubes became infrastructure, and the workflows above them became the product.
+
+I keep thinking about Essbase this week.
+
+## Forty-One Days
+
+On May 28th, [Anthropic shipped Claude Opus 4.8](https://www.anthropic.com/news/claude-opus-4-8). Forty-one days after Claude Opus 4.7. The headline numbers are real: SWE-Bench Pro at 69.2 percent, ten points clear of GPT-5.5. [Artificial Analysis](https://artificialanalysis.ai/models/claude-opus-4-8) ranked it number one of 218 models on their Intelligence Index within hours of release.
+
+GPT-5.5 itself shipped seven days after Opus 4.7. It held the crown for five weeks. The model-wars lead has changed hands at least three times in roughly eight weeks. (My grandnephew has a longer attention span than the current AI frontier. He is two and a half.)
+
+Everyone is writing about the benchmarks. The bigger story shipped alongside them.
+
+## What Anthropic Actually Shipped
+
+Alongside Opus 4.8, Anthropic rolled out [Dynamic Workflows](https://claude.com/blog/introducing-dynamic-workflows-in-claude-code) inside Claude Code. One Claude session can now plan a job, spawn hundreds of parallel subagents, verify their output, and only then hand back. To prove the thing actually works, Anthropic used it to port [Bun](https://bun.sh) from Zig to Rust. The whole runtime. 750,000 lines of code, ported in eleven days, with the test suite still passing at 99.8 percent.
+
+That is a build system that happens to think.
+
+(I once worked with a team that planned a Hyperion-to-Anaplan migration for three years and never finished. Different tools, same complexity. So eleven days is a real number to me.)
+
+The model is what you put on a benchmark slide. A finished port like Bun is what you take to a CFO's procurement meeting. One of those things is more interesting than the other.
+
+## The Pattern Is Old
+
+Every computing era has the same arc. Infrastructure commoditizes. The orchestration layer becomes the product. The companies that sell the layer below either climb the stack or get squeezed out of it.
+
+Cisco dominated network gear until software-defined networking turned switches into commodity boxes. Oracle dominated databases until cloud-native data platforms turned the database into a checkbox. Hyperion dominated planning cubes until the workflow layer above the cube became the product. (And then they got bought, and we're a $7 billion EPM market mostly because Anaplan and OneStream understood this before Oracle did. I'll allow it.)
+
+In each case, the company that sold the layer below didn't disappear. It stopped being where the value lived.
+
+Watch what's happening with AI models. GPT-5.5, Opus 4.8, Gemini 3.1 Pro, and Grok 4 are converging on the same benchmarks at roughly the same time. [Inference prices have dropped about 1,000x](https://press.airstreet.com/p/state-of-ai-may-2026) in two years. DeepSeek and Qwen are putting near-frontier models out for free. The thing the model wars are nominally about (model intelligence) is being given away by somebody every Tuesday.
+
+Meanwhile, Anthropic is selling orchestration. So is OpenAI, with ChatGPT Agent and Operator. So is Google, with agentic Gemini rolling into Workspace. The market is climbing the stack, and everyone is still pretending the next benchmark win is the headline.
+
+## What a CFO Should Be Asking
+
+(This is the part where I do my actual job. For twenty-five years I helped CFOs decide what to buy and what to build. The questions you ask now don't sound like the questions you asked even a year ago.)
+
+The old question: which AI model should we standardize on? That answer has a shelf-life of about eight weeks. Whatever you pick will get leapfrogged before the contract ink dries. (And then leapfrogged again.)
+
+The better question: which AI orchestration layer am I going to be locked into for the next eighteen months? That answer matters longer. Once your engineers are building agent workflows on top of Claude Code's Dynamic Workflows, or OpenAI's Agent SDK, or Vertex AI Agent Builder, the model underneath becomes a swap-out. The orchestration is where the lock-in lives, and where the value capture follows.
+
+The best question: what kind of work can I now do in eleven days that used to take a year?
+
+A Bun port is a sample size of one, and the test suite is a kindergarten-grade rigor check next to a real production migration. But eleven days is also seven percent of one quarter. If the answer to "how long does our planning system replacement take" is now measured in weeks instead of years, the procurement cycle and the deployment cycle and the change-management cycle all have to be rebuilt around it. None of that is on a benchmark slide.
+
+## The Punchline
+
+In 2007, I told CFOs that the value in their financial systems wasn't in the database, it was in the workflow on top of it. Most of them politely ignored me. The ones who didn't became Anaplan customers and saved their organizations a decade of pain.
+
+In 2026, the value in your AI stack is not in the model. It is in the layer above the model. The forty-one-day cadence is what tells you the model is now infrastructure. The Bun port is what tells you the orchestration is now the product.
+
+Anthropic stopped selling you a model. They just released one anyway, because you wanted to see the numbers.
+
+Until next time, keep asking good questions.
