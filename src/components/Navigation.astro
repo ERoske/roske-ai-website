@@ -6,10 +6,16 @@ const currentPath = Astro.url.pathname;
 const navLinks = [
   { href: '/about/', label: 'About' },
   { href: '/work/', label: 'Work' },
-  { href: '/content/', label: 'Content' },
+  { href: '/blog/', label: 'Writing' },
+  { href: '/content/#videos', label: 'Videos', match: '/content/' },
   { href: '/books/', label: 'Books' },
   { href: '/contact/', label: 'Contact' },
 ];
+
+function isActive(link: { href: string; match?: string }): boolean {
+  const target = link.match ?? link.href;
+  return currentPath === target || (target !== '/' && currentPath.startsWith(target));
+}
 ---
 
 <nav id="main-nav" class="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
@@ -35,7 +41,7 @@ const navLinks = [
           href={link.href}
           class:list={[
             "px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200",
-            currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) || (link.href === '/content/' && currentPath.startsWith('/blog/'))
+            isActive(link)
               ? "text-[var(--color-accent)] dark:bg-white/5 bg-black/5"
               : "dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] hover:text-[var(--color-accent)] dark:hover:bg-white/5 hover:bg-black/5"
           ]}
@@ -78,7 +84,7 @@ const navLinks = [
           href={link.href}
           class:list={[
             "block px-4 py-3 text-base font-medium rounded-lg transition-all duration-200",
-            currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href)) || (link.href === '/content/' && currentPath.startsWith('/blog/'))
+            isActive(link)
               ? "text-[var(--color-accent)] dark:bg-white/5 bg-black/5"
               : "dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] hover:text-[var(--color-accent)]"
           ]}

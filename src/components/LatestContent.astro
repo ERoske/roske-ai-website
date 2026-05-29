@@ -1,0 +1,374 @@
+---
+/**
+ * LatestContent.astro — PERMANENT, theme-aware "what's new" module.
+ *
+ * Surfaces the newest blog posts and YouTube briefs on the home page so
+ * fresh content is never buried. Styles itself entirely through the global
+ * theme CSS variables (--color-accent, --font-heading, etc.) defined in
+ * BaseLayout, so it automatically re-skins to match each week's theme with
+ * no per-week edits.
+ *
+ * REQUIRED on the home page every week. The weekly rebuild
+ * (scripts/weekly-rebuild-prompt.md) must keep this component and may pass
+ * themed copy via the `eyebrow`, `heading`, and `deck` props.
+ */
+import { getCollection } from 'astro:content';
+import youtubeData from '../data/youtube-videos.json';
+
+interface Props {
+  eyebrow?: string;
+  heading?: string; // may contain an <em> for the accent word
+  deck?: string;
+  postCount?: number;
+  videoCount?: number;
+}
+
+const {
+  eyebrow = 'Latest',
+  heading = 'New <em>this week.</em>',
+  deck = '',
+  postCount = 3,
+  videoCount = 3,
+} = Astro.props;
+
+interface YouTubeVideo {
+  title: string;
+  videoId: string;
+  published: string;
+  description: string;
+  thumbnail: string;
+  category: string;
+}
+
+const posts = (await getCollection('blog'))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, postCount);
+
+const videos = [...(youtubeData as YouTubeVideo[])]
+  .sort((a, b) => new Date(b.published).valueOf() - new Date(a.published).valueOf())
+  .slice(0, videoCount);
+
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+const fmtStr = (s: string) => {
+  try {
+    return new Date(s).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  } catch {
+    return s;
+  }
+};
+
+const hasContent = posts.length > 0 || videos.length > 0;
+---
+
+{hasContent && (
+  <section class="lc-section">
+    <div class="lc-inner">
+      <header class="lc-header animate-on-scroll">
+        <div class="lc-eyebrow">
+          <span class="lc-eyebrow-rule"></span>
+          <span>{eyebrow}</span>
+        </div>
+        <h2 class="lc-title" set:html={heading}></h2>
+        {deck && <p class="lc-deck">{deck}</p>}
+      </header>
+
+      <div class="lc-grid">
+        {posts.length > 0 && (
+          <div class="lc-col animate-on-scroll">
+            <div class="lc-col-head">
+              <h3 class="lc-col-title">Latest Writing</h3>
+              <a href="/blog/" class="lc-all">All writing &rarr;</a>
+            </div>
+            <ul class="lc-list">
+              {posts.map((post) => (
+                <li>
+                  <a href={`/blog/${post.id}/`} class="lc-item lc-item-post">
+                    <span class="lc-item-date">{fmtDate(post.data.date)}</span>
+                    <span class="lc-item-title">{post.data.title}</span>
+                    <span class="lc-item-desc">{post.data.description}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {videos.length > 0 && (
+          <div class="lc-col animate-on-scroll">
+            <div class="lc-col-head">
+              <h3 class="lc-col-title">Latest Video Briefs</h3>
+              <a href="/content/#videos" class="lc-all">All videos &rarr;</a>
+            </div>
+            <ul class="lc-list">
+              {videos.map((v) => (
+                <li>
+                  <a
+                    href={`https://www.youtube.com/watch?v=${v.videoId}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="lc-item lc-item-video"
+                  >
+                    <span class="lc-thumb">
+                      <img src={v.thumbnail} alt={v.title} loading="lazy" decoding="async" />
+                      <span class="lc-play" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
+                      </span>
+                    </span>
+                    <span class="lc-vid-meta">
+                      <span class="lc-item-date">{fmtStr(v.published)}</span>
+                      <span class="lc-item-title">{v.title}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .lc-section {
+    padding: 5rem 2rem 5.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+  :global([data-theme='light']) .lc-section {
+    border-top-color: var(--color-border-light);
+  }
+  .lc-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .lc-header {
+    max-width: 760px;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+  .lc-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 1rem;
+  }
+  .lc-eyebrow-rule {
+    width: 34px;
+    height: 2px;
+    background: var(--color-accent);
+  }
+  .lc-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    line-height: 1.08;
+    margin: 0;
+    color: var(--color-text);
+  }
+  :global([data-theme='light']) .lc-title {
+    color: var(--color-primary);
+  }
+  .lc-title :global(em) {
+    font-style: italic;
+    color: var(--color-accent);
+  }
+  .lc-deck {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    max-width: 42em;
+    margin: 1.1rem auto 0;
+  }
+  :global([data-theme='light']) .lc-deck {
+    color: var(--color-text-dark-muted);
+  }
+
+  /* Grid */
+  .lc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.6rem;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .lc-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .lc-section {
+      padding: 3.5rem 1.25rem 4rem;
+    }
+  }
+
+  .lc-col-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  :global([data-theme='light']) .lc-col-head {
+    border-bottom-color: var(--color-border-light);
+  }
+  .lc-col-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    margin: 0;
+    color: var(--color-text);
+  }
+  :global([data-theme='light']) .lc-col-title {
+    color: var(--color-primary);
+  }
+  .lc-all {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .lc-all:hover {
+    text-decoration: underline;
+  }
+
+  .lc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  /* Item card (shared) */
+  .lc-item {
+    display: block;
+    padding: 1.1rem 1.2rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  }
+  :global([data-theme='dark']) .lc-item {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: var(--color-border);
+  }
+  :global([data-theme='light']) .lc-item {
+    background: #fff;
+    border-color: var(--color-border-light);
+  }
+  .lc-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-accent);
+  }
+
+  .lc-item-date {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--color-accent);
+    margin-bottom: 0.35rem;
+  }
+  .lc-item-title {
+    display: block;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1.02rem;
+    line-height: 1.3;
+    color: var(--color-text);
+  }
+  :global([data-theme='light']) .lc-item-title {
+    color: var(--color-primary);
+  }
+  .lc-item:hover .lc-item-title {
+    color: var(--color-accent);
+  }
+  .lc-item-desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-top: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+  }
+  :global([data-theme='light']) .lc-item-desc {
+    color: var(--color-text-dark-muted);
+  }
+
+  /* Video item: thumbnail + meta */
+  .lc-item-video {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  .lc-thumb {
+    position: relative;
+    flex-shrink: 0;
+    width: 128px;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  .lc-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .lc-play {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.18);
+    transition: background 0.2s ease;
+  }
+  .lc-item-video:hover .lc-play {
+    background: rgba(0, 0, 0, 0.32);
+  }
+  .lc-play svg {
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    margin-left: 2px;
+    padding: 7px;
+    box-sizing: content-box;
+    border-radius: 50%;
+    background: var(--color-accent);
+  }
+  .lc-vid-meta {
+    min-width: 0;
+  }
+  .lc-vid-meta .lc-item-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: 0.95rem;
+  }
+  @media (max-width: 420px) {
+    .lc-thumb {
+      width: 96px;
+    }
+  }
+</style>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WeeklyAnimation from '../components/WeeklyAnimation.astro';
+import LatestContent from '../components/LatestContent.astro';
 import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
@@ -309,6 +310,17 @@ const registry = [
   </section>
 
   <!-- ============================================
+       SECTION 02 · LATEST DISPATCHES — fresh blog + videos
+       PERMANENT MODULE: surfaces newest posts + videos.
+       Keep across weekly redesigns; restyle via theme vars/props.
+       ============================================ -->
+  <LatestContent
+    eyebrow="Section 02 · Latest Dispatches"
+    heading={"Fresh off <em>the wire.</em>"}
+    deck="The newest writing and video briefs, in one place. Updated whenever a mark makes the mistake of being interesting. (This is the way.)"
+  />
+
+  <!-- ============================================
        THE MISSION FILE — four scene stills as dossier
        ============================================ -->
   <section class="mission-section">
@@ -316,7 +328,7 @@ const registry = [
       <header class="section-header">
         <div class="section-tag">
           <svg viewBox="0 0 32 28" fill="currentColor" class="visor-svg"><rect x="2" y="6" width="28" height="4" rx="2"/><rect x="14" y="6" width="4" height="18" rx="2"/></svg>
-          <span>SECTION 02 · THE MISSION FILE</span>
+          <span>SECTION 03 · THE MISSION FILE</span>
         </div>
         <h2 class="section-title">Four images <em>from the week.</em></h2>
         <p class="section-deck">
@@ -396,7 +408,7 @@ const registry = [
       <header class="section-header">
         <div class="section-tag">
           <svg viewBox="0 0 32 28" fill="currentColor" class="visor-svg"><rect x="2" y="6" width="28" height="4" rx="2"/><rect x="14" y="6" width="4" height="18" rx="2"/></svg>
-          <span>SECTION 03 · THE BOUNTY BOARD</span>
+          <span>SECTION 04 · THE BOUNTY BOARD</span>
         </div>
         <h2 class="section-title">Six active marks, <em>all on the trail.</em></h2>
         <p class="section-deck">
@@ -441,7 +453,7 @@ const registry = [
       <header class="section-header fresh-header">
         <div class="section-tag fresh-tag">
           <svg viewBox="0 0 32 28" fill="currentColor" class="visor-svg"><rect x="2" y="6" width="28" height="4" rx="2"/><rect x="14" y="6" width="4" height="18" rx="2"/></svg>
-          <span>SECTION 04 · FRESH MARKS</span>
+          <span>SECTION 05 · FRESH MARKS</span>
         </div>
         <h2 class="section-title">Two new marks <em>this week.</em></h2>
       </header>

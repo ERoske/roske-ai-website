@@ -22,7 +22,7 @@ const { id, title, subtitle, class: className = '', dark = false } = Astro.props
     {(title || subtitle) && (
       <div class="animate-on-scroll mb-12 md:mb-16">
         {title && (
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight dark:text-white text-[var(--color-primary)]">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
             {title}
           </h2>
         )}
