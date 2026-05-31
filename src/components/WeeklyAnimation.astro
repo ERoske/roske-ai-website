@@ -1,14 +1,108 @@
 ---
 /**
- * WeeklyAnimation.astro
+ * WeeklyAnimation.astro — MOTU week (May 31, 2026)
  *
- * Disabled by default. Edward's preference: drifting/falling particle
- * animations feel dated. Only re-enable for themes where ambient motion
- * makes obvious sense (e.g., a video-game week, a snow-globe holiday week).
- *
- * To re-enable for a specific week: replace the empty render below with the
- * themed animation script and set a self-contained <script is:inline>.
+ * Subtle floating Power Sword sparkles. Four-pointed gold star shapes drift
+ * upward across the page like the residual energy left after a sword raise.
+ * Subdued enough to read as atmosphere, not as falling decoration.
  */
 ---
 
-<!-- intentionally empty -->
+<div
+  id="motu-sparkles"
+  aria-hidden="true"
+  style="position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:5;overflow:hidden;"
+></div>
+
+<script is:inline>
+  (function () {
+    const root = document.getElementById('motu-sparkles');
+    if (!root) return;
+
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    const SPARKLE_COUNT = 14;
+
+    // 4-pointed Power Sword glint as inline SVG data URI.
+    const STAR_SVG = encodeURIComponent(
+      "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'>" +
+        "<g fill='currentColor'>" +
+          "<path d='M16 0 L18 14 L32 16 L18 18 L16 32 L14 18 L0 16 L14 14 Z'/>" +
+        "</g>" +
+      "</svg>"
+    );
+
+    function applyOpacity() {
+      const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const dark = theme === 'dark';
+      const sparkles = root.querySelectorAll('.motu-sparkle');
+      sparkles.forEach((s) => {
+        s.style.opacity = dark ? '0.6' : '0.45';
+      });
+    }
+
+    function makeSparkle(i) {
+      const sizeRem = 1.2 + Math.random() * 0.8;          // 1.2–2.0rem
+      const left = Math.random() * 100;                   // 0–100%
+      const duration = 22 + Math.random() * 18;           // 22–40s
+      const delay = -Math.random() * duration;            // start staggered
+      const drift = (Math.random() * 60 - 30);            // -30 to +30 px lateral
+      const isGold = Math.random() < 0.7;                 // mostly gold, some magenta
+      const color = isGold ? '#f5b300' : '#d6276e';
+
+      const el = document.createElement('span');
+      el.className = 'motu-sparkle';
+      el.style.cssText = [
+        'position:absolute',
+        `left:${left}%`,
+        'bottom:-3rem',
+        `width:${sizeRem}rem`,
+        `height:${sizeRem}rem`,
+        `color:${color}`,
+        `background-image:url("data:image/svg+xml;utf8,${STAR_SVG}")`,
+        'background-size:contain',
+        'background-repeat:no-repeat',
+        'background-position:center',
+        '-webkit-mask-image:url("data:image/svg+xml;utf8,' + STAR_SVG + '")',
+        'mask-image:url("data:image/svg+xml;utf8,' + STAR_SVG + '")',
+        '-webkit-mask-size:contain',
+        'mask-size:contain',
+        '-webkit-mask-repeat:no-repeat',
+        'mask-repeat:no-repeat',
+        `background-color:${color}`,
+        'opacity:0.6',
+        `animation:motu-rise-${i} ${duration}s linear infinite`,
+        `animation-delay:${delay}s`,
+        `filter:drop-shadow(0 0 6px ${color}88)`,
+        'will-change:transform,opacity',
+      ].join(';') + ';';
+
+      const styleEl = document.createElement('style');
+      styleEl.textContent = `
+        @keyframes motu-rise-${i} {
+          0%   { transform: translate(0, 0) rotate(0deg) scale(0.6); opacity: 0; }
+          10%  { opacity: var(--motu-opacity, 0.6); }
+          50%  { transform: translate(${drift / 2}px, -50vh) rotate(180deg) scale(1); }
+          90%  { opacity: var(--motu-opacity, 0.6); }
+          100% { transform: translate(${drift}px, -105vh) rotate(360deg) scale(0.6); opacity: 0; }
+        }
+      `;
+      document.head.appendChild(styleEl);
+      root.appendChild(el);
+    }
+
+    function build() {
+      root.innerHTML = '';
+      for (let i = 0; i < SPARKLE_COUNT; i++) makeSparkle(i);
+      applyOpacity();
+    }
+
+    build();
+
+    // Re-sync opacity when the user toggles dark/light.
+    const obs = new MutationObserver(applyOpacity);
+    obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  })();
+</script>

@@ -1,5 +1,29 @@
 [
   {
+    "title": "What does it mean when Anthropic gives an AI agent the ability to dream?",
+    "videoId": "3iakCKgvzQM",
+    "published": "2026-05-28T21:39:40+00:00",
+    "description": "Anthropic shipped \"Dreaming\" for Claude agents, a scheduled process that reads an agent's past work between sessions and rewrites its memory so it improves over time. Legal-AI startup Harvey saw completion rates jump roughly 6x.",
+    "thumbnail": "https://i.ytimg.com/vi/3iakCKgvzQM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What can a 15-person company do that used to need 15,000?",
+    "videoId": "xuNJAQAjP_U",
+    "published": "2026-05-28T21:38:01+00:00",
+    "description": "Anthropic launched Claude for Small Business: a free bundle of workflows that plugs Claude into QuickBooks, PayPal, and the rest of the small-business software stack. No price tag, while OpenAI and Microsoft charge per seat.",
+    "thumbnail": "https://i.ytimg.com/vi/xuNJAQAjP_U/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "The AI crown has changed hands three times in eight weeks",
+    "videoId": "NakevSh-dnw",
+    "published": "2026-05-28T21:33:50+00:00",
+    "description": "Anthropic shipped Claude Opus 4.8 forty-one days after Opus 4.7. The headline numbers look great: SWE-Bench Pro at 69.2 percent, plus a 121 Elo gap over GPT-5.5 on real-world tasks. Anthropic also quietly dropped six benchmarks from the comparison table. The model wars crown has...",
+    "thumbnail": "https://i.ytimg.com/vi/NakevSh-dnw/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "Has the time come for the fully AI Office of the CFO?",
     "videoId": "IxstGm5XN04",
     "published": "2026-05-19T12:47:12+00:00",

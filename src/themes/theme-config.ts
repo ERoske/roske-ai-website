@@ -77,47 +77,49 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "This Is the Way",
-  week: "2026-05-24",
-  inspiration: "Star Wars: The Mandalorian and Grogu opened in theaters on Friday, May 22, 2026, the first theatrical Star Wars release since 2019, and also (in a coincidence the universe arranged on its own) Edward's birthday. So roske.ai becomes a Mandalorian bounty hunter's logbook for the week: Edward as a Mando who flatly refuses to swap the blue fedora for the beskar helmet, Grogu in a side satchel, and the targets are AI companies. The fedora-versus-helmet schism is the whole bit. (Memorial Day on Monday gets a brief, sober tip of the same fedora.)",
-  tagline: "A bounty hunter in a blue fedora. The marks are AI companies. The kid stays in the satchel.",
+  name: "By the Power of Grayskull",
+  week: "2026-05-31",
+  inspiration: "Masters of the Universe (the live-action film) opens in theaters on Friday, June 5, 2026. So roske.ai becomes the Eternia Gazette this week, a Saturday-morning cartoon broadcast frozen mid-frame: Edward as a bald, glasses-wearing, fedora-keeping He-Man holding a sword that is, frankly, too big for him; Edward as a Skeletor in a blue fedora because Skeletor is bald and so is Edward and the math, here, basically works on its own; and a board meeting that has been redirected into a toy battle. The fedora stays on through all of it. The fedora was always more important than the helmet.",
+  tagline: "Bald hero. Bald villain. The fedora is the constant. By the power of fedora, we have the power.",
 
   colors: {
-    // Tatooine night and beskar steel. Deep indigo space, cool steel,
-    // a sharp Mando-red accent stripe, warm bone parchment for daylight.
-    primary: "#0e1422",          // deep Tatooine night
-    secondary: "#8a96a3",        // beskar steel
-    accent: "#b03a2e",           // Mando shoulder-stripe red
-    accentHover: "#cf4a3a",
-    background: "#0a0d14",       // deep space black-blue
-    backgroundLight: "#e9dcb8",  // sun-warmed parchment / Tatooine sand
-    surface: "#141a2a",          // lifted indigo (cards, dark)
-    surfaceLight: "#f3e8c6",     // pale sand parchment (cards, light)
-    text: "#ece2c4",             // warm bone
-    textMuted: "#8a8474",        // muted dust
-    textDark: "#1a1f30",         // dark navy text on light
-    textDarkMuted: "#5a5240",    // muted saddle on light
-    border: "#2c3345",           // night-edge blue
-    borderLight: "#c4b58a",      // warm sand line
-    gradient: "linear-gradient(180deg, #0a0d14 0%, #1b1322 45%, #8a3a1c 85%, #c46a26 100%)",
+    // Eternia at sunset: royal purple Skeletor sky, sword-pommel gold,
+    // Castle Grayskull jade, He-Man hot magenta, and a parchment cream
+    // for light mode that reads like the back of an old Mattel toy box.
+    primary: "#5b2d8c",          // royal Eternian purple
+    secondary: "#0d8b6e",        // Castle Grayskull jade
+    accent: "#f5b300",            // power-sword gold
+    accentHover: "#ffc933",
+    background: "#160b27",        // deep cosmic purple (dark mode)
+    backgroundLight: "#f5e9c8",   // Mattel-box cream parchment (light mode)
+    surface: "#231447",            // raised purple panel
+    surfaceLight: "#ffe9a8",       // sunlit cream
+    text: "#fff3d0",               // warm sword-gold cream
+    textMuted: "#bba0e0",          // misty Eternian lavender
+    textDark: "#1c0a30",           // deep purple text on cream
+    textDarkMuted: "#5a3b7c",      // muted royal
+    border: "#3d2470",             // amethyst line
+    borderLight: "#c8a64a",        // gold-foil line
+    gradient: "linear-gradient(135deg, #2a0d4d 0%, #5b2d8c 35%, #c2185b 70%, #f5b300 100%)",
   },
 
   fonts: {
-    // Black Ops One: stencil/military display for big beskar headlines.
-    // Cormorant Garamond italic: noble serif for creed phrasing and pull quotes.
-    // Manrope: clean modern sans for body, readable in both modes.
-    // Share Tech Mono: HUD/console look for ledger tags, lot numbers, beskar plate stamps.
-    heading: "'Black Ops One', 'Bebas Neue', Impact, sans-serif",
-    body: "'Manrope', 'Inter', system-ui, -apple-system, sans-serif",
-    mono: "'Share Tech Mono', 'Courier Prime', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap",
+    // Audiowide: chunky 80s arcade display for the big "HE-MAN" headlines.
+    // Bungee: blocky comic-book lettering for tags and badges.
+    // DM Serif Display: a bit of drama for italic emphasis.
+    // Space Grotesk: clean readable body in both modes.
+    // Major Mono Display: technical mono with retro arcade pulse.
+    heading: "'Audiowide', 'Impact', 'Arial Black', sans-serif",
+    body: "'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif",
+    mono: "'Major Mono Display', 'Courier Prime', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Audiowide&family=Bungee&family=DM+Serif+Display:ital@0;1&family=Major+Mono+Display&family=Space+Grotesk:wght@300;400;500;600;700&display=swap",
   },
 
   layout: {
     heroStyle: "split",
     navStyle: "fixed",
     cardStyle: "outlined",
-    sectionStyle: "alternating",
+    sectionStyle: "magazine",
     footerStyle: "detailed",
   },
 
@@ -130,11 +132,11 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "A Mandalorian bounty hunter who refuses the helmet. The targets are AI companies. The apprentice in the satchel uses the Force only to lift snacks.",
-    description: "Star Wars: The Mandalorian and Grogu opened in theaters on Friday, May 22, the same day I turned a year older. (The universe arranged that on its own. I take no credit.) So roske.ai is a bounty hunter's logbook this week: beskar where the suit jacket usually goes, Grogu where the laptop bag usually sits, and the targets are AI companies that have not yet been brought in. The fedora stays. The fedora was never up for negotiation.",
-    heroImage: "hero-2026-05-24.png",
-    imageAlt: "Edward Roske in full beskar Mandalorian armor standing on a Tatooine ridge at twin-sunset, wearing his signature blue fedora hat instead of a Mandalorian helmet, the helmet held under one arm. Grogu sits in a leather satchel at Edward's hip, looking up. Twin suns on the horizon, blaster on his hip, cape moving in the wind.",
-    ctaText: "Open the bounty board",
+    subtitle: "A bald hero. A bald villain. A fedora that does not care which side you pick.",
+    description: "Masters of the Universe opens in theaters on Friday, the latest piece of 1980s cardboard the studios have decided is now load-bearing. (I am not complaining. The 1980s shaped me into the kind of adult who keeps the original Castle Grayskull on the office shelf and refers to it, with no irony at all, as a reference architecture.) So this week the site becomes the Eternia Gazette: roughly forty percent He-Man, roughly forty percent Skeletor, and roughly twenty percent everyone in the throne room politely pretending they did not notice that the same actor is playing both parts. The fedora stays on through every cut.",
+    heroImage: "hero-2026-05-31.png",
+    imageAlt: "Edward Roske, bald and bespectacled, dressed as He-Man in a brown leather X-harness and gray loincloth, wearing his signature blue fedora, holding the Power Sword aloft with both hands as golden lightning crackles from the blade. Castle Grayskull looms behind him on a misty cliff at dusk, a pink and purple Eternian sky in the background.",
+    ctaText: "Open the toybox",
     ctaLink: "#current-work",
   },
 };
