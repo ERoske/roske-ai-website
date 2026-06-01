@@ -79,8 +79,8 @@ export interface ThemeConfig {
 export const currentTheme: ThemeConfig = {
   name: "By the Power of Grayskull",
   week: "2026-05-31",
-  inspiration: "Masters of the Universe (the live-action film) opens in theaters on Friday, June 5, 2026. So roske.ai becomes the Eternia Gazette this week, a Saturday-morning cartoon broadcast frozen mid-frame: Edward as a bald, glasses-wearing, fedora-keeping He-Man holding a sword that is, frankly, too big for him; Edward as a Skeletor in a blue fedora because Skeletor is bald and so is Edward and the math, here, basically works on its own; and a board meeting that has been redirected into a toy battle. The fedora stays on through all of it. The fedora was always more important than the helmet.",
-  tagline: "Bald hero. Bald villain. The fedora is the constant. By the power of fedora, we have the power.",
+  inspiration: "Masters of the Universe (the live-action film) opens in theaters on Friday, June 5, 2026. So roske.ai becomes the Eternia Gazette this week, a Saturday-morning cartoon broadcast frozen mid-frame: Edward as a glasses-wearing, fedora-keeping He-Man holding a sword that is, frankly, too big for him; Edward as a Skeletor who runs a small business with a hard-to-pronounce flagship product (the parallels do the work themselves); and a board meeting that has been redirected into a toy battle. The fedora stays on through all of it. The fedora was always more important than the helmet.",
+  tagline: "Whichever side you pick this week, the fedora stays on. By the power of fedora, we have the power.",
 
   colors: {
     // Eternia at sunset: royal purple Skeletor sky, sword-pommel gold,
@@ -132,10 +132,10 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "A bald hero. A bald villain. A fedora that does not care which side you pick.",
+    subtitle: "A hero, a villain, and a fedora that does not care which side you pick.",
     description: "Masters of the Universe opens in theaters on Friday, the latest piece of 1980s cardboard the studios have decided is now load-bearing. (I am not complaining. The 1980s shaped me into the kind of adult who keeps the original Castle Grayskull on the office shelf and refers to it, with no irony at all, as a reference architecture.) So this week the site becomes the Eternia Gazette: roughly forty percent He-Man, roughly forty percent Skeletor, and roughly twenty percent everyone in the throne room politely pretending they did not notice that the same actor is playing both parts. The fedora stays on through every cut.",
     heroImage: "hero-2026-05-31.png",
-    imageAlt: "Edward Roske, bald and bespectacled, dressed as He-Man in a brown leather X-harness and gray loincloth, wearing his signature blue fedora, holding the Power Sword aloft with both hands as golden lightning crackles from the blade. Castle Grayskull looms behind him on a misty cliff at dusk, a pink and purple Eternian sky in the background.",
+    imageAlt: "Edward Roske, bearded and bespectacled, dressed as He-Man in a brown leather X-harness and gray loincloth, wearing his signature blue fedora, holding the Power Sword aloft with both hands as golden lightning crackles from the blade. Castle Grayskull looms behind him on a misty cliff at dusk, a pink and purple Eternian sky in the background.",
     ctaText: "Open the toybox",
     ctaLink: "#current-work",
   },
