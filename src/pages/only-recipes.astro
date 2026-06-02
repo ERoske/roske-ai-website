@@ -283,6 +283,50 @@ const faqs = [
   </section>
 
   <!-- ============================================================
+       A CLOSER LOOK (real feature screenshots from the store listing)
+       ============================================================ -->
+  <section class="px-6 py-16 md:py-24">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-12 md:mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
+          A closer look
+        </h2>
+        <p class="mt-4 text-lg max-w-2xl dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
+          More of the real thing, on that same over-written steak recipe.
+        </p>
+      </div>
+      <div class="or-gallery">
+        <figure class="or-shot animate-on-scroll">
+          <a href="/images/only-recipes-instructions.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/images/only-recipes-instructions.jpg" width="1280" height="800" loading="lazy"
+              alt="Only Recipes showing the recipe method as clean numbered steps, with the floating control bar at the bottom." />
+          </a>
+          <figcaption class="or-cap">The steps, decluttered too</figcaption>
+          <p class="or-gallery-note">The same treatment as the ingredients, now applied to the part where you actually cook.</p>
+        </figure>
+
+        <figure class="or-shot animate-on-scroll">
+          <a href="/images/only-recipes-scaling.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/images/only-recipes-scaling.jpg" width="1280" height="800" loading="lazy"
+              alt="A close-up of the Only Recipes control bar: a minus and plus servings stepper, a units toggle set to Imperial, a save heart, an auto-show button, and Show original." />
+          </a>
+          <figcaption class="or-cap">One bar runs everything</figcaption>
+          <p class="or-gallery-note">Servings, units, save, and a jump back to the original page, all from the strip that floats over the recipe.</p>
+        </figure>
+
+        <figure class="or-shot animate-on-scroll">
+          <a href="/images/only-recipes-settings.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="/images/only-recipes-settings.jpg" width="1280" height="800" loading="lazy"
+              alt="The Only Recipes panel showing a saved recipe with a thumbnail under Saved, and a Settings area with an auto-show checkbox and a default units selector." />
+          </a>
+          <figcaption class="or-cap">Saved recipes and settings</figcaption>
+          <p class="or-gallery-note">Your keepers live in your own box, next to the handful of settings there are. (There are not many. That is on purpose.)</p>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        PRIVACY
        ============================================================ -->
   <section class="px-6 py-16 md:py-24">
@@ -519,9 +563,29 @@ const faqs = [
   :global(html[data-theme="dark"]) .or-try-deck { color: var(--color-text-muted); }
   .or-try .or-after { max-width: 30rem; margin: 0 auto; }
 
+  /* ---- A closer look gallery ---- */
+  .or-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem 1.5rem;
+  }
+  .or-gallery .or-shot a { display: block; transition: transform 0.25s ease; }
+  .or-gallery .or-shot a:hover { transform: translateY(-4px); }
+  .or-gallery-note {
+    text-align: center;
+    margin-top: 0.5rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--color-text-dark-muted);
+  }
+  :global(html[data-theme="dark"]) .or-gallery-note { color: var(--color-text-muted); }
+
   @media (max-width: 860px) {
     .or-shots { grid-template-columns: 1fr; }
     .or-arrow { transform: rotate(90deg); margin: 0.25rem 0; }
+  }
+  @media (max-width: 760px) {
+    .or-gallery { grid-template-columns: 1fr; max-width: 26rem; margin: 0 auto; }
   }
 
   /* ---- The clean recipe card (interactive playground) ---- */
