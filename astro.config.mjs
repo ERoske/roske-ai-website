@@ -17,18 +17,9 @@ export default defineConfig({
   },
   integrations: [
     mdx(),
-    sitemap({
-      // Static HTML pages under public/ aren't Astro routes, so the sitemap
-      // integration doesn't pick them up automatically. Include them here
-      // so Google can index them.
-      customPages: [
-        'https://roske.ai/agentcube.html',
-        'https://roske.ai/agentcube-partners.html',
-        'https://roske.ai/agentcube-pilot.html',
-        'https://roske.ai/agentcube-roi.html',
-        'https://roske.ai/agentcube-security.html',
-        'https://roske.ai/agentcube-technical.html',
-      ],
-    }),
+    // AgentCube's old static subsite (public/agentcube*.html) stays reachable by
+    // direct URL but is no longer promoted: its canonical home is now
+    // https://caprus.ai/agentcube/. Pages removed from the sitemap accordingly.
+    sitemap(),
   ]
 });
