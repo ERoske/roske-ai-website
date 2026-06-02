@@ -1,0 +1,907 @@
+---
+// PERMANENT PAGE. Do not He-Man-ify or theme-rewrite during weekly rebuilds.
+// It inherits the active weekly theme through the CSS custom properties
+// (--color-*, --font-*) and should keep working as the theme changes.
+// Companion page: /only-recipes-privacy/ (the privacy policy).
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const STORE_URL = 'https://chromewebstore.google.com/detail/only-recipes/jddinhkkkjbplpoefcilhdhaenphnjep';
+const PRIVACY_URL = '/only-recipes-privacy/';
+
+// Live demo recipe. Rendered server-side at the base state (US units, 4 servings)
+// so the card is complete even without JavaScript. The inline script enhances it
+// with the servings stepper, unit toggle, and check-off behavior.
+const baseServings = 4;
+const ingredients = [
+  { name: 'Spaghetti', us: { qty: 12, unit: 'oz' }, metric: { qty: 340, unit: 'g' } },
+  { name: 'Unsalted butter', us: { qty: 4, unit: 'tbsp' }, metric: { qty: 57, unit: 'g' } },
+  { name: 'Garlic, sliced', us: { qty: 6, unit: 'cloves' }, metric: { qty: 6, unit: 'cloves' }, integer: true },
+  { name: 'Parmesan, grated', us: { qty: 1, unit: 'cup' }, metric: { qty: 100, unit: 'g' } },
+  { name: 'Black pepper', us: { qty: 1, unit: 'tsp' }, metric: { qty: 2, unit: 'g' } },
+  { name: 'Salt', note: 'to taste' },
+];
+const steps = [
+  'Boil the spaghetti in well-salted water until just shy of done. Save a mug of the pasta water before you drain it.',
+  'Melt the butter over low heat. Add the garlic and cook until fragrant, not brown.',
+  'Add the drained pasta, the pepper, and a splash of pasta water. Toss it hard for a full minute.',
+  'Off the heat, fold in the parmesan until it turns glossy. Loosen with more pasta water if it tightens. Eat at once.',
+];
+
+const demoIngredients = ingredients.map((ing, i) => ({
+  i,
+  amount: ing.note ? '' : `${ing.us.qty} ${ing.us.unit}`,
+  name: ing.note ? `${ing.name} (${ing.note})` : ing.name,
+  usQty: ing.us?.qty ?? null,
+  usUnit: ing.us?.unit ?? '',
+  metricQty: ing.metric?.qty ?? null,
+  metricUnit: ing.metric?.unit ?? '',
+  integer: ing.integer ? '1' : '',
+}));
+
+const features = [
+  {
+    title: 'Just the recipe',
+    body: 'Ingredients and steps, formatted to actually read. The memoir, the ads, the popups, and the auto-playing video are gone before you finish scrolling.',
+  },
+  {
+    title: 'Check as you go',
+    body: 'Tap an ingredient or a step and it crosses off. (Helpful for anyone who has added the butter twice because they lost their place.)',
+  },
+  {
+    title: 'Scale the servings',
+    body: 'Cooking for two or for twelve, the amounts do the arithmetic for you. (I have a Master’s in data science and I still did not want to do it by hand.)',
+  },
+  {
+    title: 'US or metric',
+    body: 'One toggle flips the whole recipe between cups and grams. For when the recipe is written in grams and your kitchen is not.',
+  },
+  {
+    title: 'Save the keepers',
+    body: 'A heart button saves a recipe to your own box, no account or sign-in required. It remembers the ones you liked.',
+  },
+  {
+    title: 'Picks up where you left off',
+    body: 'Close the tab in the middle of dinner, come back later, and your checkmarks and settings are waiting for you.',
+  },
+];
+
+const faqs = [
+  {
+    q: 'Is it really free?',
+    a: 'Yes. No paid tier, no upsell, no "Pro" version waiting behind a login. It is free, and it stays free.',
+  },
+  {
+    q: 'Does it work on every recipe site?',
+    a: 'It works on any page that publishes its recipe in the standard schema.org format, which covers most cooking sites and nearly every large one. If a page has a real recipe in it, Only Recipes finds it. If it does not, the extension stays quiet and out of your way.',
+  },
+  {
+    q: 'What does it collect about me?',
+    a: 'Nothing leaves your computer. No tracking, no analytics, no account. The privacy policy spells out every last detail, and it is a short read.',
+  },
+  {
+    q: 'Will it work on my phone?',
+    a: 'Not yet. It is a desktop Chrome extension, and phone browsers do not run extensions the same way. For now it lives on laptops and desktops.',
+  },
+  {
+    q: 'Which browsers?',
+    a: 'Chrome, and the browsers built on it: Edge, Brave, Arc, and Opera. If it runs Chrome extensions, it runs this one.',
+  },
+  {
+    q: 'Who made it?',
+    a: 'Edward Roske, the one in the fedora. It is my first browser extension, which I am told is a rite of passage I reached a little later than most.',
+  },
+];
+---
+
+<BaseLayout
+  title="Only Recipes — The Chrome Extension That Strips Recipe Pages to Just the Recipe"
+  description="Only Recipes is a free Chrome extension that deletes the memoir, ads, and popups from recipe pages and leaves only the ingredients and steps. Check things off, scale servings, switch units. Runs entirely on your device. Built by Edward Roske."
+  ogImage="/images/only-recipes-edward.png"
+>
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Only Recipes",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Chrome, Edge, Brave, Arc, Opera",
+      "description": "A free Chrome extension that strips recipe pages down to ingredients and steps, with check-off, serving scaling, and unit conversion. Runs entirely on your device with no tracking.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "url": "https://roske.ai/only-recipes/",
+      "downloadUrl": STORE_URL,
+      "author": { "@type": "Person", "name": "Edward Roske", "url": "https://roske.ai" }
+    })} />
+  </Fragment>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section class="relative px-6 pt-16 pb-12 md:pt-24 md:pb-16 overflow-hidden">
+    <div class="absolute inset-0 -z-10 opacity-[0.07]" style="background: var(--color-gradient, radial-gradient(circle at 50% 0%, var(--color-accent), transparent 60%));"></div>
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-xs md:text-sm tracking-[0.2em] uppercase text-[var(--color-accent)] mb-5"
+        style="font-family: var(--font-mono); animation: orUp 0.6s ease-out forwards;">
+        Edward&rsquo;s first Chrome extension
+      </p>
+      <h1 class="text-5xl md:text-7xl font-black tracking-tight mb-6 dark:text-white text-[var(--color-primary)]"
+        style="font-family: var(--font-heading); animation: orUp 0.6s ease-out 0.05s forwards; opacity: 0;">
+        Only Recipes
+      </h1>
+      <p class="text-xl md:text-2xl leading-snug font-medium max-w-3xl mx-auto mb-5 dark:text-white text-[var(--color-text-dark)]"
+        style="animation: orUp 0.6s ease-out 0.12s forwards; opacity: 0;">
+        You came for a recipe and the website gave you a 2,000-word memoir, four ad breaks, a newsletter popup, and a video that follows you down the page. Only Recipes throws all of that out and keeps the recipe.
+      </p>
+      <p class="text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-9 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
+        style="animation: orUp 0.6s ease-out 0.2s forwards; opacity: 0;">
+        It finds the recipe on almost any cooking site and shows you a clean card: ingredients and steps, nothing else. Check things off as you cook, scale the servings, and switch between US and metric without leaving the page. It all runs on your computer.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center items-center"
+        style="animation: orUp 0.6s ease-out 0.28s forwards; opacity: 0;">
+        <a href={STORE_URL} target="_blank" rel="noopener noreferrer" class="or-btn-primary">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7s2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/></svg>
+          Add to Chrome (free)
+        </a>
+        <a href="#demo" class="or-btn-secondary">See it work</a>
+      </div>
+      <p class="mt-6 text-xs tracking-wide dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/70"
+        style="font-family: var(--font-mono); animation: orUp 0.6s ease-out 0.36s forwards; opacity: 0;">
+        Free &middot; No account &middot; No tracking &middot; Chrome, Edge, Brave, Arc
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BEFORE / AFTER DEMO
+       ============================================================ -->
+  <section id="demo" class="px-6 py-16 md:py-24 scroll-mt-24">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold mb-3 dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
+          One recipe page. Before and after.
+        </h2>
+        <p class="text-lg max-w-2xl mx-auto dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
+          Change the servings, flip the units, check things off. The card on the right is the whole idea.
+        </p>
+      </div>
+
+      <div class="or-demo-grid animate-on-scroll">
+        <!-- BEFORE: the cluttered page -->
+        <figure class="or-figure">
+          <div class="or-window" aria-hidden="true">
+            <div class="or-window-bar">
+              <span class="or-dot"></span><span class="or-dot"></span><span class="or-dot"></span>
+              <span class="or-url">saltandsongbird.example / the-best-pasta</span>
+            </div>
+            <div class="or-window-body">
+              <div class="or-cookie">
+                <span>We value your privacy. We also value 47 advertising partners.</span>
+                <span class="or-cookie-btn">Accept All</span>
+              </div>
+              <div class="or-ad">ADVERTISEMENT</div>
+              <div class="or-fake-h"></div>
+              <div class="or-line-grp">
+                <span class="or-line w-full"></span>
+                <span class="or-line w-11/12"></span>
+                <span class="or-line w-full"></span>
+                <span class="or-line w-10/12"></span>
+                <span class="or-line w-full"></span>
+                <span class="or-line w-9/12"></span>
+              </div>
+              <div class="or-ad or-ad-tall">ADVERTISEMENT</div>
+              <div class="or-line-grp">
+                <span class="or-line w-full"></span>
+                <span class="or-line w-10/12"></span>
+                <span class="or-line w-11/12"></span>
+              </div>
+              <div class="or-jump">Jump to Recipe &darr;</div>
+              <div class="or-popup">
+                <span class="or-popup-x">&times;</span>
+                <strong>Wait! Get 10 free recipes</strong>
+                <span class="or-popup-field">your@email.com</span>
+                <span class="or-popup-btn">Subscribe</span>
+              </div>
+            </div>
+          </div>
+          <figcaption class="or-cap">Every recipe site.</figcaption>
+        </figure>
+
+        <div class="or-arrow" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+        </div>
+
+        <!-- AFTER: the clean, interactive card -->
+        <figure class="or-figure">
+          <div id="or-demo" class="or-after" data-system="us" data-servings={baseServings} data-base={baseServings}>
+            <div class="or-after-top">
+              <span class="or-badge"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4L12 16.8 5.7 21.2 8 13.8 2 9.4h7.6z"/></svg> Only Recipes</span>
+              <button type="button" id="or-heart" class="or-heart" aria-pressed="false" aria-label="Save this recipe">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+              </button>
+            </div>
+
+            <h3 class="or-recipe-title">Garlic Butter Spaghetti</h3>
+
+            <div class="or-controls">
+              <div class="or-control">
+                <span class="or-control-label">Serves</span>
+                <div class="or-stepper">
+                  <button type="button" id="or-minus" aria-label="Fewer servings">&minus;</button>
+                  <span id="or-servings" aria-live="polite">{baseServings}</span>
+                  <button type="button" id="or-plus" aria-label="More servings">+</button>
+                </div>
+              </div>
+              <div class="or-control">
+                <span class="or-control-label">Units</span>
+                <div class="or-unit" role="group" aria-label="Unit system">
+                  <button type="button" class="or-unit-btn is-on" data-unit="us">US</button>
+                  <button type="button" class="or-unit-btn" data-unit="metric">Metric</button>
+                </div>
+              </div>
+            </div>
+
+            <p class="or-sec-label">Ingredients</p>
+            <ul class="or-list">
+              {demoIngredients.map(d => (
+                <li>
+                  <button type="button" class="or-check or-ing" data-i={d.i}>
+                    <span class="or-box" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+                    </span>
+                    <span class="or-amt"
+                      data-us-qty={d.usQty}
+                      data-us-unit={d.usUnit}
+                      data-metric-qty={d.metricQty}
+                      data-metric-unit={d.metricUnit}
+                      data-integer={d.integer}>{d.amount}</span>
+                    <span class="or-name">{d.name}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+
+            <p class="or-sec-label">Steps</p>
+            <ol class="or-list or-steps">
+              {steps.map((s, i) => (
+                <li>
+                  <button type="button" class="or-check or-step">
+                    <span class="or-num" aria-hidden="true">{i + 1}</span>
+                    <span class="or-step-text">{s}</span>
+                  </button>
+                </li>
+              ))}
+            </ol>
+
+            <p class="or-after-foot">Saved on your computer. Nothing left the kitchen.</p>
+          </div>
+          <figcaption class="or-cap">With Only Recipes.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FEATURES
+       ============================================================ -->
+  <section class="px-6 py-16 md:py-24 dark:bg-[var(--color-surface)] bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-12 md:mb-16 animate-on-scroll">
+        <h2 class="text-3xl md:text-4xl font-bold dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
+          It does one thing. It does it well.
+        </h2>
+        <p class="mt-4 text-lg max-w-2xl dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
+          That one thing happens to have a few useful corners.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {features.map(f => (
+          <div class="animate-on-scroll rounded-xl p-6 transition-all duration-300
+            dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
+            bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg hover:-translate-y-1">
+            <h3 class="text-lg font-semibold mb-2 dark:text-white text-[var(--color-primary)]">{f.title}</h3>
+            <p class="text-sm leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">{f.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PRIVACY
+       ============================================================ -->
+  <section class="px-6 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto animate-on-scroll">
+      <p class="text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-4" style="font-family: var(--font-mono);">The honest part</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
+        It is not quietly selling you.
+      </h2>
+      <div class="space-y-4 text-lg leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
+        <p>
+          Plenty of browser extensions are a quiet data-collection business wearing a friendly costume. Only Recipes is not one of them. It runs entirely on your device: no network calls of its own, no analytics, no ads, and no server to phone home to (there is no server).
+        </p>
+        <p>
+          The only thing it stores lives on your computer: the recipes you saved and the boxes you checked. The full privacy policy is short, because there is very little to disclose.
+        </p>
+      </div>
+      <a href={PRIVACY_URL} class="inline-flex items-center gap-2 mt-6 font-medium text-[var(--color-accent)] hover:gap-3 transition-all">
+        Read the privacy policy
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INSTALL
+       ============================================================ -->
+  <section class="px-6 py-16 md:py-24 dark:bg-[var(--color-surface)] bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <div class="mb-12 animate-on-scroll text-center">
+        <h2 class="text-3xl md:text-4xl font-bold dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
+          Cooking with it in under a minute
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {[
+          { n: '1', t: 'Add it to Chrome', b: 'It is free, from the Chrome Web Store, and installs in a couple of seconds.' },
+          { n: '2', t: 'Open any recipe page', b: 'Cook a thing you found anywhere. Most recipe sites publish their recipe in a standard format, and that is what Only Recipes reads.' },
+          { n: '3', t: 'Cook from the clean card', b: 'Click the icon when you want it, or turn on auto-show and it appears on its own every time.' },
+        ].map(step => (
+          <div class="animate-on-scroll text-center">
+            <div class="or-step-num">{step.n}</div>
+            <h3 class="text-lg font-semibold mb-2 dark:text-white text-[var(--color-primary)]">{step.t}</h3>
+            <p class="text-sm leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">{step.b}</p>
+          </div>
+        ))}
+      </div>
+      <div class="flex justify-center animate-on-scroll">
+        <a href={STORE_URL} target="_blank" rel="noopener noreferrer" class="or-btn-primary">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7s2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/></svg>
+          Add to Chrome (free)
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ORIGIN
+       ============================================================ -->
+  <section class="px-6 py-16 md:py-24">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
+      <div class="animate-on-scroll order-2 md:order-1">
+        <p class="text-xs tracking-[0.2em] uppercase text-[var(--color-accent)] mb-4" style="font-family: var(--font-mono);">Why a recipe extension</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-6 dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
+          Of all the things to build first.
+        </h2>
+        <div class="space-y-4 text-lg leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
+          <p>
+            Short answer: I cook, and recipe websites had finally annoyed me into writing code.
+          </p>
+          <p>
+            I am a vegetarian who actually makes dinner, so I spend real time on these sites, so I have developed real opinions about them. I have built MCP servers for enterprise finance, a podcast, and a couple of companies. I had never built a browser extension.
+          </p>
+          <p>
+            So one irritated evening, I built one. It does exactly one thing and does it well, which is the kindest thing you can say about most software. This is my first extension, and the building of it was satisfying enough that it will not be the last.
+          </p>
+        </div>
+      </div>
+      <div class="animate-on-scroll order-1 md:order-2">
+        <div class="relative">
+          <div class="absolute -inset-4 rounded-2xl bg-[var(--color-accent)]/10 blur-2xl"></div>
+          <img src="/images/only-recipes-edward.png"
+            alt="Edward Roske in his signature blue fedora and a dark apron, holding a wooden spoon in a spotless modern kitchen, looking mildly unimpressed."
+            class="relative rounded-2xl w-full shadow-2xl ring-1 ring-white/10"
+            loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FAQ
+       ============================================================ -->
+  <section class="px-6 py-16 md:py-24 dark:bg-[var(--color-surface)] bg-gray-50">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold mb-10 dark:text-white text-[var(--color-primary)] animate-on-scroll" style="font-family: var(--font-heading);">
+        Questions, asked in good faith
+      </h2>
+      <div class="space-y-3">
+        {faqs.map(f => (
+          <details class="or-faq animate-on-scroll">
+            <summary>
+              <span>{f.q}</span>
+              <svg class="or-faq-chev w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </summary>
+            <p>
+              {f.q === 'What does it collect about me?' ? (
+                <>Nothing leaves your computer. No tracking, no analytics, no account. The <a href={PRIVACY_URL}>privacy policy</a> spells out every last detail, and it is a short read.</>
+              ) : f.q === 'Who made it?' ? (
+                <>Edward Roske, the one in the <a href="/about/">fedora</a>. It is my first browser extension, which I am told is a rite of passage I reached a little later than most.</>
+              ) : f.a}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FINAL CTA
+       ============================================================ -->
+  <section class="px-6 py-20 md:py-28">
+    <div class="max-w-2xl mx-auto text-center animate-on-scroll">
+      <h2 class="text-4xl md:text-5xl font-black mb-5 dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
+        Get the recipe. Lose the rest.
+      </h2>
+      <p class="text-lg mb-9 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
+        Free, private, and faster than scrolling past someone&rsquo;s vacation photos to learn how much flour to use.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center items-center">
+        <a href={STORE_URL} target="_blank" rel="noopener noreferrer" class="or-btn-primary">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7s2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5S21.88 11 20.5 11z"/></svg>
+          Add to Chrome (free)
+        </a>
+        <a href={PRIVACY_URL} class="or-btn-secondary">Read the privacy policy</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  @keyframes orUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- Buttons ---- */
+  .or-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 0.7rem;
+    font-weight: 600;
+    font-size: 1.02rem;
+    background: var(--color-accent);
+    color: #fff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: 0 8px 24px -10px var(--color-accent);
+  }
+  .or-btn-primary:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px -12px var(--color-accent);
+  }
+  .or-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 0.7rem;
+    font-weight: 600;
+    font-size: 1.02rem;
+    border: 1px solid var(--color-border-light);
+    color: var(--color-text-dark);
+    transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+  .or-btn-secondary:hover { transform: translateY(-2px); border-color: var(--color-accent); color: var(--color-accent); }
+  :global(html[data-theme="dark"]) .or-btn-secondary {
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+
+  /* ---- Demo layout ---- */
+  .or-demo-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .or-figure { margin: 0; }
+  .or-cap {
+    text-align: center;
+    margin-top: 0.9rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    color: var(--color-text-dark-muted);
+  }
+  :global(html[data-theme="dark"]) .or-cap { color: var(--color-text-muted); }
+  .or-arrow {
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .or-arrow svg { width: 2rem; height: 2rem; }
+
+  @media (max-width: 860px) {
+    .or-demo-grid { grid-template-columns: 1fr; }
+    .or-arrow { transform: rotate(90deg); margin: 0.25rem 0; }
+  }
+
+  /* ---- BEFORE: the cluttered window ---- */
+  .or-window {
+    position: relative;
+    border-radius: 0.9rem;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: #ededf0;
+    height: 100%;
+    min-height: 460px;
+    filter: saturate(0.6);
+  }
+  :global(html[data-theme="dark"]) .or-window {
+    background: #17171c;
+    border-color: rgba(255,255,255,0.1);
+  }
+  .or-window-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 0.8rem;
+    background: #dcdce0;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+  :global(html[data-theme="dark"]) .or-window-bar { background: #25252c; border-color: rgba(255,255,255,0.06); }
+  .or-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #b9b9c2; }
+  .or-url {
+    margin-left: 0.6rem;
+    font-size: 0.7rem;
+    font-family: var(--font-mono);
+    color: #8a8a95;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .or-window-body { position: relative; padding: 0.85rem; }
+  .or-cookie {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    background: rgba(0,0,0,0.06);
+    border: 1px dashed rgba(0,0,0,0.18);
+    border-radius: 0.4rem;
+    padding: 0.45rem 0.55rem;
+    font-size: 0.62rem;
+    color: #6f6f7a;
+    margin-bottom: 0.7rem;
+  }
+  :global(html[data-theme="dark"]) .or-cookie { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.14); color: #9a9aa5; }
+  .or-cookie-btn {
+    flex-shrink: 0;
+    background: #9a9aa5;
+    color: #fff;
+    border-radius: 0.3rem;
+    padding: 0.2rem 0.5rem;
+    font-weight: 700;
+  }
+  .or-ad {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    background: repeating-linear-gradient(45deg, rgba(0,0,0,0.05), rgba(0,0,0,0.05) 8px, rgba(0,0,0,0.09) 8px, rgba(0,0,0,0.09) 16px);
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 0.35rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: #8a8a95;
+    margin-bottom: 0.7rem;
+  }
+  :global(html[data-theme="dark"]) .or-ad {
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 8px, rgba(255,255,255,0.07) 8px, rgba(255,255,255,0.07) 16px);
+    border-color: rgba(255,255,255,0.1);
+  }
+  .or-ad-tall { height: 5rem; }
+  .or-fake-h { height: 1.1rem; width: 70%; border-radius: 0.25rem; background: rgba(0,0,0,0.22); margin-bottom: 0.7rem; }
+  :global(html[data-theme="dark"]) .or-fake-h { background: rgba(255,255,255,0.22); }
+  .or-line-grp { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.7rem; }
+  .or-line { height: 0.55rem; border-radius: 0.25rem; background: rgba(0,0,0,0.1); }
+  :global(html[data-theme="dark"]) .or-line { background: rgba(255,255,255,0.09); }
+  .or-jump {
+    display: inline-block;
+    font-size: 0.62rem;
+    color: #8a8a95;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 0.3rem;
+    padding: 0.25rem 0.5rem;
+  }
+  :global(html[data-theme="dark"]) .or-jump { border-color: rgba(255,255,255,0.14); }
+  .or-popup {
+    position: absolute;
+    left: 50%;
+    bottom: 0.9rem;
+    transform: translateX(-50%);
+    width: 78%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 0.5rem;
+    padding: 0.7rem 0.7rem 0.6rem;
+    box-shadow: 0 14px 30px -12px rgba(0,0,0,0.5);
+    font-size: 0.62rem;
+    color: #6f6f7a;
+    text-align: center;
+  }
+  :global(html[data-theme="dark"]) .or-popup { background: #2a2a32; border-color: rgba(255,255,255,0.14); color: #c7c7d0; }
+  .or-popup strong { font-size: 0.74rem; color: #444; }
+  :global(html[data-theme="dark"]) .or-popup strong { color: #fff; }
+  .or-popup-x { position: absolute; top: 0.35rem; right: 0.5rem; font-size: 0.8rem; color: #b0b0ba; }
+  .or-popup-field { border: 1px solid rgba(0,0,0,0.15); border-radius: 0.3rem; padding: 0.28rem; color: #aaa; }
+  :global(html[data-theme="dark"]) .or-popup-field { border-color: rgba(255,255,255,0.16); }
+  .or-popup-btn { background: #c0392b; color: #fff; border-radius: 0.3rem; padding: 0.28rem; font-weight: 700; }
+
+  /* ---- AFTER: the clean card ---- */
+  .or-after {
+    border-radius: 0.9rem;
+    border: 1px solid var(--color-border-light);
+    background: #fff;
+    padding: 1.3rem 1.4rem 1.5rem;
+    height: 100%;
+    box-shadow: 0 20px 45px -28px rgba(0,0,0,0.45);
+  }
+  :global(html[data-theme="dark"]) .or-after {
+    background: var(--color-surface);
+    border-color: var(--color-border);
+  }
+  .or-after-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.7rem; }
+  .or-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+    padding: 0.28rem 0.55rem;
+    border-radius: 999px;
+  }
+  .or-heart {
+    color: var(--color-text-dark-muted);
+    width: 2rem; height: 2rem;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 999px;
+    transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  }
+  .or-heart svg { width: 1.2rem; height: 1.2rem; }
+  :global(html[data-theme="dark"]) .or-heart { color: var(--color-text-muted); }
+  .or-heart:hover { background: color-mix(in srgb, var(--color-accent) 12%, transparent); transform: scale(1.08); }
+  .or-heart.is-on { color: var(--color-accent); }
+  .or-heart.is-on svg { fill: var(--color-accent); }
+  .or-recipe-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    line-height: 1.1;
+    color: var(--color-primary);
+    margin-bottom: 0.9rem;
+  }
+  :global(html[data-theme="dark"]) .or-recipe-title { color: #fff; }
+  .or-controls { display: flex; flex-wrap: wrap; gap: 1.1rem; margin-bottom: 1.1rem; }
+  .or-control { display: flex; flex-direction: column; gap: 0.3rem; }
+  .or-control-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    color: var(--color-text-dark-muted);
+  }
+  :global(html[data-theme="dark"]) .or-control-label { color: var(--color-text-muted); }
+  .or-stepper, .or-unit {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--color-border-light);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  :global(html[data-theme="dark"]) .or-stepper, :global(html[data-theme="dark"]) .or-unit { border-color: var(--color-border); }
+  .or-stepper button {
+    width: 2rem; height: 2rem;
+    font-size: 1.1rem; font-weight: 700; line-height: 1;
+    color: var(--color-accent);
+    transition: background 0.15s ease;
+  }
+  .or-stepper button:hover { background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+  .or-stepper span { min-width: 2.2rem; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .or-unit-btn {
+    padding: 0 0.7rem; height: 2rem;
+    font-size: 0.82rem; font-weight: 600;
+    color: var(--color-text-dark-muted);
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  :global(html[data-theme="dark"]) .or-unit-btn { color: var(--color-text-muted); }
+  .or-unit-btn.is-on { background: var(--color-accent); color: #fff; }
+  .or-sec-label {
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    margin: 1rem 0 0.5rem;
+  }
+  .or-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.15rem; }
+  .or-check {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    text-align: left;
+    padding: 0.4rem 0.4rem;
+    border-radius: 0.45rem;
+    transition: background 0.15s ease;
+    line-height: 1.4;
+  }
+  .or-check:hover { background: color-mix(in srgb, var(--color-accent) 8%, transparent); }
+  .or-box {
+    flex-shrink: 0;
+    width: 1.15rem; height: 1.15rem;
+    margin-top: 0.08rem;
+    border: 2px solid var(--color-border-light);
+    border-radius: 0.3rem;
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s ease, border-color 0.15s ease;
+  }
+  :global(html[data-theme="dark"]) .or-box { border-color: var(--color-border); }
+  .or-box svg { width: 0.85rem; height: 0.85rem; opacity: 0; }
+  .or-amt {
+    flex-shrink: 0;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-accent);
+    min-width: 3.6rem;
+  }
+  .or-name { color: var(--color-text-dark); }
+  :global(html[data-theme="dark"]) .or-name { color: var(--color-text); }
+  .or-num {
+    flex-shrink: 0;
+    width: 1.4rem; height: 1.4rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-accent) 16%, transparent);
+    color: var(--color-accent);
+    font-size: 0.72rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .or-step-text { color: var(--color-text-dark); font-size: 0.92rem; }
+  :global(html[data-theme="dark"]) .or-step-text { color: var(--color-text); }
+  /* checked state */
+  .or-check.is-checked .or-box { background: var(--color-accent); border-color: var(--color-accent); }
+  .or-check.is-checked .or-box svg { opacity: 1; }
+  .or-check.is-checked .or-amt,
+  .or-check.is-checked .or-name,
+  .or-check.is-checked .or-step-text {
+    text-decoration: line-through;
+    opacity: 0.45;
+  }
+  .or-check.is-checked .or-num { opacity: 0.45; }
+  .or-after-foot {
+    margin-top: 1.1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid var(--color-border-light);
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    color: var(--color-text-dark-muted);
+  }
+  :global(html[data-theme="dark"]) .or-after-foot { border-color: var(--color-border); color: var(--color-text-muted); }
+
+  /* ---- Install step numbers ---- */
+  .or-step-num {
+    width: 3rem; height: 3rem;
+    margin: 0 auto 1rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--color-accent) 14%, transparent);
+    color: var(--color-accent);
+    font-family: var(--font-heading);
+    font-size: 1.4rem; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ---- FAQ ---- */
+  .or-faq {
+    border: 1px solid var(--color-border-light);
+    border-radius: 0.7rem;
+    background: #fff;
+    overflow: hidden;
+  }
+  :global(html[data-theme="dark"]) .or-faq { background: var(--color-bg); border-color: var(--color-border); }
+  .or-faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    cursor: pointer;
+    padding: 1.05rem 1.2rem;
+    font-weight: 600;
+    font-size: 1.02rem;
+    list-style: none;
+    color: var(--color-text-dark);
+  }
+  :global(html[data-theme="dark"]) .or-faq summary { color: #fff; }
+  .or-faq summary::-webkit-details-marker { display: none; }
+  .or-faq-chev { flex-shrink: 0; color: var(--color-accent); transition: transform 0.25s ease; }
+  .or-faq[open] .or-faq-chev { transform: rotate(180deg); }
+  .or-faq p {
+    padding: 0 1.2rem 1.15rem;
+    margin: 0;
+    line-height: 1.65;
+    color: var(--color-text-dark-muted);
+  }
+  :global(html[data-theme="dark"]) .or-faq p { color: var(--color-text-muted); }
+  .or-faq a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+</style>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    const root = document.getElementById('or-demo');
+    if (!root) return;
+
+    const base = parseInt(root.dataset.base || '4', 10);
+    const servingsEl = document.getElementById('or-servings');
+    const minus = document.getElementById('or-minus');
+    const plus = document.getElementById('or-plus');
+    const heart = document.getElementById('or-heart');
+    const unitBtns = root.querySelectorAll('.or-unit-btn');
+    const ingRows = root.querySelectorAll('.or-ing');
+
+    function fmt(n, integer, metric) {
+      if (integer) return String(Math.max(1, Math.round(n)));
+      if (metric) return String(Math.round(n));
+      const r = Math.round(n * 100) / 100;
+      return (r % 1 === 0) ? String(r) : String(parseFloat(r.toFixed(2)));
+    }
+
+    function recompute() {
+      const servings = parseInt(root.dataset.servings || String(base), 10);
+      const system = root.dataset.system || 'us';
+      const metric = system === 'metric';
+      ingRows.forEach((row) => {
+        const amt = row.querySelector('.or-amt');
+        if (!amt) return;
+        const rawQty = metric ? amt.dataset.metricQty : amt.dataset.usQty;
+        if (rawQty === undefined || rawQty === '' || rawQty === null) return;
+        const qty = parseFloat(rawQty);
+        if (isNaN(qty)) return;
+        const unit = metric ? (amt.dataset.metricUnit || '') : (amt.dataset.usUnit || '');
+        const integer = amt.dataset.integer === '1';
+        const scaled = qty * servings / base;
+        amt.textContent = (fmt(scaled, integer, metric) + ' ' + unit).trim();
+      });
+    }
+
+    function setServings(n) {
+      const clamped = Math.max(1, Math.min(40, n));
+      root.dataset.servings = String(clamped);
+      if (servingsEl) servingsEl.textContent = String(clamped);
+      recompute();
+    }
+
+    if (minus) minus.addEventListener('click', () => setServings(parseInt(root.dataset.servings || String(base), 10) - 1));
+    if (plus) plus.addEventListener('click', () => setServings(parseInt(root.dataset.servings || String(base), 10) + 1));
+
+    unitBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        root.dataset.system = btn.dataset.unit || 'us';
+        unitBtns.forEach((b) => b.classList.toggle('is-on', b === btn));
+        recompute();
+      });
+    });
+
+    if (heart) {
+      heart.addEventListener('click', () => {
+        const on = heart.classList.toggle('is-on');
+        heart.setAttribute('aria-pressed', String(on));
+      });
+    }
+
+    root.querySelectorAll('.or-check').forEach((row) => {
+      row.addEventListener('click', () => row.classList.toggle('is-checked'));
+    });
+
+    recompute();
+  });
+</script>
