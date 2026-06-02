@@ -160,58 +160,37 @@ const faqs = [
           One recipe page. Before and after.
         </h2>
         <p class="text-lg max-w-2xl mx-auto dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
-          Change the servings, flip the units, check things off. The card on the right is the whole idea.
+          This is the same recipe, before and after Only Recipes got to it. (Yes, the before page is a parody. No, it is not much of an exaggeration.)
         </p>
       </div>
 
-      <div class="or-demo-grid animate-on-scroll">
-        <!-- BEFORE: the cluttered page -->
-        <figure class="or-figure">
-          <div class="or-window" aria-hidden="true">
-            <div class="or-window-bar">
-              <span class="or-dot"></span><span class="or-dot"></span><span class="or-dot"></span>
-              <span class="or-url">saltandsongbird.example / the-best-pasta</span>
-            </div>
-            <div class="or-window-body">
-              <div class="or-cookie">
-                <span>We value your privacy. We also value 47 advertising partners.</span>
-                <span class="or-cookie-btn">Accept All</span>
-              </div>
-              <div class="or-ad">ADVERTISEMENT</div>
-              <div class="or-fake-h"></div>
-              <div class="or-line-grp">
-                <span class="or-line w-full"></span>
-                <span class="or-line w-11/12"></span>
-                <span class="or-line w-full"></span>
-                <span class="or-line w-10/12"></span>
-                <span class="or-line w-full"></span>
-                <span class="or-line w-9/12"></span>
-              </div>
-              <div class="or-ad or-ad-tall">ADVERTISEMENT</div>
-              <div class="or-line-grp">
-                <span class="or-line w-full"></span>
-                <span class="or-line w-10/12"></span>
-                <span class="or-line w-11/12"></span>
-              </div>
-              <div class="or-jump">Jump to Recipe &darr;</div>
-              <div class="or-popup">
-                <span class="or-popup-x">&times;</span>
-                <strong>Wait! Get 10 free recipes</strong>
-                <span class="or-popup-field">your@email.com</span>
-                <span class="or-popup-btn">Subscribe</span>
-              </div>
-            </div>
-          </div>
-          <figcaption class="or-cap">Every recipe site.</figcaption>
+      <!-- Real before/after, straight from the Chrome Web Store listing -->
+      <div class="or-shots animate-on-scroll">
+        <figure class="or-shot">
+          <img src="/images/only-recipes-before.jpg" width="1280" height="800" loading="lazy"
+            alt="A cluttered recipe page headlined 'The ONLY Pan-Seared Steak Recipe You'll Ever Need', stamped 47 min read, with a giant newsletter subscribe banner and the opening of a long personal memoir set in 1987." />
+          <figcaption class="or-cap">Before. A real recipe page.</figcaption>
         </figure>
 
         <div class="or-arrow" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
         </div>
 
-        <!-- AFTER: the clean, interactive card -->
-        <figure class="or-figure">
-          <div id="or-demo" class="or-after" data-system="us" data-servings={baseServings} data-base={baseServings}>
+        <figure class="or-shot">
+          <img src="/images/only-recipes-after.jpg" width="1280" height="800" loading="lazy"
+            alt="The same recipe in Only Recipes: a clean 'Pan-Seared Steak with Rosemary Butter' card with check-off ingredients and a control bar for servings, units, saving, and auto-show." />
+          <figcaption class="or-cap">After. The same page, in Only Recipes.</figcaption>
+        </figure>
+      </div>
+
+      <!-- Interactive playground: the live version of the clean view -->
+      <div class="or-try">
+        <div class="or-try-head animate-on-scroll">
+          <h3 class="or-try-title">Go ahead, change something</h3>
+          <p class="or-try-deck">The clean view is not a static list. Scale the servings, flip between US and metric, and check things off as you cook. Here is that part, live.</p>
+        </div>
+
+        <div id="or-demo" class="or-after animate-on-scroll" data-system="us" data-servings={baseServings} data-base={baseServings}>
             <div class="or-after-top">
               <span class="or-badge"><svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4L12 16.8 5.7 21.2 8 13.8 2 9.4h7.6z"/></svg> Only Recipes</span>
               <button type="button" id="or-heart" class="or-heart" aria-pressed="false" aria-label="Save this recipe">
@@ -273,8 +252,6 @@ const faqs = [
 
             <p class="or-after-foot">Saved on your computer. Nothing left the kitchen.</p>
           </div>
-          <figcaption class="or-cap">With Only Recipes.</figcaption>
-        </figure>
       </div>
     </div>
   </section>
@@ -488,14 +465,23 @@ const faqs = [
     color: var(--color-text);
   }
 
-  /* ---- Demo layout ---- */
-  .or-demo-grid {
+  /* ---- Demo: real before/after screenshots ---- */
+  .or-shots {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     gap: 1.5rem;
     align-items: center;
   }
-  .or-figure { margin: 0; }
+  .or-shot { margin: 0; }
+  .or-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.8rem;
+    border: 1px solid var(--color-border-light);
+    box-shadow: 0 22px 50px -28px rgba(0,0,0,0.5);
+  }
+  :global(html[data-theme="dark"]) .or-shot img { border-color: var(--color-border); }
   .or-cap {
     text-align: center;
     margin-top: 0.9rem;
@@ -514,127 +500,31 @@ const faqs = [
   }
   .or-arrow svg { width: 2rem; height: 2rem; }
 
+  /* ---- Demo: interactive playground ---- */
+  .or-try { margin-top: 4rem; }
+  .or-try-head { text-align: center; max-width: 42rem; margin: 0 auto 2rem; }
+  .or-try-title {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    line-height: 1.1;
+    color: var(--color-primary);
+    margin-bottom: 0.6rem;
+  }
+  :global(html[data-theme="dark"]) .or-try-title { color: #fff; }
+  .or-try-deck {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--color-text-dark-muted);
+  }
+  :global(html[data-theme="dark"]) .or-try-deck { color: var(--color-text-muted); }
+  .or-try .or-after { max-width: 30rem; margin: 0 auto; }
+
   @media (max-width: 860px) {
-    .or-demo-grid { grid-template-columns: 1fr; }
+    .or-shots { grid-template-columns: 1fr; }
     .or-arrow { transform: rotate(90deg); margin: 0.25rem 0; }
   }
 
-  /* ---- BEFORE: the cluttered window ---- */
-  .or-window {
-    position: relative;
-    border-radius: 0.9rem;
-    overflow: hidden;
-    border: 1px solid rgba(0,0,0,0.12);
-    background: #ededf0;
-    height: 100%;
-    min-height: 460px;
-    filter: saturate(0.6);
-  }
-  :global(html[data-theme="dark"]) .or-window {
-    background: #17171c;
-    border-color: rgba(255,255,255,0.1);
-  }
-  .or-window-bar {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.6rem 0.8rem;
-    background: #dcdce0;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  }
-  :global(html[data-theme="dark"]) .or-window-bar { background: #25252c; border-color: rgba(255,255,255,0.06); }
-  .or-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #b9b9c2; }
-  .or-url {
-    margin-left: 0.6rem;
-    font-size: 0.7rem;
-    font-family: var(--font-mono);
-    color: #8a8a95;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .or-window-body { position: relative; padding: 0.85rem; }
-  .or-cookie {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    background: rgba(0,0,0,0.06);
-    border: 1px dashed rgba(0,0,0,0.18);
-    border-radius: 0.4rem;
-    padding: 0.45rem 0.55rem;
-    font-size: 0.62rem;
-    color: #6f6f7a;
-    margin-bottom: 0.7rem;
-  }
-  :global(html[data-theme="dark"]) .or-cookie { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.14); color: #9a9aa5; }
-  .or-cookie-btn {
-    flex-shrink: 0;
-    background: #9a9aa5;
-    color: #fff;
-    border-radius: 0.3rem;
-    padding: 0.2rem 0.5rem;
-    font-weight: 700;
-  }
-  .or-ad {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 3rem;
-    background: repeating-linear-gradient(45deg, rgba(0,0,0,0.05), rgba(0,0,0,0.05) 8px, rgba(0,0,0,0.09) 8px, rgba(0,0,0,0.09) 16px);
-    border: 1px solid rgba(0,0,0,0.12);
-    border-radius: 0.35rem;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    color: #8a8a95;
-    margin-bottom: 0.7rem;
-  }
-  :global(html[data-theme="dark"]) .or-ad {
-    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 8px, rgba(255,255,255,0.07) 8px, rgba(255,255,255,0.07) 16px);
-    border-color: rgba(255,255,255,0.1);
-  }
-  .or-ad-tall { height: 5rem; }
-  .or-fake-h { height: 1.1rem; width: 70%; border-radius: 0.25rem; background: rgba(0,0,0,0.22); margin-bottom: 0.7rem; }
-  :global(html[data-theme="dark"]) .or-fake-h { background: rgba(255,255,255,0.22); }
-  .or-line-grp { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.7rem; }
-  .or-line { height: 0.55rem; border-radius: 0.25rem; background: rgba(0,0,0,0.1); }
-  :global(html[data-theme="dark"]) .or-line { background: rgba(255,255,255,0.09); }
-  .or-jump {
-    display: inline-block;
-    font-size: 0.62rem;
-    color: #8a8a95;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 0.3rem;
-    padding: 0.25rem 0.5rem;
-  }
-  :global(html[data-theme="dark"]) .or-jump { border-color: rgba(255,255,255,0.14); }
-  .or-popup {
-    position: absolute;
-    left: 50%;
-    bottom: 0.9rem;
-    transform: translateX(-50%);
-    width: 78%;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-    background: #fff;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 0.5rem;
-    padding: 0.7rem 0.7rem 0.6rem;
-    box-shadow: 0 14px 30px -12px rgba(0,0,0,0.5);
-    font-size: 0.62rem;
-    color: #6f6f7a;
-    text-align: center;
-  }
-  :global(html[data-theme="dark"]) .or-popup { background: #2a2a32; border-color: rgba(255,255,255,0.14); color: #c7c7d0; }
-  .or-popup strong { font-size: 0.74rem; color: #444; }
-  :global(html[data-theme="dark"]) .or-popup strong { color: #fff; }
-  .or-popup-x { position: absolute; top: 0.35rem; right: 0.5rem; font-size: 0.8rem; color: #b0b0ba; }
-  .or-popup-field { border: 1px solid rgba(0,0,0,0.15); border-radius: 0.3rem; padding: 0.28rem; color: #aaa; }
-  :global(html[data-theme="dark"]) .or-popup-field { border-color: rgba(255,255,255,0.16); }
-  .or-popup-btn { background: #c0392b; color: #fff; border-radius: 0.3rem; padding: 0.28rem; font-weight: 700; }
-
-  /* ---- AFTER: the clean card ---- */
+  /* ---- The clean recipe card (interactive playground) ---- */
   .or-after {
     border-radius: 0.9rem;
     border: 1px solid var(--color-border-light);
