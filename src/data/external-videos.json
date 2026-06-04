@@ -240,6 +240,14 @@
     "category": "webinar"
   },
   {
+    "title": "FedEx's Journey to the Cloud with EPM and Analytics",
+    "url": "https://www.youtube.com/watch?v=kUAQ7NL_u40",
+    "published": "2021-09-22",
+    "source": "Oracle Business Unit",
+    "description": "An interactive interview: Edward and former FedEx project lead Russ Story on FedEx's move to Oracle Cloud EPM, run out of a Financial Systems Center of Excellence that treats finance like logistics.",
+    "category": "interview"
+  },
+  {
     "title": "EPM Provides Agility & Speed Amid Constant Disruption",
     "url": "https://www.youtube.com/watch?v=zk840dimBD0",
     "published": "2021-09-16",
@@ -360,11 +368,83 @@
     "category": "webinar"
   },
   {
+    "title": "Edward Roske: Make Time for Scenario Planning",
+    "url": "https://www.youtube.com/watch?v=yOvHa24leKo",
+    "published": "2020-04-24",
+    "source": "Oracle Business Unit",
+    "description": "Edward's one piece of advice for every business: make time for scenario planning. (He means it.)",
+    "category": "conference"
+  },
+  {
+    "title": "The 9 Things to Analyze to Keep Your Business Going Through a Recession",
+    "url": "https://www.youtube.com/watch?v=kzd6N_zrAJ0",
+    "published": "2020-04-24",
+    "source": "Oracle Business Unit",
+    "description": "Edward's short list of nine things to analyze to keep a business running through a downturn.",
+    "category": "conference"
+  },
+  {
+    "title": "Surviving the Retail Apocalypse 2.0 with Scenario Planning",
+    "url": "https://www.youtube.com/watch?v=DPfAnh6pUUk",
+    "published": "2020-04-15",
+    "source": "Oracle Business Unit",
+    "description": "Edward on why retailers should lean on scenario planning to outlast the 'Retail Apocalypse 2.0.'",
+    "category": "conference"
+  },
+  {
+    "title": "How Industries Can Plan, Report, and Analyze to Get Ahead",
+    "url": "https://www.youtube.com/watch?v=yD5t7OGl6R0",
+    "published": "2020-04-13",
+    "source": "Oracle Business Unit",
+    "description": "Edward on how planning, reporting, and analysis keep a business afloat in a downturn.",
+    "category": "conference"
+  },
+  {
+    "title": "The 3 Things You Need to Do to Get Ahead of the Recession",
+    "url": "https://www.youtube.com/watch?v=G3o8LBN0iOg",
+    "published": "2020-03-30",
+    "source": "Oracle Business Unit",
+    "description": "Ninety seconds: the three things Edward says to do right now to get ahead of a recession.",
+    "category": "conference"
+  },
+  {
+    "title": "How to Get Ahead in Times of Business Uncertainty",
+    "url": "https://www.youtube.com/watch?v=cgiWaYlbUpM",
+    "published": "2020-03-30",
+    "source": "Oracle Business Unit",
+    "description": "A brief Edward clip on getting ahead when the business climate turns uncertain.",
+    "category": "conference"
+  },
+  {
+    "title": "Focus on the Future with Strategic Modeling",
+    "url": "https://www.youtube.com/watch?v=93GxpsLIqaA",
+    "published": "2020-03-30",
+    "source": "Oracle Business Unit",
+    "description": "Why strategic modeling earns its keep when the future is unclear (Edward, in under a minute).",
+    "category": "conference"
+  },
+  {
+    "title": "The Tools You Need to Make Informed Business Decisions Faster",
+    "url": "https://www.youtube.com/watch?v=k7kN1QGEaqk",
+    "published": "2020-03-30",
+    "source": "Oracle Business Unit",
+    "description": "A short clip on the tools Edward says you need to make faster, better-informed business decisions.",
+    "category": "conference"
+  },
+  {
     "title": "interRel Consulting Wins Partner of the Year for Business Analytics at Oracle OpenWorld 2019",
     "url": "https://www.youtube.com/watch?v=54Nc60nuwZA",
     "published": "2019-09-20",
     "source": "Oracle OpenWorld 2019",
     "description": "interRel wins Oracle's Business Analytics Partner of the Year at OpenWorld 2019. One of five Partner of the Year wins over the firm's run.",
+    "category": "conference"
+  },
+  {
+    "title": "interRel on Oracle EPM Cloud and Being Ready for the Future",
+    "url": "https://www.youtube.com/watch?v=lsdYrhFGe4U",
+    "published": "2019-07-31",
+    "source": "Oracle EPM in the Cloud",
+    "description": "Edward on the value of Oracle EPM Cloud and staying ready for whatever comes next.",
     "category": "conference"
   },
   {
@@ -416,6 +496,14 @@
     "category": "interview"
   },
   {
+    "title": "interRel Presents: Play It Forward!",
+    "url": "https://www.youtube.com/watch?v=iSYFwD5WPS0",
+    "published": "2015-06-22",
+    "source": "Oracle Business Unit",
+    "description": "interRel's pitch for sharing Oracle BI and EPM education through free, searchable video, with Edward fronting the mission.",
+    "category": "conference"
+  },
+  {
     "title": "Kscope15: It's a Wrap",
     "url": "https://www.youtube.com/watch?v=7ev7xwpoKkw",
     "published": "2015-06-01",
@@ -432,6 +520,14 @@
     "category": "conference"
   },
   {
+    "title": "Happy Holidays from interRel!",
+    "url": "https://www.youtube.com/watch?v=qJmRkNW9Et4",
+    "published": "2014-12-22",
+    "source": "Oracle Business Unit",
+    "description": "interRel's Oracle ACEs (Edward, Tracy McMullen, Glenn Schwartzberg, Sarah Zumbrum, Robert Gideon) clock in at the Elf Factory for the holidays.",
+    "category": "conference"
+  },
+  {
     "title": "Real Time BI with Kevin & Stewart: Ep 022",
     "url": "https://www.youtube.com/watch?v=TD3_DfQSg48",
     "published": "2014-08-25",
@@ -445,6 +541,14 @@
     "published": "2014-08-08",
     "source": "Oracle Business Unit",
     "description": "A 53-second interRel promo from 2014, 'The Battle in Seattle.'",
+    "category": "conference"
+  },
+  {
+    "title": "OTN Latin America Tour 2014",
+    "url": "https://www.youtube.com/watch?v=JlDI6MnFUzs",
+    "published": "2014-08-04",
+    "source": "Oracle Business Unit",
+    "description": "Oracle ACE Directors Edward Roske and Glenn Schwartzberg tour Latin America with the Oracle Technology Network (49 seconds of the highlight reel).",
     "category": "conference"
   },
   {
