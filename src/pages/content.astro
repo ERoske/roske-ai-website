@@ -97,6 +97,7 @@ function formatDate(dateStr: string): string {
     { label: "Videos", href: "#videos" },
     { label: "Blog", href: "#blog" },
     { label: "Podcast", href: "#podcast" },
+    { label: "Interviews", href: "#interviews" },
     { label: "Publications", href: "#publications" },
   ]} />
 
@@ -138,41 +139,6 @@ function formatDate(dateStr: string): string {
         <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
           Videos will be populated from the YouTube feed during the next site rebuild.
         </p>
-      </div>
-    )}
-
-    <!-- External Videos -->
-    {externalVideos.length > 0 && (
-      <div class="mt-12">
-        <h3 class="text-xl font-bold dark:text-white text-[var(--color-primary)] mb-6">Interviews & Conference Talks</h3>
-        <div class="max-w-3xl space-y-4">
-          {externalVideos.map((video) => (
-            <a href={video.url} target="_blank" rel="noopener noreferrer"
-              class="animate-on-scroll block rounded-xl p-5 transition-all duration-300 group hover:-translate-y-0.5
-                dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
-                bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg">
-              <div class="flex items-start justify-between gap-4">
-                <div class="flex-1 min-w-0">
-                  <h4 class="font-bold dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug">
-                    {video.title}
-                  </h4>
-                  <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mt-2">
-                    {video.description}
-                  </p>
-                  <div class="flex items-center gap-3 mt-3">
-                    <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">
-                      {formatDate(video.published)}
-                    </span>
-                    <span class="px-2 py-0.5 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-                      {video.source}
-                    </span>
-                  </div>
-                </div>
-                <svg class="w-5 h-5 flex-shrink-0 mt-1 opacity-40 group-hover:opacity-100 transition-opacity dark:text-white text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </div>
-            </a>
-          ))}
-        </div>
       </div>
     )}
 
@@ -355,9 +321,45 @@ function formatDate(dateStr: string): string {
   </Section>
 
   <!-- ============================================
+       INTERVIEWS SECTION
+       ============================================ -->
+  <Section id="interviews" title="Interviews" subtitle="Interviews (sometimes I'm asking, sometimes answering), conference talks, and a few webinars from across the web." dark>
+    {externalVideos.length > 0 && (
+      <div class="max-w-3xl space-y-4">
+        {externalVideos.map((video) => (
+          <a href={video.url} target="_blank" rel="noopener noreferrer"
+            class="animate-on-scroll block rounded-xl p-5 transition-all duration-300 group hover:-translate-y-0.5
+              dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
+              bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg">
+            <div class="flex items-start justify-between gap-4">
+              <div class="flex-1 min-w-0">
+                <h3 class="font-bold dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug">
+                  {video.title}
+                </h3>
+                <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mt-2">
+                  {video.description}
+                </p>
+                <div class="flex items-center gap-3 mt-3">
+                  <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">
+                    {formatDate(video.published)}
+                  </span>
+                  <span class="px-2 py-0.5 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
+                    {video.source}
+                  </span>
+                </div>
+              </div>
+              <svg class="w-5 h-5 flex-shrink-0 mt-1 opacity-40 group-hover:opacity-100 transition-opacity dark:text-white text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </div>
+          </a>
+        ))}
+      </div>
+    )}
+  </Section>
+
+  <!-- ============================================
        PUBLICATIONS SECTION
        ============================================ -->
-  <Section id="publications" title="Academic Publications" subtitle="Research from my Master of Data Science at SMU (4.0 GPA, Outstanding Graduate)." dark>
+  <Section id="publications" title="Academic Publications" subtitle="Research from my Master of Data Science at SMU (4.0 GPA, Outstanding Graduate).">
     <div class="max-w-3xl">
       <a href="https://scholar.smu.edu/datasciencereview/vol5/iss3/9/" target="_blank" rel="noopener noreferrer"
         class="animate-on-scroll block rounded-xl p-6 transition-all duration-300 group hover:-translate-y-0.5
