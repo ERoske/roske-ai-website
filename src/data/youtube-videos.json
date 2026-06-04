@@ -518,5 +518,157 @@
     "description": "My curated, top AI News stories for the second quarter of 2025.",
     "thumbnail": "https://i.ytimg.com/vi/xC5qkCPjSI0/hqdefault.jpg",
     "category": "youtube"
+  },
+  {
+    "title": "Essbase @REMAINDER Function",
+    "videoId": "n7hjUWuFkaA",
+    "published": "2018-07-31T12:00:00+00:00",
+    "description": "What the @REMAINDER function returns in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/n7hjUWuFkaA/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase EXCLUDE & ENDEXCLUDE Commands",
+    "videoId": "Ud6VUIXNfaY",
+    "published": "2018-07-18T12:00:00+00:00",
+    "description": "How to carve out exceptions in an Essbase calc with the EXCLUDE and ENDEXCLUDE commands.",
+    "thumbnail": "https://i.ytimg.com/vi/Ud6VUIXNfaY/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ABS Function",
+    "videoId": "y9gR6mS9YxI",
+    "published": "2018-06-07T12:00:00+00:00",
+    "description": "What the @ABS function returns in an Essbase calc script (absolute values, as advertised).",
+    "thumbnail": "https://i.ytimg.com/vi/y9gR6mS9YxI/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Using Environment Variables in Essbase via $",
+    "videoId": "JYdk1y-o8vg",
+    "published": "2018-03-20T12:00:00+00:00",
+    "description": "How to use environment variables in Essbase calc scripts with the $ syntax.",
+    "thumbnail": "https://i.ytimg.com/vi/JYdk1y-o8vg/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase DATAEXPORTCOND Command",
+    "videoId": "W-ZTsEoCqRc",
+    "published": "2017-12-28T12:00:00+00:00",
+    "description": "Using DATAEXPORTCOND to export Essbase data conditionally.",
+    "thumbnail": "https://i.ytimg.com/vi/W-ZTsEoCqRc/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase SET DataExportOptions Command",
+    "videoId": "e2vxz8y6x4w",
+    "published": "2017-11-07T12:00:00+00:00",
+    "description": "Configuring an Essbase data export with the SET DATAEXPORTOPTIONS command.",
+    "thumbnail": "https://i.ytimg.com/vi/e2vxz8y6x4w/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "What is the EPBCS Financials Framework?",
+    "videoId": "zb34oe0bZ_Q",
+    "published": "2016-11-09T12:00:00+00:00",
+    "description": "What the Financials framework in Oracle EPBCS gives you out of the box.",
+    "thumbnail": "https://i.ytimg.com/vi/zb34oe0bZ_Q/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "What is EPBCS?",
+    "videoId": "VCm2bvDXd94",
+    "published": "2016-09-16T12:00:00+00:00",
+    "description": "A plain-language tour of Oracle's Enterprise Planning and Budgeting Cloud Service.",
+    "thumbnail": "https://i.ytimg.com/vi/VCm2bvDXd94/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase.CFG CALCTASKDIMS Setting",
+    "videoId": "X1ftLbWcdxI",
+    "published": "2016-05-03T12:00:00+00:00",
+    "description": "Tuning parallel calculation with the CALCTASKDIMS setting in Essbase.CFG.",
+    "thumbnail": "https://i.ytimg.com/vi/X1ftLbWcdxI/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase.CFG ASODYNAMICAGGINBSO Setting",
+    "videoId": "dQKT-Qy3dUM",
+    "published": "2016-02-23T12:00:00+00:00",
+    "description": "What the ASODYNAMICAGGINBSO setting does in Essbase.CFG.",
+    "thumbnail": "https://i.ytimg.com/vi/dQKT-Qy3dUM/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase.CFG CALCPARALLEL Setting",
+    "videoId": "FZU-JW6B7G8",
+    "published": "2016-01-28T12:00:00+00:00",
+    "description": "The CALCPARALLEL setting in Essbase.CFG, and how it affects calc performance.",
+    "thumbnail": "https://i.ytimg.com/vi/FZU-JW6B7G8/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ISMBR Function",
+    "videoId": "UBW_9XijK84",
+    "published": "2015-10-13T12:00:00+00:00",
+    "description": "What the @ISMBR function does in an Essbase calc script, and when to reach for it.",
+    "thumbnail": "https://i.ytimg.com/vi/UBW_9XijK84/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ISUDA Function",
+    "videoId": "huT6UI4Vrcc",
+    "published": "2015-10-13T12:00:00+00:00",
+    "description": "Using the @ISUDA function to test for a user-defined attribute in Essbase.",
+    "thumbnail": "https://i.ytimg.com/vi/huT6UI4Vrcc/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase SET CalcParallel Command",
+    "videoId": "ec-o4Z8x57o",
+    "published": "2015-08-18T12:00:00+00:00",
+    "description": "Using SET CALCPARALLEL to run Essbase calculations in parallel.",
+    "thumbnail": "https://i.ytimg.com/vi/ec-o4Z8x57o/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase FIX and ENDFIX",
+    "videoId": "9_cW4SpHVj8",
+    "published": "2015-07-11T12:00:00+00:00",
+    "description": "How to scope an Essbase BSO calculation with the FIX and ENDFIX commands.",
+    "thumbnail": "https://i.ytimg.com/vi/9_cW4SpHVj8/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "How to Create an Essbase Calc Script",
+    "videoId": "BnbBSNsycA0",
+    "published": "2015-07-10T12:00:00+00:00",
+    "description": "A from-scratch tutorial on writing your first Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/BnbBSNsycA0/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Calculating Members in the Outline Using a Calc Script",
+    "videoId": "QGH7m6uSB9s",
+    "published": "2015-07-10T12:00:00+00:00",
+    "description": "How to calculate a member in the Essbase outline using a calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/QGH7m6uSB9s/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "What is Essbase.CFG?",
+    "videoId": "ukkQ8panLdw",
+    "published": "2015-07-02T12:00:00+00:00",
+    "description": "Why the Essbase.CFG configuration file matters and what it controls. From the Look Smarter Than You Are Essbase series.",
+    "thumbnail": "https://i.ytimg.com/vi/ukkQ8panLdw/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "What is Big Data?",
+    "videoId": "sIDqXmW2Qxg",
+    "published": "2015-06-23T12:00:00+00:00",
+    "description": "An edu-taining Look Smarter Than You Are explainer on what Big Data actually means, minus the buzzwords.",
+    "thumbnail": "https://i.ytimg.com/vi/sIDqXmW2Qxg/hqdefault.jpg",
+    "category": "tutorial"
   }
 ]

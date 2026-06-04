@@ -232,11 +232,107 @@
     "category": "conference"
   },
   {
+    "title": "The State of the Economy & What it Means to FP&A",
+    "url": "https://www.youtube.com/watch?v=UfqiEubAL-c",
+    "published": "2022-01-21",
+    "source": "Oracle Business Unit",
+    "description": "Edward on what a volatile economy means for FP&A, and why the planning function matters more when the only constant is change.",
+    "category": "webinar"
+  },
+  {
+    "title": "EPM Provides Agility & Speed Amid Constant Disruption",
+    "url": "https://www.youtube.com/watch?v=zk840dimBD0",
+    "published": "2021-09-16",
+    "source": "Oracle Business Unit",
+    "description": "Edward on using EPM for agility and speed when disruption is the baseline rather than the exception.",
+    "category": "webinar"
+  },
+  {
+    "title": "Long Live Essbase: The Present and the Future",
+    "url": "https://www.youtube.com/watch?v=r91o9-GhICk",
+    "published": "2021-07-14",
+    "source": "Oracle Business Unit",
+    "description": "Edward on the rumored death (and possible resurrection) of Essbase: OAC Essbase, Essbase Cloud, and the on-prem comeback nobody saw coming.",
+    "category": "conference"
+  },
+  {
     "title": "Scenario Planning: Pivoting from Pandemic to Proactive",
     "url": "https://www.youtube.com/watch?v=SX7uSPx22Kw",
     "published": "2021-03-10",
     "source": "Oracle Business Unit",
     "description": "An Oracle session with Edward on scenario planning, recorded when 'pivoting from pandemic to proactive' was the entire mood of corporate finance.",
+    "category": "webinar"
+  },
+  {
+    "title": "State of Business Analytics 2021 Webcast",
+    "url": "https://www.youtube.com/watch?v=AMcghBE5i7s",
+    "published": "2021-02-03",
+    "source": "interRel / SOBA 2021",
+    "description": "Edward walks through interRel's State of Business Analytics 2021 survey: what hundreds of organizations actually reported about EPM and analytics, minus the vendor spin.",
+    "category": "webinar"
+  },
+  {
+    "title": "Oracle Analytics in Times of Change: Data Science In a Box",
+    "url": "https://www.youtube.com/watch?v=TvNK7izkh7s",
+    "published": "2020-12-11",
+    "source": "Oracle Analytics",
+    "description": "Edward's 'Data Science In a Box' session for Oracle Analytics: building reports and models fast when everything is changing at once.",
+    "category": "conference"
+  },
+  {
+    "title": "Why Move to the Oracle Cloud: Busting Migration Myths",
+    "url": "https://www.youtube.com/watch?v=mVflr1jRdkk",
+    "published": "2020-10-30",
+    "source": "Oracle Business Unit",
+    "description": "Edward and an interRel 'MythBusters' crew test the urban legends about moving Oracle EPM to the cloud. Some myths confirmed, some busted.",
+    "category": "webinar"
+  },
+  {
+    "title": "Essbase: Do I Use 19c on OAC or Freeform Planning?",
+    "url": "https://www.youtube.com/watch?v=cQ7QlafSVtY",
+    "published": "2020-10-28",
+    "source": "Oracle Business Unit",
+    "description": "Edward and Glenn Schwartzberg argue Essbase 19c on OAC versus Freeform Planning for the cloud migration, each convinced the other picked wrong.",
+    "category": "conference"
+  },
+  {
+    "title": "Ask the Experts Panel",
+    "url": "https://www.youtube.com/watch?v=5P6rGaee1YI",
+    "published": "2020-10-28",
+    "source": "Oracle Business Unit",
+    "description": "Edward joins an Oracle EPM and BI leadership panel taking questions from the audience.",
+    "category": "conference"
+  },
+  {
+    "title": "Calc Scripts for Mere Mortals: What Has Changed Since Solutions 2007",
+    "url": "https://www.youtube.com/watch?v=ufpFT9cuoHI",
+    "published": "2020-10-28",
+    "source": "Oracle Business Unit",
+    "description": "Edward's 'Calc Scripts for Mere Mortals,' updated: what has changed in the Essbase calc engine since Solutions 2007. A classic interRel session title, refreshed.",
+    "category": "conference"
+  },
+  {
+    "title": "Back to the Hyperion Future: Where We've Been and Where We're Going (Keynote)",
+    "url": "https://www.youtube.com/watch?v=meiKnQrGOAQ",
+    "published": "2020-10-23",
+    "source": "Oracle Solutions 2020",
+    "description": "Edward's Solutions 2020 keynote, 'Back to the Hyperion Future': where Oracle EPM has been and where it is going. (No DeLorean, but the title earns it.)",
+    "category": "conference"
+  },
+  {
+    "title": "The Future of Reporting & Analysis: The Emergence of AI and Machine Learning",
+    "url": "https://www.youtube.com/watch?v=BUJbQwVmR1I",
+    "published": "2020-08-26",
+    "source": "Oracle Business Unit",
+    "description": "Edward on the three generations of analytics: IT-governed models, business self-service, and what AI and machine learning change next. He gave this one across several Oracle user groups in 2020.",
+    "category": "conference"
+  },
+  {
+    "title": "5 EPM Tools for Thriving in a Changing Economy",
+    "url": "https://www.youtube.com/watch?v=yADN0Mq65HA",
+    "published": "2020-07-22",
+    "source": "Oracle Business Unit",
+    "description": "An hour with Edward on five EPM tools for a changing economy, built for finance teams who got caught flat-footed in early 2020.",
     "category": "webinar"
   },
   {
@@ -254,6 +350,14 @@
     "source": "Oracle Analytics Summit 2020",
     "description": "Edward's session from the Oracle Analytics Virtual Summit 2020 on choosing between analytics, EPM, and Essbase for a given job. (The title gives away his answer: better together.)",
     "category": "conference"
+  },
+  {
+    "title": "5 Tools to Survive and Thrive During Times of Change",
+    "url": "https://www.youtube.com/watch?v=lGxoGHC1Zek",
+    "published": "2020-04-29",
+    "source": "Oracle Business Unit",
+    "description": "Edward presents five planning tools for surviving (and ideally outlasting) a year when every forecast broke at once. From the early-pandemic uncertainty-planning series.",
+    "category": "webinar"
   },
   {
     "title": "interRel Consulting Wins Partner of the Year for Business Analytics at Oracle OpenWorld 2019",
@@ -317,6 +421,14 @@
     "published": "2015-06-01",
     "source": "interRel / Kscope15",
     "description": "Wrap-up video from ODTUG Kscope15 featuring Edward Roske.",
+    "category": "conference"
+  },
+  {
+    "title": "Edward Roske at GUOB Tech Day",
+    "url": "https://www.youtube.com/watch?v=cRWT1aFLy_c",
+    "published": "2015-01-30",
+    "source": "GUOB Tech Day",
+    "description": "Edward's talk at GUOB Tech Day, the Brazilian Oracle user group conference. Roughly 40 minutes on Oracle BI and EPM (the title card is in Portuguese; the Essbase is not).",
     "category": "conference"
   },
   {
