@@ -29,7 +29,7 @@ const steps = [
 
 const demoIngredients = ingredients.map((ing, i) => ({
   i,
-  amount: ing.note ? '' : `${ing.us.qty} ${ing.us.unit}`,
+  amount: ing.note ? '' : `${ing.us?.qty ?? ''} ${ing.us?.unit ?? ''}`,
   name: ing.note ? `${ing.name} (${ing.note})` : ing.name,
   usQty: ing.us?.qty ?? null,
   usUnit: ing.us?.unit ?? '',
