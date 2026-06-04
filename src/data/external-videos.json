@@ -176,6 +176,14 @@
     "category": "interview"
   },
   {
+    "title": "PACE Moments: Leaders in Business with Edward Roske",
+    "url": "https://www.youtube.com/watch?v=YwAENpjz8bw",
+    "published": "2023-04-11",
+    "source": "PACE",
+    "description": "A 'Leaders in Business' interview from the Profitability Analytics Center of Excellence. Edward on his path from founding interRel to data science, and where analytics actually helps a company (and where it tends to fall short).",
+    "category": "interview"
+  },
+  {
     "title": "The Top Five Strategic EPM Trends in 2023: ChatGPT, Autonomous, and Beyond",
     "url": "https://argano.com/event/the-top-five-strategic-epm-trends-in-2023-chatgpt-autonomous-and-beyond/",
     "published": "2023-01-01",
@@ -224,6 +232,70 @@
     "category": "conference"
   },
   {
+    "title": "Scenario Planning: Pivoting from Pandemic to Proactive",
+    "url": "https://www.youtube.com/watch?v=SX7uSPx22Kw",
+    "published": "2021-03-10",
+    "source": "Oracle Business Unit",
+    "description": "An Oracle session with Edward on scenario planning, recorded when 'pivoting from pandemic to proactive' was the entire mood of corporate finance.",
+    "category": "webinar"
+  },
+  {
+    "title": "Keynote on the Future of Healthcare",
+    "url": "https://www.youtube.com/watch?v=Uj1gA3bLtBE",
+    "published": "2020-06-16",
+    "source": "Oracle Business Unit",
+    "description": "Edward's keynote for Oracle on where healthcare analytics is headed, and the decisions the data should be informing (and usually isn't).",
+    "category": "conference"
+  },
+  {
+    "title": "When to Use Analytics, EPM, and Essbase: Better Together",
+    "url": "https://www.youtube.com/watch?v=4irpAhOdbGs",
+    "published": "2020-06-11",
+    "source": "Oracle Analytics Summit 2020",
+    "description": "Edward's session from the Oracle Analytics Virtual Summit 2020 on choosing between analytics, EPM, and Essbase for a given job. (The title gives away his answer: better together.)",
+    "category": "conference"
+  },
+  {
+    "title": "interRel Consulting Wins Partner of the Year for Business Analytics at Oracle OpenWorld 2019",
+    "url": "https://www.youtube.com/watch?v=54Nc60nuwZA",
+    "published": "2019-09-20",
+    "source": "Oracle OpenWorld 2019",
+    "description": "interRel wins Oracle's Business Analytics Partner of the Year at OpenWorld 2019. One of five Partner of the Year wins over the firm's run.",
+    "category": "conference"
+  },
+  {
+    "title": "Kscope17 Interview: Edward Roske and Jonathon Eastman",
+    "url": "https://www.youtube.com/watch?v=GwzyXyDZuj8",
+    "published": "2017-08-03",
+    "source": "ODTUG / Kscope17",
+    "description": "From the ODTUG booth at Kscope17, Edward Roske and Jonathon Eastman talk Essbase, EPM, and the year in Oracle.",
+    "category": "interview"
+  },
+  {
+    "title": "interRel on Oracle Financial Consolidation and Close Cloud (FCCS)",
+    "url": "https://www.youtube.com/watch?v=tgI29GUA0Js",
+    "published": "2016-10-27",
+    "source": "Oracle EPM in the Cloud",
+    "description": "A short interRel explainer on Oracle's Financial Consolidation and Close Cloud, with Edward, from the early FCCS days.",
+    "category": "webinar"
+  },
+  {
+    "title": "Best Practices for Your Strategic Oracle EPM Road Map: Building Your 3 Year Plan",
+    "url": "https://www.youtube.com/watch?v=YiRSN2j-OHw",
+    "published": "2016-10-04",
+    "source": "Oracle Business Unit",
+    "description": "A 30-second teaser for an interRel session on mapping a three-year Oracle EPM road map (leading practices, naturally).",
+    "category": "webinar"
+  },
+  {
+    "title": "Strategic Assessments",
+    "url": "https://www.youtube.com/watch?v=7guScRnm2-I",
+    "published": "2016-05-19",
+    "source": "Oracle Business Unit",
+    "description": "A 24-second interRel teaser on EPM strategic assessments (blink and you will miss it).",
+    "category": "webinar"
+  },
+  {
     "title": "AUSOUG & APOUG Tour: Oracle Cloud Sessions Across Australia and Asia",
     "url": "https://www.interrel.com/news/edward-roske-educating-in-australia-and-asia-with-ausoug-and-apoug/",
     "published": "2016-01-01",
@@ -232,16 +304,64 @@
     "category": "conference"
   },
   {
+    "title": "Kscope15 Interview: Edward Roske, interRel Consulting",
+    "url": "https://www.youtube.com/watch?v=tCmBz7mT51Y",
+    "published": "2015-07-29",
+    "source": "ODTUG / Kscope15",
+    "description": "A short Kscope15 booth interview with Edward on interRel and the state of Essbase and Hyperion Planning that year.",
+    "category": "interview"
+  },
+  {
     "title": "Kscope15: It's a Wrap",
-    "url": "https://www.interrel.com/video/kscope15-its-a-wrap/",
+    "url": "https://www.youtube.com/watch?v=7ev7xwpoKkw",
     "published": "2015-06-01",
     "source": "interRel / Kscope15",
     "description": "Wrap-up video from ODTUG Kscope15 featuring Edward Roske.",
     "category": "conference"
   },
   {
+    "title": "Real Time BI with Kevin & Stewart: Ep 022",
+    "url": "https://www.youtube.com/watch?v=TD3_DfQSg48",
+    "published": "2014-08-25",
+    "source": "Real Time BI / Kscope14",
+    "description": "The Real Time BI live show from Kscope14, with Oracle ACE Directors Edward Roske and Glenn Schwartzberg.",
+    "category": "interview"
+  },
+  {
+    "title": "The Battle in Seattle",
+    "url": "https://www.youtube.com/watch?v=BFSuqkluaJw",
+    "published": "2014-08-08",
+    "source": "Oracle Business Unit",
+    "description": "A 53-second interRel promo from 2014, 'The Battle in Seattle.'",
+    "category": "conference"
+  },
+  {
+    "title": "Edward Roske on Social Media",
+    "url": "https://www.youtube.com/watch?v=q0YQL25cXZQ",
+    "published": "2014-07-06",
+    "source": "Bjoern Rost",
+    "description": "Fifty-six seconds of Edward holding forth on social media, filmed at a conference by Oracle ACE Director Bjoern Rost.",
+    "category": "interview"
+  },
+  {
+    "title": "Real Time BI with Kevin & Stewart: Edward Roske, Unnecessarily Censored",
+    "url": "https://www.youtube.com/watch?v=U8tLGHVBJIg",
+    "published": "2014-07-02",
+    "source": "Real Time BI / Kscope14",
+    "description": "A 60-second bit from the Kscope14 livestream of Real Time BI with Kevin & Stewart, with Edward's commentary bleeped for effect. The censorship is, per the title, unnecessary.",
+    "category": "interview"
+  },
+  {
+    "title": "Edward Roske of interRel Consulting Suffers from Low-T. Do You?",
+    "url": "https://www.youtube.com/watch?v=7poACHOknfY",
+    "published": "2014-07-01",
+    "source": "ODTUG",
+    "description": "A Kscope-era comedy spoof, styled as a pharmaceutical ad, in which Edward bravely battles 'Low-T.' The title is real, and so is the video.",
+    "category": "conference"
+  },
+  {
     "title": "Kscope14 Interview: Edward Roske (and His Hat)",
-    "url": "https://www.interrel.com/video/kscope14-interview-edward-roske-and-his-hat/",
+    "url": "https://www.youtube.com/watch?v=_evDHBJgO9g",
     "published": "2014-06-01",
     "source": "interRel / Kscope14",
     "description": "Kevin McGinley interviews Edward at the ODTUG Social Media Lounge. Edward presented sessions on Oracle BI Mobile, Essbase Optimization, and Cutting-Edge Essbase.",
@@ -256,11 +376,51 @@
     "category": "conference"
   },
   {
-    "title": "Real Time BI Ep 014: Edward Roske, Unnecessarily Censored",
-    "url": "https://www.interrel.com/video/real-time-bi-with-kevin-stewart-ep-014/",
-    "published": "2014-06-01",
-    "source": "interRel / Kscope14 Livestream",
-    "description": "A humorous segment from the Kscope14 livestream broadcast of Real Time BI with Kevin & Stewart.",
+    "title": "Real Time BI with Kevin & Stewart: Ep 014",
+    "url": "https://www.youtube.com/watch?v=8JjcOsqrzSw",
+    "published": "2013-08-26",
+    "source": "Real Time BI with Kevin & Stewart",
+    "description": "Part two of Edward and Glenn Schwartzberg's visit with Kevin McGinley and Stewart Bryson on Real Time BI.",
     "category": "interview"
+  },
+  {
+    "title": "Real Time BI with Kevin & Stewart: Ep 013",
+    "url": "https://www.youtube.com/watch?v=wwTIml_b4mE",
+    "published": "2013-08-19",
+    "source": "Real Time BI with Kevin & Stewart",
+    "description": "Edward Roske and Glenn Schwartzberg guest on Kevin McGinley and Stewart Bryson's Real Time BI. Part one of two.",
+    "category": "interview"
+  },
+  {
+    "title": "Kscope13 Interview: Edward Roske and Monica Hasebi",
+    "url": "https://www.youtube.com/watch?v=8jcDLobIdiA",
+    "published": "2013-08-12",
+    "source": "ODTUG / Kscope13",
+    "description": "A quick Kscope13 booth interview with Edward and Monica Hasebi.",
+    "category": "interview"
+  },
+  {
+    "title": "Kscope Conference Chair Edward Roske Thanks Attendees",
+    "url": "https://www.youtube.com/watch?v=yPCLw45EY8s",
+    "published": "2011-06-30",
+    "source": "ODTUG / Kscope11",
+    "description": "Edward, as Kscope Conference Chair, thanking everyone for coming. (He held the chair in 2011 and 2012. The clip runs 26 seconds.)",
+    "category": "conference"
+  },
+  {
+    "title": "Kscope Community Service Day",
+    "url": "https://www.youtube.com/watch?v=rgQ88vEUkJA",
+    "published": "2011-06-26",
+    "source": "ODTUG / Kscope11",
+    "description": "Twenty-eight seconds from Kscope's Community Service Day, 2011, Edward included.",
+    "category": "conference"
+  },
+  {
+    "title": "Kaleidoscope 2010 Agenda",
+    "url": "https://www.youtube.com/watch?v=RtYrQi09qQE",
+    "published": "2010-01-04",
+    "source": "ODTUG",
+    "description": "A 2010 promo for ODTUG Kaleidoscope (the conference later renamed Kscope), walking that year's agenda. The oldest clip on this page.",
+    "category": "conference"
   }
 ]
