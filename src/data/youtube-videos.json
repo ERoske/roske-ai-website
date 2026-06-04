@@ -520,11 +520,59 @@
     "category": "youtube"
   },
   {
+    "title": "Essbase @ISRANGENONEMPTY Function",
+    "videoId": "fiQLcBsbLJU",
+    "published": "2018-10-02T12:00:00+00:00",
+    "description": "What the @ISRANGENONEMPTY function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/fiQLcBsbLJU/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @WITHATTR Function",
+    "videoId": "6YkalK18dTM",
+    "published": "2018-09-25T12:00:00+00:00",
+    "description": "What the @WITHATTR function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/6YkalK18dTM/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @TRUNCATE Function",
+    "videoId": "NhmP56h2Mdw",
+    "published": "2018-09-06T12:00:00+00:00",
+    "description": "What the @TRUNCATE function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/NhmP56h2Mdw/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ISMBRWITHATTR Function",
+    "videoId": "2KnzjZvgtgs",
+    "published": "2018-08-14T12:00:00+00:00",
+    "description": "What the @ISMBRWITHATTR function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/2KnzjZvgtgs/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ISATTRIBUTE Function",
+    "videoId": "BATDUuSxx_o",
+    "published": "2018-08-07T12:00:00+00:00",
+    "description": "What the @ISATTRIBUTE function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/BATDUuSxx_o/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
     "title": "Essbase @REMAINDER Function",
     "videoId": "n7hjUWuFkaA",
     "published": "2018-07-31T12:00:00+00:00",
     "description": "What the @REMAINDER function returns in an Essbase calc script.",
     "thumbnail": "https://i.ytimg.com/vi/n7hjUWuFkaA/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @LN, @LOG, & @LOG10 Functions",
+    "videoId": "ejpmOS7OCsg",
+    "published": "2018-07-26T12:00:00+00:00",
+    "description": "What the @LN, @LOG, & @LOG10 functions do in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/ejpmOS7OCsg/hqdefault.jpg",
     "category": "tutorial"
   },
   {
@@ -536,6 +584,22 @@
     "category": "tutorial"
   },
   {
+    "title": "Essbase @INT Function",
+    "videoId": "jXbfSGAjnSE",
+    "published": "2018-07-03T12:00:00+00:00",
+    "description": "What the @INT function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/jXbfSGAjnSE/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ATTRIBUTE Function",
+    "videoId": "WCtsea7Jt4k",
+    "published": "2018-06-21T12:00:00+00:00",
+    "description": "What the @ATTRIBUTE function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/WCtsea7Jt4k/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
     "title": "Essbase @ABS Function",
     "videoId": "y9gR6mS9YxI",
     "published": "2018-06-07T12:00:00+00:00",
@@ -544,11 +608,27 @@
     "category": "tutorial"
   },
   {
+    "title": "Testing for Missing Values in an Essbase Calc Script",
+    "videoId": "7swU3Bkuqck",
+    "published": "2018-05-08T12:00:00+00:00",
+    "description": "How to test for #Missing values inside an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/7swU3Bkuqck/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
     "title": "Using Environment Variables in Essbase via $",
     "videoId": "JYdk1y-o8vg",
     "published": "2018-03-20T12:00:00+00:00",
     "description": "How to use environment variables in Essbase calc scripts with the $ syntax.",
     "thumbnail": "https://i.ytimg.com/vi/JYdk1y-o8vg/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase DATAIMPORTBIN Command",
+    "videoId": "M0pP_QdI_Dg",
+    "published": "2018-01-09T12:00:00+00:00",
+    "description": "Using the DATAIMPORTBIN command in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/M0pP_QdI_Dg/hqdefault.jpg",
     "category": "tutorial"
   },
   {
@@ -568,6 +648,38 @@
     "category": "tutorial"
   },
   {
+    "title": "Essbase DATAEXPORT Command: Exporting to a Relational Database",
+    "videoId": "bgFeBPnWx9Y",
+    "published": "2017-09-27T12:00:00+00:00",
+    "description": "Using the DATAEXPORT command in Essbase: exporting to a relational database.",
+    "thumbnail": "https://i.ytimg.com/vi/bgFeBPnWx9Y/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase DATAEXPORT Command: Exporting to a Text File",
+    "videoId": "Qbf417PgmIM",
+    "published": "2017-09-20T12:00:00+00:00",
+    "description": "Using the DATAEXPORT command in Essbase: exporting to a text file.",
+    "thumbnail": "https://i.ytimg.com/vi/Qbf417PgmIM/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "How do I export a subset of my Essbase BSO data?",
+    "videoId": "bVmMKKILoOs",
+    "published": "2017-09-13T12:00:00+00:00",
+    "description": "How to export a subset of Essbase BSO data rather than the whole cube.",
+    "thumbnail": "https://i.ytimg.com/vi/bVmMKKILoOs/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "What is the EPBCS Projects Framework?",
+    "videoId": "Er_8i71Lf0s",
+    "published": "2017-03-16T12:00:00+00:00",
+    "description": "A plain-language Look Smarter Than You Are explainer on the EPBCS Projects Framework.",
+    "thumbnail": "https://i.ytimg.com/vi/Er_8i71Lf0s/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
     "title": "What is the EPBCS Financials Framework?",
     "videoId": "zb34oe0bZ_Q",
     "published": "2016-11-09T12:00:00+00:00",
@@ -584,11 +696,35 @@
     "category": "tutorial"
   },
   {
+    "title": "Essbase.CFG SSUADIT Setting",
+    "videoId": "Ddgeb5auA90",
+    "published": "2016-08-03T12:00:00+00:00",
+    "description": "What the SSUADIT setting controls in the Essbase.CFG configuration file.",
+    "thumbnail": "https://i.ytimg.com/vi/Ddgeb5auA90/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase.CFG SILENTOTLQUERY Setting",
+    "videoId": "lSrosUsUsMY",
+    "published": "2016-07-19T12:00:00+00:00",
+    "description": "What the SILENTOTLQUERY setting controls in the Essbase.CFG configuration file.",
+    "thumbnail": "https://i.ytimg.com/vi/lSrosUsUsMY/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
     "title": "Essbase.CFG CALCTASKDIMS Setting",
     "videoId": "X1ftLbWcdxI",
     "published": "2016-05-03T12:00:00+00:00",
     "description": "Tuning parallel calculation with the CALCTASKDIMS setting in Essbase.CFG.",
     "thumbnail": "https://i.ytimg.com/vi/X1ftLbWcdxI/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase SET AggMissg Command",
+    "videoId": "X63jRtDq0vo",
+    "published": "2016-03-01T12:00:00+00:00",
+    "description": "Using the SET AggMissg command in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/X63jRtDq0vo/hqdefault.jpg",
     "category": "tutorial"
   },
   {
@@ -624,11 +760,75 @@
     "category": "tutorial"
   },
   {
+    "title": "Essbase @ISANCEST (and @ISIANCEST) Function",
+    "videoId": "UEiBIlVFxuA",
+    "published": "2015-10-13T12:00:00+00:00",
+    "description": "What the @ISANCEST (and @ISIANCEST) function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/UEiBIlVFxuA/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ISPARENT Function",
+    "videoId": "sMzTvTtzdHM",
+    "published": "2015-10-13T12:00:00+00:00",
+    "description": "What the @ISPARENT function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/sMzTvTtzdHM/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ISCHILD (and @ISICHILD) Function",
+    "videoId": "3jVGDECGpXk",
+    "published": "2015-10-13T12:00:00+00:00",
+    "description": "What the @ISCHILD (and @ISICHILD) function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/3jVGDECGpXk/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ISSIBLING (and @ISISIBLING) Function",
+    "videoId": "tEc9iFChupQ",
+    "published": "2015-10-13T12:00:00+00:00",
+    "description": "What the @ISSIBLING (and @ISISIBLING) function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/tEc9iFChupQ/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ISSAMEGEN Function",
+    "videoId": "9Js5jMEYjT4",
+    "published": "2015-10-13T12:00:00+00:00",
+    "description": "What the @ISSAMEGEN function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/9Js5jMEYjT4/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ISMBRUDA Function",
+    "videoId": "YzcFDH655SE",
+    "published": "2015-10-13T12:00:00+00:00",
+    "description": "What the @ISMBRUDA function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/YzcFDH655SE/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase @ISACCTYPE Function",
+    "videoId": "tHJ65nD7D4w",
+    "published": "2015-10-13T12:00:00+00:00",
+    "description": "What the @ISACCTYPE function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/tHJ65nD7D4w/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
     "title": "Essbase SET CalcParallel Command",
     "videoId": "ec-o4Z8x57o",
     "published": "2015-08-18T12:00:00+00:00",
     "description": "Using SET CALCPARALLEL to run Essbase calculations in parallel.",
     "thumbnail": "https://i.ytimg.com/vi/ec-o4Z8x57o/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase SET CalcTaskDims Command",
+    "videoId": "lMTBZjCmCWI",
+    "published": "2015-08-18T12:00:00+00:00",
+    "description": "Using the SET CalcTaskDims command in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/lMTBZjCmCWI/hqdefault.jpg",
     "category": "tutorial"
   },
   {
@@ -653,6 +853,30 @@
     "published": "2015-07-10T12:00:00+00:00",
     "description": "How to calculate a member in the Essbase outline using a calc script.",
     "thumbnail": "https://i.ytimg.com/vi/QGH7m6uSB9s/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase CALC ALL Command",
+    "videoId": "jQUTYzZ1Wk4",
+    "published": "2015-07-06T12:00:00+00:00",
+    "description": "Using the CALC ALL command in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/jQUTYzZ1Wk4/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase AGG Command",
+    "videoId": "3DfX25Pf7OA",
+    "published": "2015-07-04T12:00:00+00:00",
+    "description": "Using the AGG command in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/3DfX25Pf7OA/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase CALC DIM Command",
+    "videoId": "ve2Hj4kh_XA",
+    "published": "2015-07-03T12:00:00+00:00",
+    "description": "Using the CALC DIM command in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/ve2Hj4kh_XA/hqdefault.jpg",
     "category": "tutorial"
   },
   {
