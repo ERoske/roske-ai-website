@@ -240,6 +240,14 @@
     "category": "webinar"
   },
   {
+    "title": "Why Upgrade to Oracle EPM 11.2 NOW?",
+    "url": "https://www.youtube.com/watch?v=J1fG9RFFIxc",
+    "published": "2021-12-13",
+    "source": "Oracle Business Unit",
+    "description": "Edward, in character as Father Time, on why Oracle premier support for EPM 11.1.2 was expiring and why you should upgrade before the ball drops.",
+    "category": "conference"
+  },
+  {
     "title": "FedEx's Journey to the Cloud with EPM and Analytics",
     "url": "https://www.youtube.com/watch?v=kUAQ7NL_u40",
     "published": "2021-09-22",
@@ -397,6 +405,14 @@
     "published": "2020-04-13",
     "source": "Oracle Business Unit",
     "description": "Edward on how planning, reporting, and analysis keep a business afloat in a downturn.",
+    "category": "conference"
+  },
+  {
+    "title": "Explaining Why Your Budget Will Be Wrong in 2020 with Narrative Reporting",
+    "url": "https://www.youtube.com/watch?v=FmoWLQNLRvc",
+    "published": "2020-04-06",
+    "source": "Oracle Business Unit",
+    "description": "Edward on using narrative reporting to explain why your 2020 numbers were never going to match the budget. (Recorded April 2020, so he was not wrong.)",
     "category": "conference"
   },
   {

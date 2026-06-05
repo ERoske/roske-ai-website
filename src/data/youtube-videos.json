@@ -624,6 +624,14 @@
     "category": "tutorial"
   },
   {
+    "title": "Replacing Zeros with #Missing in Essbase",
+    "videoId": "VP6bzWhjnAE",
+    "published": "2018-03-06T12:00:00+00:00",
+    "description": "How to replace stored zeros with #Missing in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/VP6bzWhjnAE/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
     "title": "Essbase DATAIMPORTBIN Command",
     "videoId": "M0pP_QdI_Dg",
     "published": "2018-01-09T12:00:00+00:00",
@@ -744,6 +752,14 @@
     "category": "tutorial"
   },
   {
+    "title": "Essbase @VAR and @VARPER Functions",
+    "videoId": "IEmx3NIcFGw",
+    "published": "2015-12-29T12:00:00+00:00",
+    "description": "What the @VAR and @VARPER functions do in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/IEmx3NIcFGw/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
     "title": "Essbase @ISMBR Function",
     "videoId": "UBW_9XijK84",
     "published": "2015-10-13T12:00:00+00:00",
@@ -816,6 +832,14 @@
     "category": "tutorial"
   },
   {
+    "title": "Essbase @ISDESC (and @ISIDESC) Function",
+    "videoId": "bvgqZ2hbGY8",
+    "published": "2015-10-13T12:00:00+00:00",
+    "description": "What the @ISDESC (and @ISIDESC) function does in an Essbase calc script.",
+    "thumbnail": "https://i.ytimg.com/vi/bvgqZ2hbGY8/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
     "title": "Essbase SET CalcParallel Command",
     "videoId": "ec-o4Z8x57o",
     "published": "2015-08-18T12:00:00+00:00",
@@ -856,6 +880,14 @@
     "category": "tutorial"
   },
   {
+    "title": "What is Parallel Calculation?",
+    "videoId": "IlAuoWJkq2E",
+    "published": "2015-07-08T12:00:00+00:00",
+    "description": "A plain-language Look Smarter Than You Are explainer on parallel calculation in Essbase.",
+    "thumbnail": "https://i.ytimg.com/vi/IlAuoWJkq2E/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
     "title": "Essbase CALC ALL Command",
     "videoId": "jQUTYzZ1Wk4",
     "published": "2015-07-06T12:00:00+00:00",
@@ -885,6 +917,14 @@
     "published": "2015-07-02T12:00:00+00:00",
     "description": "Why the Essbase.CFG configuration file matters and what it controls. From the Look Smarter Than You Are Essbase series.",
     "thumbnail": "https://i.ytimg.com/vi/ukkQ8panLdw/hqdefault.jpg",
+    "category": "tutorial"
+  },
+  {
+    "title": "Essbase Calculation Types",
+    "videoId": "U1QcVzaL5Vo",
+    "published": "2015-06-29T12:00:00+00:00",
+    "description": "The calculation types in an Essbase BSO database and how each one behaves.",
+    "thumbnail": "https://i.ytimg.com/vi/U1QcVzaL5Vo/hqdefault.jpg",
     "category": "tutorial"
   },
   {
