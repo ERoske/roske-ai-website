@@ -77,46 +77,48 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "By the Power of Grayskull",
-  week: "2026-05-31",
-  inspiration: "Masters of the Universe (the live-action film) opens in theaters on Friday, June 5, 2026. So roske.ai becomes the Eternia Gazette this week, a Saturday-morning cartoon broadcast frozen mid-frame: Edward as a glasses-wearing, fedora-keeping He-Man holding a sword that is, frankly, too big for him; Edward as a Skeletor who runs a small business with a hard-to-pronounce flagship product (the parallels do the work themselves); and a board meeting that has been redirected into a toy battle. The fedora stays on through all of it. The fedora was always more important than the helmet.",
-  tagline: "Whichever side you pick this week, the fedora stays on. By the power of fedora, we have the power.",
+  name: "The Roske Stakes",
+  week: "2026-06-06",
+  inspiration: "The 158th Belmont Stakes runs at Saratoga Race Course tonight, the final running before Belmont Park reopens. So roske.ai becomes the Daily Racing Form for the week, set on Belmont day at Saratoga: Edward in royal blue silks with white diamonds, Edward in tweed at the rail with a folded racing form, Edward in the winner's circle under a blanket of white carnations, Edward as the race caller in a glass booth above the homestretch. The fedora stays on through every role. (Edward grew up around horses, owned a drum-horse ranch in North Texas, and rode a quarterhorse named Thomas Jefferson, so the silks fit better than they should.)",
+  tagline: "Post time is now. Bring a pencil, a folded form, and a fedora that does not blow off in the stretch.",
 
   colors: {
-    // Eternia at sunset: royal purple Skeletor sky, sword-pommel gold,
-    // Castle Grayskull jade, He-Man hot magenta, and a parchment cream
-    // for light mode that reads like the back of an old Mattel toy box.
-    primary: "#5b2d8c",          // royal Eternian purple
-    secondary: "#0d8b6e",        // Castle Grayskull jade
-    accent: "#f5b300",            // power-sword gold
-    accentHover: "#ffc933",
-    background: "#160b27",        // deep cosmic purple (dark mode)
-    backgroundLight: "#f5e9c8",   // Mattel-box cream parchment (light mode)
-    surface: "#231447",            // raised purple panel
-    surfaceLight: "#ffe9a8",       // sunlit cream
-    text: "#fff3d0",               // warm sword-gold cream
-    textMuted: "#bba0e0",          // misty Eternian lavender
-    textDark: "#1c0a30",           // deep purple text on cream
-    textDarkMuted: "#5a3b7c",      // muted royal
-    border: "#3d2470",             // amethyst line
-    borderLight: "#c8a64a",        // gold-foil line
-    gradient: "linear-gradient(135deg, #2a0d4d 0%, #5b2d8c 35%, #c2185b 70%, #f5b300 100%)",
+    // Saratoga summer at golden hour: turf green, dirt umber, Belmont
+    // carnation white, the brass of an old loving cup, and silks blue for
+    // the jockey on the rail. Light mode is the cream paper of the
+    // Daily Racing Form. Dark mode is the box-seat shadow of the grandstand.
+    primary: "#1f4a37",          // Saratoga turf green
+    secondary: "#8b2434",         // claiming-tag oxblood
+    accent: "#c9962b",            // brass-trophy gold
+    accentHover: "#e0ab3d",
+    background: "#161616",        // grandstand shadow (dark mode)
+    backgroundLight: "#f2e7cf",   // Daily Racing Form newsprint (light mode)
+    surface: "#1f1f1f",            // box-seat panel
+    surfaceLight: "#fbf3df",       // form-card cream
+    text: "#f2e7cf",               // newsprint on dark
+    textMuted: "#a7a08c",          // worn ink
+    textDark: "#1a1a18",           // ink on cream
+    textDarkMuted: "#5a4f3a",      // faded ink
+    border: "#3a3a36",             // grandstand rail
+    borderLight: "#c9962b",        // brass-rule
+    gradient: "linear-gradient(135deg, #0e2a1f 0%, #1f4a37 40%, #8b2434 75%, #c9962b 100%)",
   },
 
   fonts: {
-    // Audiowide: chunky 80s arcade display for the big "HE-MAN" headlines.
-    // Bungee: blocky comic-book lettering for tags and badges.
-    // DM Serif Display: a bit of drama for italic emphasis.
-    // Space Grotesk: clean readable body in both modes.
-    // Major Mono Display: technical mono with retro arcade pulse.
-    heading: "'Audiowide', 'Impact', 'Arial Black', sans-serif",
-    body: "'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif",
-    mono: "'Major Mono Display', 'Courier Prime', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Audiowide&family=Bungee&family=DM+Serif+Display:ital@0;1&family=Major+Mono+Display&family=Space+Grotesk:wght@300;400;500;600;700&display=swap",
+    // Playfair Display: elegant late-19th-century turf-club serif for the
+    // mastheads (the Daily Racing Form has worn one of these for a century).
+    // Bebas Neue: condensed display caps for race numbers, post positions,
+    // and section headers (board-display energy).
+    // Source Serif 4: readable broadsheet body type for long copy.
+    // JetBrains Mono: clean technical mono for odds, codes, and race times.
+    heading: "'Playfair Display', 'Times New Roman', Georgia, serif",
+    body: "'Source Serif 4', 'Source Serif Pro', Georgia, serif",
+    mono: "'JetBrains Mono', 'IBM Plex Mono', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&display=swap",
   },
 
   layout: {
-    heroStyle: "split",
+    heroStyle: "editorial",
     navStyle: "fixed",
     cardStyle: "outlined",
     sectionStyle: "magazine",
@@ -132,11 +134,11 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "A hero, a villain, and a fedora that does not care which side you pick.",
-    description: "Masters of the Universe opens in theaters on Friday, the latest piece of 1980s cardboard the studios have decided is now load-bearing. (I am not complaining. The 1980s shaped me into the kind of adult who keeps the original Castle Grayskull on the office shelf and refers to it, with no irony at all, as a reference architecture.) So this week the site becomes the Eternia Gazette: roughly forty percent He-Man, roughly forty percent Skeletor, and roughly twenty percent everyone in the throne room politely pretending they did not notice that the same actor is playing both parts. The fedora stays on through every cut.",
-    heroImage: "hero-2026-05-31.png",
-    imageAlt: "Edward Roske, bearded and bespectacled, dressed as He-Man in a brown leather X-harness and gray loincloth, wearing his signature blue fedora, holding the Power Sword aloft with both hands as golden lightning crackles from the blade. Castle Grayskull looms behind him on a misty cliff at dusk, a pink and purple Eternian sky in the background.",
-    ctaText: "Open the toybox",
+    subtitle: "Post time is 7:04 PM Eastern. The horse does most of the work. The fedora does the rest.",
+    description: "The 158th Belmont Stakes runs tonight at Saratoga, the last running here before the new Belmont Park reopens in September. (I am calling the race in the broadcast booth, riding it in the silks, and reading the form at the rail. The schedule, like most of my schedules, has overlap.) The site is the Daily Racing Form for the week. The columns are short, the past performances are honest, and the morning line is doing its best.",
+    heroImage: "hero-2026-06-06.png",
+    imageAlt: "Edward Roske in royal blue and gold jockey silks with white diamonds, wearing his signature blue fedora over a helmet, aboard a powerful chestnut quarterhorse mid-gallop down the Saratoga homestretch on Belmont Stakes day. A grandstand packed with spectators in the background and a BELMONT STAKES AT SARATOGA sign just above the rail.",
+    ctaText: "Read the form",
     ctaLink: "#current-work",
   },
 };

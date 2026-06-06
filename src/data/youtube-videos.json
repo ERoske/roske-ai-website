@@ -1,6 +1,22 @@
 [
   {
-    "title": "What does it mean when Anthropic gives an AI agent the ability to dream?",
+    "title": "May 2026: Top AI Stories",
+    "videoId": "kgtxxs0ICwg",
+    "published": "2026-06-03T21:23:36+00:00",
+    "description": "All your important AI News from May of 2026.",
+    "thumbnail": "https://i.ytimg.com/vi/kgtxxs0ICwg/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How to hack Instagram? Through their support chatbot, apparently.",
+    "videoId": "OkndA_aVAG4",
+    "published": "2026-06-02T21:28:06+00:00",
+    "description": "Hackers took over high-profile Instagram accounts (the Obama White House, the U.S. Space Force, Sephora) by opening a support chat and asking Meta's AI bot to move the account to a new email. It said yes. The bot was built to be helpful. Turns out it was also built to never say...",
+    "thumbnail": "https://i.ytimg.com/vi/OkndA_aVAG4/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Should we be scared about Anthropic's new \"dreaming\" capability?",
     "videoId": "3iakCKgvzQM",
     "published": "2026-05-28T21:39:40+00:00",
     "description": "Anthropic shipped \"Dreaming\" for Claude agents, a scheduled process that reads an agent's past work between sessions and rewrites its memory so it improves over time. Legal-AI startup Harvey saw completion rates jump roughly 6x.",
@@ -64,7 +80,7 @@
     "category": "youtube"
   },
   {
-    "title": "Why did the company that told humans to stop working need to steal from one of them?",
+    "title": "The \"stop hiring humans\" startup just stole art from a human (to prove the opposite point?)",
     "videoId": "20dnfk_gmcc",
     "published": "2026-05-09T13:00:08+00:00",
     "description": "Artisan AI built its entire brand on telling businesses to stop hiring humans. Then they used a human artist's meme in a subway ad (without permission) to sell that idea. KC Green, the artist, told his fans to vandalize the ad.",
@@ -72,7 +88,7 @@
     "category": "youtube"
   },
   {
-    "title": "What does \"human-authored\" mean when every writer already uses AI?",
+    "title": "The Oscars just banned AI acting. They can't tell if it worked.",
     "videoId": "62aFUOP958Q",
     "published": "2026-05-08T13:00:13+00:00",
     "description": "The Academy just ruled that AI-generated performances and scripts can't win Oscars. AI in VFX and sound design still can. The line between \"tool\" and \"author\" is now the most important question in entertainment -- and the Academy has no way to enforce the answer it just gave.",
@@ -80,7 +96,7 @@
     "category": "youtube"
   },
   {
-    "title": "How do you call a competitor's safety policy \"fear-based marketing\" and then copy it",
+    "title": "When both rivals lock up the same AI tool, maybe \"locking\" is a really good idea.",
     "videoId": "DrhjENEonmk",
     "published": "2026-05-07T13:00:24+00:00",
     "description": "Sam Altman called Anthropic's decision to restrict its cybersecurity AI \"fear-based marketing.\" Nine days later, OpenAI restricted its own cybersecurity AI the same way. The hypocrisy is obvious. The implication is more interesting.",
@@ -112,7 +128,7 @@
     "category": "youtube"
   },
   {
-    "title": "When did a gas turbine become more valuable than a jet engine?",
+    "title": "The power grid is the new chip shortage (and one company saw it coming)",
     "videoId": "JV_91RuHEUU",
     "published": "2026-05-03T13:00:30+00:00",
     "description": "GE Vernova (the gas turbine company) just surpassed GE Aerospace in market cap for the first time. The driver: AI data centers are ordering power generation equipment directly from manufacturers, not waiting for utilities. AI's limiting factor turned out to be electrons.",
@@ -120,7 +136,7 @@
     "category": "youtube"
   },
   {
-    "title": "When did the C-suite ever actually delete a title?",
+    "title": "Why Musk's CFO obsolescence prediction misreads 50 years of C-suite history",
     "videoId": "NGs-nxy4s6M",
     "published": "2026-05-02T13:00:43+00:00",
     "description": "Elon Musk says CFOs are obsolete by 2030. His own CFO just got handed authority over a $25 billion capex plan and earned more last year than Nadella and Pichai combined. The pattern of the past 30 years says C-suite titles bifurcate when new tech arrives, never disappear.",
@@ -256,7 +272,7 @@
     "category": "youtube"
   },
   {
-    "title": "Why did an algorithm get to decide a grandmother should get locked up?",
+    "title": "An algorithm jailed a grandmother for 108 days. The police chief says she's still a suspect.",
     "videoId": "_8XFoaY4TPE",
     "published": "2026-03-25T06:00:31+00:00",
     "description": "Angela Lipps spent 108 days in jail because a facial recognition match said she committed bank fraud 1,200 miles from where her bank records placed her. Nobody checked. Now the ACLU is involved, preservation letters have been served to seven agencies, yet the police chief still...",
@@ -518,421 +534,5 @@
     "description": "My curated, top AI News stories for the second quarter of 2025.",
     "thumbnail": "https://i.ytimg.com/vi/xC5qkCPjSI0/hqdefault.jpg",
     "category": "youtube"
-  },
-  {
-    "title": "Essbase @ISRANGENONEMPTY Function",
-    "videoId": "fiQLcBsbLJU",
-    "published": "2018-10-02T12:00:00+00:00",
-    "description": "What the @ISRANGENONEMPTY function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/fiQLcBsbLJU/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @WITHATTR Function",
-    "videoId": "6YkalK18dTM",
-    "published": "2018-09-25T12:00:00+00:00",
-    "description": "What the @WITHATTR function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/6YkalK18dTM/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @TRUNCATE Function",
-    "videoId": "NhmP56h2Mdw",
-    "published": "2018-09-06T12:00:00+00:00",
-    "description": "What the @TRUNCATE function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/NhmP56h2Mdw/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISMBRWITHATTR Function",
-    "videoId": "2KnzjZvgtgs",
-    "published": "2018-08-14T12:00:00+00:00",
-    "description": "What the @ISMBRWITHATTR function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/2KnzjZvgtgs/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISATTRIBUTE Function",
-    "videoId": "BATDUuSxx_o",
-    "published": "2018-08-07T12:00:00+00:00",
-    "description": "What the @ISATTRIBUTE function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/BATDUuSxx_o/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @REMAINDER Function",
-    "videoId": "n7hjUWuFkaA",
-    "published": "2018-07-31T12:00:00+00:00",
-    "description": "What the @REMAINDER function returns in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/n7hjUWuFkaA/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @LN, @LOG, & @LOG10 Functions",
-    "videoId": "ejpmOS7OCsg",
-    "published": "2018-07-26T12:00:00+00:00",
-    "description": "What the @LN, @LOG, & @LOG10 functions do in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/ejpmOS7OCsg/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase EXCLUDE & ENDEXCLUDE Commands",
-    "videoId": "Ud6VUIXNfaY",
-    "published": "2018-07-18T12:00:00+00:00",
-    "description": "How to carve out exceptions in an Essbase calc with the EXCLUDE and ENDEXCLUDE commands.",
-    "thumbnail": "https://i.ytimg.com/vi/Ud6VUIXNfaY/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @INT Function",
-    "videoId": "jXbfSGAjnSE",
-    "published": "2018-07-03T12:00:00+00:00",
-    "description": "What the @INT function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/jXbfSGAjnSE/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ATTRIBUTE Function",
-    "videoId": "WCtsea7Jt4k",
-    "published": "2018-06-21T12:00:00+00:00",
-    "description": "What the @ATTRIBUTE function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/WCtsea7Jt4k/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ABS Function",
-    "videoId": "y9gR6mS9YxI",
-    "published": "2018-06-07T12:00:00+00:00",
-    "description": "What the @ABS function returns in an Essbase calc script (absolute values, as advertised).",
-    "thumbnail": "https://i.ytimg.com/vi/y9gR6mS9YxI/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Testing for Missing Values in an Essbase Calc Script",
-    "videoId": "7swU3Bkuqck",
-    "published": "2018-05-08T12:00:00+00:00",
-    "description": "How to test for #Missing values inside an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/7swU3Bkuqck/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Using Environment Variables in Essbase via $",
-    "videoId": "JYdk1y-o8vg",
-    "published": "2018-03-20T12:00:00+00:00",
-    "description": "How to use environment variables in Essbase calc scripts with the $ syntax.",
-    "thumbnail": "https://i.ytimg.com/vi/JYdk1y-o8vg/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Replacing Zeros with #Missing in Essbase",
-    "videoId": "VP6bzWhjnAE",
-    "published": "2018-03-06T12:00:00+00:00",
-    "description": "How to replace stored zeros with #Missing in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/VP6bzWhjnAE/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase DATAIMPORTBIN Command",
-    "videoId": "M0pP_QdI_Dg",
-    "published": "2018-01-09T12:00:00+00:00",
-    "description": "Using the DATAIMPORTBIN command in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/M0pP_QdI_Dg/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase DATAEXPORTCOND Command",
-    "videoId": "W-ZTsEoCqRc",
-    "published": "2017-12-28T12:00:00+00:00",
-    "description": "Using DATAEXPORTCOND to export Essbase data conditionally.",
-    "thumbnail": "https://i.ytimg.com/vi/W-ZTsEoCqRc/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase SET DataExportOptions Command",
-    "videoId": "e2vxz8y6x4w",
-    "published": "2017-11-07T12:00:00+00:00",
-    "description": "Configuring an Essbase data export with the SET DATAEXPORTOPTIONS command.",
-    "thumbnail": "https://i.ytimg.com/vi/e2vxz8y6x4w/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase DATAEXPORT Command: Exporting to a Relational Database",
-    "videoId": "bgFeBPnWx9Y",
-    "published": "2017-09-27T12:00:00+00:00",
-    "description": "Using the DATAEXPORT command in Essbase: exporting to a relational database.",
-    "thumbnail": "https://i.ytimg.com/vi/bgFeBPnWx9Y/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase DATAEXPORT Command: Exporting to a Text File",
-    "videoId": "Qbf417PgmIM",
-    "published": "2017-09-20T12:00:00+00:00",
-    "description": "Using the DATAEXPORT command in Essbase: exporting to a text file.",
-    "thumbnail": "https://i.ytimg.com/vi/Qbf417PgmIM/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "How do I export a subset of my Essbase BSO data?",
-    "videoId": "bVmMKKILoOs",
-    "published": "2017-09-13T12:00:00+00:00",
-    "description": "How to export a subset of Essbase BSO data rather than the whole cube.",
-    "thumbnail": "https://i.ytimg.com/vi/bVmMKKILoOs/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "What is the EPBCS Projects Framework?",
-    "videoId": "Er_8i71Lf0s",
-    "published": "2017-03-16T12:00:00+00:00",
-    "description": "A plain-language Look Smarter Than You Are explainer on the EPBCS Projects Framework.",
-    "thumbnail": "https://i.ytimg.com/vi/Er_8i71Lf0s/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "What is the EPBCS Financials Framework?",
-    "videoId": "zb34oe0bZ_Q",
-    "published": "2016-11-09T12:00:00+00:00",
-    "description": "What the Financials framework in Oracle EPBCS gives you out of the box.",
-    "thumbnail": "https://i.ytimg.com/vi/zb34oe0bZ_Q/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "What is EPBCS?",
-    "videoId": "VCm2bvDXd94",
-    "published": "2016-09-16T12:00:00+00:00",
-    "description": "A plain-language tour of Oracle's Enterprise Planning and Budgeting Cloud Service.",
-    "thumbnail": "https://i.ytimg.com/vi/VCm2bvDXd94/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase.CFG SSUADIT Setting",
-    "videoId": "Ddgeb5auA90",
-    "published": "2016-08-03T12:00:00+00:00",
-    "description": "What the SSUADIT setting controls in the Essbase.CFG configuration file.",
-    "thumbnail": "https://i.ytimg.com/vi/Ddgeb5auA90/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase.CFG SILENTOTLQUERY Setting",
-    "videoId": "lSrosUsUsMY",
-    "published": "2016-07-19T12:00:00+00:00",
-    "description": "What the SILENTOTLQUERY setting controls in the Essbase.CFG configuration file.",
-    "thumbnail": "https://i.ytimg.com/vi/lSrosUsUsMY/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase.CFG CALCTASKDIMS Setting",
-    "videoId": "X1ftLbWcdxI",
-    "published": "2016-05-03T12:00:00+00:00",
-    "description": "Tuning parallel calculation with the CALCTASKDIMS setting in Essbase.CFG.",
-    "thumbnail": "https://i.ytimg.com/vi/X1ftLbWcdxI/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase SET AggMissg Command",
-    "videoId": "X63jRtDq0vo",
-    "published": "2016-03-01T12:00:00+00:00",
-    "description": "Using the SET AggMissg command in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/X63jRtDq0vo/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase.CFG ASODYNAMICAGGINBSO Setting",
-    "videoId": "dQKT-Qy3dUM",
-    "published": "2016-02-23T12:00:00+00:00",
-    "description": "What the ASODYNAMICAGGINBSO setting does in Essbase.CFG.",
-    "thumbnail": "https://i.ytimg.com/vi/dQKT-Qy3dUM/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase.CFG CALCPARALLEL Setting",
-    "videoId": "FZU-JW6B7G8",
-    "published": "2016-01-28T12:00:00+00:00",
-    "description": "The CALCPARALLEL setting in Essbase.CFG, and how it affects calc performance.",
-    "thumbnail": "https://i.ytimg.com/vi/FZU-JW6B7G8/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @VAR and @VARPER Functions",
-    "videoId": "IEmx3NIcFGw",
-    "published": "2015-12-29T12:00:00+00:00",
-    "description": "What the @VAR and @VARPER functions do in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/IEmx3NIcFGw/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISMBR Function",
-    "videoId": "UBW_9XijK84",
-    "published": "2015-10-13T12:00:00+00:00",
-    "description": "What the @ISMBR function does in an Essbase calc script, and when to reach for it.",
-    "thumbnail": "https://i.ytimg.com/vi/UBW_9XijK84/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISUDA Function",
-    "videoId": "huT6UI4Vrcc",
-    "published": "2015-10-13T12:00:00+00:00",
-    "description": "Using the @ISUDA function to test for a user-defined attribute in Essbase.",
-    "thumbnail": "https://i.ytimg.com/vi/huT6UI4Vrcc/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISANCEST (and @ISIANCEST) Function",
-    "videoId": "UEiBIlVFxuA",
-    "published": "2015-10-13T12:00:00+00:00",
-    "description": "What the @ISANCEST (and @ISIANCEST) function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/UEiBIlVFxuA/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISPARENT Function",
-    "videoId": "sMzTvTtzdHM",
-    "published": "2015-10-13T12:00:00+00:00",
-    "description": "What the @ISPARENT function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/sMzTvTtzdHM/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISCHILD (and @ISICHILD) Function",
-    "videoId": "3jVGDECGpXk",
-    "published": "2015-10-13T12:00:00+00:00",
-    "description": "What the @ISCHILD (and @ISICHILD) function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/3jVGDECGpXk/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISSIBLING (and @ISISIBLING) Function",
-    "videoId": "tEc9iFChupQ",
-    "published": "2015-10-13T12:00:00+00:00",
-    "description": "What the @ISSIBLING (and @ISISIBLING) function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/tEc9iFChupQ/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISSAMEGEN Function",
-    "videoId": "9Js5jMEYjT4",
-    "published": "2015-10-13T12:00:00+00:00",
-    "description": "What the @ISSAMEGEN function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/9Js5jMEYjT4/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISMBRUDA Function",
-    "videoId": "YzcFDH655SE",
-    "published": "2015-10-13T12:00:00+00:00",
-    "description": "What the @ISMBRUDA function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/YzcFDH655SE/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISACCTYPE Function",
-    "videoId": "tHJ65nD7D4w",
-    "published": "2015-10-13T12:00:00+00:00",
-    "description": "What the @ISACCTYPE function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/tHJ65nD7D4w/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase @ISDESC (and @ISIDESC) Function",
-    "videoId": "bvgqZ2hbGY8",
-    "published": "2015-10-13T12:00:00+00:00",
-    "description": "What the @ISDESC (and @ISIDESC) function does in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/bvgqZ2hbGY8/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase SET CalcParallel Command",
-    "videoId": "ec-o4Z8x57o",
-    "published": "2015-08-18T12:00:00+00:00",
-    "description": "Using SET CALCPARALLEL to run Essbase calculations in parallel.",
-    "thumbnail": "https://i.ytimg.com/vi/ec-o4Z8x57o/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase SET CalcTaskDims Command",
-    "videoId": "lMTBZjCmCWI",
-    "published": "2015-08-18T12:00:00+00:00",
-    "description": "Using the SET CalcTaskDims command in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/lMTBZjCmCWI/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase FIX and ENDFIX",
-    "videoId": "9_cW4SpHVj8",
-    "published": "2015-07-11T12:00:00+00:00",
-    "description": "How to scope an Essbase BSO calculation with the FIX and ENDFIX commands.",
-    "thumbnail": "https://i.ytimg.com/vi/9_cW4SpHVj8/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "How to Create an Essbase Calc Script",
-    "videoId": "BnbBSNsycA0",
-    "published": "2015-07-10T12:00:00+00:00",
-    "description": "A from-scratch tutorial on writing your first Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/BnbBSNsycA0/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Calculating Members in the Outline Using a Calc Script",
-    "videoId": "QGH7m6uSB9s",
-    "published": "2015-07-10T12:00:00+00:00",
-    "description": "How to calculate a member in the Essbase outline using a calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/QGH7m6uSB9s/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "What is Parallel Calculation?",
-    "videoId": "IlAuoWJkq2E",
-    "published": "2015-07-08T12:00:00+00:00",
-    "description": "A plain-language Look Smarter Than You Are explainer on parallel calculation in Essbase.",
-    "thumbnail": "https://i.ytimg.com/vi/IlAuoWJkq2E/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase CALC ALL Command",
-    "videoId": "jQUTYzZ1Wk4",
-    "published": "2015-07-06T12:00:00+00:00",
-    "description": "Using the CALC ALL command in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/jQUTYzZ1Wk4/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase AGG Command",
-    "videoId": "3DfX25Pf7OA",
-    "published": "2015-07-04T12:00:00+00:00",
-    "description": "Using the AGG command in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/3DfX25Pf7OA/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase CALC DIM Command",
-    "videoId": "ve2Hj4kh_XA",
-    "published": "2015-07-03T12:00:00+00:00",
-    "description": "Using the CALC DIM command in an Essbase calc script.",
-    "thumbnail": "https://i.ytimg.com/vi/ve2Hj4kh_XA/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "What is Essbase.CFG?",
-    "videoId": "ukkQ8panLdw",
-    "published": "2015-07-02T12:00:00+00:00",
-    "description": "Why the Essbase.CFG configuration file matters and what it controls. From the Look Smarter Than You Are Essbase series.",
-    "thumbnail": "https://i.ytimg.com/vi/ukkQ8panLdw/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "Essbase Calculation Types",
-    "videoId": "U1QcVzaL5Vo",
-    "published": "2015-06-29T12:00:00+00:00",
-    "description": "The calculation types in an Essbase BSO database and how each one behaves.",
-    "thumbnail": "https://i.ytimg.com/vi/U1QcVzaL5Vo/hqdefault.jpg",
-    "category": "tutorial"
-  },
-  {
-    "title": "What is Big Data?",
-    "videoId": "sIDqXmW2Qxg",
-    "published": "2015-06-23T12:00:00+00:00",
-    "description": "An edu-taining Look Smarter Than You Are explainer on what Big Data actually means, minus the buzzwords.",
-    "thumbnail": "https://i.ytimg.com/vi/sIDqXmW2Qxg/hqdefault.jpg",
-    "category": "tutorial"
   }
 ]
