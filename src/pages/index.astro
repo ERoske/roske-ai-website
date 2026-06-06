@@ -6,148 +6,141 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// The toy catalog grid — four "action figures" of Edward
-// in different Eternian roles, presented like the back of a 1985 Mattel box.
-const figures = [
+// The trackside photo set the Form filed from Saratoga this morning.
+// Used as broadsheet illustrations across the page (not as "characters").
+const trackPhotos = [
   {
-    src: '/images/motu/edward-skeletor.png',
-    sku: 'FIG. 002 · LORD OF DESTRUCTION',
-    line: 'EVIL WARRIOR (HOODED VARIANT)',
-    title: 'EDWARD-OR',
-    pitch: "Evil warrior with a borrowed staff and a familiar hat. The skull face comes off with cold cream. The fedora does not come off at all. Includes one (1) ram-skull weapon and one (1) very tired apprentice off-screen.",
-    badge: 'PURPLE HOODED · POWERED BY A GRUDGE',
+    src: '/images/saratoga/edward-handicapper.png',
+    plate: 'PHOTO · TRACKSIDE · 11:42 AM',
+    caption: 'AT THE RAIL · TWEED · FOLDED FORM',
+    note: "Two hours before post. The form is the actual Daily Racing Form, printed on pink newsprint, folded twice the way handicappers fold it. The short pencil is tucked into the fold, which is the only place a short pencil belongs. The fedora has already been adjusted once for wind.",
     aspect: '3/4',
-    rotate: -1.6,
     tape: 'left',
+    rotate: -1.4,
   },
   {
-    src: '/images/motu/edward-battle-cat.png',
-    sku: 'FIG. 003 · CAVALRY CHARGE',
-    line: 'HE-MAN + BATTLE CAT (TWO-PACK)',
-    title: 'HE-EDWARD',
-    pitch: "Two-pack: the hero and the enormous green tiger he probably should not be riding at speed. He has the sword up and the glasses on. Battle Cat is patient, in the way most cats are patient with their humans.",
-    badge: 'INCLUDES SADDLE · NOT INCLUDED: LIABILITY WAIVER',
+    src: '/images/saratoga/edward-paddock.png',
+    plate: 'PHOTO · PADDOCK · 6:31 PM',
+    caption: 'PADDOCK · POST PARADE · COLORS UP',
+    note: "Paddock walk in the owner's section. Blue blazer, fawn trousers, a pair of brass binoculars, and the fedora doing what the fedora does. (Owners are allowed in here, jockeys are allowed in here, photographers are allowed in here, and so, for some reason, am I.) The horse is calmer than I am.",
     aspect: '4/3',
-    rotate: 1.2,
     tape: 'right',
+    rotate: 1.1,
   },
   {
-    src: '/images/motu/edward-orko.png',
-    sku: 'FIG. 004 · COURT MAGICIAN',
-    line: 'ORKO (FAILED SPELL VARIANT)',
-    title: 'EDWORKO',
-    pitch: "Floating wizard with a wizard hat that has, in turn, a fedora on top. The spell has gone wrong, which is the only setting Orko's spells have. He-Man and Skeletor both stopped to watch, and the matching question marks over their heads are the most they have agreed on all season. Sold separately are the dignity, the wand, and a working explanation.",
-    badge: 'FLOATATION INCLUDED · DIGNITY NOT INCLUDED',
+    src: '/images/saratoga/edward-race-caller.png',
+    plate: 'PHOTO · BOOTH · 7:04 PM',
+    caption: 'BOOTH · GLASS · A WORKING MICROPHONE',
+    note: "Top of the homestretch. The booth is above the wire, the glass is fogged on one corner, and the microphone has been on for nine minutes. Whether the call is any good is up to whoever still has the radio on at home.",
     aspect: '3/4',
-    rotate: 0.8,
     tape: 'left',
+    rotate: 0.7,
   },
   {
-    src: '/images/motu/edward-toy-battle.png',
-    sku: 'FIG. 005 · BOARD MEETING REDIRECTED',
-    line: 'THE OFFICE PLAYSET',
-    title: 'CEO MODE · DAY 4',
-    pitch: "What actually happens when a man in his fifties with a slide deck is left alone in his office with the original 1984 Mattel collection. The slide deck is open. The slide deck is not winning. Q3 will, as always, work itself out.",
-    badge: 'COLLECTOR CONDITION · BOX REMOVED · STILL ON DESK',
+    src: '/images/saratoga/edward-winners-circle.png',
+    plate: 'PHOTO · WINNER\'S CIRCLE · 7:31 PM',
+    caption: 'WINNER\'S CIRCLE · CARNATIONS · ONE TROPHY',
+    note: "The blanket is white carnations, the loving cup is heavier than it looks, and the horse is the one being congratulated. (I am holding the trophy. The horse is holding the result.) The fedora is, by this point, slightly damp.",
     aspect: '4/3',
+    tape: 'right',
     rotate: -0.6,
-    tape: 'right',
   },
 ];
 
-// The six recurring projects, restyled as the Royal Court of Eternia's active quests.
-const quests = [
+// Today's entries, restyled as the entries column from the Form's race card.
+// Same six projects, same data, framed as horses going to post.
+const entries = [
   {
-    code: 'QUEST · I',
-    rank: 'POWER LEVEL · BESKAR-GRADE',
+    code: 'RACE · I',
+    odds: '5-2 FAV',
     title: 'AgentCube',
-    body: "The engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus. Essbase and Planning are loose in the wild. Consolidations is in beta and circling. The finance department, in this metaphor, is Eternia.",
+    body: "The engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus. Essbase and Planning are loose in the wild. Consolidations is in beta, working out on the turf. (The finance department, in this metaphor, is the rest of the field.)",
     badge: 'ESSBASE · PLANNING · CLOSE',
-    status: 'IN PROGRESS',
+    status: 'IN THE GATE',
     href: 'https://caprus.ai/agentcube/',
     external: true,
-    cta: 'Open the scroll',
+    cta: 'Read the past performances',
   },
   {
-    code: 'QUEST · II',
-    rank: 'POWER LEVEL · KINGDOM-SCALE',
+    code: 'RACE · II',
+    odds: '7-2',
     title: 'Caribbean AI Summit',
-    body: "Co-chairing the largest AI conference Puerto Rico has ever hosted. October 9 and 10 in San Juan. Speakers and sponsors are being recruited from the rest of the galaxy right now. If you build, fund, or run AI, the throne room has a chair with your name on it.",
+    body: "Co-chairing the largest AI conference Puerto Rico has ever hosted. October 9 and 10 in San Juan. Speakers and sponsors are being recruited right now. If you build, fund, or run AI, the gate has a stall with your name on it.",
     badge: '9-10 OCT 2026 · SAN JUAN',
-    status: 'RECRUITING',
+    status: 'POST CALLED',
     href: 'https://www.caribbeansummit.ai/en/speakers/submit',
     external: true,
     cta: 'Submit a speaker',
   },
   {
-    code: 'QUEST · III',
-    rank: 'POWER LEVEL · ALLIED HOUSE',
+    code: 'RACE · III',
+    odds: '8-5',
     title: 'Caprus',
-    body: "Investor and contributor at Caprus, the AI software and services firm giving finance teams faster, smarter, more strategic operations. The working crew behind the MCP servers. The crew that, for the record, does most of the actual lifting.",
+    body: "Investor and contributor at Caprus, the AI software and services firm giving finance teams faster, smarter, more strategic operations. The working crew behind the MCP servers. The crew that, for the record, does most of the actual riding.",
     badge: 'AI · FINANCE',
-    status: 'ALLIED',
+    status: 'RUNNING',
     href: 'https://caprus.ai',
     external: true,
-    cta: 'Visit the house',
+    cta: 'See the colors',
   },
   {
-    code: 'QUEST · IV',
-    rank: 'POWER LEVEL · ARCANE',
+    code: 'RACE · IV',
+    odds: '12-1',
     title: "AI Dungeon Master's Screen",
-    body: "An AI-driven DM's screen for running better D&D 5e campaigns. Initiative, lore, and improv help for the person behind the screen. If there is going to be an AI at the table, it can earn its seat. The party will not be told.",
+    body: "An AI-driven DM's screen for running better D&D 5e campaigns. Initiative, lore, and improv help for the person behind the screen. If there's going to be an AI at the table, it can earn its seat. (The party will not be told.)",
     badge: 'D&D · 5E · EBERRON',
-    status: 'IN THE WORKSHOP',
+    status: 'WORKING OUT',
     href: null,
     external: false,
-    cta: 'Workshop sealed',
+    cta: 'Stall sealed',
   },
   {
-    code: 'QUEST · V',
-    rank: 'POWER LEVEL · GUILD HALL',
+    code: 'RACE · V',
+    odds: '4-1',
     title: 'Puerto Rico AI Community',
     body: "President of the Puerto Rico AI Community. Over 850 people across our events. We meet every other month to figure out, in public, what AI means for the island, which is also what AI means for everyone else watching the island.",
     badge: '850+ · EVERY 2 MONTHS',
-    status: 'GROWING',
+    status: 'RUNNING',
     href: 'https://praicommunity.org/',
     external: true,
-    cta: 'Join the court',
+    cta: 'Take a stall',
   },
   {
-    code: 'QUEST · VI',
-    rank: 'POWER LEVEL · COMPLETED',
+    code: 'RACE · VI',
+    odds: 'PAID 9.40',
     title: 'Everest Base Camp',
-    body: "Reached in April. Almost two weeks trekking at altitude, a peak of 18,570 feet at Kala Patthar, and a nightly reminder that teahouses do not heat the rooms. The altitude was hard. The cold was the boss fight. The trail log is now public.",
+    body: "Reached in April. Almost two weeks trekking at altitude, a peak of 18,570 feet at Kala Patthar, and a nightly reminder that teahouses do not heat the rooms. The altitude was hard. The cold was the boss fight. The trail log is in the chart book.",
     badge: 'NEPAL · APRIL 2026',
-    status: 'COMPLETED',
+    status: 'WON WIRE TO WIRE',
     href: '/blog/everest-base-camp-summit/',
     external: false,
-    cta: 'Read the trail log',
+    cta: 'Read the chart',
   },
 ];
 
-// "New action figures this week" — the questionnaire's fresh items.
-const newReleases = [
+// Late entries from the weekly questionnaire (fresh items shipping now).
+const lateEntries = [
   {
-    tag: 'NEW FOR 2026 · WAVE 14',
+    tag: 'LATE ENTRY · MAIDEN SPECIAL',
     title: 'Only Recipes',
     line: 'CHROME EXTENSION · FREE · MILD.',
-    body: "My first Chrome extension. When it sees you are on a recipe page, it strips out everything that is not the recipe. No author memoir. No fourteen ads. No scroll bar that goes on forever. It is ridiculously fast and remarkably useful, which are two phrases I do not usually get to put next to each other.",
+    body: "My first Chrome extension. When it sees you're on a recipe page, it strips out everything that's not the recipe. No author memoir. No fourteen ads. No scroll bar that goes on forever. It's ridiculously fast and remarkably useful, which are two phrases I don't usually get to put next to each other.",
     cta: 'See what it does',
     href: '/only-recipes/',
     external: false,
   },
   {
-    tag: 'IN BETA · UNNAMED FOR NOW',
+    tag: 'IN THE PADDOCK · UNNAMED',
     title: 'The Home Library Project',
     line: 'BOOKS · GAMES · MEDIA · ALL SHELVES.',
-    body: "A new app and site that digitizes a home library: books, board games, music, media, basically anything sitting on shelves at the house. All categorized. There will be a free library tier. The full reveal comes after beta. If you want an early look, send an email and you will be on the list.",
+    body: "A new app and site that digitizes a home library: books, board games, music, media, basically anything sitting on shelves at the house. All categorized. There'll be a free library tier. The full reveal comes after beta. If you want an early look, send an email and you'll be on the list.",
     cta: 'Email for early access',
     href: 'mailto:Edward@Roske.AI',
     external: false,
   },
 ];
 
-// The Eternia stat block (the tally, restyled).
+// Stat block, restyled as a "Lifetime Record" table from the past-performances column.
 const tally = [
   { value: '80+', label: 'WORLDS VISITED' },
   { value: '50+', label: 'KEYNOTES DELIVERED' },
@@ -155,27 +148,28 @@ const tally = [
   { value: '25+', label: 'YEARS AS CEO' },
 ];
 
-// The creed marquee. "BY THE POWER OF FEDORA" lands like the show's chant.
-const marqueeItems = [
-  "BY THE POWER OF FEDORA",
-  "I HAVE THE FEDORA",
+// Marquee items: form ticker. Reads like the odds board between races.
+const tickerItems = [
+  "POST TIME · 7:04 PM ET",
+  "BRING A PENCIL",
   "A ROSKE NEVER REMOVES HIS FEDORA",
-  "BY THE POWER OF FEDORA",
-  "THE TARGETS ARE AI COMPANIES",
+  "THE MORNING LINE IS DOING ITS BEST",
   "★ ASKING GOOD QUESTIONS ★",
-  "MOST POWERFUL MAN IN A FEDORA",
-  "BY THE POWER OF FEDORA",
+  "POST TIME IS NOW",
+  "BELMONT AT SARATOGA · 158TH RUNNING",
+  "THE FEDORA STAYS ON IN THE STRETCH",
 ];
 
-// The back-of-the-box credits. Mattel box rear text energy.
-const credits = [
-  { role: 'BROADCAST', name: 'THE ETERNIA GAZETTE · WEEK 24 · MAY 31, 2026' },
-  { role: 'STARRING', name: 'EDWARD ROSKE AS HE-MAN, SKELETOR, ORKO, AND ONE TIRED CEO' },
-  { role: 'CO-STARRING', name: 'CLAUDE AS THE APPRENTICE WHO CLEANS UP AFTER THE SPELL' },
+// The masthead colophon at the foot of the page.
+const colophon = [
+  { role: 'BROADCAST', name: 'THE DAILY RACING FORM · WEEK 24 · JUNE 6, 2026' },
+  { role: 'EDITION', name: 'BELMONT DAY · SARATOGA · 158TH RUNNING' },
+  { role: 'COLORS', name: 'ROYAL BLUE WITH GOLD DIAMONDS · GOLD SLEEVES' },
   { role: 'HEADGEAR', name: 'ONE (1) BLUE FELT FEDORA · NEVER REMOVED · NEVER NEGOTIATED' },
-  { role: 'BACKLOT', name: 'CASTLE GRAYSKULL (BUILT ON A WEEKEND, PAINTED IN A NIGHT)' },
+  { role: 'TRAINER', name: 'DAWN (HOME BARN)' },
+  { role: 'HOME TRACK', name: 'SAN JUAN · PUERTO RICO' },
   { role: 'WITH THANKS TO', name: 'DAWN · MYCROFT · ELIOT · THE PEOPLE OF PUERTO RICO' },
-  { role: 'AGES', name: '5 AND UP. (PARTS THAT FALL OFF ARE THE BIT.)' },
+  { role: 'AGES', name: '5 AND UP. (THE TRACK IS NOT LIABLE.)' },
 ];
 ---
 
@@ -183,36 +177,35 @@ const credits = [
   <WeeklyAnimation />
 
   <!-- ============================================
-       BROADCAST BAR — Saturday morning station ident
+       MASTHEAD BAR — Daily Racing Form station ident
        ============================================ -->
-  <div class="bcast-bar">
-    <div class="bcast-bar-inner">
-      <span class="bcast-bullet" aria-hidden="true"></span>
-      <span class="bcast-meta">THE ETERNIA GAZETTE</span>
-      <span class="bcast-meta bcast-meta-center">EPISODE 087 · "BY THE POWER OF FEDORA" · A SATURDAY MORNING BROADCAST</span>
-      <span class="bcast-meta bcast-meta-end">CH. 014 · 5 AM AST</span>
-      <span class="bcast-bullet" aria-hidden="true"></span>
+  <div class="drf-bar">
+    <div class="drf-bar-inner">
+      <span class="drf-bullet" aria-hidden="true"></span>
+      <span class="drf-meta">THE DAILY RACING FORM</span>
+      <span class="drf-meta drf-meta-center">VOL. CLVIII · BELMONT DAY EDITION · SATURDAY JUNE 6, 2026</span>
+      <span class="drf-meta drf-meta-end">POST · 7:04 PM ET</span>
+      <span class="drf-bullet" aria-hidden="true"></span>
     </div>
   </div>
 
   <!-- ============================================
-       HERO — the hero, the sword, and the fedora
+       HERO — broadsheet front page
        ============================================ -->
   <section class="hero-section">
-    <div class="hero-rays" aria-hidden="true"></div>
-    <div class="hero-halftone" aria-hidden="true"></div>
+    <div class="hero-paper" aria-hidden="true"></div>
     <div class="hero-grid">
 
-      <!-- Left: title block -->
+      <!-- Left: masthead and lead column -->
       <div class="hero-text">
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-bullet"></span>
-          <span class="hero-eyebrow-text">In theaters Friday · live action · still a cartoon</span>
+          <span class="hero-eyebrow-text">Saratoga · Belmont day · final running before the new park opens</span>
         </div>
 
         <h1 class="hero-title">
-          <span class="hero-title-small">I have the fedora.</span>
-          <span class="hero-title-big">By the<br/>Power of<br/><span class="hero-title-accent">Fedora.</span></span>
+          <span class="hero-title-small">Post time is 7:04 PM Eastern.</span>
+          <span class="hero-title-big">Bring a pencil.<br/>Bring a folded form.<br/><span class="hero-title-accent">Bring a fedora.</span></span>
         </h1>
 
         <p class="hero-body">{theme.hero.description}</p>
@@ -237,58 +230,58 @@ const credits = [
         </div>
       </div>
 
-      <!-- Right: the hero card, presented like a Mattel toy box -->
+      <!-- Right: lead photo, framed as Page One -->
       <div class="hero-image-wrap">
-        <figure class="toybox">
-          <div class="toybox-top">
-            <span class="toybox-mattel">MOST POWERFUL MAN IN A <em>FEDORA</em></span>
-            <span class="toybox-line">CHARACTER LINE · 1984 · REISSUE 2026</span>
+        <figure class="page-one">
+          <div class="page-one-top">
+            <span class="page-one-flag">PAGE ONE · ABOVE THE FOLD</span>
+            <span class="page-one-line">PHOTO STAFF · SARATOGA · 6.6.26</span>
           </div>
-          <div class="toybox-window">
-            <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="toybox-image" />
-            <div class="toybox-ages" aria-hidden="true">
-              <span>AGES</span>
-              <span class="toybox-ages-num">5+</span>
+          <div class="page-one-window">
+            <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="page-one-image" />
+            <div class="page-one-post" aria-hidden="true">
+              <span>POST</span>
+              <span class="page-one-post-num">7:04</span>
             </div>
           </div>
-          <div class="toybox-bottom">
-            <span class="toybox-sku">SKU · HE·EDWARD · 014</span>
-            <span class="toybox-incl">INCLUDES: POWER SWORD · X-HARNESS · FEDORA · ATTITUDE</span>
+          <div class="page-one-bottom">
+            <span class="page-one-sku">CUT · A1 · 6 COL</span>
+            <span class="page-one-cred">PHOTOGRAPHER · WIRE · UNCREDITED</span>
           </div>
         </figure>
 
-        <!-- Sword pommel sticker -->
-        <div class="pommel-stamp" aria-hidden="true">
-          <span class="pommel-ring">BY THE POWER OF · BY THE POWER OF ·</span>
-          <span class="pommel-center">FEDORA</span>
+        <!-- Finish-line stamp -->
+        <div class="finish-stamp" aria-hidden="true">
+          <span class="finish-ring">158TH RUNNING · BELMONT STAKES ·</span>
+          <span class="finish-center">WIRE</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       MARQUEE — chant ticker
+       TICKER — odds-board scroll between races
        ============================================ -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      {[...marqueeItems, ...marqueeItems].map(item => (
-        <span class="marquee-item">{item}</span>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      {[...tickerItems, ...tickerItems].map(item => (
+        <span class="ticker-item">{item}</span>
       ))}
     </div>
   </div>
 
   <!-- ============================================
-       OPENING NARRATION — Eternia preamble parody
+       LEAD COLUMN — Today's Word from the editor
        ============================================ -->
-  <section class="narration-section">
-    <div class="narration-inner">
-      <div class="narration-tag">OPENING NARRATION · ANNOUNCED OVER A SYNTH STING</div>
-      <blockquote class="narration">
-        I am Edward of Puerto Rico, prince of the Caribbean AI Summit, defender of the office of the CFO. Fabulous secrets were revealed to me the day I held aloft my fedora and said, <span class="narration-chant">by the power of fedora.</span>
+  <section class="lead-section">
+    <div class="lead-inner">
+      <div class="lead-tag">TODAY'S WORD · FROM THE EDITOR</div>
+      <blockquote class="lead">
+        Post time is now. The morning line is honest. The favorite is honest. The longshot is, by definition, a little less honest. <span class="lead-chant">The fedora stays on in the stretch.</span>
       </blockquote>
-      <div class="narration-attrib">
-        <span class="narration-attrib-name">EDWARD ROSKE</span>
-        <span class="narration-attrib-role">OPENING SEQUENCE · NOT YET LICENSED · LAWYERS PENDING</span>
+      <div class="lead-attrib">
+        <span class="lead-attrib-name">EDWARD ROSKE</span>
+        <span class="lead-attrib-role">EDITORIAL · BELMONT DAY · 2026</span>
       </div>
     </div>
   </section>
@@ -298,40 +291,38 @@ const credits = [
        PERMANENT MODULE: do not delete on weekly redesigns
        ============================================ -->
   <LatestContent
-    eyebrow="Section 02 · Transmissions from Eternia"
-    heading={"Fresh off <em>the broadcast.</em>"}
-    deck="The newest writing and video briefs, in one place. Updated whenever something in the throne room makes the mistake of being interesting. (Most weeks, the throne room obliges.)"
+    eyebrow="Section 02 · Filed from the press box"
+    heading={"Fresh off <em>the wire.</em>"}
+    deck="The newest writing and video briefs, in one place. Updated whenever the press box turns up something worth filing. (Most weeks, it does.)"
   />
 
   <!-- ============================================
-       SECTION 03 · THE TOY CATALOG — four action figures
+       SECTION 03 · THE CARD — trackside photographs
        ============================================ -->
-  <section class="catalog-section">
-    <div class="catalog-inner">
+  <section class="card-section">
+    <div class="card-inner">
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 03 · THE 2026 ACTION FIGURE LINE</span>
+          <span>SECTION 03 · THE CARD · TRACKSIDE PHOTOGRAPHS</span>
         </div>
-        <h2 class="section-title">Four figures. <em>One actor.</em></h2>
+        <h2 class="section-title">Four photos. <em>One long afternoon.</em></h2>
         <p class="section-deck">
-          The full 2026 Mattel reissue, presented exactly as it would appear on the back of the box, photographed from a slightly hostile angle in the office at home. Some assembly required. Most of the assembly is the fedora.
+          The photo desk filed four frames between the morning workouts and the winner's circle. We're running all four. (The fifth one had a thumb in it. The thumb belongs to a freelancer who will hear about it.)
         </p>
       </header>
 
-      <div class="catalog-grid">
-        {figures.map((item) => (
-          <article class="figure-card" style={`--rot:${item.rotate}deg; --aspect:${item.aspect};`}>
-            <div class="figure-photo">
-              <span class={`figure-tape figure-tape-${item.tape}`} aria-hidden="true"></span>
-              <img src={item.src} alt={item.title} loading="lazy" decoding="async" />
-              <div class="figure-sku-tag">{item.sku}</div>
+      <div class="card-grid">
+        {trackPhotos.map((item) => (
+          <article class="photo-card" style={`--rot:${item.rotate}deg; --aspect:${item.aspect};`}>
+            <div class="photo-frame">
+              <span class={`photo-tape photo-tape-${item.tape}`} aria-hidden="true"></span>
+              <img src={item.src} alt={item.caption} loading="lazy" decoding="async" />
+              <div class="photo-plate">{item.plate}</div>
             </div>
-            <div class="figure-meta">
-              <div class="figure-line">{item.line}</div>
-              <h3 class="figure-title">{item.title}</h3>
-              <p class="figure-pitch">{item.pitch}</p>
-              <div class="figure-badge">{item.badge}</div>
+            <div class="photo-meta">
+              <div class="photo-cap">{item.caption}</div>
+              <p class="photo-note">{item.note}</p>
             </div>
           </article>
         ))}
@@ -340,41 +331,41 @@ const credits = [
   </section>
 
   <!-- ============================================
-       SECTION 04 · THE NOTE — what is actually going on
+       SECTION 04 · THE NOTE — the essay column
        ============================================ -->
   <section class="note-section">
     <div class="note-grid">
       <figure class="note-image">
-        <img src="/images/motu/edward-skeletor.png" alt="Edward as Skeletor: a yellow skull face and sunglasses under a purple hood, with the blue fedora perched on top, holding a ram-skull staff." loading="lazy" decoding="async" />
+        <img src="/images/saratoga/edward-handicapper.png" alt="Edward in a brown tweed jacket and his blue fedora at Saratoga, reading a folded pink Daily Racing Form with a short pencil tucked into the fold and brass binoculars around his neck." loading="lazy" decoding="async" />
         <figcaption>
-          <span>FIG. T</span>
-          <span>VILLAIN · FEDORA ON · APPROVED</span>
+          <span>FILE</span>
+          <span>RAIL · TWEED · FORM IN HAND</span>
         </figcaption>
       </figure>
 
       <div class="note-text">
-        <div class="note-tag">THE BACK OF THE BOX</div>
-        <h3 class="note-h3">Both characters. <em>Same actor.</em> Same hat.</h3>
+        <div class="note-tag">THE COLUMN · INSIDE PAGE B-3</div>
+        <h3 class="note-h3">The form is honest. <em>The horse owes you nothing.</em></h3>
         <p class="note-body">
-          Masters of the Universe opens in theaters on Friday. The studios have decided, once again, that the 1980s are a load-bearing decade. (I am not complaining. I was ten in 1984, and the original Castle Grayskull still lives on the office shelf, where I refer to it, with no irony at all, as a reference architecture.)
+          I grew up around horses. Rodeos in the Pacific Northwest when I was small, a drum-horse ranch in North Texas in my thirties, and a quarterhorse named Thomas Jefferson who answered to Tommy and tolerated, with considerable grace, my insistence on calling him by his full name. (Tommy was a quarter horse with the temperament of a senator. The ranch was the kind of place where you could lose an afternoon and not feel bad about it.)
         </p>
         <p class="note-body">
-          The bit, this week, is the X-harness. He-Man wears a brown leather X across the chest, plus roughly twenty extra pounds of pectoral to fill it out. I have the harness now, though the hero image added the pectoral on its own. The fedora, for its part, fits over all of it.
+          A horse race is a closed system. The horse is the horse. The jockey is the jockey. The form lists what's actually happened. None of it is opinion. The morning line is the smartest reasonable person in the room saying, here is what I think, in numbers, and I am willing to be proven wrong by 7:04 PM Eastern.
         </p>
         <p class="note-body">
-          Skeletor, for the record, is the part I understand. He runs a small business with motivated employees and a hard-to-pronounce flagship product, and he spends most of each episode explaining a plan that should have worked. (The parallels are doing the work themselves.)
+          Most of the work I do at Caprus is the same kind of math. The cube is the cube. The hierarchy is the hierarchy. The actuals are honest, the forecast is the smartest reasonable person in the room saying here's what I think, and the close calendar gives everyone roughly until Friday to be proven wrong. (Replace "Friday" with whatever your CFO calls "Friday." It rhymes either way.)
         </p>
         <p class="note-body">
-          The fedora stays on through all of it. The fedora is the constant. The fedora is, in the original 1980s sense of the word, the power. I have the power. By the power of fedora.
+          The fedora stays on through the whole afternoon. The brim has a small water stain from the rail. The brim earned it.
         </p>
         <p class="note-body note-body-soft">
-          The 1980s shaped me into the kind of CEO who reads quarterly board reports with one hand and a 1984 He-Man figure in the other. Over time, that has turned out to be a competitive advantage.
+          The track teaches a posture: you do the work, you place the bet, you watch what happens. The same posture works in software, in conferences, and in the kind of CEO meetings where someone wants the forecast to be a number it isn't.
         </p>
         <div class="note-attrib">
           <span class="note-attrib-line"></span>
           <div>
             <span class="note-attrib-name">EDWARD ROSKE</span>
-            <span class="note-attrib-title">PRINCE OF THE CARIBBEAN AI SUMMIT</span>
+            <span class="note-attrib-title">COLUMNIST · DAILY RACING FORM · 2026</span>
           </div>
         </div>
       </div>
@@ -382,42 +373,42 @@ const credits = [
   </section>
 
   <!-- ============================================
-       SECTION 05 · ACTIVE QUESTS — the project board
+       SECTION 05 · THE ENTRIES — today's entries (project board)
        ============================================ -->
-  <section id="current-work" class="quests-section">
-    <div class="quests-inner">
+  <section id="current-work" class="entries-section">
+    <div class="entries-inner">
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 04 · THE ROYAL COURT'S ACTIVE QUESTS</span>
+          <span>SECTION 04 · TODAY'S ENTRIES · POST POSITIONS 1 THRU 6</span>
         </div>
-        <h2 class="section-title">Six quests, <em>five still open.</em></h2>
+        <h2 class="section-title">Six entries. <em>Five at the gate.</em></h2>
         <p class="section-deck">
-          The current docket of the Royal Court of Eternia, which is, in this metaphor, my calendar. Five are in motion. One has been cleared. None of them pay in credits, which remains a separate complaint and is, for now, not for this week.
+          The current entries column, which in this metaphor is my calendar. Five are at the gate. One has already paid the win and is back in the stall. None of them pay in board-room bonus dollars, which remains a separate complaint and is, for now, not for this Saturday.
         </p>
       </header>
 
-      <div class="quests-grid">
-        {quests.map(entry => (
-          <article class="quest-card">
-            <div class="quest-card-head">
-              <span class="quest-code">{entry.code}</span>
-              <span class="quest-rank">{entry.rank}</span>
+      <div class="entries-grid">
+        {entries.map(entry => (
+          <article class="entry-card">
+            <div class="entry-card-head">
+              <span class="entry-code">{entry.code}</span>
+              <span class="entry-odds">{entry.odds}</span>
             </div>
-            <h3 class="quest-title">{entry.title}</h3>
-            <p class="quest-body">{entry.body}</p>
-            <div class="quest-meta">
-              <span class="quest-badge">{entry.badge}</span>
-              <span class={`quest-status quest-status-${entry.status.toLowerCase().replace(/[^a-z]/g, '-')}`}>{entry.status}</span>
+            <h3 class="entry-title">{entry.title}</h3>
+            <p class="entry-body">{entry.body}</p>
+            <div class="entry-meta">
+              <span class="entry-badge">{entry.badge}</span>
+              <span class={`entry-status entry-status-${entry.status.toLowerCase().replace(/[^a-z]/g, '-')}`}>{entry.status}</span>
             </div>
-            <div class="quest-card-foot">
+            <div class="entry-card-foot">
               {entry.href ? (
-                <a href={entry.href} target={entry.external ? '_blank' : undefined} rel={entry.external ? 'noopener' : undefined} class="quest-cta">
+                <a href={entry.href} target={entry.external ? '_blank' : undefined} rel={entry.external ? 'noopener' : undefined} class="entry-cta">
                   {entry.cta}
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
                 </a>
               ) : (
-                <span class="quest-cta quest-cta-disabled">{entry.cta}</span>
+                <span class="entry-cta entry-cta-disabled">{entry.cta}</span>
               )}
             </div>
           </article>
@@ -427,26 +418,26 @@ const credits = [
   </section>
 
   <!-- ============================================
-       SECTION 06 · NEW WAVE — this week's questionnaire items
+       SECTION 06 · LATE ENTRIES — questionnaire items
        ============================================ -->
-  <section class="wave-section">
-    <div class="wave-inner">
-      <header class="section-header wave-header">
-        <div class="section-tag wave-tag">
+  <section class="late-section">
+    <div class="late-inner">
+      <header class="section-header late-header">
+        <div class="section-tag late-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 05 · NEW FOR 2026 · WAVE 14</span>
+          <span>SECTION 05 · LATE ENTRIES · FRESH ON THE FORM</span>
         </div>
-        <h2 class="section-title">Two new figures, <em>shipping now.</em></h2>
+        <h2 class="section-title">Two new entries, <em>shipping now.</em></h2>
       </header>
 
-      <div class="wave-grid">
-        {newReleases.map(item => (
-          <article class="wave-card">
-            <div class="wave-card-tag">{item.tag}</div>
-            <h3 class="wave-card-title">{item.title}</h3>
-            <div class="wave-card-line">{item.line}</div>
-            <p class="wave-card-body">{item.body}</p>
-            <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener' : undefined} class="wave-cta">
+      <div class="late-grid">
+        {lateEntries.map(item => (
+          <article class="late-card">
+            <div class="late-card-tag">{item.tag}</div>
+            <h3 class="late-card-title">{item.title}</h3>
+            <div class="late-card-line">{item.line}</div>
+            <p class="late-card-body">{item.body}</p>
+            <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener' : undefined} class="late-cta">
               {item.cta}
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
             </a>
@@ -457,18 +448,18 @@ const credits = [
   </section>
 
   <!-- ============================================
-       SECTION 07 · CLOSING CTA — hire the hero (or villain)
+       SECTION 07 · CLOSING CTA — take a position
        ============================================ -->
   <section class="closing-section">
     <div class="closing-inner">
       <div class="closing-eyebrow">
         <span class="closing-rule"></span>
-        <span>THE THRONE ROOM IS OPEN · 13 MINUTES</span>
+        <span>THE BOX SEATS ARE OPEN · 13 MINUTES</span>
         <span class="closing-rule"></span>
       </div>
-      <h2 class="closing-title">Hire the hero for thirteen minutes.<br/><em class="closing-em">Or the villain. Same actor.</em></h2>
+      <h2 class="closing-title">Reserve a box for thirteen minutes.<br/><em class="closing-em">The pencil is provided.</em></h2>
       <p class="closing-deck">
-        The thirteen-minute conversation is how most useful things start. Bring questions about AI, finance, MCP servers, escape rooms, D&D, Eternian politics, or what it actually feels like to wear the fedora in both costumes. Answers are included. Opinions arrive whether you ask for them or not. I have the power.
+        The thirteen-minute conversation is how most useful things start. Bring questions about AI, finance, MCP servers, escape rooms, D&D, the morning line, or what it actually feels like to call a race with a fedora on. Answers are included. Opinions arrive whether you ask for them or not. Post time is now.
       </p>
       <div class="closing-cta-row">
         <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener" class="btn-primary btn-primary-big">
@@ -476,28 +467,28 @@ const credits = [
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
         </a>
         <a href="/contact" class="btn-secondary btn-secondary-big">
-          <span>Send a transmission</span>
+          <span>Send a wire</span>
         </a>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       SECTION 08 · BACK OF THE BOX — credits
+       SECTION 08 · THE MASTHEAD — colophon
        ============================================ -->
-  <section class="credits-section">
-    <div class="credits-inner">
-      <div class="credits-tag">THE BACK OF THE BOX · 1984 / 2026 REISSUE</div>
-      <div class="credits-roll">
-        {credits.map(entry => (
-          <div class="credits-block">
-            <span class="credits-role">{entry.role}</span>
-            <span class="credits-name">{entry.name}</span>
+  <section class="colophon-section">
+    <div class="colophon-inner">
+      <div class="colophon-tag">THE MASTHEAD · PAGE B-12 · 2026</div>
+      <div class="colophon-roll">
+        {colophon.map(entry => (
+          <div class="colophon-block">
+            <span class="colophon-role">{entry.role}</span>
+            <span class="colophon-name">{entry.name}</span>
           </div>
         ))}
       </div>
-      <div class="credits-footnote">
-        Not affiliated with Mattel, Filmation, or the Eternian Crown. Castle Grayskull, the Power Sword, the Havoc Staff, Battle Cat, and Orko are trademarks of their respective owners. The fedora is mine. Always was.
+      <div class="colophon-footnote">
+        Not affiliated with the New York Racing Association, Churchill Downs, or the actual Daily Racing Form. Belmont Stakes, Saratoga Race Course, and the loving cup are trademarks of their respective owners. The fedora is mine. Always was.
       </div>
     </div>
   </section>
@@ -506,68 +497,66 @@ const credits = [
 
 <style>
   /* ============================================================
-     BY THE POWER OF FEDORA — Masters of the Universe redesign
-     Palette: royal Eternian purple / Castle Grayskull jade /
-              power-sword gold / hot magenta / cream parchment
-     Type: Audiowide (display), Bungee (badges),
-           DM Serif Display italic (emphasis), Space Grotesk (body),
-           Major Mono Display (broadcast codes)
+     THE ROSKE STAKES — Belmont at Saratoga redesign
+     Palette: turf green / claiming-tag oxblood / brass-trophy gold /
+              grandstand shadow / newsprint cream
+     Type: Playfair Display (mastheads), Bebas Neue (race numbers),
+           Source Serif 4 (body), JetBrains Mono (odds & codes)
      ============================================================ */
 
   :global([data-theme="dark"]) {
-    --motu-bg: #160b27;
-    --motu-bg-deep: #0e0518;
-    --motu-surface: #231447;
-    --motu-surface-2: #2c1a5a;
-    --motu-fg: #fff3d0;
-    --motu-muted: #bba0e0;
-    --motu-line: #3d2470;
-    --motu-line-soft: #2a1750;
-    --motu-purple: #5b2d8c;
-    --motu-magenta: #d6276e;
-    --motu-magenta-deep: #a01650;
-    --motu-jade: #0d8b6e;
-    --motu-jade-bright: #2cc999;
-    --motu-gold: #f5b300;
-    --motu-gold-bright: #ffc933;
-    --motu-cream: #fff3d0;
-    --motu-stamp-bg: #fff3d0;
-    --motu-stamp-fg: #160b27;
+    --drf-bg: #161616;
+    --drf-bg-deep: #0e0e0e;
+    --drf-surface: #1f1f1f;
+    --drf-surface-2: #262626;
+    --drf-fg: #f2e7cf;
+    --drf-muted: #a7a08c;
+    --drf-line: #3a3a36;
+    --drf-line-soft: #2a2a26;
+    --drf-green: #1f4a37;
+    --drf-green-deep: #122c20;
+    --drf-green-bright: #2e6e52;
+    --drf-oxblood: #8b2434;
+    --drf-oxblood-deep: #5e1622;
+    --drf-brass: #c9962b;
+    --drf-brass-bright: #e0ab3d;
+    --drf-cream: #f2e7cf;
+    --drf-paper: #1a1a18;
   }
   :global([data-theme="light"]) {
-    --motu-bg: #f5e9c8;
-    --motu-bg-deep: #e8d398;
-    --motu-surface: #ffe9a8;
-    --motu-surface-2: #fff1bc;
-    --motu-fg: #1c0a30;
-    --motu-muted: #5a3b7c;
-    --motu-line: #c8a64a;
-    --motu-line-soft: #d8bc6c;
-    --motu-purple: #5b2d8c;
-    --motu-magenta: #b81e5a;
-    --motu-magenta-deep: #8a1340;
-    --motu-jade: #0d8b6e;
-    --motu-jade-bright: #18a07e;
-    --motu-gold: #b8800a;
-    --motu-gold-bright: #d49a20;
-    --motu-cream: #fffbe5;
-    --motu-stamp-bg: #1c0a30;
-    --motu-stamp-fg: #fff3d0;
+    --drf-bg: #f2e7cf;
+    --drf-bg-deep: #e8d9b2;
+    --drf-surface: #fbf3df;
+    --drf-surface-2: #f5ead0;
+    --drf-fg: #1a1a18;
+    --drf-muted: #5a4f3a;
+    --drf-line: #c9962b;
+    --drf-line-soft: #d8b97a;
+    --drf-green: #1f4a37;
+    --drf-green-deep: #122c20;
+    --drf-green-bright: #2e6e52;
+    --drf-oxblood: #8b2434;
+    --drf-oxblood-deep: #5e1622;
+    --drf-brass: #b8800a;
+    --drf-brass-bright: #d49a20;
+    --drf-cream: #fffbe5;
+    --drf-paper: #f2e7cf;
   }
 
   /* ------------------------------------------------------------
-     BROADCAST BAR
+     MASTHEAD BAR
      ------------------------------------------------------------ */
-  .bcast-bar {
+  .drf-bar {
     width: 100%;
-    background: var(--motu-bg-deep);
-    color: var(--motu-gold);
-    border-bottom: 2px solid var(--motu-magenta);
-    font-family: 'Major Mono Display', monospace;
+    background: var(--drf-bg-deep);
+    color: var(--drf-brass);
+    border-bottom: 2px solid var(--drf-oxblood);
+    font-family: 'JetBrains Mono', monospace;
     letter-spacing: 0.12em;
     text-transform: uppercase;
   }
-  .bcast-bar-inner {
+  :global([data-theme="light"]) .drf-bar { background: #1a1a18; color: var(--drf-brass-bright); }
+  .drf-bar-inner {
     max-width: 1500px;
     margin: 0 auto;
     padding: 0.55rem 2rem;
@@ -577,21 +566,20 @@ const credits = [
     gap: 1.5rem;
     font-size: 0.72rem;
   }
-  .bcast-bullet {
+  .drf-bullet {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: var(--motu-magenta);
-    box-shadow: 0 0 10px var(--motu-magenta), 0 0 18px rgba(214,39,110,0.4);
+    background: var(--drf-oxblood);
+    box-shadow: 0 0 10px var(--drf-oxblood), 0 0 18px rgba(139,36,52,0.4);
     flex-shrink: 0;
   }
-  .bcast-meta { white-space: nowrap; }
-  .bcast-meta-center { flex: 1; text-align: center; letter-spacing: 0.18em; color: var(--motu-cream); opacity: 0.85; }
-  .bcast-meta-end { text-align: right; color: var(--motu-jade-bright); }
-  :global([data-theme="light"]) .bcast-meta-end { color: var(--motu-jade); }
+  .drf-meta { white-space: nowrap; }
+  .drf-meta-center { flex: 1; text-align: center; letter-spacing: 0.18em; color: var(--drf-cream); opacity: 0.9; }
+  .drf-meta-end { text-align: right; color: var(--drf-brass-bright); }
   @media (max-width: 760px) {
-    .bcast-bar-inner { padding: 0.55rem 1rem; gap: 0.6rem; font-size: 0.6rem; }
-    .bcast-meta-end, .bcast-bullet { display: none; }
+    .drf-bar-inner { padding: 0.55rem 1rem; gap: 0.6rem; font-size: 0.6rem; }
+    .drf-meta-end, .drf-bullet { display: none; }
   }
 
   /* ------------------------------------------------------------
@@ -599,59 +587,39 @@ const credits = [
      ------------------------------------------------------------ */
   .hero-section {
     position: relative;
-    background: var(--motu-bg);
-    color: var(--motu-fg);
+    background: var(--drf-bg);
+    color: var(--drf-fg);
     padding: 5.5rem 2rem 6rem;
     overflow: hidden;
   }
   :global([data-theme="dark"]) .hero-section {
     background:
-      radial-gradient(circle at 12% 18%, rgba(214,39,110,0.22) 0%, transparent 45%),
-      radial-gradient(circle at 88% 80%, rgba(245,179,0,0.18) 0%, transparent 45%),
-      radial-gradient(circle at 50% 50%, rgba(13,139,110,0.10) 0%, transparent 60%),
-      linear-gradient(160deg, #0e0518 0%, #2a1054 55%, #160b27 100%);
+      radial-gradient(circle at 14% 22%, rgba(31,74,55,0.32) 0%, transparent 50%),
+      radial-gradient(circle at 86% 78%, rgba(201,150,43,0.16) 0%, transparent 48%),
+      radial-gradient(circle at 50% 50%, rgba(139,36,52,0.12) 0%, transparent 60%),
+      linear-gradient(160deg, #0e0e0e 0%, #1a1a18 55%, #161616 100%);
   }
   :global([data-theme="light"]) .hero-section {
     background:
-      radial-gradient(circle at 12% 18%, rgba(184,30,90,0.18) 0%, transparent 45%),
-      radial-gradient(circle at 88% 80%, rgba(184,128,10,0.20) 0%, transparent 45%),
-      radial-gradient(circle at 50% 50%, rgba(13,139,110,0.08) 0%, transparent 60%),
-      var(--motu-bg);
+      radial-gradient(circle at 14% 22%, rgba(31,74,55,0.10) 0%, transparent 50%),
+      radial-gradient(circle at 86% 78%, rgba(201,150,43,0.18) 0%, transparent 48%),
+      radial-gradient(circle at 50% 50%, rgba(139,36,52,0.06) 0%, transparent 60%),
+      var(--drf-bg);
   }
 
-  /* Burst rays — 80s Saturday-morning radial */
-  .hero-rays {
-    position: absolute;
-    top: 50%;
-    right: -20%;
-    width: 65%;
-    aspect-ratio: 1;
-    transform: translateY(-50%);
-    pointer-events: none;
-    opacity: 0.20;
-    background:
-      repeating-conic-gradient(
-        from 0deg,
-        var(--motu-magenta) 0deg 8deg,
-        transparent 8deg 18deg
-      );
-    border-radius: 50%;
-    mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
-    -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 70%);
-  }
-  :global([data-theme="light"]) .hero-rays { opacity: 0.16; }
-
-  /* Halftone dots overlay */
-  .hero-halftone {
+  /* Subtle newsprint paper texture */
+  .hero-paper {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.18;
-    background-image: radial-gradient(circle, var(--motu-gold) 1px, transparent 1.5px);
-    background-size: 14px 14px;
+    opacity: 0.14;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 3px),
+      radial-gradient(circle, var(--drf-brass) 0.6px, transparent 1px);
+    background-size: 100% 3px, 6px 6px;
     mix-blend-mode: overlay;
   }
-  :global([data-theme="light"]) .hero-halftone { opacity: 0.14; }
+  :global([data-theme="light"]) .hero-paper { opacity: 0.10; }
 
   .hero-grid {
     position: relative;
@@ -673,62 +641,61 @@ const credits = [
     display: flex;
     align-items: center;
     gap: 0.7rem;
-    font-family: 'Bungee', sans-serif;
-    font-size: 0.78rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--motu-gold);
+    color: var(--drf-brass);
     margin-bottom: 1.5rem;
   }
+  :global([data-theme="light"]) .hero-eyebrow { color: var(--drf-oxblood); }
   .hero-eyebrow-bullet {
     width: 12px;
     height: 12px;
-    background: var(--motu-magenta);
+    background: var(--drf-oxblood);
     flex-shrink: 0;
     transform: rotate(45deg);
-    box-shadow: 0 0 10px rgba(214,39,110,0.5);
+    box-shadow: 0 0 10px rgba(139,36,52,0.5);
   }
 
-  .hero-title { margin: 0 0 2rem; line-height: 0.9; }
+  .hero-title { margin: 0 0 2rem; line-height: 0.92; }
   .hero-title-small {
     display: block;
-    font-family: 'DM Serif Display', serif;
+    font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 500;
     font-size: clamp(1.5rem, 3vw, 2.1rem);
-    color: var(--motu-jade-bright);
+    color: var(--drf-green-bright);
     letter-spacing: 0.005em;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
   }
-  :global([data-theme="light"]) .hero-title-small { color: var(--motu-jade); }
+  :global([data-theme="light"]) .hero-title-small { color: var(--drf-green); }
   .hero-title-big {
     display: block;
-    font-family: 'Audiowide', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-style: normal;
     font-size: clamp(3rem, 7.5vw, 5.8rem);
-    color: var(--motu-fg);
-    letter-spacing: 0.01em;
+    color: var(--drf-fg);
+    letter-spacing: -0.01em;
     line-height: 0.98;
-    text-shadow:
-      0.025em 0.04em 0 var(--motu-magenta),
-      0.05em 0.08em 0 var(--motu-purple);
   }
-  :global([data-theme="light"]) .hero-title-big {
-    text-shadow:
-      0.025em 0.04em 0 var(--motu-magenta),
-      0.05em 0.08em 0 var(--motu-gold);
+  .hero-title-accent {
+    font-style: italic;
+    color: var(--drf-brass);
   }
-  .hero-title-accent { color: var(--motu-gold); }
+  :global([data-theme="light"]) .hero-title-accent { color: var(--drf-oxblood); }
 
   .hero-body {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.06rem;
-    line-height: 1.7;
-    color: var(--motu-muted);
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: var(--drf-muted);
     margin: 0 0 1.9rem;
     max-width: 40em;
     font-weight: 400;
   }
-  :global([data-theme="light"]) .hero-body { color: var(--motu-fg); opacity: 0.78; }
+  :global([data-theme="light"]) .hero-body { color: var(--drf-fg); opacity: 0.82; }
 
   /* Buttons */
   .btn-primary, .btn-secondary {
@@ -736,9 +703,9 @@ const credits = [
     align-items: center;
     gap: 0.55rem;
     padding: 0.95rem 1.7rem;
-    font-family: 'Bungee', sans-serif;
-    font-size: 0.84rem;
-    letter-spacing: 0.08em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     text-decoration: none;
     border: 3px solid currentColor;
@@ -748,38 +715,38 @@ const credits = [
     position: relative;
   }
   .btn-primary {
-    background: var(--motu-magenta);
-    color: var(--motu-cream);
-    border-color: var(--motu-magenta);
-    box-shadow: 5px 5px 0 var(--motu-gold);
+    background: var(--drf-oxblood);
+    color: var(--drf-cream);
+    border-color: var(--drf-oxblood);
+    box-shadow: 5px 5px 0 var(--drf-brass);
   }
   .btn-primary:hover {
-    background: var(--motu-magenta-deep);
-    border-color: var(--motu-magenta-deep);
+    background: var(--drf-oxblood-deep);
+    border-color: var(--drf-oxblood-deep);
     transform: translate(-2px, -2px);
-    box-shadow: 7px 7px 0 var(--motu-gold);
+    box-shadow: 7px 7px 0 var(--drf-brass);
   }
   .btn-secondary {
     background: transparent;
-    color: var(--motu-fg);
-    border-color: var(--motu-fg);
-    box-shadow: 5px 5px 0 var(--motu-jade);
+    color: var(--drf-fg);
+    border-color: var(--drf-fg);
+    box-shadow: 5px 5px 0 var(--drf-green-bright);
   }
   .btn-secondary:hover {
-    background: var(--motu-fg);
-    color: var(--motu-bg);
+    background: var(--drf-fg);
+    color: var(--drf-bg);
     transform: translate(-2px, -2px);
-    box-shadow: 7px 7px 0 var(--motu-jade);
+    box-shadow: 7px 7px 0 var(--drf-green-bright);
   }
-  .btn-primary-big, .btn-secondary-big { padding: 1.15rem 2.3rem; font-size: 0.92rem; }
+  .btn-primary-big, .btn-secondary-big { padding: 1.15rem 2.3rem; font-size: 1.08rem; }
   .hero-cta-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.8rem; }
 
-  /* Tally — Eternia stat block */
+  /* Lifetime record (tally) */
   .hero-tally {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1.2rem;
-    border-top: 3px solid var(--motu-magenta);
+    border-top: 3px solid var(--drf-oxblood);
     padding-top: 1.7rem;
     position: relative;
   }
@@ -790,31 +757,31 @@ const credits = [
     left: 0;
     width: 30%;
     height: 3px;
-    background: var(--motu-gold);
+    background: var(--drf-brass);
   }
   .tally-value {
-    font-family: 'Audiowide', sans-serif;
-    font-size: 2.4rem;
-    color: var(--motu-gold);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.8rem;
+    color: var(--drf-brass);
     line-height: 1;
-    text-shadow: 0.025em 0.04em 0 var(--motu-magenta);
+    letter-spacing: 0.02em;
   }
-  :global([data-theme="light"]) .tally-value { color: var(--motu-magenta); text-shadow: 0.025em 0.04em 0 var(--motu-gold); }
+  :global([data-theme="light"]) .tally-value { color: var(--drf-oxblood); }
   .tally-label {
-    font-family: 'Bungee', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.62rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--motu-muted);
-    margin-top: 0.5rem;
+    color: var(--drf-muted);
+    margin-top: 0.4rem;
   }
-  :global([data-theme="light"]) .tally-label { color: var(--motu-fg); opacity: 0.7; }
+  :global([data-theme="light"]) .tally-label { color: var(--drf-fg); opacity: 0.7; }
   @media (max-width: 620px) {
     .hero-tally { grid-template-columns: repeat(2, 1fr); gap: 1.4rem 1rem; }
   }
 
   /* ------------------------------------------------------------
-     HERO TOY BOX (the framed hero image)
+     PAGE ONE PHOTO BLOCK
      ------------------------------------------------------------ */
   .hero-image-wrap {
     position: relative;
@@ -823,240 +790,238 @@ const credits = [
     align-items: flex-start;
     z-index: 2;
   }
-  .toybox {
+  .page-one {
     position: relative;
     margin: 0;
     width: 100%;
     max-width: 620px;
-    background: var(--motu-surface);
-    border: 4px solid var(--motu-gold);
+    background: var(--drf-surface);
+    border: 4px solid var(--drf-brass);
     box-shadow:
       0 22px 60px rgba(0,0,0,0.55),
       0 6px 14px rgba(0,0,0,0.4),
-      inset 0 0 0 4px var(--motu-magenta);
+      inset 0 0 0 4px var(--drf-oxblood);
     display: flex;
     flex-direction: column;
   }
-  :global([data-theme="light"]) .toybox {
+  :global([data-theme="light"]) .page-one {
     box-shadow:
-      0 18px 42px rgba(60,30,90,0.28),
-      0 6px 12px rgba(60,30,90,0.2),
-      inset 0 0 0 4px var(--motu-magenta);
+      0 18px 42px rgba(60,40,20,0.22),
+      0 6px 12px rgba(60,40,20,0.16),
+      inset 0 0 0 4px var(--drf-oxblood);
   }
-  .toybox-top {
+  .page-one-top {
     padding: 0.9rem 1rem;
-    background: linear-gradient(90deg, var(--motu-magenta) 0%, var(--motu-purple) 100%);
-    color: var(--motu-cream);
+    background: linear-gradient(90deg, var(--drf-green-deep) 0%, var(--drf-green) 100%);
+    color: var(--drf-cream);
     text-align: center;
-    border-bottom: 3px solid var(--motu-gold);
+    border-bottom: 3px solid var(--drf-brass);
   }
-  .toybox-mattel {
+  .page-one-flag {
     display: block;
-    font-family: 'Audiowide', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
     font-size: 1.05rem;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.06em;
     line-height: 1;
     margin-bottom: 0.4rem;
   }
-  .toybox-mattel em {
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--motu-gold);
-  }
-  .toybox-line {
+  .page-one-line {
     display: block;
-    font-family: 'Major Mono Display', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.68rem;
     letter-spacing: 0.14em;
-    opacity: 0.85;
+    opacity: 0.9;
   }
-  .toybox-window {
+  .page-one-window {
     position: relative;
-    background: var(--motu-bg-deep);
+    background: var(--drf-bg-deep);
   }
-  .toybox-image {
+  .page-one-image {
     display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 16/9;
     object-fit: cover;
-    filter: contrast(1.05) saturate(1.08);
+    filter: contrast(1.04) saturate(1.05);
   }
-  .toybox-ages {
+  .page-one-post {
     position: absolute;
     top: 12px;
     right: 12px;
-    background: var(--motu-gold);
-    color: var(--motu-bg);
-    padding: 0.35rem 0.55rem 0.4rem;
+    background: var(--drf-brass);
+    color: var(--drf-bg);
+    padding: 0.4rem 0.6rem 0.45rem;
     text-align: center;
-    border: 2px solid var(--motu-bg);
-    font-family: 'Bungee', sans-serif;
+    border: 2px solid var(--drf-bg);
+    font-family: 'Bebas Neue', sans-serif;
     line-height: 1;
-    transform: rotate(8deg);
-    box-shadow: 0 4px 0 var(--motu-magenta);
+    transform: rotate(6deg);
+    box-shadow: 0 4px 0 var(--drf-oxblood);
   }
-  .toybox-ages span:first-child { font-size: 0.5rem; letter-spacing: 0.1em; display: block; }
-  .toybox-ages-num { font-size: 1.2rem; display: block; margin-top: 0.15rem; }
-  .toybox-bottom {
+  .page-one-post span:first-child { font-size: 0.56rem; letter-spacing: 0.14em; display: block; }
+  .page-one-post-num { font-size: 1.4rem; display: block; margin-top: 0.15rem; letter-spacing: 0.02em; }
+  .page-one-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.7rem 1rem;
-    background: var(--motu-bg-deep);
-    color: var(--motu-jade-bright);
-    font-family: 'Major Mono Display', monospace;
+    background: var(--drf-bg-deep);
+    color: var(--drf-brass-bright);
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.68rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    border-top: 3px solid var(--motu-gold);
+    border-top: 3px solid var(--drf-brass);
     gap: 1rem;
     flex-wrap: wrap;
   }
-  :global([data-theme="light"]) .toybox-bottom { color: var(--motu-gold-bright); background: #2a1054; }
-  .toybox-incl { text-align: right; flex: 1; min-width: 0; }
+  :global([data-theme="light"]) .page-one-bottom { color: var(--drf-brass); background: #1a1a18; }
+  .page-one-cred { text-align: right; flex: 1; min-width: 0; }
 
-  /* Sword pommel stamp */
-  .pommel-stamp {
+  /* Finish-line round stamp */
+  .finish-stamp {
     position: absolute;
     top: -38px;
     right: -28px;
     width: 138px;
     height: 138px;
     border-radius: 50%;
-    border: 3px solid var(--motu-bg);
-    background: var(--motu-gold);
-    color: var(--motu-bg);
+    border: 3px solid var(--drf-bg);
+    background: var(--drf-brass);
+    color: var(--drf-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: rotate(11deg);
+    transform: rotate(-9deg);
     z-index: 3;
     box-shadow: 0 10px 28px rgba(0,0,0,0.5);
   }
-  .pommel-ring {
+  .finish-ring {
     position: absolute;
     inset: 8px;
     border-radius: 50%;
-    border: 2px solid var(--motu-bg);
+    border: 2px solid var(--drf-bg);
     display: flex;
     align-items: flex-start;
     justify-content: center;
     overflow: hidden;
-    font-family: 'Bungee', sans-serif;
-    font-size: 0.52rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.6rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     padding-top: 8px;
   }
-  .pommel-center {
-    font-family: 'Audiowide', sans-serif;
-    font-size: 1.05rem;
+  .finish-center {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 1.4rem;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     z-index: 1;
   }
   @media (max-width: 720px) {
-    .pommel-stamp { right: -8px; top: -22px; width: 100px; height: 100px; }
-    .pommel-ring { font-size: 0.42rem; padding-top: 6px; }
-    .pommel-center { font-size: 0.82rem; }
+    .finish-stamp { right: -8px; top: -22px; width: 100px; height: 100px; }
+    .finish-ring { font-size: 0.5rem; padding-top: 6px; }
+    .finish-center { font-size: 1rem; }
   }
 
   /* ------------------------------------------------------------
-     MARQUEE
+     TICKER
      ------------------------------------------------------------ */
-  .marquee {
-    background: var(--motu-magenta);
-    color: var(--motu-cream);
-    border-top: 3px solid var(--motu-gold);
-    border-bottom: 3px solid var(--motu-gold);
+  .ticker {
+    background: var(--drf-oxblood);
+    color: var(--drf-cream);
+    border-top: 3px solid var(--drf-brass);
+    border-bottom: 3px solid var(--drf-brass);
     overflow: hidden;
     padding: 0.7rem 0;
-    font-family: 'Audiowide', sans-serif;
-    letter-spacing: 0.06em;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-size: 1rem;
+    font-size: 1.15rem;
   }
-  .marquee-track {
+  .ticker-track {
     display: inline-flex;
     gap: 2.6rem;
     white-space: nowrap;
-    animation: marqueeScroll 60s linear infinite;
+    animation: tickerScroll 60s linear infinite;
   }
-  .marquee-item::after {
+  .ticker-item::after {
     content: '◆';
     margin-left: 2.6rem;
-    color: var(--motu-gold);
+    color: var(--drf-brass);
   }
-  @keyframes marqueeScroll {
+  @keyframes tickerScroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
 
   /* ------------------------------------------------------------
-     OPENING NARRATION
+     LEAD COLUMN
      ------------------------------------------------------------ */
-  .narration-section {
-    background: var(--motu-bg-deep);
-    color: var(--motu-fg);
+  .lead-section {
+    background: var(--drf-bg-deep);
+    color: var(--drf-fg);
     padding: 5rem 2rem;
     position: relative;
-    border-top: 3px solid var(--motu-gold);
-    border-bottom: 3px solid var(--motu-gold);
+    border-top: 3px solid var(--drf-brass);
+    border-bottom: 3px solid var(--drf-brass);
   }
-  :global([data-theme="light"]) .narration-section { background: #efd692; }
-  .narration-inner {
+  :global([data-theme="light"]) .lead-section { background: #e6d49f; color: var(--drf-fg); }
+  .lead-inner {
     max-width: 980px;
     margin: 0 auto;
     text-align: center;
   }
-  .narration-tag {
-    font-family: 'Bungee', sans-serif;
+  .lead-tag {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--motu-gold);
+    color: var(--drf-brass);
     margin-bottom: 1.8rem;
   }
-  .narration {
-    font-family: 'DM Serif Display', serif;
+  :global([data-theme="light"]) .lead-tag { color: var(--drf-oxblood); }
+  .lead {
+    font-family: 'Playfair Display', serif;
     font-style: italic;
-    font-weight: 400;
+    font-weight: 500;
     font-size: clamp(1.5rem, 3.2vw, 2.4rem);
-    line-height: 1.35;
+    line-height: 1.38;
     margin: 0 0 1.8rem;
-    color: var(--motu-fg);
+    color: var(--drf-fg);
   }
-  .narration-chant {
+  .lead-chant {
     display: block;
     margin: 0.7rem auto 0;
-    font-family: 'Audiowide', sans-serif;
+    font-family: 'Bebas Neue', sans-serif;
     font-style: normal;
-    font-size: 0.85em;
-    letter-spacing: 0.05em;
+    font-size: 0.92em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--motu-gold);
-    text-shadow: 0.025em 0.04em 0 var(--motu-magenta);
+    color: var(--drf-brass);
   }
-  :global([data-theme="light"]) .narration-chant { color: var(--motu-magenta); text-shadow: 0.025em 0.04em 0 var(--motu-gold); }
-  .narration-attrib-name {
+  :global([data-theme="light"]) .lead-chant { color: var(--drf-oxblood); }
+  .lead-attrib-name {
     display: block;
-    font-family: 'Bungee', sans-serif;
-    font-size: 0.95rem;
-    letter-spacing: 0.06em;
-    color: var(--motu-magenta);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 0.08em;
+    color: var(--drf-oxblood);
   }
-  .narration-attrib-role {
+  :global([data-theme="light"]) .lead-attrib-name { color: var(--drf-oxblood); }
+  .lead-attrib-role {
     display: block;
-    font-family: 'Major Mono Display', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--motu-muted);
+    color: var(--drf-muted);
     margin-top: 0.5rem;
   }
-  :global([data-theme="light"]) .narration-attrib-role { color: var(--motu-fg); opacity: 0.6; }
+  :global([data-theme="light"]) .lead-attrib-role { color: var(--drf-fg); opacity: 0.65; }
 
   /* ------------------------------------------------------------
      SECTION HEADERS
@@ -1066,187 +1031,164 @@ const credits = [
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    font-family: 'Bungee', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.76rem;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--motu-gold);
+    color: var(--drf-brass);
     margin-bottom: 1.2rem;
   }
+  :global([data-theme="light"]) .section-tag { color: var(--drf-oxblood); }
   .section-tag-dot {
     width: 12px;
     height: 12px;
-    background: var(--motu-magenta);
+    background: var(--drf-oxblood);
     transform: rotate(45deg);
     flex-shrink: 0;
   }
   .section-title {
-    font-family: 'Audiowide', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
     font-size: clamp(2.1rem, 4.8vw, 3.7rem);
-    line-height: 1.08;
+    line-height: 1.1;
     margin: 0 0 1.2rem;
-    color: var(--motu-fg);
-    letter-spacing: 0.005em;
-    text-shadow: 0.02em 0.03em 0 var(--motu-magenta);
+    color: var(--drf-fg);
+    letter-spacing: -0.005em;
   }
-  :global([data-theme="light"]) .section-title { text-shadow: 0.02em 0.03em 0 var(--motu-gold); }
   .section-title em {
-    font-family: 'DM Serif Display', serif;
     font-style: italic;
-    font-weight: 400;
-    color: var(--motu-gold);
-    text-shadow: none;
+    font-weight: 700;
+    color: var(--drf-brass);
   }
-  :global([data-theme="light"]) .section-title em { color: var(--motu-magenta); }
+  :global([data-theme="light"]) .section-title em { color: var(--drf-oxblood); }
   .section-deck {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.08rem;
-    line-height: 1.7;
-    color: var(--motu-muted);
-    max-width: 40em;
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.72;
+    color: var(--drf-muted);
+    max-width: 42em;
     margin: 0 auto;
   }
-  :global([data-theme="light"]) .section-deck { color: var(--motu-fg); opacity: 0.78; }
+  :global([data-theme="light"]) .section-deck { color: var(--drf-fg); opacity: 0.78; }
 
   /* ------------------------------------------------------------
-     SECTION 03 · TOY CATALOG
+     SECTION 03 · THE CARD (photo grid)
      ------------------------------------------------------------ */
-  .catalog-section {
-    background: var(--motu-bg);
-    color: var(--motu-fg);
+  .card-section {
+    background: var(--drf-bg);
+    color: var(--drf-fg);
     padding: 6.5rem 2rem 7rem;
-    border-bottom: 3px solid var(--motu-gold);
+    border-bottom: 3px solid var(--drf-brass);
     position: relative;
   }
-  .catalog-section::before {
+  .card-section::before {
     content: '';
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.10;
-    background-image: radial-gradient(circle, var(--motu-jade-bright) 1px, transparent 1.5px);
+    opacity: 0.08;
+    background-image: radial-gradient(circle, var(--drf-green-bright) 1px, transparent 1.5px);
     background-size: 22px 22px;
   }
-  :global([data-theme="light"]) .catalog-section::before { background-image: radial-gradient(circle, var(--motu-jade) 1px, transparent 1.5px); }
-  .catalog-inner { max-width: 1320px; margin: 0 auto; position: relative; }
-  .catalog-grid {
+  :global([data-theme="light"]) .card-section::before { background-image: radial-gradient(circle, var(--drf-green) 1px, transparent 1.5px); opacity: 0.06; }
+  .card-inner { max-width: 1320px; margin: 0 auto; position: relative; }
+  .card-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 3.8rem 4rem;
     align-items: start;
   }
   @media (max-width: 820px) {
-    .catalog-grid { grid-template-columns: 1fr; gap: 3rem; }
-    .catalog-section { padding: 4rem 1.25rem 5rem; }
+    .card-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .card-section { padding: 4rem 1.25rem 5rem; }
   }
-  .figure-card {
+  .photo-card {
     transform: rotate(var(--rot));
     transition: transform 0.4s ease;
   }
-  .figure-card:hover { transform: rotate(0deg) translateY(-6px); }
-  .figure-photo {
+  .photo-card:hover { transform: rotate(0deg) translateY(-6px); }
+  .photo-frame {
     position: relative;
-    background: var(--motu-surface-2);
+    background: var(--drf-surface-2);
     padding: 14px 14px 52px;
-    border: 3px solid var(--motu-gold);
+    border: 3px solid var(--drf-brass);
     box-shadow: 0 20px 46px rgba(0,0,0,0.5), 0 4px 12px rgba(0,0,0,0.35);
   }
-  :global([data-theme="light"]) .figure-photo {
-    box-shadow: 0 16px 36px rgba(60,30,90,0.22), 0 4px 10px rgba(60,30,90,0.16);
+  :global([data-theme="light"]) .photo-frame {
+    box-shadow: 0 16px 36px rgba(60,40,20,0.22), 0 4px 10px rgba(60,40,20,0.14);
   }
-  .figure-photo img {
+  .photo-frame img {
     display: block;
     width: 100%;
     aspect-ratio: var(--aspect);
     object-fit: cover;
-    filter: contrast(1.06) saturate(1.1);
+    filter: contrast(1.05) saturate(1.05);
   }
-  .figure-sku-tag {
+  .photo-plate {
     position: absolute;
     bottom: 14px;
     left: 14px;
     right: 14px;
     text-align: center;
-    font-family: 'Major Mono Display', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.74rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--motu-gold);
+    color: var(--drf-brass);
     padding-top: 14px;
-    border-top: 2px dashed var(--motu-magenta);
+    border-top: 2px dashed var(--drf-oxblood);
   }
-  /* Cellophane tape decoration */
-  .figure-tape {
+  /* Tape on the photo corners */
+  .photo-tape {
     position: absolute;
     top: -16px;
     width: 90px;
     height: 28px;
-    background: rgba(255, 243, 208, 0.45);
-    border: 1px solid rgba(255, 243, 208, 0.7);
+    background: rgba(242, 231, 207, 0.45);
+    border: 1px solid rgba(242, 231, 207, 0.7);
     z-index: 4;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
   }
-  :global([data-theme="light"]) .figure-tape {
+  :global([data-theme="light"]) .photo-tape {
     background: rgba(255, 255, 255, 0.55);
     border: 1px solid rgba(255, 255, 255, 0.85);
   }
-  .figure-tape-left { left: 18px; transform: rotate(-6deg); }
-  .figure-tape-right { right: 18px; transform: rotate(7deg); }
-  .figure-meta { padding: 1.4rem 0.3rem 0; }
-  .figure-line {
-    font-family: 'Major Mono Display', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
+  .photo-tape-left { left: 18px; transform: rotate(-6deg); }
+  .photo-tape-right { right: 18px; transform: rotate(7deg); }
+  .photo-meta { padding: 1.4rem 0.3rem 0; }
+  .photo-cap {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--motu-jade-bright);
-    margin-bottom: 0.5rem;
+    color: var(--drf-brass);
+    margin-bottom: 0.6rem;
   }
-  :global([data-theme="light"]) .figure-line { color: var(--motu-jade); }
-  .figure-title {
-    font-family: 'Audiowide', sans-serif;
-    font-size: 1.8rem;
-    color: var(--motu-fg);
-    margin: 0 0 0.7rem;
-    line-height: 1.05;
-    text-shadow: 0.025em 0.04em 0 var(--motu-magenta);
+  :global([data-theme="light"]) .photo-cap { color: var(--drf-oxblood); }
+  .photo-note {
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.68;
+    color: var(--drf-muted);
+    margin: 0;
   }
-  :global([data-theme="light"]) .figure-title { text-shadow: 0.025em 0.04em 0 var(--motu-gold); }
-  .figure-pitch {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.04rem;
-    line-height: 1.65;
-    color: var(--motu-muted);
-    margin: 0 0 0.85rem;
-  }
-  :global([data-theme="light"]) .figure-pitch { color: var(--motu-fg); opacity: 0.82; }
-  .figure-badge {
-    display: inline-block;
-    font-family: 'Bungee', sans-serif;
-    font-size: 0.66rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--motu-gold);
-    border: 2px solid var(--motu-gold);
-    padding: 0.35rem 0.7rem;
-    background: var(--motu-surface);
-  }
-  :global([data-theme="light"]) .figure-badge { background: var(--motu-surface-2); color: var(--motu-magenta-deep); border-color: var(--motu-magenta); }
+  :global([data-theme="light"]) .photo-note { color: var(--drf-fg); opacity: 0.82; }
 
   /* ------------------------------------------------------------
-     SECTION 04 · NOTE
+     SECTION 04 · THE NOTE
      ------------------------------------------------------------ */
   .note-section {
-    background: var(--motu-bg-deep);
-    color: var(--motu-fg);
+    background: var(--drf-bg-deep);
+    color: var(--drf-fg);
     padding: 7rem 2rem;
-    border-bottom: 3px solid var(--motu-magenta);
+    border-bottom: 3px solid var(--drf-oxblood);
   }
-  :global([data-theme="light"]) .note-section { background: #efd692; }
+  :global([data-theme="light"]) .note-section { background: #e6d49f; }
   .note-grid {
     max-width: 1240px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 0.92fr 1fr;
+    grid-template-columns: 0.9fr 1fr;
     gap: 4.5rem;
     align-items: center;
   }
@@ -1256,309 +1198,315 @@ const credits = [
   }
   .note-image {
     margin: 0;
-    background: var(--motu-surface-2);
+    background: var(--drf-surface-2);
     padding: 14px 14px 14px;
-    border: 3px solid var(--motu-gold);
+    border: 3px solid var(--drf-brass);
     box-shadow: 0 22px 48px rgba(0,0,0,0.5);
     transform: rotate(-1.6deg);
   }
-  :global([data-theme="light"]) .note-image { box-shadow: 0 16px 32px rgba(60,30,90,0.22); }
+  :global([data-theme="light"]) .note-image { box-shadow: 0 16px 32px rgba(60,40,20,0.22); }
   .note-image img {
     display: block;
     width: 100%;
     aspect-ratio: 3/4;
     object-fit: cover;
-    filter: contrast(1.05) saturate(1.08);
+    filter: contrast(1.05) saturate(1.05);
   }
   .note-image figcaption {
     display: flex;
     justify-content: space-between;
     margin-top: 0.85rem;
     padding: 0 0.2rem;
-    font-family: 'Major Mono Display', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--motu-jade-bright);
+    color: var(--drf-brass);
   }
-  :global([data-theme="light"]) .note-image figcaption { color: var(--motu-jade); }
+  :global([data-theme="light"]) .note-image figcaption { color: var(--drf-oxblood); }
   .note-tag {
-    font-family: 'Bungee', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--motu-gold);
+    color: var(--drf-brass);
     margin-bottom: 1.2rem;
   }
+  :global([data-theme="light"]) .note-tag { color: var(--drf-oxblood); }
   .note-h3 {
-    font-family: 'Audiowide', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
     font-size: clamp(1.9rem, 4vw, 3rem);
-    line-height: 1.08;
+    line-height: 1.1;
     margin: 0 0 1.5rem;
-    color: var(--motu-fg);
-    text-shadow: 0.02em 0.03em 0 var(--motu-magenta);
+    color: var(--drf-fg);
+    letter-spacing: -0.005em;
   }
-  :global([data-theme="light"]) .note-h3 { text-shadow: 0.02em 0.03em 0 var(--motu-gold); }
   .note-h3 em {
-    font-family: 'DM Serif Display', serif;
     font-style: italic;
-    font-weight: 400;
-    color: var(--motu-gold);
-    text-shadow: none;
+    font-weight: 700;
+    color: var(--drf-brass);
   }
-  :global([data-theme="light"]) .note-h3 em { color: var(--motu-magenta); }
+  :global([data-theme="light"]) .note-h3 em { color: var(--drf-oxblood); }
   .note-body {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.08rem;
-    line-height: 1.75;
-    color: var(--motu-fg);
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+    font-size: 1.1rem;
+    line-height: 1.78;
+    color: var(--drf-fg);
     margin: 0 0 1.15rem;
   }
   :global([data-theme="dark"]) .note-body { color: #ece1c0; }
   .note-body-soft {
     font-style: italic;
-    color: var(--motu-gold) !important;
-    border-left: 4px solid var(--motu-magenta);
+    color: var(--drf-brass) !important;
+    border-left: 4px solid var(--drf-oxblood);
     padding-left: 1rem;
     margin-top: 1.4rem;
   }
-  :global([data-theme="light"]) .note-body-soft { color: var(--motu-magenta-deep) !important; }
+  :global([data-theme="light"]) .note-body-soft { color: var(--drf-oxblood) !important; }
   .note-attrib { display: flex; align-items: center; gap: 1rem; margin-top: 1.8rem; }
-  .note-attrib-line { width: 56px; height: 3px; background: var(--motu-magenta); }
+  .note-attrib-line { width: 56px; height: 3px; background: var(--drf-oxblood); }
   .note-attrib-name {
     display: block;
-    font-family: 'Bungee', sans-serif;
-    font-size: 1rem;
-    color: var(--motu-fg);
-    letter-spacing: 0.06em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    color: var(--drf-fg);
+    letter-spacing: 0.08em;
   }
   .note-attrib-title {
     display: block;
-    font-family: 'Major Mono Display', monospace;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--motu-jade-bright);
+    color: var(--drf-brass);
     margin-top: 0.3rem;
   }
-  :global([data-theme="light"]) .note-attrib-title { color: var(--motu-jade); }
+  :global([data-theme="light"]) .note-attrib-title { color: var(--drf-oxblood); }
 
   /* ------------------------------------------------------------
-     SECTION 05 · QUESTS (project cards)
+     SECTION 05 · ENTRIES (project cards)
      ------------------------------------------------------------ */
-  .quests-section {
-    background: var(--motu-bg);
-    color: var(--motu-fg);
+  .entries-section {
+    background: var(--drf-bg);
+    color: var(--drf-fg);
     padding: 7rem 2rem;
-    border-bottom: 3px solid var(--motu-gold);
+    border-bottom: 3px solid var(--drf-brass);
     position: relative;
   }
-  .quests-inner { max-width: 1320px; margin: 0 auto; }
-  .quests-grid {
+  .entries-inner { max-width: 1320px; margin: 0 auto; }
+  .entries-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.8rem;
   }
-  @media (max-width: 1080px) { .quests-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 1080px) { .entries-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 680px) {
-    .quests-grid { grid-template-columns: 1fr; }
-    .quests-section { padding: 4rem 1.25rem; }
+    .entries-grid { grid-template-columns: 1fr; }
+    .entries-section { padding: 4rem 1.25rem; }
   }
-  .quest-card {
+  .entry-card {
     position: relative;
-    background: var(--motu-surface);
-    border: 3px solid var(--motu-gold);
+    background: var(--drf-surface);
+    border: 3px solid var(--drf-brass);
     padding: 1.8rem 1.6rem;
     display: flex;
     flex-direction: column;
     gap: 0.95rem;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
-    box-shadow: 5px 5px 0 var(--motu-magenta);
+    box-shadow: 5px 5px 0 var(--drf-oxblood);
   }
-  .quest-card:hover {
+  .entry-card:hover {
     transform: translate(-3px, -3px);
-    box-shadow: 8px 8px 0 var(--motu-magenta);
+    box-shadow: 8px 8px 0 var(--drf-oxblood);
   }
-  .quest-card-head {
+  .entry-card-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     gap: 0.8rem;
     padding-bottom: 0.8rem;
-    border-bottom: 2px dashed var(--motu-magenta);
+    border-bottom: 2px dashed var(--drf-oxblood);
   }
-  .quest-code {
-    font-family: 'Bungee', sans-serif;
-    font-size: 0.78rem;
+  .entry-code {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.05rem;
     letter-spacing: 0.1em;
-    color: var(--motu-gold);
+    color: var(--drf-brass);
   }
-  :global([data-theme="light"]) .quest-code { color: var(--motu-magenta-deep); }
-  .quest-rank {
-    font-family: 'Major Mono Display', monospace;
-    font-size: 0.66rem;
+  :global([data-theme="light"]) .entry-code { color: var(--drf-oxblood); }
+  .entry-odds {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--motu-jade-bright);
+    color: var(--drf-green-bright);
     text-align: right;
   }
-  :global([data-theme="light"]) .quest-rank { color: var(--motu-jade); }
-  .quest-title {
-    font-family: 'Audiowide', sans-serif;
-    font-size: 1.6rem;
-    color: var(--motu-fg);
+  :global([data-theme="light"]) .entry-odds { color: var(--drf-green); }
+  .entry-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 1.55rem;
+    color: var(--drf-fg);
     margin: 0;
-    line-height: 1.1;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
   }
-  .quest-body {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.98rem;
-    line-height: 1.65;
-    color: var(--motu-muted);
+  .entry-body {
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.68;
+    color: var(--drf-muted);
     margin: 0;
   }
-  :global([data-theme="light"]) .quest-body { color: var(--motu-fg); opacity: 0.8; }
-  .quest-meta {
+  :global([data-theme="light"]) .entry-body { color: var(--drf-fg); opacity: 0.8; }
+  .entry-meta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
     align-items: center;
     margin-top: 0.2rem;
   }
-  .quest-badge {
-    font-family: 'Major Mono Display', monospace;
+  .entry-badge {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.62rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--motu-gold);
-    background: var(--motu-bg-deep);
-    border: 1px solid var(--motu-gold);
+    color: var(--drf-brass);
+    background: var(--drf-bg-deep);
+    border: 1px solid var(--drf-brass);
     padding: 0.3rem 0.55rem;
   }
-  :global([data-theme="light"]) .quest-badge { background: var(--motu-surface-2); }
-  .quest-status {
-    font-family: 'Bungee', sans-serif;
-    font-size: 0.65rem;
+  :global([data-theme="light"]) .entry-badge { background: var(--drf-surface-2); color: var(--drf-oxblood); border-color: var(--drf-oxblood); }
+  .entry-status {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.78rem;
     letter-spacing: 0.1em;
     padding: 0.3rem 0.6rem;
-    color: var(--motu-cream);
-    background: var(--motu-magenta);
+    color: var(--drf-cream);
+    background: var(--drf-oxblood);
   }
-  .quest-status-completed { background: var(--motu-jade); }
-  .quest-status-recruiting { background: var(--motu-gold); color: var(--motu-bg); }
-  .quest-status-in-progress { background: var(--motu-magenta); }
-  .quest-card-foot {
+  .entry-status-won-wire-to-wire { background: var(--drf-green); }
+  .entry-status-post-called { background: var(--drf-brass); color: var(--drf-bg); }
+  .entry-status-in-the-gate { background: var(--drf-oxblood); }
+  .entry-status-running { background: var(--drf-green-bright); color: var(--drf-bg); }
+  .entry-status-working-out { background: var(--drf-muted); color: var(--drf-bg); }
+  .entry-card-foot {
     margin-top: auto;
     padding-top: 0.6rem;
-    border-top: 1px solid var(--motu-line);
+    border-top: 1px solid var(--drf-line);
   }
-  :global([data-theme="light"]) .quest-card-foot { border-top-color: var(--motu-magenta); }
-  .quest-cta {
+  :global([data-theme="light"]) .entry-card-foot { border-top-color: var(--drf-oxblood); }
+  .entry-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-family: 'Bungee', sans-serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--motu-gold);
+    color: var(--drf-brass);
     text-decoration: none;
     transition: color 0.2s ease, transform 0.2s ease;
   }
-  :global([data-theme="light"]) .quest-cta { color: var(--motu-magenta-deep); }
-  .quest-cta:hover { color: var(--motu-magenta); transform: translateX(3px); }
-  .quest-cta-disabled { color: var(--motu-muted); cursor: not-allowed; }
-  .quest-cta-disabled:hover { color: var(--motu-muted); transform: none; }
+  :global([data-theme="light"]) .entry-cta { color: var(--drf-oxblood); }
+  .entry-cta:hover { color: var(--drf-oxblood); transform: translateX(3px); }
+  :global([data-theme="light"]) .entry-cta:hover { color: var(--drf-green); }
+  .entry-cta-disabled { color: var(--drf-muted); cursor: not-allowed; }
+  .entry-cta-disabled:hover { color: var(--drf-muted); transform: none; }
 
   /* ------------------------------------------------------------
-     SECTION 06 · WAVE (fresh items)
+     SECTION 06 · LATE ENTRIES
      ------------------------------------------------------------ */
-  .wave-section {
-    background: var(--motu-bg-deep);
-    color: var(--motu-fg);
+  .late-section {
+    background: var(--drf-bg-deep);
+    color: var(--drf-fg);
     padding: 6rem 2rem;
-    border-bottom: 3px solid var(--motu-gold);
+    border-bottom: 3px solid var(--drf-brass);
   }
-  :global([data-theme="light"]) .wave-section { background: #efd692; }
-  .wave-inner { max-width: 1240px; margin: 0 auto; }
-  .wave-header { margin-bottom: 2.8rem; }
-  .wave-grid {
+  :global([data-theme="light"]) .late-section { background: #e6d49f; }
+  .late-inner { max-width: 1240px; margin: 0 auto; }
+  .late-header { margin-bottom: 2.8rem; }
+  .late-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
   @media (max-width: 760px) {
-    .wave-grid { grid-template-columns: 1fr; gap: 1.4rem; }
-    .wave-section { padding: 4rem 1.25rem; }
+    .late-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+    .late-section { padding: 4rem 1.25rem; }
   }
-  .wave-card {
+  .late-card {
     position: relative;
-    background: var(--motu-surface);
-    border: 3px solid var(--motu-magenta);
+    background: var(--drf-surface);
+    border: 3px solid var(--drf-oxblood);
     padding: 2rem 1.8rem;
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
-    box-shadow: 6px 6px 0 var(--motu-gold);
+    box-shadow: 6px 6px 0 var(--drf-brass);
   }
-  .wave-card-tag {
-    font-family: 'Bungee', sans-serif;
-    font-size: 0.7rem;
+  .late-card-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--motu-magenta);
+    color: var(--drf-oxblood);
     margin-bottom: 0.1rem;
   }
-  :global([data-theme="light"]) .wave-card-tag { color: var(--motu-magenta-deep); }
-  .wave-card-title {
-    font-family: 'Audiowide', sans-serif;
+  .late-card-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
     font-size: 2rem;
     margin: 0 0 0.1rem;
-    color: var(--motu-fg);
-    line-height: 1.05;
+    color: var(--drf-fg);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
   }
-  .wave-card-line {
-    font-family: 'Major Mono Display', monospace;
+  .late-card-line {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.74rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--motu-jade-bright);
+    color: var(--drf-green-bright);
     margin-bottom: 0.55rem;
   }
-  :global([data-theme="light"]) .wave-card-line { color: var(--motu-jade); }
-  .wave-card-body {
-    font-family: 'Space Grotesk', sans-serif;
+  :global([data-theme="light"]) .late-card-line { color: var(--drf-green); }
+  .late-card-body {
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
     font-size: 1.04rem;
-    line-height: 1.65;
-    color: var(--motu-muted);
+    line-height: 1.68;
+    color: var(--drf-muted);
     margin: 0;
   }
-  :global([data-theme="light"]) .wave-card-body { color: var(--motu-fg); opacity: 0.82; }
-  .wave-cta {
+  :global([data-theme="light"]) .late-card-body { color: var(--drf-fg); opacity: 0.82; }
+  .late-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
     margin-top: 0.5rem;
-    font-family: 'Bungee', sans-serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--motu-gold);
+    color: var(--drf-brass);
     text-decoration: none;
     transition: color 0.2s ease, transform 0.2s ease;
   }
-  :global([data-theme="light"]) .wave-cta { color: var(--motu-magenta-deep); }
-  .wave-cta:hover { color: var(--motu-magenta); transform: translateX(3px); }
+  :global([data-theme="light"]) .late-cta { color: var(--drf-oxblood); }
+  .late-cta:hover { color: var(--drf-oxblood); transform: translateX(3px); }
+  :global([data-theme="light"]) .late-cta:hover { color: var(--drf-green); }
 
   /* ------------------------------------------------------------
      SECTION 07 · CLOSING CTA
      ------------------------------------------------------------ */
   .closing-section {
-    background: var(--motu-bg);
-    color: var(--motu-fg);
+    background: var(--drf-bg);
+    color: var(--drf-fg);
     padding: 7rem 2rem;
     text-align: center;
-    border-bottom: 3px solid var(--motu-magenta);
+    border-bottom: 3px solid var(--drf-oxblood);
     position: relative;
   }
   .closing-inner { max-width: 920px; margin: 0 auto; }
@@ -1567,62 +1515,62 @@ const credits = [
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    font-family: 'Bungee', sans-serif;
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--motu-gold);
+    color: var(--drf-brass);
     margin-bottom: 1.8rem;
   }
-  .closing-rule { width: 60px; height: 3px; background: var(--motu-magenta); }
+  :global([data-theme="light"]) .closing-eyebrow { color: var(--drf-oxblood); }
+  .closing-rule { width: 60px; height: 3px; background: var(--drf-oxblood); }
   .closing-title {
-    font-family: 'Audiowide', sans-serif;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
     font-size: clamp(2.2rem, 5vw, 3.8rem);
-    line-height: 1.1;
+    line-height: 1.12;
     margin: 0 0 1.5rem;
-    color: var(--motu-fg);
-    text-shadow: 0.02em 0.03em 0 var(--motu-magenta);
+    color: var(--drf-fg);
+    letter-spacing: -0.008em;
   }
-  :global([data-theme="light"]) .closing-title { text-shadow: 0.02em 0.03em 0 var(--motu-gold); }
   .closing-em {
-    font-family: 'DM Serif Display', serif;
     font-style: italic;
-    font-weight: 400;
-    color: var(--motu-gold);
-    text-shadow: none;
+    font-weight: 700;
+    color: var(--drf-brass);
   }
-  :global([data-theme="light"]) .closing-em { color: var(--motu-magenta); }
+  :global([data-theme="light"]) .closing-em { color: var(--drf-oxblood); }
   .closing-deck {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--motu-muted);
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
+    font-size: 1.12rem;
+    line-height: 1.75;
+    color: var(--drf-muted);
     margin: 0 auto 2.4rem;
-    max-width: 44em;
+    max-width: 46em;
   }
-  :global([data-theme="light"]) .closing-deck { color: var(--motu-fg); opacity: 0.78; }
+  :global([data-theme="light"]) .closing-deck { color: var(--drf-fg); opacity: 0.8; }
   .closing-cta-row { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
 
   /* ------------------------------------------------------------
-     SECTION 08 · CREDITS (back of the box)
+     SECTION 08 · COLOPHON
      ------------------------------------------------------------ */
-  .credits-section {
-    background: var(--motu-bg-deep);
-    color: var(--motu-fg);
+  .colophon-section {
+    background: var(--drf-bg-deep);
+    color: var(--drf-fg);
     padding: 5rem 2rem 6rem;
   }
-  :global([data-theme="light"]) .credits-section { background: #efd692; }
-  .credits-inner { max-width: 1100px; margin: 0 auto; }
-  .credits-tag {
-    font-family: 'Bungee', sans-serif;
+  :global([data-theme="light"]) .colophon-section { background: #e6d49f; }
+  .colophon-inner { max-width: 1100px; margin: 0 auto; }
+  .colophon-tag {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.78rem;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--motu-gold);
+    color: var(--drf-brass);
     text-align: center;
     margin-bottom: 2.5rem;
   }
-  .credits-roll {
+  :global([data-theme="light"]) .colophon-tag { color: var(--drf-oxblood); }
+  .colophon-roll {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.4rem 3rem;
@@ -1630,43 +1578,43 @@ const credits = [
     margin: 0 auto 2.5rem;
   }
   @media (max-width: 720px) {
-    .credits-roll { grid-template-columns: 1fr; gap: 1.2rem; }
-    .credits-section { padding: 3.5rem 1.25rem 4rem; }
+    .colophon-roll { grid-template-columns: 1fr; gap: 1.2rem; }
+    .colophon-section { padding: 3.5rem 1.25rem 4rem; }
   }
-  .credits-block {
+  .colophon-block {
     display: grid;
     grid-template-columns: 130px 1fr;
     gap: 0.8rem;
     align-items: baseline;
-    border-bottom: 1px dashed var(--motu-line);
+    border-bottom: 1px dashed var(--drf-line);
     padding-bottom: 0.7rem;
   }
-  :global([data-theme="light"]) .credits-block { border-bottom-color: var(--motu-magenta); }
-  .credits-role {
-    font-family: 'Major Mono Display', monospace;
+  :global([data-theme="light"]) .colophon-block { border-bottom-color: var(--drf-oxblood); }
+  .colophon-role {
+    font-family: 'JetBrains Mono', monospace;
     font-size: 0.7rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--motu-jade-bright);
+    color: var(--drf-green-bright);
   }
-  :global([data-theme="light"]) .credits-role { color: var(--motu-jade); }
-  .credits-name {
-    font-family: 'Bungee', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.04em;
-    color: var(--motu-fg);
+  :global([data-theme="light"]) .colophon-role { color: var(--drf-green); }
+  .colophon-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    color: var(--drf-fg);
   }
-  .credits-footnote {
-    font-family: 'Space Grotesk', sans-serif;
+  .colophon-footnote {
+    font-family: 'Source Serif 4', 'Source Serif Pro', Georgia, serif;
     font-style: italic;
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: var(--motu-muted);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--drf-muted);
     text-align: center;
     max-width: 700px;
     margin: 0 auto;
     padding-top: 1.5rem;
-    border-top: 2px solid var(--motu-magenta);
+    border-top: 2px solid var(--drf-oxblood);
   }
-  :global([data-theme="light"]) .credits-footnote { color: var(--motu-fg); opacity: 0.7; }
+  :global([data-theme="light"]) .colophon-footnote { color: var(--drf-fg); opacity: 0.7; }
 </style>
