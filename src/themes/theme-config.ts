@@ -77,51 +77,49 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "The Roske Stakes",
-  week: "2026-06-06",
-  inspiration: "The 158th Belmont Stakes runs at Saratoga Race Course tonight, the final running before Belmont Park reopens. So roske.ai becomes the Daily Racing Form for the week, set on Belmont day at Saratoga: Edward in royal blue silks with white diamonds, Edward in tweed at the rail with a folded racing form, Edward in the winner's circle under a blanket of white carnations, Edward as the race caller in a glass booth above the homestretch. The fedora stays on through every role. (Edward grew up around horses, owned a drum-horse ranch in North Texas, and rode a quarterhorse named Thomas Jefferson, so the silks fit better than they should.)",
-  tagline: "Post time is now. Bring a pencil, a folded form, and a fedora that does not blow off in the stretch.",
+  name: "Kscope26: Edward Is Not Here",
+  week: "2026-06-13",
+  inspiration: "ODTUG Kscope26 runs June 14-18 at the Gaylord Rockies Resort in Aurora, Colorado. It's the largest Oracle EPM and APEX conference of the year, and for the first time since 2007, Edward is officially not attending. (He announced last summer at Kscope25 in Grapevine, when he accepted the ODTUG Lifetime Achievement Award, that Kscope25 would be his last as a regular.) The site reads as the Kscope26 conference program for the week, with one running visual gag: attendees show their support by all wearing his blue fedora, and Edward, who definitely is not at Kscope, definitely is not also sneaking into the back of every session in a series of unconvincing disguises. The fedora is the giveaway. The fedora is always the giveaway.",
+  tagline: "Tech at new heights. Edward at sea level. (See if you can spot the fedora.)",
 
   colors: {
-    // Saratoga summer at golden hour: turf green, dirt umber, Belmont
-    // carnation white, the brass of an old loving cup, and silks blue for
-    // the jockey on the rail. Light mode is the cream paper of the
-    // Daily Racing Form. Dark mode is the box-seat shadow of the grandstand.
-    primary: "#1f4a37",          // Saratoga turf green
-    secondary: "#8b2434",         // claiming-tag oxblood
-    accent: "#c9962b",            // brass-trophy gold
-    accentHover: "#e0ab3d",
-    background: "#161616",        // grandstand shadow (dark mode)
-    backgroundLight: "#f2e7cf",   // Daily Racing Form newsprint (light mode)
-    surface: "#1f1f1f",            // box-seat panel
-    surfaceLight: "#fbf3df",       // form-card cream
-    text: "#f2e7cf",               // newsprint on dark
-    textMuted: "#a7a08c",          // worn ink
-    textDark: "#1a1a18",           // ink on cream
-    textDarkMuted: "#5a4f3a",      // faded ink
-    border: "#3a3a36",             // grandstand rail
-    borderLight: "#c9962b",        // brass-rule
-    gradient: "linear-gradient(135deg, #0e2a1f 0%, #1f4a37 40%, #8b2434 75%, #c9962b 100%)",
+    // ODTUG / Oracle conference palette: deep convention-center navy,
+    // ODTUG orange, brass-fedora gold. Light mode is the off-white of a
+    // printed conference program; dark mode is the keynote room before
+    // the lights come up.
+    primary: "#0b2e54",          // ODTUG navy
+    secondary: "#f37021",         // ODTUG / Oracle orange
+    accent: "#ff7a1f",            // brighter session-CTA orange
+    accentHover: "#ffb072",
+    background: "#07172e",        // keynote-hall blackout navy (dark mode)
+    backgroundLight: "#eef2f8",   // printed-program off-white (light mode)
+    surface: "#102a4d",            // session-card navy
+    surfaceLight: "#ffffff",       // program-card white
+    text: "#eef2f8",               // program white on dark
+    textMuted: "#8fa3bf",          // session-meta gray-blue
+    textDark: "#0b2e54",           // navy on cream
+    textDarkMuted: "#4a5f7a",      // muted navy
+    border: "#1f3d66",             // session-card rule (dark)
+    borderLight: "#c5d0e0",        // program rule (light)
+    gradient: "linear-gradient(135deg, #07172e 0%, #0b2e54 45%, #f37021 100%)",
   },
 
   fonts: {
-    // Playfair Display: elegant late-19th-century turf-club serif for the
-    // mastheads (the Daily Racing Form has worn one of these for a century).
-    // Bebas Neue: condensed display caps for race numbers, post positions,
-    // and section headers (board-display energy).
-    // Source Serif 4: readable broadsheet body type for long copy.
-    // JetBrains Mono: clean technical mono for odds, codes, and race times.
-    heading: "'Playfair Display', 'Times New Roman', Georgia, serif",
-    body: "'Source Serif 4', 'Source Serif Pro', Georgia, serif",
+    // Space Grotesk for the conference-modern display work (Kscope branding
+    // reads as clean geometric sans). Inter for body. JetBrains Mono for
+    // session codes, room numbers, badge IDs, and the timestamps stamped on
+    // every disguise photo.
+    heading: "'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif",
+    body: "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
     mono: "'JetBrains Mono', 'IBM Plex Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&display=swap",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap",
   },
 
   layout: {
-    heroStyle: "editorial",
+    heroStyle: "split",
     navStyle: "fixed",
-    cardStyle: "outlined",
-    sectionStyle: "magazine",
+    cardStyle: "elevated",
+    sectionStyle: "alternating",
     footerStyle: "detailed",
   },
 
@@ -134,11 +132,11 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Post time is 7:04 PM Eastern. The horse does most of the work. The fedora does the rest.",
-    description: "The 158th Belmont Stakes runs tonight at Saratoga, the last running here before the new Belmont Park reopens in September. (I am calling the race in the broadcast booth, riding it in the silks, and reading the form at the rail. The schedule, like most of my schedules, has overlap.) The site is the Daily Racing Form for the week. The columns are short, the past performances are honest, and the morning line is doing its best.",
-    heroImage: "hero-2026-06-06.png",
-    imageAlt: "Edward Roske in royal blue and gold jockey silks with white diamonds, wearing his signature blue fedora over a helmet, aboard a powerful chestnut quarterhorse mid-gallop down the Saratoga homestretch on Belmont Stakes day. A grandstand packed with spectators in the background and a BELMONT STAKES AT SARATOGA sign just above the rail.",
-    ctaText: "Read the form",
+    subtitle: "Tech at new heights. Edward at sea level.",
+    description: "ODTUG Kscope26 runs June 14 through 18 at the Gaylord Rockies in Aurora, Colorado. For the first time since 2007, Edward is officially not on the speaker list. We checked twice. (Attendees have shown their support by all wearing his hat, which was deeply touching for the first half hour and is now mostly blocking everyone's views of the speakers.)",
+    heroImage: "hero-2026-06-13.png",
+    imageAlt: "A packed Kscope26 keynote hall at the Gaylord Rockies in Aurora, Colorado. Approximately 600 conference attendees, the presenter on stage, and the AV crew along the wings are all wearing identical royal-blue felt fedora hats. The stage backdrop reads KSCOPE26 TECH AT NEW HEIGHTS with the ODTUG logo. The mood is overwhelming support for the absent honoree.",
+    ctaText: "See what he claims he's doing instead",
     ctaLink: "#current-work",
   },
 };

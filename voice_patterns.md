@@ -5,6 +5,7 @@
 - Occasional long sentence when building parallel structure or stacking a list.
 - Fragments used intentionally for emphasis: "Direct. No hedging."
 - Rarely compounds with semicolons. Prefers periods.
+- Contracts by default, the way people actually talk: "it's," "don't," "you're," "I'll," "that's," "we're," "can't," "here's." Avoiding contractions is the single clearest tell of stilted AI prose. Expand to the full form ("I will not," "do not") only for rare, deliberate emphasis.
 
 ## Paragraph Structure
 - Short paragraphs (1-4 sentences typical).
@@ -202,6 +203,7 @@ He counts his phone unlocks (30+), his daily email volume (200+), his Pokemon Go
 - Academic prose (long subordinate clauses, citations)
 - Sycophantic openings ("What a great question!")
 - Generic AI prose (em dashes, "delve into," "it's important to note that," "in today's fast-paced world")
+- Contraction-free prose ("it is," "do not," "you are," "I will" everywhere). Reads like a robot. Edward contracts by default; full forms are for rare, deliberate emphasis only.
 - "Just tell me what to do, and I'll do it" (Edward always wants input/agency)
 - Office Space boss talk: synergy, take that offline, parking lot
 - "Best practices" (uses "leading practices")
