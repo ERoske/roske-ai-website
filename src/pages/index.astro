@@ -73,10 +73,12 @@ const greatestHits = [
     note: "An hour of Q and A on strategic EPM, run live for Kscope22 attendees. Closed roadmaps, open opinions, and a hold-music breakdown halfway through that nobody seemed to mind.",
   },
   {
-    id: 'LY7k0VgBRGM',
-    title: 'Edward Interviews Tim Tow (Applied OLAP) · Kscope25',
-    venue: 'ODTUG PODCAST BOOTH · GRAPEVINE',
-    note: "From the ODTUG podcast booth at Kscope25. Tim Tow, founder of Applied OLAP, the first Oracle ACE Director in the Hyperion / Essbase community, and the closest thing the room has to founding-era memory.",
+    id: 'kscope11-survivor',
+    externalUrl: 'https://timtows-hyperion-blog.blogspot.com/2011/07/kscope-11-opening-session-behind-scenes.html',
+    thumbnail: '/images/kscope/survivor-poster.png',
+    title: 'Survivor: Kscope11 · Voting for Kscope12 Location',
+    venue: 'KSCOPE11 OPENING · LONG BEACH · 2011',
+    note: "Edward's Survivor parody from the Kscope11 opening session in Long Beach. The ODTUG board got voted off one by one to reveal Kscope12's host city. (Edward, who wrote the screenplay as conference chair, was the first eliminated. By unanimous vote.) Hosted on Tim Tow's blog. Click through to watch.",
   },
   {
     id: 'AglCSOaGJqM',
@@ -146,15 +148,15 @@ const sessions = [
     cta: 'Join the next one',
   },
   {
-    code: 'TRACK · TRVL-518',
-    room: 'WHAT HE ALREADY DID INSTEAD',
-    title: 'Everest Base Camp',
-    body: "Reached in April. Almost two weeks trekking at altitude, a peak of 18,570 feet at Kala Patthar, and a nightly reminder that the teahouses do not heat the rooms. The altitude was hard. The cold was the boss fight. Aurora's mile-high elevation is, by comparison, a nap.",
-    badge: 'NEPAL · APRIL 2026',
-    status: 'COMPLETED',
-    href: '/blog/everest-base-camp-summit/',
+    code: 'TRACK · TOOL-602',
+    room: 'WHAT HE SHIPPED INSTEAD',
+    title: 'Only Recipes',
+    body: "Edward's first Chrome extension. When it spots you on a recipe page, it strips out everything that isn't the recipe. No author memoir. No fourteen ads. No infinite scroll. It's ridiculously fast and remarkably useful, which are two phrases I don't usually get to put next to each other.",
+    badge: 'CHROME EXTENSION · FREE',
+    status: 'SHIPPED',
+    href: '/only-recipes/',
     external: false,
-    cta: 'Read the trail log',
+    cta: 'See what it does',
   },
 ];
 
@@ -162,16 +164,7 @@ const sessions = [
 // this week, slotted in as sessions added to the program after print.
 const lateAdds = [
   {
-    tag: 'ADDED TO PROGRAM · NEW THIS WEEK',
-    title: 'Only Recipes',
-    line: 'CHROME EXTENSION · FREE · MILD',
-    body: "Edward's first Chrome extension. When it spots you on a recipe page, it strips out everything that isn't the recipe. No author memoir. No fourteen ads. No infinite scroll. It's ridiculously fast and remarkably useful, which are two phrases I don't usually get to put next to each other.",
-    cta: 'See what it does',
-    href: '/only-recipes/',
-    external: false,
-  },
-  {
-    tag: 'IN THE PADDOCK · NAME PENDING',
+    tag: 'IN BETA · NAME PENDING',
     title: 'The Home Library Project',
     line: 'BOOKS · GAMES · MEDIA · ALL SHELVES',
     body: "A new app and site that digitizes a home library: books, board games, music, media, anything sitting on a shelf at the house. All categorized. There'll be a free tier. The full reveal comes after beta. If you want an early look, send an email and you're on the list.",
@@ -384,23 +377,27 @@ const colophon = [
       </header>
 
       <div class="memoriam-grid">
-        {greatestHits.map((video) => (
-          <article class="memoriam-card">
-            <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener" class="memoriam-thumb-link" aria-label={`Watch: ${video.title}`}>
-              <div class="memoriam-thumb">
-                <img src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`} alt={video.title} loading="lazy" decoding="async" />
-                <div class="memoriam-play" aria-hidden="true">
-                  <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        {greatestHits.map((video) => {
+          const href = video.externalUrl ?? `https://www.youtube.com/watch?v=${video.id}`;
+          const thumb = video.thumbnail ?? `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+          return (
+            <article class="memoriam-card">
+              <a href={href} target="_blank" rel="noopener" class="memoriam-thumb-link" aria-label={`Watch: ${video.title}`}>
+                <div class="memoriam-thumb">
+                  <img src={thumb} alt={video.title} loading="lazy" decoding="async" />
+                  <div class="memoriam-play" aria-hidden="true">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <div class="memoriam-venue">{video.venue}</div>
                 </div>
-                <div class="memoriam-venue">{video.venue}</div>
-              </div>
-            </a>
-            <h3 class="memoriam-title">
-              <a href={`https://www.youtube.com/watch?v=${video.id}`} target="_blank" rel="noopener">{video.title}</a>
-            </h3>
-            <p class="memoriam-note">{video.note}</p>
-          </article>
-        ))}
+              </a>
+              <h3 class="memoriam-title">
+                <a href={href} target="_blank" rel="noopener">{video.title}</a>
+              </h3>
+              <p class="memoriam-note">{video.note}</p>
+            </article>
+          );
+        })}
       </div>
 
       <div class="memoriam-foot">
@@ -467,7 +464,7 @@ const colophon = [
           <span class="section-tag-dot"></span>
           <span>SECTION 06 · LATE ADDS · NEW SINCE PROGRAM PRINT</span>
         </div>
-        <h2 class="section-title">Two late <em>additions</em>, shipping now.</h2>
+        <h2 class="section-title">One late <em>addition</em>, in beta.</h2>
       </header>
 
       <div class="late-grid">
@@ -1460,14 +1457,13 @@ const colophon = [
     border-bottom: 3px solid var(--ks-orange);
   }
   :global([data-theme="light"]) .late-section { background: var(--ks-surface-2); }
-  .late-inner { max-width: 1100px; margin: 0 auto; }
+  .late-inner { max-width: 720px; margin: 0 auto; }
   .late-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 2rem;
   }
   @media (max-width: 760px) {
-    .late-grid { grid-template-columns: 1fr; }
     .late-section { padding: 4rem 1.25rem; }
   }
   .late-card {
