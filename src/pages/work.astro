@@ -44,12 +44,14 @@ import Card from '../components/Card.astro';
 
   <!-- Quick Stats -->
   <Section dark>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
       {[
         { value: "50+", label: "Countries" },
         { value: "7", label: "Continents" },
         { value: "300+", label: "Presentations" },
         { value: "25+", label: "Years Speaking" },
+        { value: "15", label: "Books Published" },
+        { value: "2", label: "U.S. Patents" },
       ].map(stat => (
         <div class="animate-on-scroll">
           <div class="text-4xl md:text-5xl font-black text-[var(--color-accent)] mb-2">{stat.value}</div>
@@ -257,7 +259,7 @@ import Card from '../components/Card.astro';
           class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
           Speaking Inquiry
         </a>
-        <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" target="_blank" rel="noopener noreferrer"
+        <a href="/question/" target="_blank" rel="noopener noreferrer"
           class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5
             dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/10
             bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10">
