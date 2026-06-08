@@ -59,52 +59,23 @@ import Card from '../components/Card.astro';
     </div>
   </Section>
 
-  <!-- Keynote Topics -->
-  <Section title="Keynote Topics" subtitle="What I talk about when organizations ask me to talk.">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <div class="animate-on-scroll">
-        <Card title="AI for the Office of the CFO">
-          <p>How artificial intelligence is transforming financial planning, consolidation, and analytics. Not the hype version. The version where CFOs actually deploy it and measure ROI. Covers MCP servers, AI agents, and what "AI-ready" really means for finance teams.</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">AI</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Finance</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">EPM</span>
-          </div>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="MCP Servers & Enterprise AI Integration">
-          <p>The Model Context Protocol is changing how LLMs interact with enterprise data. I build MCP servers for Oracle EPM systems. This talk covers the architecture, the pitfalls, and why "just plug in ChatGPT" isn't a strategy.</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">MCP</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Technical</span>
-          </div>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Data Science for Business Leaders">
-          <p>A non-technical talk about thinking scientifically with data. What executives need to understand about machine learning, statistical significance, and why your data team keeps saying "it depends." Based on my MS Data Science from SMU.</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Data Science</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Leadership</span>
-          </div>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Building & Scaling a Tech Company">
-          <p>I founded interRel at 22 and ran it for 25 years. Then I merged it into a billion-dollar firm. This talk covers what I learned about entrepreneurship, hiring, selling, and knowing when it's time to stop being the CEO of one thing and start being the CEO of the next.</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Entrepreneurship</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Leadership</span>
-          </div>
-        </Card>
-      </div>
-
-    </div>
+  <!-- Speaking pointer -->
+  <Section>
+    <a href="/speaking/" class="animate-on-scroll group block rounded-2xl p-8 md:p-10 transition-all duration-300 hover:-translate-y-1
+      dark:bg-gradient-to-br dark:from-[var(--color-accent)]/[0.10] dark:to-white/[0.02] dark:border dark:border-[var(--color-accent)]/20 dark:hover:border-[var(--color-accent)]/40
+      bg-gradient-to-br from-[var(--color-accent)]/[0.06] to-white border border-[var(--color-accent)]/20 hover:border-[var(--color-accent)]/40 hover:shadow-xl">
+      <p class="text-xs font-[var(--font-mono)] uppercase tracking-widest text-[var(--color-accent)] mb-3">Speaking</p>
+      <h3 class="text-2xl md:text-3xl font-bold mb-3 dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors" style="font-family: var(--font-heading);">
+        I keynote events on AI, finance, and the Office of the CFO.
+      </h3>
+      <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-4 leading-relaxed max-w-3xl">
+        Three signature talks, an executive podcast, and thirty days of amplification for the host event. Built for conference chairs and corporate program owners.
+      </p>
+      <span class="inline-flex items-center gap-2 text-[var(--color-accent)] font-medium">
+        See speaking topics and book Edward
+        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </span>
+    </a>
   </Section>
 
   <!-- Flagship Workshop -->
@@ -282,7 +253,7 @@ import Card from '../components/Card.astro';
         Keynotes, panels, workshops, webinars, and fireside chats. I travel anywhere. (I've spoken on every continent except Antarctica, and I'm open to penguins.)
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href="/contact/"
+        <a href="/speaking/"
           class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
           Speaking Inquiry
         </a>
