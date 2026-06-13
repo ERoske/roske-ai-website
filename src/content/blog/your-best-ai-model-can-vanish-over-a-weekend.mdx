@@ -1,0 +1,51 @@
+---
+title: "Your Best AI Model Can Vanish Over a Weekend"
+description: "Anthropic's Fable 5 was the best model anyone could buy, and three days later a letter from the Commerce Department took it offline worldwide. The vendor risk most finance teams have never put a number on."
+date: 2026-06-13
+tags: ["AI", "Finance"]
+draft: false
+---
+
+The most capable AI model anyone could buy lasted about three days. Anthropic launched Fable 5 to real acclaim, including from the people who benchmark these models professionally, and by the weekend it had been [switched off worldwide](https://www.anthropic.com/news/fable-mythos-access). It worked the entire time, and what finally took it offline was a letter from the U.S. Commerce Department. I spent twenty-five years helping CFOs build the systems their companies run on, and I can tell you this is a risk most finance teams have never put a number on.
+
+## The technology was never the problem
+
+Fable 5 was good. [Ethan Mollick](https://x.com/emollick), who tests these models for a living, said it beat basically every other public model he had used. Anthropic is valued somewhere near $965 billion and had just filed to go public. This wasn't a flaky startup shipping a broken product.
+
+The model got pulled on [national-security grounds](https://fortune.com/2026/06/13/anthropic-disables-fable-mythos-export-controls-national-security-threat/). The Commerce Department ordered access cut for any foreign national, an export-control directive, and Anthropic couldn't draw that line cleanly, so it shut the model down for everyone. The company's other models stayed online. Fable 5 was the one that went dark.
+
+The thing that ended your access had nothing to do with whether the software worked, whether you paid your bill, or whether the vendor was solvent. It was a policy decision made in an afternoon. (The letter even carries a timestamp, 5:21 on a Friday, which is how you know lawyers were already in the room.)
+
+## Concentration risk just found a new address
+
+Every CFO understands concentration risk: one customer who is 40% of revenue, one supplier with no backup, one bank holding all the cash. We stress-test those exposures because we know what happens when the single point fails.
+
+AI-model dependency is the same old risk wearing a hoodie. If your monthly close, your forecasting, and your variance analysis all run through one model's API, you've concentrated a critical process into one vendor. The exposure that counts is the vendor's political and regulatory surface area, the part you neither control nor audit.
+
+Picture the finance team that wired Fable 5 into its close. Best model on the market, plugged straight into the workflow, working beautifully. Then Friday at 5:21 it was gone. That team spent its weekend rebuilding instead of reconciling. (I've watched close processes fall apart for far dumber reasons, though rarely faster.)
+
+## What I would put on the risk register
+
+Frontier AI is worth using. I use it every day, and so should you. The point is to treat the model the way you already treat any other critical dependency.
+
+1. Build an abstraction layer. Don't hardcode one provider's API into your finance stack. Route through a thin internal interface so swapping models is a config change rather than a rebuild. (Your engineers will thank you, or at least resent you less.)
+
+2. Read the continuity terms before you sign. What happens to your data, your fine-tuning, and your workflows if the model is withdrawn? Is there a migration window, or a refund? Most enterprise AI contracts stay quiet on the question that matters most.
+
+3. Keep a fallback model genuinely qualified. A second model you've never tested is just a logo on a slide. Run your real workloads through it every quarter, so you know it holds up before you need it to.
+
+4. Score vendor political risk the way you score credit risk. Which government has leverage over this vendor? What has the vendor said in public that might invite scrutiny? You already rate counterparties. Add the column.
+
+## The risk you can't diligence away
+
+There's a wrinkle here that should worry finance leaders. The reasons a model disappears are often outside the vendor's control too. [According to Axios](https://www.axios.com/2026/06/13/anthropic-amazon-white-house), the flaw that got Fable 5 pulled was surfaced by Amazon, one of Anthropic's own investors and a direct competitor, and carried to the White House. The administration [told Anthropic to fix it or pull it](https://techcrunch.com/2026/06/13/amazon-ceo-reportedly-raised-anthropic-model-concerns-before-government-crackdown/). Anthropic refused, and the order came down.
+
+You can't put that in a spreadsheet. You can't diligence your way around a competitor's lobbying or a regulator's bad afternoon. What you can do is make sure no single one of those events takes your finance function offline.
+
+The irony is almost too neat. Anthropic built its whole brand on AI safety, and the most carefully guarded model on the market is the one that got switched off. (You couldn't write it as fiction. An editor would call it heavy-handed.) The forces that decide whether your tools keep working have moved upstream of the tools themselves.
+
+## Plan for the letter you can't predict
+
+You'll never know which model gets a letter on a Friday afternoon. You do get to decide whether that letter ruins your Monday. The CFOs who treat their AI vendor as a single point of failure, rather than a clever assistant, are the ones who will sleep through the next one.
+
+So ask your team one question this quarter. If our best model vanished tonight, how long until we noticed, and how long until we recovered? If you don't like either number, you've found this month's project.
