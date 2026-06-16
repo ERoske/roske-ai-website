@@ -6,98 +6,66 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// Four disguise photographs the (fictional) Kscope26 photo desk filed during
-// the week. Each one is captioned as if the conference program writer had no
-// idea Edward was in the frame. The fedora is the giveaway in each shot.
-const disguises = [
+// The Edward toy line. Five Pixar-style stills of Edward reimagined as a
+// discontinued pull-string cowboy toy, each captioned to match the image.
+const toyline = [
   {
-    src: '/images/kscope/disguise-mustache.png',
-    track: 'BREAKOUT · CONTINENTAL BALLROOM C',
-    timestamp: 'TUE · 10:45 AM · MT',
-    session: 'Oracle EPM Roadmap 2026',
-    speaker: 'Matt Bradley, Oracle',
-    caption: "Matt Bradley previews the Oracle EPM roadmap to a standing-room crowd. Edward, who has watched Matt present some version of that same slide deck every year since 2008, is sadly not anywhere to be seen.",
+    src: '/images/toy-story/clearance-aisle.png',
+    kicker: 'PRODUCT No. 001',
+    title: 'Edward: The Talking EPM Cowboy',
+    caption: "Marked down, dusty, the last one on the peg. The sleek AI gadgets beside him sold out by nine. (He's choosing to read this as a supply-chain issue.)",
+    feature: true,
   },
   {
-    src: '/images/kscope/disguise-dorothy.png',
-    track: 'EXHIBIT HALL · ROCKIES HALL A',
-    timestamp: 'WED · 12:18 PM · MT',
-    session: 'Vendor Hall · Day Two',
-    speaker: 'Oracle, Datavail, Donyati, Applied OLAP',
-    caption: "Day-two exhibit hall, fully open for business. Edward, who once worked a Kscope booth for sixteen straight hours without sitting down, is by his own statement in Puerto Rico.",
+    src: '/images/toy-story/now-with-ai.png',
+    kicker: 'THE 2026 REFRESH',
+    title: 'Now With A.I.',
+    caption: "They bolted a cracked tablet to his chest, added some blinking lights, and called it a pivot. The pull string still works, though the tablet gave out on day two.",
+    feature: false,
   },
   {
-    src: '/images/kscope/disguise-hotel-staff.png',
-    track: 'HALLWAY · OUTSIDE LONGS PEAK 1',
-    timestamp: 'THU · 02:30 PM · MT',
-    session: 'AI in Enterprise EPM · Keynote',
-    speaker: 'Featured Kscope26 Keynote',
-    caption: "The AI-in-EPM keynote draws the largest crowd of the week. Edward, who delivered this exact slot in 2023, is at home in San Juan working through a quarterly.",
+    src: '/images/toy-story/christmas-morning.png',
+    kicker: 'ONE GOOD MORNING',
+    title: 'Christmas, briefly',
+    caption: "For one shining minute he had the kid's whole attention. The tablet on the floor was content to wait, the way a thing waits when it knows it's going to win.",
+    feature: false,
   },
   {
-    src: '/images/kscope/disguise-tourist.png',
-    track: 'LOBBY BALCONY · LEVEL 2',
-    timestamp: 'FRI · 09:02 AM · MT',
-    session: 'Closing Keynote · Press of the Mountains',
-    speaker: 'ODTUG Board',
-    caption: "Closing-day view from the balcony. The Rockies are doing what they do. Edward, who has spoken in fifty-plus countries on all seven continents, is for this one week choosing not to do the four-hour flight to Denver.",
-  },
-];
-
-// Kscope greatest-hits clip reel. Real videos from Edward's catalog
-// (src/data/external-videos.json), framed as a memorial program for the
-// conference attendee who is, again, definitely not present this year.
-const greatestHits = [
-  {
-    id: 'U8tLGHVBJIg',
-    thumbnail: '/images/kscope/censored-poster.png',
-    title: 'Edward Roske, Necessarily Censored',
-    venue: 'REAL TIME BI · KSCOPE14 · 2014',
-    note: "Sixty seconds from the Kscope14 livestream of Real Time BI with Kevin McGinley and Stewart Bryson. Edward has quite the potty mouth. We had to bleep him multiple times just to allow this video to be aired at all. (Featured this week only, in honor of the week he isn't there.)",
+    src: '/images/toy-story/bottom-of-the-box.png',
+    kicker: 'THE DONATION BIN',
+    title: 'Twenty-five cents, firm',
+    caption: "Filed between two dead Game Boys and a flip phone. Honestly, good company. They all peaked around the same time.",
+    feature: false,
   },
   {
-    id: 'PZBIZxQGtBc',
-    title: 'ODTUG Lifetime Achievement Award · Kscope25',
-    venue: 'GAYLORD TEXAN · GRAPEVINE · 2025',
-    note: "Fewer than five people in ODTUG's history have received this. Edward accepted it last June and announced, on stage, that Kscope25 would be his last as a regular. Winning the Lifetime Achievement Award is often seen as the final thing you do with an organization. Sort of a 'putting you out to pasture,' if you will.",
-  },
-  {
-    id: '9Dx9tRPUXwM',
-    title: 'Kscope or Bust: An Intergalactic Odyssey',
-    venue: 'ANIMATED PROMO · ODTUG · 2025',
-    note: "ODTUG's four-minute animated Kscope25 promo. A crew of alien tech enthusiasts intercepts a signal from Earth and sets course for the legendary Kscope conference. Edward voices an animated version of himself. The fedora made the cut.",
-  },
-  {
-    id: 'tCmBz7mT51Y',
-    title: 'The Hat Gang from Kscope 15',
-    venue: 'ODTUG · KSCOPE15 · HOLLYWOOD FL · 2015',
-    note: "ODTUG board members Monty Latiolais and Mike Riley sit Edward down for the Kscope15 sponsor interview. Three men, three hats, one Titanium sponsor. (The hats were, for once, planned in advance.)",
-  },
-  {
-    id: 'kscope11-survivor',
-    externalUrl: 'https://timtows-hyperion-blog.blogspot.com/2011/07/kscope-11-opening-session-behind-scenes.html',
-    thumbnail: '/images/kscope/survivor-poster.png',
-    title: 'Edward Gets Voted Off the Kscope11 Island',
-    venue: 'KSCOPE11 OPENING · LONG BEACH · 2011',
-    note: "Edward's Survivor parody from the Kscope11 opening session in Long Beach. The ODTUG board got voted off one by one to reveal Kscope12's host city. (Edward, who wrote the screenplay as conference chair, was the first eliminated. By unanimous vote.) Hosted on Tim Tow's blog. Click through to watch.",
-  },
-  {
-    id: 'AglCSOaGJqM',
-    title: 'Edward Interviews Glenn Schwartzberg · Kscope23',
-    venue: 'ODTUG PODCAST BOOTH · KSCOPE23',
-    note: "Glenn Schwartzberg on twenty-plus years of Essbase contribution and the advice he gives newer practitioners. Recorded in 2023. (Glenn's hat game, for the record, is not very strong, but at least he shares Edward's birthday each year.)",
+    src: '/images/toy-story/keeps-talking.png',
+    kicker: 'PULL STRING TO ACTIVATE',
+    title: 'He will not stop',
+    caption: "Pull it once and he explains agentic AI to a dinosaur, a robot, and a doll who did not ask. By now the string is decorative. He keeps going regardless.",
+    feature: false,
   },
 ];
 
-// Concurrent sessions Edward did NOT present at Kscope26, restyled from the
-// usual project board. Same six current-work items, framed as the sessions
-// he would have given if he were attending. Which he isn't.
-const sessions = [
+// Pull-string voice box. What the toy says, ranch-hand by way of the Office of
+// the CFO. Hijacked marquee.
+const pullStrings = [
+  "THERE'S A ONESTREAM IN MY BOOT",
+  "REACH FOR THE SKY, THEN RECONCILE IT",
+  "SOMEBODY POISONED THE DATA LAKE",
+  "YOU'RE MY FAVORITE DEPUTY (PENDING APPROVAL)",
+  "ASK ME ABOUT AGENTIC AI. PLEASE. ANYONE.",
+  "TO INFINITY, AND A REASONABLE Q3 FORECAST",
+  "I'M A TOY, NOT A LARGE LANGUAGE MODEL",
+  "PULL STRING FOR A 45-MINUTE ANSWER",
+];
+
+// The current product line. Same six real projects, framed as toys on a shelf.
+const products = [
   {
-    code: 'TRACK · EPM-101',
-    room: 'WHAT HE IS BUILDING INSTEAD',
+    code: 'MODEL No. 01',
+    cat: 'WORKS AS ADVERTISED (RARE)',
     title: 'AgentCube',
-    body: "The engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus. Essbase and Planning shipped. Consolidations is in beta. (The session-room version of this talk would have been packed and standing in the back. The version where you click a link is also free.)",
+    body: "The engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus. Essbase and Planning shipped. Consolidations is in beta. (It's the toy that actually does what the box promised, which in this aisle makes it a collector's item.)",
     badge: 'ESSBASE · PLANNING · CLOSE',
     status: 'SHIPPED',
     href: 'https://caprus.ai/agentcube/',
@@ -105,10 +73,10 @@ const sessions = [
     cta: 'Read the docs',
   },
   {
-    code: 'TRACK · LDR-204',
-    room: 'WHAT HE IS HOSTING INSTEAD',
+    code: 'MODEL No. 02',
+    cat: 'COLLECT THE WHOLE ISLAND',
     title: 'Caribbean AI Summit',
-    body: "Co-chairing the largest AI conference Puerto Rico has ever hosted. October 9 and 10 in San Juan. Speakers and sponsors are being recruited right now. If you build, fund, or run AI, the stage has a slot with your name on it.",
+    body: "Co-chairing the largest AI conference Puerto Rico has ever hosted. October 9 and 10 in San Juan. Speakers and sponsors are being recruited right now. If you build, fund, or run AI, there's a slot on the stage with your name on it.",
     badge: '9-10 OCT 2026 · SAN JUAN',
     status: 'CALL FOR SPEAKERS OPEN',
     href: 'https://www.caribbeansummit.ai/en/speakers/submit',
@@ -116,10 +84,10 @@ const sessions = [
     cta: 'Submit a speaker',
   },
   {
-    code: 'TRACK · AI-305',
-    room: 'WHAT HE IS INVESTING IN INSTEAD',
+    code: 'MODEL No. 03',
+    cat: 'SOLD SEPARATELY',
     title: 'Caprus',
-    body: "Investor and contributor at Caprus, the AI software and services firm giving finance teams faster, smarter operations. The working crew behind the MCP servers. The team that, for the record, does most of the actual building while Edward writes the blog posts.",
+    body: "Investor and contributor at Caprus, the AI software and services firm giving finance teams faster, smarter operations. The crew behind the MCP servers, and the people who do most of the actual building while I write the blog posts.",
     badge: 'AI · FINANCE',
     status: 'RUNNING',
     href: 'https://caprus.ai',
@@ -127,8 +95,8 @@ const sessions = [
     cta: 'See the team',
   },
   {
-    code: 'TRACK · GAME-411',
-    room: 'WHAT HE IS PROTOTYPING INSTEAD',
+    code: 'MODEL No. 04',
+    cat: 'AGES: ETERNAL DM',
     title: "AI Dungeon Master's Screen",
     body: "An AI-driven DM's screen for running better D&D 5e campaigns. Initiative, lore, and improv help for the person behind the screen. If there's going to be an AI at the table, it should at least earn its seat. (The party will not be told.)",
     badge: 'D&D · 5E · EBERRON',
@@ -138,10 +106,10 @@ const sessions = [
     cta: 'Quiet build',
   },
   {
-    code: 'TRACK · COMM-103',
-    room: 'WHAT HE IS PRESIDING OVER INSTEAD',
+    code: 'MODEL No. 05',
+    cat: 'SOME ASSEMBLY REQUIRED',
     title: 'Puerto Rico AI Community',
-    body: "President of the Puerto Rico AI Community. Over 850 people across our events. We meet every other month to figure out, in public, what AI means for the island, which is also what AI means for everyone else watching the island.",
+    body: "President of the Puerto Rico AI Community. More than 850 people across our events. We meet every other month to figure out, in public, what AI means for the island, which is also what it means for everyone watching the island.",
     badge: '850+ · BI-MONTHLY',
     status: 'RUNNING',
     href: 'https://praicommunity.org/',
@@ -149,10 +117,10 @@ const sessions = [
     cta: 'Join the next one',
   },
   {
-    code: 'TRACK · TOOL-602',
-    room: 'WHAT HE SHIPPED INSTEAD',
+    code: 'MODEL No. 06',
+    cat: 'WORKS RIGHT OUT OF THE BOX',
     title: 'Only Recipes',
-    body: "Edward's first Chrome extension. When it spots you on a recipe page, it strips out everything that isn't the recipe. No author memoir. No fourteen ads. No infinite scroll. It's ridiculously fast and remarkably useful, which are two phrases I don't usually get to put next to each other.",
+    body: "My first Chrome extension. When it spots you on a recipe page, it strips out the author's childhood memoir, the fourteen ads, and the infinite scroll, and leaves you the recipe. It's ridiculously fast and genuinely useful, two phrases I don't often get to put next to each other.",
     badge: 'CHROME EXTENSION · FREE',
     status: 'SHIPPED',
     href: '/only-recipes/',
@@ -161,52 +129,38 @@ const sessions = [
   },
 ];
 
-// Late-breaking adds from the weekly questionnaire — fresh items shipping
-// this week, slotted in as sessions added to the program after print.
+// Late add to the catalog, still in beta.
 const lateAdds = [
   {
     tag: 'IN BETA · NAME PENDING',
     title: 'The Home Library Project',
-    line: 'BOOKS · GAMES · MEDIA · ALL SHELVES',
-    body: "A new app and site that digitizes a home library: books, board games, music, media, anything sitting on a shelf at the house. All categorized. There'll be a free tier. The full reveal comes after beta. If you want an early look, send an email and you're on the list.",
+    line: 'BOOKS · GAMES · MEDIA · EVERY SHELF',
+    body: "A new app and site that digitizes a home library: books, board games, music, media, anything sitting on a shelf at the house. All of it categorized. There'll be a free tier. I'll share the rest after beta. Want an early look? Send an email and you're on the list.",
     cta: 'Email for early access',
     href: 'mailto:Edward@Roske.AI',
     external: false,
   },
 ];
 
-// Conference-program "stat block" sitting just under the hero.
+// Stat block, packaging-style.
 const tally = [
   { value: '50+', label: 'COUNTRIES PRESENTED IN' },
   { value: '80+', label: 'COUNTRIES VISITED' },
   { value: '15', label: 'BOOKS IN PRINT' },
   { value: '2', label: 'U.S. PATENTS' },
-  { value: '~20', label: 'PRIOR KSCOPES' },
+  { value: '25+', label: 'YEARS RUNNING COMPANIES' },
 ];
 
-// Marquee ticker. The badge-line scroller from the conference app, gently
-// hijacked into a faintly anxious public-address loop.
-const tickerItems = [
-  "ODTUG KSCOPE26 · JUNE 14 THRU 18 · AURORA CO",
-  "GAYLORD ROCKIES RESORT · TECH AT NEW HEIGHTS",
-  "EDWARD IS NOT ON THE SPEAKER LIST · WE CHECKED",
-  "ATTENDEE BLUE-FEDORA SUPPLY IS RUNNING LOW",
-  "★ ASKING GOOD QUESTIONS ★",
-  "PLEASE REPORT UNAUTHORIZED FEDORAS TO REGISTRATION",
-  "BACK ROW OF SESSIONS IS NOT FOR NETWORKING",
-  "WIZARD-OF-OZ COSTUMES OUTSIDE EXHIBIT HALL ARE OPTIONAL",
-];
-
-// Program-guide colophon at the foot of the page.
-const colophon = [
-  { role: 'EDITION', name: 'KSCOPE26 · OFFICIAL PROGRAM · WEEK 25' },
-  { role: 'CONFERENCE', name: 'ODTUG KSCOPE26 · JUNE 14-18 · AURORA, COLORADO' },
-  { role: 'VENUE', name: 'GAYLORD ROCKIES RESORT AND CONVENTION CENTER' },
-  { role: 'TAGLINE', name: 'TECH AT NEW HEIGHTS' },
-  { role: 'HONOREE IN ABSENTIA', name: 'EDWARD ROSKE · LIFETIME ACHIEVEMENT, 2025' },
-  { role: 'HEADGEAR (REQUIRED)', name: 'ONE (1) BLUE FELT FEDORA · BLACK BAND · NEVER NEGOTIATED' },
-  { role: 'AT HOME (REPORTEDLY)', name: 'SAN JUAN, PUERTO RICO' },
-  { role: 'WITH THANKS TO', name: 'EVERY ODTUG VOLUNTEER WHO HELD THE CONFERENCE TOGETHER FOR TWENTY-FIVE YEARS' },
+// Toy-box back panel, in place of a colophon.
+const backPanel = [
+  { role: 'EDITION', name: 'WEEK 26 · TOY STORY 5 RELEASE WEEK · 2026' },
+  { role: 'PRODUCT', name: 'EDWARD: THE TALKING EPM COWBOY' },
+  { role: 'INCLUDES', name: 'ONE (1) COWBOY · ONE (1) PULL STRING · OPINIONS (UNLIMITED)' },
+  { role: 'BATTERIES', name: 'NOT INCLUDED · NOT REQUIRED · RUNS ON SPITE AND CURIOSITY' },
+  { role: 'HEADGEAR', name: 'ONE (1) ROYAL-BLUE FELT FEDORA · SURVIVES EVERY RECALL' },
+  { role: 'WARNING', name: 'MAY DISCUSS AGENTIC AI FOR 45 MINUTES UNPROMPTED' },
+  { role: 'MADE IN', name: 'SAN JUAN, PUERTO RICO' },
+  { role: 'CARE', name: 'DO NOT EXPOSE TO SPREADSHEETS WITHOUT FREEZE PANES' },
 ];
 ---
 
@@ -214,34 +168,32 @@ const colophon = [
   <WeeklyAnimation />
 
   <!-- ============================================
-       BADGE STRIPE — conference-lanyard top bar
+       PACKAGE STRIP — toy header card
        ============================================ -->
-  <div class="ks-bar">
-    <div class="ks-bar-inner">
-      <span class="ks-bar-logo" aria-hidden="true">
-        <span class="ks-bar-logo-k">K</span><span class="ks-bar-logo-s">scope</span><span class="ks-bar-logo-yr">26</span>
-      </span>
-      <span class="ks-bar-meta ks-bar-meta-center">AURORA · COLORADO · GAYLORD ROCKIES · JUNE 14-18, 2026</span>
-      <span class="ks-bar-meta ks-bar-meta-end">TECH AT NEW HEIGHTS</span>
+  <div class="toy-bar">
+    <div class="toy-bar-inner">
+      <span class="toy-bar-brand">EDWARD<span class="toy-bar-brand-x">:</span> THE TALKING EPM COWBOY</span>
+      <span class="toy-bar-meta toy-bar-meta-center">PULL STRING FOR OPINIONS · BATTERIES NOT INCLUDED</span>
+      <span class="toy-bar-meta toy-bar-meta-end">AGES 50 AND UP</span>
     </div>
   </div>
 
   <!-- ============================================
-       HERO — split layout, text left, fedora-room right
+       HERO — split, text left, film still right
        ============================================ -->
   <section class="hero-section">
-    <div class="hero-pattern" aria-hidden="true"></div>
+    <div class="hero-clouds" aria-hidden="true"></div>
     <div class="hero-grid">
 
       <div class="hero-text">
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-pip"></span>
-          <span>OFFICIAL ATTENDEE NOTICE · ODTUG · 2026</span>
+          <span>NOW PLAYING · A ROSKE.AI PRODUCTION · JUNE 2026</span>
         </div>
 
         <h1 class="hero-title">
-          <span class="hero-title-line">Tech at <em>new heights.</em></span>
-          <span class="hero-title-sub">Edward at sea level.</span>
+          <span class="hero-title-line">The toy who wouldn't</span>
+          <span class="hero-title-line"><em>update.</em></span>
         </h1>
 
         <p class="hero-body">{theme.hero.description}</p>
@@ -267,22 +219,21 @@ const colophon = [
       </div>
 
       <div class="hero-image-wrap">
-        <figure class="program-cover">
-          <div class="program-cover-top">
-            <span class="program-cover-flag">PROGRAM COVER · ROOM SHOT · DAY ONE</span>
+        <figure class="film-still">
+          <div class="film-still-top">
+            <span class="film-still-flag">FRAME 001 · THE TOY WHO WOULDN'T UPDATE</span>
+            <span class="film-still-rate">RATED E</span>
           </div>
-          <div class="program-cover-window">
-            <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="program-cover-image" />
-            <div class="program-cover-badge" aria-hidden="true">
-              <span class="program-cover-badge-line">ATTENDEE</span>
-              <span class="program-cover-badge-num">#000001</span>
-              <span class="program-cover-badge-name">EDWARD ROSKE</span>
-              <span class="program-cover-badge-tag">NOT IN ATTENDANCE</span>
+          <div class="film-still-window">
+            <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="film-still-image" />
+            <div class="film-still-tag" aria-hidden="true">
+              <span class="film-still-tag-line">THE THREAT</span>
+              <span class="film-still-tag-sub">ARRIVED WITH WI-FI</span>
             </div>
           </div>
-          <div class="program-cover-bottom">
-            <span>KSCOPE26 · DAY ONE · KEYNOTE HALL</span>
-            <span>PHOTO STAFF · ODTUG · 6.14.26</span>
+          <div class="film-still-bottom">
+            <span>DIR. EDWARD ROSKE</span>
+            <span>PIXAR-ADJACENT · NO AFFILIATION</span>
           </div>
         </figure>
       </div>
@@ -290,71 +241,51 @@ const colophon = [
   </section>
 
   <!-- ============================================
-       TICKER
+       PULL-STRING TICKER
        ============================================ -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      {[...tickerItems, ...tickerItems].map(item => (
+      {[...pullStrings, ...pullStrings].map(item => (
         <span class="ticker-item">{item}</span>
       ))}
     </div>
   </div>
 
   <!-- ============================================
-       PULL QUOTE — "official statement from ODTUG"
-       ============================================ -->
-  <section class="statement-section">
-    <div class="statement-inner">
-      <div class="statement-tag">OFFICIAL STATEMENT · ODTUG COMMUNICATIONS</div>
-      <blockquote class="statement-q">
-        Attendees showed up wearing his hat. Which is, frankly, more support than he was expecting. It's also, frankly, more support than is strictly necessary. <span class="statement-line">(Frankly, please stop.)</span>
-      </blockquote>
-      <div class="statement-attrib">
-        <span class="statement-attrib-name">ODTUG BOARD</span>
-        <span class="statement-attrib-role">REGISTRATION DESK · DAY ONE · MORNING</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================
        LATEST CONTENT — permanent module
        ============================================ -->
   <LatestContent
-    eyebrow="Section 02 · From the press box (in San Juan, not Aurora)"
-    heading={"Fresh <em>off the wire.</em>"}
-    deck="The newest writing and video briefs, in one place. Filed from wherever Edward happens to be this week, which is officially not Kscope. (Though he was reportedly spotted around the Gaylord Rockies? Probably just rumors.)"
+    eyebrow="Section 02 · Fresh out of the box"
+    heading={"New <em>this week.</em>"}
+    deck="The latest writing and video briefs, in one place, so the good stuff isn't buried under a pile of older toys."
   />
 
   <!-- ============================================
-       THE SEARCH — disguise gallery
+       THE TOY LINE — scene gallery
        ============================================ -->
-  <section class="search-section">
-    <div class="search-inner">
+  <section class="line-section">
+    <div class="line-inner">
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 03 · WHERE'S THE FEDORA · DISGUISE GALLERY</span>
+          <span>SECTION 03 · THE FULL PRODUCT LINE · NOW DISCONTINUED</span>
         </div>
-        <h2 class="section-title">The search <em>continues.</em></h2>
+        <h2 class="section-title">Every toy in the <em>line.</em></h2>
         <p class="section-deck">
-          Four photos from the ODTUG photo desk this week. Edward Roske is, per his own statement, in Puerto Rico. The fedora, however, has a way of turning up in the frame. (We make no claims about how it got there. We also make no claims about a Wizard of Oz costume seen in the Donyati booth.)
+          One man, several recalls. Each one a Pixar-grade study in what happens when the analog favorite meets a glowing rectangle with better marketing. (The fedora is in all of them. The fedora is non-negotiable.)
         </p>
       </header>
 
-      <div class="search-grid">
-        {disguises.map((item) => (
-          <article class="disguise-card">
-            <div class="disguise-frame">
-              <img src={item.src} alt={item.caption} loading="lazy" decoding="async" class="disguise-image" />
+      <div class="line-grid">
+        {toyline.map((toy) => (
+          <article class={`toy-card ${toy.feature ? 'toy-card-feature' : ''}`}>
+            <div class="toy-frame">
+              <img src={toy.src} alt={toy.caption} loading="lazy" decoding="async" class="toy-image" />
+              <span class="toy-kicker">{toy.kicker}</span>
             </div>
-            <div class="disguise-meta">
-              <div class="disguise-meta-row">
-                <span class="disguise-track">{item.track}</span>
-                <span class="disguise-time">{item.timestamp}</span>
-              </div>
-              <h3 class="disguise-session">{item.session}</h3>
-              <div class="disguise-speaker">{item.speaker}</div>
-              <p class="disguise-caption">{item.caption}</p>
+            <div class="toy-meta">
+              <h3 class="toy-name">{toy.title}</h3>
+              <p class="toy-caption">{toy.caption}</p>
             </div>
           </article>
         ))}
@@ -363,91 +294,58 @@ const colophon = [
   </section>
 
   <!-- ============================================
-       GREATEST HITS — video grid
+       PULL-QUOTE — from the back of the box
        ============================================ -->
-  <section class="memoriam-section">
-    <div class="memoriam-inner">
-      <header class="section-header memoriam-header">
-        <div class="section-tag memoriam-tag">
-          <span class="section-tag-dot"></span>
-          <span>SECTION 04 · GREATEST HITS · ARCHIVE FOOTAGE</span>
-        </div>
-        <h2 class="section-title">In memoriam. <em>May he rest in peace at other conferences.</em></h2>
-        <p class="section-deck">
-          A program is just a list of things that already happened, eventually. Six clips from the archive: the Lifetime Achievement Award, the animated promo, the masterclass, the podcast booth, and a twenty-eight-second appearance from 2011 that, depending on your tolerance for tape hiss, holds up surprisingly well.
-        </p>
-      </header>
-
-      <div class="memoriam-grid">
-        {greatestHits.map((video) => {
-          const href = video.externalUrl ?? `https://www.youtube.com/watch?v=${video.id}`;
-          const thumb = video.thumbnail ?? `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
-          return (
-            <article class="memoriam-card">
-              <a href={href} target="_blank" rel="noopener" class="memoriam-thumb-link" aria-label={`Watch: ${video.title}`}>
-                <div class="memoriam-thumb">
-                  <img src={thumb} alt={video.title} loading="lazy" decoding="async" />
-                  <div class="memoriam-play" aria-hidden="true">
-                    <svg width="44" height="44" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                  </div>
-                  <div class="memoriam-venue">{video.venue}</div>
-                </div>
-              </a>
-              <h3 class="memoriam-title">
-                <a href={href} target="_blank" rel="noopener">{video.title}</a>
-              </h3>
-              <p class="memoriam-note">{video.note}</p>
-            </article>
-          );
-        })}
-      </div>
-
-      <div class="memoriam-foot">
-        <a href="/content/" class="memoriam-more">
-          More from the archive
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
-        </a>
+  <section class="statement-section">
+    <div class="statement-inner">
+      <div class="statement-tag">FROM THE BACK OF THE BOX</div>
+      <blockquote class="statement-q">
+        Every toy gets replaced eventually. I figure if I stay useful enough, they'll at least feel a little guilty about it. <span class="statement-line">(So far: mixed results.)</span>
+      </blockquote>
+      <div class="statement-attrib">
+        <span class="statement-attrib-name">EDWARD ROSKE</span>
+        <span class="statement-attrib-role">READING HIS OWN RECALL NOTICE</span>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       CONCURRENT SESSIONS — project cards
+       CURRENT PRODUCT LINE — project cards
        ============================================ -->
-  <section id="current-work" class="sessions-section">
-    <div class="sessions-inner">
+  <section id="current-work" class="products-section">
+    <div class="products-inner">
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 05 · CONCURRENT SESSIONS · EDWARD DID NOT PRESENT</span>
+          <span>SECTION 04 · WHAT HE'S ACTUALLY BUILDING</span>
         </div>
-        <h2 class="section-title">Six sessions. <em>None of them at Kscope.</em></h2>
+        <h2 class="section-title">Six things. <em>None require batteries.</em></h2>
         <p class="section-deck">
-          The current entries column, restyled from the program he would have submitted if he were going. Same six projects either way. (The room numbers are honest. The rooms aren't in Aurora.)
+          The part of the toy box that still ships. Real projects, in beta or in production, all built on the theory that the old cowboy might be worth keeping around a little longer.
         </p>
       </header>
 
-      <div class="sessions-grid">
-        {sessions.map(session => (
-          <article class="session-card">
-            <div class="session-card-head">
-              <span class="session-code">{session.code}</span>
-              <span class="session-room">{session.room}</span>
+      <div class="products-grid">
+        {products.map(product => (
+          <article class="product-card">
+            <div class="product-card-head">
+              <span class="product-code">{product.code}</span>
+              <span class="product-cat">{product.cat}</span>
             </div>
-            <h3 class="session-title">{session.title}</h3>
-            <p class="session-body">{session.body}</p>
-            <div class="session-meta">
-              <span class="session-badge">{session.badge}</span>
-              <span class={`session-status session-status-${session.status.toLowerCase().replace(/[^a-z]+/g, '-')}`}>{session.status}</span>
+            <h3 class="product-title">{product.title}</h3>
+            <p class="product-body">{product.body}</p>
+            <div class="product-meta">
+              <span class="product-badge">{product.badge}</span>
+              <span class={`product-status product-status-${product.status.toLowerCase().replace(/[^a-z]+/g, '-')}`}>{product.status}</span>
             </div>
-            <div class="session-foot">
-              {session.href ? (
-                <a href={session.href} target={session.external ? '_blank' : undefined} rel={session.external ? 'noopener' : undefined} class="session-cta">
-                  {session.cta}
+            <div class="product-foot">
+              {product.href ? (
+                <a href={product.href} target={product.external ? '_blank' : undefined} rel={product.external ? 'noopener' : undefined} class="product-cta">
+                  {product.cta}
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
                 </a>
               ) : (
-                <span class="session-cta session-cta-disabled">{session.cta}</span>
+                <span class="product-cta product-cta-disabled">{product.cta}</span>
               )}
             </div>
           </article>
@@ -457,16 +355,16 @@ const colophon = [
   </section>
 
   <!-- ============================================
-       LATE ADDS
+       LATE ADD
        ============================================ -->
   <section class="late-section">
     <div class="late-inner">
       <header class="section-header late-header">
         <div class="section-tag late-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 06 · LATE ADDS · NEW SINCE PROGRAM PRINT</span>
+          <span>SECTION 05 · NEW FOR THIS SEASON · STILL IN BETA</span>
         </div>
-        <h2 class="section-title">One late <em>addition</em>, in beta.</h2>
+        <h2 class="section-title">One more <em>off the assembly line.</em></h2>
       </header>
 
       <div class="late-grid">
@@ -490,15 +388,16 @@ const colophon = [
        CLOSING CTA
        ============================================ -->
   <section class="closing-section">
+    <div class="closing-clouds" aria-hidden="true"></div>
     <div class="closing-inner">
       <div class="closing-eyebrow">
         <span class="closing-rule"></span>
         <span>THE BOX OFFICE IS OPEN · 13 MINUTES</span>
         <span class="closing-rule"></span>
       </div>
-      <h2 class="closing-title">Couldn't find him at Kscope?<br/><em>Of course not.</em></h2>
+      <h2 class="closing-title">Pull the string.<br/><em>Get a real answer.</em></h2>
       <p class="closing-deck">
-        Book a thirteen-minute call. Bring questions about Oracle EPM, AI in finance, MCP servers, Caribbean conferences, D&D, or what it feels like to skip your own conference for the first time in nineteen years. Answers included. Opinions arrive whether you ask for them or not, and at thirteen minutes a head, you can't really say they aren't a bargain.
+        Book thirteen minutes. Ask about Oracle EPM, AI in finance, MCP servers, the Caribbean AI Summit, D&D, or what it's like to spend a career hyping the exact technology now eyeing your spot in the toy box. The pull string is free, and the opinions come with it whether you asked or not.
       </p>
       <div class="closing-cta-row">
         <a href="/question/" target="_blank" rel="noopener" class="btn-primary btn-primary-big">
@@ -513,21 +412,21 @@ const colophon = [
   </section>
 
   <!-- ============================================
-       COLOPHON
+       BACK PANEL
        ============================================ -->
-  <section class="colophon-section">
-    <div class="colophon-inner">
-      <div class="colophon-tag">PROGRAM COLOPHON · BACK COVER · 2026</div>
-      <div class="colophon-roll">
-        {colophon.map(entry => (
-          <div class="colophon-block">
-            <span class="colophon-role">{entry.role}</span>
-            <span class="colophon-name">{entry.name}</span>
+  <section class="panel-section">
+    <div class="panel-inner">
+      <div class="panel-tag">TOY BOX · BACK PANEL · 2026</div>
+      <div class="panel-roll">
+        {backPanel.map(entry => (
+          <div class="panel-block">
+            <span class="panel-role">{entry.role}</span>
+            <span class="panel-name">{entry.name}</span>
           </div>
         ))}
       </div>
-      <div class="colophon-footnote">
-        Not affiliated with ODTUG, Oracle, the Gaylord Rockies Resort, or any registered fedora. ODTUG, Kscope, Tech at New Heights, and the conference program are the property of their respective owners. The fedora is, and always has been, Edward's. (We checked.)
+      <div class="panel-footnote">
+        Not affiliated with Pixar, Disney, or any toy currently in production. Toy Story and its characters are the property of their respective owners. The cowboy, the opinions, and the fedora are Edward's. No pull-string toys were replaced by AI in the making of this website, though several were made visibly nervous.
       </div>
     </div>
   </section>
@@ -536,90 +435,98 @@ const colophon = [
 
 <style>
   /* ============================================================
-     KSCOPE26 · EDWARD IS NOT HERE
-     Palette: ODTUG navy / Kscope orange / brass-fedora gold /
-              keynote-hall blackout / program-paper off-white
-     Type: Space Grotesk (display), Inter (body), JetBrains Mono
-           (badge IDs, session codes, room numbers)
+     TOY STORY 5 · THE TOY WHO WOULDN'T UPDATE
+     Palette: Andy's-room sky blue / Woody red / toy-star gold /
+              warm label cream / toy box at night
+     Type: Fredoka (display), Nunito (body), Space Mono (tech
+           warnings + labels), Rye (western pull-string flourish)
      ============================================================ */
 
   :global([data-theme="dark"]) {
-    --ks-bg: #07172e;
-    --ks-bg-deep: #04101f;
-    --ks-surface: #102a4d;
-    --ks-surface-2: #16365f;
-    --ks-fg: #eef2f8;
-    --ks-muted: #8fa3bf;
-    --ks-line: #1f3d66;
-    --ks-line-soft: #14294a;
-    --ks-navy: #0b2e54;
-    --ks-navy-deep: #061a31;
-    --ks-orange: #f37021;
-    --ks-orange-bright: #ff7a1f;
-    --ks-orange-soft: #ffb072;
-    --ks-gold: #d4a437;
-    --ks-cream: #eef2f8;
+    --ts-bg: #0f1b3d;
+    --ts-bg-deep: #0a142e;
+    --ts-surface: #1a2a55;
+    --ts-surface-2: #21356a;
+    --ts-fg: #f5f0e1;
+    --ts-muted: #a9b8db;
+    --ts-line: #2b407a;
+    --ts-line-soft: #1c2c57;
+    --ts-sky: #3b82e6;
+    --ts-sky-deep: #1c5fc4;
+    --ts-red: #e8462f;
+    --ts-red-bright: #ff6a4d;
+    --ts-gold: #f2b840;
+    --ts-cream: #f5f0e1;
   }
   :global([data-theme="light"]) {
-    --ks-bg: #eef2f8;
-    --ks-bg-deep: #dde6f0;
-    --ks-surface: #ffffff;
-    --ks-surface-2: #f4f7fb;
-    --ks-fg: #0b2e54;
-    --ks-muted: #4a5f7a;
-    --ks-line: #c5d0e0;
-    --ks-line-soft: #e1e7f0;
-    --ks-navy: #0b2e54;
-    --ks-navy-deep: #061a31;
-    --ks-orange: #e95a0d;
-    --ks-orange-bright: #f37021;
-    --ks-orange-soft: #ffb072;
-    --ks-gold: #b8860b;
-    --ks-cream: #ffffff;
+    --ts-bg: #e7f1fc;
+    --ts-bg-deep: #d3e6fb;
+    --ts-surface: #ffffff;
+    --ts-surface-2: #f1f7ff;
+    --ts-fg: #16335f;
+    --ts-muted: #5a6f90;
+    --ts-line: #c2d8f0;
+    --ts-line-soft: #dcebfb;
+    --ts-sky: #2f6fd0;
+    --ts-sky-deep: #1c5fc4;
+    --ts-red: #d83a22;
+    --ts-red-bright: #e8462f;
+    --ts-gold: #d39a26;
+    --ts-cream: #ffffff;
   }
 
+  /* Cloud-wallpaper texture used on the sky sections */
+  .hero-clouds, .closing-clouds {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='150'%20height='110'%3E%3Cg%20fill='%23ffffff'%3E%3Cellipse%20cx='48'%20cy='56'%20rx='34'%20ry='17'/%3E%3Ccircle%20cx='34'%20cy='50'%20r='14'/%3E%3Ccircle%20cx='60'%20cy='44'%20r='18'/%3E%3Ccircle%20cx='84'%20cy='54'%20r='13'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 200px 147px;
+    opacity: 0.05;
+  }
+  :global([data-theme="light"]) .hero-clouds,
+  :global([data-theme="light"]) .closing-clouds { opacity: 0.5; }
+
   /* ------------------------------------------------------------
-     BADGE STRIPE
+     PACKAGE STRIP
      ------------------------------------------------------------ */
-  .ks-bar {
+  .toy-bar {
     width: 100%;
-    background: var(--ks-navy-deep);
-    color: var(--ks-cream);
-    border-bottom: 3px solid var(--ks-orange);
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.12em;
+    background: var(--ts-red);
+    color: #fff;
+    border-bottom: 4px solid var(--ts-gold);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  :global([data-theme="light"]) .ks-bar { background: var(--ks-navy); }
-  .ks-bar-inner {
+  .toy-bar-inner {
     max-width: 1500px;
     margin: 0 auto;
-    padding: 0.55rem 2rem;
+    padding: 0.5rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
   }
-  .ks-bar-logo {
+  .toy-bar-brand {
     display: inline-flex;
     align-items: baseline;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     font-weight: 700;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
     text-transform: none;
-    font-size: 1.05rem;
+    font-size: 1.02rem;
+    color: #fff;
   }
-  .ks-bar-logo-k { color: var(--ks-orange-bright); margin-right: 0.05em; }
-  .ks-bar-logo-s { color: var(--ks-cream); }
-  .ks-bar-logo-yr { color: var(--ks-orange-bright); margin-left: 0.15em; font-size: 0.75em; align-self: flex-end; padding-bottom: 0.1em; }
-  .ks-bar-meta { white-space: nowrap; }
-  .ks-bar-meta-center { flex: 1; text-align: center; letter-spacing: 0.18em; color: var(--ks-cream); opacity: 0.85; }
-  .ks-bar-meta-end { text-align: right; color: var(--ks-orange-bright); font-weight: 600; }
-  @media (max-width: 760px) {
-    .ks-bar-inner { padding: 0.55rem 1rem; gap: 0.6rem; font-size: 0.58rem; }
-    .ks-bar-meta-end { display: none; }
-    .ks-bar-meta-center { font-size: 0.55rem; letter-spacing: 0.12em; }
+  .toy-bar-brand-x { color: var(--ts-gold); margin: 0 0.1em; }
+  .toy-bar-meta { white-space: nowrap; }
+  .toy-bar-meta-center { flex: 1; text-align: center; letter-spacing: 0.16em; opacity: 0.95; }
+  .toy-bar-meta-end { text-align: right; color: #fff7e6; font-weight: 700; }
+  @media (max-width: 780px) {
+    .toy-bar-inner { padding: 0.5rem 1rem; gap: 0.6rem; font-size: 0.56rem; }
+    .toy-bar-meta-end { display: none; }
+    .toy-bar-meta-center { font-size: 0.54rem; letter-spacing: 0.1em; }
   }
 
   /* ------------------------------------------------------------
@@ -627,39 +534,25 @@ const colophon = [
      ------------------------------------------------------------ */
   .hero-section {
     position: relative;
-    background: var(--ks-bg);
-    color: var(--ks-fg);
+    background: var(--ts-bg);
+    color: var(--ts-fg);
     padding: 5.5rem 2rem 6rem;
     overflow: hidden;
   }
   :global([data-theme="dark"]) .hero-section {
     background:
-      radial-gradient(circle at 12% 18%, rgba(243,112,33,0.18) 0%, transparent 50%),
-      radial-gradient(circle at 88% 82%, rgba(11,46,84,0.5) 0%, transparent 55%),
-      radial-gradient(circle at 50% 110%, rgba(243,112,33,0.08) 0%, transparent 60%),
-      linear-gradient(160deg, #04101f 0%, #07172e 55%, #061a31 100%);
+      radial-gradient(circle at 14% 16%, rgba(59,130,230,0.22) 0%, transparent 52%),
+      radial-gradient(circle at 86% 84%, rgba(232,70,47,0.12) 0%, transparent 55%),
+      linear-gradient(165deg, #0a142e 0%, #0f1b3d 55%, #102350 100%);
   }
   :global([data-theme="light"]) .hero-section {
     background:
-      radial-gradient(circle at 12% 18%, rgba(243,112,33,0.10) 0%, transparent 50%),
-      radial-gradient(circle at 88% 82%, rgba(11,46,84,0.08) 0%, transparent 55%),
-      var(--ks-bg);
+      radial-gradient(circle at 50% -10%, #ffffff 0%, transparent 45%),
+      linear-gradient(180deg, #cfe6fb 0%, #e7f1fc 60%);
   }
-
-  /* Topographic faint contour overlay — Rocky Mountain reference */
-  .hero-pattern {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.05;
-    background-image:
-      repeating-linear-gradient(75deg, transparent 0 22px, var(--ks-orange) 22px 23px),
-      repeating-linear-gradient(105deg, transparent 0 38px, var(--ks-cream) 38px 39px);
-  }
-  :global([data-theme="light"]) .hero-pattern { opacity: 0.04; }
-
   .hero-grid {
     position: relative;
+    z-index: 2;
     max-width: 1500px;
     margin: 0 auto;
     display: grid;
@@ -671,69 +564,52 @@ const colophon = [
     .hero-grid { grid-template-columns: 1fr; gap: 3.5rem; }
     .hero-section { padding: 3.5rem 1.25rem 4.5rem; }
   }
-
   .hero-text { max-width: 660px; position: relative; z-index: 2; }
-
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 0.7rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.74rem;
-    letter-spacing: 0.18em;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ks-orange-bright);
-    margin-bottom: 1.7rem;
-    padding: 0.35rem 0.75rem;
-    border: 1.5px solid var(--ks-orange-bright);
-    border-radius: 2px;
+    color: var(--ts-red);
+    margin-bottom: 1.6rem;
+    padding: 0.35rem 0.85rem;
+    border: 2px solid var(--ts-red);
+    border-radius: 999px;
   }
+  :global([data-theme="light"]) .hero-eyebrow { background: #fff; }
   .hero-eyebrow-pip {
-    width: 8px;
-    height: 8px;
-    background: var(--ks-orange-bright);
+    width: 8px; height: 8px;
+    background: var(--ts-red);
     border-radius: 50%;
-    box-shadow: 0 0 8px rgba(255,122,31,0.6);
     flex-shrink: 0;
   }
-
-  .hero-title { margin: 0 0 2rem; line-height: 0.95; }
+  .hero-title { margin: 0 0 1.8rem; line-height: 0.96; }
   .hero-title-line {
     display: block;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     font-weight: 700;
-    font-size: clamp(2.8rem, 6.5vw, 5.4rem);
-    color: var(--ks-fg);
-    letter-spacing: -0.02em;
-    line-height: 1;
+    font-size: clamp(2.9rem, 7vw, 5.6rem);
+    color: var(--ts-fg);
+    letter-spacing: -0.01em;
+    line-height: 1.0;
   }
   .hero-title-line em {
     font-style: normal;
-    color: var(--ks-orange-bright);
+    color: var(--ts-red);
   }
-  .hero-title-sub {
-    display: block;
-    margin-top: 0.45rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 400;
-    font-style: italic;
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    color: var(--ks-muted);
-    letter-spacing: -0.005em;
-    line-height: 1.2;
-  }
-  :global([data-theme="light"]) .hero-title-sub { color: var(--ks-navy); opacity: 0.65; }
-
   .hero-body {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 1.08rem;
+    font-family: 'Nunito', system-ui, sans-serif;
+    font-size: 1.1rem;
     line-height: 1.7;
-    color: var(--ks-muted);
-    margin: 0 0 1.9rem;
+    color: var(--ts-muted);
+    margin: 0 0 2rem;
     max-width: 40em;
-    font-weight: 400;
+    font-weight: 500;
   }
-  :global([data-theme="light"]) .hero-body { color: var(--ks-navy); opacity: 0.82; }
+  :global([data-theme="light"]) .hero-body { color: #3a4d6b; }
 
   /* Buttons */
   .btn-primary, .btn-secondary {
@@ -741,196 +617,180 @@ const colophon = [
     align-items: center;
     gap: 0.55rem;
     padding: 0.95rem 1.7rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.92rem;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 0.98rem;
     font-weight: 600;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.01em;
     text-decoration: none;
-    border: 2px solid currentColor;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+    border: 2.5px solid currentColor;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
     cursor: pointer;
     line-height: 1;
-    position: relative;
-    border-radius: 2px;
+    border-radius: 999px;
   }
   .btn-primary {
-    background: var(--ks-orange-bright);
-    color: var(--ks-navy-deep);
-    border-color: var(--ks-orange-bright);
-    box-shadow: 4px 4px 0 var(--ks-navy);
+    background: var(--ts-red);
+    color: #fff;
+    border-color: var(--ts-red);
+    box-shadow: 4px 4px 0 var(--ts-sky-deep);
   }
   .btn-primary:hover {
-    background: var(--ks-orange);
-    border-color: var(--ks-orange);
+    background: var(--ts-red-bright);
+    border-color: var(--ts-red-bright);
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--ks-navy);
+    box-shadow: 6px 6px 0 var(--ts-sky-deep);
   }
   .btn-secondary {
     background: transparent;
-    color: var(--ks-fg);
-    border-color: var(--ks-fg);
-    box-shadow: 4px 4px 0 var(--ks-orange);
+    color: var(--ts-fg);
+    border-color: var(--ts-fg);
+    box-shadow: 4px 4px 0 var(--ts-gold);
   }
   .btn-secondary:hover {
-    background: var(--ks-fg);
-    color: var(--ks-bg);
+    background: var(--ts-fg);
+    color: var(--ts-bg);
     transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--ks-orange);
+    box-shadow: 6px 6px 0 var(--ts-gold);
   }
-  .btn-primary-big, .btn-secondary-big { padding: 1.15rem 2.3rem; font-size: 1rem; }
+  .btn-primary-big, .btn-secondary-big { padding: 1.15rem 2.3rem; font-size: 1.05rem; }
   .hero-cta-row { display: flex; flex-wrap: wrap; gap: 1.3rem; margin-bottom: 2.8rem; }
 
-  /* Speaker-bio tally */
+  /* Tally */
   .hero-tally {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1.2rem;
-    border-top: 2px solid var(--ks-orange);
+    border-top: 3px dotted var(--ts-sky);
     padding-top: 1.7rem;
-    position: relative;
   }
-  .hero-tally::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: 0;
-    width: 35%;
-    height: 2px;
-    background: var(--ks-cream);
-  }
-  :global([data-theme="light"]) .hero-tally::before { background: var(--ks-navy); }
   .tally-value {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     font-weight: 700;
     font-size: 2.4rem;
-    color: var(--ks-orange-bright);
+    color: var(--ts-red);
     line-height: 1;
     letter-spacing: -0.02em;
   }
   .tally-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.14em;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ks-muted);
+    color: var(--ts-muted);
     margin-top: 0.4rem;
   }
-  :global([data-theme="light"]) .tally-label { color: var(--ks-navy); opacity: 0.7; }
+  :global([data-theme="light"]) .tally-label { color: #5a6f90; }
   @media (max-width: 620px) {
     .hero-tally { grid-template-columns: repeat(2, 1fr); gap: 1.4rem 1rem; }
   }
 
   /* ------------------------------------------------------------
-     PROGRAM-COVER PHOTO BLOCK (hero right column)
+     FILM STILL (hero right)
      ------------------------------------------------------------ */
   .hero-image-wrap {
     position: relative;
+    z-index: 2;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    z-index: 2;
   }
-  .program-cover {
+  .film-still {
     position: relative;
     margin: 0;
     width: 100%;
     max-width: 640px;
-    background: var(--ks-surface);
-    border: 4px solid var(--ks-orange-bright);
-    box-shadow:
-      0 22px 60px rgba(0,0,0,0.55),
-      0 6px 14px rgba(0,0,0,0.4),
-      inset 0 0 0 4px var(--ks-navy);
+    background: var(--ts-surface);
+    border: 5px solid var(--ts-gold);
+    border-radius: 14px;
+    box-shadow: 0 22px 60px rgba(0,0,0,0.5), inset 0 0 0 4px var(--ts-bg-deep);
     display: flex;
     flex-direction: column;
-    border-radius: 4px;
+    overflow: hidden;
   }
-  :global([data-theme="light"]) .program-cover {
-    box-shadow:
-      0 18px 42px rgba(11,46,84,0.18),
-      0 6px 12px rgba(11,46,84,0.12),
-      inset 0 0 0 4px var(--ks-navy);
+  :global([data-theme="light"]) .film-still {
+    box-shadow: 0 18px 44px rgba(28,95,196,0.22), inset 0 0 0 4px #ffffff;
   }
-  .program-cover-top {
-    padding: 0.85rem 1rem;
-    background: linear-gradient(90deg, var(--ks-navy-deep) 0%, var(--ks-navy) 100%);
-    color: var(--ks-cream);
-    text-align: center;
-    border-bottom: 3px solid var(--ks-orange-bright);
+  .film-still-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 1rem;
+    background: var(--ts-bg-deep);
+    color: var(--ts-cream);
+    border-bottom: 3px solid var(--ts-gold);
   }
-  .program-cover-flag {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
-    line-height: 1;
+  :global([data-theme="light"]) .film-still-top { background: var(--ts-sky-deep); color: #fff; }
+  .film-still-flag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
-  .program-cover-window {
-    position: relative;
-    background: var(--ks-bg-deep);
+  .film-still-rate {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    background: var(--ts-gold);
+    color: #2a1a00;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
   }
-  .program-cover-image {
+  .film-still-window { position: relative; background: var(--ts-bg-deep); }
+  .film-still-image {
     display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 16/9;
     object-fit: cover;
-    filter: contrast(1.03) saturate(1.05);
   }
-  .program-cover-badge {
+  .film-still-tag {
     position: absolute;
-    top: 14px;
-    right: 14px;
-    background: var(--ks-orange-bright);
-    color: var(--ks-navy-deep);
-    padding: 0.6rem 0.75rem 0.65rem;
-    text-align: center;
-    border: 2px solid var(--ks-cream);
-    font-family: 'JetBrains Mono', monospace;
-    line-height: 1.1;
-    transform: rotate(4deg);
-    box-shadow: 0 4px 0 var(--ks-navy);
-    min-width: 130px;
+    bottom: 12px;
+    left: 12px;
+    background: var(--ts-red);
+    color: #fff;
+    padding: 0.45rem 0.7rem;
+    border-radius: 6px;
+    border: 2px solid #fff;
+    transform: rotate(-3deg);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.25);
+    font-family: 'Space Mono', monospace;
+    line-height: 1.15;
   }
-  .program-cover-badge-line { font-size: 0.56rem; letter-spacing: 0.14em; display: block; }
-  .program-cover-badge-num { font-size: 0.62rem; display: block; margin-top: 0.2rem; letter-spacing: 0.06em; opacity: 0.7; }
-  .program-cover-badge-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.88rem; display: block; margin-top: 0.3rem; letter-spacing: 0.01em; }
-  .program-cover-badge-tag { font-size: 0.52rem; letter-spacing: 0.14em; display: block; margin-top: 0.3rem; background: var(--ks-navy); color: var(--ks-orange-bright); padding: 0.15rem 0.3rem; }
-  .program-cover-bottom {
+  .film-still-tag-line { display: block; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.08em; }
+  .film-still-tag-sub { display: block; font-size: 0.56rem; letter-spacing: 0.1em; opacity: 0.9; margin-top: 0.1rem; }
+  .film-still-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.7rem 1rem;
-    background: var(--ks-bg-deep);
-    color: var(--ks-orange-bright);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    border-top: 3px solid var(--ks-orange-bright);
     gap: 1rem;
+    padding: 0.65rem 1rem;
+    background: var(--ts-bg-deep);
+    color: var(--ts-gold);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-top: 3px solid var(--ts-gold);
     flex-wrap: wrap;
   }
-  :global([data-theme="light"]) .program-cover-bottom { color: var(--ks-orange-bright); background: var(--ks-navy-deep); }
-  @media (max-width: 600px) {
-    .program-cover-badge { min-width: 100px; padding: 0.4rem 0.5rem; }
-    .program-cover-badge-name { font-size: 0.72rem; }
-  }
+  :global([data-theme="light"]) .film-still-bottom { background: var(--ts-sky-deep); color: #ffe6a8; }
 
   /* ------------------------------------------------------------
-     TICKER
+     PULL-STRING TICKER
      ------------------------------------------------------------ */
   .ticker {
-    background: var(--ks-orange);
-    color: var(--ks-navy-deep);
-    border-top: 3px solid var(--ks-navy);
-    border-bottom: 3px solid var(--ks-navy);
+    background: var(--ts-gold);
+    color: #2a1a00;
+    border-top: 4px solid var(--ts-red);
+    border-bottom: 4px solid var(--ts-red);
     overflow: hidden;
-    padding: 0.65rem 0;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    padding: 0.6rem 0;
+    font-family: 'Rye', 'Fredoka', serif;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     font-size: 1.05rem;
   }
@@ -938,79 +798,20 @@ const colophon = [
     display: inline-flex;
     gap: 2.6rem;
     white-space: nowrap;
-    animation: tickerScroll 70s linear infinite;
+    animation: tickerScroll 64s linear infinite;
   }
   .ticker-item::after {
-    content: '◆';
+    content: '✦';
     margin-left: 2.6rem;
-    color: var(--ks-navy);
+    color: var(--ts-red);
   }
   @keyframes tickerScroll {
     from { transform: translateX(0); }
     to { transform: translateX(-50%); }
   }
-
-  /* ------------------------------------------------------------
-     STATEMENT (pull-quote)
-     ------------------------------------------------------------ */
-  .statement-section {
-    background: var(--ks-bg-deep);
-    color: var(--ks-fg);
-    padding: 5rem 2rem;
-    position: relative;
-    border-bottom: 3px solid var(--ks-orange);
+  @media (prefers-reduced-motion: reduce) {
+    .ticker-track { animation: none; }
   }
-  :global([data-theme="light"]) .statement-section { background: var(--ks-navy); color: var(--ks-cream); }
-  .statement-inner {
-    max-width: 980px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .statement-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--ks-orange-bright);
-    margin-bottom: 1.8rem;
-  }
-  .statement-q {
-    font-family: 'Space Grotesk', sans-serif;
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(1.4rem, 3.2vw, 2.3rem);
-    line-height: 1.4;
-    margin: 0 0 1.8rem;
-    color: var(--ks-fg);
-  }
-  :global([data-theme="light"]) .statement-q { color: var(--ks-cream); }
-  .statement-line {
-    display: block;
-    margin: 0.7rem auto 0;
-    font-family: 'JetBrains Mono', monospace;
-    font-style: normal;
-    font-size: 0.7em;
-    letter-spacing: 0.04em;
-    color: var(--ks-orange-bright);
-  }
-  .statement-attrib-name {
-    display: block;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 1.05rem;
-    letter-spacing: 0.04em;
-    color: var(--ks-orange-bright);
-  }
-  .statement-attrib-role {
-    display: block;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ks-muted);
-    margin-top: 0.5rem;
-  }
-  :global([data-theme="light"]) .statement-attrib-role { color: var(--ks-cream); opacity: 0.6; }
 
   /* ------------------------------------------------------------
      SECTION HEADERS
@@ -1020,643 +821,483 @@ const colophon = [
     display: inline-flex;
     align-items: center;
     gap: 0.6rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.74rem;
-    letter-spacing: 0.16em;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: var(--ks-orange-bright);
+    color: var(--ts-red);
     margin-bottom: 1.2rem;
   }
-  .section-tag-dot {
-    width: 10px;
-    height: 10px;
-    background: var(--ks-orange-bright);
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
+  .section-tag-dot { width: 10px; height: 10px; background: var(--ts-red); border-radius: 50%; flex-shrink: 0; }
   .section-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     font-weight: 700;
-    font-size: clamp(2.1rem, 4.8vw, 3.7rem);
-    line-height: 1.08;
+    font-size: clamp(2.1rem, 5vw, 3.8rem);
+    line-height: 1.06;
     margin: 0 0 1.2rem;
-    color: var(--ks-fg);
-    letter-spacing: -0.018em;
+    color: var(--ts-fg);
+    letter-spacing: -0.015em;
   }
-  .section-title em {
-    font-style: italic;
-    font-weight: 500;
-    color: var(--ks-orange-bright);
-  }
+  .section-title em { font-style: normal; color: var(--ts-red); }
   .section-deck {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: 'Nunito', system-ui, sans-serif;
     font-size: 1.08rem;
     line-height: 1.7;
-    color: var(--ks-muted);
+    color: var(--ts-muted);
     max-width: 44em;
     margin: 0 auto;
+    font-weight: 500;
   }
-  :global([data-theme="light"]) .section-deck { color: var(--ks-navy); opacity: 0.78; }
+  :global([data-theme="light"]) .section-deck { color: #4a5f7e; }
 
   /* ------------------------------------------------------------
-     THE SEARCH (disguise gallery)
+     THE TOY LINE (scene gallery)
      ------------------------------------------------------------ */
-  .search-section {
-    background: var(--ks-bg);
-    color: var(--ks-fg);
+  .line-section {
+    background: var(--ts-bg);
+    color: var(--ts-fg);
     padding: 6.5rem 2rem 7rem;
-    border-bottom: 3px solid var(--ks-orange);
     position: relative;
   }
-  .search-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.05;
-    background-image: radial-gradient(circle, var(--ks-orange-bright) 1px, transparent 1.5px);
-    background-size: 28px 28px;
-  }
-  .search-inner { max-width: 1320px; margin: 0 auto; position: relative; }
-  .search-grid {
+  :global([data-theme="light"]) .line-section { background: var(--ts-surface-2); }
+  .line-inner { max-width: 1320px; margin: 0 auto; position: relative; }
+  .line-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 3rem;
-    align-items: start;
+    gap: 2.4rem;
   }
   @media (max-width: 820px) {
-    .search-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .search-section { padding: 4rem 1.25rem 5rem; }
+    .line-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .line-section { padding: 4rem 1.25rem 5rem; }
   }
-  .disguise-card {
+  .toy-card {
     display: flex;
     flex-direction: column;
-    background: var(--ks-surface);
-    border: 2px solid var(--ks-line);
-    border-radius: 4px;
+    background: var(--ts-surface);
+    border: 3px solid var(--ts-line);
+    border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.32);
   }
-  .disguise-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--ks-orange-bright);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+  :global([data-theme="light"]) .toy-card { box-shadow: 0 12px 26px rgba(28,95,196,0.1); }
+  .toy-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--ts-gold);
+    box-shadow: 0 18px 42px rgba(0,0,0,0.42);
   }
-  :global([data-theme="light"]) .disguise-card {
-    box-shadow: 0 10px 24px rgba(11,46,84,0.12);
+  :global([data-theme="light"]) .toy-card:hover { box-shadow: 0 18px 38px rgba(28,95,196,0.18); }
+  .toy-card-feature { grid-column: 1 / -1; display: grid; grid-template-columns: 1.4fr 1fr; align-items: stretch; }
+  .toy-card-feature .toy-meta { display: flex; flex-direction: column; justify-content: center; }
+  @media (max-width: 820px) {
+    .toy-card-feature { grid-template-columns: 1fr; }
   }
-  :global([data-theme="light"]) .disguise-card:hover {
-    box-shadow: 0 16px 36px rgba(11,46,84,0.18);
+  .toy-frame { position: relative; background: var(--ts-bg-deep); border-bottom: 3px solid var(--ts-gold); }
+  .toy-card-feature .toy-frame { border-bottom: none; border-right: 3px solid var(--ts-gold); }
+  @media (max-width: 820px) {
+    .toy-card-feature .toy-frame { border-right: none; border-bottom: 3px solid var(--ts-gold); }
   }
-  .disguise-frame {
-    position: relative;
-    background: var(--ks-bg-deep);
-    border-bottom: 3px solid var(--ks-orange-bright);
-  }
-  .disguise-image {
-    display: block;
-    width: 100%;
-    aspect-ratio: 4/3;
-    object-fit: cover;
-    filter: contrast(1.04) saturate(1.04);
-  }
-  .disguise-stamp {
+  .toy-image { display: block; width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover; }
+  .toy-card-feature .toy-image { aspect-ratio: 16/9; }
+  .toy-kicker {
     position: absolute;
-    top: 12px;
-    left: 12px;
-    background: var(--ks-orange-bright);
-    color: var(--ks-navy-deep);
-    padding: 0.35rem 0.55rem;
-    font-family: 'JetBrains Mono', monospace;
+    top: 12px; left: 12px;
+    background: var(--ts-red);
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    border: 2px solid #fff;
+    font-family: 'Space Mono', monospace;
     font-size: 0.6rem;
-    letter-spacing: 0.12em;
-    line-height: 1.2;
-    text-transform: uppercase;
-    border: 1.5px solid var(--ks-cream);
-  }
-  .disguise-stamp span { display: block; }
-  .disguise-stamp span:first-child { font-weight: 700; }
-  .disguise-meta { padding: 1.5rem 1.6rem 1.8rem; }
-  .disguise-meta-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding-bottom: 0.9rem;
-    border-bottom: 1px dashed var(--ks-line);
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-  }
-  .disguise-track {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.14em;
-    color: var(--ks-orange-bright);
-    text-transform: uppercase;
-  }
-  .disguise-time {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.12em;
-    color: var(--ks-muted);
-    text-transform: uppercase;
-  }
-  .disguise-session {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 1.35rem;
-    margin: 0 0 0.3rem;
-    color: var(--ks-fg);
-    letter-spacing: -0.005em;
-    line-height: 1.2;
-  }
-  .disguise-speaker {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.72rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ks-muted);
-    margin-bottom: 1rem;
+    font-weight: 700;
   }
-  .disguise-caption {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 1rem;
+  .toy-meta { padding: 1.5rem 1.6rem 1.8rem; }
+  .toy-name {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin: 0 0 0.6rem;
+    color: var(--ts-fg);
+    line-height: 1.15;
+  }
+  .toy-card-feature .toy-name { font-size: 2rem; }
+  .toy-caption {
+    font-family: 'Nunito', system-ui, sans-serif;
+    font-size: 1.02rem;
     line-height: 1.65;
-    color: var(--ks-fg);
+    color: var(--ts-muted);
     margin: 0;
-    opacity: 0.92;
+    font-weight: 500;
   }
+  :global([data-theme="light"]) .toy-caption { color: #4a5f7e; }
 
   /* ------------------------------------------------------------
-     MEMORIAM (video grid)
+     PULL-QUOTE
      ------------------------------------------------------------ */
-  .memoriam-section {
-    background: var(--ks-bg-deep);
-    color: var(--ks-fg);
-    padding: 6.5rem 2rem 7rem;
-    border-bottom: 3px solid var(--ks-orange);
+  .statement-section {
+    background: var(--ts-sky);
+    color: #fff;
+    padding: 5.5rem 2rem;
     position: relative;
+    border-top: 5px solid var(--ts-gold);
+    border-bottom: 5px solid var(--ts-gold);
   }
-  :global([data-theme="light"]) .memoriam-section { background: var(--ks-navy); color: var(--ks-cream); }
-  :global([data-theme="light"]) .memoriam-section .section-title { color: var(--ks-cream); }
-  :global([data-theme="light"]) .memoriam-section .section-deck { color: var(--ks-cream); opacity: 0.78; }
-  .memoriam-inner { max-width: 1320px; margin: 0 auto; }
-  .memoriam-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.2rem;
+  :global([data-theme="dark"]) .statement-section { background: var(--ts-sky-deep); }
+  .statement-inner { max-width: 980px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+  .statement-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #fff7e0;
+    margin-bottom: 1.6rem;
   }
-  @media (max-width: 1080px) { .memoriam-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 680px) {
-    .memoriam-grid { grid-template-columns: 1fr; }
-    .memoriam-section { padding: 4rem 1.25rem 5rem; }
+  .statement-q {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 500;
+    font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+    line-height: 1.35;
+    margin: 0 0 1.6rem;
+    color: #fff;
   }
-  .memoriam-card { display: flex; flex-direction: column; }
-  .memoriam-thumb-link { display: block; text-decoration: none; }
-  .memoriam-thumb {
-    position: relative;
-    aspect-ratio: 16/9;
-    overflow: hidden;
-    border: 2px solid var(--ks-orange);
-    background: var(--ks-navy-deep);
-    transition: border-color 0.3s ease;
-  }
-  .memoriam-thumb img {
+  .statement-line {
     display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+    margin-top: 0.8rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62em;
+    letter-spacing: 0.02em;
+    color: #fff2cf;
   }
-  .memoriam-thumb-link:hover .memoriam-thumb { border-color: var(--ks-orange-bright); }
-  .memoriam-thumb-link:hover .memoriam-thumb img { transform: scale(1.04); }
-  .memoriam-play {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: rgba(243,112,33,0.92);
-    color: var(--ks-cream);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid var(--ks-cream);
-    transition: background 0.2s ease, transform 0.2s ease;
+  .statement-attrib-name {
+    display: block;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+    color: #fff;
   }
-  .memoriam-thumb-link:hover .memoriam-play {
-    background: var(--ks-orange-bright);
-    transform: translate(-50%, -50%) scale(1.08);
-  }
-  .memoriam-venue {
-    position: absolute;
-    bottom: 8px;
-    left: 8px;
-    background: rgba(7,23,46,0.92);
-    color: var(--ks-orange-bright);
-    padding: 0.25rem 0.5rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.58rem;
+  .statement-attrib-role {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.66rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    border: 1px solid var(--ks-orange);
-  }
-  .memoriam-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 1.1rem;
-    line-height: 1.3;
-    margin: 1rem 0 0.6rem;
-    color: var(--ks-fg);
-    letter-spacing: -0.005em;
-  }
-  :global([data-theme="light"]) .memoriam-section .memoriam-title { color: var(--ks-cream); }
-  .memoriam-title a {
-    color: inherit;
-    text-decoration: none;
-    background-image: linear-gradient(transparent calc(100% - 1px), var(--ks-orange-bright) 1px);
-    background-repeat: no-repeat;
-    background-size: 0% 100%;
-    transition: background-size 0.3s ease;
-  }
-  .memoriam-title a:hover { background-size: 100% 100%; }
-  .memoriam-note {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: var(--ks-muted);
-    margin: 0;
-  }
-  :global([data-theme="light"]) .memoriam-section .memoriam-note { color: var(--ks-cream); opacity: 0.78; }
-  .memoriam-foot { text-align: center; margin-top: 3rem; }
-  .memoriam-more {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ks-orange-bright);
-    text-decoration: none;
-    padding: 0.6rem 1.2rem;
-    border: 2px solid var(--ks-orange-bright);
-    transition: background 0.2s ease, color 0.2s ease;
-  }
-  .memoriam-more:hover {
-    background: var(--ks-orange-bright);
-    color: var(--ks-navy-deep);
+    color: #ffeec2;
+    margin-top: 0.5rem;
   }
 
   /* ------------------------------------------------------------
-     SESSIONS (project cards)
+     PRODUCTS (project cards)
      ------------------------------------------------------------ */
-  .sessions-section {
-    background: var(--ks-bg);
-    color: var(--ks-fg);
+  .products-section {
+    background: var(--ts-bg);
+    color: var(--ts-fg);
     padding: 7rem 2rem;
-    border-bottom: 3px solid var(--ks-orange);
     position: relative;
   }
-  .sessions-inner { max-width: 1320px; margin: 0 auto; }
-  .sessions-grid {
+  .products-inner { max-width: 1320px; margin: 0 auto; }
+  .products-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.8rem;
   }
-  @media (max-width: 1080px) { .sessions-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 1080px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 680px) {
-    .sessions-grid { grid-template-columns: 1fr; }
-    .sessions-section { padding: 4rem 1.25rem; }
+    .products-grid { grid-template-columns: 1fr; }
+    .products-section { padding: 4rem 1.25rem; }
   }
-  .session-card {
+  .product-card {
     position: relative;
-    background: var(--ks-surface);
-    border: 2px solid var(--ks-line);
+    background: var(--ts-surface);
+    border: 3px solid var(--ts-line);
+    border-radius: 16px;
     padding: 1.7rem 1.6rem;
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    border-radius: 4px;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
   }
-  .session-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--ks-orange-bright);
-    box-shadow: 0 14px 36px rgba(0,0,0,0.4);
+  :global([data-theme="light"]) .product-card { box-shadow: 0 10px 22px rgba(28,95,196,0.08); }
+  .product-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--ts-gold);
+    box-shadow: 0 16px 38px rgba(0,0,0,0.4);
   }
-  :global([data-theme="light"]) .session-card:hover {
-    box-shadow: 0 14px 36px rgba(11,46,84,0.18);
-  }
-  .session-card-head {
+  :global([data-theme="light"]) .product-card:hover { box-shadow: 0 16px 34px rgba(28,95,196,0.16); }
+  .product-card-head {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: baseline;
     gap: 0.8rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 1px dashed var(--ks-line);
+    padding-bottom: 0.7rem;
+    border-bottom: 2px dotted var(--ts-line);
     flex-wrap: wrap;
   }
-  .session-code {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
-    color: var(--ks-orange-bright);
+  .product-code {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    color: var(--ts-red);
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: 700;
   }
-  .session-room {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-    color: var(--ks-muted);
+  .product-cat {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    color: var(--ts-muted);
     text-transform: uppercase;
-    text-align: right;
   }
-  .session-title {
-    font-family: 'Space Grotesk', sans-serif;
+  .product-title {
+    font-family: 'Fredoka', sans-serif;
     font-weight: 700;
     font-size: 1.45rem;
-    color: var(--ks-fg);
     margin: 0;
-    letter-spacing: -0.01em;
-    line-height: 1.2;
+    color: var(--ts-fg);
+    line-height: 1.15;
   }
-  .session-body {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 0.96rem;
+  .product-body {
+    font-family: 'Nunito', system-ui, sans-serif;
+    font-size: 0.98rem;
     line-height: 1.62;
-    color: var(--ks-muted);
+    color: var(--ts-muted);
     margin: 0;
     flex-grow: 1;
+    font-weight: 500;
   }
-  :global([data-theme="light"]) .session-body { color: var(--ks-navy); opacity: 0.82; }
-  .session-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.8rem;
-    margin-top: 0.4rem;
-    flex-wrap: wrap;
-  }
-  .session-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.12em;
-    color: var(--ks-orange-bright);
-    text-transform: uppercase;
-    padding: 0.3rem 0.5rem;
-    border: 1px solid var(--ks-orange);
-    border-radius: 2px;
-  }
-  .session-status {
-    font-family: 'JetBrains Mono', monospace;
+  :global([data-theme="light"]) .product-body { color: #4a5f7e; }
+  .product-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+  .product-badge {
+    font-family: 'Space Mono', monospace;
     font-size: 0.58rem;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    padding: 0.32rem 0.55rem;
-    border-radius: 2px;
-    background: var(--ks-navy);
-    color: var(--ks-cream);
-    border: 1px solid var(--ks-orange-bright);
+    color: var(--ts-fg);
+    background: var(--ts-surface-2);
+    border: 1.5px solid var(--ts-line);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
   }
-  .session-status-shipped, .session-status-completed, .session-status-running { background: var(--ks-orange-bright); color: var(--ks-navy-deep); border-color: var(--ks-orange-bright); }
-  .session-status-in-prototype, .session-status-call-for-speakers-open { background: var(--ks-navy); color: var(--ks-orange-bright); border-color: var(--ks-orange-bright); }
-  .session-foot {
-    padding-top: 0.6rem;
-    border-top: 1px dashed var(--ks-line);
+  .product-status {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    color: #2a1a00;
+    background: var(--ts-gold);
   }
-  .session-cta {
+  .product-status-shipped { background: var(--ts-gold); }
+  .product-status-running { background: #7fd07f; }
+  .product-status-in-prototype { background: var(--ts-sky); color: #fff; }
+  .product-status-call-for-speakers-open { background: var(--ts-red); color: #fff; }
+  .product-foot { margin-top: 0.3rem; }
+  .product-cta {
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     font-weight: 600;
-    font-size: 0.88rem;
-    letter-spacing: 0.02em;
-    color: var(--ks-orange-bright);
+    font-size: 0.92rem;
+    color: var(--ts-red);
     text-decoration: none;
-    transition: gap 0.2s ease;
+    transition: gap 0.2s ease, color 0.2s ease;
   }
-  .session-cta:hover { gap: 0.7rem; }
-  .session-cta-disabled {
-    color: var(--ks-muted);
-    cursor: default;
-    pointer-events: none;
-  }
+  .product-cta:hover { gap: 0.75rem; color: var(--ts-red-bright); }
+  .product-cta-disabled { color: var(--ts-muted); cursor: default; }
+  .product-cta-disabled:hover { gap: 0.45rem; color: var(--ts-muted); }
 
   /* ------------------------------------------------------------
-     LATE ADDS
+     LATE ADD
      ------------------------------------------------------------ */
   .late-section {
-    background: var(--ks-bg-deep);
-    color: var(--ks-fg);
+    background: var(--ts-surface-2);
+    color: var(--ts-fg);
     padding: 6rem 2rem;
-    border-bottom: 3px solid var(--ks-orange);
+    position: relative;
   }
-  :global([data-theme="light"]) .late-section { background: var(--ks-surface-2); }
-  .late-inner { max-width: 720px; margin: 0 auto; }
-  .late-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-  @media (max-width: 760px) {
-    .late-section { padding: 4rem 1.25rem; }
-  }
+  :global([data-theme="dark"]) .late-section { background: var(--ts-bg-deep); }
+  .late-inner { max-width: 900px; margin: 0 auto; }
+  .late-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; }
   .late-card {
-    background: var(--ks-surface);
-    border: 2px solid var(--ks-line);
-    border-left: 4px solid var(--ks-orange-bright);
-    padding: 1.8rem 1.7rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    border-radius: 4px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-left-color 0.25s ease;
+    background: var(--ts-surface);
+    border: 3px dashed var(--ts-gold);
+    border-radius: 16px;
+    padding: 2.2rem 2rem;
+    text-align: center;
   }
-  .late-card:hover {
-    transform: translateY(-3px);
-    border-left-color: var(--ks-orange);
-    box-shadow: 0 14px 30px rgba(0,0,0,0.3);
-  }
-  :global([data-theme="light"]) .late-card:hover { box-shadow: 0 14px 30px rgba(11,46,84,0.14); }
   .late-card-tag {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 0.66rem;
-    letter-spacing: 0.16em;
-    color: var(--ks-orange-bright);
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    color: var(--ts-red);
+    margin-bottom: 0.8rem;
   }
   .late-card-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     font-weight: 700;
-    font-size: 1.55rem;
-    color: var(--ks-fg);
-    margin: 0;
-    letter-spacing: -0.01em;
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem;
+    color: var(--ts-fg);
   }
   .late-card-line {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.66rem;
     letter-spacing: 0.12em;
-    color: var(--ks-muted);
     text-transform: uppercase;
+    color: var(--ts-muted);
+    margin-bottom: 1.1rem;
   }
   .late-card-body {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 1rem;
-    line-height: 1.65;
-    color: var(--ks-fg);
-    margin: 0;
-    opacity: 0.9;
+    font-family: 'Nunito', system-ui, sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--ts-muted);
+    margin: 0 auto 1.5rem;
+    max-width: 40em;
+    font-weight: 500;
   }
+  :global([data-theme="light"]) .late-card-body { color: #4a5f7e; }
   .late-cta {
-    align-self: flex-start;
-    margin-top: 0.6rem;
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    font-family: 'Space Grotesk', sans-serif;
+    gap: 0.5rem;
+    font-family: 'Fredoka', sans-serif;
     font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--ks-orange-bright);
+    font-size: 0.98rem;
+    color: #fff;
+    background: var(--ts-red);
+    padding: 0.8rem 1.5rem;
+    border-radius: 999px;
     text-decoration: none;
-    padding: 0.55rem 1.1rem;
-    border: 2px solid var(--ks-orange-bright);
-    transition: background 0.2s ease, color 0.2s ease;
-    border-radius: 2px;
+    box-shadow: 3px 3px 0 var(--ts-sky-deep);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
   }
-  .late-cta:hover {
-    background: var(--ks-orange-bright);
-    color: var(--ks-navy-deep);
-  }
+  .late-cta:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ts-sky-deep); }
 
   /* ------------------------------------------------------------
      CLOSING CTA
      ------------------------------------------------------------ */
   .closing-section {
-    background: var(--ks-bg);
-    color: var(--ks-fg);
-    padding: 7rem 2rem;
-    border-bottom: 3px solid var(--ks-orange);
-    text-align: center;
     position: relative;
+    background: var(--ts-bg);
+    color: var(--ts-fg);
+    padding: 6.5rem 2rem 7rem;
     overflow: hidden;
+    text-align: center;
   }
   :global([data-theme="dark"]) .closing-section {
     background:
-      radial-gradient(circle at 50% 0%, rgba(243,112,33,0.16) 0%, transparent 60%),
-      var(--ks-bg);
+      radial-gradient(circle at 50% 0%, rgba(59,130,230,0.2) 0%, transparent 55%),
+      linear-gradient(180deg, #0f1b3d 0%, #0a142e 100%);
   }
   :global([data-theme="light"]) .closing-section {
-    background:
-      radial-gradient(circle at 50% 0%, rgba(243,112,33,0.12) 0%, transparent 60%),
-      var(--ks-bg);
+    background: linear-gradient(180deg, #e7f1fc 0%, #cfe6fb 100%);
   }
-  .closing-inner { max-width: 900px; margin: 0 auto; position: relative; }
+  .closing-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
   .closing-eyebrow {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Space Mono', monospace;
     font-size: 0.72rem;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--ks-orange-bright);
-    margin-bottom: 1.8rem;
+    color: var(--ts-red);
+    margin-bottom: 1.6rem;
   }
-  .closing-rule { flex: 1; height: 1px; background: var(--ks-orange); max-width: 80px; }
+  .closing-rule { width: 40px; height: 2px; background: var(--ts-red); }
   .closing-title {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     font-weight: 700;
-    font-size: clamp(2.4rem, 5.5vw, 4.3rem);
+    font-size: clamp(2.2rem, 5.4vw, 4rem);
     line-height: 1.05;
-    margin: 0 0 1.7rem;
-    color: var(--ks-fg);
-    letter-spacing: -0.02em;
+    margin: 0 0 1.4rem;
+    color: var(--ts-fg);
+    letter-spacing: -0.015em;
   }
-  .closing-title em {
-    font-style: italic;
-    font-weight: 500;
-    color: var(--ks-orange-bright);
-  }
+  .closing-title em { font-style: normal; color: var(--ts-red); }
   .closing-deck {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 1.1rem;
+    font-family: 'Nunito', system-ui, sans-serif;
+    font-size: 1.12rem;
     line-height: 1.7;
-    color: var(--ks-muted);
-    margin: 0 auto 2.3rem;
-    max-width: 38em;
+    color: var(--ts-muted);
+    max-width: 46em;
+    margin: 0 auto 2.4rem;
+    font-weight: 500;
   }
-  :global([data-theme="light"]) .closing-deck { color: var(--ks-navy); opacity: 0.82; }
-  .closing-cta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.3rem;
-    justify-content: center;
-  }
+  :global([data-theme="light"]) .closing-deck { color: #3a4d6b; }
+  .closing-cta-row { display: flex; flex-wrap: wrap; gap: 1.3rem; justify-content: center; }
 
   /* ------------------------------------------------------------
-     COLOPHON
+     BACK PANEL
      ------------------------------------------------------------ */
-  .colophon-section {
-    background: var(--ks-navy-deep);
-    color: var(--ks-cream);
+  .panel-section {
+    background: var(--ts-bg-deep);
+    color: var(--ts-fg);
     padding: 4.5rem 2rem 5rem;
+    border-top: 5px solid var(--ts-gold);
   }
-  :global([data-theme="light"]) .colophon-section { background: var(--ks-navy); }
-  .colophon-inner { max-width: 1200px; margin: 0 auto; }
-  .colophon-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    color: var(--ks-orange-bright);
+  :global([data-theme="light"]) .panel-section { background: var(--ts-sky-deep); color: #fff; }
+  .panel-inner { max-width: 1100px; margin: 0 auto; }
+  .panel-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: var(--ts-gold);
     margin-bottom: 2rem;
     text-align: center;
   }
-  .colophon-roll {
+  :global([data-theme="light"]) .panel-tag { color: #ffe6a8; }
+  .panel-roll {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1.5rem 2rem;
-    margin-bottom: 2.5rem;
-    border-top: 2px solid var(--ks-orange);
-    border-bottom: 2px solid var(--ks-orange);
-    padding: 2rem 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.3rem 2.5rem;
   }
-  .colophon-block {
+  @media (max-width: 680px) { .panel-roll { grid-template-columns: 1fr; } }
+  .panel-block {
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px dotted var(--ts-line);
   }
-  .colophon-role {
-    font-family: 'JetBrains Mono', monospace;
+  :global([data-theme="light"]) .panel-block { border-bottom-color: rgba(255,255,255,0.25); }
+  .panel-role {
+    font-family: 'Space Mono', monospace;
     font-size: 0.62rem;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--ks-orange-bright);
+    color: var(--ts-red-bright);
   }
-  .colophon-name {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
+  :global([data-theme="light"]) .panel-role { color: #ffd98a; }
+  .panel-name {
+    font-family: 'Nunito', system-ui, sans-serif;
     font-size: 0.95rem;
-    color: var(--ks-cream);
-    letter-spacing: 0.01em;
+    font-weight: 700;
+    color: var(--ts-fg);
+    line-height: 1.4;
   }
-  .colophon-footnote {
-    font-family: 'Inter', system-ui, sans-serif;
-    font-size: 0.82rem;
-    line-height: 1.65;
-    color: var(--ks-cream);
-    opacity: 0.65;
+  :global([data-theme="light"]) .panel-name { color: #fff; }
+  .panel-footnote {
+    margin-top: 2.4rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--ts-line);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    line-height: 1.7;
+    color: var(--ts-muted);
     text-align: center;
     max-width: 60em;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
   }
+  :global([data-theme="light"]) .panel-footnote { color: rgba(255,255,255,0.75); border-top-color: rgba(255,255,255,0.25); }
 </style>

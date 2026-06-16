@@ -77,42 +77,41 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "Kscope26: Edward Is Not Here",
-  week: "2026-06-13",
-  inspiration: "ODTUG Kscope26 runs June 14-18 at the Gaylord Rockies Resort in Aurora, Colorado. It's the largest Oracle EPM and APEX conference of the year, and for the first time since 2007, Edward is officially not attending. (He announced last summer at Kscope25 in Grapevine, when he accepted the ODTUG Lifetime Achievement Award, that Kscope25 would be his last as a regular.) The site reads as the Kscope26 conference program for the week, with one running visual gag: attendees show their support by all wearing his blue fedora, and Edward, who definitely is not at Kscope, definitely is not also sneaking into the back of every session in a series of unconvincing disguises. The fedora is the giveaway. The fedora is always the giveaway.",
-  tagline: "Tech at new heights. Edward at sea level. (See if you can spot the fedora.)",
+  name: "Toy Story 5: The Toy Who Wouldn't Update",
+  week: "2026-06-20",
+  inspiration: "Toy Story 5 opens in theaters June 19, 2026, and for the first time the threat to the toys isn't a rival kid or a yard sale. It's a screen: a glowing AI device that makes the old pull-string toys feel obsolete. That was too good to pass up. Edward spends his days telling Fortune 500 executives that AI changes everything, so the site casts him as the analog cowboy toy that AI is coming to replace. He is Edward: The Talking EPM Cowboy. Pull the string and he explains agentic AI to a dinosaur who did not ask. The whole homepage is built like a vintage toy package and a Pixar film still: Andy's-room cloud wallpaper, a clearance shelf, a 25-cent donation box, and a 'NOW WITH A.I.' refresh that fooled no one. The fedora, as always, is the constant. It's blue, it's felt, and it survives every recall.",
+  tagline: "Edward Roske, recast as the toy AI is coming for. (He asked to play the hero. Casting passed.)",
 
   colors: {
-    // ODTUG / Oracle conference palette: deep convention-center navy,
-    // ODTUG orange, brass-fedora gold. Light mode is the off-white of a
-    // printed conference program; dark mode is the keynote room before
-    // the lights come up.
-    primary: "#0b2e54",          // ODTUG navy
-    secondary: "#f37021",         // ODTUG / Oracle orange
-    accent: "#ff7a1f",            // brighter session-CTA orange
-    accentHover: "#ffb072",
-    background: "#07172e",        // keynote-hall blackout navy (dark mode)
-    backgroundLight: "#eef2f8",   // printed-program off-white (light mode)
-    surface: "#102a4d",            // session-card navy
-    surfaceLight: "#ffffff",       // program-card white
-    text: "#eef2f8",               // program white on dark
-    textMuted: "#8fa3bf",          // session-meta gray-blue
-    textDark: "#0b2e54",           // navy on cream
-    textDarkMuted: "#4a5f7a",      // muted navy
-    border: "#1f3d66",             // session-card rule (dark)
-    borderLight: "#c5d0e0",        // program rule (light)
-    gradient: "linear-gradient(135deg, #07172e 0%, #0b2e54 45%, #f37021 100%)",
+    // Toy Story / Andy's-room palette: cloud-wallpaper sky blue, Woody red,
+    // toy-star gold, warm label cream. Light mode is Andy's room in the
+    // afternoon sun. Dark mode is the toy box after lights-out.
+    primary: "#3b82e6",           // Andy's-room sky blue
+    secondary: "#f2b840",          // toy-star gold / sheriff badge
+    accent: "#e8462f",             // Woody-red, the CTA pop
+    accentHover: "#ff6a4d",
+    background: "#0f1b3d",         // toy box at night (dark mode)
+    backgroundLight: "#e7f1fc",    // Andy's-room sky (light mode)
+    surface: "#1a2a55",            // shelf-shadow navy card (dark)
+    surfaceLight: "#ffffff",       // toy-package white (light)
+    text: "#f5f0e1",               // warm toy-label cream on dark
+    textMuted: "#a9b8db",          // muted sky-gray
+    textDark: "#16335f",           // deep blue ink on light
+    textDarkMuted: "#5a6f90",      // muted blue ink
+    border: "#2b407a",             // box-edge navy (dark)
+    borderLight: "#c2d8f0",        // package rule (light)
+    gradient: "linear-gradient(150deg, #0f1b3d 0%, #1a2a55 45%, #3b82e6 100%)",
   },
 
   fonts: {
-    // Space Grotesk for the conference-modern display work (Kscope branding
-    // reads as clean geometric sans). Inter for body. JetBrains Mono for
-    // session codes, room numbers, badge IDs, and the timestamps stamped on
-    // every disguise photo.
-    heading: "'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif",
-    body: "'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif",
-    mono: "'JetBrains Mono', 'IBM Plex Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap",
+    // Fredoka: rounded, friendly, toy-block display font. Nunito: rounded
+    // sans for body, pairs cleanly with Fredoka. Space Mono: the cold,
+    // digital "screen threat" voice (model numbers, warnings, AI labels).
+    // Rye: a western slab used only for the pull-string cowboy flourishes.
+    heading: "'Fredoka', 'Baloo 2', system-ui, -apple-system, sans-serif",
+    body: "'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif",
+    mono: "'Space Mono', 'JetBrains Mono', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Rye&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap",
   },
 
   layout: {
@@ -120,7 +119,7 @@ export const currentTheme: ThemeConfig = {
     navStyle: "fixed",
     cardStyle: "elevated",
     sectionStyle: "alternating",
-    footerStyle: "detailed",
+    footerStyle: "creative",
   },
 
   animations: {
@@ -132,11 +131,11 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Tech at new heights. Edward at sea level.",
-    description: "ODTUG Kscope26 runs June 14 through 18 at the Gaylord Rockies in Aurora, Colorado. For the first time since 2007, Edward is officially not on the speaker list. We checked twice. (Attendees have shown their support by all wearing his hat, which was deeply touching for the first half hour and is now mostly blocking everyone's views of the speakers.)",
-    heroImage: "hero-2026-06-13.png",
-    imageAlt: "A packed Kscope26 keynote hall at the Gaylord Rockies in Aurora, Colorado. Approximately 600 conference attendees, the presenter on stage, and the AV crew along the wings are all wearing identical royal-blue felt fedora hats. The stage backdrop reads KSCOPE26 TECH AT NEW HEIGHTS with the ODTUG logo. The mood is overwhelming support for the absent honoree.",
-    ctaText: "See what he claims he's doing instead",
+    subtitle: "Edward Roske, recast as the toy AI is coming for.",
+    description: "Toy Story 5 is in theaters this week, and the bad guy is a screen. A glowing device that elbows the old pull-string toys out of the way. I've spent three years telling executives that AI changes everything, so it felt fair to cast myself as the toy it's coming to replace. (I lobbied to play the hero. The casting director, who is also me, passed.)",
+    heroImage: "hero-2026-06-20.png",
+    imageAlt: "Edward Roske reimagined as a Pixar-style pull-string cowboy toy in a royal-blue felt fedora and round glasses, standing in a warm sunbeam on a child's bedroom floor with cloud wallpaper, eyeing a glowing AI tablet and smart speaker that threaten to replace him as the favorite toy.",
+    ctaText: "Pull the string",
     ctaLink: "#current-work",
   },
 };
