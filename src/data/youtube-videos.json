@@ -1,5 +1,141 @@
 [
   {
+    "title": "Why are AI companies building data centers in space?",
+    "videoId": "fSa7tO8_gB0",
+    "published": "2026-06-20T06:00:09+00:00",
+    "description": "Baiju Bhatt, the Robinhood co-founder, raised $275M at a $2B valuation to put AI data centers in orbit. Each Cowboy Space satellite carries about 800 NVIDIA GPUs and a megawatt of solar power, and he's building his own rocket because launch capacity is sold out. Why orbit? AWS...",
+    "thumbnail": "https://i.ytimg.com/vi/fSa7tO8_gB0/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why is AI making people switch from Google to DuckDuckGo?",
+    "videoId": "nbxXjV1KNdo",
+    "published": "2026-06-19T06:00:12+00:00",
+    "description": "DuckDuckGo's US installs jumped 30% in a week after Google made AI the default in Search at I/O 2026. iOS install growth peaked at 69.9%, and traffic to the page that turns off every AI feature grew 22.7%. A DuckDuckGo poll of 110,000+ users found 93% want AI out of search...",
+    "thumbnail": "https://i.ytimg.com/vi/nbxXjV1KNdo/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How is a toilet company one of the best ways to invest in AI?",
+    "videoId": "SOHuf7Xienw",
+    "published": "2026-06-18T06:00:01+00:00",
+    "description": "TOTO, the 109-year-old Japanese company behind the heated toilet seat, earns more operating profit from AI chip ceramics than from everything else it makes combined. It's the world's second-largest maker of the electrostatic chuck, the ceramic plate that holds a silicon wafer...",
+    "thumbnail": "https://i.ytimg.com/vi/SOHuf7Xienw/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Where Should I Move for AI Jobs in the USA?",
+    "videoId": "TvfTZmiQD0Y",
+    "published": "2026-06-17T15:15:19+00:00",
+    "description": "Only four US metros make both the top-10 salary list and the top-10 density list for Software Developers in the most recent BLS data: San Jose & San Francisco, Seattle, and Boulder. Boulder is the one almost nobody mentions, sitting fifth in pay and third in density with a...",
+    "thumbnail": "https://i.ytimg.com/vi/TvfTZmiQD0Y/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Is SanDisk Stock Up More Than 400%?",
+    "videoId": "Ma7dKe1nCuk",
+    "published": "2026-06-17T06:00:33+00:00",
+    "description": "SanDisk got spun out of Western Digital in February 2025 as the half nobody fought over. It's now worth around $219 billion, up more than 400% in 2026, and it's the best performing stock in the S&P 500. The reason is storage: AI models need somewhere to write things down, and...",
+    "thumbnail": "https://i.ytimg.com/vi/Ma7dKe1nCuk/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Does GitHub Keep Going Down in 2026?",
+    "videoId": "uM00_j5sAIA",
+    "published": "2026-06-16T18:52:51+00:00",
+    "description": "AI coding agents are generating so much code that GitHub, the platform where much of the world's software lives, spent 2026 struggling to stay online. GitHub logged about a billion commits in all of 2025. It now takes in roughly 1.4 billion every month. To keep up, Microsoft is...",
+    "thumbnail": "https://i.ytimg.com/vi/uM00_j5sAIA/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Did SpaceX Buy Cursor for $60 Billion?",
+    "videoId": "OHz32-FR08Y",
+    "published": "2026-06-16T18:45:42+00:00",
+    "description": "Four days after the biggest IPO in history, SpaceX agreed to buy Cursor, the AI coding tool, for sixty billion dollars in stock. Cursor built its name running Anthropic's and OpenAI's models, Musk's two biggest rivals. So why buy it? The real prize is a million developers and a...",
+    "thumbnail": "https://i.ytimg.com/vi/OHz32-FR08Y/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why is Anthropic paying SpaceX $15 billion a year?",
+    "videoId": "xJjp8zt3axU",
+    "published": "2026-06-16T06:00:01+00:00",
+    "description": "SpaceX's IPO filing disclosed that Anthropic is paying xAI $1.25 billion a month for full access to the Colossus 1 data center in Memphis. That's $15 billion a year, about $45 billion through May 2029, going to the one rival Anthropic blocked from using Claude. I dig into why...",
+    "thumbnail": "https://i.ytimg.com/vi/xJjp8zt3axU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How is Wall Street paying for all the AI chips?",
+    "videoId": "HEg4K61XgTk",
+    "published": "2026-06-15T06:00:03+00:00",
+    "description": "Apollo and Blackstone arranged roughly $36 billion in private credit to buy Google's AI chips, which Anthropic leases back through a special-purpose vehicle that keeps the debt off its balance sheet. It's one of the largest private credit deals ever assembled, and Broadcom is...",
+    "thumbnail": "https://i.ytimg.com/vi/HEg4K61XgTk/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Is Elon Musk the Richest Person in History?",
+    "videoId": "xAttW5ccIsE",
+    "published": "2026-06-14T19:00:07+00:00",
+    "description": "Elon Musk became the world's first trillionaire, so in raw dollars he's the richest human who ever lived, past Rockefeller even after inflation. But sort the contenders into builders, rulers, and fictional characters and the answer changes. The old bankers owned more of their...",
+    "thumbnail": "https://i.ytimg.com/vi/xAttW5ccIsE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Is SpaceX Now an AI Company?",
+    "videoId": "6MpgVCo1D38",
+    "published": "2026-06-14T17:33:40+00:00",
+    "description": "SpaceX went public as the largest IPO in history and closed worth about two trillion dollars, trading at more than ninety times its sales, a richer premium than Nvidia. The bull case is that SpaceX is an AI hyperscaler: it built a supercomputer in about four months by running it...",
+    "thumbnail": "https://i.ytimg.com/vi/6MpgVCo1D38/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What is Hy3 and why is it beating Claude on OpenRouter?",
+    "videoId": "pS_CSp5Xd2c",
+    "published": "2026-06-14T06:00:15+00:00",
+    "description": "A Tencent model called Hy3 beats Claude by more than 50% in token volume on OpenRouter, and on the benchmarks it loses to other open-source models. Max Woolf dug into the public usage data and found that 98% of Hy3's traffic is input tokens, which is the signature of one big app...",
+    "thumbnail": "https://i.ytimg.com/vi/pS_CSp5Xd2c/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "The AI jobs apocalypse got canceled right before the IPOs",
+    "videoId": "yCQ-8NuMUJM",
+    "published": "2026-06-14T00:21:18+00:00",
+    "description": "Sam Altman now says he's \"delighted to be wrong\" about AI eliminating entry-level white-collar jobs. Dario Amodei, who once predicted AI would wipe out 50% of them, reframed automation as a multiplier on stage with Jamie Dimon. Both reversals landed the same month OpenAI filed...",
+    "thumbnail": "https://i.ytimg.com/vi/yCQ-8NuMUJM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why did Uber burn through its entire AI budget in four months?",
+    "videoId": "lllcyVyQuYQ",
+    "published": "2026-06-14T00:16:09+00:00",
+    "description": "Uber ranked its engineering teams on internal leaderboards by how much Claude Code they used, and the entire full-year 2026 AI coding budget was gone by April. Individual engineers were burning $500 to $2,000 a month in tokens (the CTO spent $1,200 in one two-hour demo). Uber's...",
+    "thumbnail": "https://i.ytimg.com/vi/lllcyVyQuYQ/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why did LG stock quadruple in 2026?",
+    "videoId": "kxWpQ5Mz1g8",
+    "published": "2026-06-14T00:13:32+00:00",
+    "description": "LG Electronics, the company that makes your fridge and your OLED TV, quadrupled in 2026 on a physical AI robot story. The stock hit Korea's 30% daily price limit two sessions in a row, and the whole rally happened before LG's chairman ever sat down with Nvidia's Jensen Huang...",
+    "thumbnail": "https://i.ytimg.com/vi/kxWpQ5Mz1g8/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Is Claude Opus 4.8 the Best AI Model?",
+    "videoId": "mgnmWLcEtRg",
+    "published": "2026-06-14T00:03:32+00:00",
+    "description": "Anthropic shipped Claude Opus 4.8 just 41 days after Opus 4.7 and took back the agentic coding crown: SWE-Bench Pro at 69.2 percent, ten points clear of GPT-5.5, plus the #1 spot among 218 models on the Artificial Analysis Intelligence Index. The bigger story is Dynamic...",
+    "thumbnail": "https://i.ytimg.com/vi/mgnmWLcEtRg/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Did the Government Pull Anthropic's Fable 5?",
+    "videoId": "Mowbd2Zycfk",
+    "published": "2026-06-13T23:35:10+00:00",
+    "description": "Anthropic launched Fable 5 as the most capable AI you could buy, and about three days later the U.S. government had it pulled offline worldwide. The official reason was a narrow jailbreak. The on-the-record part is stranger: a rival surfaced the flaw, carried it to the White...",
+    "thumbnail": "https://i.ytimg.com/vi/Mowbd2Zycfk/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "Anna Tiomina's Bold Prediction: Finance Teams Will Be 'People and Robots' by 2030",
     "videoId": "al6o7jym4Kw",
     "published": "2026-06-09T00:29:03+00:00",
@@ -144,7 +280,7 @@
     "category": "youtube"
   },
   {
-    "title": "May 2026: Top AI Stories",
+    "title": "Top AI News Stories from May 2026",
     "videoId": "kgtxxs0ICwg",
     "published": "2026-06-03T21:23:36+00:00",
     "description": "All your important AI News from May of 2026.",
