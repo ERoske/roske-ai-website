@@ -6,66 +6,65 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// The Edward toy line. Five Pixar-style stills of Edward reimagined as a
-// discontinued pull-string cowboy toy, each captioned to match the image.
-const toyline = [
+// The rogues' gallery. Five comic-book stills of Edward as Superman villains,
+// each getting defeated by Supergirl. Captions match each image.
+const rogues = [
   {
-    src: '/images/toy-story/clearance-aisle.png',
-    kicker: 'PRODUCT No. 001',
-    title: 'Edward: The Talking EPM Cowboy',
-    caption: "Marked down, dusty, the last one on the peg. The sleek AI gadgets beside him sold out by nine. (He's choosing to read this as a supply-chain issue.)",
+    src: '/images/supergirl/hall-of-defeat.png',
+    kicker: 'THE COMPLETE COLLECTION',
+    title: 'Every villain, one guy',
+    caption: "Every supervillain in this issue is me. Supergirl sorted out the whole lineup before lunch. (I'm telling people I let her win, which is going about as well as you'd expect.)",
     feature: true,
   },
   {
-    src: '/images/toy-story/now-with-ai.png',
-    kicker: 'THE 2026 REFRESH',
-    title: 'Now With A.I.',
-    caption: "They bolted a cracked tablet to his chest, added some blinking lights, and called it a pivot. The pull string still works, though the tablet gave out on day two.",
+    src: '/images/supergirl/lex-luthor.png',
+    kicker: 'EXHIBIT A',
+    title: 'Lex Luthor',
+    caption: "Spent the GDP of a small nation on a kryptonite death-ray. She folded it into a pretzel without looking. I'm filing the receipt under research and development.",
     feature: false,
   },
   {
-    src: '/images/toy-story/christmas-morning.png',
-    kicker: 'ONE GOOD MORNING',
-    title: 'Christmas, briefly',
-    caption: "For one shining minute he had the kid's whole attention. The tablet on the floor was content to wait, the way a thing waits when it knows it's going to win.",
+    src: '/images/supergirl/brainiac.png',
+    kicker: 'EXHIBIT B',
+    title: 'Brainiac',
+    caption: "A twelfth-level intellect and collector of worlds, undone by an unhandled exception. The console flashes ERROR, which is the most honest thing it's said all day.",
     feature: false,
   },
   {
-    src: '/images/toy-story/bottom-of-the-box.png',
-    kicker: 'THE DONATION BIN',
-    title: 'Twenty-five cents, firm',
-    caption: "Filed between two dead Game Boys and a flip phone. Honestly, good company. They all peaked around the same time.",
+    src: '/images/supergirl/bizarro.png',
+    kicker: 'EXHIBIT C',
+    title: 'Bizarro',
+    caption: "The off-brand clone, assembled from spare parts and unearned confidence. He'll tell you he won. (He didn't, though Bizarro logic is genuinely hard to argue with.)",
     feature: false,
   },
   {
-    src: '/images/toy-story/keeps-talking.png',
-    kicker: 'PULL STRING TO ACTIVATE',
-    title: 'He will not stop',
-    caption: "Pull it once and he explains agentic AI to a dinosaur, a robot, and a doll who did not ask. By now the string is decorative. He keeps going regardless.",
+    src: '/images/supergirl/general-zod.png',
+    kicker: 'EXHIBIT D',
+    title: 'General Zod',
+    caption: "Demanded that everyone kneel. Got flicked across three city blocks by a single finger. The cape looked tremendous on the way down, which counts for something.",
     feature: false,
   },
 ];
 
-// Pull-string voice box. What the toy says, ranch-hand by way of the Office of
-// the CFO. Hijacked marquee.
-const pullStrings = [
-  "THERE'S A ONESTREAM IN MY BOOT",
-  "REACH FOR THE SKY, THEN RECONCILE IT",
-  "SOMEBODY POISONED THE DATA LAKE",
-  "YOU'RE MY FAVORITE DEPUTY (PENDING APPROVAL)",
-  "ASK ME ABOUT AGENTIC AI. PLEASE. ANYONE.",
-  "TO INFINITY, AND A REASONABLE Q3 FORECAST",
-  "I'M A TOY, NOT A LARGE LANGUAGE MODEL",
-  "PULL STRING FOR A 45-MINUTE ANSWER",
+// Comic SFX marquee, dry one-liners mixed with onomatopoeia.
+const sfx = [
+  "POW",
+  "ERROR: VICTORY NOT FOUND",
+  "KA-BLAM",
+  "ONE (1) FINGER, ZERO (0) SURVIVORS",
+  "KRYPTONITE, NOW PRETZEL-SHAPED",
+  "BONK",
+  "SHE WASN'T EVEN TRYING",
+  "ROSKE COMICS · STILL 60 CENTS",
 ];
 
-// The current product line. Same six real projects, framed as toys on a shelf.
-const products = [
+// The real-world arsenal. Same six projects, framed as comic-book powers.
+const arsenal = [
   {
-    code: 'MODEL No. 01',
-    cat: 'WORKS AS ADVERTISED (RARE)',
+    code: 'ISSUE No. 01',
+    cat: 'ACTUALLY WORKS',
     title: 'AgentCube',
-    body: "The engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus. Essbase and Planning shipped. Consolidations is in beta. (It's the toy that actually does what the box promised, which in this aisle makes it a collector's item.)",
+    body: "The engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus. Essbase and Planning shipped. Consolidations is in beta. (Enterprise finance that finally answers when you call it. The cape was extra.)",
     badge: 'ESSBASE · PLANNING · CLOSE',
     status: 'SHIPPED',
     href: 'https://caprus.ai/agentcube/',
@@ -73,8 +72,8 @@ const products = [
     cta: 'Read the docs',
   },
   {
-    code: 'MODEL No. 02',
-    cat: 'COLLECT THE WHOLE ISLAND',
+    code: 'ISSUE No. 02',
+    cat: 'TEAM-UP EVENT',
     title: 'Caribbean AI Summit',
     body: "Co-chairing the largest AI conference Puerto Rico has ever hosted. October 9 and 10 in San Juan. Speakers and sponsors are being recruited right now. If you build, fund, or run AI, there's a slot on the stage with your name on it.",
     badge: '9-10 OCT 2026 · SAN JUAN',
@@ -84,10 +83,10 @@ const products = [
     cta: 'Submit a speaker',
   },
   {
-    code: 'MODEL No. 03',
-    cat: 'SOLD SEPARATELY',
+    code: 'ISSUE No. 03',
+    cat: 'THE REAL HEROES',
     title: 'Caprus',
-    body: "Investor and contributor at Caprus, the AI software and services firm giving finance teams faster, smarter operations. The crew behind the MCP servers, and the people who do most of the actual building while I write the blog posts.",
+    body: "Investor and contributor at Caprus, the AI software and services firm giving finance teams faster, smarter operations. The crew behind the MCP servers, and the people who do most of the actual heroics while I take the cover photo.",
     badge: 'AI · FINANCE',
     status: 'RUNNING',
     href: 'https://caprus.ai',
@@ -95,10 +94,10 @@ const products = [
     cta: 'See the team',
   },
   {
-    code: 'MODEL No. 04',
-    cat: 'AGES: ETERNAL DM',
+    code: 'ISSUE No. 04',
+    cat: 'AFTER HOURS',
     title: "AI Dungeon Master's Screen",
-    body: "An AI-driven DM's screen for running better D&D 5e campaigns. Initiative, lore, and improv help for the person behind the screen. If there's going to be an AI at the table, it should at least earn its seat. (The party will not be told.)",
+    body: "An AI-driven DM's screen for running better D&D 5e campaigns. Initiative, lore, and improv help for the person behind the screen. If there's going to be an AI at the table, it should at least earn its seat. (The party still will not be told.)",
     badge: 'D&D · 5E · EBERRON',
     status: 'IN PROTOTYPE',
     href: null,
@@ -106,8 +105,8 @@ const products = [
     cta: 'Quiet build',
   },
   {
-    code: 'MODEL No. 05',
-    cat: 'SOME ASSEMBLY REQUIRED',
+    code: 'ISSUE No. 05',
+    cat: 'SECRET SOCIETY',
     title: 'Puerto Rico AI Community',
     body: "President of the Puerto Rico AI Community. More than 850 people across our events. We meet every other month to figure out, in public, what AI means for the island, which is also what it means for everyone watching the island.",
     badge: '850+ · BI-MONTHLY',
@@ -117,10 +116,10 @@ const products = [
     cta: 'Join the next one',
   },
   {
-    code: 'MODEL No. 06',
-    cat: 'WORKS RIGHT OUT OF THE BOX',
+    code: 'ISSUE No. 06',
+    cat: 'THE GADGET',
     title: 'Only Recipes',
-    body: "My first Chrome extension. When it spots you on a recipe page, it strips out the author's childhood memoir, the fourteen ads, and the infinite scroll, and leaves you the recipe. It's ridiculously fast and genuinely useful, two phrases I don't often get to put next to each other.",
+    body: "My first Chrome extension. When it spots you on a recipe page, it strips out the author's childhood memoir, the fourteen ads, and the infinite scroll, and leaves you the recipe. Fast and genuinely useful, which for a free browser gadget is practically a superpower.",
     badge: 'CHROME EXTENSION · FREE',
     status: 'SHIPPED',
     href: '/only-recipes/',
@@ -142,7 +141,7 @@ const lateAdds = [
   },
 ];
 
-// Stat block, packaging-style.
+// Stat block, comic-style.
 const tally = [
   { value: '50+', label: 'COUNTRIES PRESENTED IN' },
   { value: '80+', label: 'COUNTRIES VISITED' },
@@ -151,16 +150,16 @@ const tally = [
   { value: '25+', label: 'YEARS RUNNING COMPANIES' },
 ];
 
-// Toy-box back panel, in place of a colophon.
-const backPanel = [
-  { role: 'EDITION', name: 'WEEK 26 · TOY STORY 5 RELEASE WEEK · 2026' },
-  { role: 'PRODUCT', name: 'EDWARD: THE TALKING EPM COWBOY' },
-  { role: 'INCLUDES', name: 'ONE (1) COWBOY · ONE (1) PULL STRING · OPINIONS (UNLIMITED)' },
-  { role: 'BATTERIES', name: 'NOT INCLUDED · NOT REQUIRED · RUNS ON SPITE AND CURIOSITY' },
-  { role: 'HEADGEAR', name: 'ONE (1) ROYAL-BLUE FELT FEDORA · SURVIVES EVERY RECALL' },
-  { role: 'WARNING', name: 'MAY DISCUSS AGENTIC AI FOR 45 MINUTES UNPROMPTED' },
-  { role: 'MADE IN', name: 'SAN JUAN, PUERTO RICO' },
-  { role: 'CARE', name: 'DO NOT EXPOSE TO SPREADSHEETS WITHOUT FREEZE PANES' },
+// Comic-book indicia, in place of a colophon.
+const indicia = [
+  { role: 'EDITION', name: 'ISSUE No. 27 · SUPERGIRL OPENING WEEKEND · JUNE 2026' },
+  { role: 'TITLE', name: 'SUPERGIRL VS. EDWARD ROSKE' },
+  { role: 'STARRING', name: 'SUPERGIRL (WINNING) · EDWARD ROSKE (NOT)' },
+  { role: 'VILLAINS', name: 'LEX LUTHOR · BRAINIAC · BIZARRO · GENERAL ZOD · ALL ONE GUY' },
+  { role: 'HEADGEAR', name: 'ONE (1) ROYAL-BLUE FELT FEDORA · SURVIVES EVERY COSTUME' },
+  { role: 'DAMAGES', name: 'SEVERAL CITY BLOCKS · ONE EGO · ZERO LESSONS LEARNED' },
+  { role: 'PRINTED IN', name: 'SAN JUAN, PUERTO RICO' },
+  { role: 'LETTERS PAGE', name: 'EDWARD@ROSKE.AI · NO VILLAIN FAN MAIL, PLEASE' },
 ];
 ---
 
@@ -168,32 +167,31 @@ const backPanel = [
   <WeeklyAnimation />
 
   <!-- ============================================
-       PACKAGE STRIP — toy header card
+       COMIC MASTHEAD STRIP
        ============================================ -->
-  <div class="toy-bar">
-    <div class="toy-bar-inner">
-      <span class="toy-bar-brand">EDWARD<span class="toy-bar-brand-x">:</span> THE TALKING EPM COWBOY</span>
-      <span class="toy-bar-meta toy-bar-meta-center">PULL STRING FOR OPINIONS · BATTERIES NOT INCLUDED</span>
-      <span class="toy-bar-meta toy-bar-meta-end">AGES 50 AND UP</span>
+  <div class="cb-bar">
+    <div class="cb-bar-inner">
+      <span class="cb-bar-brand">ROSKE COMICS</span>
+      <span class="cb-bar-meta cb-bar-meta-center">SUPERGIRL VS. EDWARD ROSKE · IN THEATERS NOW</span>
+      <span class="cb-bar-meta cb-bar-meta-end">ISSUE No. 27</span>
     </div>
   </div>
 
   <!-- ============================================
-       HERO — split, text left, film still right
+       HERO — split, text left, comic cover right
        ============================================ -->
   <section class="hero-section">
-    <div class="hero-clouds" aria-hidden="true"></div>
     <div class="hero-grid">
 
       <div class="hero-text">
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-pip"></span>
-          <span>NOW PLAYING · A ROSKE.AI PRODUCTION · JUNE 2026</span>
+          <span>IN THEATERS THIS WEEK · A ROSKE.AI PRODUCTION</span>
         </div>
 
         <h1 class="hero-title">
-          <span class="hero-title-line">The toy who wouldn't</span>
-          <span class="hero-title-line"><em>update.</em></span>
+          <span class="hero-title-line">A one-man</span>
+          <span class="hero-title-line"><em>rogues' gallery.</em></span>
         </h1>
 
         <p class="hero-body">{theme.hero.description}</p>
@@ -219,21 +217,18 @@ const backPanel = [
       </div>
 
       <div class="hero-image-wrap">
-        <figure class="film-still">
-          <div class="film-still-top">
-            <span class="film-still-flag">FRAME 001 · THE TOY WHO WOULDN'T UPDATE</span>
-            <span class="film-still-rate">RATED E</span>
+        <figure class="cover">
+          <div class="cover-top">
+            <span class="cover-logo">ROSKE COMICS</span>
+            <span class="cover-price">No. 27<br/>60&cent;</span>
           </div>
-          <div class="film-still-window">
-            <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="film-still-image" />
-            <div class="film-still-tag" aria-hidden="true">
-              <span class="film-still-tag-line">THE THREAT</span>
-              <span class="film-still-tag-sub">ARRIVED WITH WI-FI</span>
-            </div>
+          <div class="cover-window">
+            <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="cover-image" />
+            <span class="cover-burst" aria-hidden="true">VROOM!</span>
           </div>
-          <div class="film-still-bottom">
-            <span>DIR. EDWARD ROSKE</span>
-            <span>PIXAR-ADJACENT · NO AFFILIATION</span>
+          <div class="cover-bottom">
+            <span>SUPERGIRL VS. EDWARD</span>
+            <span>THE SPACEHOG ISSUE</span>
           </div>
         </figure>
       </div>
@@ -241,11 +236,11 @@ const backPanel = [
   </section>
 
   <!-- ============================================
-       PULL-STRING TICKER
+       SFX TICKER
        ============================================ -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      {[...pullStrings, ...pullStrings].map(item => (
+      {[...sfx, ...sfx].map(item => (
         <span class="ticker-item">{item}</span>
       ))}
     </div>
@@ -255,37 +250,37 @@ const backPanel = [
        LATEST CONTENT — permanent module
        ============================================ -->
   <LatestContent
-    eyebrow="Section 02 · Fresh out of the box"
+    eyebrow="Section 02 · Hot off the presses"
     heading={"New <em>this week.</em>"}
-    deck="The latest writing and video briefs, in one place, so the good stuff isn't buried under a pile of older toys."
+    deck="The latest writing and video briefs, in one place, so the good stuff isn't buried under a stack of back issues."
   />
 
   <!-- ============================================
-       THE TOY LINE — scene gallery
+       THE ROGUES' GALLERY — scene gallery
        ============================================ -->
-  <section class="line-section">
-    <div class="line-inner">
+  <section class="rogues-section">
+    <div class="rogues-inner">
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 03 · THE FULL PRODUCT LINE · NOW DISCONTINUED</span>
+          <span>SECTION 03 · THE ROGUES' GALLERY · ALL DEFEATED</span>
         </div>
-        <h2 class="section-title">Every toy in the <em>line.</em></h2>
+        <h2 class="section-title">Every villain in the <em>book.</em></h2>
         <p class="section-deck">
-          One man, several recalls. Each one a Pixar-grade study in what happens when the analog favorite meets a glowing rectangle with better marketing. (The fedora is in all of them. The fedora is non-negotiable.)
+          One man, the entire lineup. Every panel is the same plot: a villain with a planet-sized ego picks a fight with Supergirl and loses badly. (The fedora is in every frame. The fedora does not lose.)
         </p>
       </header>
 
-      <div class="line-grid">
-        {toyline.map((toy) => (
-          <article class={`toy-card ${toy.feature ? 'toy-card-feature' : ''}`}>
-            <div class="toy-frame">
-              <img src={toy.src} alt={toy.caption} loading="lazy" decoding="async" class="toy-image" />
-              <span class="toy-kicker">{toy.kicker}</span>
+      <div class="rogues-grid">
+        {rogues.map((r) => (
+          <article class={`panel-card ${r.feature ? 'panel-card-feature' : ''}`}>
+            <div class="panel-frame">
+              <img src={r.src} alt={r.caption} loading="lazy" decoding="async" class="panel-image" />
+              <span class="panel-kicker">{r.kicker}</span>
             </div>
-            <div class="toy-meta">
-              <h3 class="toy-name">{toy.title}</h3>
-              <p class="toy-caption">{toy.caption}</p>
+            <div class="panel-meta">
+              <h3 class="panel-name">{r.title}</h3>
+              <p class="panel-caption">{r.caption}</p>
             </div>
           </article>
         ))}
@@ -294,58 +289,58 @@ const backPanel = [
   </section>
 
   <!-- ============================================
-       PULL-QUOTE — from the back of the box
+       CAPTION-BOX PULL QUOTE
        ============================================ -->
   <section class="statement-section">
     <div class="statement-inner">
-      <div class="statement-tag">FROM THE BACK OF THE BOX</div>
+      <div class="statement-tag">MEANWHILE, IN THE NARRATION BOX</div>
       <blockquote class="statement-q">
-        Every toy gets replaced eventually. I figure if I stay useful enough, they'll at least feel a little guilty about it. <span class="statement-line">(So far: mixed results.)</span>
+        Every villain I played was sure he was the main character. Supergirl turned up to correct the record, repeatedly. <span class="statement-line">(I respect the consistency.)</span>
       </blockquote>
       <div class="statement-attrib">
         <span class="statement-attrib-name">EDWARD ROSKE</span>
-        <span class="statement-attrib-role">READING HIS OWN RECALL NOTICE</span>
+        <span class="statement-attrib-role">VILLAIN (ALL OF THEM), THIS ISSUE</span>
       </div>
     </div>
   </section>
 
   <!-- ============================================
-       CURRENT PRODUCT LINE — project cards
+       THE ARSENAL — project cards
        ============================================ -->
-  <section id="current-work" class="products-section">
-    <div class="products-inner">
+  <section id="current-work" class="arsenal-section">
+    <div class="arsenal-inner">
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 04 · WHAT HE'S ACTUALLY BUILDING</span>
+          <span>SECTION 04 · THE REAL-WORLD ARSENAL</span>
         </div>
-        <h2 class="section-title">Six things. <em>None require batteries.</em></h2>
+        <h2 class="section-title">Six powers. <em>All non-fictional.</em></h2>
         <p class="section-deck">
-          The part of the toy box that still ships. Real projects, in beta or in production, all built on the theory that the old cowboy might be worth keeping around a little longer.
+          The part of the story that isn't a costume. Real projects, in beta or in production, built on the boring idea that software should be useful instead of scary. (Villainy optional.)
         </p>
       </header>
 
-      <div class="products-grid">
-        {products.map(product => (
-          <article class="product-card">
-            <div class="product-card-head">
-              <span class="product-code">{product.code}</span>
-              <span class="product-cat">{product.cat}</span>
+      <div class="arsenal-grid">
+        {arsenal.map(item => (
+          <article class="power-card">
+            <div class="power-card-head">
+              <span class="power-code">{item.code}</span>
+              <span class="power-cat">{item.cat}</span>
             </div>
-            <h3 class="product-title">{product.title}</h3>
-            <p class="product-body">{product.body}</p>
-            <div class="product-meta">
-              <span class="product-badge">{product.badge}</span>
-              <span class={`product-status product-status-${product.status.toLowerCase().replace(/[^a-z]+/g, '-')}`}>{product.status}</span>
+            <h3 class="power-title">{item.title}</h3>
+            <p class="power-body">{item.body}</p>
+            <div class="power-meta">
+              <span class="power-badge">{item.badge}</span>
+              <span class={`power-status power-status-${item.status.toLowerCase().replace(/[^a-z]+/g, '-')}`}>{item.status}</span>
             </div>
-            <div class="product-foot">
-              {product.href ? (
-                <a href={product.href} target={product.external ? '_blank' : undefined} rel={product.external ? 'noopener' : undefined} class="product-cta">
-                  {product.cta}
+            <div class="power-foot">
+              {item.href ? (
+                <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener' : undefined} class="power-cta">
+                  {item.cta}
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
                 </a>
               ) : (
-                <span class="product-cta product-cta-disabled">{product.cta}</span>
+                <span class="power-cta power-cta-disabled">{item.cta}</span>
               )}
             </div>
           </article>
@@ -362,9 +357,9 @@ const backPanel = [
       <header class="section-header late-header">
         <div class="section-tag late-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 05 · NEW FOR THIS SEASON · STILL IN BETA</span>
+          <span>SECTION 05 · NEXT ISSUE · STILL IN BETA</span>
         </div>
-        <h2 class="section-title">One more <em>off the assembly line.</em></h2>
+        <h2 class="section-title">One more <em>off the presses.</em></h2>
       </header>
 
       <div class="late-grid">
@@ -388,16 +383,15 @@ const backPanel = [
        CLOSING CTA
        ============================================ -->
   <section class="closing-section">
-    <div class="closing-clouds" aria-hidden="true"></div>
     <div class="closing-inner">
       <div class="closing-eyebrow">
         <span class="closing-rule"></span>
         <span>THE BOX OFFICE IS OPEN · 13 MINUTES</span>
         <span class="closing-rule"></span>
       </div>
-      <h2 class="closing-title">Pull the string.<br/><em>Get a real answer.</em></h2>
+      <h2 class="closing-title">Summon the villain.<br/><em>He answers questions.</em></h2>
       <p class="closing-deck">
-        Book thirteen minutes. Ask about Oracle EPM, AI in finance, MCP servers, the Caribbean AI Summit, D&D, or what it's like to spend a career hyping the exact technology now eyeing your spot in the toy box. The pull string is free, and the opinions come with it whether you asked or not.
+        Book thirteen minutes. Ask about Oracle EPM, AI in finance, MCP servers, the Caribbean AI Summit, D&D, or how a person plays four supervillains in one week and loses every fight. No kryptonite required. Opinions arrive whether you asked for them or not.
       </p>
       <div class="closing-cta-row">
         <a href="/question/" target="_blank" rel="noopener" class="btn-primary btn-primary-big">
@@ -412,21 +406,21 @@ const backPanel = [
   </section>
 
   <!-- ============================================
-       BACK PANEL
+       INDICIA / BACK PANEL
        ============================================ -->
-  <section class="panel-section">
-    <div class="panel-inner">
-      <div class="panel-tag">TOY BOX · BACK PANEL · 2026</div>
-      <div class="panel-roll">
-        {backPanel.map(entry => (
-          <div class="panel-block">
-            <span class="panel-role">{entry.role}</span>
-            <span class="panel-name">{entry.name}</span>
+  <section class="indicia-section">
+    <div class="indicia-inner">
+      <div class="indicia-tag">COMIC-BOOK INDICIA · BACK COVER · 2026</div>
+      <div class="indicia-roll">
+        {indicia.map(entry => (
+          <div class="indicia-block">
+            <span class="indicia-role">{entry.role}</span>
+            <span class="indicia-name">{entry.name}</span>
           </div>
         ))}
       </div>
-      <div class="panel-footnote">
-        Not affiliated with Pixar, Disney, or any toy currently in production. Toy Story and its characters are the property of their respective owners. The cowboy, the opinions, and the fedora are Edward's. No pull-string toys were replaced by AI in the making of this website, though several were made visibly nervous.
+      <div class="indicia-footnote">
+        Not affiliated with DC Comics, Warner Bros., or anyone who actually owns Supergirl, Superman, or a single one of these villains. All characters are the property of their respective owners. The fedora, the cigar, and the poor life choices are Edward's. No teenagers from Krypton were inconvenienced in the making of this website, though several villains very much were.
       </div>
     </div>
   </section>
@@ -435,71 +429,63 @@ const backPanel = [
 
 <style>
   /* ============================================================
-     TOY STORY 5 · THE TOY WHO WOULDN'T UPDATE
-     Palette: Andy's-room sky blue / Woody red / toy-star gold /
-              warm label cream / toy box at night
-     Type: Fredoka (display), Nunito (body), Space Mono (tech
-           warnings + labels), Rye (western pull-string flourish)
+     SUPERGIRL · A ONE-MAN ROGUES' GALLERY
+     Palette: hero blue / Supergirl red / S-shield gold /
+              cosmic night (dark) / newsprint sky (light)
+     Type: Anton (impact display), Barlow (body), Space Mono
+           (tech + labels), Bangers (comic SFX bursts)
      ============================================================ */
 
   :global([data-theme="dark"]) {
-    --ts-bg: #0f1b3d;
-    --ts-bg-deep: #0a142e;
-    --ts-surface: #1a2a55;
-    --ts-surface-2: #21356a;
-    --ts-fg: #f5f0e1;
-    --ts-muted: #a9b8db;
-    --ts-line: #2b407a;
-    --ts-line-soft: #1c2c57;
-    --ts-sky: #3b82e6;
-    --ts-sky-deep: #1c5fc4;
-    --ts-red: #e8462f;
-    --ts-red-bright: #ff6a4d;
-    --ts-gold: #f2b840;
-    --ts-cream: #f5f0e1;
+    --sg-bg: #0a1230;
+    --sg-bg-deep: #060b22;
+    --sg-surface: #131d44;
+    --sg-surface-2: #1b2a5e;
+    --sg-fg: #f3f6ff;
+    --sg-muted: #9fb0d8;
+    --sg-line: #2a3a72;
+    --sg-edge: #f5c518;
+    --sg-blue: #3a78ff;
+    --sg-blue-deep: #0b3bb0;
+    --sg-red: #ff2f3c;
+    --sg-red-bright: #ff5a64;
+    --sg-gold: #f5c518;
+    --sg-cream: #f3f6ff;
+    --sg-ink: #060b22;
+    --sg-dot: rgba(255,255,255,0.10);
   }
   :global([data-theme="light"]) {
-    --ts-bg: #e7f1fc;
-    --ts-bg-deep: #d3e6fb;
-    --ts-surface: #ffffff;
-    --ts-surface-2: #f1f7ff;
-    --ts-fg: #16335f;
-    --ts-muted: #5a6f90;
-    --ts-line: #c2d8f0;
-    --ts-line-soft: #dcebfb;
-    --ts-sky: #2f6fd0;
-    --ts-sky-deep: #1c5fc4;
-    --ts-red: #d83a22;
-    --ts-red-bright: #e8462f;
-    --ts-gold: #d39a26;
-    --ts-cream: #ffffff;
+    --sg-bg: #e9f1ff;
+    --sg-bg-deep: #d4e4ff;
+    --sg-surface: #ffffff;
+    --sg-surface-2: #eef4ff;
+    --sg-fg: #0e1a3d;
+    --sg-muted: #4a5b80;
+    --sg-line: #b9ccec;
+    --sg-edge: #0e1a3d;
+    --sg-blue: #1452c9;
+    --sg-blue-deep: #0b3bb0;
+    --sg-red: #d61420;
+    --sg-red-bright: #ec1c2b;
+    --sg-gold: #d99a06;
+    --sg-cream: #ffffff;
+    --sg-ink: #0e1a3d;
+    --sg-dot: rgba(11,40,120,0.12);
   }
-
-  /* Cloud-wallpaper texture used on the sky sections */
-  .hero-clouds, .closing-clouds {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='150'%20height='110'%3E%3Cg%20fill='%23ffffff'%3E%3Cellipse%20cx='48'%20cy='56'%20rx='34'%20ry='17'/%3E%3Ccircle%20cx='34'%20cy='50'%20r='14'/%3E%3Ccircle%20cx='60'%20cy='44'%20r='18'/%3E%3Ccircle%20cx='84'%20cy='54'%20r='13'/%3E%3C/g%3E%3C/svg%3E");
-    background-size: 200px 147px;
-    opacity: 0.05;
-  }
-  :global([data-theme="light"]) .hero-clouds,
-  :global([data-theme="light"]) .closing-clouds { opacity: 0.5; }
 
   /* ------------------------------------------------------------
-     PACKAGE STRIP
+     COMIC MASTHEAD STRIP
      ------------------------------------------------------------ */
-  .toy-bar {
+  .cb-bar {
     width: 100%;
-    background: var(--ts-red);
+    background: var(--sg-red);
     color: #fff;
-    border-bottom: 4px solid var(--ts-gold);
+    border-bottom: 4px solid var(--sg-gold);
     font-family: 'Space Mono', monospace;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .toy-bar-inner {
+  .cb-bar-inner {
     max-width: 1500px;
     margin: 0 auto;
     padding: 0.5rem 2rem;
@@ -507,26 +493,22 @@ const backPanel = [
     align-items: center;
     justify-content: space-between;
     gap: 1.5rem;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
   }
-  .toy-bar-brand {
-    display: inline-flex;
-    align-items: baseline;
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    text-transform: none;
-    font-size: 1.02rem;
-    color: #fff;
+  .cb-bar-brand {
+    font-family: 'Bangers', 'Anton', cursive;
+    letter-spacing: 0.08em;
+    font-size: 1.2rem;
+    color: var(--sg-gold);
+    -webkit-text-stroke: 0.6px #2a0a0a;
   }
-  .toy-bar-brand-x { color: var(--ts-gold); margin: 0 0.1em; }
-  .toy-bar-meta { white-space: nowrap; }
-  .toy-bar-meta-center { flex: 1; text-align: center; letter-spacing: 0.16em; opacity: 0.95; }
-  .toy-bar-meta-end { text-align: right; color: #fff7e6; font-weight: 700; }
+  .cb-bar-meta { white-space: nowrap; }
+  .cb-bar-meta-center { flex: 1; text-align: center; letter-spacing: 0.16em; opacity: 0.95; }
+  .cb-bar-meta-end { text-align: right; font-weight: 700; }
   @media (max-width: 780px) {
-    .toy-bar-inner { padding: 0.5rem 1rem; gap: 0.6rem; font-size: 0.56rem; }
-    .toy-bar-meta-end { display: none; }
-    .toy-bar-meta-center { font-size: 0.54rem; letter-spacing: 0.1em; }
+    .cb-bar-inner { padding: 0.5rem 1rem; gap: 0.6rem; font-size: 0.56rem; }
+    .cb-bar-meta-end { display: none; }
+    .cb-bar-meta-center { font-size: 0.54rem; letter-spacing: 0.1em; }
   }
 
   /* ------------------------------------------------------------
@@ -534,21 +516,30 @@ const backPanel = [
      ------------------------------------------------------------ */
   .hero-section {
     position: relative;
-    background: var(--ts-bg);
-    color: var(--ts-fg);
+    background: var(--sg-bg);
+    color: var(--sg-fg);
     padding: 5.5rem 2rem 6rem;
     overflow: hidden;
   }
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(var(--sg-dot) 1.5px, transparent 1.6px);
+    background-size: 16px 16px;
+    opacity: 0.7;
+  }
   :global([data-theme="dark"]) .hero-section {
     background:
-      radial-gradient(circle at 14% 16%, rgba(59,130,230,0.22) 0%, transparent 52%),
-      radial-gradient(circle at 86% 84%, rgba(232,70,47,0.12) 0%, transparent 55%),
-      linear-gradient(165deg, #0a142e 0%, #0f1b3d 55%, #102350 100%);
+      radial-gradient(circle at 16% 18%, rgba(58,120,255,0.22) 0%, transparent 52%),
+      radial-gradient(circle at 84% 82%, rgba(255,47,60,0.14) 0%, transparent 55%),
+      linear-gradient(165deg, #060b22 0%, #0a1230 55%, #0e1640 100%);
   }
   :global([data-theme="light"]) .hero-section {
     background:
-      radial-gradient(circle at 50% -10%, #ffffff 0%, transparent 45%),
-      linear-gradient(180deg, #cfe6fb 0%, #e7f1fc 60%);
+      radial-gradient(circle at 50% -8%, #ffffff 0%, transparent 42%),
+      linear-gradient(180deg, #d4e4ff 0%, #e9f1ff 60%);
   }
   .hero-grid {
     position: relative;
@@ -573,43 +564,41 @@ const backPanel = [
     font-size: 0.72rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ts-red);
-    margin-bottom: 1.6rem;
+    color: var(--sg-red);
+    margin-bottom: 1.5rem;
     padding: 0.35rem 0.85rem;
-    border: 2px solid var(--ts-red);
-    border-radius: 999px;
+    border: 2px solid var(--sg-red);
+    background: var(--sg-surface);
   }
   :global([data-theme="light"]) .hero-eyebrow { background: #fff; }
-  .hero-eyebrow-pip {
-    width: 8px; height: 8px;
-    background: var(--ts-red);
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-  .hero-title { margin: 0 0 1.8rem; line-height: 0.96; }
+  .hero-eyebrow-pip { width: 8px; height: 8px; background: var(--sg-red); border-radius: 50%; flex-shrink: 0; }
+  .hero-title { margin: 0 0 1.6rem; line-height: 0.92; }
   .hero-title-line {
     display: block;
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    font-size: clamp(2.9rem, 7vw, 5.6rem);
-    color: var(--ts-fg);
-    letter-spacing: -0.01em;
-    line-height: 1.0;
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(3rem, 7.5vw, 6rem);
+    color: var(--sg-fg);
+    letter-spacing: 0.005em;
+    line-height: 0.94;
+    text-transform: uppercase;
   }
   .hero-title-line em {
     font-style: normal;
-    color: var(--ts-red);
+    color: var(--sg-red);
+    -webkit-text-stroke: 1px var(--sg-ink);
   }
+  :global([data-theme="dark"]) .hero-title-line em { -webkit-text-stroke: 1px #2a0a0a; }
   .hero-body {
-    font-family: 'Nunito', system-ui, sans-serif;
+    font-family: 'Barlow', system-ui, sans-serif;
     font-size: 1.1rem;
-    line-height: 1.7;
-    color: var(--ts-muted);
+    line-height: 1.65;
+    color: var(--sg-muted);
     margin: 0 0 2rem;
     max-width: 40em;
     font-weight: 500;
   }
-  :global([data-theme="light"]) .hero-body { color: #3a4d6b; }
+  :global([data-theme="light"]) .hero-body { color: #34456a; }
 
   /* Buttons */
   .btn-primary, .btn-secondary {
@@ -617,201 +606,151 @@ const backPanel = [
     align-items: center;
     gap: 0.55rem;
     padding: 0.95rem 1.7rem;
-    font-family: 'Fredoka', sans-serif;
-    font-size: 0.98rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+    font-family: 'Anton', sans-serif;
+    font-size: 1.02rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
     text-decoration: none;
-    border: 2.5px solid currentColor;
-    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+    border: 3px solid var(--sg-ink);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, color 0.16s ease;
     cursor: pointer;
     line-height: 1;
-    border-radius: 999px;
   }
+  :global([data-theme="dark"]) .btn-primary, :global([data-theme="dark"]) .btn-secondary { border-color: #2a0a0a; }
   .btn-primary {
-    background: var(--ts-red);
+    background: var(--sg-red);
     color: #fff;
-    border-color: var(--ts-red);
-    box-shadow: 4px 4px 0 var(--ts-sky-deep);
+    box-shadow: 5px 5px 0 var(--sg-gold);
   }
-  .btn-primary:hover {
-    background: var(--ts-red-bright);
-    border-color: var(--ts-red-bright);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--ts-sky-deep);
-  }
+  .btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--sg-gold); background: var(--sg-red-bright); }
   .btn-secondary {
-    background: transparent;
-    color: var(--ts-fg);
-    border-color: var(--ts-fg);
-    box-shadow: 4px 4px 0 var(--ts-gold);
+    background: var(--sg-gold);
+    color: #2a1500;
+    box-shadow: 5px 5px 0 var(--sg-blue);
   }
-  .btn-secondary:hover {
-    background: var(--ts-fg);
-    color: var(--ts-bg);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--ts-gold);
-  }
-  .btn-primary-big, .btn-secondary-big { padding: 1.15rem 2.3rem; font-size: 1.05rem; }
-  .hero-cta-row { display: flex; flex-wrap: wrap; gap: 1.3rem; margin-bottom: 2.8rem; }
+  .btn-secondary:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--sg-blue); }
+  .btn-primary-big, .btn-secondary-big { padding: 1.15rem 2.3rem; font-size: 1.15rem; }
+  .hero-cta-row { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-bottom: 2.8rem; }
 
   /* Tally */
   .hero-tally {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1.2rem;
-    border-top: 3px dotted var(--ts-sky);
+    border-top: 3px solid var(--sg-red);
     padding-top: 1.7rem;
   }
   .tally-value {
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    font-size: 2.4rem;
-    color: var(--ts-red);
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 2.6rem;
+    color: var(--sg-red);
     line-height: 1;
-    letter-spacing: -0.02em;
+    -webkit-text-stroke: 1px var(--sg-ink);
   }
+  :global([data-theme="dark"]) .tally-value { -webkit-text-stroke: 1px #2a0a0a; }
   .tally-label {
     font-family: 'Space Mono', monospace;
     font-size: 0.58rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ts-muted);
+    color: var(--sg-muted);
     margin-top: 0.4rem;
   }
-  :global([data-theme="light"]) .tally-label { color: #5a6f90; }
   @media (max-width: 620px) {
     .hero-tally { grid-template-columns: repeat(2, 1fr); gap: 1.4rem 1rem; }
   }
 
   /* ------------------------------------------------------------
-     FILM STILL (hero right)
+     COMIC COVER (hero right)
      ------------------------------------------------------------ */
-  .hero-image-wrap {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-  }
-  .film-still {
+  .hero-image-wrap { position: relative; z-index: 2; display: flex; justify-content: center; align-items: flex-start; }
+  .cover {
     position: relative;
     margin: 0;
     width: 100%;
     max-width: 640px;
-    background: var(--ts-surface);
-    border: 5px solid var(--ts-gold);
-    border-radius: 14px;
-    box-shadow: 0 22px 60px rgba(0,0,0,0.5), inset 0 0 0 4px var(--ts-bg-deep);
+    background: var(--sg-surface);
+    border: 5px solid var(--sg-ink);
+    box-shadow: 10px 10px 0 var(--sg-red);
     display: flex;
     flex-direction: column;
-    overflow: hidden;
   }
-  :global([data-theme="light"]) .film-still {
-    box-shadow: 0 18px 44px rgba(28,95,196,0.22), inset 0 0 0 4px #ffffff;
-  }
-  .film-still-top {
+  :global([data-theme="dark"]) .cover { border-color: var(--sg-gold); box-shadow: 10px 10px 0 var(--sg-red); }
+  .cover-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 1rem;
+    background: var(--sg-blue);
+    color: #fff;
+    border-bottom: 4px solid var(--sg-ink);
+  }
+  :global([data-theme="dark"]) .cover-top { border-bottom-color: var(--sg-gold); }
+  .cover-logo { font-family: 'Bangers', cursive; font-size: 1.6rem; letter-spacing: 0.06em; color: var(--sg-gold); -webkit-text-stroke: 0.8px #07122e; }
+  .cover-price {
+    font-family: 'Anton', sans-serif;
+    font-size: 0.7rem;
+    line-height: 1;
+    text-align: center;
+    background: #fff;
+    color: var(--sg-ink);
+    border: 2px solid var(--sg-ink);
+    padding: 0.25rem 0.4rem;
+    text-transform: uppercase;
+  }
+  .cover-window { position: relative; background: var(--sg-bg-deep); }
+  .cover-image { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
+  .cover-burst {
+    position: absolute;
+    bottom: -14px;
+    right: 16px;
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    color: var(--sg-gold);
+    -webkit-text-stroke: 1.4px var(--sg-ink);
+    transform: rotate(-8deg);
+    text-shadow: 3px 3px 0 var(--sg-red);
+    letter-spacing: 0.04em;
+  }
+  .cover-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
     padding: 0.7rem 1rem;
-    background: var(--ts-bg-deep);
-    color: var(--ts-cream);
-    border-bottom: 3px solid var(--ts-gold);
-  }
-  :global([data-theme="light"]) .film-still-top { background: var(--ts-sky-deep); color: #fff; }
-  .film-still-flag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  .film-still-rate {
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    font-size: 0.7rem;
-    background: var(--ts-gold);
-    color: #2a1a00;
-    padding: 0.15rem 0.5rem;
-    border-radius: 4px;
-    letter-spacing: 0.04em;
-    white-space: nowrap;
-  }
-  .film-still-window { position: relative; background: var(--ts-bg-deep); }
-  .film-still-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
-  .film-still-tag {
-    position: absolute;
-    bottom: 12px;
-    left: 12px;
-    background: var(--ts-red);
+    background: var(--sg-red);
     color: #fff;
-    padding: 0.45rem 0.7rem;
-    border-radius: 6px;
-    border: 2px solid #fff;
-    transform: rotate(-3deg);
-    box-shadow: 0 4px 0 rgba(0,0,0,0.25);
-    font-family: 'Space Mono', monospace;
-    line-height: 1.15;
-  }
-  .film-still-tag-line { display: block; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.08em; }
-  .film-still-tag-sub { display: block; font-size: 0.56rem; letter-spacing: 0.1em; opacity: 0.9; margin-top: 0.1rem; }
-  .film-still-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.65rem 1rem;
-    background: var(--ts-bg-deep);
-    color: var(--ts-gold);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
+    font-family: 'Anton', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    border-top: 3px solid var(--ts-gold);
+    border-top: 4px solid var(--sg-ink);
     flex-wrap: wrap;
   }
-  :global([data-theme="light"]) .film-still-bottom { background: var(--ts-sky-deep); color: #ffe6a8; }
+  :global([data-theme="dark"]) .cover-bottom { border-top-color: var(--sg-gold); }
 
   /* ------------------------------------------------------------
-     PULL-STRING TICKER
+     SFX TICKER
      ------------------------------------------------------------ */
   .ticker {
-    background: var(--ts-gold);
-    color: #2a1a00;
-    border-top: 4px solid var(--ts-red);
-    border-bottom: 4px solid var(--ts-red);
+    background: var(--sg-gold);
+    color: var(--sg-ink);
+    border-top: 4px solid var(--sg-ink);
+    border-bottom: 4px solid var(--sg-ink);
     overflow: hidden;
-    padding: 0.6rem 0;
-    font-family: 'Rye', 'Fredoka', serif;
-    letter-spacing: 0.04em;
+    padding: 0.55rem 0;
+    font-family: 'Bangers', cursive;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    font-size: 1.05rem;
+    font-size: 1.35rem;
   }
-  .ticker-track {
-    display: inline-flex;
-    gap: 2.6rem;
-    white-space: nowrap;
-    animation: tickerScroll 64s linear infinite;
-  }
-  .ticker-item::after {
-    content: '✦';
-    margin-left: 2.6rem;
-    color: var(--ts-red);
-  }
-  @keyframes tickerScroll {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .ticker-track { animation: none; }
-  }
+  .ticker-track { display: inline-flex; gap: 2.6rem; white-space: nowrap; animation: tickerScroll 60s linear infinite; }
+  .ticker-item::after { content: '★'; margin-left: 2.6rem; color: var(--sg-red); }
+  @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
 
   /* ------------------------------------------------------------
      SECTION HEADERS
@@ -825,479 +764,289 @@ const backPanel = [
     font-size: 0.72rem;
     letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: var(--ts-red);
-    margin-bottom: 1.2rem;
+    color: var(--sg-red);
+    margin-bottom: 1.1rem;
   }
-  .section-tag-dot { width: 10px; height: 10px; background: var(--ts-red); border-radius: 50%; flex-shrink: 0; }
+  .section-tag-dot { width: 10px; height: 10px; background: var(--sg-red); border-radius: 50%; flex-shrink: 0; }
   .section-title {
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    font-size: clamp(2.1rem, 5vw, 3.8rem);
-    line-height: 1.06;
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+    line-height: 1.0;
     margin: 0 0 1.2rem;
-    color: var(--ts-fg);
-    letter-spacing: -0.015em;
+    color: var(--sg-fg);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
   }
-  .section-title em { font-style: normal; color: var(--ts-red); }
+  .section-title em { font-style: normal; color: var(--sg-red); -webkit-text-stroke: 1px var(--sg-ink); }
+  :global([data-theme="dark"]) .section-title em { -webkit-text-stroke: 1px #2a0a0a; }
   .section-deck {
-    font-family: 'Nunito', system-ui, sans-serif;
+    font-family: 'Barlow', system-ui, sans-serif;
     font-size: 1.08rem;
-    line-height: 1.7;
-    color: var(--ts-muted);
+    line-height: 1.65;
+    color: var(--sg-muted);
     max-width: 44em;
     margin: 0 auto;
     font-weight: 500;
   }
-  :global([data-theme="light"]) .section-deck { color: #4a5f7e; }
+  :global([data-theme="light"]) .section-deck { color: #44557c; }
 
   /* ------------------------------------------------------------
-     THE TOY LINE (scene gallery)
+     ROGUES' GALLERY (scene gallery)
      ------------------------------------------------------------ */
-  .line-section {
-    background: var(--ts-bg);
-    color: var(--ts-fg);
+  .rogues-section {
+    background: var(--sg-bg);
+    color: var(--sg-fg);
     padding: 6.5rem 2rem 7rem;
     position: relative;
   }
-  :global([data-theme="light"]) .line-section { background: var(--ts-surface-2); }
-  .line-inner { max-width: 1320px; margin: 0 auto; position: relative; }
-  .line-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2.4rem;
-  }
+  :global([data-theme="light"]) .rogues-section { background: var(--sg-surface-2); }
+  .rogues-inner { max-width: 1320px; margin: 0 auto; position: relative; }
+  .rogues-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.4rem; }
   @media (max-width: 820px) {
-    .line-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .line-section { padding: 4rem 1.25rem 5rem; }
+    .rogues-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .rogues-section { padding: 4rem 1.25rem 5rem; }
   }
-  .toy-card {
+  .panel-card {
     display: flex;
     flex-direction: column;
-    background: var(--ts-surface);
-    border: 3px solid var(--ts-line);
-    border-radius: 16px;
+    background: var(--sg-surface);
+    border: 4px solid var(--sg-ink);
     overflow: hidden;
-    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.32);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 6px 6px 0 var(--sg-blue);
   }
-  :global([data-theme="light"]) .toy-card { box-shadow: 0 12px 26px rgba(28,95,196,0.1); }
-  .toy-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--ts-gold);
-    box-shadow: 0 18px 42px rgba(0,0,0,0.42);
-  }
-  :global([data-theme="light"]) .toy-card:hover { box-shadow: 0 18px 38px rgba(28,95,196,0.18); }
-  .toy-card-feature { grid-column: 1 / -1; display: grid; grid-template-columns: 1.4fr 1fr; align-items: stretch; }
-  .toy-card-feature .toy-meta { display: flex; flex-direction: column; justify-content: center; }
+  :global([data-theme="dark"]) .panel-card { border-color: var(--sg-gold); box-shadow: 6px 6px 0 var(--sg-blue-deep); }
+  .panel-card:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 var(--sg-red); }
+  .panel-card-feature { grid-column: 1 / -1; display: grid; grid-template-columns: 1.4fr 1fr; align-items: stretch; box-shadow: 8px 8px 0 var(--sg-red); }
+  .panel-card-feature .panel-meta { display: flex; flex-direction: column; justify-content: center; }
+  @media (max-width: 820px) { .panel-card-feature { grid-template-columns: 1fr; } }
+  .panel-frame { position: relative; background: var(--sg-bg-deep); border-bottom: 4px solid var(--sg-ink); }
+  :global([data-theme="dark"]) .panel-frame { border-bottom-color: var(--sg-gold); }
+  .panel-card-feature .panel-frame { border-bottom: none; border-right: 4px solid var(--sg-ink); }
+  :global([data-theme="dark"]) .panel-card-feature .panel-frame { border-right-color: var(--sg-gold); }
   @media (max-width: 820px) {
-    .toy-card-feature { grid-template-columns: 1fr; }
+    .panel-card-feature .panel-frame { border-right: none; border-bottom: 4px solid var(--sg-ink); }
+    :global([data-theme="dark"]) .panel-card-feature .panel-frame { border-bottom-color: var(--sg-gold); }
   }
-  .toy-frame { position: relative; background: var(--ts-bg-deep); border-bottom: 3px solid var(--ts-gold); }
-  .toy-card-feature .toy-frame { border-bottom: none; border-right: 3px solid var(--ts-gold); }
-  @media (max-width: 820px) {
-    .toy-card-feature .toy-frame { border-right: none; border-bottom: 3px solid var(--ts-gold); }
-  }
-  .toy-image { display: block; width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover; }
-  .toy-card-feature .toy-image { aspect-ratio: 16/9; }
-  .toy-kicker {
+  .panel-image { display: block; width: 100%; height: 100%; aspect-ratio: 3/4; object-fit: cover; }
+  .panel-card-feature .panel-image { aspect-ratio: 16/9; }
+  .panel-kicker {
     position: absolute;
-    top: 12px; left: 12px;
-    background: var(--ts-red);
+    top: 0; left: 0;
+    background: var(--sg-red);
     color: #fff;
-    padding: 0.3rem 0.6rem;
-    border-radius: 6px;
-    border: 2px solid #fff;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.1em;
+    padding: 0.35rem 0.7rem;
+    border-right: 3px solid var(--sg-ink);
+    border-bottom: 3px solid var(--sg-ink);
+    font-family: 'Anton', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
-    font-weight: 700;
   }
-  .toy-meta { padding: 1.5rem 1.6rem 1.8rem; }
-  .toy-name {
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
+  :global([data-theme="dark"]) .panel-kicker { border-color: var(--sg-gold); }
+  .panel-meta { padding: 1.5rem 1.6rem 1.8rem; }
+  .panel-name {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 1.9rem;
     margin: 0 0 0.6rem;
-    color: var(--ts-fg);
-    line-height: 1.15;
+    color: var(--sg-fg);
+    line-height: 1.0;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
   }
-  .toy-card-feature .toy-name { font-size: 2rem; }
-  .toy-caption {
-    font-family: 'Nunito', system-ui, sans-serif;
+  .panel-card-feature .panel-name { font-size: 2.4rem; color: var(--sg-red); -webkit-text-stroke: 1px var(--sg-ink); }
+  :global([data-theme="dark"]) .panel-card-feature .panel-name { -webkit-text-stroke: 1px #2a0a0a; }
+  .panel-caption {
+    font-family: 'Barlow', system-ui, sans-serif;
     font-size: 1.02rem;
-    line-height: 1.65;
-    color: var(--ts-muted);
+    line-height: 1.6;
+    color: var(--sg-muted);
     margin: 0;
     font-weight: 500;
   }
-  :global([data-theme="light"]) .toy-caption { color: #4a5f7e; }
+  :global([data-theme="light"]) .panel-caption { color: #44557c; }
 
   /* ------------------------------------------------------------
-     PULL-QUOTE
+     CAPTION-BOX PULL QUOTE
      ------------------------------------------------------------ */
   .statement-section {
-    background: var(--ts-sky);
+    background: var(--sg-red);
     color: #fff;
     padding: 5.5rem 2rem;
     position: relative;
-    border-top: 5px solid var(--ts-gold);
-    border-bottom: 5px solid var(--ts-gold);
+    border-top: 5px solid var(--sg-ink);
+    border-bottom: 5px solid var(--sg-ink);
   }
-  :global([data-theme="dark"]) .statement-section { background: var(--ts-sky-deep); }
+  :global([data-theme="dark"]) .statement-section { border-color: var(--sg-gold); }
+  .statement-section::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(0,0,0,0.14) 1.5px, transparent 1.6px);
+    background-size: 16px 16px;
+  }
   .statement-inner { max-width: 980px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
   .statement-tag {
     font-family: 'Space Mono', monospace;
     font-size: 0.7rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #fff7e0;
-    margin-bottom: 1.6rem;
+    color: #ffe08a;
+    margin-bottom: 1.5rem;
   }
   .statement-q {
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 500;
-    font-size: clamp(1.5rem, 3.4vw, 2.5rem);
-    line-height: 1.35;
-    margin: 0 0 1.6rem;
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(1.6rem, 3.6vw, 2.7rem);
+    line-height: 1.15;
+    margin: 0 0 1.5rem;
     color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.005em;
   }
   .statement-line {
     display: block;
-    margin-top: 0.8rem;
+    margin-top: 0.9rem;
     font-family: 'Space Mono', monospace;
-    font-size: 0.62em;
+    font-size: 0.5em;
     letter-spacing: 0.02em;
-    color: #fff2cf;
+    text-transform: none;
+    color: #ffe08a;
   }
-  .statement-attrib-name {
-    display: block;
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.02em;
-    color: #fff;
-  }
-  .statement-attrib-role {
-    display: block;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #ffeec2;
-    margin-top: 0.5rem;
-  }
+  .statement-attrib-name { display: block; font-family: 'Anton', sans-serif; font-size: 1.3rem; letter-spacing: 0.03em; color: #fff; text-transform: uppercase; }
+  .statement-attrib-role { display: block; font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: #ffe08a; margin-top: 0.4rem; }
 
   /* ------------------------------------------------------------
-     PRODUCTS (project cards)
+     ARSENAL (project cards)
      ------------------------------------------------------------ */
-  .products-section {
-    background: var(--ts-bg);
-    color: var(--ts-fg);
-    padding: 7rem 2rem;
-    position: relative;
-  }
-  .products-inner { max-width: 1320px; margin: 0 auto; }
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.8rem;
-  }
-  @media (max-width: 1080px) { .products-grid { grid-template-columns: repeat(2, 1fr); } }
+  .arsenal-section { background: var(--sg-bg); color: var(--sg-fg); padding: 7rem 2rem; position: relative; }
+  .arsenal-inner { max-width: 1320px; margin: 0 auto; }
+  .arsenal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+  @media (max-width: 1080px) { .arsenal-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 680px) {
-    .products-grid { grid-template-columns: 1fr; }
-    .products-section { padding: 4rem 1.25rem; }
+    .arsenal-grid { grid-template-columns: 1fr; }
+    .arsenal-section { padding: 4rem 1.25rem; }
   }
-  .product-card {
+  .power-card {
     position: relative;
-    background: var(--ts-surface);
-    border: 3px solid var(--ts-line);
-    border-radius: 16px;
+    background: var(--sg-surface);
+    border: 4px solid var(--sg-ink);
     padding: 1.7rem 1.6rem;
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
-    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 5px 5px 0 var(--sg-blue);
   }
-  :global([data-theme="light"]) .product-card { box-shadow: 0 10px 22px rgba(28,95,196,0.08); }
-  .product-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--ts-gold);
-    box-shadow: 0 16px 38px rgba(0,0,0,0.4);
+  :global([data-theme="dark"]) .power-card { border-color: var(--sg-line); box-shadow: 5px 5px 0 var(--sg-blue-deep); }
+  .power-card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--sg-red); }
+  :global([data-theme="dark"]) .power-card:hover { border-color: var(--sg-gold); }
+  .power-card-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 0.8rem;
+    padding-bottom: 0.7rem; border-bottom: 2px solid var(--sg-line); flex-wrap: wrap;
   }
-  :global([data-theme="light"]) .product-card:hover { box-shadow: 0 16px 34px rgba(28,95,196,0.16); }
-  .product-card-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.8rem;
-    padding-bottom: 0.7rem;
-    border-bottom: 2px dotted var(--ts-line);
-    flex-wrap: wrap;
+  .power-code { font-family: 'Anton', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--sg-red); text-transform: uppercase; }
+  .power-cat { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; color: var(--sg-muted); text-transform: uppercase; }
+  .power-title { font-family: 'Anton', sans-serif; font-weight: 400; font-size: 1.6rem; margin: 0; color: var(--sg-fg); line-height: 1.02; text-transform: uppercase; letter-spacing: 0.01em; }
+  .power-body { font-family: 'Barlow', system-ui, sans-serif; font-size: 0.98rem; line-height: 1.58; color: var(--sg-muted); margin: 0; flex-grow: 1; font-weight: 500; }
+  :global([data-theme="light"]) .power-body { color: #44557c; }
+  .power-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+  .power-badge {
+    font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--sg-fg); background: var(--sg-surface-2); border: 1.5px solid var(--sg-line); padding: 0.25rem 0.5rem;
   }
-  .product-code {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.1em;
-    color: var(--ts-red);
-    text-transform: uppercase;
-    font-weight: 700;
+  .power-status {
+    font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700;
+    padding: 0.25rem 0.5rem; color: #2a1500; background: var(--sg-gold);
   }
-  .product-cat {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.08em;
-    color: var(--ts-muted);
-    text-transform: uppercase;
+  .power-status-shipped { background: var(--sg-gold); }
+  .power-status-running { background: #4fd07f; }
+  .power-status-in-prototype { background: var(--sg-blue); color: #fff; }
+  .power-status-call-for-speakers-open { background: var(--sg-red); color: #fff; }
+  .power-foot { margin-top: 0.3rem; }
+  .power-cta {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    font-family: 'Anton', sans-serif; font-weight: 400; font-size: 1rem; letter-spacing: 0.03em; text-transform: uppercase;
+    color: var(--sg-red); text-decoration: none; transition: gap 0.2s ease, color 0.2s ease;
   }
-  .product-title {
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    font-size: 1.45rem;
-    margin: 0;
-    color: var(--ts-fg);
-    line-height: 1.15;
-  }
-  .product-body {
-    font-family: 'Nunito', system-ui, sans-serif;
-    font-size: 0.98rem;
-    line-height: 1.62;
-    color: var(--ts-muted);
-    margin: 0;
-    flex-grow: 1;
-    font-weight: 500;
-  }
-  :global([data-theme="light"]) .product-body { color: #4a5f7e; }
-  .product-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
-  .product-badge {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ts-fg);
-    background: var(--ts-surface-2);
-    border: 1.5px solid var(--ts-line);
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-  }
-  .product-status {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    color: #2a1a00;
-    background: var(--ts-gold);
-  }
-  .product-status-shipped { background: var(--ts-gold); }
-  .product-status-running { background: #7fd07f; }
-  .product-status-in-prototype { background: var(--ts-sky); color: #fff; }
-  .product-status-call-for-speakers-open { background: var(--ts-red); color: #fff; }
-  .product-foot { margin-top: 0.3rem; }
-  .product-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 600;
-    font-size: 0.92rem;
-    color: var(--ts-red);
-    text-decoration: none;
-    transition: gap 0.2s ease, color 0.2s ease;
-  }
-  .product-cta:hover { gap: 0.75rem; color: var(--ts-red-bright); }
-  .product-cta-disabled { color: var(--ts-muted); cursor: default; }
-  .product-cta-disabled:hover { gap: 0.45rem; color: var(--ts-muted); }
+  .power-cta:hover { gap: 0.75rem; color: var(--sg-red-bright); }
+  .power-cta-disabled { color: var(--sg-muted); cursor: default; }
+  .power-cta-disabled:hover { gap: 0.45rem; color: var(--sg-muted); }
 
   /* ------------------------------------------------------------
      LATE ADD
      ------------------------------------------------------------ */
-  .late-section {
-    background: var(--ts-surface-2);
-    color: var(--ts-fg);
-    padding: 6rem 2rem;
-    position: relative;
-  }
-  :global([data-theme="dark"]) .late-section { background: var(--ts-bg-deep); }
+  .late-section { background: var(--sg-surface-2); color: var(--sg-fg); padding: 6rem 2rem; position: relative; }
+  :global([data-theme="dark"]) .late-section { background: var(--sg-bg-deep); }
   .late-inner { max-width: 900px; margin: 0 auto; }
   .late-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; }
   .late-card {
-    background: var(--ts-surface);
-    border: 3px dashed var(--ts-gold);
-    border-radius: 16px;
+    background: var(--sg-surface);
+    border: 4px dashed var(--sg-blue);
     padding: 2.2rem 2rem;
     text-align: center;
+    box-shadow: 6px 6px 0 var(--sg-gold);
   }
-  .late-card-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ts-red);
-    margin-bottom: 0.8rem;
-  }
-  .late-card-title {
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    font-size: 1.8rem;
-    margin: 0 0 0.5rem;
-    color: var(--ts-fg);
-  }
-  .late-card-line {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ts-muted);
-    margin-bottom: 1.1rem;
-  }
-  .late-card-body {
-    font-family: 'Nunito', system-ui, sans-serif;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: var(--ts-muted);
-    margin: 0 auto 1.5rem;
-    max-width: 40em;
-    font-weight: 500;
-  }
-  :global([data-theme="light"]) .late-card-body { color: #4a5f7e; }
+  .late-card-tag { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sg-red); margin-bottom: 0.8rem; }
+  .late-card-title { font-family: 'Anton', sans-serif; font-weight: 400; font-size: 2.1rem; margin: 0 0 0.5rem; color: var(--sg-fg); text-transform: uppercase; }
+  .late-card-line { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sg-muted); margin-bottom: 1.1rem; }
+  .late-card-body { font-family: 'Barlow', system-ui, sans-serif; font-size: 1.05rem; line-height: 1.65; color: var(--sg-muted); margin: 0 auto 1.5rem; max-width: 40em; font-weight: 500; }
+  :global([data-theme="light"]) .late-card-body { color: #44557c; }
   .late-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 600;
-    font-size: 0.98rem;
-    color: #fff;
-    background: var(--ts-red);
-    padding: 0.8rem 1.5rem;
-    border-radius: 999px;
-    text-decoration: none;
-    box-shadow: 3px 3px 0 var(--ts-sky-deep);
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Anton', sans-serif; font-weight: 400; font-size: 1.05rem; letter-spacing: 0.03em; text-transform: uppercase;
+    color: #fff; background: var(--sg-red); padding: 0.8rem 1.6rem; text-decoration: none;
+    border: 3px solid var(--sg-ink); box-shadow: 4px 4px 0 var(--sg-blue); transition: transform 0.16s ease, box-shadow 0.16s ease;
   }
-  .late-cta:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--ts-sky-deep); }
+  :global([data-theme="dark"]) .late-cta { border-color: #2a0a0a; }
+  .late-cta:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--sg-blue); }
 
   /* ------------------------------------------------------------
      CLOSING CTA
      ------------------------------------------------------------ */
-  .closing-section {
-    position: relative;
-    background: var(--ts-bg);
-    color: var(--ts-fg);
-    padding: 6.5rem 2rem 7rem;
-    overflow: hidden;
-    text-align: center;
+  .closing-section { position: relative; background: var(--sg-bg); color: var(--sg-fg); padding: 6.5rem 2rem 7rem; overflow: hidden; text-align: center; }
+  .closing-section::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(var(--sg-dot) 1.5px, transparent 1.6px); background-size: 16px 16px; opacity: 0.7;
   }
   :global([data-theme="dark"]) .closing-section {
-    background:
-      radial-gradient(circle at 50% 0%, rgba(59,130,230,0.2) 0%, transparent 55%),
-      linear-gradient(180deg, #0f1b3d 0%, #0a142e 100%);
+    background: radial-gradient(circle at 50% 0%, rgba(58,120,255,0.2) 0%, transparent 55%), linear-gradient(180deg, #0a1230 0%, #060b22 100%);
   }
-  :global([data-theme="light"]) .closing-section {
-    background: linear-gradient(180deg, #e7f1fc 0%, #cfe6fb 100%);
-  }
+  :global([data-theme="light"]) .closing-section { background: linear-gradient(180deg, #e9f1ff 0%, #d4e4ff 100%); }
   .closing-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
   .closing-eyebrow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--ts-red);
-    margin-bottom: 1.6rem;
+    display: flex; align-items: center; justify-content: center; gap: 1rem;
+    font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--sg-red); margin-bottom: 1.5rem;
   }
-  .closing-rule { width: 40px; height: 2px; background: var(--ts-red); }
+  .closing-rule { width: 40px; height: 3px; background: var(--sg-red); }
   .closing-title {
-    font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    font-size: clamp(2.2rem, 5.4vw, 4rem);
-    line-height: 1.05;
-    margin: 0 0 1.4rem;
-    color: var(--ts-fg);
-    letter-spacing: -0.015em;
+    font-family: 'Anton', sans-serif; font-weight: 400; font-size: clamp(2.4rem, 5.8vw, 4.4rem);
+    line-height: 0.98; margin: 0 0 1.4rem; color: var(--sg-fg); letter-spacing: 0.01em; text-transform: uppercase;
   }
-  .closing-title em { font-style: normal; color: var(--ts-red); }
-  .closing-deck {
-    font-family: 'Nunito', system-ui, sans-serif;
-    font-size: 1.12rem;
-    line-height: 1.7;
-    color: var(--ts-muted);
-    max-width: 46em;
-    margin: 0 auto 2.4rem;
-    font-weight: 500;
-  }
-  :global([data-theme="light"]) .closing-deck { color: #3a4d6b; }
-  .closing-cta-row { display: flex; flex-wrap: wrap; gap: 1.3rem; justify-content: center; }
+  .closing-title em { font-style: normal; color: var(--sg-red); -webkit-text-stroke: 1px var(--sg-ink); }
+  :global([data-theme="dark"]) .closing-title em { -webkit-text-stroke: 1px #2a0a0a; }
+  .closing-deck { font-family: 'Barlow', system-ui, sans-serif; font-size: 1.12rem; line-height: 1.65; color: var(--sg-muted); max-width: 46em; margin: 0 auto 2.4rem; font-weight: 500; }
+  :global([data-theme="light"]) .closing-deck { color: #34456a; }
+  .closing-cta-row { display: flex; flex-wrap: wrap; gap: 1.4rem; justify-content: center; }
 
   /* ------------------------------------------------------------
-     BACK PANEL
+     INDICIA / BACK PANEL
      ------------------------------------------------------------ */
-  .panel-section {
-    background: var(--ts-bg-deep);
-    color: var(--ts-fg);
-    padding: 4.5rem 2rem 5rem;
-    border-top: 5px solid var(--ts-gold);
+  .indicia-section { background: var(--sg-bg-deep); color: var(--sg-fg); padding: 4.5rem 2rem 5rem; border-top: 5px solid var(--sg-ink); }
+  :global([data-theme="dark"]) .indicia-section { background: var(--sg-blue-deep); color: #fff; border-top-color: var(--sg-gold); }
+  :global([data-theme="light"]) .indicia-section { background: var(--sg-blue); color: #fff; }
+  .indicia-inner { max-width: 1100px; margin: 0 auto; }
+  .indicia-tag { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sg-gold); margin-bottom: 2rem; text-align: center; }
+  .indicia-roll { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3rem 2.5rem; }
+  @media (max-width: 680px) { .indicia-roll { grid-template-columns: 1fr; } }
+  .indicia-block { display: flex; flex-direction: column; gap: 0.25rem; padding-bottom: 1rem; border-bottom: 1px dashed rgba(255,255,255,0.3); }
+  .indicia-role { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sg-gold); }
+  .indicia-name { font-family: 'Barlow', system-ui, sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; line-height: 1.4; }
+  .indicia-footnote {
+    margin-top: 2.4rem; padding-top: 1.6rem; border-top: 1px solid rgba(255,255,255,0.3);
+    font-family: 'Space Mono', monospace; font-size: 0.72rem; line-height: 1.7; color: rgba(255,255,255,0.8);
+    text-align: center; max-width: 62em; margin-left: auto; margin-right: auto;
   }
-  :global([data-theme="light"]) .panel-section { background: var(--ts-sky-deep); color: #fff; }
-  .panel-inner { max-width: 1100px; margin: 0 auto; }
-  .panel-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--ts-gold);
-    margin-bottom: 2rem;
-    text-align: center;
-  }
-  :global([data-theme="light"]) .panel-tag { color: #ffe6a8; }
-  .panel-roll {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.3rem 2.5rem;
-  }
-  @media (max-width: 680px) { .panel-roll { grid-template-columns: 1fr; } }
-  .panel-block {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px dotted var(--ts-line);
-  }
-  :global([data-theme="light"]) .panel-block { border-bottom-color: rgba(255,255,255,0.25); }
-  .panel-role {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ts-red-bright);
-  }
-  :global([data-theme="light"]) .panel-role { color: #ffd98a; }
-  .panel-name {
-    font-family: 'Nunito', system-ui, sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--ts-fg);
-    line-height: 1.4;
-  }
-  :global([data-theme="light"]) .panel-name { color: #fff; }
-  .panel-footnote {
-    margin-top: 2.4rem;
-    padding-top: 1.6rem;
-    border-top: 1px solid var(--ts-line);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    line-height: 1.7;
-    color: var(--ts-muted);
-    text-align: center;
-    max-width: 60em;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  :global([data-theme="light"]) .panel-footnote { color: rgba(255,255,255,0.75); border-top-color: rgba(255,255,255,0.25); }
 </style>
