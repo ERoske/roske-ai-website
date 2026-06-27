@@ -73,7 +73,7 @@ export interface ThemeConfig {
 }
 
 // ============================================
-// CURRENT THEME — overwritten weekly
+// CURRENT THEME (overwritten weekly)
 // ============================================
 
 export const currentTheme: ThemeConfig = {
