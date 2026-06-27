@@ -77,41 +77,40 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "Toy Story 5: The Toy Who Wouldn't Update",
-  week: "2026-06-20",
-  inspiration: "Toy Story 5 opens in theaters June 19, 2026, and for the first time the threat to the toys isn't a rival kid or a yard sale. It's a screen: a glowing AI device that makes the old pull-string toys feel obsolete. That was too good to pass up. Edward spends his days telling Fortune 500 executives that AI changes everything, so the site casts him as the analog cowboy toy that AI is coming to replace. He is Edward: The Talking EPM Cowboy. Pull the string and he explains agentic AI to a dinosaur who did not ask. The whole homepage is built like a vintage toy package and a Pixar film still: Andy's-room cloud wallpaper, a clearance shelf, a 25-cent donation box, and a 'NOW WITH A.I.' refresh that fooled no one. The fedora, as always, is the constant. It's blue, it's felt, and it survives every recall.",
-  tagline: "Edward Roske, recast as the toy AI is coming for. (He asked to play the hero. Casting passed.)",
+  name: "Supergirl: A One-Man Rogues' Gallery",
+  week: "2026-06-27",
+  inspiration: "Supergirl hits US theaters June 26, 2026 (international June 24). Rather than cast himself as the hero, Edward auditioned for the whole rogues' gallery and got every part. The site is built like a comic book: he plays every Superman villain (Lex Luthor, Brainiac, Bizarro, General Zod), and Supergirl defeats each of them in some embarrassing way. The one cool shot is the hero image, where Edward rides his intergalactic chopper as Lobo (long hair, leathers, cigar, the works) with Supergirl flying alongside, faintly unimpressed. The blue fedora survives every costume, which is the joke and the brand. Halftone dots, bold panel borders, and comic-book color (Supergirl red, Krypton blue, sidekick gold) carry the whole thing.",
+  tagline: "Edward Roske plays every villain. Supergirl beats every villain. You can see the issue.",
 
   colors: {
-    // Toy Story / Andy's-room palette: cloud-wallpaper sky blue, Woody red,
-    // toy-star gold, warm label cream. Light mode is Andy's room in the
-    // afternoon sun. Dark mode is the toy box after lights-out.
-    primary: "#3b82e6",           // Andy's-room sky blue
-    secondary: "#f2b840",          // toy-star gold / sheriff badge
-    accent: "#e8462f",             // Woody-red, the CTA pop
-    accentHover: "#ff6a4d",
-    background: "#0f1b3d",         // toy box at night (dark mode)
-    backgroundLight: "#e7f1fc",    // Andy's-room sky (light mode)
-    surface: "#1a2a55",            // shelf-shadow navy card (dark)
-    surfaceLight: "#ffffff",       // toy-package white (light)
-    text: "#f5f0e1",               // warm toy-label cream on dark
-    textMuted: "#a9b8db",          // muted sky-gray
-    textDark: "#16335f",           // deep blue ink on light
-    textDarkMuted: "#5a6f90",      // muted blue ink
-    border: "#2b407a",             // box-edge navy (dark)
-    borderLight: "#c2d8f0",        // package rule (light)
-    gradient: "linear-gradient(150deg, #0f1b3d 0%, #1a2a55 45%, #3b82e6 100%)",
+    // Comic-book superhero palette: Supergirl red, Krypton blue, sidekick
+    // gold, on bright newsprint sky (light) or deep cosmic night (dark).
+    primary: "#2f6bf0",           // Krypton / hero blue
+    secondary: "#f5c518",          // S-shield gold
+    accent: "#ec1c2b",             // Supergirl red, the CTA pop
+    accentHover: "#ff3b46",
+    background: "#0a1230",         // deep cosmic night (dark mode)
+    backgroundLight: "#e9f1ff",    // bright comic sky (light mode)
+    surface: "#131d44",            // panel navy (dark)
+    surfaceLight: "#ffffff",       // comic-page white (light)
+    text: "#f3f6ff",               // page white on dark
+    textMuted: "#9fb0d8",          // muted hero-blue gray
+    textDark: "#0e1a3d",           // ink navy on light
+    textDarkMuted: "#4a5b80",      // muted ink
+    border: "#2a3a72",             // panel rule (dark)
+    borderLight: "#b9ccec",        // panel rule (light)
+    gradient: "linear-gradient(135deg, #0b3bb0 0%, #2f6bf0 45%, #ec1c2b 100%)",
   },
 
   fonts: {
-    // Fredoka: rounded, friendly, toy-block display font. Nunito: rounded
-    // sans for body, pairs cleanly with Fredoka. Space Mono: the cold,
-    // digital "screen threat" voice (model numbers, warnings, AI labels).
-    // Rye: a western slab used only for the pull-string cowboy flourishes.
-    heading: "'Fredoka', 'Baloo 2', system-ui, -apple-system, sans-serif",
-    body: "'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif",
+    // Anton: tall condensed poster/impact display, all the comic-cover shout.
+    // Barlow: clean slightly-condensed body, comic-adjacent and readable.
+    // Space Mono: the cold "tech / Brainiac" voice (labels, ERROR, codes).
+    // Bangers: comic SFX flourish, used only in index scoped CSS.
+    heading: "'Anton', 'Arial Narrow', system-ui, sans-serif",
+    body: "'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif",
     mono: "'Space Mono', 'JetBrains Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Rye&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap",
   },
 
   layout: {
@@ -131,11 +130,11 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Edward Roske, recast as the toy AI is coming for.",
-    description: "Toy Story 5 is in theaters this week, and the bad guy is a screen. A glowing device that elbows the old pull-string toys out of the way. I've spent three years telling executives that AI changes everything, so it felt fair to cast myself as the toy it's coming to replace. (I lobbied to play the hero. The casting director, who is also me, passed.)",
-    heroImage: "hero-2026-06-20.png",
-    imageAlt: "Edward Roske reimagined as a Pixar-style pull-string cowboy toy in a royal-blue felt fedora and round glasses, standing in a warm sunbeam on a child's bedroom floor with cloud wallpaper, eyeing a glowing AI tablet and smart speaker that threaten to replace him as the favorite toy.",
-    ctaText: "Pull the string",
+    subtitle: "Edward Roske plays every villain. Supergirl beats every villain.",
+    description: "Supergirl is in theaters this week, so I auditioned. There were no openings on the hero side, which I'm choosing not to take personally, so I played the villains instead. All of them. You'll spot the pattern quickly: she wins, and I land somewhere off-panel. The blue fedora made every cut, which was the only casting note I actually cared about.",
+    heroImage: "hero-2026-06-27.png",
+    imageAlt: "Edward Roske reimagined as the intergalactic biker anti-hero Lobo (pale skin, long black hair and beard, leather jacket, cigar) in his royal-blue felt fedora, riding a chrome space motorcycle through a starfield while Supergirl flies alongside him in her red, blue and gold suit, looking faintly unimpressed.",
+    ctaText: "See the damage",
     ctaLink: "#current-work",
   },
 };
