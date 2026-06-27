@@ -1,5 +1,101 @@
 [
   {
+    "title": "Why does the richest company on Earth rent its AI?",
+    "videoId": "VTU2All3pm0",
+    "published": "2026-06-27T06:00:34+00:00",
+    "description": "Apple rebuilt Siri and put its heaviest reasoning on a Google Gemini model, for about a billion dollars a year, while sitting on a hundred and seventy billion in cash. My read: Apple just declared the AI model a commodity and kept the only part that matters, the customer.",
+    "thumbnail": "https://i.ytimg.com/vi/VTU2All3pm0/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why did Gary Neville call the World Cup a dictatorship?",
+    "videoId": "d_OR6PnF9S4",
+    "published": "2026-06-26T21:58:26+00:00",
+    "description": "Dictatorship: Part 3 of 3 on AI at the World Cup. Watch the series from the top: How Are They Using AI At The World Cup?",
+    "thumbnail": "https://i.ytimg.com/vi/d_OR6PnF9S4/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Who's actually running the World Cup's AI? #SoylentGreen",
+    "videoId": "h1aH1xhHnGg",
+    "published": "2026-06-26T21:55:17+00:00",
+    "description": "Hidden humans: Part 2 of 3 on AI at the World Cup. Start with the explainer: How Are They Using AI At The World Cup?",
+    "thumbnail": "https://i.ytimg.com/vi/h1aH1xhHnGg/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How Are They Using AI At The World Cup?",
+    "videoId": "eKmOGPUn7BE",
+    "published": "2026-06-26T21:42:46+00:00",
+    "description": "Explainer: Part 1 of 3 on AI at the World Cup. Next up: who's actually running it.",
+    "thumbnail": "https://i.ytimg.com/vi/eKmOGPUn7BE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why is Ethan Mollick the best follow in AI?",
+    "videoId": "SJyxBrFeN70",
+    "published": "2026-06-26T21:15:38+00:00",
+    "description": "If you want to understand AI, the instinct is to follow the engineers building it or the CEOs selling it. The better follow is quieter: Ethan Mollick, a Wharton professor who actually uses the tools and reports back in plain English. He coined \"the jagged frontier,\" and his own...",
+    "thumbnail": "https://i.ytimg.com/vi/SJyxBrFeN70/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Who decides when an AI is too powerful to release?",
+    "videoId": "yVUCX1wrFoU",
+    "published": "2026-06-26T21:03:00+00:00",
+    "description": "The government forced Anthropic's most capable model offline worldwide with a single letter, then asked OpenAI to hold its newest model, GPT 5.6, back from a public launch. A new executive order even set up a classified, NSA-run process to decide when a model is too powerful...",
+    "thumbnail": "https://i.ytimg.com/vi/yVUCX1wrFoU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What Is Jeff Bezos Building After Amazon?",
+    "videoId": "g2Yp840IJZQ",
+    "published": "2026-06-26T06:00:12+00:00",
+    "description": "Jeff Bezos took his first operating job since Amazon to build Project Prometheus, an AI that designs jet engines and drug compounds, and raised $12 billion at a $41 billion valuation. His jobs prediction is the opposite of everyone else's: AI makes human labor scarce, not...",
+    "thumbnail": "https://i.ytimg.com/vi/g2Yp840IJZQ/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why would OpenAI want the government to own a piece of it?",
+    "videoId": "4k5Jp7BGWzk",
+    "published": "2026-06-25T06:00:07+00:00",
+    "description": "President Trump said the federal government may take equity stakes in OpenAI, Anthropic, and xAI, and the structure on the table is one Sam Altman pitched himself. The government already bought roughly ten percent of Intel last year, so there's a live template. When a company...",
+    "thumbnail": "https://i.ytimg.com/vi/4k5Jp7BGWzk/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why did RAM prices triple in six months?",
+    "videoId": "PY1bItuW9VI",
+    "published": "2026-06-24T06:00:36+00:00",
+    "description": "A 32-gigabyte memory kit that used to cost ninety-five dollars now runs three to six hundred, and the reason is sitting in an AI data center. Memory makers would rather sell premium AI chips than the RAM in your laptop, so nine trade groups asked the U.S. Treasury to step in...",
+    "thumbnail": "https://i.ytimg.com/vi/PY1bItuW9VI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why do we only count the bugs when an AI writes them?",
+    "videoId": "33h5ztUN7EI",
+    "published": "2026-06-23T06:00:03+00:00",
+    "description": "rsync shipped a release that broke some backups, and because the commits were tagged with Claude, the internet decided AI had ruined a tool we trusted for 30 years. A GitHub thread hit 329 comments. Then someone counted the bugs per release. The buggiest version in rsync's...",
+    "thumbnail": "https://i.ytimg.com/vi/33h5ztUN7EI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why are AI-written lawsuits flooding the federal courts?",
+    "videoId": "IOlUxzfXuhY",
+    "published": "2026-06-22T06:00:37+00:00",
+    "description": "A federal judge called AI-drafted lawsuits \"an existential threat to the federal courts.\" A study out of MIT and USC shows why: 18% of self-filed cases now contain AI-generated text, docket entries are up 64% in the first six months, and the long-standing 96% pro se loss rate...",
+    "thumbnail": "https://i.ytimg.com/vi/IOlUxzfXuhY/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why did SQLite ban AI-generated code?",
+    "videoId": "s9vQjYNkkQ8",
+    "published": "2026-06-21T06:00:36+00:00",
+    "description": "curl runs on roughly twenty billion devices, and the volunteer who maintains it now gets more than one AI-generated security report a day, four to five times the 2024 rate. Most are wrong, including four of the five \"confirmed\" vulnerabilities Anthropic's bug-hunting model...",
+    "thumbnail": "https://i.ytimg.com/vi/s9vQjYNkkQ8/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "Why are AI companies building data centers in space?",
     "videoId": "fSa7tO8_gB0",
     "published": "2026-06-20T06:00:09+00:00",
