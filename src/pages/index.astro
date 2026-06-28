@@ -6,42 +6,42 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// The rogues' gallery. Five comic-book stills of Edward as Superman villains,
-// each getting defeated by Supergirl. Captions match each image.
+// The rogues' gallery. Five comic-book stills of Edward trying to become each
+// Superman villain this week, with Supergirl foiling every attempt. Captions match each image.
 const rogues = [
   {
     src: '/images/supergirl/hall-of-defeat.png',
-    kicker: 'THE COMPLETE COLLECTION',
-    title: 'Every villain, one guy',
-    caption: "Every supervillain in this issue is me. Supergirl sorted out the whole lineup before lunch. (I'm telling people I let her win, which is going about as well as you'd expect.)",
+    kicker: 'THE WHOLE WEEK',
+    title: 'Five tries, five losses',
+    caption: "Five days, five supervillains, and I lost every round. The experiment was simple: does crime pay? It doesn't. (I'm telling people I let her win, which is going about as well as you'd expect.)",
     feature: true,
   },
   {
     src: '/images/supergirl/lex-luthor.png',
     kicker: 'EXHIBIT A',
     title: 'Lex Luthor',
-    caption: "Spent the GDP of a small nation on a kryptonite death-ray. She folded it into a pretzel without looking. I'm filing the receipt under research and development.",
+    caption: "Tried the Lex Luthor play: outspend the problem. I sank the GDP of a small nation into a kryptonite death-ray. She folded it into a pretzel without looking. I'm filing the receipt under research and development.",
     feature: false,
   },
   {
     src: '/images/supergirl/brainiac.png',
     kicker: 'EXHIBIT B',
     title: 'Brainiac',
-    caption: "A twelfth-level intellect and collector of worlds, undone by an unhandled exception. The console flashes ERROR, which is the most honest thing it's said all day.",
+    caption: "Went the Brainiac route next: a twelfth-level intellect and collector of worlds, undone by an unhandled exception about ninety seconds in. The console flashes ERROR, which is the most honest thing it's said all day.",
     feature: false,
   },
   {
     src: '/images/supergirl/bizarro.png',
     kicker: 'EXHIBIT C',
     title: 'Bizarro',
-    caption: "The off-brand clone, assembled from spare parts and unearned confidence. He'll tell you he won. (He didn't, though Bizarro logic is genuinely hard to argue with.)",
+    caption: "Day three, I tried becoming Bizarro: an off-brand clone of myself, assembled from spare parts and unearned confidence. He'll tell you he won. (He didn't, though Bizarro logic is genuinely hard to argue with.)",
     feature: false,
   },
   {
     src: '/images/supergirl/general-zod.png',
     kicker: 'EXHIBIT D',
     title: 'General Zod',
-    caption: "Demanded that everyone kneel. Got flicked across three city blocks by a single finger. The cape looked tremendous on the way down, which counts for something.",
+    caption: "Closed the week as General Zod and demanded that everyone kneel. Got flicked across three city blocks by a single finger. The cape looked tremendous on the way down, which counts for something.",
     feature: false,
   },
 ];
@@ -54,8 +54,8 @@ const sfx = [
   "ONE (1) FINGER, ZERO (0) SURVIVORS",
   "KRYPTONITE, NOW PRETZEL-SHAPED",
   "BONK",
-  "SHE WASN'T EVEN TRYING",
-  "ROSKE COMICS · STILL 60 CENTS",
+  "CRIME DOES NOT PAY (I RAN THE NUMBERS)",
+  "NET VILLAIN PROFIT: $0.00",
 ];
 
 // The real-world arsenal. Same six projects, framed as comic-book powers.
@@ -155,9 +155,9 @@ const indicia = [
   { role: 'EDITION', name: 'ISSUE No. 27 · SUPERGIRL OPENING WEEKEND · JUNE 2026' },
   { role: 'TITLE', name: 'SUPERGIRL VS. EDWARD ROSKE' },
   { role: 'STARRING', name: 'SUPERGIRL (WINNING) · EDWARD ROSKE (NOT)' },
-  { role: 'VILLAINS', name: 'LEX LUTHOR · BRAINIAC · BIZARRO · GENERAL ZOD · ALL ONE GUY' },
+  { role: 'VILLAINS ATTEMPTED', name: 'LOBO · LEX LUTHOR · BRAINIAC · BIZARRO · GENERAL ZOD' },
   { role: 'HEADGEAR', name: 'ONE (1) ROYAL-BLUE FELT FEDORA · SURVIVES EVERY COSTUME' },
-  { role: 'DAMAGES', name: 'SEVERAL CITY BLOCKS · ONE EGO · ZERO LESSONS LEARNED' },
+  { role: 'NET PROFIT', name: 'ZERO DOLLARS · ZERO CENTS · CRIME DOES NOT PAY' },
   { role: 'PRINTED IN', name: 'SAN JUAN, PUERTO RICO' },
   { role: 'LETTERS PAGE', name: 'EDWARD@ROSKE.AI · NO VILLAIN FAN MAIL, PLEASE' },
 ];
@@ -186,12 +186,12 @@ const indicia = [
       <div class="hero-text">
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-pip"></span>
-          <span>IN THEATERS THIS WEEK · A ROSKE.AI PRODUCTION</span>
+          <span>IN THEATERS THIS WEEK · A ROSKE.AI CAREER EXPERIMENT</span>
         </div>
 
         <h1 class="hero-title">
-          <span class="hero-title-line">A one-man</span>
-          <span class="hero-title-line"><em>rogues' gallery.</em></span>
+          <span class="hero-title-line">Crime doesn't</span>
+          <span class="hero-title-line"><em>pay.</em></span>
         </h1>
 
         <p class="hero-body">{theme.hero.description}</p>
@@ -263,11 +263,11 @@ const indicia = [
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 03 · THE ROGUES' GALLERY · ALL DEFEATED</span>
+          <span>SECTION 03 · THE WEEK IN REVIEW · ALL DEFEATED</span>
         </div>
-        <h2 class="section-title">Every villain in the <em>book.</em></h2>
+        <h2 class="section-title">Five villains. <em>Five losses.</em></h2>
         <p class="section-deck">
-          One man, the entire lineup. Every panel is the same plot: a villain with a planet-sized ego picks a fight with Supergirl and loses badly. (The fedora is in every frame. The fedora does not lose.)
+          I gave each one an honest try. Every attempt ran the same plot: pick a fight with Supergirl, lose it badly, often before the costume was fully on. (The fedora is in every frame, and unlike me, it never loses.)
         </p>
       </header>
 
@@ -295,11 +295,11 @@ const indicia = [
     <div class="statement-inner">
       <div class="statement-tag">MEANWHILE, IN THE NARRATION BOX</div>
       <blockquote class="statement-q">
-        Every villain I played was sure he was the main character. Supergirl turned up to correct the record, repeatedly. <span class="statement-line">(I respect the consistency.)</span>
+        Every villain I tried to become was sure he was about to get rich. Supergirl turned up to correct the record, repeatedly. <span class="statement-line">(I respect the consistency.)</span>
       </blockquote>
       <div class="statement-attrib">
         <span class="statement-attrib-name">EDWARD ROSKE</span>
-        <span class="statement-attrib-role">VILLAIN (ALL OF THEM), THIS ISSUE</span>
+        <span class="statement-attrib-role">ASPIRING SUPERVILLAIN · RETIRED FRIDAY</span>
       </div>
     </div>
   </section>
@@ -312,11 +312,11 @@ const indicia = [
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 04 · THE REAL-WORLD ARSENAL</span>
+          <span>SECTION 04 · THE DAY JOB · WHERE THE MONEY ACTUALLY IS</span>
         </div>
         <h2 class="section-title">Six powers. <em>All non-fictional.</em></h2>
         <p class="section-deck">
-          The part of the story that isn't a costume. Real projects, in beta or in production, built on the boring idea that software should be useful instead of scary. (Villainy optional.)
+          Crime didn't pay, so here's the part of the week that does. Real projects, in beta or in production, built on the boring idea that software should be useful instead of scary. (Villainy no longer offered.)
         </p>
       </header>
 
@@ -389,9 +389,9 @@ const indicia = [
         <span>THE BOX OFFICE IS OPEN · 13 MINUTES</span>
         <span class="closing-rule"></span>
       </div>
-      <h2 class="closing-title">Summon the villain.<br/><em>He answers questions.</em></h2>
+      <h2 class="closing-title">Retired from crime.<br/><em>Open for questions.</em></h2>
       <p class="closing-deck">
-        Book thirteen minutes. Ask about Oracle EPM, AI in finance, MCP servers, the Caribbean AI Summit, D&D, or how a person plays four supervillains in one week and loses every fight. No kryptonite required. Opinions arrive whether you asked for them or not.
+        Book thirteen minutes. Ask about Oracle EPM, AI in finance, MCP servers, the Caribbean AI Summit, D&D, or how a week of attempted supervillainy nets exactly zero dollars. No kryptonite required. Opinions arrive whether you asked for them or not.
       </p>
       <div class="closing-cta-row">
         <a href="/question/" target="_blank" rel="noopener" class="btn-primary btn-primary-big">
@@ -420,7 +420,7 @@ const indicia = [
         ))}
       </div>
       <div class="indicia-footnote">
-        Not affiliated with DC Comics, Warner Bros., or anyone who actually owns Supergirl, Superman, or a single one of these villains. All characters are the property of their respective owners. The fedora, the cigar, and the poor life choices are Edward's. No teenagers from Krypton were inconvenienced in the making of this website, though several villains very much were.
+        Not affiliated with DC Comics, Warner Bros., or anyone who actually owns Supergirl, Superman, or a single one of these villains. All characters are the property of their respective owners. The fedora, the cigar, and the poor career decisions are Edward's. No teenagers from Krypton were inconvenienced in the making of this website. One aspiring supervillain very much was.
       </div>
     </div>
   </section>
@@ -429,7 +429,7 @@ const indicia = [
 
 <style>
   /* ============================================================
-     SUPERGIRL · A ONE-MAN ROGUES' GALLERY
+     SUPERGIRL · CRIME DOESN'T PAY (A WEEK OF ATTEMPTED SUPERVILLAINY)
      Palette: hero blue / Supergirl red / S-shield gold /
               cosmic night (dark) / newsprint sky (light)
      Type: Anton (impact display), Barlow (body), Space Mono

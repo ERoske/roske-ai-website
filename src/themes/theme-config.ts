@@ -77,10 +77,10 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "Supergirl: A One-Man Rogues' Gallery",
+  name: "Supergirl: Crime Doesn't Pay",
   week: "2026-06-27",
-  inspiration: "Supergirl hits US theaters June 26, 2026 (international June 24). Rather than cast himself as the hero, Edward auditioned for the whole rogues' gallery and got every part. The site is built like a comic book: he plays every Superman villain (Lex Luthor, Brainiac, Bizarro, General Zod), and Supergirl defeats each of them in some embarrassing way. The one cool shot is the hero image, where Edward rides his intergalactic chopper as Lobo (long hair, leathers, cigar, the works) with Supergirl flying alongside, faintly unimpressed. The blue fedora survives every costume, which is the joke and the brand. Halftone dots, bold panel borders, and comic-book color (Supergirl red, Krypton blue, sidekick gold) carry the whole thing.",
-  tagline: "Edward Roske plays every villain. Supergirl beats every villain. You can see the issue.",
+  inspiration: "Supergirl hits US theaters June 26, 2026 (international June 24). Edward watched it and took exactly the wrong lesson: the villains looked like they were doing well for themselves, so he spent the week finding out whether supervillainy actually pays. He tried becoming Lobo, then Lex Luthor, Brainiac, Bizarro, and General Zod. Supergirl foiled him at every pass, usually before lunch. By Friday he'd run the numbers and confirmed that crime does not pay, so he's going back to telling people about AI. The site is built like a comic book. The one cool shot is the hero image, where Edward rides his intergalactic chopper as Lobo (long hair, leathers, cigar, the works) with Supergirl flying alongside, faintly unimpressed. The blue fedora survives every costume, which is the joke and the brand. Halftone dots, bold panel borders, and comic-book color (Supergirl red, Krypton blue, sidekick gold) carry the whole thing.",
+  tagline: "Edward spent the week trying to become a supervillain. Supergirl foiled every attempt. Crime, it turns out, doesn't pay.",
 
   colors: {
     // Comic-book superhero palette: Supergirl red, Krypton blue, sidekick
@@ -130,8 +130,8 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Edward Roske plays every villain. Supergirl beats every villain.",
-    description: "Supergirl is in theaters this week, so I auditioned. There were no openings on the hero side, which I'm choosing not to take personally, so I played the villains instead. All of them. You'll spot the pattern quickly: she wins, and I land somewhere off-panel. The blue fedora made every cut, which was the only casting note I actually cared about.",
+    subtitle: "Edward spent the week trying to become a supervillain. Supergirl foiled every attempt.",
+    description: "Supergirl is in theaters this week, so I drew the obvious wrong conclusion and spent five days testing whether being a supervillain pays. I started with Lobo, on the theory that a bounty hunter at least bills for the work, then worked through Lex Luthor, Brainiac, Bizarro, and General Zod. Supergirl foiled all five attempts, usually before lunch. The blue fedora survived every costume (my dignity did not). Crime doesn't pay, so I'm back to telling people about AI.",
     heroImage: "hero-2026-06-27.png",
     imageAlt: "Edward Roske reimagined as the intergalactic biker anti-hero Lobo (pale skin, long black hair and beard, leather jacket, cigar) in his royal-blue felt fedora, riding a chrome space motorcycle through a starfield while Supergirl flies alongside him in her red, blue and gold suit, looking faintly unimpressed.",
     ctaText: "See the damage",
