@@ -364,3 +364,10 @@
 .spk-kit-list > div { padding: 0.9rem 0; border-bottom: 1px solid var(--spk-line); }
 .spk-kit-list dt { font-weight: 600; margin-bottom: 0.2rem; }
 .spk-kit-list dd { margin: 0; color: var(--spk-muted); font-size: 0.93rem; }
+
+/* injected by the facade click handler; must size itself in-flow,
+   because the facade button it replaces is what gives the figure height */
+.spk-video-player {
+  display: block; width: 100%; aspect-ratio: 16 / 9;
+  border: 1px solid var(--spk-line); background: #000;
+}
