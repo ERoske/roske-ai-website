@@ -1,95 +1,351 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/Section.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog'))
   .filter(post => !post.data.draft)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const [featured, ...rest] = posts;
+
+const tagUrl = (tag: string) => `/blog/tag/${tag.toLowerCase().replace(/\s+/g, '-')}/`;
+const fmtDate = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 ---
 
 <BaseLayout title="Blog | Roske.AI" description="Thoughts on AI, finance, MCP servers, and whatever else is worth writing about. By Edward Roske.">
 
-  <!-- Hero -->
-  <section class="relative py-20 md:py-28 px-6 overflow-hidden">
-    <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
-    <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
-    <div class="relative max-w-7xl mx-auto">
-      <div class="max-w-3xl">
-        <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]"
-          style="animation: fadeInUp 0.6s ease-out forwards;">
-          Blog
-        </p>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 dark:text-white text-[var(--color-primary)]"
-          style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0; font-family: var(--font-heading);">
-          Writing
-        </h1>
-        <p class="text-lg md:text-xl leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
-          style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
+  <div class="bx">
+
+    <!-- Masthead -->
+    <header class="bx-masthead">
+      <div class="bx-grain" aria-hidden="true"></div>
+      <div class="bx-wrap">
+        <p class="bx-kicker bx-fade-1">Blog</p>
+        <h1 class="bx-h1 bx-fade-2">Writing</h1>
+        <p class="bx-lede bx-fade-3">
           Thoughts on AI, finance, MCP servers, and whatever else I think is worth the keystrokes. Less formal than a book. More useful than a tweet.
         </p>
+        {posts.length > 0 && (
+          <p class="bx-index bx-fade-4">
+            {posts.length} {posts.length === 1 ? 'post' : 'posts'}, newest first
+          </p>
+        )}
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Posts -->
-  <Section>
     {posts.length > 0 ? (
-      <div class="space-y-6 max-w-3xl">
-        {posts.map(post => (
-          <a href={`/blog/${post.id}/`}
-            class="animate-on-scroll block rounded-xl p-6 transition-all duration-300 group hover:-translate-y-0.5
-              dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
-              bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h2 class="text-lg md:text-xl font-bold dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug">
-                  {post.data.title}
-                </h2>
-                <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mt-2">
-                  {post.data.description}
-                </p>
-                <div class="flex flex-wrap items-center gap-3 mt-3">
-                  <time datetime={post.data.date.toISOString()} class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">
-                    {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                  </time>
-                  {post.data.tags.length > 0 && (
-                    <div class="flex flex-wrap gap-1.5">
-                      {post.data.tags.map(tag => (
-                        <span class="px-2 py-0.5 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)] hover:underline"
-                          onclick={`event.preventDefault(); event.stopPropagation(); window.location.href='/blog/tag/${tag.toLowerCase().replace(/\\s+/g, '-')}/';`}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-              <svg class="w-5 h-5 flex-shrink-0 mt-1 opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all dark:text-white text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      <>
+        <section class="bx-section bx-section-latest" aria-label="Latest post">
+          <div class="bx-wrap">
+            <div class="bx-seclabel animate-on-scroll">
+              <span class="bx-num">01</span>
+              <span>The latest</span>
             </div>
-          </a>
-        ))}
-      </div>
+            <article class="bx-feature animate-on-scroll">
+              <div class="bx-feature-rail">
+                <time datetime={featured.data.date.toISOString()}>{fmtDate(featured.data.date)}</time>
+                {featured.data.tags.length > 0 && (
+                  <ul class="bx-tags">
+                    {featured.data.tags.map(tag => (
+                      <li><a href={tagUrl(tag)}>{tag}</a></li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div class="bx-feature-main">
+                <h2 class="bx-feature-title">
+                  <a href={`/blog/${featured.id}/`}>{featured.data.title}</a>
+                </h2>
+                <p class="bx-feature-deck">{featured.data.description}</p>
+                <a class="bx-readlink" href={`/blog/${featured.id}/`}>
+                  Read the post
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M4 12h15m-6-6 6 6-6 6"/></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        {rest.length > 0 && (
+          <section class="bx-section bx-section-archive" aria-label="All posts">
+            <div class="bx-wrap">
+              <div class="bx-seclabel animate-on-scroll">
+                <span class="bx-num">02</span>
+                <span>The archive</span>
+              </div>
+              <ul class="bx-list">
+                {rest.map(post => (
+                  <li class="bx-row animate-on-scroll">
+                    <time class="bx-row-date" datetime={post.data.date.toISOString()}>{fmtDate(post.data.date)}</time>
+                    <div class="bx-row-main">
+                      <h3 class="bx-row-title">
+                        <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                      </h3>
+                      <p class="bx-row-deck">{post.data.description}</p>
+                      {post.data.tags.length > 0 && (
+                        <ul class="bx-tags bx-tags-row">
+                          {post.data.tags.map(tag => (
+                            <li><a href={tagUrl(tag)}>{tag}</a></li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    <svg class="bx-row-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
+      </>
     ) : (
-      <div class="animate-on-scroll text-center max-w-md mx-auto py-12">
-        <div class="w-16 h-16 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
-          </svg>
+      <section class="bx-section bx-section-latest" aria-label="No posts yet">
+        <div class="bx-wrap">
+          <div class="bx-empty animate-on-scroll">
+            <p class="bx-empty-label">Nothing published yet</p>
+            <h2>Posts coming soon</h2>
+            <p>I'm working on a few things. Check back shortly.</p>
+          </div>
         </div>
-        <h3 class="text-lg font-semibold mb-2 dark:text-white text-[var(--color-primary)]">Posts coming soon</h3>
-        <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm">
-          I'm working on a few things. Check back shortly.
-        </p>
-      </div>
+      </section>
     )}
-  </Section>
+
+  </div>
 
 </BaseLayout>
 
 <style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(24px); }
+  /* Editorial writing index. All colors and fonts come from the weekly
+     theme variables, so this page re-skins itself every Saturday. */
+
+  .bx { font-family: var(--font-body); }
+  .bx-wrap { max-width: 72rem; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ============ Masthead ============ */
+  .bx-masthead { position: relative; padding: 6.5rem 0 4.25rem; overflow: hidden; }
+  :global([data-theme="dark"]) .bx-masthead { border-bottom: 1px solid var(--color-border); }
+  :global([data-theme="light"]) .bx-masthead { border-bottom: 1px solid var(--color-border-light); }
+
+  .bx-grain {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
+  :global([data-theme="dark"]) .bx-grain { opacity: 0.05; }
+  :global([data-theme="light"]) .bx-grain { opacity: 0.035; }
+
+  .bx-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--color-accent); margin: 0 0 1.4rem;
+  }
+  .bx-h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(3rem, 8vw, 5.25rem);
+    line-height: 1; letter-spacing: -0.02em; font-weight: 800;
+    text-wrap: balance; margin: 0 0 1.5rem;
+  }
+  :global([data-theme="dark"]) .bx-h1 { color: var(--color-text); }
+  :global([data-theme="light"]) .bx-h1 { color: var(--color-text-dark); }
+
+  .bx-lede {
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem); line-height: 1.65;
+    max-width: 56ch; margin: 0;
+  }
+  :global([data-theme="dark"]) .bx-lede { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .bx-lede { color: var(--color-text-dark-muted); }
+
+  .bx-index {
+    display: flex; align-items: center; gap: 0.85rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+    margin: 2.5rem 0 0;
+  }
+  .bx-index::before { content: ''; width: 2.5rem; height: 1px; background: var(--color-accent); }
+  :global([data-theme="dark"]) .bx-index { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .bx-index { color: var(--color-text-dark-muted); }
+
+  /* ============ Sections ============ */
+  .bx-section-latest { padding: 4.75rem 0 5.5rem; }
+  .bx-section-archive { padding: 0 0 6.5rem; }
+
+  .bx-seclabel {
+    display: flex; align-items: center; gap: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    margin: 0 0 2.75rem;
+  }
+  .bx-num { color: var(--color-accent); }
+  .bx-seclabel::after { content: ''; flex: 1 1 auto; height: 1px; }
+  :global([data-theme="dark"]) .bx-seclabel { color: var(--color-text-muted); }
+  :global([data-theme="dark"]) .bx-seclabel::after { background: var(--color-border); }
+  :global([data-theme="light"]) .bx-seclabel { color: var(--color-text-dark-muted); }
+  :global([data-theme="light"]) .bx-seclabel::after { background: var(--color-border-light); }
+
+  /* ============ Featured post ============ */
+  .bx-feature {
+    display: grid; grid-template-columns: minmax(10rem, 0.75fr) 2.25fr;
+    gap: 2rem 4rem; align-items: start;
+  }
+  @media (max-width: 820px) {
+    .bx-feature { grid-template-columns: 1fr; gap: 1.25rem; }
+  }
+
+  .bx-feature-rail { display: flex; flex-direction: column; gap: 1.1rem; padding-top: 0.55rem; }
+  @media (max-width: 820px) {
+    .bx-feature-rail { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1.5rem; padding-top: 0; }
+  }
+  .bx-feature-rail time { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.08em; }
+  :global([data-theme="dark"]) .bx-feature-rail time { color: color-mix(in srgb, var(--color-text-muted) 75%, transparent); }
+  :global([data-theme="light"]) .bx-feature-rail time { color: color-mix(in srgb, var(--color-text-dark-muted) 75%, transparent); }
+
+  .bx-feature-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.9rem, 4.2vw, 3.1rem);
+    line-height: 1.08; letter-spacing: -0.015em; font-weight: 700;
+    text-wrap: balance; margin: 0 0 1.25rem;
+  }
+  :global([data-theme="dark"]) .bx-feature-title { color: var(--color-text); }
+  :global([data-theme="light"]) .bx-feature-title { color: var(--color-text-dark); }
+  .bx-feature-title a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+  .bx-feature-title a:hover { color: var(--color-accent); }
+
+  .bx-feature-deck { font-size: 1.08rem; line-height: 1.7; max-width: 65ch; margin: 0 0 1.9rem; }
+  :global([data-theme="dark"]) .bx-feature-deck { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .bx-feature-deck { color: var(--color-text-dark-muted); }
+
+  .bx-readlink {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--color-accent); text-decoration: none;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+    transition: border-color 0.2s ease;
+  }
+  .bx-readlink:hover { border-bottom-color: var(--color-accent); color: var(--color-accent-hover); }
+  .bx-readlink svg { transition: transform 0.2s ease; }
+  .bx-readlink:hover svg { transform: translateX(3px); }
+
+  /* ============ Tags ============ */
+  .bx-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+  .bx-tags a {
+    font-family: var(--font-mono);
+    font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--color-accent); text-decoration: none;
+  }
+  .bx-tags a::before { content: '#'; opacity: 0.55; }
+  .bx-tags a:hover { text-decoration: underline; text-underline-offset: 3px; color: var(--color-accent-hover); }
+
+  /* ============ Archive list ============ */
+  .bx-list { list-style: none; margin: 0; padding: 0; }
+  .bx-row {
+    position: relative;
+    display: grid; grid-template-columns: 8rem 1fr auto;
+    gap: 0.35rem 2.5rem; align-items: start;
+    padding: 1.6rem 0.75rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+  :global([data-theme="dark"]) .bx-row { border-top: 1px solid var(--color-border); }
+  :global([data-theme="light"]) .bx-row { border-top: 1px solid var(--color-border-light); }
+  :global([data-theme="dark"]) .bx-list .bx-row:last-child { border-bottom: 1px solid var(--color-border); }
+  :global([data-theme="light"]) .bx-list .bx-row:last-child { border-bottom: 1px solid var(--color-border-light); }
+  :global([data-theme="dark"]) .bx-row:hover {
+    background: color-mix(in srgb, var(--color-accent) 5%, transparent);
+    border-top-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border));
+  }
+  :global([data-theme="light"]) .bx-row:hover {
+    background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+    border-top-color: color-mix(in srgb, var(--color-accent) 40%, var(--color-border-light));
+  }
+  .bx-row-date { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.08em; padding-top: 0.4rem; }
+  :global([data-theme="dark"]) .bx-row-date { color: color-mix(in srgb, var(--color-text-muted) 75%, transparent); }
+  :global([data-theme="light"]) .bx-row-date { color: color-mix(in srgb, var(--color-text-dark-muted) 75%, transparent); }
+  @media (max-width: 680px) {
+    .bx-row { grid-template-columns: 1fr auto; padding: 1.35rem 0.25rem; }
+    .bx-row-date { grid-column: 1 / -1; padding-top: 0; }
+  }
+
+  .bx-row-title {
+    font-family: var(--font-heading);
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    line-height: 1.25; letter-spacing: -0.01em; font-weight: 700;
+    text-wrap: balance; margin: 0 0 0.45rem;
+  }
+  :global([data-theme="dark"]) .bx-row-title { color: var(--color-text); }
+  :global([data-theme="light"]) .bx-row-title { color: var(--color-text-dark); }
+  .bx-row-title a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
+  /* Stretched link: the whole row stays clickable, like the old cards */
+  .bx-row-title a::after { content: ''; position: absolute; inset: 0; }
+  .bx-row:hover .bx-row-title a { color: var(--color-accent); }
+
+  .bx-row-deck {
+    font-size: 0.95rem; line-height: 1.6; max-width: 65ch; margin: 0 0 0.6rem;
+    display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+  }
+  :global([data-theme="dark"]) .bx-row-deck { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .bx-row-deck { color: var(--color-text-dark-muted); }
+
+  /* Tag links sit above the stretched row link so they stay clickable */
+  .bx-tags-row { position: relative; z-index: 2; }
+
+  .bx-row-arrow { width: 1.1rem; height: 1.1rem; margin-top: 0.45rem; opacity: 0.3; transition: opacity 0.2s ease, transform 0.2s ease, color 0.2s ease; }
+  :global([data-theme="dark"]) .bx-row-arrow { color: var(--color-text); }
+  :global([data-theme="light"]) .bx-row-arrow { color: var(--color-text-dark); }
+  .bx-row:hover .bx-row-arrow { opacity: 1; transform: translateX(4px); color: var(--color-accent); }
+
+  /* ============ Empty state ============ */
+  .bx-empty { max-width: 34rem; padding: 2.5rem 0; }
+  :global([data-theme="dark"]) .bx-empty { border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); }
+  :global([data-theme="light"]) .bx-empty { border-top: 1px solid var(--color-border-light); border-bottom: 1px solid var(--color-border-light); }
+  .bx-empty-label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-accent); margin: 0 0 1rem;
+  }
+  .bx-empty h2 { font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700; margin: 0 0 0.6rem; }
+  :global([data-theme="dark"]) .bx-empty h2 { color: var(--color-text); }
+  :global([data-theme="light"]) .bx-empty h2 { color: var(--color-text-dark); }
+  .bx-empty p:last-child { font-size: 0.95rem; line-height: 1.6; margin: 0; }
+  :global([data-theme="dark"]) .bx-empty p:last-child { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .bx-empty p:last-child { color: var(--color-text-dark-muted); }
+
+  /* ============ Focus ============ */
+  .bx a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* ============ Motion ============ */
+  @keyframes bx-rise {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .bx-fade-1, .bx-fade-2, .bx-fade-3, .bx-fade-4 {
+      opacity: 0;
+      animation: bx-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    .bx-fade-2 { animation-delay: 0.08s; }
+    .bx-fade-3 { animation-delay: 0.16s; }
+    .bx-fade-4 { animation-delay: 0.24s; }
+  }
+
+  /* Scroll-driven detail: section rules draw themselves in as they enter view */
+  @keyframes bx-grow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .bx-seclabel::after {
+        transform-origin: left center;
+        animation: bx-grow linear both;
+        animation-timeline: view();
+        animation-range: entry 10% entry 50%;
+      }
+    }
   }
 </style>

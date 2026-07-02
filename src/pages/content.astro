@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Section from '../components/Section.astro';
 import TabNav from '../components/TabNav.astro';
 import { getCollection } from 'astro:content';
 import { readFileSync, existsSync } from 'fs';
@@ -72,352 +71,351 @@ function formatDate(dateStr: string): string {
 
 <BaseLayout title="Content | Edward Roske" description="Podcast, videos, and blog. Everything Edward Roske creates, in one place.">
 
-  <!-- Hero -->
-  <section class="relative py-20 md:py-28 px-6 overflow-hidden">
-    <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
-    <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
-    <div class="relative max-w-7xl mx-auto">
-      <div class="max-w-3xl">
-        <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]"
-          style="animation: fadeInUp 0.6s ease-out forwards;">
-          Content
-        </p>
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 dark:text-white text-[var(--color-primary)]"
-          style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0; font-family: var(--font-heading);">
-          Everything I Make
-        </h1>
-        <p class="text-lg md:text-xl leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
-          style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
+  <div class="ch">
+
+    <!-- ============ MASTHEAD ============ -->
+    <header class="ch-masthead">
+      <div class="ch-grain" aria-hidden="true"></div>
+      <div class="ch-wrap">
+        <p class="ch-kicker ch-rise">Content</p>
+        <h1 class="ch-h1 ch-rise ch-rise-2">Everything I Make</h1>
+        <p class="ch-lede ch-rise ch-rise-3">
           Video briefs, blog posts, and podcast episodes. Less formal than a book. More useful than a tweet.
         </p>
+        <nav class="ch-toc ch-rise ch-rise-4" aria-label="On this page">
+          <a href="#videos"><span>01</span>Videos</a>
+          <a href="#blog"><span>02</span>Blog</a>
+          <a href="#podcast"><span>03</span>Podcast</a>
+          <a href="#interviews"><span>04</span>Interviews</a>
+          <a href="#publications"><span>05</span>Publications</a>
+        </nav>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Sticky Tab Nav -->
-  <TabNav tabs={[
-    { label: "Videos", href: "#videos" },
-    { label: "Blog", href: "#blog" },
-    { label: "Podcast", href: "#podcast" },
-    { label: "Interviews", href: "#interviews" },
-    { label: "Publications", href: "#publications" },
-  ]} />
+    <!-- Sticky Tab Nav -->
+    <TabNav tabs={[
+      { label: "Videos", href: "#videos" },
+      { label: "Blog", href: "#blog" },
+      { label: "Podcast", href: "#podcast" },
+      { label: "Interviews", href: "#interviews" },
+      { label: "Publications", href: "#publications" },
+    ]} />
 
-  <!-- ============================================
-       VIDEOS SECTION
-       ============================================ -->
-  <Section id="videos" title="Videos" subtitle="Monthly AI news briefs, plus a back catalog of Essbase and EPM how-tos (the Look Smarter Than You Are series, for the calc-script crowd).">
-    {youtubeVideos.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {youtubeVideos.map((video, idx) => (
-          <a href={`https://www.youtube.com/watch?v=${video.videoId}`} target="_blank" rel="noopener noreferrer"
-            class:list={["animate-on-scroll block rounded-xl overflow-hidden transition-all duration-300 group hover:-translate-y-1 dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06] bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg", idx >= VISIBLE && "js-more hidden"]}>
-            <div class="relative aspect-video bg-black/10">
-              <img src={video.thumbnail} alt={video.title} loading="lazy" class="w-full h-full object-cover" />
-              <div class="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/40 transition-colors">
-                <div class="w-14 h-14 rounded-full bg-[var(--color-accent)] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
-                  <svg class="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    <!-- ============================================
+         VIDEOS SECTION
+         ============================================ -->
+    <section id="videos" class="ch-section">
+      <div class="ch-wrap">
+        <header class="ch-head animate-on-scroll">
+          <div class="ch-head-meta">
+            <span class="ch-head-num">01</span>
+            <span class="ch-head-rule" aria-hidden="true"></span>
+          </div>
+          <div class="ch-head-grid">
+            <h2 class="ch-h2">Videos</h2>
+            <p class="ch-deck">Monthly AI news briefs, plus a back catalog of Essbase and EPM how-tos (the Look Smarter Than You Are series, for the calc-script crowd).</p>
+          </div>
+        </header>
+
+        {youtubeVideos.length > 0 ? (
+          <div class="ch-videos">
+            {youtubeVideos.map((video, idx) => (
+              <a href={`https://www.youtube.com/watch?v=${video.videoId}`} target="_blank" rel="noopener noreferrer"
+                class:list={["ch-video animate-on-scroll", idx === 0 && "ch-video-feature", idx >= VISIBLE && "js-more hidden"]}>
+                <div class="ch-thumb">
+                  <img src={video.thumbnail} alt={video.title} loading="lazy" decoding="async" />
+                  <span class="ch-play" aria-hidden="true">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                  </span>
                 </div>
-              </div>
-            </div>
-            <div class="p-5">
-              <h3 class="font-bold dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug mb-2">
-                {video.title}
-              </h3>
-              <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed line-clamp-2 mb-3">
-                {video.description}
-              </p>
-              <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">
-                {formatDate(video.published)}
-              </span>
-            </div>
+                <div class="ch-video-body">
+                  <h3 class="ch-video-title">{video.title}</h3>
+                  <p class="ch-video-desc ch-clamp2">{video.description}</p>
+                  <span class="ch-mono-meta">{formatDate(video.published)}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="ch-empty">
+            <p>Videos will be populated from the YouTube feed during the next site rebuild.</p>
+          </div>
+        )}
+
+        {youtubeVideos.length > VISIBLE && (
+          <div class="ch-more">
+            <button type="button" aria-expanded="false" data-show-all
+              data-label-more={`Show all ${youtubeVideos.length - VISIBLE} more`}
+              class="show-all-btn ch-showall">
+              <span class="show-all-label">{`Show all ${youtubeVideos.length - VISIBLE} more`}</span>
+              <svg class="show-all-chevron w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </div>
+        )}
+
+        <div class="ch-actions">
+          <a href="https://www.youtube.com/@Roske-AI" target="_blank" rel="noopener noreferrer" class="ch-btn">
+            Subscribe on YouTube
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
-        ))}
+        </div>
       </div>
-    ) : (
-      <div class="text-center py-8">
-        <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
-          Videos will be populated from the YouTube feed during the next site rebuild.
-        </p>
-      </div>
-    )}
+    </section>
 
-    {youtubeVideos.length > VISIBLE && (
-      <div class="text-center mt-8">
-        <button type="button" aria-expanded="false" data-show-all
-          data-label-more={`Show all ${youtubeVideos.length - VISIBLE} more`}
-          class="show-all-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 dark:bg-white/[0.04] dark:text-white dark:border dark:border-white/[0.1] dark:hover:bg-white/[0.08] dark:hover:border-[var(--color-accent)]/40 bg-white text-[var(--color-primary)] border border-black/[0.08] hover:border-[var(--color-accent)]/40 hover:shadow-md hover:-translate-y-0.5">
-          <span class="show-all-label">{`Show all ${youtubeVideos.length - VISIBLE} more`}</span>
-          <svg class="show-all-chevron w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-      </div>
-    )}
+    <!-- ============================================
+         BLOG SECTION
+         ============================================ -->
+    <section id="blog" class="ch-section ch-section-alt">
+      <div class="ch-wrap">
+        <header class="ch-head animate-on-scroll">
+          <div class="ch-head-meta">
+            <span class="ch-head-num">02</span>
+            <span class="ch-head-rule" aria-hidden="true"></span>
+          </div>
+          <div class="ch-head-grid">
+            <h2 class="ch-h2">Blog</h2>
+            <p class="ch-deck">Thoughts on AI, finance, MCP servers, and whatever else is worth the keystrokes.</p>
+          </div>
+        </header>
 
-    <div class="text-center mt-8">
-      <a href="https://www.youtube.com/@Roske-AI" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5">
-        Subscribe on YouTube
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-      </a>
-    </div>
-  </Section>
-
-  <!-- ============================================
-       BLOG SECTION
-       ============================================ -->
-  <Section id="blog" title="Blog" subtitle="Thoughts on AI, finance, MCP servers, and whatever else is worth the keystrokes." dark>
-    {posts.length > 0 ? (
-      <div class="space-y-4 max-w-3xl">
-        {posts.slice(0, VISIBLE).map(post => (
-          <a href={`/blog/${post.id}/`}
-            class="animate-on-scroll block rounded-xl p-6 transition-all duration-300 group hover:-translate-y-0.5
-              dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
-              bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg">
-            <div class="flex items-start justify-between gap-4">
-              <div>
-                <h3 class="text-lg font-bold dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug">
-                  {post.data.title}
-                </h3>
-                <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mt-2">
-                  {post.data.description}
-                </p>
-                <div class="flex flex-wrap items-center gap-3 mt-3">
-                  <time datetime={post.data.date.toISOString()} class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">
+        {posts.length > 0 ? (
+          <>
+            <div class="ch-list">
+              {posts.slice(0, VISIBLE).map(post => (
+                <a href={`/blog/${post.id}/`} class="ch-row animate-on-scroll">
+                  <time datetime={post.data.date.toISOString()} class="ch-row-when">
                     {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
                   </time>
-                  {post.data.tags.length > 0 && (
-                    <div class="flex flex-wrap gap-1.5">
-                      {post.data.tags.slice(0, 3).map(tag => (
-                        <span class="px-2 py-0.5 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
-              <svg class="w-5 h-5 flex-shrink-0 mt-1 opacity-30 group-hover:opacity-100 group-hover:translate-x-1 transition-all dark:text-white text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                  <div class="ch-row-main">
+                    <h3 class="ch-row-title">{post.data.title}</h3>
+                    <p class="ch-row-desc">{post.data.description}</p>
+                    {post.data.tags.length > 0 && (
+                      <div class="ch-chips">
+                        {post.data.tags.slice(0, 3).map(tag => (
+                          <span class="ch-chip">{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <svg class="ch-row-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                </a>
+              ))}
             </div>
-          </a>
-        ))}
-        <div class="text-center pt-4">
-          <a href="/blog/" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5">
-            View All Posts
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+            <div class="ch-actions">
+              <a href="/blog/" class="ch-btn">
+                View All Posts
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </>
+        ) : (
+          <div class="ch-empty animate-on-scroll">
+            <div class="ch-empty-badge">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+              </svg>
+            </div>
+            <h3>Posts coming soon</h3>
+            <p>I'm working on a few things. Check back shortly.</p>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- ============================================
+         PODCAST SECTION
+         ============================================ -->
+    <section id="podcast" class="ch-section">
+      <div class="ch-wrap">
+        <header class="ch-head animate-on-scroll">
+          <div class="ch-head-meta">
+            <span class="ch-head-num">03</span>
+            <span class="ch-head-rule" aria-hidden="true"></span>
+          </div>
+          <div class="ch-head-grid">
+            <h2 class="ch-h2">Asking Good Questions</h2>
+            <p class="ch-deck">A podcast exploring how AI and technology are transforming the CFO's office.</p>
+          </div>
+        </header>
+
+        <!-- Platform Links -->
+        <div class="ch-platforms">
+          {[
+            { name: "Apple Podcasts", url: "https://podcasts.apple.com/podcast/id1783616142", icon: "apple" },
+            { name: "Spotify", url: "https://open.spotify.com/show/2MJqqgiNbQGysS6i0MAihh", icon: "spotify" },
+            { name: "Amazon Music", url: "https://music.amazon.com/podcasts/f5a5f18a-4c16-4f89-8735-079d49f49e49", icon: "amazon" },
+            { name: "Buzzsprout", url: "https://askinggoodquestions.buzzsprout.com/", icon: "rss" },
+          ].map(platform => (
+            <a href={platform.url} target="_blank" rel="noopener noreferrer" class="ch-platform animate-on-scroll">
+              <span class="ch-platform-icon">
+                {platform.icon === "apple" && (
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                )}
+                {platform.icon === "spotify" && (
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+                )}
+                {platform.icon === "amazon" && (
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M.045 18.02c.072-.116.187-.124.348-.064 2.729 1.353 5.706 2.008 8.876 2.008 2.17 0 4.406-.41 6.672-1.18.168-.056.3-.024.396.096.096.12.072.252-.072.396-1.692 1.296-4.11 2.028-6.996 2.028-3.366 0-6.378-1.044-8.988-3.096-.12-.096-.156-.2-.108-.312.024-.048.048-.048.072-.048l-.2.172zM22.92 16.32c.2.24.156.516-.132.756-.96.792-2.004 1.2-3.132 1.2-.648 0-1.212-.144-1.692-.432-.168-.108-.18-.252-.036-.432.12-.144.264-.168.432-.072.576.264 1.128.396 1.656.396.804 0 1.536-.3 2.196-.888.168-.156.348-.192.54-.108.072.024.12.072.168.144v-.564zM14.004 13.896c-.24 0-.48-.036-.672-.108-.384-.132-.576-.36-.576-.684 0-.384.228-.684.684-.888.384-.168.876-.252 1.476-.252.624 0 1.14.048 1.548.144v.288c0 .456-.168.852-.504 1.188-.336.336-.804.504-1.404.504l-.552-.192zm3.228-3.18c-.648-.6-1.536-.9-2.664-.9-1.128 0-2.304.3-3.528.9-.168.084-.3.06-.396-.072-.096-.132-.06-.264.108-.396 1.296-.744 2.58-1.116 3.852-1.116 1.32 0 2.352.384 3.096 1.152.264.288.264.456 0 .504-.12.024-.252-.012-.396-.108l-.072.036zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z"/></svg>
+                )}
+                {platform.icon === "rss" && (
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
+                )}
+              </span>
+              <span class="ch-platform-text">
+                <span class="ch-platform-name">{platform.name}</span>
+                <span class="ch-platform-sub">Listen now</span>
+              </span>
+              <svg class="ch-platform-arrow w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          ))}
+        </div>
+
+        <!-- About the Show -->
+        <div class="ch-about animate-on-scroll">
+          <p>
+            <strong>Asking Good Questions</strong> started because I noticed that the best finance leaders I've worked with across 25+ years all had one thing in common: they asked better questions than everyone else in the room.
+          </p>
+          <p>
+            Every episode explores how <strong>AI, data science, and technology</strong> are reshaping the Office of the CFO. Not to sell you software, but to figure out what's actually working and what's still hype.
+          </p>
+        </div>
+
+        <!-- Recent Episodes -->
+        {episodes.length > 0 ? (
+          <div class="ch-list">
+            {episodes.map((ep, idx) => (
+              <a href={ep.link || 'https://askinggoodquestions.buzzsprout.com/'} target="_blank" rel="noopener noreferrer"
+                class:list={["ch-row animate-on-scroll", idx >= VISIBLE && "js-more hidden"]}>
+                <span class="ch-row-when">
+                  <span>{formatDate(ep.pubDate)}</span>
+                  {ep.duration && <span>{formatDuration(ep.duration)}</span>}
+                </span>
+                <div class="ch-row-main">
+                  <h3 class="ch-row-title">{ep.title}</h3>
+                  <p class="ch-row-desc ch-clamp2">{ep.description}</p>
+                </div>
+                <span class="ch-row-play" aria-hidden="true">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div class="ch-empty animate-on-scroll">
+            <p>Episodes will be populated from the RSS feed during the next site rebuild.</p>
+            <a href="https://askinggoodquestions.buzzsprout.com/" target="_blank" rel="noopener noreferrer" class="ch-btn">
+              Browse All Episodes
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        )}
+
+        {episodes.length > VISIBLE && (
+          <div class="ch-more">
+            <button type="button" aria-expanded="false" data-show-all
+              data-label-more={`Show all ${episodes.length - VISIBLE} more`}
+              class="show-all-btn ch-showall">
+              <span class="show-all-label">{`Show all ${episodes.length - VISIBLE} more`}</span>
+              <svg class="show-all-chevron w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </div>
+        )}
+
+        <!-- Guest CTA -->
+        <div class="ch-guest">
+          <p>Want to be a guest? Have a topic you'd like covered?</p>
+          <a href="/contact/">Get in touch &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         INTERVIEWS SECTION
+         ============================================ -->
+    <section id="interviews" class="ch-section ch-section-alt">
+      <div class="ch-wrap">
+        <header class="ch-head animate-on-scroll">
+          <div class="ch-head-meta">
+            <span class="ch-head-num">04</span>
+            <span class="ch-head-rule" aria-hidden="true"></span>
+          </div>
+          <div class="ch-head-grid">
+            <h2 class="ch-h2">Interviews</h2>
+            <p class="ch-deck">Interviews (sometimes I'm asking, sometimes answering), conference talks, and a few webinars from across the web.</p>
+          </div>
+        </header>
+
+        {externalVideos.length > 0 && (
+          <div class="ch-list">
+            {externalVideos.map((video, idx) => (
+              <a href={video.url} target="_blank" rel="noopener noreferrer"
+                class:list={["ch-row animate-on-scroll", idx >= VISIBLE && "js-more hidden"]}>
+                <span class="ch-row-when">
+                  <span>{formatDate(video.published)}</span>
+                </span>
+                <div class="ch-row-main">
+                  <h3 class="ch-row-title">{video.title}</h3>
+                  <p class="ch-row-desc">{video.description}</p>
+                  <div class="ch-chips">
+                    <span class="ch-chip">{video.source}</span>
+                  </div>
+                </div>
+                <svg class="ch-row-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            ))}
+          </div>
+        )}
+        {externalVideos.length > VISIBLE && (
+          <div class="ch-more">
+            <button type="button" aria-expanded="false" data-show-all
+              data-label-more={`Show all ${externalVideos.length - VISIBLE} more`}
+              class="show-all-btn ch-showall">
+              <span class="show-all-label">{`Show all ${externalVideos.length - VISIBLE} more`}</span>
+              <svg class="show-all-chevron w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- ============================================
+         PUBLICATIONS SECTION
+         ============================================ -->
+    <section id="publications" class="ch-section">
+      <div class="ch-wrap">
+        <header class="ch-head animate-on-scroll">
+          <div class="ch-head-meta">
+            <span class="ch-head-num">05</span>
+            <span class="ch-head-rule" aria-hidden="true"></span>
+            <span class="ch-head-count">01 of 01</span>
+          </div>
+          <div class="ch-head-grid">
+            <h2 class="ch-h2">Academic Publications</h2>
+            <p class="ch-deck">Research from my Master of Data Science at SMU (4.0 GPA, Outstanding Graduate).</p>
+          </div>
+        </header>
+
+        <div class="ch-list">
+          <a href="https://scholar.smu.edu/datasciencereview/vol5/iss3/9/" target="_blank" rel="noopener noreferrer"
+            class="ch-row animate-on-scroll">
+            <span class="ch-row-when"><span>2021</span></span>
+            <div class="ch-row-main">
+              <h3 class="ch-row-title">Spotify: You have a Hit!</h3>
+              <p class="ch-row-desc">
+                Predicting hit songs using Spotify API data on 400,000+ tracks. Models built with LASSO and XGBOOST classification achieved 60%+ accuracy identifying songs that would reach 90%+ popularity.
+              </p>
+              <div class="ch-chips">
+                <span class="ch-chip">SMU Data Science Review</span>
+                <span class="ch-row-note">Co-authored with C. Dawson Jr., S. Mann, G. Vasseur</span>
+              </div>
+            </div>
+            <svg class="ch-row-arrow w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
         </div>
       </div>
-    ) : (
-      <div class="animate-on-scroll text-center max-w-md mx-auto py-8">
-        <div class="w-16 h-16 rounded-full bg-[var(--color-accent)]/10 flex items-center justify-center mx-auto mb-4">
-          <svg class="w-8 h-8 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
-          </svg>
-        </div>
-        <h3 class="text-lg font-semibold mb-2 dark:text-white text-[var(--color-primary)]">Posts coming soon</h3>
-        <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm">
-          I'm working on a few things. Check back shortly.
-        </p>
-      </div>
-    )}
-  </Section>
+    </section>
 
-  <!-- ============================================
-       PODCAST SECTION
-       ============================================ -->
-  <Section id="podcast" title="Asking Good Questions" subtitle="A podcast exploring how AI and technology are transforming the CFO's office.">
-    <!-- Platform Links -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-      {[
-        { name: "Apple Podcasts", url: "https://podcasts.apple.com/podcast/id1783616142", icon: "apple" },
-        { name: "Spotify", url: "https://open.spotify.com/show/2MJqqgiNbQGysS6i0MAihh", icon: "spotify" },
-        { name: "Amazon Music", url: "https://music.amazon.com/podcasts/f5a5f18a-4c16-4f89-8735-079d49f49e49", icon: "amazon" },
-        { name: "Buzzsprout", url: "https://askinggoodquestions.buzzsprout.com/", icon: "rss" },
-      ].map(platform => (
-        <a href={platform.url} target="_blank" rel="noopener noreferrer"
-          class="animate-on-scroll flex items-center gap-4 rounded-xl p-5 transition-all duration-300 group hover:-translate-y-1
-            dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
-            bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg">
-          <div class="w-12 h-12 rounded-lg flex items-center justify-center bg-[var(--color-accent)]/10 text-[var(--color-accent)] group-hover:bg-[var(--color-accent)]/20 transition-colors">
-            {platform.icon === "apple" && (
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            )}
-            {platform.icon === "spotify" && (
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
-            )}
-            {platform.icon === "amazon" && (
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M.045 18.02c.072-.116.187-.124.348-.064 2.729 1.353 5.706 2.008 8.876 2.008 2.17 0 4.406-.41 6.672-1.18.168-.056.3-.024.396.096.096.12.072.252-.072.396-1.692 1.296-4.11 2.028-6.996 2.028-3.366 0-6.378-1.044-8.988-3.096-.12-.096-.156-.2-.108-.312.024-.048.048-.048.072-.048l-.2.172zM22.92 16.32c.2.24.156.516-.132.756-.96.792-2.004 1.2-3.132 1.2-.648 0-1.212-.144-1.692-.432-.168-.108-.18-.252-.036-.432.12-.144.264-.168.432-.072.576.264 1.128.396 1.656.396.804 0 1.536-.3 2.196-.888.168-.156.348-.192.54-.108.072.024.12.072.168.144v-.564zM14.004 13.896c-.24 0-.48-.036-.672-.108-.384-.132-.576-.36-.576-.684 0-.384.228-.684.684-.888.384-.168.876-.252 1.476-.252.624 0 1.14.048 1.548.144v.288c0 .456-.168.852-.504 1.188-.336.336-.804.504-1.404.504l-.552-.192zm3.228-3.18c-.648-.6-1.536-.9-2.664-.9-1.128 0-2.304.3-3.528.9-.168.084-.3.06-.396-.072-.096-.132-.06-.264.108-.396 1.296-.744 2.58-1.116 3.852-1.116 1.32 0 2.352.384 3.096 1.152.264.288.264.456 0 .504-.12.024-.252-.012-.396-.108l-.072.036zM12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z"/></svg>
-            )}
-            {platform.icon === "rss" && (
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z"/></svg>
-            )}
-          </div>
-          <div>
-            <div class="font-semibold dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors">{platform.name}</div>
-            <div class="text-xs dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Listen now</div>
-          </div>
-          <svg class="w-4 h-4 ml-auto opacity-40 group-hover:opacity-100 transition-opacity dark:text-white text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
-      ))}
-    </div>
-
-    <!-- About the Show -->
-    <div class="animate-on-scroll max-w-3xl mb-12">
-      <div class="space-y-4 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-lg leading-relaxed">
-        <p>
-          <strong class="dark:text-white text-[var(--color-primary)]">Asking Good Questions</strong> started because I noticed that the best finance leaders I've worked with across 25+ years all had one thing in common: they asked better questions than everyone else in the room.
-        </p>
-        <p>
-          Every episode explores how <strong class="dark:text-white text-[var(--color-primary)]">AI, data science, and technology</strong> are reshaping the Office of the CFO. Not to sell you software, but to figure out what's actually working and what's still hype.
-        </p>
-      </div>
-    </div>
-
-    <!-- Recent Episodes -->
-    {episodes.length > 0 ? (
-      <div class="space-y-4 max-w-3xl">
-        {episodes.map((ep, idx) => (
-          <a href={ep.link || 'https://askinggoodquestions.buzzsprout.com/'} target="_blank" rel="noopener noreferrer"
-            class:list={["animate-on-scroll block rounded-xl p-5 transition-all duration-300 group hover:-translate-y-0.5 dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06] bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg", idx >= VISIBLE && "js-more hidden"]}>
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex-1 min-w-0">
-                <h3 class="font-bold dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug">
-                  {ep.title}
-                </h3>
-                <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mt-2 line-clamp-2">
-                  {ep.description}
-                </p>
-                <div class="flex items-center gap-3 mt-3">
-                  <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">
-                    {formatDate(ep.pubDate)}
-                  </span>
-                  {ep.duration && (
-                    <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">
-                      {formatDuration(ep.duration)}
-                    </span>
-                  )}
-                </div>
-              </div>
-              <div class="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center bg-[var(--color-accent)]/10 text-[var(--color-accent)] group-hover:bg-[var(--color-accent)] group-hover:text-white transition-colors mt-1">
-                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-              </div>
-            </div>
-          </a>
-        ))}
-      </div>
-    ) : (
-      <div class="animate-on-scroll text-center max-w-md mx-auto py-8">
-        <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm mb-4">
-          Episodes will be populated from the RSS feed during the next site rebuild.
-        </p>
-        <a href="https://askinggoodquestions.buzzsprout.com/" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5">
-          Browse All Episodes
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
-      </div>
-    )}
-
-    {episodes.length > VISIBLE && (
-      <div class="text-center mt-8">
-        <button type="button" aria-expanded="false" data-show-all
-          data-label-more={`Show all ${episodes.length - VISIBLE} more`}
-          class="show-all-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 dark:bg-white/[0.04] dark:text-white dark:border dark:border-white/[0.1] dark:hover:bg-white/[0.08] dark:hover:border-[var(--color-accent)]/40 bg-white text-[var(--color-primary)] border border-black/[0.08] hover:border-[var(--color-accent)]/40 hover:shadow-md hover:-translate-y-0.5">
-          <span class="show-all-label">{`Show all ${episodes.length - VISIBLE} more`}</span>
-          <svg class="show-all-chevron w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-      </div>
-    )}
-
-    <!-- Guest CTA -->
-    <div class="mt-10 text-center">
-      <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm mb-3">
-        Want to be a guest? Have a topic you'd like covered?
-      </p>
-      <a href="/contact/" class="text-sm font-medium text-[var(--color-accent)] hover:underline">
-        Get in touch &rarr;
-      </a>
-    </div>
-  </Section>
-
-  <!-- ============================================
-       INTERVIEWS SECTION
-       ============================================ -->
-  <Section id="interviews" title="Interviews" subtitle="Interviews (sometimes I'm asking, sometimes answering), conference talks, and a few webinars from across the web." dark>
-    {externalVideos.length > 0 && (
-      <div class="max-w-3xl space-y-4">
-        {externalVideos.map((video, idx) => (
-          <a href={video.url} target="_blank" rel="noopener noreferrer"
-            class:list={["animate-on-scroll block rounded-xl p-5 transition-all duration-300 group hover:-translate-y-0.5 dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06] bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg", idx >= VISIBLE && "js-more hidden"]}>
-            <div class="flex items-start justify-between gap-4">
-              <div class="flex-1 min-w-0">
-                <h3 class="font-bold dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug">
-                  {video.title}
-                </h3>
-                <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mt-2">
-                  {video.description}
-                </p>
-                <div class="flex items-center gap-3 mt-3">
-                  <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">
-                    {formatDate(video.published)}
-                  </span>
-                  <span class="px-2 py-0.5 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-                    {video.source}
-                  </span>
-                </div>
-              </div>
-              <svg class="w-5 h-5 flex-shrink-0 mt-1 opacity-40 group-hover:opacity-100 transition-opacity dark:text-white text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-            </div>
-          </a>
-        ))}
-      </div>
-    )}
-    {externalVideos.length > VISIBLE && (
-      <div class="text-center mt-8">
-        <button type="button" aria-expanded="false" data-show-all
-          data-label-more={`Show all ${externalVideos.length - VISIBLE} more`}
-          class="show-all-btn inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 dark:bg-white/[0.04] dark:text-white dark:border dark:border-white/[0.1] dark:hover:bg-white/[0.08] dark:hover:border-[var(--color-accent)]/40 bg-white text-[var(--color-primary)] border border-black/[0.08] hover:border-[var(--color-accent)]/40 hover:shadow-md hover:-translate-y-0.5">
-          <span class="show-all-label">{`Show all ${externalVideos.length - VISIBLE} more`}</span>
-          <svg class="show-all-chevron w-4 h-4 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-      </div>
-    )}
-  </Section>
-
-  <!-- ============================================
-       PUBLICATIONS SECTION
-       ============================================ -->
-  <Section id="publications" title="Academic Publications" subtitle="Research from my Master of Data Science at SMU (4.0 GPA, Outstanding Graduate).">
-    <div class="max-w-3xl">
-      <a href="https://scholar.smu.edu/datasciencereview/vol5/iss3/9/" target="_blank" rel="noopener noreferrer"
-        class="animate-on-scroll block rounded-xl p-6 transition-all duration-300 group hover:-translate-y-0.5
-          dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
-          bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg">
-        <div class="flex items-start justify-between gap-4">
-          <div>
-            <h3 class="text-lg font-bold dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug">
-              Spotify: You have a Hit!
-            </h3>
-            <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mt-2">
-              Predicting hit songs using Spotify API data on 400,000+ tracks. Models built with LASSO and XGBOOST classification achieved 60%+ accuracy identifying songs that would reach 90%+ popularity.
-            </p>
-            <div class="flex flex-wrap items-center gap-3 mt-3">
-              <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">
-                2021
-              </span>
-              <span class="px-2 py-0.5 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">
-                SMU Data Science Review
-              </span>
-              <span class="text-xs dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">
-                Co-authored with C. Dawson Jr., S. Mann, G. Vasseur
-              </span>
-            </div>
-          </div>
-          <svg class="w-5 h-5 flex-shrink-0 mt-1 opacity-30 group-hover:opacity-100 transition-opacity dark:text-white text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </div>
-      </a>
-    </div>
-  </Section>
+  </div>
 
   <script is:inline>
     (function () {
@@ -451,8 +449,438 @@ function formatDate(dateStr: string): string {
 </BaseLayout>
 
 <style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(24px); }
+  /* ==========================================================
+     CONTENT HUB: editorial catalog system.
+     Every color and font routes through the weekly theme vars,
+     aliased once per mode into local --ch-* custom properties.
+     ========================================================== */
+  .ch {
+    --ch-line: var(--color-border);
+    --ch-ink: var(--color-text);
+    --ch-muted: var(--color-text-muted);
+    --ch-meta: color-mix(in srgb, var(--color-text-muted) 80%, transparent);
+    --ch-alt-bg: var(--color-surface);
+    --ch-accent-line: color-mix(in srgb, var(--color-accent) 45%, transparent);
+    --ch-hover-bg: color-mix(in srgb, var(--color-accent) 6%, transparent);
+    font-family: var(--font-body);
+  }
+  :global([data-theme="light"]) .ch {
+    --ch-line: var(--color-border-light);
+    --ch-ink: var(--color-primary);
+    --ch-muted: var(--color-text-dark-muted);
+    --ch-meta: color-mix(in srgb, var(--color-text-dark-muted) 80%, transparent);
+    --ch-alt-bg: var(--color-surface-light);
+  }
+
+  .ch-wrap { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+  /* ---------- masthead ---------- */
+  .ch-masthead {
+    position: relative;
+    padding: clamp(5rem, 9vw, 7rem) 0 4.5rem;
+    border-bottom: 1px solid var(--ch-line);
+    overflow: hidden;
+  }
+  .ch-grain {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.4; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .ch-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--color-accent); margin: 0 0 1.5rem;
+  }
+  .ch-h1 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2.75rem, 6.5vw, 4.75rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    color: var(--ch-ink);
+    margin: 0 0 1.5rem;
+  }
+  .ch-lede {
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.65;
+    max-width: 44em;
+    color: var(--ch-muted);
+    margin: 0;
+  }
+  .ch-toc {
+    margin-top: 3.2rem; padding-top: 2rem;
+    border-top: 1px solid var(--ch-line);
+    display: flex; flex-wrap: wrap; gap: 1.1rem 2.8rem;
+  }
+  .ch-toc a {
+    display: inline-flex; align-items: baseline; gap: 0.6rem;
+    font-family: var(--font-heading); font-weight: 600; font-size: 1.02rem;
+    color: var(--ch-ink); text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .ch-toc a span {
+    font-family: var(--font-mono); font-weight: 400;
+    font-size: 0.66rem; letter-spacing: 0.08em;
+    color: var(--color-accent);
+  }
+  .ch-toc a:hover { color: var(--color-accent); }
+
+  /* masthead entrance */
+  .ch-rise { animation: chFadeUp 0.6s ease-out both; }
+  .ch-rise-2 { animation-delay: 0.08s; }
+  .ch-rise-3 { animation-delay: 0.16s; }
+  .ch-rise-4 { animation-delay: 0.24s; }
+  @keyframes chFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ch-rise { animation: none; }
+  }
+
+  /* ---------- sections ---------- */
+  .ch-section { padding: 5.5rem 0; scroll-margin-top: 7.5rem; }
+  .ch-section-alt {
+    background: var(--ch-alt-bg);
+    border-top: 1px solid var(--ch-line);
+    border-bottom: 1px solid var(--ch-line);
+  }
+
+  .ch-head { margin-bottom: 3.2rem; }
+  .ch-head-meta {
+    display: flex; align-items: center; gap: 1.1rem;
+    margin-bottom: 1.6rem;
+  }
+  .ch-head-num {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.12em;
+    color: var(--color-accent);
+  }
+  .ch-head-rule { flex: 1; height: 1px; background: var(--ch-line); }
+  .ch-head-count {
+    font-family: var(--font-mono);
+    font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ch-meta);
+  }
+  .ch-head-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 44ch);
+    gap: 1.2rem 3rem;
+    align-items: end;
+  }
+  @media (max-width: 860px) { .ch-head-grid { grid-template-columns: 1fr; } }
+  .ch-h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 3.6vw, 2.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    color: var(--ch-ink);
+    margin: 0;
+  }
+  .ch-deck {
+    font-size: 1.02rem; line-height: 1.65;
+    color: var(--ch-muted); margin: 0;
+  }
+
+  /* ---------- video bento ---------- */
+  .ch-videos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.4rem;
+  }
+  .ch-video {
+    display: flex; flex-direction: column;
+    border: 1px solid var(--ch-line);
+    text-decoration: none;
+    transition: border-color 0.2s ease, translate 0.2s ease;
+  }
+  .ch-video:hover, .ch-video:focus-visible {
+    border-color: var(--ch-accent-line);
+    translate: 0 -3px;
+  }
+  .ch-video-feature { grid-column: span 2; }
+  @media (max-width: 1024px) {
+    .ch-videos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 640px) {
+    .ch-videos { grid-template-columns: 1fr; }
+    .ch-video-feature { grid-column: auto; }
+  }
+  .ch-thumb {
+    position: relative; aspect-ratio: 16 / 9;
+    overflow: hidden; background: #000;
+  }
+  .ch-thumb img {
+    width: 100%; height: 100%; object-fit: cover;
+    opacity: 0.92;
+    transition: opacity 0.2s ease, transform 0.45s ease;
+  }
+  .ch-video:hover .ch-thumb img { opacity: 1; transform: scale(1.03); }
+  .ch-play {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 3.25rem; height: 3.25rem; border-radius: 50%;
+    background: var(--color-accent); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .ch-play svg { margin-left: 2px; }
+  .ch-video:hover .ch-play {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: var(--color-accent-hover);
+  }
+  .ch-video-body {
+    display: flex; flex-direction: column; gap: 0.55rem;
+    flex-grow: 1;
+    padding: 1.1rem 1.2rem 1.25rem;
+  }
+  .ch-video-title {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 1.02rem; line-height: 1.3;
+    color: var(--ch-ink); margin: 0;
+    transition: color 0.15s ease;
+  }
+  .ch-video-feature .ch-video-title { font-size: clamp(1.15rem, 1.9vw, 1.4rem); }
+  .ch-video:hover .ch-video-title { color: var(--color-accent); }
+  .ch-video-desc {
+    font-size: 0.88rem; line-height: 1.55;
+    color: var(--ch-muted); margin: 0;
+  }
+  .ch-mono-meta {
+    font-family: var(--font-mono);
+    font-size: 0.68rem; letter-spacing: 0.06em;
+    color: var(--ch-meta);
+    margin-top: auto; padding-top: 0.35rem;
+  }
+
+  /* ---------- editorial list rows ---------- */
+  .ch-list { max-width: 54rem; margin-inline: -1.25rem; }
+  @media (max-width: 640px) { .ch-list { margin-inline: -0.75rem; } }
+  .ch-row {
+    display: grid;
+    grid-template-columns: 8rem minmax(0, 1fr) auto;
+    gap: 0.5rem 1.6rem;
+    align-items: start;
+    padding: 1.5rem 1.25rem;
+    border-top: 1px solid var(--ch-line);
+    text-decoration: none;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .ch-list > .ch-row:last-of-type { border-bottom: 1px solid var(--ch-line); }
+  .ch-row:hover, .ch-row:focus-visible {
+    background-color: var(--ch-hover-bg);
+    box-shadow: inset 2px 0 0 var(--color-accent);
+  }
+  @media (max-width: 640px) {
+    .ch-row { grid-template-columns: minmax(0, 1fr) auto; padding: 1.5rem 0.75rem; }
+    .ch-row-when { grid-column: 1 / -1; flex-direction: row; gap: 0.9rem; }
+  }
+  .ch-row-when {
+    display: flex; flex-direction: column; gap: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem; letter-spacing: 0.06em;
+    color: var(--ch-meta);
+    padding-top: 0.3rem;
+  }
+  .ch-row-main { min-width: 0; }
+  .ch-row-title {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 1.12rem; line-height: 1.3;
+    color: var(--ch-ink); margin: 0;
+    transition: color 0.15s ease;
+  }
+  .ch-row:hover .ch-row-title { color: var(--color-accent); }
+  .ch-row-desc {
+    font-size: 0.92rem; line-height: 1.6;
+    color: var(--ch-muted);
+    max-width: 70ch;
+    margin: 0.45rem 0 0;
+  }
+  .ch-chips {
+    display: flex; flex-wrap: wrap; align-items: baseline;
+    gap: 0.45rem 0.8rem; margin-top: 0.8rem;
+  }
+  .ch-chip {
+    font-family: var(--font-mono);
+    font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--color-accent);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+    padding: 0.22rem 0.55rem;
+  }
+  .ch-row-note {
+    font-family: var(--font-mono);
+    font-size: 0.66rem; letter-spacing: 0.04em;
+    color: var(--ch-meta);
+  }
+  .ch-row-arrow {
+    flex-shrink: 0; margin-top: 0.35rem;
+    color: var(--ch-meta);
+    opacity: 0.5;
+    transition: opacity 0.2s ease, translate 0.2s ease, color 0.2s ease;
+  }
+  .ch-row:hover .ch-row-arrow {
+    opacity: 1; color: var(--color-accent); translate: 3px 0;
+  }
+  .ch-row-play {
+    display: flex; align-items: center; justify-content: center;
+    width: 2.6rem; height: 2.6rem; margin-top: 0.15rem;
+    border: 1px solid var(--ch-accent-line);
+    color: var(--color-accent);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .ch-row-play svg { margin-left: 2px; }
+  .ch-row:hover .ch-row-play {
+    background-color: var(--color-accent);
+    color: #fff;
+  }
+
+  /* the show-all toggle relies on .hidden; make sure it always wins */
+  .ch-video.hidden, .ch-row.hidden { display: none; }
+
+  /* ---------- podcast platforms ---------- */
+  .ch-platforms {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 3.5rem;
+  }
+  @media (max-width: 1024px) { .ch-platforms { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .ch-platforms { grid-template-columns: 1fr; } }
+  .ch-platform {
+    display: flex; align-items: center; gap: 1rem;
+    border: 1px solid var(--ch-line);
+    padding: 1.15rem 1.25rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, translate 0.2s ease;
+  }
+  .ch-platform:hover, .ch-platform:focus-visible {
+    border-color: var(--ch-accent-line);
+    translate: 0 -2px;
+  }
+  .ch-platform-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 2.75rem; height: 2.75rem; flex-shrink: 0;
+    border: 1px solid var(--ch-accent-line);
+    color: var(--color-accent);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .ch-platform:hover .ch-platform-icon { background-color: var(--color-accent); color: #fff; }
+  .ch-platform-text { display: flex; flex-direction: column; gap: 0.2rem; min-width: 0; }
+  .ch-platform-name {
+    font-family: var(--font-heading); font-weight: 600; font-size: 0.95rem;
+    color: var(--ch-ink);
+  }
+  .ch-platform-sub {
+    font-family: var(--font-mono);
+    font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ch-meta);
+  }
+  .ch-platform-arrow {
+    margin-left: auto; flex-shrink: 0;
+    color: var(--ch-meta); opacity: 0.5;
+    transition: opacity 0.2s ease;
+  }
+  .ch-platform:hover .ch-platform-arrow { opacity: 1; color: var(--color-accent); }
+
+  /* ---------- about the show ---------- */
+  .ch-about { max-width: 66ch; margin-bottom: 3.5rem; }
+  .ch-about p {
+    font-size: 1.05rem; line-height: 1.7;
+    color: var(--ch-muted); margin: 0;
+  }
+  .ch-about p + p { margin-top: 1rem; }
+  .ch-about strong { color: var(--ch-ink); font-weight: 700; }
+
+  /* ---------- buttons & actions ---------- */
+  .ch-actions { margin-top: 2.6rem; }
+  .ch-btn {
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.85rem 1.5rem;
+    background: var(--color-accent); color: #fff;
+    font-weight: 600; font-size: 0.92rem;
+    text-decoration: none;
+    transition: background-color 0.15s ease, translate 0.15s ease;
+  }
+  .ch-btn:hover { background: var(--color-accent-hover); translate: 0 -1px; }
+
+  .ch-more { margin-top: 1.4rem; max-width: 54rem; margin-inline: -1.25rem; }
+  @media (max-width: 640px) { .ch-more { margin-inline: -0.75rem; } }
+  .ch-videos ~ .ch-more { max-width: none; margin-inline: 0; }
+  .ch-showall {
+    display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid var(--ch-line);
+    font-family: var(--font-mono);
+    font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ch-muted);
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+  .ch-showall:hover {
+    border-color: var(--ch-accent-line);
+    color: var(--color-accent);
+  }
+  .ch-showall svg { transition: transform 0.2s ease; }
+
+  /* ---------- guest CTA ---------- */
+  .ch-guest {
+    margin-top: 3.2rem; padding-top: 1.6rem;
+    border-top: 1px solid var(--ch-line);
+    display: flex; flex-wrap: wrap; align-items: baseline;
+    justify-content: space-between; gap: 0.6rem 1.5rem;
+    max-width: 54rem;
+  }
+  .ch-guest p { font-size: 0.95rem; color: var(--ch-muted); margin: 0; }
+  .ch-guest a {
+    font-size: 0.92rem; font-weight: 600;
+    color: var(--color-accent); text-decoration: none;
+  }
+  .ch-guest a:hover { text-decoration: underline; }
+
+  /* ---------- empty states ---------- */
+  .ch-empty {
+    max-width: 36rem;
+    border: 1px dashed var(--ch-line);
+    padding: 2.6rem 2rem;
+    text-align: center;
+  }
+  .ch-empty p { color: var(--ch-muted); font-size: 0.95rem; margin: 0; }
+  .ch-empty p + a, .ch-empty .ch-btn { margin-top: 1.4rem; }
+  .ch-empty h3 {
+    font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem;
+    color: var(--ch-ink); margin: 0 0 0.5rem;
+  }
+  .ch-empty-badge {
+    display: flex; align-items: center; justify-content: center;
+    width: 4rem; height: 4rem; border-radius: 50%;
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+    color: var(--color-accent);
+    margin: 0 auto 1.1rem;
+  }
+
+  /* ---------- utilities ---------- */
+  .ch-clamp2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ---------- scroll-driven entrances (progressive) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .ch-video, .ch-row, .ch-platform {
+        animation: chRise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 36%;
+      }
+    }
+  }
+  @keyframes chRise {
+    from { opacity: 0.3; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
 </style>

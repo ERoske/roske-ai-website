@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WeeklyAnimation from '../components/WeeklyAnimation.astro';
 import LatestContent from '../components/LatestContent.astro';
+import SpeakerCTA from '../components/SpeakerCTA.astro';
 import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
@@ -254,6 +255,11 @@ const indicia = [
     heading={"New <em>this week.</em>"}
     deck="The latest writing and video briefs, in one place, so the good stuff isn't buried under a stack of back issues."
   />
+
+  <!-- ============================================
+       BOOK EDWARD: permanent module (never remove)
+       ============================================ -->
+  <SpeakerCTA eyebrow="Section 02.5 · The paying gig" />
 
   <!-- ============================================
        THE ROGUES' GALLERY: scene gallery

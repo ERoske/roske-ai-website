@@ -1,448 +1,583 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Section from '../components/Section.astro';
-import Card from '../components/Card.astro';
+import '../styles/speaker.css';
 
+// PERMANENT CONVERSION PAGE. This page is deliberately theme-independent:
+// it defines its own editorial design tokens (--spk-*) and loads its own
+// fonts so event planners see the same premium page in any week's theme.
+// Weekly rebuilds must NOT restructure this page (see weekly-rebuild-prompt.md).
 // One-pager PDF lives at public/downloads/edward-roske-speaker-onepager.pdf.
 // Regenerate via: python scripts/build-speaker-onepager.py
+
+const talks = [
+  {
+    num: '01',
+    title: 'Your Day, Run by Ten Agents',
+    audience: 'Executives and leadership teams',
+    description:
+      "Edward's life runs on ten or more AI agents at all times: calendar, inbox, research, writing, code, decisions. This talk walks through the actual stack, what each agent does, and how executives assemble the same force multiplier without an engineering degree. The website you booked him from is part of the talk (his agents redesign it every Saturday while he sleeps).",
+    walkaway: [
+      'A map of a working executive agent stack, tool by tool',
+      'Which of their own recurring tasks an agent should take first',
+      'A 90-day adoption path that survives contact with the IT department',
+    ],
+    tags: ['Keynote', 'Fireside', 'Most booked'],
+  },
+  {
+    num: '02',
+    title: "Answers to the Questions You've Been Quietly Asking Yourself About AI",
+    audience: 'Senior leaders, cross-functional',
+    description:
+      'Drawn from a hundred-plus episodes of Asking Good Questions and a portfolio of live AI deployments. Frameworks for the questions executives are already wrestling with privately, from "which vendor is lying to me" to "what happens to my team." Works as a keynote, a fireside chat, or the opening session of a multi-day offsite.',
+    walkaway: [
+      'A working answer to the AI question they brought into the room',
+      'A filter for separating deployed reality from vendor theater',
+      'The three decisions worth making this quarter (and the ones that can wait)',
+    ],
+    tags: ['Keynote', 'Fireside', 'Offsite opener'],
+  },
+  {
+    num: '03',
+    title: 'The Computer-First Finance Department',
+    audience: 'CFOs, finance and EPM leaders',
+    description:
+      "Planning, consolidation, and reporting are shifting from human-first to computer-first, and Edward is one of the people shipping that shift: MCP servers that let AI agents read and write live Oracle EPM data. Twenty-five years in the Office of the CFO, translated into what finance automates first, what it should never automate, and why knowing when a number is wrong still beats producing it fast.",
+    walkaway: [
+      'The finance processes AI takes first, in order, with evidence',
+      'What a computer-first close actually looks like at companies doing it',
+      'The judgment calls that stay human (and how to staff for them)',
+    ],
+    tags: ['Keynote', 'Workshop pairing', 'Finance events'],
+  },
+  {
+    num: '04',
+    title: 'Building a Company in the Era of AI',
+    audience: 'Founders, operators, PE portfolios',
+    description:
+      "Edward founded interRel at twenty-two, ran it for twenty-five years, and merged it into a billion-dollar firm. Now he's building AI companies while AI rewrites the business model underneath them. It's a talk for founders and operating partners on what changes when your product, your staffing plan, and your competition are all being re-priced by the same technology.",
+    walkaway: [
+      'Which parts of the operating playbook AI actually re-prices',
+      'How to evaluate AI claims inside a portfolio company in one meeting',
+      'The hiring and org-design moves that age well',
+    ],
+    tags: ['Keynote', 'PE annual meetings', 'Board retreats'],
+  },
+];
+
+const formats = [
+  {
+    name: 'Keynote',
+    price: 'From $15,000',
+    detail:
+      'Up to 90 minutes plus Q&A, customized to your audience after a working call. Fireside and panel formats included at the same fee.',
+  },
+  {
+    name: 'Executive Workshop',
+    price: 'From $20,000',
+    detail:
+      'The full-day "AI: Art of the Possible" working session. Your leadership team leaves with a ranked pilot list they can act on Monday.',
+    href: '/work/ai-art-of-the-possible/',
+    linkText: 'See the workshop',
+  },
+  {
+    name: 'Board Briefing',
+    price: 'From $12,500',
+    detail:
+      'A private two-to-three hour AI oversight session for directors. What to ask management, what to greenlight, what to fear proportionately.',
+  },
+  {
+    name: 'Virtual Keynote',
+    price: 'From $7,500',
+    detail:
+      'Same talk, same customization, no airfare. Recording license and hybrid formats available.',
+  },
+];
+
+const stages = [
+  'Oracle OpenWorld', 'Oracle CloudWorld', 'Kscope / ODTUG', 'COLLABORATE',
+  'Caribbean AI Summit', 'Puerto Rico AI Community', 'FENG', 'PACE',
+  'Toronto EPM User Group', 'World Finance Forums',
+];
+
+const videos = [
+  {
+    id: 'qrMbUUvmAls',
+    title: 'Masterclass: Ask Edward Roske about Strategic EPM',
+    where: 'Kscope22 main stage',
+  },
+  {
+    id: 'PZBIZxQGtBc',
+    title: 'ODTUG Lifetime Achievement Award',
+    where: 'Kscope25 (fewer than five people have ever received it)',
+  },
+  {
+    id: 'SQ2Bltscmlc',
+    title: 'AI in EPM: what gets automated first',
+    where: 'Toronto EPM User Group, 2026',
+  },
+];
+
+const history = [
+  { event: 'Caribbean AI Summit', detail: 'Co-chair. October 9-10, 2026, Puerto Rico Convention Center. The largest AI conference Puerto Rico has ever seen.', year: '2026' },
+  { event: 'Puerto Rico AI Community', detail: 'President and regular presenter. 850+ executives across the meetup series. Bimonthly in San Juan.', year: '2024-Present' },
+  { event: 'Kscope (ODTUG)', detail: 'Speaker since 2008. Conference Chair 2011-2012. Essbase Speaker of the Year 2018. Lifetime Achievement Award 2025.', year: '2008-2025' },
+  { event: 'Oracle International Speaking Tours', detail: 'Touring 50+ countries across all 7 continents. Training, keynotes, and workshops.', year: '2008-2023' },
+  { event: 'Oracle OpenWorld / CloudWorld', detail: 'Regular speaker. San Francisco, Las Vegas, and international editions.', year: '2000s-2020s' },
+  { event: 'COLLABORATE (IOUG/OAUG)', detail: 'One of the original Oracle user group super-speakers. National and international events.', year: '2000s-2010s' },
+];
+
+const faqs = [
+  {
+    q: 'What does it cost to book Edward for a keynote?',
+    a: 'In-person keynotes start at $15,000. Full-day executive workshops start at $20,000, private board briefings at $12,500, and virtual keynotes at $7,500. Most engagements land between $15,000 and $25,000, which is also where most corporate keynote budgets land (not a coincidence). Terms are 50% deposit at signing, balance 30 days before the event.',
+  },
+  {
+    q: 'How far in advance should we book?',
+    a: 'Six to twelve months for a specific date, like most established speakers. Shorter windows sometimes work (Edward lives on planes anyway), so ask. January kickoffs book in the prior fall.',
+  },
+  {
+    q: 'Does Edward travel? What about international events?',
+    a: "He has spoken in 50+ countries on all 7 continents, including Antarctica. Domestic travel is a flat buyout instead of itemized receipts, because nobody enjoys expense reports. International is quoted per event.",
+  },
+  {
+    q: 'Will the talk be customized for our audience?',
+    a: "Always. Edward gets on a working call with you (and your program chair, if you have one) before writing a single slide. Finance conference, PE annual meeting, sales kickoff, and board retreat versions of the same talk are genuinely different talks.",
+  },
+  {
+    q: 'What does Edward need on site?',
+    a: 'A wireless lavalier or headset mic, HDMI or USB-C to your screens, and a confidence monitor if the room is large. He arrives early, does a tech check the day before when possible, and stays for the hallway conversations afterward. Full details are in the speaker kit.',
+  },
+  {
+    q: 'Is Edward an AI futurist?',
+    a: "Short answer: no. He ships AI products (MCP servers for Oracle EPM, in production), runs his own life on ten-plus AI agents, and spent twenty-five years in the Office of the CFO before AI was a keynote topic. If you want predictions about 2035, he'll politely decline (he's busy shipping 2026).",
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Keynote Speaking by Edward Roske',
+  serviceType: 'Keynote speaking, executive AI workshops, board briefings',
+  provider: {
+    '@type': 'Person',
+    name: 'Edward Roske',
+    url: 'https://roske.ai',
+    jobTitle: 'AI Keynote Speaker and CEO',
+  },
+  areaServed: 'Worldwide',
+  offers: [
+    { '@type': 'Offer', name: 'In-person keynote', price: '15000', priceCurrency: 'USD', description: 'Starting fee for in-person keynotes up to 90 minutes plus Q&A' },
+    { '@type': 'Offer', name: 'Executive AI workshop (full day)', price: '20000', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Private board briefing', price: '12500', priceCurrency: 'USD' },
+    { '@type': 'Offer', name: 'Virtual keynote', price: '7500', priceCurrency: 'USD' },
+  ],
+};
 ---
 
 <BaseLayout
-  title="Book Edward Roske to Keynote | Roske.AI"
-  description="Book Edward Roske for your conference, corporate offsite, or executive event. Keynotes on AI, finance, and the Office of the CFO. Twenty-five years on stage. Fifty countries. Seven continents."
-  ogImage="/images/hero-speaking.png">
+  title="AI Keynote Speaker | Book Edward Roske"
+  description="Book Edward Roske: the AI practitioner for finance leaders. Keynotes from $15,000. 15 books, 50+ countries, all 7 continents, 8 speaker awards. Ships MCP servers for enterprise finance. Inquiries answered within one business day."
+  ogImage="/images/og-default.png">
 
-  <!-- Hero -->
-  <section class="relative py-20 md:py-28 px-6 overflow-hidden">
-    <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
-    <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
-    <div class="relative max-w-7xl mx-auto">
-      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-        <div class="flex-1 max-w-2xl text-center lg:text-left">
-          <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]"
-            style="animation: fadeInUp 0.6s ease-out forwards;">
-            Speaking
-          </p>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 dark:text-white text-[var(--color-primary)]"
-            style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0; font-family: var(--font-heading);">
-            Questions, not predictions.
-          </h1>
-          <p class="text-lg md:text-xl leading-relaxed mb-8 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
-            style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
-            A keynote for leaders inside an organization who care (or should) about AI. Dryly witty, with an overabundance of speaker awards to prove he can educate while keeping the audience entertained. A master's in data science and twenty-five years inside the Office of the CFO. Fifteen books written starting in 2007. A podcast built entirely around the questions executives are quietly asking themselves about AI. Over 200,000 subscribers to his YouTube channel focused on asking good questions.
-          </p>
-          <div class="flex flex-wrap gap-3 justify-center lg:justify-start"
-            style="animation: fadeInUp 0.6s ease-out 0.3s forwards; opacity: 0;">
-            <a href="#inquiry"
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
-              Book Edward
-            </a>
-            <a href="/meet/" target="_blank" rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5
-                dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/10
-                bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10">
-              Screening Call (30 min)
-            </a>
-          </div>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+  </Fragment>
+
+  <div class="spk">
+
+    <!-- ============ MASTHEAD ============ -->
+    <header class="spk-masthead">
+      <div class="spk-grain" aria-hidden="true"></div>
+      <div class="spk-wrap">
+        <p class="spk-kicker">Keynotes &middot; Executive Workshops &middot; Board Briefings</p>
+        <h1 class="spk-h1">
+          The AI practitioner<br />
+          <em>for finance leaders.</em>
+        </h1>
+        <p class="spk-lede">
+          Edward builds MCP servers that put AI agents inside Oracle EPM, runs his own day on
+          ten-plus agents, and spent twenty-five years in the Office of the CFO before AI was a
+          keynote topic. He's also, by most accounts, funny (the dry kind). Fifteen books,
+          fifty-plus countries on all seven continents, and an overabundance of speaker awards
+          to show the combination works.
+        </p>
+        <div class="spk-cta-row">
+          <a class="spk-btn spk-btn-primary" href="#inquiry">Check availability</a>
+          <a class="spk-btn spk-btn-ghost" href="#watch">Watch him speak</a>
         </div>
-        <div class="flex-shrink-0" style="animation: fadeInUp 0.8s ease-out 0.3s forwards; opacity: 0;">
-          <div class="relative">
-            <div class="absolute -inset-4 rounded-2xl bg-[var(--color-accent)]/10 blur-2xl"></div>
-            <img src="/images/hero-speaking.png"
-              alt="Edward Roske giving a keynote on a TED Talk stage with AI + FINANCE displayed behind him"
-              class="relative rounded-2xl w-full max-w-md lg:max-w-lg shadow-2xl ring-1 ring-white/10"
-              loading="eager" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats strip -->
-  <Section dark>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center">
-      {[
-        { value: "50+", label: "Countries Spoken In" },
-        { value: "7", label: "Continents" },
-        { value: "300+", label: "Keynotes & Sessions" },
-        { value: "25+", label: "Years on Stage" },
-        { value: "15", label: "Books, since 2007" },
-        { value: "2", label: "U.S. Patents" },
-      ].map(stat => (
-        <div class="animate-on-scroll">
-          <div class="text-4xl md:text-5xl font-black text-[var(--color-accent)] mb-2">{stat.value}</div>
-          <div class="text-sm dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] font-medium">{stat.label}</div>
-        </div>
-      ))}
-    </div>
-  </Section>
-
-  <!-- Why Book Edward -->
-  <Section title="Why Book Edward" subtitle="A speaker who's done the work the audience is asking about.">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <div class="animate-on-scroll">
-        <Card title="Twenty-five years in the Office of the CFO">
-          <p>Founded interRel at twenty-two, ran it for twenty-five years as one of the longest-standing Oracle Platinum EPM Partners, and merged it into Argano, a billion-dollar consulting firm. The audience's planning, consolidation, and analytics problems are problems Edward has actually shipped solutions for.</p>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="A data scientist, not a futurist">
-          <p>Master of Data Science from SMU (perfect 4.0 GPA, Outstanding Graduate). Currently building MCP servers that let AI agents read and write live finance data. The slides aren't theory, they're production.</p>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Author of fifteen books on enterprise analytics">
-          <p>The "Look Smarter Than You Are" series, written from 2007 to today, co-authored mostly with Tracy McMullen. Required reading inside a generation of finance and IT departments. Books that show up on bookshelves at the events Edward keynotes (sometimes the host doesn't realize that until the green room).</p>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Host of Asking Good Questions">
-          <p>The podcast where Edward interviews CFOs, CEOs, and AI leaders about the questions that don't make it into LinkedIn posts. Co-chair of the Caribbean AI Summit 2026. President of the Puerto Rico AI Community (850+ executives and growing). He talks to your audience for a living, not just at them.</p>
-        </Card>
-      </div>
-
-    </div>
-  </Section>
-
-  <!-- Signature Talks -->
-  <Section title="Signature Talks" subtitle="Four talks, each ninety minutes by default, scalable up or down. Customized to your audience after the screening call." dark>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-      <div class="animate-on-scroll">
-        <Card title="Answers to the Questions You've Been Quietly Asking Yourself About AI">
-          <p>A keynote for executives who are tired of generic AI predictions and want frameworks for the questions they're already wrestling with privately. Drawn from a hundred-plus episodes of Asking Good Questions and a portfolio of live AI deployments. Works as a keynote, a fireside chat, or the opening session of a multi-day executive offsite.</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">AI Strategy</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Executive Audience</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Keynote</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Fireside</span>
-          </div>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Business Leaders Guide to AI">
-          <p>AI is rewriting every process inside the company, from how finance closes the books to how marketing writes a brief to how engineering ships a feature. This keynote walks executives through what's actually changing, where to start (the highest-leverage pilots that won't blow up), and where to go next once the first wave lands. Built for leaders who have to make decisions on AI before they finish reading about it.</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">AI Leadership</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Where to Start</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Decision-Making</span>
-          </div>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Your Day, Run by Ten Agents">
-          <p>Edward's daily life runs on ten or more AI agents at all times: calendar, inbox, research, writing, code, decisions. The stack he actually uses, what each agent does, and how executives can assemble the same force multiplier for their own day. A talk for any leader still doing the work an agent could do for them. (A major force multiplier, with the receipts to back it up.)</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">AI Agents</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Force Multiplier</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Executive Audience</span>
-          </div>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Building a Company in the Era of AI">
-          <p>Founded interRel at twenty-two. Ran it for twenty-five years. Merged it into a billion-dollar firm. Now building Caprus, an AI software and services company built for the Office of the CFO. A keynote for founders and operators on how building an organization changes when AI is rewriting the underlying business model.</p>
-          <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Founders</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Operators</span>
-            <span class="px-2 py-1 rounded text-xs font-[var(--font-mono)] dark:bg-white/5 dark:text-[var(--color-accent)] bg-[var(--color-accent)]/10 text-[var(--color-accent)]">Strategy</span>
-          </div>
-        </Card>
-      </div>
-
-    </div>
-  </Section>
-
-  <!-- What You Get -->
-  <Section title="What You Get" subtitle="When booking Edward, you're also booking an event campaign.">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-      <div class="animate-on-scroll">
-        <Card title="The Keynote">
-          <p>One signature talk, customized to your audience after a working call with you (or your program chair). Includes a tech check the day before, a full rehearsal if you want one, and a Q&A or panel slot if it fits the format. Edward arrives early and stays for the hallway track.</p>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="A Podcast Appearance">
-          <p>An invited guest slot on Asking Good Questions, scheduled around your event. Your CEO or another C-level exec, your keynote, or a key customer of yours sits down with Edward for a conversation that goes out to the podcast audience and lives on Apple, Spotify, Amazon, and YouTube. Often runs the same week as the event.</p>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Thirty Days of Amplification">
-          <p>If your event is public, a month of LinkedIn and X posts from Edward to a built-in audience of CFOs, CIOs, and AI operators. Event teasers before, recap takeaways after. Your event will also be mentioned for a month as a sponsor of Edward's YouTube posts, which reach an audience of over 200,000 subscribers.</p>
-        </Card>
-      </div>
-
-    </div>
-  </Section>
-
-  <!-- Inquiry Form + Screening Call -->
-  <Section id="inquiry" dark>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
-      <div class="animate-on-scroll">
-        <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">Speaking Inquiry</h2>
-        <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-8">
-          The more you tell Edward up front, the faster the screening call goes. Required fields are marked. Everything else helps him tailor the pitch.
+        <p class="spk-terms">
+          Keynotes from $15,000 &middot; Inquiries answered within one business day
         </p>
 
-        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-5"
-          {...{"toolname": "speaking-inquiry-edward-roske", "tooldescription": "Submit a speaking engagement inquiry for Edward Roske. Use for keynote, fireside, workshop, or panel requests at conferences, corporate offsites, and executive events."}}>
-          <input type="hidden" name="access_key" value="927fd498-3a0f-470c-89af-80a8558e8530" />
-          <input type="hidden" name="subject" value="New speaking inquiry from roske.ai/speaking" />
-          <input type="hidden" name="from_name" value="Speaking Inquiry" />
-          <input type="hidden" name="redirect" value="https://roske.ai/speaking/?inquiry=received" />
+        <dl class="spk-stats">
+          <div><dt>50+</dt><dd>Countries spoken in</dd></div>
+          <div><dt>7</dt><dd>Continents (yes, Antarctica)</dd></div>
+          <div><dt>300+</dt><dd>Keynotes and sessions</dd></div>
+          <div><dt>15</dt><dd>Books since 2007</dd></div>
+          <div><dt>8</dt><dd>Speaker awards</dd></div>
+        </dl>
+      </div>
+    </header>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div>
-              <label for="name" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Your name *</label>
-              <input type="text" id="name" name="name" required
-                class="w-full px-4 py-3 rounded-lg border transition-colors
-                  dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
-                  bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
-                  focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20" />
-            </div>
-            <div>
-              <label for="email" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Email *</label>
-              <input type="email" id="email" name="email" required
-                class="w-full px-4 py-3 rounded-lg border transition-colors
-                  dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
-                  bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
-                  focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20" />
-            </div>
-          </div>
+    <!-- ============ PROOF BAR ============ -->
+    <section class="spk-proof" aria-label="Awards and stages">
+      <div class="spk-wrap">
+        <div class="spk-awards">
+          <p><strong>ODTUG Lifetime Achievement Award</strong> (2025, fewer than five people have ever received one)</p>
+          <p><strong>Six Top Speaker awards. Two Best Overall Speaker awards.</strong> Across major industry conferences.</p>
+          <p><strong>Essbase Speaker of the Year</strong> (Kscope18), plus the first perfect score ever on the Essbase certification exam.</p>
+        </div>
+        <div class="spk-stages">
+          <span class="spk-stages-label">Stages</span>
+          <ul>
+            {stages.map((s) => <li>{s}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div>
-              <label for="organization" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Organization *</label>
-              <input type="text" id="organization" name="organization" required
-                class="w-full px-4 py-3 rounded-lg border transition-colors
-                  dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
-                  bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
-                  focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20" />
-            </div>
-            <div>
-              <label for="event_name" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Event name *</label>
-              <input type="text" id="event_name" name="event_name" required
-                class="w-full px-4 py-3 rounded-lg border transition-colors
-                  dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
-                  bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
-                  focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20" />
-            </div>
-          </div>
+    <!-- ============ WATCH ============ -->
+    <section id="watch" class="spk-section">
+      <div class="spk-wrap">
+        <p class="spk-eyebrow">The footage</p>
+        <h2 class="spk-h2">See him on a real stage.</h2>
+        <p class="spk-deck">
+          No sizzle-reel tricks, no stock crowd shots. Actual conference footage, the way an
+          event planner would want to check it.
+        </p>
+        <div class="spk-videos">
+          {videos.map((v, i) => (
+            <figure class={`spk-video ${i === 0 ? 'spk-video-feature' : ''}`}>
+              <button
+                type="button"
+                class="spk-video-facade"
+                data-video-id={v.id}
+                data-video-title={v.title}
+                aria-label={`Play video: ${v.title}`}>
+                <img
+                  src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+                  alt={`Video thumbnail: ${v.title}`}
+                  loading="lazy"
+                  decoding="async" />
+                <span class="spk-play" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </button>
+              <figcaption>
+                <strong>{v.title}</strong>
+                <span>{v.where}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div>
-              <label for="event_date" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Event date *</label>
-              <input type="date" id="event_date" name="event_date" required
-                class="w-full px-4 py-3 rounded-lg border transition-colors
-                  dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
-                  bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
-                  focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20" />
-            </div>
-            <div>
-              <label for="location" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Location *</label>
-              <input type="text" id="location" name="location" required placeholder="City, country, or virtual"
-                class="w-full px-4 py-3 rounded-lg border transition-colors
-                  dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:placeholder-[var(--color-text-muted)]/40 dark:focus:border-[var(--color-accent)]
-                  bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] placeholder-[var(--color-text-dark-muted)]/40 focus:border-[var(--color-accent)]
-                  focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20" />
-            </div>
-          </div>
+    <!-- ============ TALKS ============ -->
+    <section class="spk-section spk-section-alt">
+      <div class="spk-wrap">
+        <p class="spk-eyebrow">Signature talks</p>
+        <h2 class="spk-h2">Four talks. Zero recycled decks.</h2>
+        <p class="spk-deck">
+          Edward rebuilds every talk for your audience after a working call with you. Identical talks
+          for different rooms is how speakers end up on the "never again" list, and Edward would
+          rather stay off it.
+        </p>
+        <div class="spk-talks">
+          {talks.map((t) => (
+            <article class="spk-talk">
+              <div class="spk-talk-head">
+                <span class="spk-talk-num">{t.num}</span>
+                <div class="spk-talk-tags">
+                  {t.tags.map((tag) => <span>{tag}</span>)}
+                </div>
+              </div>
+              <h3 class="spk-talk-title">{t.title}</h3>
+              <p class="spk-talk-aud">{t.audience}</p>
+              <p class="spk-talk-body">{t.description}</p>
+              <div class="spk-talk-outcomes">
+                <span class="spk-talk-outcomes-label">The room walks away with</span>
+                <ul>
+                  {t.walkaway.map((w) => <li>{w}</li>)}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div>
-              <label for="audience_size" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Expected audience size</label>
-              <select id="audience_size" name="audience_size"
-                class="w-full px-4 py-3 rounded-lg border transition-colors
-                  dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
-                  bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
-                  focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20">
-                <option value="">Select</option>
-                <option value="under-50">Under 50</option>
-                <option value="50-200">50 to 200</option>
-                <option value="200-500">200 to 500</option>
-                <option value="500-1500">500 to 1,500</option>
-                <option value="1500+">1,500+</option>
-              </select>
-            </div>
-            <div>
-              <label for="format" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Requested format</label>
-              <select id="format" name="format"
-                class="w-full px-4 py-3 rounded-lg border transition-colors
-                  dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
-                  bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
-                  focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20">
-                <option value="">Select</option>
-                <option value="keynote">Keynote</option>
-                <option value="fireside">Fireside chat</option>
-                <option value="workshop">Workshop</option>
-                <option value="panel">Panel</option>
-                <option value="virtual">Virtual session</option>
-                <option value="other">Other / not sure</option>
-              </select>
-            </div>
-          </div>
+    <!-- ============ FORMATS & FEES ============ -->
+    <section class="spk-section">
+      <div class="spk-wrap">
+        <p class="spk-eyebrow">Formats and fees</p>
+        <h2 class="spk-h2">Pick a format. The fee is right there.</h2>
+        <p class="spk-deck">
+          Published fees save both of us a discovery call about money. Terms: 50% deposit at
+          signing, balance 30 days before the event. Domestic travel is a flat buyout
+          (nobody enjoys receipts).
+        </p>
+        <div class="spk-formats">
+          {formats.map((f) => (
+            <article class="spk-format">
+              <h3>{f.name}</h3>
+              <p class="spk-format-price">{f.price}</p>
+              <p class="spk-format-detail">{f.detail}</p>
+              {f.href && <a class="spk-textlink" href={f.href}>{f.linkText}</a>}
+            </article>
+          ))}
+        </div>
+        <p class="spk-fineprint">
+          Keynote plus workshop on the same trip bundles at $30,000. Exclusivity clauses,
+          recording licenses, and hybrid formats are quoted per event.
+        </p>
+      </div>
+    </section>
 
+    <!-- ============ WHAT YOU GET ============ -->
+    <section class="spk-section spk-section-alt">
+      <div class="spk-wrap">
+        <p class="spk-eyebrow">What you get</p>
+        <h2 class="spk-h2">Booking Edward books an event campaign.</h2>
+        <div class="spk-bundle">
+          <article>
+            <h3>The talk, customized</h3>
+            <p>A working call with you before anything gets written. Tech check the day before, full rehearsal if you want one, Q&A or panel slot if it fits the format. Edward arrives early and stays for the hallway track.</p>
+          </article>
+          <article>
+            <h3>A podcast appearance</h3>
+            <p>An invited guest slot on Asking Good Questions, scheduled around your event. Your CEO, your keynote, or a key customer sits down with Edward for a conversation that lives on Apple, Spotify, Amazon, and YouTube.</p>
+          </article>
+          <article>
+            <h3>Thirty days of amplification</h3>
+            <p>If your event is public: a month of LinkedIn and X posts to a built-in audience of CFOs, CIOs, and AI operators, plus a month of mentions on Edward's YouTube channel and its 200,000+ subscribers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LIVE DEMO ============ -->
+    <section class="spk-demo">
+      <div class="spk-grain" aria-hidden="true"></div>
+      <div class="spk-wrap">
+        <p class="spk-eyebrow spk-eyebrow-invert">The live demo</p>
+        <h2 class="spk-h2 spk-h2-invert">This website rebuilds itself every Saturday.</h2>
+        <p class="spk-demo-body">
+          Edward's AI agents redesign roske.ai every week: new theme, new imagery, new layout,
+          researched, built, tested, and deployed while he sleeps. If someone's going to stand
+          on your stage and talk about AI agents, he should probably be able to show you his.
+          Edward's are running this website right now, which is either commitment or negligence,
+          depending on the week's theme. It's the standing proof behind his most-booked talk,
+          "Your Day, Run by Ten Agents."
+        </p>
+      </div>
+    </section>
+
+    <!-- ============ PLANNER KIT ============ -->
+    <section class="spk-section">
+      <div class="spk-wrap spk-kitrow">
+        <div>
+          <p class="spk-eyebrow">For your committee</p>
+          <h2 class="spk-h2">Everything a program chair needs, one page.</h2>
+          <p class="spk-deck">
+            Bios in three lengths, downloadable headshots, a 75-word emcee intro, A/V needs, and
+            the one-pager PDF. Built to be forwarded, since speaker decisions average two to five
+            people (and at least one of them will only read the PDF).
+          </p>
+        </div>
+        <div class="spk-kitlinks">
+          <a class="spk-btn spk-btn-primary" href="/speaker-kit/">Open the speaker kit</a>
+          <a class="spk-btn spk-btn-ghost" href="/downloads/edward-roske-speaker-onepager.pdf" target="_blank" rel="noopener">Download the one-pager (PDF)</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INQUIRY ============ -->
+    <section id="inquiry" class="spk-section spk-section-alt">
+      <div class="spk-wrap">
+        <div class="spk-inquiry-grid">
           <div>
-            <label for="audience_profile" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Audience profile</label>
-            <input type="text" id="audience_profile" name="audience_profile" placeholder="CFOs, finance leaders, AI operators, founders, board members..."
-              class="w-full px-4 py-3 rounded-lg border transition-colors
-                dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:placeholder-[var(--color-text-muted)]/40 dark:focus:border-[var(--color-accent)]
-                bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] placeholder-[var(--color-text-dark-muted)]/40 focus:border-[var(--color-accent)]
-                focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20" />
+            <p class="spk-eyebrow">Check availability</p>
+            <h2 class="spk-h2">Tell Edward about the room.</h2>
+            <p class="spk-deck">
+              Date not locked yet? Send it anyway. Speaking inquiries are answered within one
+              business day, usually faster (the inbox is run by agents, and they don't sleep either).
+            </p>
+
+            <form action="https://api.web3forms.com/submit" method="POST" class="spk-form"
+              {...{"toolname": "speaking-inquiry-edward-roske", "tooldescription": "Submit a speaking engagement inquiry for Edward Roske. Use for keynote, fireside, workshop, board briefing, or panel requests at conferences, corporate offsites, and executive events."}}>
+              <input type="hidden" name="access_key" value="927fd498-3a0f-470c-89af-80a8558e8530" />
+              <input type="hidden" name="subject" value="New speaking inquiry from roske.ai/speaking" />
+              <input type="hidden" name="from_name" value="Speaking Inquiry" />
+              <input type="hidden" name="page" value="/speaking" />
+              <input type="hidden" name="redirect" value="https://roske.ai/speaking/?inquiry=received" />
+
+              <div class="spk-form-row">
+                <label>Your name *
+                  <input type="text" name="name" required autocomplete="name" />
+                </label>
+                <label>Email *
+                  <input type="email" name="email" required autocomplete="email" />
+                </label>
+              </div>
+
+              <div class="spk-form-row">
+                <label>Organization *
+                  <input type="text" name="organization" required autocomplete="organization" />
+                </label>
+                <label>What kind of session?
+                  <select name="format">
+                    <option value="">Select</option>
+                    <option value="keynote">Keynote</option>
+                    <option value="fireside">Fireside chat</option>
+                    <option value="workshop">Executive workshop</option>
+                    <option value="board-briefing">Board briefing</option>
+                    <option value="panel">Panel</option>
+                    <option value="virtual">Virtual session</option>
+                    <option value="other">Other / not sure yet</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="spk-form-row">
+                <label>Event name
+                  <input type="text" name="event_name" />
+                </label>
+                <label>Event date (or best guess)
+                  <input type="text" name="event_date" placeholder="March 2027, Q1, or an exact date" />
+                </label>
+              </div>
+
+              <div class="spk-form-row">
+                <label>Location
+                  <input type="text" name="location" placeholder="City, country, or virtual" />
+                </label>
+                <label>Budget range
+                  <select name="budget">
+                    <option value="">Select</option>
+                    <option value="under-15k">Under $15K</option>
+                    <option value="15-25k">$15K to $25K</option>
+                    <option value="25-40k">$25K to $40K</option>
+                    <option value="40k+">$40K+</option>
+                    <option value="discuss">Prefer to discuss</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>The audience, and what you want them to walk away with
+                <textarea name="notes" rows="4" placeholder="CFOs? Founders? A sales team that just got an AI mandate? Tell Edward about the room."></textarea>
+              </label>
+
+              <div class="spk-honeypot"><input type="text" name="botcheck" tabindex="-1" autocomplete="off" /></div>
+
+              <button type="submit" class="spk-btn spk-btn-primary spk-btn-wide">Send inquiry</button>
+              <p class="spk-form-sla">Answered within one business day.</p>
+            </form>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div>
-              <label for="budget" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Budget range</label>
-              <select id="budget" name="budget"
-                class="w-full px-4 py-3 rounded-lg border transition-colors
-                  dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:focus:border-[var(--color-accent)]
-                  bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] focus:border-[var(--color-accent)]
-                  focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20">
-                <option value="">Select</option>
-                <option value="under-15k">Under $15K</option>
-                <option value="15-25k">$15K to $25K</option>
-                <option value="25-40k">$25K to $40K</option>
-                <option value="40k+">$40K+</option>
-                <option value="discuss">Prefer to discuss</option>
-              </select>
+          <aside class="spk-inquiry-side">
+            <div class="spk-sidecard spk-sidecard-hot">
+              <h3>Or skip the form entirely</h3>
+              <p>Thirty minutes with Edward. Walk through the event, the audience, the outcome you want. Leave with a recommended talk and a date hold.</p>
+              <a class="spk-btn spk-btn-primary" href="/meet/" target="_blank" rel="noopener noreferrer">Book a screening call</a>
             </div>
-            <div>
-              <label for="event_url" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Event page (optional)</label>
-              <input type="url" id="event_url" name="event_url" placeholder="https://"
-                class="w-full px-4 py-3 rounded-lg border transition-colors
-                  dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:placeholder-[var(--color-text-muted)]/40 dark:focus:border-[var(--color-accent)]
-                  bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] placeholder-[var(--color-text-dark-muted)]/40 focus:border-[var(--color-accent)]
-                  focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20" />
+            <div class="spk-sidecard">
+              <h3>Direct email</h3>
+              <p>If you'd rather just write, write.</p>
+              <a class="spk-textlink" href="mailto:Edward@Roske.AI?subject=Speaking%20Inquiry">Edward@Roske.AI</a>
             </div>
-          </div>
-
-          <div>
-            <label for="notes" class="block text-sm font-medium mb-2 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">Notes</label>
-            <textarea id="notes" name="notes" rows="4" placeholder="Theme of the event, what you want the audience to walk away with, anything Edward should know about the room..."
-              class="w-full px-4 py-3 rounded-lg border transition-colors resize-y
-                dark:bg-white/5 dark:border-[var(--color-border)] dark:text-white dark:placeholder-[var(--color-text-muted)]/40 dark:focus:border-[var(--color-accent)]
-                bg-white border-[var(--color-border-light)] text-[var(--color-text-dark)] placeholder-[var(--color-text-dark-muted)]/40 focus:border-[var(--color-accent)]
-                focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)]/20"></textarea>
-          </div>
-
-          <!-- Honeypot -->
-          <div class="hidden">
-            <input type="text" name="botcheck" />
-          </div>
-
-          <button type="submit"
-            class="w-full px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
-            Send Inquiry
-          </button>
-        </form>
-      </div>
-
-      <div class="space-y-6">
-        <div class="animate-on-scroll rounded-xl p-6
-          dark:bg-gradient-to-br dark:from-[var(--color-accent)]/[0.10] dark:to-white/[0.02] dark:border dark:border-[var(--color-accent)]/25
-          bg-gradient-to-br from-[var(--color-accent)]/[0.08] to-white border border-[var(--color-accent)]/20">
-          <h3 class="text-xl font-bold mb-2 dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">Or book a screening call</h3>
-          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-5 text-sm leading-relaxed">
-            Thirty minutes with Edward. Walk through the event, the audience, the outcome you want. Leave with a recommended talk, a date hold, and a clean follow-up. Often faster than a back-and-forth over email.
-          </p>
-          <a href="/meet/" target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent-hover)] transition-colors">
-            Book Screening Call
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
-        </div>
-
-        <div class="animate-on-scroll rounded-xl p-6 dark:bg-white/[0.03] dark:border dark:border-white/[0.06] bg-white border border-black/[0.06]">
-          <h3 class="text-lg font-bold mb-2 dark:text-white text-[var(--color-primary)]">Speaker one-pager</h3>
-          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm mb-4 leading-relaxed">
-            Bio, headshot, signature topics, audio/visual requirements, and recent speaking history. Built for program chairs and selection committees.
-          </p>
-          <a href="/downloads/edward-roske-speaker-onepager.pdf" target="_blank" rel="noopener"
-            class="inline-flex items-center gap-2 text-[var(--color-accent)] hover:underline text-sm font-medium font-[var(--font-mono)]">
-            Download PDF
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-          </a>
-        </div>
-
-        <div class="animate-on-scroll rounded-xl p-6 dark:bg-white/[0.03] dark:border dark:border-white/[0.06] bg-white border border-black/[0.06]">
-          <h3 class="text-lg font-bold mb-2 dark:text-white text-[var(--color-primary)]">Direct email</h3>
-          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm mb-3 leading-relaxed">
-            If you'd rather skip the form, write Edward directly.
-          </p>
-          <a href="mailto:Edward@Roske.AI?subject=Speaking%20Inquiry" class="text-[var(--color-accent)] hover:underline font-[var(--font-mono)] text-sm">Edward@Roske.AI</a>
+            <div class="spk-sidecard">
+              <h3>Working with a bureau?</h3>
+              <p>Edward books non-exclusively and honors bureau relationships. Same fees either way.</p>
+            </div>
+          </aside>
         </div>
       </div>
+    </section>
 
-    </div>
-  </Section>
-
-  <!-- Selected History -->
-  <Section title="Selected Speaking History" subtitle="A partial list. The full one would need pagination.">
-    <div class="max-w-3xl space-y-0">
-      {[
-        { event: "Caribbean AI Summit", detail: "Co-chair. October 9-10, 2026, Puerto Rico Convention Center. The largest AI conference Puerto Rico has ever seen.", year: "2026" },
-        { event: "Puerto Rico AI Community", detail: "President and regular presenter. 850+ executives across the meetup series. Bimonthly in San Juan.", year: "2024-Present" },
-        { event: "Kscope (ODTUG)", detail: "Speaker since 2008. Conference Chair 2011-2012. Essbase Speaker of the Year 2018. Lifetime Achievement Award 2025.", year: "2008-2025" },
-        { event: "Oracle International Speaking Tours", detail: "Touring 50+ countries across all 7 continents. Training, keynotes, and workshops.", year: "2008-2023" },
-        { event: "Oracle OpenWorld / CloudWorld", detail: "Regular speaker. San Francisco, Las Vegas, and international editions.", year: "2000s-2020s" },
-        { event: "COLLABORATE (IOUG/OAUG)", detail: "One of the original Oracle user group super-speakers. National and international events.", year: "2000s-2010s" },
-      ].map((item, i, arr) => (
-        <div class="animate-on-scroll flex gap-6 md:gap-8 group">
-          <div class="flex flex-col items-center">
-            <div class="w-3 h-3 rounded-full bg-[var(--color-accent)] group-hover:scale-125 transition-transform mt-2"></div>
-            {i < arr.length - 1 && <div class="w-px flex-1 dark:bg-[var(--color-border)] bg-[var(--color-border-light)] mt-2"></div>}
-          </div>
-          <div class="pb-10">
-            <div class="text-sm font-[var(--font-mono)] text-[var(--color-accent)] mb-1">{item.year}</div>
-            <h3 class="text-lg font-bold dark:text-white text-[var(--color-primary)] mb-1">{item.event}</h3>
-            <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">{item.detail}</p>
-          </div>
+    <!-- ============ HISTORY ============ -->
+    <section class="spk-section">
+      <div class="spk-wrap">
+        <p class="spk-eyebrow">Selected history</p>
+        <h2 class="spk-h2">A partial list.</h2>
+        <p class="spk-deck">The full one would need pagination.</p>
+        <div class="spk-history">
+          {history.map((h) => (
+            <div class="spk-history-row">
+              <span class="spk-history-year">{h.year}</span>
+              <div>
+                <h3>{h.event}</h3>
+                <p>{h.detail}</p>
+              </div>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </Section>
-
-  <!-- Final CTA -->
-  <Section dark>
-    <div class="animate-on-scroll text-center max-w-2xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
-        Book Edward to Keynote
-      </h2>
-      <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-8 text-lg">
-        Keynotes, panels, workshops, and fireside chats. Edward travels anywhere. (He has spoken on every continent including Antarctica, so honestly, anywhere.)
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <a href="#inquiry"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
-          Send Inquiry
-        </a>
-        <a href="/meet/" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5
-            dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/10
-            bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10">
-          Screening Call (30 min)
-        </a>
       </div>
-    </div>
-  </Section>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="spk-section spk-section-alt">
+      <div class="spk-wrap spk-faq-wrap">
+        <p class="spk-eyebrow">Good questions</p>
+        <h2 class="spk-h2">What planners ask before booking.</h2>
+        <div class="spk-faq">
+          {faqs.map((f) => (
+            <details class="spk-faq-item">
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLOSING ============ -->
+    <section class="spk-closing">
+      <div class="spk-grain" aria-hidden="true"></div>
+      <div class="spk-wrap">
+        <h2 class="spk-h2 spk-h2-invert">Your audience has AI questions.<br /><em>Book the person who ships answers.</em></h2>
+        <div class="spk-cta-row spk-cta-center">
+          <a class="spk-btn spk-btn-light" href="#inquiry">Check availability</a>
+          <a class="spk-btn spk-btn-ghost-invert" href="/meet/" target="_blank" rel="noopener noreferrer">Screening call (30 min)</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+    // Click-to-load YouTube facades (perf: no iframe until requested)
+    document.addEventListener('astro:page-load', () => {
+      document.querySelectorAll('.spk-video-facade').forEach((btn) => {
+        if (btn.dataset.bound) return;
+        btn.dataset.bound = '1';
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.videoId;
+          const title = btn.dataset.videoTitle || 'Video';
+          const iframe = document.createElement('iframe');
+          iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+          iframe.title = title;
+          iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+          iframe.allowFullscreen = true;
+          iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;';
+          btn.parentElement.style.position = 'relative';
+          btn.replaceWith(iframe);
+        });
+      });
+    });
+  </script>
 
 </BaseLayout>
-
-<style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-</style>

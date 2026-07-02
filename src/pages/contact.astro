@@ -20,13 +20,10 @@ import Section from '../components/Section.astro';
         <div class="flex-shrink-0" style="animation: fadeInUp 0.8s ease-out 0.3s forwards; opacity: 0;">
           <div class="relative">
             <div class="absolute -inset-4 rounded-2xl bg-[var(--color-accent)]/10 blur-2xl"></div>
-            <picture>
-              <source srcset="/images/hero-contact.webp" type="image/webp" />
-              <img src="/images/hero-contact.png"
-                alt="Edward Roske standing next to a red British phone booth in the middle of a desert, gesturing as if to say 'Call me'"
-                class="relative rounded-2xl w-full max-w-sm lg:max-w-md shadow-2xl ring-1 ring-white/10"
-                loading="eager" />
-            </picture>
+            <img src="/images/hero-contact.png"
+              alt="Edward Roske standing next to a red British phone booth in the middle of a desert, gesturing as if to say 'Call me'"
+              class="relative rounded-2xl w-full max-w-sm lg:max-w-md shadow-2xl ring-1 ring-white/10"
+              loading="eager" />
           </div>
         </div>
       </div>
@@ -74,6 +71,9 @@ import Section from '../components/Section.astro';
               <option value="partnership">Partnership / Business</option>
               <option value="media">Media / Interview</option>
             </select>
+            <p class="mt-2 text-xs dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
+              Speaking engagement? The <a href="/speaking/#inquiry" class="text-[var(--color-accent)] hover:underline">speaking inquiry form</a> gets you an answer faster (it asks about the event up front).
+            </p>
           </div>
 
           <div>
@@ -99,6 +99,20 @@ import Section from '../components/Section.astro';
 
       <!-- Sidebar -->
       <div class="space-y-8">
+        <div class="animate-on-scroll rounded-xl p-6 border-2 border-[var(--color-accent)]
+          dark:bg-[var(--color-accent)]/[0.08] bg-[var(--color-accent)]/[0.05]">
+          <h3 class="text-lg font-bold mb-2 dark:text-white text-[var(--color-primary)]">Booking Edward to speak?</h3>
+          <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm mb-4">
+            Skip this form. The speaking page has talks, fees, real stage footage, and an inquiry
+            form that asks the right questions. Answered within one business day.
+          </p>
+          <a href="/speaking/"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--color-accent)] text-white text-sm font-medium hover:bg-[var(--color-accent-hover)] transition-colors">
+            Go to Speaking
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+          </a>
+        </div>
+
         <div class="animate-on-scroll rounded-xl p-6
           dark:bg-gradient-to-br dark:from-[var(--color-accent)]/[0.08] dark:to-white/[0.02] dark:border dark:border-[var(--color-accent)]/20
           bg-gradient-to-br from-[var(--color-accent)]/[0.06] to-white border border-[var(--color-accent)]/15">

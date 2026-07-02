@@ -1,15 +1,686 @@
 ---
-// Redirect stub: /resume/ -> /about/#resume
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// PERMANENT PAGE: the interactive resume/CV (see CLAUDE.md site structure).
+// Theme-aware by design: every color and font comes from the global theme
+// variables (--color-*, --font-*) set in BaseLayout, so this page re-skins
+// itself with each week's theme. Weekly rebuilds must NOT restructure it.
+// All facts, dates, and copy mirror the resume data on /about/ exactly.
+
+const roles = [
+  { role: "CEO", company: "Dawnward", period: "2023 - Present", desc: "Edward's investment firm. Portfolio across AI, technology, and strategic ventures." },
+  { role: "Investor & Contributor", company: "Caprus", period: "2023 - Present", desc: "AI Software & Services firm helping finance teams leverage artificial intelligence for planning, analytics, and operations." },
+  { role: "Co-founder & Stakeholder", company: "Argano", period: "2020 - Present", desc: "Billion-dollar global consulting firm. Formed through the merger of interRel Consulting (which Edward founded in 1997 and led for 25 years) with several other firms." },
+  { role: "Co-chair", company: "Caribbean AI Summit", period: "2025 - Present", desc: "Co-chairing the Caribbean AI Summit (October 9-10, 2026, Puerto Rico Convention Center), the largest AI conference Puerto Rico has ever seen." },
+  { role: "President", company: "Puerto Rico AI Community", period: "2024 - Present", desc: "Leading the island's AI community. 850+ attendees across bimonthly events." },
+];
+
+const timeline = [
+  { year: "2026", title: "Caribbean AI Summit", desc: "Co-chairing the largest AI conference Puerto Rico has ever seen. Puerto Rico Convention Center, October 9-10." },
+  { year: "2025", title: "ODTUG Lifetime Achievement", desc: "Received the award at Kscope25. Fewer than 5 people have ever received it. Announced as my final Kscope." },
+  { year: "2023", title: "Launched AI Ventures", desc: "Left Argano. Founded Roske.AI. Invested in Caprus. Started coding MCP servers." },
+  { year: "2021", title: "MS Data Science, SMU", desc: "Perfect 4.0 GPA. Outstanding Graduate. Decided to get serious about the 'science' in 'Data Science.'" },
+  { year: "2020", title: "Merged interRel into Argano", desc: "After 25 years, merged interRel to help form Argano, now a billion-dollar global consulting firm. Served as CEO of ArganoInterRel, then Chief Performance Officer." },
+  { year: "2018", title: "Essbase Speaker of the Year", desc: "Kscope18. Also: first perfect score ever on the Essbase Certification exam." },
+  { year: "2016", title: "BA from Shimer College", desc: "Finally finished the degree I started at 15. (College Calculus and Computer Science at 15. Full-time at Simon's Rock of Bard College at 16. Took a 20-year detour through entrepreneurship before finishing.)" },
+  { year: "2008", title: "First 'Look Smarter' Book", desc: "Started co-authoring the 'Look Smarter Than You Are' series. 15 books total. All before generative AI existed. (Brag.)" },
+  { year: "1997", title: "Founded interRel Consulting", desc: "Age 22. Built it into the longest-standing Oracle Platinum EPM Partner worldwide. Five-time Oracle Partner of the Year." },
+  { year: "1995", title: "Started in Analytics", desc: "Senior Analytics Consultant at Technium/Pinnacle. Where the Essbase obsession began." },
+];
+
+const education = [
+  { role: "Master of Science in Data Science", company: "SMU", period: "2019 - 2021", desc: "Perfect 4.0 GPA. Outstanding Graduate Award. Focus on machine learning, statistical modeling, and applied data science." },
+  { role: "Bachelor of Arts", company: "Shimer College", period: "2016", desc: "Great Books curriculum. Started college part-time at 15 (Calculus, Computer Science). Full-time at Simon's Rock of Bard College at 16. Finished after a 20-year detour through entrepreneurship." },
+];
+
+const expertise = [
+  { area: "AI & Machine Learning", skills: "MCP Servers, AI Agents, LLMs, NLP, Computer Vision, Deep Learning, Prompt Engineering" },
+  { area: "Enterprise Finance", skills: "Oracle EPM, Essbase, Planning, HFM, Financial Consolidation, Budgeting & Forecasting" },
+  { area: "Data Science", skills: "Python, R, SQL, Statistical Modeling, Machine Learning, Data Visualization, ETL" },
+  { area: "Leadership", skills: "Company Building, M&A, Strategic Planning, Public Speaking, Team Building, Board Governance" },
+];
+
+const awards = [
+  { award: "ODTUG Lifetime Achievement Award", detail: "Fewer than 5 recipients ever", year: "2025" },
+  { award: "Essbase Speaker of the Year", detail: "Kscope18, voted by attendees", year: "2018" },
+  { award: "Oracle ACE Director", detail: "Held for 15+ years. Oracle's highest community recognition", year: "2008 - Present" },
+  { award: "Five-Time Oracle Partner of the Year", detail: "Through interRel Consulting", year: "Multiple" },
+  { award: "First Perfect Essbase Certification Score", detail: "First person to score perfectly on the exam", year: "Historic" },
+  { award: "Kscope Conference Chair", detail: "ODTUG Board Member", year: "2011 - 2012" },
+  { award: "Two US Patents", detail: "#5836617, #5848810, custom postage stamp technology", year: "1998" },
+];
+
+const stats = [
+  { value: "30", label: "Years building things" },
+  { value: "15", label: "Books written" },
+  { value: "50+", label: "Countries spoken in" },
+  { value: "7", label: "Continents (yes, Antarctica)" },
+  { value: "2", label: "US patents" },
+];
+
+const sections = [
+  { num: "01", id: "roles", title: "Current Roles" },
+  { num: "02", id: "timeline", title: "Career Timeline" },
+  { num: "03", id: "education", title: "Education" },
+  { num: "04", id: "expertise", title: "Expertise" },
+  { num: "05", id: "awards", title: "Awards & Recognition" },
+];
 ---
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>Redirecting to About</title>
-  <link rel="canonical" href="/about/#resume" />
-  <meta http-equiv="refresh" content="0;url=/about/#resume" />
-</head>
-<body>
-  <script is:inline>window.location.replace('/about/#resume');</script>
-  <p>This page has moved to <a href="/about/#resume">/about/#resume</a>.</p>
-</body>
-</html>
+
+<BaseLayout
+  title="Resume | Edward Roske"
+  description="The resume: 30 years building companies, 15 books, 50+ countries on all 7 continents, 2 patents. Current roles, career timeline, education, expertise, and awards.">
+
+  <div class="rsm">
+
+    <!-- ============ MASTHEAD ============ -->
+    <header class="rsm-masthead">
+      <div class="rsm-grain" aria-hidden="true"></div>
+      <div class="rsm-wrap rsm-masthead-grid">
+        <div class="rsm-masthead-main">
+          <p class="rsm-kicker">The resume</p>
+          <h1 class="rsm-name">Edward Roske</h1>
+          <p class="rsm-role">CEO. Speaker. Data Scientist. Dungeon Master.</p>
+          <p class="rsm-lede">
+            I started college at 15, founded my first company at 22, and spent the next 30 years
+            building things and talking about them in 50+ countries across all 7 continents.
+            Wrote 15 books. Convinced Oracle to send a shy introvert around the world for
+            15 years. Now I run AI companies from San Juan, Puerto Rico.
+          </p>
+          <p class="rsm-meta">
+            <span>San Juan, Puerto Rico</span>
+            <span class="rsm-meta-sep" aria-hidden="true">|</span>
+            <a href="mailto:Edward@Roske.AI">Edward@Roske.AI</a>
+            <span class="rsm-meta-sep" aria-hidden="true">|</span>
+            <a href="https://www.linkedin.com/in/interrel/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </p>
+        </div>
+        <nav class="rsm-index" aria-label="Resume sections">
+          <span class="rsm-index-label">Contents</span>
+          <ol>
+            {sections.map((s) => (
+              <li>
+                <a href={`#${s.id}`}><span>{s.num}</span>{s.title}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      </div>
+      <div class="rsm-wrap">
+        <dl class="rsm-stats">
+          {stats.map((s) => (
+            <div><dt>{s.value}</dt><dd>{s.label}</dd></div>
+          ))}
+        </dl>
+      </div>
+    </header>
+
+    <!-- ============ 01 CURRENT ROLES ============ -->
+    <section id="roles" class="rsm-section">
+      <div class="rsm-wrap rsm-section-grid">
+        <div class="rsm-section-label animate-on-scroll">
+          <span class="rsm-num">01</span>
+          <h2>Current Roles</h2>
+          <p class="rsm-aside">All five at once (the agents help).</p>
+        </div>
+        <div class="rsm-section-body animate-on-scroll">
+          {roles.map((item) => (
+            <article class="rsm-item">
+              <div class="rsm-item-head">
+                <h3 class="rsm-item-title">
+                  <span class="rsm-item-role">{item.role}</span>
+                  <span class="rsm-item-co">{item.company}</span>
+                </h3>
+                <span class="rsm-item-period">{item.period}</span>
+              </div>
+              <p>{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 CAREER TIMELINE ============ -->
+    <section id="timeline" class="rsm-section rsm-section-alt">
+      <div class="rsm-wrap rsm-section-grid">
+        <div class="rsm-section-label animate-on-scroll">
+          <span class="rsm-num">02</span>
+          <h2>Career Timeline</h2>
+          <p class="rsm-aside">Thirty years of building things, condensed.</p>
+        </div>
+        <div class="rsm-section-body animate-on-scroll">
+          <div class="rsm-tl">
+            {timeline.map((item) => (
+              <div class="rsm-tl-row">
+                <span class="rsm-tl-year">{item.year}</span>
+                <div class="rsm-tl-entry">
+                  <h3 class="rsm-tl-title">{item.title}</h3>
+                  <p>{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 03 EDUCATION ============ -->
+    <section id="education" class="rsm-section">
+      <div class="rsm-wrap rsm-section-grid">
+        <div class="rsm-section-label animate-on-scroll">
+          <span class="rsm-num">03</span>
+          <h2>Education</h2>
+          <p class="rsm-aside">The BA took a 20-year detour.</p>
+        </div>
+        <div class="rsm-section-body animate-on-scroll">
+          {education.map((item) => (
+            <article class="rsm-item">
+              <div class="rsm-item-head">
+                <h3 class="rsm-item-title">
+                  <span class="rsm-item-role">{item.role}</span>
+                  <span class="rsm-item-co">{item.company}</span>
+                </h3>
+                <span class="rsm-item-period">{item.period}</span>
+              </div>
+              <p>{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 EXPERTISE ============ -->
+    <section id="expertise" class="rsm-section rsm-section-alt">
+      <div class="rsm-wrap rsm-section-grid">
+        <div class="rsm-section-label animate-on-scroll">
+          <span class="rsm-num">04</span>
+          <h2>Expertise</h2>
+          <p class="rsm-aside">The short list.</p>
+        </div>
+        <div class="rsm-section-body animate-on-scroll">
+          <div class="rsm-exp">
+            {expertise.map((item) => (
+              <div class="rsm-exp-block">
+                <h3>{item.area}</h3>
+                <p>{item.skills}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 05 AWARDS ============ -->
+    <section id="awards" class="rsm-section">
+      <div class="rsm-wrap rsm-section-grid">
+        <div class="rsm-section-label animate-on-scroll">
+          <span class="rsm-num">05</span>
+          <h2>Awards & Recognition</h2>
+          <p class="rsm-aside">Selected. The complete list is a spreadsheet (with Freeze Panes).</p>
+        </div>
+        <div class="rsm-section-body animate-on-scroll">
+          {awards.map((item) => (
+            <div class="rsm-award">
+              <span class="rsm-award-year">{item.year}</span>
+              <div>
+                <strong>{item.award}</strong>
+                <p>{item.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLOSE ============ -->
+    <section class="rsm-close">
+      <div class="rsm-wrap">
+        <div class="animate-on-scroll">
+          <p class="rsm-num">Get in touch</p>
+          <h2 class="rsm-close-h2">Speaking engagements, consulting, partnerships, or advisory roles.</h2>
+          <p class="rsm-close-body">
+            Want the narrative version (the one with the D&D stories)? That's the
+            <a href="/about/">About page</a>.
+          </p>
+          <div class="rsm-cta-row">
+            <a class="rsm-btn rsm-btn-primary" href="/contact/">Get in Touch</a>
+            <a class="rsm-btn rsm-btn-ghost" href="https://www.linkedin.com/in/interrel/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* ==========================================================
+     RESUME: editorial system, fully theme-variable driven.
+     Local --rsm-* tokens are aliases of the global theme vars,
+     remapped per mode. No hardcoded brand colors or fonts.
+     ========================================================== */
+  .rsm {
+    --rsm-line: var(--color-border);
+    --rsm-line-accent: color-mix(in srgb, var(--color-accent) 30%, transparent);
+    --rsm-ink: var(--color-text);
+    --rsm-muted: var(--color-text-muted);
+    --rsm-alt: var(--color-surface);
+    line-height: 1.6;
+  }
+  :global([data-theme="dark"]) .rsm {
+    --rsm-line: var(--color-border);
+    --rsm-ink: var(--color-text);
+    --rsm-muted: var(--color-text-muted);
+    --rsm-alt: var(--color-surface);
+  }
+  :global([data-theme="light"]) .rsm {
+    --rsm-line: var(--color-border-light);
+    --rsm-ink: var(--color-primary);
+    --rsm-muted: var(--color-text-dark-muted);
+    --rsm-alt: var(--color-surface-light);
+  }
+
+  .rsm ::selection { background: color-mix(in srgb, var(--color-accent) 30%, transparent); }
+
+  .rsm-wrap { max-width: 1060px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+  .rsm a:focus-visible,
+  .rsm button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  .rsm-grain {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.4; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- masthead ---------- */
+  .rsm-masthead {
+    position: relative;
+    padding: 5.5rem 0 4rem;
+    border-bottom: 1px solid var(--rsm-line);
+    overflow: hidden;
+  }
+  .rsm-masthead-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(240px, 1fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .rsm-masthead-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+
+  .rsm-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--color-accent); margin: 0 0 1.6rem;
+  }
+  .rsm-name {
+    font-family: var(--font-heading);
+    font-size: clamp(2.8rem, 7vw, 4.8rem);
+    font-weight: 800;
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    color: var(--rsm-ink);
+    margin: 0 0 1.1rem;
+  }
+  .rsm-role {
+    font-family: var(--font-mono);
+    font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-accent); margin: 0 0 1.6rem;
+  }
+  .rsm-lede {
+    font-size: clamp(1.02rem, 1.5vw, 1.15rem);
+    line-height: 1.7;
+    max-width: 65ch;
+    color: var(--rsm-muted);
+    margin: 0 0 1.8rem;
+  }
+  .rsm-meta {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.9rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem; letter-spacing: 0.04em;
+    color: var(--rsm-muted); margin: 0;
+  }
+  .rsm-meta a {
+    color: var(--rsm-muted); text-decoration: none;
+    border-bottom: 1px solid var(--rsm-line);
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .rsm-meta a:hover { color: var(--color-accent); border-bottom-color: var(--color-accent); }
+  .rsm-meta-sep { color: var(--rsm-line); user-select: none; }
+
+  /* contents index */
+  .rsm-index {
+    border: 1px solid var(--rsm-line);
+    padding: 1.3rem 1.5rem 0.9rem;
+    align-self: start;
+  }
+  .rsm-index-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+  .rsm-index ol { list-style: none; margin: 0; padding: 0; }
+  .rsm-index li + li { border-top: 1px solid var(--rsm-line); }
+  .rsm-index a {
+    display: flex; align-items: baseline; gap: 0.9rem;
+    padding: 0.65rem 0;
+    font-family: var(--font-mono);
+    font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--rsm-muted); text-decoration: none;
+    transition: color 0.15s ease, transform 0.15s ease;
+  }
+  .rsm-index a span { color: var(--color-accent); font-size: 0.66rem; }
+  .rsm-index a:hover { color: var(--rsm-ink); transform: translateX(3px); }
+
+  /* stats */
+  .rsm-stats {
+    display: flex; flex-wrap: wrap;
+    column-gap: 2.8rem; row-gap: 1.6rem;
+    margin: 3.2rem 0 0; padding-top: 2rem;
+    border-top: 1px solid var(--rsm-line);
+  }
+  .rsm-stats dt {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+    line-height: 1;
+    color: var(--color-accent);
+  }
+  .rsm-stats dd {
+    margin: 0.45rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--rsm-muted);
+  }
+
+  /* ---------- sections ---------- */
+  .rsm-section {
+    padding: 5.5rem 0;
+    border-top: 1px solid var(--rsm-line);
+    scroll-margin-top: 5.5rem;
+  }
+  .rsm-masthead + .rsm-section { border-top: 0; }
+  .rsm-section-alt { background: var(--rsm-alt); }
+
+  .rsm-section-grid {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .rsm-section-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .rsm-section-label { position: sticky; top: 5.5rem; }
+  @media (max-width: 860px) {
+    .rsm-section-label { position: static; }
+  }
+  .rsm-num {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 0.9rem;
+  }
+  .rsm-num::after {
+    content: '';
+    display: block;
+    width: 2.2rem; height: 1px;
+    background: var(--rsm-line-accent);
+    margin-top: 0.9rem;
+  }
+  .rsm-section-label h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--rsm-ink);
+    margin: 0;
+  }
+  .rsm-aside {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; line-height: 1.6; letter-spacing: 0.02em;
+    color: var(--rsm-muted);
+    margin: 0.8rem 0 0;
+    max-width: 24ch;
+  }
+
+  /* ---------- role / education rows ---------- */
+  .rsm-item {
+    border-top: 1px solid var(--rsm-line);
+    padding: 1.4rem 0.9rem 1.5rem;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .rsm-item:last-child { border-bottom: 1px solid var(--rsm-line); }
+  .rsm-item:hover {
+    background: color-mix(in srgb, var(--color-accent) 5%, transparent);
+    box-shadow: inset 2px 0 0 var(--color-accent);
+  }
+  .rsm-item-head {
+    display: flex; flex-wrap: wrap; align-items: baseline;
+    justify-content: space-between; gap: 0.4rem 1.5rem;
+  }
+  .rsm-item-title { margin: 0; font-size: 1rem; line-height: 1.4; }
+  .rsm-item-role { font-weight: 600; color: var(--rsm-ink); }
+  .rsm-item-co { color: var(--color-accent); font-size: 0.92rem; margin-left: 0.55rem; }
+  .rsm-item-period {
+    font-family: var(--font-mono);
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    color: var(--rsm-muted);
+    white-space: nowrap;
+  }
+  .rsm-item p {
+    color: var(--rsm-muted);
+    font-size: 0.95rem; line-height: 1.7;
+    max-width: 65ch;
+    margin: 0.5rem 0 0;
+  }
+
+  /* ---------- timeline: the artifact ---------- */
+  .rsm-tl-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    column-gap: 2.4rem;
+    padding: 0 0 2.8rem;
+  }
+  .rsm-tl-row::before {
+    content: '';
+    position: absolute;
+    left: calc(5.5rem + 1.2rem);
+    top: 0; bottom: 0;
+    width: 1px;
+    background: var(--rsm-line);
+  }
+  .rsm-tl-row:first-child::before { top: 0.55rem; }
+  .rsm-tl-row:last-child { padding-bottom: 0.4rem; }
+  .rsm-tl-row:last-child::before { bottom: auto; height: 0.55rem; }
+  .rsm-tl-row::after {
+    content: '';
+    position: absolute;
+    left: calc(5.5rem + 1.2rem);
+    top: 0.35rem;
+    width: 9px; height: 9px;
+    transform: translateX(-50%) rotate(45deg);
+    border: 1px solid var(--color-accent);
+    background: var(--rsm-alt);
+    transition: background-color 0.2s ease;
+  }
+  .rsm-tl-row:hover::after { background: var(--color-accent); }
+  .rsm-tl-year {
+    font-family: var(--font-mono);
+    font-size: 0.78rem; letter-spacing: 0.08em;
+    color: var(--color-accent);
+    text-align: right;
+    padding-top: 0.1rem;
+  }
+  .rsm-tl-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+    color: var(--rsm-ink);
+    margin: 0 0 0.4rem;
+  }
+  .rsm-tl-entry p {
+    color: var(--rsm-muted);
+    font-size: 0.95rem; line-height: 1.7;
+    max-width: 62ch;
+    margin: 0;
+  }
+  @media (max-width: 680px) {
+    .rsm-tl-row {
+      grid-template-columns: 1fr;
+      padding-left: 1.7rem;
+      row-gap: 0.25rem;
+    }
+    .rsm-tl-row::before { left: 0.3rem; }
+    .rsm-tl-row::after { left: 0.3rem; }
+    .rsm-tl-year { text-align: left; padding-top: 0; }
+  }
+
+  /* ---------- expertise ---------- */
+  .rsm-exp {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.4rem 3rem;
+  }
+  @media (max-width: 680px) { .rsm-exp { grid-template-columns: 1fr; } }
+  .rsm-exp-block { border-top: 1px solid var(--rsm-line); padding-top: 1.1rem; }
+  .rsm-exp-block h3 {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 0.6rem;
+  }
+  .rsm-exp-block p {
+    color: var(--rsm-muted);
+    font-size: 0.95rem; line-height: 1.75;
+    margin: 0;
+  }
+
+  /* ---------- awards ---------- */
+  .rsm-award {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 1.4rem;
+    border-top: 1px solid var(--rsm-line);
+    padding: 1.05rem 0.9rem;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .rsm-award:last-child { border-bottom: 1px solid var(--rsm-line); }
+  .rsm-award:hover {
+    background: color-mix(in srgb, var(--color-accent) 5%, transparent);
+    box-shadow: inset 2px 0 0 var(--color-accent);
+  }
+  .rsm-award-year {
+    font-family: var(--font-mono);
+    font-size: 0.7rem; letter-spacing: 0.1em;
+    color: var(--color-accent);
+    padding-top: 0.2rem;
+    white-space: nowrap;
+  }
+  .rsm-award strong {
+    display: block;
+    font-size: 0.98rem; font-weight: 600;
+    color: var(--rsm-ink);
+  }
+  .rsm-award p {
+    color: var(--rsm-muted);
+    font-size: 0.86rem; line-height: 1.6;
+    margin: 0.2rem 0 0;
+  }
+  @media (max-width: 620px) {
+    .rsm-award { grid-template-columns: 1fr; gap: 0.25rem; }
+    .rsm-award-year { padding-top: 0; }
+  }
+
+  /* ---------- close ---------- */
+  .rsm-close {
+    padding: 5.5rem 0;
+    border-top: 1px solid var(--rsm-line-accent);
+    background: var(--rsm-alt);
+  }
+  .rsm-close-h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--rsm-ink);
+    max-width: 24em;
+    margin: 0 0 1.1rem;
+  }
+  .rsm-close-body {
+    color: var(--rsm-muted);
+    font-size: 1.02rem; line-height: 1.7;
+    max-width: 58ch;
+    margin: 0 0 2rem;
+  }
+  .rsm-close-body a {
+    color: var(--color-accent); text-decoration: none;
+    border-bottom: 1px solid var(--rsm-line-accent);
+    transition: border-color 0.15s ease;
+  }
+  .rsm-close-body a:hover { border-bottom-color: var(--color-accent); }
+
+  .rsm-cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+  .rsm-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.9rem 1.6rem;
+    font-weight: 600; font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .rsm-btn:hover { transform: translateY(-1px); }
+  .rsm-btn-primary { background: var(--color-accent); color: #fff; }
+  .rsm-btn-primary:hover { background: var(--color-accent-hover); }
+  .rsm-btn-ghost { border-color: var(--rsm-line); color: var(--rsm-ink); }
+  .rsm-btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+  /* ---------- motion ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .rsm-masthead-main > *,
+    .rsm-index,
+    .rsm-stats {
+      animation: rsmFadeUp 0.6s ease-out both;
+    }
+    .rsm-masthead-main > :nth-child(2) { animation-delay: 0.06s; }
+    .rsm-masthead-main > :nth-child(3) { animation-delay: 0.12s; }
+    .rsm-masthead-main > :nth-child(4) { animation-delay: 0.18s; }
+    .rsm-masthead-main > :nth-child(5) { animation-delay: 0.24s; }
+    .rsm-index { animation-delay: 0.28s; }
+    .rsm-stats { animation-delay: 0.34s; }
+
+    @supports (animation-timeline: view()) {
+      .rsm-tl-row, .rsm-item, .rsm-award, .rsm-exp-block {
+        animation: rsmRise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 32%;
+      }
+    }
+  }
+  @keyframes rsmFadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes rsmRise {
+    from { opacity: 0.2; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>

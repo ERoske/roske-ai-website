@@ -1,0 +1,125 @@
+---
+/**
+ * SpeakerCTA.astro — PERMANENT, theme-aware "book Edward to speak" module.
+ *
+ * The speaking business is the site's primary conversion goal. This module
+ * guarantees every weekly homepage carries a clear route to /speaking/,
+ * no matter the theme. It styles itself entirely through the global theme
+ * CSS variables (--color-accent, --font-heading, etc.) defined in
+ * BaseLayout, so it automatically re-skins to match each week's theme.
+ *
+ * REQUIRED on the home page every week, same rule as LatestContent.astro.
+ * The weekly rebuild (scripts/weekly-rebuild-prompt.md) must keep this
+ * component and may pass themed copy via the `eyebrow` prop only. The
+ * headline, stats, and CTAs are conversion copy: do not rewrite them
+ * to match the theme.
+ */
+interface Props {
+  eyebrow?: string;
+}
+
+const { eyebrow = 'The main event' } = Astro.props;
+
+const stats = [
+  { value: '50+', label: 'Countries' },
+  { value: '300+', label: 'Keynotes' },
+  { value: '15', label: 'Books' },
+  { value: '8', label: 'Speaker awards' },
+];
+---
+
+<section class="sc-section" aria-label="Book Edward to speak">
+  <div class="sc-inner">
+    <div class="sc-main">
+      <p class="sc-eyebrow">{eyebrow}</p>
+      <h2 class="sc-heading">Book Edward to keynote.</h2>
+      <p class="sc-deck">
+        AI keynotes, executive workshops, and board briefings from a practitioner who ships:
+        MCP servers for enterprise finance, a life run by ten-plus AI agents, and twenty-five
+        years in the Office of the CFO. Keynotes from $15,000. Inquiries answered within one
+        business day.
+      </p>
+      <div class="sc-ctas">
+        <a href="/speaking/" class="sc-btn-primary">Book Edward to speak</a>
+        <a href="/speaking/#watch" class="sc-btn-ghost">Watch him on stage</a>
+      </div>
+      <p class="sc-proofline">
+        Edward's AI agents redesign this site every Saturday. It's the live demo of his
+        most-booked talk, <a href="/speaking/">"Your Day, Run by Ten Agents."</a>
+      </p>
+    </div>
+    <div class="sc-stats">
+      {stats.map((s) => (
+        <div class="sc-stat">
+          <span class="sc-stat-value">{s.value}</span>
+          <span class="sc-stat-label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .sc-section {
+    padding: 5rem 2rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 30%, transparent);
+  }
+  :global([data-theme="dark"]) .sc-section { background: var(--color-surface); color: var(--color-text); }
+  :global([data-theme="light"]) .sc-section { background: var(--color-surface-light); color: var(--color-text-dark); }
+
+  .sc-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.6fr 1fr; gap: 3.5rem; align-items: center;
+  }
+  @media (max-width: 900px) { .sc-inner { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+  .sc-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-accent); margin: 0 0 1rem;
+  }
+  .sc-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.05;
+    margin: 0 0 1.1rem;
+  }
+  :global([data-theme="dark"]) .sc-heading { color: var(--color-text); }
+  :global([data-theme="light"]) .sc-heading { color: var(--color-text-dark); }
+
+  .sc-deck { max-width: 42em; margin: 0 0 1.8rem; line-height: 1.65; font-size: 1.02rem; }
+  :global([data-theme="dark"]) .sc-deck { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .sc-deck { color: var(--color-text-dark-muted); }
+
+  .sc-ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-bottom: 1.6rem; }
+  .sc-btn-primary, .sc-btn-ghost {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.9rem 1.6rem; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .sc-btn-primary { background: var(--color-accent); color: #fff; }
+  .sc-btn-primary:hover { transform: translateY(-1px); background: var(--color-accent-hover); }
+  .sc-btn-ghost { border: 1.5px solid var(--color-accent); color: var(--color-accent); }
+  .sc-btn-ghost:hover { transform: translateY(-1px); }
+
+  .sc-proofline { font-family: var(--font-mono); font-size: 0.78rem; margin: 0; max-width: 46em; line-height: 1.6; }
+  :global([data-theme="dark"]) .sc-proofline { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .sc-proofline { color: var(--color-text-dark-muted); }
+  .sc-proofline a { color: var(--color-accent); text-decoration: none; }
+  .sc-proofline a:hover { text-decoration: underline; }
+
+  .sc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+  @media (max-width: 900px) { .sc-stats { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 560px) { .sc-stats { grid-template-columns: 1fr 1fr; } }
+  .sc-stat { display: flex; flex-direction: column; gap: 0.3rem; }
+  .sc-stat-value {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 3.5vw, 2.8rem); line-height: 1; color: var(--color-accent);
+  }
+  .sc-stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  :global([data-theme="dark"]) .sc-stat-label { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .sc-stat-label { color: var(--color-text-dark-muted); }
+</style>

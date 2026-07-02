@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Section from '../components/Section.astro';
 
 const books = [
   {
@@ -82,119 +81,548 @@ const books = [
     amazon: "https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW",
   },
 ];
+
+// Decorative shelf: 13 solid spines (the Amazon titles) plus 2 ghost
+// spines (the training-class titles). Heights and widths vary so it
+// reads as a real shelf, not a bar chart.
+const spines = [
+  { h: 46, w: 16 }, { h: 38, w: 13 }, { h: 50, w: 18 }, { h: 34, w: 12 },
+  { h: 44, w: 15 }, { h: 40, w: 14 }, { h: 52, w: 19 }, { h: 36, w: 13 },
+  { h: 42, w: 16 }, { h: 48, w: 17 }, { h: 38, w: 13 }, { h: 44, w: 15 },
+  { h: 40, w: 14 }, { h: 32, w: 12, ghost: true }, { h: 30, w: 12, ghost: true },
+];
+const spineMix = [78, 58, 70, 50];
 ---
 
 <BaseLayout title="Books | Edward Roske" description="15 books including the 'Look Smarter Than You Are' series. All written before generative AI existed. Co-authored primarily with Tracy McMullen.">
 
-  <!-- Hero -->
-  <section class="relative py-20 md:py-28 px-6 overflow-hidden">
-    <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
-    <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
-    <div class="relative max-w-7xl mx-auto">
-      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-        <div class="flex-1 max-w-2xl text-center lg:text-left">
-          <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]"
-            style="animation: fadeInUp 0.6s ease-out forwards;">
-            Books
-          </p>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 dark:text-white text-[var(--color-primary)]"
-            style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0; font-family: var(--font-heading);">
-            Look Smarter Than You&nbsp;Are
-          </h1>
-          <p class="text-lg md:text-xl leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
-            style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
+  <div class="bk">
+
+    <!-- Masthead -->
+    <header class="bk-masthead">
+      <div class="bk-grain" aria-hidden="true"></div>
+      <div class="bk-wrap bk-masthead-grid">
+        <div>
+          <p class="bk-kicker bk-fade">Books | Field guides since 2007</p>
+          <h1 class="bk-h1 bk-fade bk-fade-2">Look Smarter Than You&nbsp;Are</h1>
+          <p class="bk-lede bk-fade bk-fade-3">
             15 books. The 13 below are co-authored primarily with Tracy McMullen and available on Amazon. Two more (<em>Look Smarter Than You Are with Financial Reports</em> and <em>Looking Smarter Than You Are with Web Analysis</em>) were self-published for training classes. All written before generative AI existed. (We typed every word ourselves, like people used to do.)
           </p>
+          <dl class="bk-stats bk-fade bk-fade-3">
+            <div><dt>15</dt><dd>Titles</dd></div>
+            <div><dt>13</dt><dd>On Amazon</dd></div>
+            <div><dt>2</dt><dd>Training only</dd></div>
+            <div><dt>0</dt><dd>AI co-authors</dd></div>
+          </dl>
         </div>
-        <div class="flex-shrink-0" style="animation: fadeInUp 0.8s ease-out 0.3s forwards; opacity: 0;">
-          <div class="relative">
-            <div class="absolute -inset-4 rounded-2xl bg-[var(--color-accent)]/10 blur-2xl"></div>
-            <picture>
-              <source srcset="/images/hero-books.webp" type="image/webp" />
-              <img src="/images/hero-books.png"
-                alt="Edward Roske sitting on a throne made of stacked 'Look Smarter Than You Are' books, looking relaxed as the pile threatens to topple"
-                class="relative rounded-2xl w-full max-w-md lg:max-w-lg shadow-2xl ring-1 ring-white/10"
-                loading="eager" />
-            </picture>
-          </div>
+        <figure class="bk-hero-fig bk-fade bk-fade-4">
+          <img src="/images/hero-books.png"
+            alt="Edward Roske sitting on a throne made of stacked 'Look Smarter Than You Are' books, looking relaxed as the pile threatens to topple"
+            loading="eager"
+            decoding="async" />
+          <figcaption>Fig. 01 | The throne is load-bearing.</figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <!-- Catalog -->
+    <section class="bk-section" aria-labelledby="bk-catalog-heading">
+      <div class="bk-wrap">
+        <p class="bk-eyebrow">01 | The catalog</p>
+        <h2 id="bk-catalog-heading" class="bk-h2">Thirteen on Amazon, in order of appearance.</h2>
+        <div class="bk-shelf" aria-hidden="true">
+          {spines.map((s, i) => (
+            <span
+              class:list={["bk-spine", { "bk-spine-ghost": s.ghost }]}
+              style={`height:${s.h}px;width:${s.w}px;${s.ghost ? '' : `background:color-mix(in srgb, var(--color-accent) ${spineMix[i % spineMix.length]}%, transparent);`}`}
+            ></span>
+          ))}
+        </div>
+        <ol class="bk-catalog">
+          {books.map((book, i) => (
+            <li>
+              <a href={book.amazon} target="_blank" rel="noopener noreferrer" class="bk-row animate-on-scroll">
+                <span class="bk-row-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="bk-row-body">
+                  <span class="bk-row-title">{book.title}</span>
+                  <span class="bk-row-co">with {book.coauthor}</span>
+                  <span class="bk-row-desc">{book.description}</span>
+                </span>
+                <span class="bk-row-cta">
+                  Amazon
+                  <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ol>
+
+        <aside class="bk-appendix animate-on-scroll">
+          <p class="bk-appendix-label">Appendix | The training shelf</p>
+          <p class="bk-appendix-row"><span class="bk-row-num">14</span><em>Look Smarter Than You Are with Financial Reports</em></p>
+          <p class="bk-appendix-row"><span class="bk-row-num">15</span><em>Looking Smarter Than You Are with Web Analysis</em></p>
+          <p class="bk-appendix-note">Self-published for training classes, never sold on Amazon. (You had to take the class.)</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Context -->
+    <section class="bk-section bk-section-alt" aria-labelledby="bk-why-heading">
+      <div class="bk-wrap bk-why">
+        <div class="bk-why-head animate-on-scroll">
+          <p class="bk-eyebrow">02 | The origin</p>
+          <h2 id="bk-why-heading" class="bk-h2">Why 15 Books?</h2>
+        </div>
+        <div class="bk-prose animate-on-scroll">
+          <p>
+            When Tracy McMullen and I started writing, Oracle's documentation was... optimistic. Users needed practical guides written by people who actually implemented the software. So we wrote one. Then another. Then we couldn't stop.
+          </p>
+          <p>
+            Every book in the series is designed to make enterprise software less intimidating. The title, <strong>Look Smarter Than You Are</strong>, is the whole philosophy: you don't need to be an expert to use these tools well. You just need a book that doesn't assume you already know everything.
+          </p>
+          <p>
+            All 15 were written before large language models could generate text. We didn't have AI co-authors. We had caffeine, deadlines, and a shared belief that no one should have to read Oracle's official docs if they don't want to.
+          </p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Book List -->
-  <Section>
-    <div class="space-y-4">
-      {books.map((book, i) => (
-        <a href={book.amazon} target="_blank" rel="noopener noreferrer"
-          class="animate-on-scroll block rounded-xl p-6 transition-all duration-300 group hover:-translate-y-0.5
-            dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30 dark:hover:bg-white/[0.06]
-            bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg">
-          <div class="flex items-start gap-5">
-            <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-[var(--color-accent)]/10 flex items-center justify-center">
-              <span class="text-sm font-bold text-[var(--color-accent)] font-[var(--font-mono)]">{String(i + 1).padStart(2, '0')}</span>
-            </div>
-            <div class="flex-1 min-w-0">
-              <h3 class="text-base md:text-lg font-semibold dark:text-white text-[var(--color-primary)] group-hover:text-[var(--color-accent)] transition-colors leading-snug">
-                {book.title}
-              </h3>
-              <p class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60 mt-1">
-                with {book.coauthor}
-              </p>
-              <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mt-2">
-                {book.description}
-              </p>
-            </div>
-            <div class="flex-shrink-0 hidden sm:flex items-center gap-2 text-xs font-medium dark:text-[var(--color-text-muted)]/50 text-[var(--color-text-dark-muted)]/50 group-hover:text-[var(--color-accent)] transition-colors">
-              Amazon
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-            </div>
+    <!-- CTA -->
+    <section class="bk-section" aria-labelledby="bk-cta-heading">
+      <div class="bk-wrap">
+        <div class="bk-cta animate-on-scroll">
+          <div>
+            <p class="bk-eyebrow">03 | The whole shelf</p>
+            <h2 id="bk-cta-heading" class="bk-h2">All Books on Amazon</h2>
+            <p class="bk-cta-body">
+              The complete collection. Good for learning. Also good for making your bookshelf look more technical than it probably is.
+            </p>
           </div>
-        </a>
-      ))}
-    </div>
-  </Section>
-
-  <!-- Context -->
-  <Section dark>
-    <div class="animate-on-scroll max-w-3xl">
-      <h2 class="text-2xl md:text-3xl font-bold mb-6 dark:text-white text-[var(--color-primary)]">Why 15 Books?</h2>
-      <div class="space-y-4 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-lg leading-relaxed">
-        <p>
-          When Tracy McMullen and I started writing, Oracle's documentation was... optimistic. Users needed practical guides written by people who actually implemented the software. So we wrote one. Then another. Then we couldn't stop.
-        </p>
-        <p>
-          Every book in the series is designed to make enterprise software less intimidating. The title, <strong class="dark:text-white text-[var(--color-primary)]">Look Smarter Than You Are</strong>, is the whole philosophy: you don't need to be an expert to use these tools well. You just need a book that doesn't assume you already know everything.
-        </p>
-        <p>
-          All 15 were written before large language models could generate text. We didn't have AI co-authors. We had caffeine, deadlines, and a shared belief that no one should have to read Oracle's official docs if they don't want to.
-        </p>
+          <a href="https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW" target="_blank" rel="noopener noreferrer" class="bk-btn">
+            View on Amazon
+            <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </div>
       </div>
-    </div>
-  </Section>
+    </section>
 
-  <!-- CTA -->
-  <Section>
-    <div class="animate-on-scroll text-center max-w-2xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white text-[var(--color-primary)]">
-        All Books on Amazon
-      </h2>
-      <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-8 text-lg">
-        The complete collection. Good for learning. Also good for making your bookshelf look more technical than it probably is.
-      </p>
-      <a href="https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW" target="_blank" rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
-        View on Amazon
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-      </a>
-    </div>
-  </Section>
+  </div>
 
 </BaseLayout>
 
 <style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(24px); }
+  /* Books: permanent page, themed entirely by the weekly CSS variables.
+     Local aliases below only remap the global tokens per light/dark mode,
+     so the page re-skins itself every Saturday with zero edits. */
+
+  :global([data-theme="dark"]) .bk {
+    --bk-ink: var(--color-text);
+    --bk-head: var(--color-text);
+    --bk-muted: var(--color-text-muted);
+    --bk-line: var(--color-border);
+    --bk-band: var(--color-surface);
+  }
+  :global([data-theme="light"]) .bk {
+    --bk-ink: var(--color-text-dark);
+    --bk-head: var(--color-primary);
+    --bk-muted: var(--color-text-dark-muted);
+    --bk-line: var(--color-border-light);
+    --bk-band: var(--color-surface-light);
+  }
+
+  .bk {
+    font-family: var(--font-body);
+    color: var(--bk-ink);
+    line-height: 1.6;
+  }
+
+  .bk-wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bk-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- type ---------- */
+  .bk-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 1.6rem;
+  }
+  .bk-h1 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    color: var(--bk-head);
+    margin: 0 0 1.5rem;
+  }
+  .bk-h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.8rem, 3.4vw, 2.7rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--bk-head);
+    margin: 0 0 1.1rem;
+  }
+  .bk-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 1rem;
+  }
+  .bk-lede {
+    font-size: clamp(1.02rem, 1.5vw, 1.15rem);
+    max-width: 62ch;
+    color: var(--bk-muted);
+    margin: 0;
+  }
+  .bk-lede em { color: var(--bk-ink); }
+
+  /* ---------- masthead ---------- */
+  .bk-masthead {
+    position: relative;
+    padding: 5rem 0 4.5rem;
+    border-bottom: 1px solid var(--bk-line);
+    overflow: hidden;
+  }
+  .bk-masthead-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  @media (max-width: 960px) {
+    .bk-masthead-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+
+  .bk-stats {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 2.5rem;
+    justify-content: start;
+    margin: 2.8rem 0 0;
+    padding-top: 1.8rem;
+    border-top: 1px solid var(--bk-line);
+  }
+  @media (max-width: 640px) {
+    .bk-stats { grid-template-columns: repeat(2, auto); gap: 1.4rem 2.4rem; }
+  }
+  .bk-stats dt {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    line-height: 1;
+    color: var(--color-accent);
+  }
+  .bk-stats dd {
+    margin: 0.4rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bk-muted);
+  }
+
+  .bk-hero-fig {
+    position: relative;
+    margin: 0;
+    max-width: 480px;
+    justify-self: end;
+  }
+  @media (max-width: 960px) {
+    .bk-hero-fig { justify-self: start; }
+  }
+  .bk-hero-fig::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translate(14px, 14px);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+    pointer-events: none;
+  }
+  .bk-hero-fig img {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--bk-line);
+  }
+  .bk-hero-fig figcaption {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--bk-muted);
+    padding-top: 0.8rem;
+  }
+
+  /* ---------- sections ---------- */
+  .bk-section { padding: 5.5rem 0; }
+  .bk-section-alt {
+    background: var(--bk-band);
+    border-top: 1px solid var(--bk-line);
+    border-bottom: 1px solid var(--bk-line);
+  }
+
+  /* ---------- shelf ornament ---------- */
+  .bk-shelf {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    padding-bottom: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+    margin: 2.2rem 0 0;
+    max-width: 340px;
+  }
+  .bk-spine { display: block; }
+  .bk-spine-ghost {
+    border: 1px solid color-mix(in srgb, var(--color-accent) 45%, transparent);
+    background: transparent;
+  }
+
+  /* ---------- catalog ---------- */
+  .bk-catalog {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .bk-catalog li { border-bottom: 1px solid var(--bk-line); }
+
+  .bk-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    align-items: baseline;
+    padding: 1.6rem 1rem 1.6rem 1.25rem;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s ease;
+  }
+  .bk-row::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--color-accent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.25s ease;
+  }
+  .bk-row:hover { background: color-mix(in srgb, var(--color-accent) 5%, transparent); }
+  .bk-row:hover::after { transform: scaleY(1); }
+  .bk-row:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+
+  .bk-row-num {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    color: var(--bk-muted);
+    transition: color 0.2s ease;
+  }
+  .bk-row:hover .bk-row-num { color: var(--color-accent); }
+
+  .bk-row-body { display: block; min-width: 0; }
+  .bk-row-title {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    text-wrap: balance;
+    color: var(--bk-head);
+    transition: color 0.2s ease;
+  }
+  .bk-row:hover .bk-row-title { color: var(--color-accent); }
+  .bk-row-co {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    color: var(--bk-muted);
+    margin-top: 0.35rem;
+  }
+  .bk-row-desc {
+    display: block;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--bk-muted);
+    max-width: 62ch;
+    margin-top: 0.55rem;
+  }
+
+  .bk-row-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--bk-muted);
+    transition: color 0.2s ease;
+    white-space: nowrap;
+  }
+  .bk-row-cta svg { transition: transform 0.2s ease; }
+  .bk-row:hover .bk-row-cta { color: var(--color-accent); }
+  .bk-row:hover .bk-row-cta svg { transform: translate(2px, -2px); }
+  @media (max-width: 640px) {
+    .bk-row { grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; padding: 1.4rem 0.5rem 1.4rem 1rem; }
+    .bk-row-cta { display: none; }
+  }
+
+  /* ---------- appendix ---------- */
+  .bk-appendix { margin-top: 3rem; max-width: 640px; }
+  .bk-appendix-label {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 1rem;
+  }
+  .bk-appendix-row {
+    display: grid;
+    grid-template-columns: 3.5rem minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: baseline;
+    margin: 0;
+    padding: 0.8rem 1rem 0.8rem 1.25rem;
+    border-bottom: 1px solid var(--bk-line);
+  }
+  .bk-appendix-row:first-of-type { border-top: 1px solid var(--bk-line); }
+  .bk-appendix-row em {
+    font-style: normal;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.35;
+    color: var(--bk-muted);
+  }
+  .bk-appendix-note {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.7;
+    color: var(--bk-muted);
+    margin: 1.1rem 0 0;
+    padding-left: 1.25rem;
+  }
+  @media (max-width: 640px) {
+    .bk-appendix-row { grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; padding-left: 1rem; }
+    .bk-appendix-note { padding-left: 1rem; }
+  }
+
+  /* ---------- why ---------- */
+  .bk-why {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  @media (max-width: 860px) {
+    .bk-why { grid-template-columns: 1fr; gap: 1.5rem; }
+  }
+  .bk-why-head .bk-h2 { margin-bottom: 0; }
+  .bk-prose p {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    max-width: 66ch;
+    color: var(--bk-muted);
+    margin: 0 0 1.4rem;
+  }
+  .bk-prose p:last-child { margin-bottom: 0; }
+  .bk-prose strong { color: var(--bk-head); font-weight: 600; }
+
+  /* ---------- cta ---------- */
+  .bk-cta {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 3rem;
+    align-items: center;
+  }
+  @media (max-width: 760px) {
+    .bk-cta { grid-template-columns: 1fr; gap: 2rem; }
+  }
+  .bk-cta-body {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 52ch;
+    color: var(--bk-muted);
+    margin: 0;
+  }
+  .bk-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.95rem 1.7rem;
+    background: var(--color-accent);
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+    justify-self: start;
+  }
+  .bk-btn:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-1px);
+  }
+  .bk-btn:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+  @media (min-width: 761px) {
+    .bk-cta .bk-btn { justify-self: end; }
+  }
+
+  /* ---------- motion ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    .bk-fade {
+      opacity: 0;
+      animation: bkFadeUp 0.7s ease-out forwards;
+    }
+    .bk-fade-2 { animation-delay: 0.1s; }
+    .bk-fade-3 { animation-delay: 0.2s; }
+    .bk-fade-4 { animation-delay: 0.3s; }
+
+    @supports (animation-timeline: view()) {
+      .bk-row {
+        animation: bkRise linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 30%;
+      }
+    }
+  }
+  @keyframes bkFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes bkRise {
+    from { opacity: 0.2; transform: translateY(14px); }
     to { opacity: 1; transform: translateY(0); }
   }
 </style>

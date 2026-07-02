@@ -1,7 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import Section from '../../components/Section.astro';
-import Card from '../../components/Card.astro';
+
+// PERMANENT PAGE: the flagship workshop offering (see MEMORY: project_workshop_page).
+// This page IS theme-aware: every color and font routes through the global theme
+// variables (--color-*, --font-*), so it re-skins with each weekly redesign.
+// Structure and copy must survive weekly rebuilds. Fee statements stay consistent
+// with /speaking/ (full-day workshop from $20,000; same-trip bundle at $30,000).
 
 const benefits = [
   {
@@ -27,6 +31,8 @@ const tiers = [
     format: "Half Day",
     name: "Imagine",
     builds: null,
+    price: "Quoted per event",
+    flagship: false,
     blurb: "The on-ramp: we open minds and set the table.",
     items: [
       "Welcome to the Future",
@@ -39,6 +45,8 @@ const tiers = [
     format: "Full Day",
     name: "Brainstorm",
     builds: "Imagine",
+    price: "From $20,000",
+    flagship: true,
     blurb: "We stop watching AI happen to other companies and start building your ideas.",
     items: [
       "Surpass the Competition",
@@ -51,6 +59,8 @@ const tiers = [
     format: "Two Days",
     name: "Plan",
     builds: "Brainstorm",
+    price: "Quoted per event",
+    flagship: false,
     blurb: "We turn the ideas into a roadmap with names and dates on it.",
     items: [
       "Why Do We Need to Change?",
@@ -83,160 +93,471 @@ const tiers = [
     "audience": {
       "@type": "Audience",
       "audienceType": "Executives and leadership teams"
+    },
+    "offers": {
+      "@type": "Offer",
+      "name": "Full-day executive workshop",
+      "price": "20000",
+      "priceCurrency": "USD",
+      "description": "Starting fee for the full-day AI: Art of the Possible executive workshop"
     }
   })} />
 
-  <!-- Hero -->
-  <section class="relative py-20 md:py-28 px-6 overflow-hidden">
-    <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
-    <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
-    <div class="relative max-w-7xl mx-auto">
-      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-        <div class="flex-1 max-w-2xl text-center lg:text-left">
-          <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]"
-            style="animation: fadeInUp 0.6s ease-out forwards;">
-            Workshop
-          </p>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 dark:text-white text-[var(--color-primary)]"
-            style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0; font-family: var(--font-heading);">
-            AI: Art of the Possible
-          </h1>
-          <p class="text-lg md:text-xl leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-8"
-            style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
+  <div class="aotp">
+
+    <!-- ============ MASTHEAD ============ -->
+    <header class="aotp-masthead">
+      <div class="aotp-grain" aria-hidden="true"></div>
+      <div class="aotp-wrap aotp-masthead-grid">
+        <div>
+          <p class="aotp-kicker aotp-fade">Executive workshop</p>
+          <h1 class="aotp-h1 aotp-fade aotp-d1">AI: Art of the Possible</h1>
+          <p class="aotp-lede aotp-fade aotp-d2">
             Everyone agrees AI is a big deal. Far fewer have sat their leadership team in one room to decide what to actually do about it. This workshop is that room. Over a day or two, we look at what AI does in real companies today (the deployed-and-measured version, not the keynote fantasy), find where your competition is about to pull ahead, and walk out with a plan your leaders actually agree on.
           </p>
-          <div class="flex flex-wrap gap-4 justify-center lg:justify-start"
-            style="animation: fadeInUp 0.6s ease-out 0.3s forwards; opacity: 0;">
-            <a href="/contact/"
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
-              Bring this to your team
-            </a>
-            <a href="/question/" target="_blank" rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5
-                dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/10
-                bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10">
-              Book 13 Minutes
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-            </a>
+          <div class="aotp-cta-row aotp-fade aotp-d3">
+            <a class="aotp-btn aotp-btn-primary" href="/speaking/#inquiry">Check availability</a>
+            <a class="aotp-btn aotp-btn-ghost" href="/contact/">Bring this to your team</a>
           </div>
+          <p class="aotp-terms aotp-fade aotp-d4">
+            Full-day workshop from $20,000 &middot;
+            <a href="/question/" target="_blank" rel="noopener noreferrer">Book 13 Minutes</a> if you'd rather ask a question first
+          </p>
         </div>
-        <div class="flex-shrink-0" style="animation: fadeInUp 0.8s ease-out 0.3s forwards; opacity: 0;">
-          <div class="relative">
-            <div class="absolute -inset-4 rounded-2xl bg-[var(--color-accent)]/10 blur-2xl"></div>
-            <img src="/images/hero-art-of-the-possible.png"
-              alt="Edward Roske leading an AI: Art of the Possible workshop, wearing his signature blue fedora, gesturing at a whiteboard of AI ideas while executives watch"
-              class="relative rounded-2xl w-full max-w-md lg:max-w-lg shadow-2xl ring-1 ring-white/10"
-              loading="eager" />
-          </div>
+        <figure class="aotp-figure aotp-fade aotp-d2">
+          <img src="/images/hero-art-of-the-possible.png"
+            alt="Edward Roske leading an AI: Art of the Possible workshop, wearing his signature blue fedora, gesturing at a whiteboard of AI ideas while executives watch"
+            loading="eager"
+            decoding="async" />
+          <figcaption>A whiteboard is involved.</figcaption>
+        </figure>
+      </div>
+    </header>
+
+    <!-- ============ HAMEL QUOTE ============ -->
+    <section class="aotp-quoteband" aria-label="Workshop epigraph">
+      <div class="aotp-wrap">
+        <blockquote class="animate-on-scroll aotp-quote">
+          <p class="aotp-quote-text">"Strategy is about inventing the future, not extrapolating the past."</p>
+          <cite class="aotp-quote-cite">Gary Hamel</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ OUTCOMES ============ -->
+    <section class="aotp-section">
+      <div class="aotp-wrap aotp-split">
+        <header class="animate-on-scroll aotp-split-head">
+          <p class="aotp-eyebrow"><span>01</span>Outcomes</p>
+          <h2 class="aotp-h2">What you'll walk out with</h2>
+          <p class="aotp-deck">A workshop to open your team's mind and prepare your company for an AI future that's already showing up.</p>
+        </header>
+        <div class="aotp-outcomes">
+          {benefits.map((b, i) => (
+            <article class="animate-on-scroll aotp-outcome">
+              <span class="aotp-outcome-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{b.title}</h3>
+                <p>{b.body}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Hamel quote -->
-  <Section dark>
-    <div class="animate-on-scroll max-w-3xl mx-auto text-center">
-      <blockquote class="text-2xl md:text-3xl font-bold leading-snug dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
-        "Strategy is about inventing the future, not extrapolating the past."
-      </blockquote>
-      <p class="mt-4 text-sm font-[var(--font-mono)] uppercase tracking-widest text-[var(--color-accent)]">Gary Hamel</p>
-    </div>
-  </Section>
-
-  <!-- Why this matters -->
-  <Section title="What you'll walk out with" subtitle="A workshop to open your team's mind and prepare your company for an AI future that's already showing up.">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {benefits.map(b => (
-        <div class="animate-on-scroll">
-          <Card title={b.title}>
-            <p>{b.body}</p>
-          </Card>
+    <!-- ============ FORMATS ============ -->
+    <section class="aotp-section aotp-section-alt">
+      <div class="aotp-wrap">
+        <header class="animate-on-scroll aotp-sec-head">
+          <p class="aotp-eyebrow"><span>02</span>Formats</p>
+          <h2 class="aotp-h2">Three Ways to Run It</h2>
+          <p class="aotp-deck">Half a day is enough to get the conversation started. Give it two days and you walk out with a roadmap. We scale it to how far your team is ready to go.</p>
+        </header>
+        <div class="aotp-tiers">
+          {tiers.map((tier) => (
+            <div class="animate-on-scroll aotp-tier-cell">
+              <article class:list={["aotp-tier", tier.flagship && "aotp-tier-flagship"]}>
+                <div class="aotp-tier-top">
+                  <p class="aotp-tier-format">{tier.format}</p>
+                  {tier.flagship && <span class="aotp-tier-flag">The flagship</span>}
+                </div>
+                <h3 class="aotp-tier-name">{tier.name}</h3>
+                <p class="aotp-tier-price">{tier.price}</p>
+                <p class="aotp-tier-blurb">{tier.blurb}</p>
+                <div class="aotp-tier-list">
+                  {tier.builds && (
+                    <p class="aotp-tier-builds">Everything in <strong>{tier.builds}</strong>, plus:</p>
+                  )}
+                  <ul>
+                    {tier.items.map((item) => <li>{item}</li>)}
+                  </ul>
+                </div>
+              </article>
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
-  </Section>
-
-  <!-- Agenda -->
-  <Section title="Three Ways to Run It" subtitle="Half a day is enough to get the conversation started. Give it two days and you walk out with a roadmap. We scale it to how far your team is ready to go." dark>
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
-      {tiers.map(tier => (
-        <div class="animate-on-scroll h-full">
-          <div class="h-full flex flex-col rounded-xl p-6 transition-all duration-300
-            dark:bg-white/[0.03] dark:border dark:border-white/[0.06] dark:hover:border-[var(--color-accent)]/30
-            bg-white border border-black/[0.06] hover:border-[var(--color-accent)]/30 hover:shadow-lg backdrop-blur-sm">
-            <p class="text-xs font-[var(--font-mono)] uppercase tracking-widest text-[var(--color-accent)] mb-2">{tier.format}</p>
-            <h3 class="text-2xl font-bold mb-1 dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">{tier.name}</h3>
-            {tier.builds && (
-              <p class="text-xs dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-3">
-                Everything in <span class="font-semibold text-[var(--color-accent)]">{tier.builds}</span>, plus:
-              </p>
-            )}
-            <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed mb-5">{tier.blurb}</p>
-            <ul class="space-y-3 mt-auto">
-              {tier.items.map(item => (
-                <li class="flex items-start gap-3 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm">
-                  <svg class="w-4 h-4 mt-0.5 flex-shrink-0 text-[var(--color-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-                  <span class="dark:text-white/90 text-[var(--color-primary)]/90">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      ))}
-    </div>
-    <p class="animate-on-scroll mt-8 text-sm font-[var(--font-mono)] dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">
-      Led by Edward Roske.
-    </p>
-  </Section>
-
-  <!-- Led by Edward -->
-  <Section>
-    <div class="animate-on-scroll max-w-3xl mx-auto">
-      <h2 class="text-2xl md:text-3xl font-bold mb-6 dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">Who runs it</h2>
-      <div class="space-y-5 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-lg leading-relaxed">
-        <p>
-          I've spent 25+ years founding and running technology companies, written 15 books on enterprise software, and spoken in 50+ countries across all 7 continents. These days I build AI tools for enterprise finance, host the <strong class="dark:text-white text-[var(--color-primary)]">Asking Good Questions</strong> podcast, and run the largest AI community in Puerto Rico.
-        </p>
-        <p>
-          I've advised Fortune 500 executives and three-person startups, sometimes in the same week. The workshop pulls from all of it. The real work is getting your leaders to ask better questions about your own business (which, conveniently, is the one thing I've spent a career practicing).
+        <p class="animate-on-scroll aotp-fineprint">
+          Led by Edward Roske. A keynote on the same trip bundles at $30,000, and the full fee schedule lives on the <a href="/speaking/">speaking page</a>.
         </p>
       </div>
-      <a href="/about/" class="inline-flex items-center gap-2 mt-6 text-[var(--color-accent)] hover:underline font-medium">
-        More about Edward
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-      </a>
-    </div>
-  </Section>
+    </section>
 
-  <!-- CTA -->
-  <Section dark>
-    <div class="animate-on-scroll text-center max-w-2xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white text-[var(--color-primary)]" style="font-family: var(--font-heading);">
-        Ready when your team is
-      </h2>
-      <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-8 text-lg">
-        If your leadership team is ready to stop reading about AI and start deciding what to do with it, let's talk. Tell me about your company and what you're trying to figure out, and we'll design the version that fits.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <a href="/contact/"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
-          Start the conversation
-        </a>
-        <a href="/work/"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5
-            dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/10
-            bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10">
-          See more of Edward's work
-        </a>
+    <!-- ============ WHO RUNS IT ============ -->
+    <section class="aotp-section">
+      <div class="aotp-wrap aotp-split">
+        <header class="animate-on-scroll aotp-split-head">
+          <p class="aotp-eyebrow"><span>03</span>The facilitator</p>
+          <h2 class="aotp-h2">Who runs it</h2>
+        </header>
+        <div class="animate-on-scroll aotp-prose">
+          <p>
+            I've spent 25+ years founding and running technology companies, written 15 books on enterprise software, and spoken in 50+ countries across all 7 continents. These days I build AI tools for enterprise finance, host the <strong>Asking Good Questions</strong> podcast, and run the largest AI community in Puerto Rico.
+          </p>
+          <p>
+            I've advised Fortune 500 executives and three-person startups, sometimes in the same week. The workshop pulls from all of it. The real work is getting your leaders to ask better questions about your own business (which, conveniently, is the one thing I've spent a career practicing).
+          </p>
+          <a class="aotp-textlink" href="/about/">More about Edward</a>
+        </div>
       </div>
-    </div>
-  </Section>
+    </section>
+
+    <!-- ============ CLOSING ============ -->
+    <section class="aotp-closing">
+      <div class="aotp-grain" aria-hidden="true"></div>
+      <div class="aotp-wrap">
+        <div class="animate-on-scroll aotp-closing-inner">
+          <p class="aotp-eyebrow"><span>04</span>The next step</p>
+          <h2 class="aotp-h2">Ready when your team is</h2>
+          <p class="aotp-deck">
+            If your leadership team is ready to stop reading about AI and start deciding what to do with it, let's talk. Tell me about your company and what you're trying to figure out, and we'll design the version that fits.
+          </p>
+          <div class="aotp-cta-row">
+            <a class="aotp-btn aotp-btn-primary" href="/speaking/#inquiry">Check availability</a>
+            <a class="aotp-btn aotp-btn-ghost" href="/contact/">Start the conversation</a>
+          </div>
+          <p class="aotp-more"><a class="aotp-textlink" href="/work/">See more of Edward's work</a></p>
+        </div>
+      </div>
+    </section>
+
+  </div>
 
 </BaseLayout>
 
 <style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(24px); }
+  /* ==========================================================
+     AI: ART OF THE POSSIBLE. Editorial, theme-aware.
+     Local aliases below only re-route the GLOBAL theme variables
+     so dark/light flips stay in one place. No hardcoded brand
+     colors, no hardcoded font families.
+     ========================================================== */
+  .aotp {
+    /* light-mode defaults */
+    --aotp-head: var(--color-primary);
+    --aotp-ink: var(--color-text-dark);
+    --aotp-muted: var(--color-text-dark-muted);
+    --aotp-line: var(--color-border-light);
+    --aotp-line-strong: color-mix(in srgb, var(--color-accent) 30%, var(--color-border-light));
+    --aotp-panel: var(--color-surface-light);
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+  :global([data-theme="dark"]) .aotp {
+    --aotp-head: var(--color-text);
+    --aotp-ink: var(--color-text);
+    --aotp-muted: var(--color-text-muted);
+    --aotp-line: var(--color-border);
+    --aotp-line-strong: color-mix(in srgb, var(--color-accent) 38%, var(--color-border));
+    --aotp-panel: var(--color-surface);
+  }
+
+  .aotp-wrap { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+  .aotp-grain {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.4; z-index: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- type ---------- */
+  .aotp-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--color-accent); margin: 0 0 1.5rem;
+  }
+  .aotp-h1 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 5.6vw, 4.4rem);
+    line-height: 1.03;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    color: var(--aotp-head);
+    margin: 0 0 1.5rem;
+  }
+  .aotp-h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    color: var(--aotp-head);
+    margin: 0 0 1.1rem;
+  }
+  .aotp-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--color-accent); margin: 0 0 1.1rem;
+  }
+  .aotp-eyebrow span {
+    color: var(--aotp-muted);
+    padding-right: 0.75rem; margin-right: 0.75rem;
+    border-right: 1px solid var(--aotp-line);
+  }
+  .aotp-lede {
+    font-size: clamp(1.05rem, 1.5vw, 1.18rem);
+    line-height: 1.7;
+    max-width: 62ch; color: var(--aotp-muted); margin: 0 0 2.2rem;
+  }
+  .aotp-deck { max-width: 55ch; color: var(--aotp-muted); margin: 0 0 0.5rem; font-size: 1.03rem; line-height: 1.7; }
+
+  /* ---------- masthead ---------- */
+  .aotp-masthead {
+    position: relative; overflow: hidden;
+    padding: 4.5rem 0 5rem;
+    border-bottom: 1px solid var(--aotp-line);
+  }
+  .aotp-masthead-grid {
+    display: grid; grid-template-columns: 1.15fr 0.85fr;
+    gap: 4rem; align-items: center;
+  }
+  .aotp-figure { margin: 0; position: relative; }
+  .aotp-figure::after {
+    content: ''; position: absolute; top: 1.1rem; left: 1.1rem;
+    width: 100%; height: 100%; z-index: 0; pointer-events: none;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+  }
+  .aotp-figure img {
+    position: relative; z-index: 1;
+    display: block; width: 100%; height: auto;
+    border: 1px solid var(--aotp-line);
+    background: var(--aotp-panel);
+  }
+  .aotp-figure figcaption {
+    position: relative; z-index: 1;
+    font-family: var(--font-mono); font-size: 0.7rem;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--aotp-muted); margin-top: 1.9rem;
+  }
+  .aotp-terms {
+    font-family: var(--font-mono);
+    font-size: 0.78rem; line-height: 1.7; color: var(--aotp-muted); margin: 1.3rem 0 0;
+  }
+  .aotp-terms a { color: var(--color-accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent); transition: border-color 0.15s ease; }
+  .aotp-terms a:hover { border-bottom-color: var(--color-accent); }
+
+  /* ---------- buttons and links ---------- */
+  .aotp-cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+  .aotp-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.95rem 1.7rem; font-weight: 600; font-size: 0.95rem;
+    text-decoration: none; border: 1px solid transparent; cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .aotp-btn:hover { transform: translateY(-1px); }
+  .aotp-btn:focus-visible { outline-offset: 3px; }
+  .aotp-btn-primary { background: var(--color-accent); color: #fff; }
+  .aotp-btn-primary:hover { background: var(--color-accent-hover); }
+  .aotp-btn-ghost { border-color: var(--aotp-line-strong); color: var(--aotp-ink); }
+  .aotp-btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+  .aotp-textlink {
+    font-weight: 600; color: var(--color-accent); text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+    transition: border-color 0.15s ease;
+  }
+  .aotp-textlink:hover { border-bottom-color: var(--color-accent); }
+
+  /* ---------- quote band ---------- */
+  .aotp-quoteband {
+    background: var(--aotp-panel);
+    border-bottom: 1px solid var(--aotp-line);
+    padding: 4.5rem 0;
+  }
+  .aotp-quote {
+    margin: 0 0 0 auto; max-width: 34em;
+    padding-left: 2.2rem;
+    border-left: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  }
+  .aotp-quote-text {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.5rem, 3vw, 2.3rem);
+    line-height: 1.22; letter-spacing: -0.01em; text-wrap: balance;
+    color: var(--aotp-head); margin: 0 0 1.1rem;
+  }
+  .aotp-quote-cite {
+    font-family: var(--font-mono); font-style: normal;
+    font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  /* ---------- sections ---------- */
+  .aotp-section { padding: 5.5rem 0; }
+  .aotp-section-alt {
+    background: var(--aotp-panel);
+    border-top: 1px solid var(--aotp-line);
+    border-bottom: 1px solid var(--aotp-line);
+  }
+  .aotp-sec-head { margin-bottom: 3.2rem; }
+
+  /* ---------- split layout (asymmetric) ---------- */
+  .aotp-split {
+    display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 4rem; align-items: start;
+  }
+  @media (min-width: 981px) {
+    .aotp-split-head { position: sticky; top: 6rem; }
+  }
+
+  /* ---------- outcomes ---------- */
+  .aotp-outcome {
+    position: relative;
+    display: grid; grid-template-columns: 3.2rem minmax(0, 1fr);
+    gap: 1.4rem; padding: 1.9rem 0 2rem;
+  }
+  .aotp-outcome::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: var(--aotp-line-strong); transform-origin: left;
+  }
+  .aotp-outcome:last-child { border-bottom: 1px solid var(--aotp-line); }
+  .aotp-outcome-num {
+    font-family: var(--font-mono); font-size: 0.8rem;
+    color: var(--color-accent); padding-top: 0.35rem;
+  }
+  .aotp-outcome h3 {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 1.28rem; line-height: 1.25; text-wrap: balance;
+    color: var(--aotp-head); margin: 0 0 0.55rem;
+  }
+  .aotp-outcome p {
+    color: var(--aotp-muted); font-size: 0.98rem; line-height: 1.7;
+    max-width: 58ch; margin: 0;
+  }
+
+  /* ---------- tiers ---------- */
+  .aotp-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; align-items: stretch; }
+  .aotp-tier-cell { height: 100%; }
+  .aotp-tier {
+    height: 100%; display: flex; flex-direction: column;
+    border: 1px solid var(--aotp-line);
+    padding: 1.9rem 1.7rem 1.7rem;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .aotp-tier:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+  .aotp-tier-flagship {
+    border-color: color-mix(in srgb, var(--color-accent) 55%, var(--aotp-line));
+    background: color-mix(in srgb, var(--color-accent) 5%, transparent);
+  }
+  .aotp-tier-top { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; margin: 0 0 1rem; }
+  .aotp-tier-format {
+    font-family: var(--font-mono);
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-accent); margin: 0;
+  }
+  .aotp-tier-flag {
+    font-family: var(--font-mono);
+    font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 50%, transparent);
+    color: var(--color-accent); padding: 0.24rem 0.55rem; white-space: nowrap;
+  }
+  .aotp-tier-name {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: 1.6rem; line-height: 1.1; color: var(--aotp-head); margin: 0 0 0.4rem;
+  }
+  .aotp-tier-price {
+    font-family: var(--font-mono); font-size: 0.78rem;
+    color: var(--aotp-muted); margin: 0 0 1.1rem;
+  }
+  .aotp-tier-flagship .aotp-tier-price { color: var(--color-accent); font-weight: 600; }
+  .aotp-tier-blurb { color: var(--aotp-muted); font-size: 0.95rem; line-height: 1.65; margin: 0 0 1.4rem; }
+  .aotp-tier-list { margin-top: auto; }
+  .aotp-tier-builds { font-size: 0.8rem; color: var(--aotp-muted); margin: 0 0 0.6rem; }
+  .aotp-tier-builds strong { color: var(--color-accent); font-weight: 600; }
+  .aotp-tier-list ul { list-style: none; margin: 0; padding: 0; }
+  .aotp-tier-list li {
+    position: relative; padding: 0.55rem 0 0.55rem 1.4rem;
+    border-top: 1px solid var(--aotp-line);
+    font-size: 0.93rem; color: var(--aotp-ink);
+  }
+  .aotp-tier-list li::before {
+    content: '+'; position: absolute; left: 0.1rem; top: 0.5rem;
+    font-family: var(--font-mono); color: var(--color-accent);
+  }
+  .aotp-fineprint {
+    font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.7;
+    color: var(--aotp-muted); margin: 2rem 0 0; max-width: 70ch;
+  }
+  .aotp-fineprint a { color: var(--color-accent); text-decoration: none; border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent); transition: border-color 0.15s ease; }
+  .aotp-fineprint a:hover { border-bottom-color: var(--color-accent); }
+
+  /* ---------- who runs it ---------- */
+  .aotp-prose p {
+    color: var(--aotp-muted); font-size: 1.05rem; line-height: 1.75;
+    max-width: 62ch; margin: 0 0 1.3rem;
+  }
+  .aotp-prose strong { color: var(--aotp-head); font-weight: 600; }
+
+  /* ---------- closing ---------- */
+  .aotp-closing {
+    position: relative; overflow: hidden;
+    background: var(--aotp-panel);
+    border-top: 1px solid var(--aotp-line);
+    padding: 5.5rem 0;
+  }
+  .aotp-closing-inner { max-width: 62ch; }
+  .aotp-closing .aotp-deck { margin-bottom: 2rem; }
+  .aotp-more { margin: 1.6rem 0 0; font-size: 0.92rem; }
+
+  /* ---------- masthead entrance ---------- */
+  .aotp-fade { opacity: 0; animation: aotpFadeUp 0.65s ease-out forwards; }
+  .aotp-d1 { animation-delay: 0.1s; }
+  .aotp-d2 { animation-delay: 0.18s; }
+  .aotp-d3 { animation-delay: 0.26s; }
+  .aotp-d4 { animation-delay: 0.34s; }
+  @keyframes aotpFadeUp {
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .aotp-fade { animation: none; opacity: 1; }
+  }
+
+  /* ---------- scroll-driven hairlines (progressive enhancement) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .aotp-outcome::before {
+        animation: aotpRule linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 50%;
+      }
+    }
+  }
+  @keyframes aotpRule {
+    from { transform: scaleX(0.12); }
+    to { transform: scaleX(1); }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 980px) {
+    .aotp-masthead-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .aotp-figure { max-width: 30rem; }
+    .aotp-split { grid-template-columns: 1fr; gap: 2.5rem; }
+    .aotp-tiers { grid-template-columns: 1fr; max-width: 34rem; }
+  }
+  @media (max-width: 560px) {
+    .aotp-section { padding: 4rem 0; }
+    .aotp-masthead { padding: 3.5rem 0 4rem; }
+    .aotp-outcome { grid-template-columns: 2.4rem minmax(0, 1fr); gap: 1rem; }
   }
 </style>

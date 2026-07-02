@@ -1,0 +1,215 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/speaker.css';
+
+// PERMANENT PLANNER-ENABLEMENT PAGE. Theme-independent, same design system
+// as /speaking (src/styles/speaker.css). Weekly rebuilds must NOT restructure
+// this page. Everything here exists to be copied, downloaded, and forwarded
+// by event planners and program committees.
+
+const bioShort = `Edward Roske is an AI keynote speaker who ships what he talks about. He builds MCP servers that connect AI agents to enterprise finance systems, runs his own day on ten-plus AI agents, and spent twenty-five years running interRel Consulting (merged into Argano, a billion-dollar firm) inside the Office of the CFO. He's written fifteen books, spoken in fifty-plus countries on all seven continents, and hosts the Asking Good Questions podcast.`;
+
+const bioLong = `Edward Roske founded interRel Consulting at twenty-two and ran it for twenty-five years as one of the longest-standing Oracle Platinum EPM Partners before merging it into Argano, a billion-dollar consulting firm. Today he's the CEO of Dawnward, an investor and contributor at Caprus.ai, and one of the people actually shipping enterprise AI: MCP servers that let AI agents read and write live Oracle EPM data, in production now.
+
+He's written fifteen books on enterprise analytics (the "Look Smarter Than You Are" series), holds a Master of Data Science from SMU (perfect 4.0, Outstanding Graduate), and has spoken in fifty-plus countries on all seven continents, including the one with penguins. His awards shelf includes the ODTUG Lifetime Achievement Award (2025, given to fewer than five people ever), six Top Speaker awards, and two Best Overall Speaker awards.
+
+Edward hosts the Asking Good Questions podcast, publishes AI News briefs to 200,000+ YouTube subscribers, is president of the Puerto Rico AI Community (850+ executives), and co-chairs the Caribbean AI Summit. He lives in San Juan, Puerto Rico, runs his life on ten-plus AI agents, and wears the blue fedora on stage. (A Roske never removes his fedora in the presence of others.)`;
+
+const bioProgram = `Edward Roske is a world-renowned author, data scientist, and entrepreneur, celebrated as one of the foremost voices on artificial intelligence and business transformation. Revered by Fortune 500 executives and startup founders alike, he has written definitive books on analytics and enterprise technology, delivered electrifying keynotes around the world, and hosts the acclaimed podcast Asking Good Questions, where he challenges global leaders to reimagine the future of finance in the AI era. As the visionary founder of interRel Consulting (steering it for over two decades before its strategic exit to Argano, a billion-dollar digital powerhouse) Roske continues to shape the direction of enterprise technology from the boardroom. Today, he is not only a trusted advisor to global corporations but also the driving force behind the fastest-growing AI leadership movement in Puerto Rico, convening executives, investors, and policymakers to define the future of applied AI.`;
+
+const intro = `Our next speaker has written fifteen books, spoken in more than fifty countries on all seven continents, and spent twenty-five years building the consulting firm that Fortune 500 finance teams called when the numbers mattered. Now he builds AI. His agents run his calendar, his inbox, his code, and his website, which they redesign every Saturday without asking him first. He's the host of the Asking Good Questions podcast, and he's here to answer the AI questions you've been quietly asking yourself. Please welcome, in the blue fedora, Edward Roske.`;
+
+const avNeeds = [
+  { item: 'Microphone', detail: 'Wireless lavalier or headset preferred. Handheld works. Podium mics defeat the purpose (Edward moves).' },
+  { item: 'Video', detail: 'HDMI or USB-C input to your screens. He presents from his own laptop. 16:9, standard resolutions.' },
+  { item: 'Confidence monitor', detail: 'Appreciated in rooms over 300 people. Not required.' },
+  { item: 'Tech check', detail: 'Day before the session when possible, otherwise 60 minutes prior.' },
+  { item: 'Recording', detail: 'Fine with it. Licensing for internal or public distribution is quoted in the agreement.' },
+  { item: 'Introduction', detail: 'Use the 75-word intro on this page, or hand it to your emcee and let them improvise badly. Either is fine.' },
+];
+
+const logistics = [
+  { item: 'Home base', detail: 'San Juan, Puerto Rico. Direct flights to most US hubs.' },
+  { item: 'Travel', detail: 'Anywhere. Fifty-plus countries so far, all seven continents. Domestic travel is a flat buyout. International is quoted per event.' },
+  { item: 'Arrival', detail: 'Early. There is no such thing as on time: you’re either early or you’re late.' },
+  { item: 'After the talk', detail: "Edward stays for the hallway track, Q&A, meet-and-greets, and book signings. He doesn't vanish to the airport mid-applause." },
+  { item: 'Dietary', detail: 'Vegetarian. Handles it himself, so no special catering needed.' },
+];
+---
+
+<BaseLayout
+  title="Speaker Kit | Edward Roske"
+  description="Everything an event planner needs to book and introduce Edward Roske: bios in three lengths, downloadable headshots, a 75-word emcee introduction, A/V requirements, and the speaker one-pager PDF."
+  ogImage="/images/og-default.png">
+
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  </Fragment>
+
+  <div class="spk">
+
+    <header class="spk-masthead spk-masthead-compact">
+      <div class="spk-grain" aria-hidden="true"></div>
+      <div class="spk-wrap">
+        <p class="spk-kicker">The Speaker Kit</p>
+        <h1 class="spk-h1">Everything your committee needs.<br /><em>Copy, download, forward.</em></h1>
+        <p class="spk-lede">
+          Bios in three lengths, headshots, a ready-to-read introduction, A/V needs, and the
+          one-pager. If something's missing, email <a class="spk-textlink" href="mailto:Edward@Roske.AI">Edward@Roske.AI</a> and
+          it'll exist within a business day.
+        </p>
+        <div class="spk-cta-row">
+          <a class="spk-btn spk-btn-primary" href="/downloads/edward-roske-speaker-onepager.pdf" target="_blank" rel="noopener">Download the one-pager (PDF)</a>
+          <a class="spk-btn spk-btn-ghost" href="/speaking/#inquiry">Check availability</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ BIOS ============ -->
+    <section class="spk-section">
+      <div class="spk-wrap">
+        <p class="spk-eyebrow">Bios</p>
+        <h2 class="spk-h2">Three lengths. Pick your column inches.</h2>
+        <p class="spk-deck">Each block has a copy button, because retyping a bio is nobody's idea of event planning.</p>
+
+        <article class="spk-kit-block">
+          <div class="spk-kit-block-head">
+            <h3>Short bio (about 75 words)</h3>
+            <button type="button" class="spk-copy" data-copy-target="bio-short">Copy</button>
+          </div>
+          <div class="spk-kit-copytext" id="bio-short">
+            <p>{bioShort}</p>
+          </div>
+        </article>
+
+        <article class="spk-kit-block">
+          <div class="spk-kit-block-head">
+            <h3>Full bio</h3>
+            <button type="button" class="spk-copy" data-copy-target="bio-long">Copy</button>
+          </div>
+          <div class="spk-kit-copytext" id="bio-long">
+            {bioLong.split('\n\n').map((p) => <p>{p}</p>)}
+          </div>
+        </article>
+
+        <article class="spk-kit-block">
+          <div class="spk-kit-block-head">
+            <h3>For your program book (the hype version)</h3>
+            <button type="button" class="spk-copy" data-copy-target="bio-program">Copy</button>
+          </div>
+          <p class="spk-kit-note">Written in the third-person conference dialect your program book expects. Edward finds it embarrassing, which is how you know it's accurate.</p>
+          <div class="spk-kit-copytext" id="bio-program">
+            <p>{bioProgram}</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ INTRO ============ -->
+    <section class="spk-section spk-section-alt">
+      <div class="spk-wrap">
+        <p class="spk-eyebrow">The introduction</p>
+        <h2 class="spk-h2">Hand this to your emcee.</h2>
+        <p class="spk-deck">Seventy-five words, reads in thirty seconds, no pronunciation hazards. (It's "ROSS-key.")</p>
+        <article class="spk-kit-block">
+          <div class="spk-kit-block-head">
+            <h3>Spoken introduction</h3>
+            <button type="button" class="spk-copy" data-copy-target="intro-script">Copy</button>
+          </div>
+          <div class="spk-kit-copytext spk-kit-intro" id="intro-script">
+            <p>{intro}</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ HEADSHOTS ============ -->
+    <section class="spk-section">
+      <div class="spk-wrap">
+        <p class="spk-eyebrow">Headshots</p>
+        <h2 class="spk-h2">The face. The fedora.</h2>
+        <p class="spk-deck">
+          Right-click to save, or use the download link. Need a different crop, resolution, or
+          background for print? Email and you'll have it within a business day.
+        </p>
+        <div class="spk-headshots">
+          <figure class="spk-headshot">
+            <img src="/images/Edward_Roske_Headshot.png" alt="Edward Roske headshot: blue fedora, glasses, grey blazer" loading="lazy" decoding="async" />
+            <figcaption>
+              <span>Primary headshot (PNG)</span>
+              <a class="spk-textlink" href="/images/Edward_Roske_Headshot.png" download="Edward_Roske_Headshot.png">Download</a>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ A/V ============ -->
+    <section class="spk-section spk-section-alt">
+      <div class="spk-wrap">
+        <div class="spk-kit-cols">
+          <div>
+            <p class="spk-eyebrow">A/V requirements</p>
+            <h2 class="spk-h2">The rider is short.</h2>
+            <dl class="spk-kit-list">
+              {avNeeds.map((a) => (
+                <div>
+                  <dt>{a.item}</dt>
+                  <dd>{a.detail}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <div>
+            <p class="spk-eyebrow">Logistics</p>
+            <h2 class="spk-h2">The practical part.</h2>
+            <dl class="spk-kit-list">
+              {logistics.map((l) => (
+                <div>
+                  <dt>{l.item}</dt>
+                  <dd>{l.detail}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLOSING ============ -->
+    <section class="spk-closing">
+      <div class="spk-grain" aria-hidden="true"></div>
+      <div class="spk-wrap">
+        <h2 class="spk-h2 spk-h2-invert">Kit in hand.<br /><em>Now check the calendar.</em></h2>
+        <div class="spk-cta-row spk-cta-center">
+          <a class="spk-btn spk-btn-light" href="/speaking/#inquiry">Check availability</a>
+          <a class="spk-btn spk-btn-ghost-invert" href="/meet/" target="_blank" rel="noopener noreferrer">Screening call (30 min)</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script is:inline>
+    document.addEventListener('astro:page-load', () => {
+      document.querySelectorAll('.spk-copy').forEach((btn) => {
+        if (btn.dataset.bound) return;
+        btn.dataset.bound = '1';
+        btn.addEventListener('click', async () => {
+          const el = document.getElementById(btn.dataset.copyTarget);
+          if (!el) return;
+          try {
+            await navigator.clipboard.writeText(el.innerText.trim());
+            const prior = btn.textContent;
+            btn.textContent = 'Copied';
+            setTimeout(() => { btn.textContent = prior; }, 1600);
+          } catch {
+            window.getSelection().selectAllChildren(el);
+          }
+        });
+      });
+    });
+  </script>
+
+</BaseLayout>

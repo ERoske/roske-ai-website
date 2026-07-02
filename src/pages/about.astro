@@ -1,8 +1,56 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Section from '../components/Section.astro';
-import Card from '../components/Card.astro';
-import ExpandableSection from '../components/ExpandableSection.astro';
+
+/**
+ * About: the magazine-profile page. Permanent structure, weekly re-skin.
+ * Every color and font below comes from the global theme variables
+ * (--color-accent, --font-heading, etc.) so the page re-themes each
+ * Saturday without a rewrite. Dark/light rules use the
+ * :global([data-theme="..."]) pattern from SpeakerCTA.astro.
+ */
+
+const timeline = [
+  { year: "2026", title: "Caribbean AI Summit", desc: "Co-chairing the largest AI conference Puerto Rico has ever seen. Puerto Rico Convention Center, October 9-10." },
+  { year: "2025", title: "ODTUG Lifetime Achievement", desc: "Received the award at Kscope25. Fewer than 5 people have ever received it. Announced as my final Kscope." },
+  { year: "2023", title: "Launched AI Ventures", desc: "Left Argano. Founded Roske.AI. Invested in Caprus. Started coding MCP servers." },
+  { year: "2021", title: "MS Data Science, SMU", desc: "Perfect 4.0 GPA. Outstanding Graduate. Decided to get serious about the 'science' in 'Data Science.'" },
+  { year: "2020", title: "Merged interRel into Argano", desc: "After 25 years, merged interRel to help form Argano, now a billion-dollar global consulting firm. Served as CEO of ArganoInterRel, then Chief Performance Officer." },
+  { year: "2018", title: "Essbase Speaker of the Year", desc: "Kscope18. Also: first perfect score ever on the Essbase Certification exam." },
+  { year: "2016", title: "BA from Shimer College", desc: "Finally finished the degree I started at 15. (College Calculus and Computer Science at 15. Full-time at Simon's Rock of Bard College at 16. Took a 20-year detour through entrepreneurship before finishing.)" },
+  { year: "2008", title: "First 'Look Smarter' Book", desc: "Started co-authoring the 'Look Smarter Than You Are' series. 15 books total. All before generative AI existed. (Brag.)" },
+  { year: "1997", title: "Founded interRel Consulting", desc: "Age 22. Built it into the longest-standing Oracle Platinum EPM Partner worldwide. Five-time Oracle Partner of the Year." },
+  { year: "1995", title: "Started in Analytics", desc: "Senior Analytics Consultant at Technium/Pinnacle. Where the Essbase obsession began." },
+];
+
+const roles = [
+  { role: "CEO", company: "Dawnward", period: "2023 - Present", desc: "Edward's investment firm. Portfolio across AI, technology, and strategic ventures." },
+  { role: "Investor & Contributor", company: "Caprus", period: "2023 - Present", desc: "AI Software & Services firm helping finance teams leverage artificial intelligence for planning, analytics, and operations." },
+  { role: "Co-founder & Stakeholder", company: "Argano", period: "2020 - Present", desc: "Billion-dollar global consulting firm. Formed through the merger of interRel Consulting (which Edward founded in 1997 and led for 25 years) with several other firms." },
+  { role: "Co-chair", company: "Caribbean AI Summit", period: "2025 - Present", desc: "Co-chairing the Caribbean AI Summit (October 9-10, 2026, Puerto Rico Convention Center), the largest AI conference Puerto Rico has ever seen." },
+  { role: "President", company: "Puerto Rico AI Community", period: "2024 - Present", desc: "Leading the island's AI community. 850+ attendees across bimonthly events." },
+];
+
+const education = [
+  { degree: "Master of Science in Data Science", school: "SMU", period: "2019 - 2021", desc: "Perfect 4.0 GPA. Outstanding Graduate Award. Focus on machine learning, statistical modeling, and applied data science." },
+  { degree: "Bachelor of Arts", school: "Shimer College", period: "2016", desc: "Great Books curriculum. Started college part-time at 15 (Calculus, Computer Science). Full-time at Simon's Rock of Bard College at 16. Finished after a 20-year detour through entrepreneurship." },
+];
+
+const expertise = [
+  { area: "AI & Machine Learning", skills: "MCP Servers, AI Agents, LLMs, NLP, Computer Vision, Deep Learning, Prompt Engineering" },
+  { area: "Enterprise Finance", skills: "Oracle EPM, Essbase, Planning, HFM, Financial Consolidation, Budgeting & Forecasting" },
+  { area: "Data Science", skills: "Python, R, SQL, Statistical Modeling, Machine Learning, Data Visualization, ETL" },
+  { area: "Leadership", skills: "Company Building, M&A, Strategic Planning, Public Speaking, Team Building, Board Governance" },
+];
+
+const awards = [
+  { award: "ODTUG Lifetime Achievement Award", detail: "Fewer than 5 recipients ever", year: "2025" },
+  { award: "Essbase Speaker of the Year", detail: "Kscope18, voted by attendees", year: "2018" },
+  { award: "Oracle ACE Director", detail: "Held for 15+ years. Oracle's highest community recognition", year: "2008 - Present" },
+  { award: "Five-Time Oracle Partner of the Year", detail: "Through interRel Consulting", year: "Multiple" },
+  { award: "First Perfect Essbase Certification Score", detail: "First person to score perfectly on the exam", year: "Historic" },
+  { award: "Kscope Conference Chair", detail: "ODTUG Board Member", year: "2011 - 2012" },
+  { award: "Two US Patents", detail: "#5836617, #5848810, custom postage stamp technology", year: "1998" },
+];
 ---
 
 <BaseLayout title="About | Edward Roske" description="CEO, Speaker, Data Scientist, Dungeon Master. 25 years building companies, 80+ countries explored, 15 books written.">
@@ -63,286 +111,616 @@ import ExpandableSection from '../components/ExpandableSection.astro';
     ]
   })} />
 
-  <!-- Hero -->
-  <section class="relative py-20 md:py-28 px-6 overflow-hidden">
-    <div class="absolute inset-0 dark:block hidden bg-gradient-to-b from-[var(--color-bg)] to-[var(--color-surface)]"></div>
-    <div class="absolute inset-0 dark:hidden block bg-gradient-to-b from-[var(--color-bg-light)] to-gray-50"></div>
-    <div class="relative max-w-7xl mx-auto">
-      <div class="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-        <div class="flex-1 max-w-2xl text-center lg:text-left">
-          <p class="text-sm font-[var(--font-mono)] tracking-widest uppercase mb-4 text-[var(--color-accent)]"
-            style="animation: fadeInUp 0.6s ease-out forwards;">
-            About
-          </p>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6 dark:text-white text-[var(--color-primary)]"
-            style="animation: fadeInUp 0.6s ease-out 0.1s forwards; opacity: 0; font-family: var(--font-heading);">
-            CEO. Speaker. Data&nbsp;Scientist. Dungeon&nbsp;Master.
-          </h1>
-          <p class="text-lg md:text-xl leading-relaxed dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]"
-            style="animation: fadeInUp 0.6s ease-out 0.2s forwards; opacity: 0;">
-            I started college at 15, founded my first company at 22, and spent the next 30 years building things and talking about them in 50+ countries across all 7 continents. Wrote 15 books. Convinced Oracle to send a shy introvert around the world for 15 years. Now I run AI companies from San Juan, Puerto Rico.
-          </p>
+  <div class="ab">
+
+    <!-- ============ OPENING SPREAD ============ -->
+    <header class="ab-hero ab-b">
+      <div class="ab-wrap">
+        <p class="ab-kicker ab-rise">About</p>
+        <h1 class="ab-h1 ab-ink ab-rise ab-rise-2">
+          CEO. Speaker.<br />
+          Data&nbsp;Scientist.<br />
+          <em>Dungeon&nbsp;Master.</em>
+        </h1>
+        <div class="ab-hero-row">
+          <div class="ab-hero-copy ab-rise ab-rise-3">
+            <p class="ab-lede ab-muted">
+              I started college at 15, founded my first company at 22, and spent the next 30 years building things and talking about them in 50+ countries across all 7 continents. Wrote 15 books. Convinced Oracle to send a shy introvert around the world for 15 years. Now I run AI companies from San Juan, Puerto Rico.
+            </p>
+            <p class="ab-meta ab-muted ab-b">San Juan, Puerto Rico &nbsp;|&nbsp; 80+ countries &nbsp;|&nbsp; 15 books &nbsp;|&nbsp; 1 fedora</p>
+          </div>
+          <figure class="ab-portrait ab-rise ab-rise-4">
+            <img src="/images/hero-about.png"
+              alt="Edward Roske at an impossibly cluttered desk with books, a D20 dice, globe, laptop, podcast mic, and a Dallas Cowboys pennant"
+              class="ab-b"
+              width="2752" height="1536"
+              loading="eager"
+              decoding="async" />
+            <figcaption class="ab-muted">Every item on this desk is load-bearing.</figcaption>
+          </figure>
         </div>
-        <div class="flex-shrink-0" style="animation: fadeInUp 0.8s ease-out 0.3s forwards; opacity: 0;">
-          <div class="relative">
-            <div class="absolute -inset-4 rounded-2xl bg-[var(--color-accent)]/10 blur-2xl"></div>
-            <picture>
-              <source srcset="/images/hero-about.webp" type="image/webp" />
-              <img src="/images/hero-about.png"
-                alt="Edward Roske at an impossibly cluttered desk with books, a D20 dice, globe, laptop, podcast mic, and a Dallas Cowboys pennant"
-                class="relative rounded-2xl w-full max-w-md lg:max-w-lg shadow-2xl ring-1 ring-white/10"
-                loading="eager" />
-            </picture>
+      </div>
+    </header>
+
+    <!-- ============ 01 / THE SHORT VERSION ============ -->
+    <section class="ab-section">
+      <div class="ab-wrap">
+        <header class="ab-sechead animate-on-scroll">
+          <span class="ab-num" aria-hidden="true">01</span>
+          <div>
+            <h2 class="ab-h2 ab-ink">The Short Version</h2>
+            <p class="ab-sub ab-muted">For people who read executive summaries first.</p>
+          </div>
+        </header>
+        <div class="ab-offset">
+          <div class="ab-prose ab-muted animate-on-scroll">
+            <p>
+              I'm Edward Roske. I run <strong>Dawnward</strong> (my investment firm), invest in and contribute to <strong>Caprus</strong> (AI for finance teams), and still hold a stake in <strong>Argano</strong>, the billion-dollar consulting firm I helped create when I merged my 25-year-old company, interRel, in 2020.
+            </p>
+            <p>
+              So what am I actually building? <strong>MCP servers</strong> that let AI models talk directly to enterprise financial systems (so your CFO can ask questions in English instead of writing calc scripts). I'm also co-chairing the <strong>Caribbean AI Summit</strong>, the largest AI conference Puerto Rico has ever seen. October 9-10, 2026. Puerto Rico Convention Center. You should come.
+            </p>
+            <p>
+              Master of Data Science from SMU (4.0 GPA, Outstanding Graduate... yes, I mention this a lot). BA from <strong>Shimer College</strong>, a Great Books school taught entirely by Socratic Method, which is where "Asking Good Questions" comes from as a philosophy. Started at 15. Full-time at Simon's Rock of Bard College at 16. Took a 20-year detour through entrepreneurship before finishing.
+            </p>
+            <p>
+              First person to score perfectly on the Essbase Certification exam. Oracle ACE Director for 15+ years. Fifteen books. The <strong>"Asking Good Questions"</strong> podcast. In 2025, I received ODTUG's Lifetime Achievement Award. Fewer than 5 people have ever been given it.
+            </p>
+            <p>
+              Also, I'm a Dungeon Master. I recently ran Keith Baker (the creator of the Eberron campaign setting) through a homebrew adventure. He said I was the best-prepared DM he'd ever seen in Eberron. (I peaked.)
+            </p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- The Short Version -->
-  <Section title="The Short Version" subtitle="For people who read executive summaries first.">
-    <div class="animate-on-scroll max-w-3xl">
-      <div class="space-y-6 dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-lg leading-relaxed">
-        <p>
-          I'm Edward Roske. I run <strong class="dark:text-white text-[var(--color-primary)]">Dawnward</strong> (my investment firm), invest in and contribute to <strong class="dark:text-white text-[var(--color-primary)]">Caprus</strong> (AI for finance teams), and still hold a stake in <strong class="dark:text-white text-[var(--color-primary)]">Argano</strong>, the billion-dollar consulting firm I helped create when I merged my 25-year-old company, interRel, in 2020.
-        </p>
-        <p>
-          So what am I actually building? <strong class="dark:text-white text-[var(--color-primary)]">MCP servers</strong> that let AI models talk directly to enterprise financial systems (so your CFO can ask questions in English instead of writing calc scripts). I'm also co-chairing the <strong class="dark:text-white text-[var(--color-primary)]">Caribbean AI Summit</strong>, the largest AI conference Puerto Rico has ever seen. October 9-10, 2026. Puerto Rico Convention Center. You should come.
-        </p>
-        <p>
-          Master of Data Science from SMU (4.0 GPA, Outstanding Graduate... yes, I mention this a lot). BA from <strong class="dark:text-white text-[var(--color-primary)]">Shimer College</strong>, a Great Books school taught entirely by Socratic Method, which is where "Asking Good Questions" comes from as a philosophy. Started at 15. Full-time at Simon's Rock of Bard College at 16. Took a 20-year detour through entrepreneurship before finishing.
-        </p>
-        <p>
-          First person to score perfectly on the Essbase Certification exam. Oracle ACE Director for 15+ years. Fifteen books. The <strong class="dark:text-white text-[var(--color-primary)]">"Asking Good Questions"</strong> podcast. In 2025, I received ODTUG's Lifetime Achievement Award. Fewer than 5 people have ever been given it.
-        </p>
-        <p>
-          Also, I'm a Dungeon Master. I recently ran Keith Baker (the creator of the Eberron campaign setting) through a homebrew adventure. He said I was the best-prepared DM he'd ever seen in Eberron. (I peaked.)
-        </p>
-      </div>
-    </div>
-  </Section>
-
-  <!-- Career Timeline (merged from About + Resume) -->
-  <Section title="Career Timeline" subtitle="Thirty years of building things, condensed." dark>
-    <div class="max-w-3xl space-y-0">
-      {[
-        { year: "2026", title: "Caribbean AI Summit", desc: "Co-chairing the largest AI conference Puerto Rico has ever seen. Puerto Rico Convention Center, October 9-10." },
-        { year: "2025", title: "ODTUG Lifetime Achievement", desc: "Received the award at Kscope25. Fewer than 5 people have ever received it. Announced as my final Kscope." },
-        { year: "2023", title: "Launched AI Ventures", desc: "Left Argano. Founded Roske.AI. Invested in Caprus. Started coding MCP servers." },
-        { year: "2021", title: "MS Data Science, SMU", desc: "Perfect 4.0 GPA. Outstanding Graduate. Decided to get serious about the 'science' in 'Data Science.'" },
-        { year: "2020", title: "Merged interRel into Argano", desc: "After 25 years, merged interRel to help form Argano, now a billion-dollar global consulting firm. Served as CEO of ArganoInterRel, then Chief Performance Officer." },
-        { year: "2018", title: "Essbase Speaker of the Year", desc: "Kscope18. Also: first perfect score ever on the Essbase Certification exam." },
-        { year: "2016", title: "BA from Shimer College", desc: "Finally finished the degree I started at 15. (College Calculus and Computer Science at 15. Full-time at Simon's Rock of Bard College at 16. Took a 20-year detour through entrepreneurship before finishing.)" },
-        { year: "2008", title: "First 'Look Smarter' Book", desc: "Started co-authoring the 'Look Smarter Than You Are' series. 15 books total. All before generative AI existed. (Brag.)" },
-        { year: "1997", title: "Founded interRel Consulting", desc: "Age 22. Built it into the longest-standing Oracle Platinum EPM Partner worldwide. Five-time Oracle Partner of the Year." },
-        { year: "1995", title: "Started in Analytics", desc: "Senior Analytics Consultant at Technium/Pinnacle. Where the Essbase obsession began." },
-      ].map((item, i) => (
-        <div class="animate-on-scroll flex gap-6 md:gap-8 group">
-          <div class="flex flex-col items-center">
-            <div class="w-3 h-3 rounded-full bg-[var(--color-accent)] group-hover:scale-125 transition-transform mt-2"></div>
-            {i < 9 && <div class="w-px flex-1 dark:bg-[var(--color-border)] bg-[var(--color-border-light)] mt-2"></div>}
+    <!-- ============ 02 / CAREER TIMELINE ============ -->
+    <section class="ab-section ab-alt ab-b">
+      <div class="ab-wrap">
+        <header class="ab-sechead animate-on-scroll">
+          <span class="ab-num" aria-hidden="true">02</span>
+          <div>
+            <h2 class="ab-h2 ab-ink">Career Timeline</h2>
+            <p class="ab-sub ab-muted">Thirty years of building things, condensed.</p>
           </div>
-          <div class="pb-10">
-            <div class="text-sm font-[var(--font-mono)] text-[var(--color-accent)] mb-1">{item.year}</div>
-            <h3 class="text-lg font-bold dark:text-white text-[var(--color-primary)] mb-1">{item.title}</h3>
-            <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">{item.desc}</p>
+        </header>
+        <div class="ab-offset">
+          <div class="ab-timeline">
+            {timeline.map((item) => (
+              <div class="ab-tlrow ab-b animate-on-scroll">
+                <span class="ab-tlyear">{item.year}</span>
+                <div>
+                  <h3 class="ab-ink">{item.title}</h3>
+                  <p class="ab-muted">{item.desc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </Section>
+      </div>
+    </section>
 
-  <!-- Resume Sections (expandable) -->
-  <Section id="resume" title="The Resume" subtitle="For the people who need the details.">
-    <div class="max-w-3xl space-y-4">
+    <!-- ============ 03 / THE RESUME ============ -->
+    <section id="resume" class="ab-section">
+      <div class="ab-wrap">
+        <header class="ab-sechead animate-on-scroll">
+          <span class="ab-num" aria-hidden="true">03</span>
+          <div>
+            <h2 class="ab-h2 ab-ink">The Resume</h2>
+            <p class="ab-sub ab-muted">For the people who need the details.</p>
+          </div>
+        </header>
+        <div class="ab-offset">
+          <div class="ab-resume ab-b">
 
-      <!-- Current Roles -->
-      <div class="animate-on-scroll">
-        <ExpandableSection title="Current Roles" open>
-          <div class="space-y-4">
-            {[
-              { role: "CEO", company: "Dawnward", period: "2023 - Present", desc: "Edward's investment firm. Portfolio across AI, technology, and strategic ventures." },
-              { role: "Investor & Contributor", company: "Caprus", period: "2023 - Present", desc: "AI Software & Services firm helping finance teams leverage artificial intelligence for planning, analytics, and operations." },
-              { role: "Co-founder & Stakeholder", company: "Argano", period: "2020 - Present", desc: "Billion-dollar global consulting firm. Formed through the merger of interRel Consulting (which Edward founded in 1997 and led for 25 years) with several other firms." },
-              { role: "Co-chair", company: "Caribbean AI Summit", period: "2025 - Present", desc: "Co-chairing the Caribbean AI Summit (October 9-10, 2026, Puerto Rico Convention Center), the largest AI conference Puerto Rico has ever seen." },
-              { role: "President", company: "Puerto Rico AI Community", period: "2024 - Present", desc: "Leading the island's AI community. 850+ attendees across bimonthly events." },
-            ].map(item => (
-              <div class="rounded-lg p-4
-                dark:bg-white/[0.02] dark:border dark:border-white/[0.04]
-                bg-gray-50 border border-black/[0.04]">
-                <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
-                  <div>
-                    <span class="font-semibold dark:text-white text-[var(--color-primary)]">{item.role}</span>
-                    <span class="text-[var(--color-accent)] font-medium text-sm ml-1">{item.company}</span>
+            <div class="animate-on-scroll">
+              <details class="ab-details ab-b" open>
+                <summary class="ab-summary ab-ink">Current Roles</summary>
+                <div class="ab-details-body">
+                  {roles.map((item) => (
+                    <div class="ab-item ab-b">
+                      <div class="ab-item-head">
+                        <span class="ab-item-role ab-ink">{item.role}</span>
+                        <span class="ab-item-co">{item.company}</span>
+                        <span class="ab-item-period ab-muted">{item.period}</span>
+                      </div>
+                      <p class="ab-item-desc ab-muted">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            </div>
+
+            <div class="animate-on-scroll">
+              <details class="ab-details ab-b">
+                <summary class="ab-summary ab-ink">Education</summary>
+                <div class="ab-details-body">
+                  {education.map((item) => (
+                    <div class="ab-item ab-b">
+                      <div class="ab-item-head">
+                        <span class="ab-item-role ab-ink">{item.degree}</span>
+                        <span class="ab-item-co">{item.school}</span>
+                        <span class="ab-item-period ab-muted">{item.period}</span>
+                      </div>
+                      <p class="ab-item-desc ab-muted">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            </div>
+
+            <div class="animate-on-scroll">
+              <details class="ab-details ab-b">
+                <summary class="ab-summary ab-ink">Expertise</summary>
+                <div class="ab-details-body">
+                  <div class="ab-skills">
+                    {expertise.map((item) => (
+                      <div class="ab-skill">
+                        <h4>{item.area}</h4>
+                        <p class="ab-muted">{item.skills}</p>
+                      </div>
+                    ))}
                   </div>
-                  <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60 whitespace-nowrap">{item.period}</span>
                 </div>
-                <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </ExpandableSection>
-      </div>
-
-      <!-- Education -->
-      <div class="animate-on-scroll">
-        <ExpandableSection title="Education">
-          <div class="space-y-4">
-            <div class="rounded-lg p-4 dark:bg-white/[0.02] dark:border dark:border-white/[0.04] bg-gray-50 border border-black/[0.04]">
-              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
-                <div>
-                  <span class="font-semibold dark:text-white text-[var(--color-primary)]">Master of Science in Data Science</span>
-                  <span class="text-[var(--color-accent)] font-medium text-sm ml-1">SMU</span>
-                </div>
-                <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">2019 - 2021</span>
-              </div>
-              <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">
-                Perfect 4.0 GPA. Outstanding Graduate Award. Focus on machine learning, statistical modeling, and applied data science.
-              </p>
+              </details>
             </div>
-            <div class="rounded-lg p-4 dark:bg-white/[0.02] dark:border dark:border-white/[0.04] bg-gray-50 border border-black/[0.04]">
-              <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 mb-1">
-                <div>
-                  <span class="font-semibold dark:text-white text-[var(--color-primary)]">Bachelor of Arts</span>
-                  <span class="text-[var(--color-accent)] font-medium text-sm ml-1">Shimer College</span>
+
+            <div class="animate-on-scroll">
+              <details class="ab-details ab-b">
+                <summary class="ab-summary ab-ink">Awards &amp; Recognition</summary>
+                <div class="ab-details-body">
+                  {awards.map((item) => (
+                    <div class="ab-award ab-b">
+                      <span class="ab-award-year">{item.year}</span>
+                      <div>
+                        <span class="ab-award-name ab-ink">{item.award}</span>
+                        <p class="ab-award-detail ab-muted">{item.detail}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <span class="text-xs font-[var(--font-mono)] dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60">2016</span>
+              </details>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 04 / BEYOND THE RESUME ============ -->
+    <section class="ab-section ab-alt ab-b">
+      <div class="ab-wrap">
+        <header class="ab-sechead animate-on-scroll">
+          <span class="ab-num" aria-hidden="true">04</span>
+          <div>
+            <h2 class="ab-h2 ab-ink">Beyond the Resume</h2>
+            <p class="ab-sub ab-muted">The parts that don't fit on LinkedIn.</p>
+          </div>
+        </header>
+        <div class="ab-facets">
+
+          <div class="animate-on-scroll">
+            <div class="ab-facet ab-b">
+              <div class="ab-facet-head">
+                <h3 class="ab-ink">World Traveler</h3>
+                <span class="ab-facet-num" aria-hidden="true">01</span>
               </div>
-              <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">
-                Great Books curriculum. Started college part-time at 15 (Calculus, Computer Science). Full-time at Simon's Rock of Bard College at 16. Finished after a 20-year detour through entrepreneurship.
-              </p>
+              <p class="ab-muted">80+ countries across all 7 continents (yes, including Antarctica). Hiked through Son Doong, the largest cave on Earth, in 2025. Trekked to <a href="https://adventureconsultants.com/world-renowned/news-and-media/current-dispatches/luxury-evererest-base-camp-trek-1-2026" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:underline">Everest Base Camp in April 2026</a> (day-by-day dispatches and photos at that link). Vegetarian food options at altitude: questionable.</p>
             </div>
           </div>
-        </ExpandableSection>
-      </div>
 
-      <!-- Expertise -->
-      <div class="animate-on-scroll">
-        <ExpandableSection title="Expertise">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              { area: "AI & Machine Learning", skills: "MCP Servers, AI Agents, LLMs, NLP, Computer Vision, Deep Learning, Prompt Engineering" },
-              { area: "Enterprise Finance", skills: "Oracle EPM, Essbase, Planning, HFM, Financial Consolidation, Budgeting & Forecasting" },
-              { area: "Data Science", skills: "Python, R, SQL, Statistical Modeling, Machine Learning, Data Visualization, ETL" },
-              { area: "Leadership", skills: "Company Building, M&A, Strategic Planning, Public Speaking, Team Building, Board Governance" },
-            ].map(item => (
-              <div>
-                <h4 class="text-sm font-bold font-[var(--font-mono)] uppercase tracking-wider text-[var(--color-accent)] mb-2">{item.area}</h4>
-                <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] text-sm leading-relaxed">{item.skills}</p>
+          <div class="animate-on-scroll">
+            <div class="ab-facet ab-b">
+              <div class="ab-facet-head">
+                <h3 class="ab-ink">Dungeon Master</h3>
+                <span class="ab-facet-num" aria-hidden="true">02</span>
               </div>
-            ))}
+              <p class="ab-muted">5th Edition. Eberron setting. I once ran Keith Baker (Eberron's creator) through a vertical chase through Sharn. My ruling: I'll allow it. He loved falling. I loved being validated.</p>
+            </div>
           </div>
-        </ExpandableSection>
-      </div>
 
-      <!-- Awards -->
-      <div class="animate-on-scroll">
-        <ExpandableSection title="Awards & Recognition">
-          <div class="space-y-2">
-            {[
-              { award: "ODTUG Lifetime Achievement Award", detail: "Fewer than 5 recipients ever", year: "2025" },
-              { award: "Essbase Speaker of the Year", detail: "Kscope18, voted by attendees", year: "2018" },
-              { award: "Oracle ACE Director", detail: "Held for 15+ years. Oracle's highest community recognition", year: "2008 - Present" },
-              { award: "Five-Time Oracle Partner of the Year", detail: "Through interRel Consulting", year: "Multiple" },
-              { award: "First Perfect Essbase Certification Score", detail: "First person to score perfectly on the exam", year: "Historic" },
-              { award: "Kscope Conference Chair", detail: "ODTUG Board Member", year: "2011 - 2012" },
-              { award: "Two US Patents", detail: "#5836617, #5848810, custom postage stamp technology", year: "1998" },
-            ].map(item => (
-              <div class="flex items-start gap-4 rounded-lg p-3
-                dark:hover:bg-white/[0.03] hover:bg-black/[0.02] transition-colors">
-                <span class="text-xs font-[var(--font-mono)] text-[var(--color-accent)] whitespace-nowrap mt-0.5">{item.year}</span>
-                <div>
-                  <span class="text-sm font-semibold dark:text-white text-[var(--color-primary)]">{item.award}</span>
-                  <p class="text-xs dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)]">{item.detail}</p>
-                </div>
+          <div class="animate-on-scroll">
+            <div class="ab-facet ab-b">
+              <div class="ab-facet-head">
+                <h3 class="ab-ink">Film Producer</h3>
+                <span class="ab-facet-num" aria-hidden="true">03</span>
               </div>
-            ))}
+              <p class="ab-muted">IMDB credit as Producer. Credits include BattleBots and How to Plan an Orgy in a Small Town. (One of these is a better conversation starter than the other.)</p>
+            </div>
           </div>
-        </ExpandableSection>
+
+          <div class="animate-on-scroll">
+            <div class="ab-facet ab-b">
+              <div class="ab-facet-head">
+                <h3 class="ab-ink">Patent Holder</h3>
+                <span class="ab-facet-num" aria-hidden="true">04</span>
+              </div>
+              <p class="ab-muted">Two US Patents for custom postage stamps (#5836617, #5848810). Before email killed the postal service. (You're welcome, stamp collectors.)</p>
+            </div>
+          </div>
+
+          <div class="animate-on-scroll">
+            <div class="ab-facet ab-b">
+              <div class="ab-facet-head">
+                <h3 class="ab-ink">Vegetarian</h3>
+                <span class="ab-facet-num" aria-hidden="true">05</span>
+              </div>
+              <p class="ab-muted">For decades. Dawn (my wife) eats everything, which makes restaurant selection easier than you'd think. She's an oil painter and watercolor artist. We live in San Juan. My sons, Mycroft and Eliot, are in Miami.</p>
+            </div>
+          </div>
+
+          <div class="animate-on-scroll">
+            <div class="ab-facet ab-b">
+              <div class="ab-facet-head">
+                <h3 class="ab-ink">Escape Room Enthusiasts</h3>
+                <span class="ab-facet-num" aria-hidden="true">06</span>
+              </div>
+              <p class="ab-muted">Dawn and I have played 300+ escape rooms each. We're annual nominators and voters for the TERPECA awards. (Yes, there are awards for escape rooms. Yes, we take it seriously.)</p>
+            </div>
+          </div>
+
+          <div class="animate-on-scroll">
+            <div class="ab-facet ab-b">
+              <div class="ab-facet-head">
+                <h3 class="ab-ink">Competitive by Nature</h3>
+                <span class="ab-facet-num" aria-hidden="true">07</span>
+              </div>
+              <p class="ab-muted">Biggest Clifton StrengthsFinder result: Competition. I track phone unlocks (30+ daily), email volume (200+), and my Duolingo streak (1,000+ days). Introvert who built a career on public speaking. (The universe has a sense of humor.)</p>
+            </div>
+          </div>
+
+        </div>
       </div>
+    </section>
 
-    </div>
-  </Section>
-
-  <!-- Beyond the Resume -->
-  <Section title="Beyond the Resume" subtitle="The parts that don't fit on LinkedIn." dark>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div class="animate-on-scroll">
-        <Card title="World Traveler">
-          <p>80+ countries across all 7 continents (yes, including Antarctica). Hiked through Son Doong, the largest cave on Earth, in 2025. Trekked to <a href="https://adventureconsultants.com/world-renowned/news-and-media/current-dispatches/luxury-evererest-base-camp-trek-1-2026" target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:underline">Everest Base Camp in April 2026</a> (day-by-day dispatches and photos at that link). Vegetarian food options at altitude: questionable.</p>
-        </Card>
+    <!-- ============ CLOSING / GET IN TOUCH ============ -->
+    <section class="ab-close">
+      <div class="ab-wrap">
+        <div class="ab-close-grid animate-on-scroll">
+          <div>
+            <p class="ab-kicker">Next step</p>
+            <h2 class="ab-h2 ab-ink">Get in Touch</h2>
+            <p class="ab-close-copy ab-muted">
+              Speaking engagements, consulting, partnerships, or advisory roles.
+            </p>
+          </div>
+          <div class="ab-actions">
+            <a href="/speaking/" class="ab-btn ab-btn-primary">Book Edward to speak</a>
+            <a href="/contact/" class="ab-btn ab-btn-ghost ab-b">Get in Touch</a>
+            <a href="https://www.linkedin.com/in/interrel/" target="_blank" rel="noopener noreferrer" class="ab-btn ab-btn-ghost ab-b">
+              LinkedIn
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="animate-on-scroll">
-        <Card title="Dungeon Master">
-          <p>5th Edition. Eberron setting. I once ran Keith Baker (Eberron's creator) through a vertical chase through Sharn. My ruling: I'll allow it. He loved falling. I loved being validated.</p>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Film Producer">
-          <p>IMDB credit as Producer. Credits include BattleBots and How to Plan an Orgy in a Small Town. (One of these is a better conversation starter than the other.)</p>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Patent Holder">
-          <p>Two US Patents for custom postage stamps (#5836617, #5848810). Before email killed the postal service. (You're welcome, stamp collectors.)</p>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Vegetarian">
-          <p>For decades. Dawn (my wife) eats everything, which makes restaurant selection easier than you'd think. She's an oil painter and watercolor artist. We live in San Juan. My sons, Mycroft and Eliot, are in Miami.</p>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Escape Room Enthusiasts">
-          <p>Dawn and I have played 300+ escape rooms each. We're annual nominators and voters for the TERPECA awards. (Yes, there are awards for escape rooms. Yes, we take it seriously.)</p>
-        </Card>
-      </div>
-
-      <div class="animate-on-scroll">
-        <Card title="Competitive by Nature">
-          <p>Biggest Clifton StrengthsFinder result: Competition. I track phone unlocks (30+ daily), email volume (200+), and my Duolingo streak (1,000+ days). Introvert who built a career on public speaking. (The universe has a sense of humor.)</p>
-        </Card>
-      </div>
-
-    </div>
-  </Section>
-
-  <!-- CTA -->
-  <Section>
-    <div class="animate-on-scroll text-center max-w-2xl mx-auto">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 dark:text-white text-[var(--color-primary)]">
-        Get in Touch
-      </h2>
-      <p class="dark:text-[var(--color-text-muted)] text-[var(--color-text-dark-muted)] mb-8 text-lg">
-        Speaking engagements, consulting, partnerships, or advisory roles.
-      </p>
-      <div class="flex flex-wrap gap-4 justify-center">
-        <a href="/contact/"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-accent)] text-white font-medium hover:bg-[var(--color-accent-hover)] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-[var(--color-accent)]/20">
-          Get in Touch
-        </a>
-        <a href="https://www.linkedin.com/in/interrel/" target="_blank" rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:-translate-y-0.5
-            dark:bg-white/5 dark:text-white dark:hover:bg-white/10 dark:border dark:border-white/10
-            bg-black/5 text-[var(--color-primary)] hover:bg-black/10 border border-black/10">
-          LinkedIn
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        </a>
-      </div>
-    </div>
-  </Section>
+  </div>
 
 </BaseLayout>
 
 <style>
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(24px); }
+  /* ==========================================================
+     ABOUT: editorial profile system.
+     Theme-variable driven: re-skins with the weekly theme.
+     ========================================================== */
+
+  .ab-wrap { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+
+  /* ---------- mode-scoped utility classes ---------- */
+  :global([data-theme="dark"]) .ab-ink { color: var(--color-text); }
+  :global([data-theme="light"]) .ab-ink { color: var(--color-primary); }
+  :global([data-theme="dark"]) .ab-muted { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .ab-muted { color: var(--color-text-dark-muted); }
+  :global([data-theme="dark"]) .ab-b { border-color: var(--color-border); }
+  :global([data-theme="light"]) .ab-b { border-color: var(--color-border-light); }
+  :global([data-theme="dark"]) .ab-alt { background: var(--color-surface); }
+  :global([data-theme="light"]) .ab-alt { background: var(--color-surface-light); }
+
+  /* ---------- type ---------- */
+  .ab-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--color-accent); margin: 0 0 1.4rem;
+  }
+  .ab-h1 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2.7rem, 6.5vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .ab-h1 em { font-style: italic; color: var(--color-accent); }
+  .ab-h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+    margin: 0;
+  }
+  .ab-sub { margin: 0.7rem 0 0; font-size: 1.02rem; line-height: 1.6; max-width: 55ch; }
+
+  /* ---------- opening spread ---------- */
+  .ab-hero { padding: 4.5rem 0 4.75rem; border-bottom: 1px solid; }
+  .ab-hero-row {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.25fr);
+    gap: 2.5rem 4.5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .ab-lede {
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .ab-meta {
+    font-family: var(--font-mono);
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    margin: 2rem 0 0; padding-top: 1.2rem;
+    border-top: 1px solid;
+  }
+  .ab-portrait { margin: 0; position: relative; }
+  .ab-portrait img {
+    display: block; width: 100%; height: auto;
+    border: 1px solid;
+  }
+  /* Offset hairline frame: designed, not decorated */
+  .ab-portrait::before {
+    content: ''; position: absolute; z-index: -1;
+    inset: 0.9rem -0.9rem -0.9rem 0.9rem;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+  }
+  .ab-portrait figcaption {
+    font-family: var(--font-mono);
+    font-size: 0.7rem; letter-spacing: 0.06em;
+    margin-top: 0.8rem;
+  }
+  @media (max-width: 860px) {
+    .ab-hero { padding-top: 3.25rem; }
+    .ab-hero-row { grid-template-columns: 1fr; }
+    .ab-portrait { max-width: 34rem; }
+  }
+
+  /* Entrance (hero only, CSS-driven, reduced-motion safe) */
+  .ab-rise { opacity: 0; animation: abRise 0.7s ease-out forwards; }
+  .ab-rise-2 { animation-delay: 0.1s; }
+  .ab-rise-3 { animation-delay: 0.2s; }
+  .ab-rise-4 { animation-delay: 0.3s; }
+  @keyframes abRise {
+    from { opacity: 0; transform: translateY(22px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ab-rise { opacity: 1; animation: none; }
+  }
+
+  /* ---------- section chassis ---------- */
+  .ab-section { padding: 5.25rem 0 5.75rem; }
+  .ab-alt { border-top: 1px solid; border-bottom: 1px solid; }
+  .ab-sechead {
+    position: relative;
+    display: grid;
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+    column-gap: 2.5rem;
+    padding-top: 2.4rem;
+    margin-bottom: 3rem;
+  }
+  .ab-sechead::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 1px;
+    background: color-mix(in srgb, var(--color-accent) 32%, transparent);
+  }
+  .ab-num {
+    font-family: var(--font-mono);
+    font-size: 0.75rem; letter-spacing: 0.2em;
+    color: var(--color-accent);
+    padding-top: 0.7rem;
+  }
+  .ab-offset { margin-left: 8rem; }
+  @media (max-width: 860px) {
+    .ab-sechead { grid-template-columns: 1fr; row-gap: 0.7rem; }
+    .ab-num { padding-top: 0; }
+    .ab-offset { margin-left: 0; }
+  }
+
+  /* ---------- 01: prose ---------- */
+  .ab-prose { max-width: 66ch; font-size: 1.05rem; line-height: 1.75; }
+  .ab-prose p { margin: 0; }
+  .ab-prose p + p { margin-top: 1.4rem; }
+  .ab-prose > p:first-child { font-size: 1.18rem; line-height: 1.7; }
+  .ab-prose strong { font-weight: 600; }
+  :global([data-theme="dark"]) .ab-prose strong { color: var(--color-text); }
+  :global([data-theme="light"]) .ab-prose strong { color: var(--color-primary); }
+
+  /* ---------- 02: timeline ---------- */
+  .ab-timeline { max-width: 800px; }
+  .ab-tlrow {
+    display: grid;
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    column-gap: 2.2rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid;
+  }
+  .ab-tlrow:last-child { border-bottom: 1px solid; }
+  .ab-tlyear {
+    font-family: var(--font-mono);
+    font-size: 0.78rem; letter-spacing: 0.06em;
+    color: var(--color-accent);
+    padding-top: 0.3rem;
+  }
+  .ab-tlrow h3 {
+    font-family: var(--font-heading);
+    font-weight: 700; font-size: 1.15rem; line-height: 1.3;
+    margin: 0 0 0.35rem;
+  }
+  .ab-tlrow p { margin: 0; font-size: 0.95rem; line-height: 1.65; max-width: 62ch; }
+  @media (max-width: 560px) {
+    .ab-tlrow { grid-template-columns: 1fr; row-gap: 0.3rem; }
+    .ab-tlyear { padding-top: 0; }
+  }
+
+  /* ---------- 03: resume ledger ---------- */
+  .ab-resume { max-width: 800px; border-bottom: 1px solid; }
+  .ab-details { border-top: 1px solid; }
+  .ab-summary {
+    position: relative;
+    padding: 1.35rem 2.5rem 1.35rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-heading);
+    font-weight: 700; font-size: 1.2rem; line-height: 1.3;
+    transition: color 0.15s ease;
+  }
+  .ab-summary::-webkit-details-marker { display: none; }
+  .ab-summary::after {
+    content: '+';
+    position: absolute; right: 0.25rem; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono); font-size: 1.15rem;
+    color: var(--color-accent);
+    transition: transform 0.2s ease;
+  }
+  .ab-details[open] > .ab-summary::after { transform: translateY(-50%) rotate(45deg); }
+  .ab-summary:hover { color: var(--color-accent); }
+  .ab-details-body { padding: 0.2rem 0 1.9rem; }
+
+  .ab-item { padding: 1.1rem 0; }
+  .ab-item + .ab-item { border-top: 1px solid; }
+  .ab-item-head {
+    display: flex; flex-wrap: wrap; align-items: baseline;
+    gap: 0.2rem 0.65rem;
+    margin-bottom: 0.35rem;
+  }
+  .ab-item-role { font-weight: 600; }
+  .ab-item-co { color: var(--color-accent); font-size: 0.9rem; font-weight: 600; }
+  .ab-item-period {
+    margin-left: auto; white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.08em;
+  }
+  .ab-item-desc { margin: 0; font-size: 0.95rem; line-height: 1.65; max-width: 62ch; }
+  @media (max-width: 560px) {
+    .ab-item-period { margin-left: 0; width: 100%; }
+  }
+
+  .ab-skills {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.8rem 3rem; padding-top: 0.4rem;
+  }
+  @media (max-width: 640px) { .ab-skills { grid-template-columns: 1fr; } }
+  .ab-skill h4 {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    font-weight: 600; color: var(--color-accent);
+    margin: 0 0 0.5rem;
+  }
+  .ab-skill p { margin: 0; font-size: 0.95rem; line-height: 1.65; }
+
+  .ab-award {
+    display: grid;
+    grid-template-columns: 7.5rem minmax(0, 1fr);
+    gap: 0.15rem 1.5rem;
+    padding: 0.9rem 0;
+  }
+  .ab-award + .ab-award { border-top: 1px solid; }
+  .ab-award-year {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.06em;
+    color: var(--color-accent);
+    padding-top: 0.2rem;
+  }
+  .ab-award-name { font-weight: 600; font-size: 0.95rem; }
+  .ab-award-detail { margin: 0.15rem 0 0; font-size: 0.85rem; line-height: 1.55; }
+  @media (max-width: 560px) {
+    .ab-award { grid-template-columns: 1fr; }
+    .ab-award-year { padding-top: 0; }
+  }
+
+  /* ---------- 04: facets ---------- */
+  .ab-facets {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.75rem 2.5rem;
+  }
+  @media (max-width: 980px) { .ab-facets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 640px) { .ab-facets { grid-template-columns: 1fr; gap: 2rem; } }
+  .ab-facet {
+    height: 100%;
+    border-top: 1px solid;
+    padding-top: 1.2rem;
+    transition: border-color 0.25s ease;
+  }
+  .ab-facet:hover { border-top-color: var(--color-accent); }
+  .ab-facet-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    gap: 1rem; margin-bottom: 0.6rem;
+  }
+  .ab-facet h3 {
+    font-family: var(--font-heading);
+    font-weight: 700; font-size: 1.1rem; line-height: 1.3;
+    margin: 0;
+  }
+  .ab-facet-num {
+    font-family: var(--font-mono);
+    font-size: 0.68rem; letter-spacing: 0.14em;
+    color: var(--color-accent);
+  }
+  .ab-facet p { margin: 0; font-size: 0.95rem; line-height: 1.7; }
+
+  /* ---------- closing ---------- */
+  .ab-close {
+    padding: 4.75rem 0;
+    border-top: 1px solid color-mix(in srgb, var(--color-accent) 32%, transparent);
+  }
+  :global([data-theme="dark"]) .ab-close { background: var(--color-surface); }
+  :global([data-theme="light"]) .ab-close { background: var(--color-surface-light); }
+  .ab-close-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 3rem; align-items: center;
+  }
+  .ab-close-copy { margin: 1rem 0 0; font-size: 1.05rem; line-height: 1.65; max-width: 40ch; }
+  .ab-actions { display: flex; flex-direction: column; gap: 0.9rem; }
+  @media (max-width: 860px) {
+    .ab-close-grid { grid-template-columns: 1fr; gap: 2.25rem; }
+    .ab-actions { flex-direction: row; flex-wrap: wrap; }
+  }
+
+  .ab-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    font-weight: 600; font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .ab-btn:hover { transform: translateY(-1px); }
+  .ab-btn-primary { background: var(--color-accent); color: #fff; }
+  .ab-btn-primary:hover { background: var(--color-accent-hover); }
+  .ab-btn-ghost { border: 1px solid; background: transparent; }
+  :global([data-theme="dark"]) .ab-btn-ghost { color: var(--color-text); }
+  :global([data-theme="light"]) .ab-btn-ghost { color: var(--color-text-dark); }
+  .ab-btn-ghost:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+  /* ---------- scroll-driven detail (progressive enhancement) ---------- */
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      .ab-sechead::before {
+        transform-origin: left center;
+        animation: abRuleGrow linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 55%;
+      }
+    }
+  }
+  @keyframes abRuleGrow {
+    from { transform: scaleX(0.3); opacity: 0.4; }
+    to { transform: scaleX(1); opacity: 1; }
   }
 </style>
