@@ -8,121 +8,111 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// The rogues' gallery. Five comic-book stills of Edward trying to become each
-// Superman villain this week, with Supergirl foiling every attempt. Captions match each image.
-const rogues = [
+// Four attempts to help celebrate America's 250th. Three go badly. The fourth
+// is the day job. Captions match each generated scene image.
+const attempts = [
   {
-    src: '/images/supergirl/hall-of-defeat.png',
-    kicker: 'THE WHOLE WEEK',
-    title: 'Five tries, five losses',
-    caption: "Five days, five supervillains, and I lost every round. The experiment was simple: does crime pay? It doesn't. (I'm telling people I let her win, which is going about as well as you'd expect.)",
-    feature: true,
-  },
-  {
-    src: '/images/supergirl/lex-luthor.png',
+    src: '/images/july4/usmnt-hamstring.jpg',
     kicker: 'EXHIBIT A',
-    title: 'Lex Luthor',
-    caption: "Tried the Lex Luthor play: outspend the problem. I sank the GDP of a small nation into a kryptonite death-ray. She folded it into a pretzel without looking. I'm filing the receipt under research and development.",
-    feature: false,
+    title: 'The Tryout',
+    caption: "I made the World Cup squad, in my head, scored the winner, and pulled a hamstring in the celebration. The actual USMNT is alive heading into Monday's Belgium match, with or without me. (Without.)",
   },
   {
-    src: '/images/supergirl/brainiac.png',
+    src: '/images/july4/birthday-crash.jpg',
     kicker: 'EXHIBIT B',
-    title: 'Brainiac',
-    caption: "Went the Brainiac route next: a twelfth-level intellect and collector of worlds, undone by an unhandled exception about ninety seconds in. The console flashes ERROR, which is the most honest thing it's said all day.",
-    feature: false,
+    title: 'The Party',
+    caption: "Crashed America's 250th birthday party to blow out the candles. Nobody invited me, which is a technicality I've never respected at a good party (and this is the best one in 250 years).",
   },
   {
-    src: '/images/supergirl/bizarro.png',
+    src: '/images/july4/declaration-late.jpg',
     kicker: 'EXHIBIT C',
-    title: 'Bizarro',
-    caption: "Day three, I tried becoming Bizarro: an off-brand clone of myself, assembled from spare parts and unearned confidence. He'll tell you he won. (He didn't, though Bizarro logic is genuinely hard to argue with.)",
-    feature: false,
-  },
-  {
-    src: '/images/supergirl/general-zod.png',
-    kicker: 'EXHIBIT D',
-    title: 'General Zod',
-    caption: "Closed the week as General Zod and demanded that everyone kneel. Got flicked across three city blocks by a single finger. The cape looked tremendous on the way down, which counts for something.",
-    feature: false,
+    title: 'The Signing',
+    caption: "Arrived to sign the Declaration of Independence exactly 250 years late, laptop in hand. The Founders were gracious about it. Adams less so. (He'd have had notes on the laptop, too.)",
   },
 ];
 
-// Comic SFX marquee, dry one-liners mixed with onomatopoeia.
-const sfx = [
-  "POW",
-  "ERROR: VICTORY NOT FOUND",
-  "KA-BLAM",
-  "ONE (1) FINGER, ZERO (0) SURVIVORS",
-  "KRYPTONITE, NOW PRETZEL-SHAPED",
-  "BONK",
-  "CRIME DOES NOT PAY (I RAN THE NUMBERS)",
-  "NET VILLAIN PROFIT: $0.00",
+// The pivot: the one thing he's actually qualified for.
+const pivot = {
+  src: '/images/july4/longevity-report.jpg',
+  kicker: 'THE DAY JOB',
+  title: 'The Longevity Report',
+  caption: "Then I did the one thing on this list I actually have credentials for: I ran the numbers on the longest-running startup in history. Two hundred fifty years of shipping updates is a retention curve nobody's beaten yet, and I could study it all day.",
+};
+
+// Patriotic broadside marquee: dry lines mixed with civic slogans.
+const ticker = [
+  "USA . USA . USA",
+  "AMERICA: EST. 1776, STILL SHIPPING",
+  "USMNT: ALIVE HEADING INTO MONDAY",
+  "250 YEARS, ZERO GOALS SCORED BY EDWARD",
+  "HAPPY SEMIQUINCENTENNIAL (SAY IT THREE TIMES FAST)",
+  "THE FEDORA ABIDES",
+  "ASK NOT WHAT AI CAN DO FOR YOU",
 ];
 
-// The real-world arsenal. Same six projects, framed as comic-book powers.
+// The real-world work, framed as the contribution to the next 250 years.
 const arsenal = [
   {
-    code: 'ISSUE No. 01',
-    cat: 'ACTUALLY WORKS',
+    code: 'No. 01',
+    cat: 'IN PRODUCTION',
     title: 'AgentCube',
-    body: "The engine that lets AI agents talk to Oracle Essbase, EPM Planning, and Financial Close. Built by Caprus. Essbase and Planning shipped. Consolidations is in beta. (Enterprise finance that finally answers when you call it. The cape was extra.)",
-    badge: 'ESSBASE · PLANNING · CLOSE',
+    body: "The engine that connects AI agents to enterprise finance systems: planning, close, consolidation. Built by Caprus. Shipped, and answering when you call it, which is more than I managed at the World Cup tryout.",
+    badge: 'ENTERPRISE FINANCE',
     status: 'SHIPPED',
     href: 'https://caprus.ai/agentcube/',
     external: true,
     cta: 'Read the docs',
   },
   {
-    code: 'ISSUE No. 02',
-    cat: 'TEAM-UP EVENT',
+    code: 'No. 02',
+    cat: 'THE GATHERING',
     title: 'Caribbean AI Summit',
-    body: "Co-chairing the largest AI conference Puerto Rico has ever hosted. October 9 and 10 in San Juan. Speakers and sponsors are being recruited right now. If you build, fund, or run AI, there's a slot on the stage with your name on it.",
-    badge: '9-10 OCT 2026 · SAN JUAN',
+    body: "Co-chairing the largest AI conference Puerto Rico has ever hosted, October 9 and 10 in San Juan. The lineup is public: Kay Firth-Butterfield, MIT's Fabio Duarte, and EU AI advisor Idoia Salazar, with more every week. (Co-chairing is roughly ten percent stagecraft and ninety percent email.)",
+    badge: '9-10 OCT 2026 . SAN JUAN',
     status: 'CALL FOR SPEAKERS OPEN',
     href: 'https://www.caribbeansummit.ai/en/speakers/submit',
     external: true,
     cta: 'Submit a speaker',
   },
   {
-    code: 'ISSUE No. 03',
-    cat: 'THE REAL HEROES',
+    code: 'No. 03',
+    cat: 'THE FIRM',
     title: 'Caprus',
-    body: "Investor and contributor at Caprus, the AI software and services firm giving finance teams faster, smarter operations. The crew behind the MCP servers, and the people who do most of the actual heroics while I take the cover photo.",
-    badge: 'AI · FINANCE',
+    body: "Investor and contributor at Caprus, the AI software and services firm giving finance teams faster, smarter operations. The crew behind the MCP servers, and the people who do the actual heroics while I take the cover photo.",
+    badge: 'AI . FINANCE',
     status: 'RUNNING',
     href: 'https://caprus.ai',
     external: true,
     cta: 'See the team',
   },
   {
-    code: 'ISSUE No. 04',
+    code: 'No. 04',
     cat: 'AFTER HOURS',
     title: "AI Dungeon Master's Screen",
-    body: "An AI-driven DM's screen for running better D&D 5e campaigns. Initiative, lore, and improv help for the person behind the screen. If there's going to be an AI at the table, it should at least earn its seat. (The party still will not be told.)",
-    badge: 'D&D · 5E · EBERRON',
+    body: "An AI-driven DM's screen for running better D&D 5e campaigns: initiative, lore, and improv help for the person behind the screen. If there's going to be an AI at the table, it should earn its seat. (The party still will not be told.)",
+    badge: 'D&D . 5E . EBERRON',
     status: 'IN PROTOTYPE',
     href: null,
     external: false,
     cta: 'Quiet build',
   },
   {
-    code: 'ISSUE No. 05',
-    cat: 'SECRET SOCIETY',
+    code: 'No. 05',
+    cat: 'THE MOVEMENT',
     title: 'Puerto Rico AI Community',
-    body: "President of the Puerto Rico AI Community. More than 850 people across our events. We meet every other month to figure out, in public, what AI means for the island, which is also what it means for everyone watching the island.",
-    badge: '850+ · BI-MONTHLY',
+    body: "President of the Puerto Rico AI Community, more than 850 people across our events. We meet every other month to figure out, in public, what AI means for the island. What happens on the island is usually a preview of what happens everywhere else.",
+    badge: '850+ . BI-MONTHLY',
     status: 'RUNNING',
     href: 'https://praicommunity.org/',
     external: true,
     cta: 'Join the next one',
   },
   {
-    code: 'ISSUE No. 06',
+    code: 'No. 06',
     cat: 'THE GADGET',
     title: 'Only Recipes',
-    body: "My first Chrome extension. When it spots you on a recipe page, it strips out the author's childhood memoir, the fourteen ads, and the infinite scroll, and leaves you the recipe. Fast and genuinely useful, which for a free browser gadget is practically a superpower.",
-    badge: 'CHROME EXTENSION · FREE',
+    body: "My first Chrome extension. When it spots you on a recipe page, it strips out the author's childhood memoir, the fourteen ads, and the infinite scroll, and leaves you the recipe. It's small, free, and about as founding-era practical as software gets.",
+    badge: 'CHROME EXTENSION . FREE',
     status: 'SHIPPED',
     href: '/only-recipes/',
     external: false,
@@ -130,20 +120,7 @@ const arsenal = [
   },
 ];
 
-// Late add to the catalog, still in beta.
-const lateAdds = [
-  {
-    tag: 'IN BETA · NAME PENDING',
-    title: 'The Home Library Project',
-    line: 'BOOKS · GAMES · MEDIA · EVERY SHELF',
-    body: "A new app and site that digitizes a home library: books, board games, music, media, anything sitting on a shelf at the house. All of it categorized. There'll be a free tier. I'll share the rest after beta. Want an early look? Send an email and you're on the list.",
-    cta: 'Email for early access',
-    href: 'mailto:Edward@Roske.AI',
-    external: false,
-  },
-];
-
-// Stat block, comic-style.
+// Commemorative stat block.
 const tally = [
   { value: '50+', label: 'COUNTRIES PRESENTED IN' },
   { value: '80+', label: 'COUNTRIES VISITED' },
@@ -152,48 +129,43 @@ const tally = [
   { value: '25+', label: 'YEARS RUNNING COMPANIES' },
 ];
 
-// Comic-book indicia, in place of a colophon.
+// Commemorative-program colophon.
 const indicia = [
-  { role: 'EDITION', name: 'ISSUE No. 27 · SUPERGIRL OPENING WEEKEND · JUNE 2026' },
-  { role: 'TITLE', name: 'SUPERGIRL VS. EDWARD ROSKE' },
-  { role: 'STARRING', name: 'SUPERGIRL (WINNING) · EDWARD ROSKE (NOT)' },
-  { role: 'VILLAINS ATTEMPTED', name: 'LOBO · LEX LUTHOR · BRAINIAC · BIZARRO · GENERAL ZOD' },
-  { role: 'HEADGEAR', name: 'ONE (1) ROYAL-BLUE FELT FEDORA · SURVIVES EVERY COSTUME' },
-  { role: 'NET PROFIT', name: 'ZERO DOLLARS · ZERO CENTS · CRIME DOES NOT PAY' },
-  { role: 'PRINTED IN', name: 'SAN JUAN, PUERTO RICO' },
-  { role: 'LETTERS PAGE', name: 'EDWARD@ROSKE.AI · NO VILLAIN FAN MAIL, PLEASE' },
+  { role: 'EDITION', name: 'SEMIQUINCENTENNIAL . JULY 4, 2026' },
+  { role: 'TITLE', name: 'AMERICA 250 VS. EDWARD ROSKE' },
+  { role: 'STARRING', name: 'UNCLE SAM (EDWARD, UNCONVINCINGLY)' },
+  { role: 'ATTEMPTS MADE', name: 'THREE . SUCCESSES: ZERO . USEFUL THINGS: ONE' },
+  { role: 'WORLD CUP STATUS', name: 'ALIVE, HEADING INTO MONDAY VS. BELGIUM' },
+  { role: 'HEADGEAR', name: 'ONE (1) STARS-AND-STRIPES FELT FEDORA' },
+  { role: 'PRINTED IN', name: 'SAN JUAN, PUERTO RICO, USA' },
+  { role: 'LETTERS PAGE', name: 'EDWARD@ROSKE.AI . NO FOUNDER FAN MAIL, PLEASE' },
 ];
 ---
 
 <BaseLayout>
   <WeeklyAnimation />
 
-  <!-- ============================================
-       COMIC MASTHEAD STRIP
-       ============================================ -->
-  <div class="cb-bar">
-    <div class="cb-bar-inner">
-      <span class="cb-bar-brand">ROSKE COMICS</span>
-      <span class="cb-bar-meta cb-bar-meta-center">SUPERGIRL VS. EDWARD ROSKE · IN THEATERS NOW</span>
-      <span class="cb-bar-meta cb-bar-meta-end">ISSUE No. 27</span>
+  <!-- MASTHEAD / BUNTING STRIP -->
+  <div class="us-bar">
+    <div class="us-bar-inner">
+      <span class="us-bar-brand">ROSKE.AI</span>
+      <span class="us-bar-meta us-bar-meta-center">AMERICA 250 . SEMIQUINCENTENNIAL . JULY 4, 2026</span>
+      <span class="us-bar-meta us-bar-meta-end">EST. 1776</span>
     </div>
   </div>
 
-  <!-- ============================================
-       HERO: split, text left, comic cover right
-       ============================================ -->
+  <!-- HERO -->
   <section class="hero-section">
     <div class="hero-grid">
-
       <div class="hero-text">
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-pip"></span>
-          <span>IN THEATERS THIS WEEK · A ROSKE.AI CAREER EXPERIMENT</span>
+          <span>THE 250TH . A ROSKE.AI CIVIC EXPERIMENT</span>
         </div>
 
         <h1 class="hero-title">
-          <span class="hero-title-line">Crime doesn't</span>
-          <span class="hero-title-line"><em>pay.</em></span>
+          <span class="hero-title-line">250 years.</span>
+          <span class="hero-title-line"><em>Still shipping.</em></span>
         </h1>
 
         <p class="hero-body">{theme.hero.description}</p>
@@ -219,120 +191,116 @@ const indicia = [
       </div>
 
       <div class="hero-image-wrap">
-        <figure class="cover">
-          <div class="cover-top">
-            <span class="cover-logo">ROSKE COMICS</span>
-            <span class="cover-price">No. 27<br/>60&cent;</span>
+        <figure class="poster">
+          <div class="poster-top">
+            <span class="poster-logo">ROSKE COMMEMORATIVE</span>
+            <span class="poster-price">250<br/>YRS</span>
           </div>
-          <div class="cover-window">
-            <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1200" height="675" loading="eager" decoding="async" class="cover-image" />
-            <span class="cover-burst" aria-hidden="true">VROOM!</span>
+          <div class="poster-window">
+            <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1600" height="900" loading="eager" decoding="async" class="poster-image" />
           </div>
-          <div class="cover-bottom">
-            <span>SUPERGIRL VS. EDWARD</span>
-            <span>THE SPACEHOG ISSUE</span>
+          <div class="poster-bottom">
+            <span>I WANT YOU</span>
+            <span>TO ASK GOOD QUESTIONS</span>
           </div>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- ============================================
-       SFX TICKER
-       ============================================ -->
+  <!-- TICKER -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
-      {[...sfx, ...sfx].map(item => (
+      {[...ticker, ...ticker].map(item => (
         <span class="ticker-item">{item}</span>
       ))}
     </div>
   </div>
 
-  <!-- ============================================
-       LATEST CONTENT: permanent module
-       ============================================ -->
+  <!-- LATEST CONTENT (permanent) -->
   <LatestContent
-    eyebrow="Section 02 · Hot off the presses"
+    eyebrow="Section 02 . Hot off the press"
     heading={"New <em>this week.</em>"}
-    deck="The latest writing and video briefs, in one place, so the good stuff isn't buried under a stack of back issues."
+    deck="The latest writing and video briefs, in one place. Two hundred fifty years of the free press, and I'm using my share of it to talk about AI."
   />
 
-  <!-- ============================================
-       BOOK EDWARD: permanent module (never remove)
-       ============================================ -->
-  <SpeakerCTA eyebrow="Section 02.5 · The paying gig" />
+  <!-- BOOK EDWARD (permanent) -->
+  <SpeakerCTA eyebrow="Section 02.5 . The paying gig" />
 
-  <!-- ============================================
-       WHAT'S NEW: permanent signals module (never remove)
-       ============================================ -->
+  <!-- WHAT'S NEW (permanent) -->
   <WhatsNew
-    eyebrow="Section 02.6 · The clippings file"
+    eyebrow="Section 02.6 . The clippings file"
     heading={"In the <em>news.</em>"}
     deck="Where Edward keeps turning up: interviews, press, awards, and the odd post worth keeping. (Yes, the site tracks its own press. The agents insisted.)"
   />
 
-  <!-- ============================================
-       THE ROGUES' GALLERY: scene gallery
-       ============================================ -->
-  <section class="rogues-section">
-    <div class="rogues-inner">
+  <!-- THE ATTEMPTS GALLERY -->
+  <section class="attempts-section">
+    <div class="attempts-inner">
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 03 · THE WEEK IN REVIEW · ALL DEFEATED</span>
+          <span>SECTION 03 . HOW I TRIED TO HELP . RESULTS MIXED</span>
         </div>
-        <h2 class="section-title">Five villains. <em>Five losses.</em></h2>
+        <h2 class="section-title">Three attempts. <em>Zero successes.</em></h2>
         <p class="section-deck">
-          I gave each one an honest try. Every attempt ran the same plot: pick a fight with Supergirl, lose it badly, often before the costume was fully on. (The fedora is in every frame, and unlike me, it never loses.)
+          America turns 250 and I wanted to contribute in person. I contributed a hamstring, a party foul, and a 250-year-late RSVP. (The fedora, at least, showed up on time.)
         </p>
       </header>
 
-      <div class="rogues-grid">
-        {rogues.map((r) => (
-          <article class={`panel-card ${r.feature ? 'panel-card-feature' : ''}`}>
+      <div class="attempts-grid">
+        {attempts.map((a) => (
+          <article class="panel-card">
             <div class="panel-frame">
-              <img src={r.src} alt={r.caption} loading="lazy" decoding="async" class="panel-image" />
-              <span class="panel-kicker">{r.kicker}</span>
+              <img src={a.src} alt={a.caption} loading="lazy" decoding="async" class="panel-image" />
+              <span class="panel-kicker">{a.kicker}</span>
             </div>
             <div class="panel-meta">
-              <h3 class="panel-name">{r.title}</h3>
-              <p class="panel-caption">{r.caption}</p>
+              <h3 class="panel-name">{a.title}</h3>
+              <p class="panel-caption">{a.caption}</p>
             </div>
           </article>
         ))}
+
+        <article class="panel-card panel-card-feature">
+          <div class="panel-frame">
+            <img src={pivot.src} alt={pivot.caption} loading="lazy" decoding="async" class="panel-image" />
+            <span class="panel-kicker panel-kicker-gold">{pivot.kicker}</span>
+          </div>
+          <div class="panel-meta">
+            <h3 class="panel-name panel-name-feature">{pivot.title}</h3>
+            <p class="panel-caption">{pivot.caption}</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ============================================
-       CAPTION-BOX PULL QUOTE
-       ============================================ -->
+  <!-- NARRATION PULL-QUOTE -->
   <section class="statement-section">
     <div class="statement-inner">
-      <div class="statement-tag">MEANWHILE, IN THE NARRATION BOX</div>
+      <div class="statement-tag">FROM THE NARRATION BOX</div>
       <blockquote class="statement-q">
-        Every villain I tried to become was sure he was about to get rich. Supergirl turned up to correct the record, repeatedly. <span class="statement-line">(I respect the consistency.)</span>
+        America is the only 250-year-old startup I know that still ships on Saturdays. I tried to help. Mostly I pulled a hamstring. <span class="statement-line">(I'll be here for the 251st. Someone has to run the numbers.)</span>
       </blockquote>
       <div class="statement-attrib">
         <span class="statement-attrib-name">EDWARD ROSKE</span>
-        <span class="statement-attrib-role">ASPIRING SUPERVILLAIN · RETIRED FRIDAY</span>
+        <span class="statement-attrib-role">ASPIRING FOUNDING FATHER . APPLICATIONS CLOSED 1787</span>
       </div>
     </div>
   </section>
 
-  <!-- ============================================
-       THE ARSENAL: project cards
-       ============================================ -->
+  <!-- THE ARSENAL / PROJECTS -->
   <section id="current-work" class="arsenal-section">
     <div class="arsenal-inner">
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 04 · THE DAY JOB · WHERE THE MONEY ACTUALLY IS</span>
+          <span>SECTION 04 . THE ACTUAL CONTRIBUTION . WHAT I'M QUALIFIED FOR</span>
         </div>
-        <h2 class="section-title">Six powers. <em>All non-fictional.</em></h2>
+        <h2 class="section-title">Six things I can do <em>for the next 250.</em></h2>
         <p class="section-deck">
-          Crime didn't pay, so here's the part of the week that does. Real projects, in beta or in production, built on the boring idea that software should be useful instead of scary. (Villainy no longer offered.)
+          I can't play for the USMNT and I missed the Declaration by a couple centuries. This is the part of the next quarter-millennium I'm actually equipped to work on: six things, all real, all shipping or close to it.
         </p>
       </header>
 
@@ -365,49 +333,45 @@ const indicia = [
     </div>
   </section>
 
-  <!-- ============================================
-       LATE ADD
-       ============================================ -->
+  <!-- BLOG TEASER -->
   <section class="late-section">
     <div class="late-inner">
       <header class="section-header late-header">
         <div class="section-tag late-tag">
           <span class="section-tag-dot"></span>
-          <span>SECTION 05 · NEXT ISSUE · STILL IN BETA</span>
+          <span>SECTION 05 . THIS WEEK'S DISPATCH</span>
         </div>
-        <h2 class="section-title">One more <em>off the presses.</em></h2>
+        <h2 class="section-title">A birthday <em>question.</em></h2>
       </header>
 
       <div class="late-grid">
-        {lateAdds.map(item => (
-          <article class="late-card">
-            <div class="late-card-tag">{item.tag}</div>
-            <h3 class="late-card-title">{item.title}</h3>
-            <div class="late-card-line">{item.line}</div>
-            <p class="late-card-body">{item.body}</p>
-            <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener' : undefined} class="late-cta">
-              {item.cta}
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-            </a>
-          </article>
-        ))}
+        <article class="late-card">
+          <div class="late-card-tag">NEW ON THE BLOG . JULY 4, 2026</div>
+          <h3 class="late-card-title">What Would the Founders Ask an AI?</h3>
+          <div class="late-card-line">FRANKLIN . JEFFERSON . ADAMS . WASHINGTON</div>
+          <p class="late-card-body">
+            The Founders were the best question-askers ever assembled on this side of the Atlantic. Hand each of them a laptop running a modern AI, and I think they'd ask better questions than we do. Here's my honest guess at four of them, on the country's 250th birthday.
+          </p>
+          <a href="/blog/what-would-the-founders-ask-an-ai/" class="late-cta">
+            Read the post
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+          </a>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- ============================================
-       CLOSING CTA
-       ============================================ -->
+  <!-- CLOSING CTA -->
   <section class="closing-section">
     <div class="closing-inner">
       <div class="closing-eyebrow">
         <span class="closing-rule"></span>
-        <span>THE BOX OFFICE IS OPEN · 13 MINUTES</span>
+        <span>THE BOX OFFICE IS OPEN . 13 MINUTES</span>
         <span class="closing-rule"></span>
       </div>
-      <h2 class="closing-title">Retired from crime.<br/><em>Open for questions.</em></h2>
+      <h2 class="closing-title">Happy 250th.<br/><em>Now ask a good question.</em></h2>
       <p class="closing-deck">
-        Book thirteen minutes. Ask about Oracle EPM, AI in finance, MCP servers, the Caribbean AI Summit, D&D, or how a week of attempted supervillainy nets exactly zero dollars. No kryptonite required. Opinions arrive whether you asked for them or not.
+        Book thirteen minutes. Ask about AI in finance, MCP servers, the Caribbean AI Summit, whether the USMNT can get past Belgium, or how a man pulls a hamstring at an imaginary World Cup. Independence is encouraged, and opinions arrive whether you asked for them or not.
       </p>
       <div class="closing-cta-row">
         <a href="/question/" target="_blank" rel="noopener" class="btn-primary btn-primary-big">
@@ -421,12 +385,10 @@ const indicia = [
     </div>
   </section>
 
-  <!-- ============================================
-       INDICIA / BACK PANEL
-       ============================================ -->
+  <!-- COLOPHON / INDICIA -->
   <section class="indicia-section">
     <div class="indicia-inner">
-      <div class="indicia-tag">COMIC-BOOK INDICIA · BACK COVER · 2026</div>
+      <div class="indicia-tag">COMMEMORATIVE PROGRAM . BACK COVER . 2026</div>
       <div class="indicia-roll">
         {indicia.map(entry => (
           <div class="indicia-block">
@@ -436,7 +398,7 @@ const indicia = [
         ))}
       </div>
       <div class="indicia-footnote">
-        Not affiliated with DC Comics, Warner Bros., or anyone who actually owns Supergirl, Superman, or a single one of these villains. All characters are the property of their respective owners. The fedora, the cigar, and the poor career decisions are Edward's. No teenagers from Krypton were inconvenienced in the making of this website. One aspiring supervillain very much was.
+        Not affiliated with the United States government, the National Archives, U.S. Soccer, the USMNT, FIFA, or the estate of any Founding Father. The Declaration of Independence remains unsigned by Edward Roske. The 250 years of mostly-good decisions belong to America. The hamstring, the party foul, and the fedora are all on Edward. No Founders were inconvenienced in the making of this website. One aspiring one very much was.
       </div>
     </div>
   </section>
@@ -445,624 +407,366 @@ const indicia = [
 
 <style>
   /* ============================================================
-     SUPERGIRL · CRIME DOESN'T PAY (A WEEK OF ATTEMPTED SUPERVILLAINY)
-     Palette: hero blue / Supergirl red / S-shield gold /
-              cosmic night (dark) / newsprint sky (light)
-     Type: Anton (impact display), Barlow (body), Space Mono
-           (tech + labels), Bangers (comic SFX bursts)
+     AMERICA 250: STILL SHIPPING (a Semiquincentennial broadside)
+     Palette: Old-Glory red / federal navy / brass gold /
+              deep navy night (dark) / aged cream paper (light)
+     Type: Big Shoulders Display (civic display), Bitter (slab body),
+           Space Mono (labels + stats)
      ============================================================ */
 
   :global([data-theme="dark"]) {
-    --sg-bg: #0a1230;
-    --sg-bg-deep: #060b22;
-    --sg-surface: #131d44;
-    --sg-surface-2: #1b2a5e;
-    --sg-fg: #f3f6ff;
-    --sg-muted: #9fb0d8;
-    --sg-line: #2a3a72;
-    --sg-edge: #f5c518;
-    --sg-blue: #3a78ff;
-    --sg-blue-deep: #0b3bb0;
-    --sg-red: #ff2f3c;
-    --sg-red-bright: #ff5a64;
-    --sg-gold: #f5c518;
-    --sg-cream: #f3f6ff;
-    --sg-ink: #060b22;
-    --sg-dot: rgba(255,255,255,0.10);
+    --us-bg: #0b1a33;
+    --us-bg-deep: #071228;
+    --us-surface: #12294d;
+    --us-surface-2: #1a3560;
+    --us-fg: #f4ecd8;
+    --us-muted: #a7bad9;
+    --us-line: #274873;
+    --us-red: #d64550;
+    --us-red-deep: #b22234;
+    --us-navy: #24457e;
+    --us-gold: #d8ab45;
+    --us-cream: #f4ecd8;
+    --us-ink: #071228;
+    --us-dot: rgba(255,255,255,0.06);
   }
   :global([data-theme="light"]) {
-    --sg-bg: #e9f1ff;
-    --sg-bg-deep: #d4e4ff;
-    --sg-surface: #ffffff;
-    --sg-surface-2: #eef4ff;
-    --sg-fg: #0e1a3d;
-    --sg-muted: #4a5b80;
-    --sg-line: #b9ccec;
-    --sg-edge: #0e1a3d;
-    --sg-blue: #1452c9;
-    --sg-blue-deep: #0b3bb0;
-    --sg-red: #d61420;
-    --sg-red-bright: #ec1c2b;
-    --sg-gold: #d99a06;
-    --sg-cream: #ffffff;
-    --sg-ink: #0e1a3d;
-    --sg-dot: rgba(11,40,120,0.12);
+    --us-bg: #f4ecd8;
+    --us-bg-deep: #e9dcc0;
+    --us-surface: #fbf6e9;
+    --us-surface-2: #f0e6cf;
+    --us-fg: #152a4d;
+    --us-muted: #5c5340;
+    --us-line: #d6c8a4;
+    --us-red: #b22234;
+    --us-red-deep: #9a1d2c;
+    --us-navy: #1b3a6b;
+    --us-gold: #9a6f1f;
+    --us-cream: #fbf6e9;
+    --us-ink: #152a4d;
+    --us-dot: rgba(27,58,107,0.09);
   }
 
-  /* ------------------------------------------------------------
-     COMIC MASTHEAD STRIP
-     ------------------------------------------------------------ */
-  .cb-bar {
+  /* ---------- MASTHEAD / BUNTING ---------- */
+  .us-bar {
     width: 100%;
-    background: var(--sg-red);
+    background: var(--us-red-deep);
     color: #fff;
-    border-bottom: 4px solid var(--sg-gold);
+    border-bottom: 3px solid var(--us-gold);
     font-family: 'Space Mono', monospace;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
-  .cb-bar-inner {
-    max-width: 1500px;
-    margin: 0 auto;
-    padding: 0.5rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    font-size: 0.72rem;
+  .us-bar-inner {
+    max-width: 1500px; margin: 0 auto; padding: 0.5rem 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1.5rem; font-size: 0.7rem;
   }
-  .cb-bar-brand {
-    font-family: 'Bangers', 'Anton', cursive;
-    letter-spacing: 0.08em;
-    font-size: 1.2rem;
-    color: var(--sg-gold);
-    -webkit-text-stroke: 0.6px #2a0a0a;
+  .us-bar-brand {
+    font-family: 'Big Shoulders Display', sans-serif; font-weight: 800;
+    letter-spacing: 0.06em; font-size: 1.15rem; color: var(--us-gold);
   }
-  .cb-bar-meta { white-space: nowrap; }
-  .cb-bar-meta-center { flex: 1; text-align: center; letter-spacing: 0.16em; opacity: 0.95; }
-  .cb-bar-meta-end { text-align: right; font-weight: 700; }
+  .us-bar-meta { white-space: nowrap; }
+  .us-bar-meta-center { flex: 1; text-align: center; letter-spacing: 0.16em; opacity: 0.95; }
+  .us-bar-meta-end { text-align: right; font-weight: 700; }
   @media (max-width: 780px) {
-    .cb-bar-inner { padding: 0.5rem 1rem; gap: 0.6rem; font-size: 0.56rem; }
-    .cb-bar-meta-end { display: none; }
-    .cb-bar-meta-center { font-size: 0.54rem; letter-spacing: 0.1em; }
+    .us-bar-inner { padding: 0.5rem 1rem; gap: 0.6rem; font-size: 0.54rem; }
+    .us-bar-meta-end { display: none; }
+    .us-bar-meta-center { font-size: 0.52rem; letter-spacing: 0.1em; }
   }
 
-  /* ------------------------------------------------------------
-     HERO
-     ------------------------------------------------------------ */
+  /* ---------- HERO ---------- */
   .hero-section {
-    position: relative;
-    background: var(--sg-bg);
-    color: var(--sg-fg);
-    padding: 5.5rem 2rem 6rem;
-    overflow: hidden;
+    position: relative; background: var(--us-bg); color: var(--us-fg);
+    padding: 5rem 2rem 5.5rem; overflow: hidden;
   }
   .hero-section::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image: radial-gradient(var(--sg-dot) 1.5px, transparent 1.6px);
-    background-size: 16px 16px;
-    opacity: 0.7;
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(var(--us-dot) 1.5px, transparent 1.6px);
+    background-size: 17px 17px; opacity: 0.8;
   }
   :global([data-theme="dark"]) .hero-section {
     background:
-      radial-gradient(circle at 16% 18%, rgba(58,120,255,0.22) 0%, transparent 52%),
-      radial-gradient(circle at 84% 82%, rgba(255,47,60,0.14) 0%, transparent 55%),
-      linear-gradient(165deg, #060b22 0%, #0a1230 55%, #0e1640 100%);
+      radial-gradient(circle at 14% 16%, rgba(36,69,126,0.30) 0%, transparent 52%),
+      radial-gradient(circle at 86% 84%, rgba(178,34,52,0.14) 0%, transparent 55%),
+      linear-gradient(165deg, #071228 0%, #0b1a33 55%, #0e2246 100%);
   }
   :global([data-theme="light"]) .hero-section {
     background:
-      radial-gradient(circle at 50% -8%, #ffffff 0%, transparent 42%),
-      linear-gradient(180deg, #d4e4ff 0%, #e9f1ff 60%);
+      radial-gradient(circle at 50% -8%, #fbf6e9 0%, transparent 44%),
+      linear-gradient(180deg, #efe6cd 0%, #f4ecd8 60%);
   }
   .hero-grid {
-    position: relative;
-    z-index: 2;
-    max-width: 1500px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.05fr;
-    gap: 4rem;
-    align-items: center;
+    position: relative; z-index: 2; max-width: 1500px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.02fr; gap: 4rem; align-items: center;
   }
   @media (max-width: 1024px) {
     .hero-grid { grid-template-columns: 1fr; gap: 3.5rem; }
     .hero-section { padding: 3.5rem 1.25rem 4.5rem; }
   }
-  .hero-text { max-width: 660px; position: relative; z-index: 2; }
+  .hero-text { max-width: 660px; }
   .hero-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.7rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--sg-red);
-    margin-bottom: 1.5rem;
-    padding: 0.35rem 0.85rem;
-    border: 2px solid var(--sg-red);
-    background: var(--sg-surface);
+    display: inline-flex; align-items: center; gap: 0.7rem;
+    font-family: 'Space Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--us-red);
+    margin-bottom: 1.5rem; padding: 0.35rem 0.85rem;
+    border: 2px solid var(--us-red); background: var(--us-surface);
   }
   :global([data-theme="light"]) .hero-eyebrow { background: #fff; }
-  .hero-eyebrow-pip { width: 8px; height: 8px; background: var(--sg-red); border-radius: 50%; flex-shrink: 0; }
-  .hero-title { margin: 0 0 1.6rem; line-height: 0.92; }
+  .hero-eyebrow-pip { width: 8px; height: 8px; background: var(--us-red); border-radius: 50%; flex-shrink: 0; }
+  .hero-title { margin: 0 0 1.6rem; line-height: 0.9; }
   .hero-title-line {
-    display: block;
-    font-family: 'Anton', sans-serif;
-    font-weight: 400;
-    font-size: clamp(3rem, 7.5vw, 6rem);
-    color: var(--sg-fg);
-    letter-spacing: 0.005em;
-    line-height: 0.94;
+    display: block; font-family: 'Big Shoulders Display', sans-serif;
+    font-weight: 800; font-size: clamp(3rem, 7.6vw, 6.2rem);
+    color: var(--us-fg); letter-spacing: 0.005em; line-height: 0.92;
     text-transform: uppercase;
   }
-  .hero-title-line em {
-    font-style: normal;
-    color: var(--sg-red);
-    -webkit-text-stroke: 1px var(--sg-ink);
-  }
-  :global([data-theme="dark"]) .hero-title-line em { -webkit-text-stroke: 1px #2a0a0a; }
+  .hero-title-line em { font-style: normal; color: var(--us-red); }
   .hero-body {
-    font-family: 'Barlow', system-ui, sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.65;
-    color: var(--sg-muted);
-    margin: 0 0 2rem;
-    max-width: 40em;
-    font-weight: 500;
+    font-family: 'Bitter', serif; font-size: 1.08rem; line-height: 1.7;
+    color: var(--us-muted); margin: 0 0 2rem; max-width: 40em; font-weight: 400;
   }
-  :global([data-theme="light"]) .hero-body { color: #34456a; }
+  :global([data-theme="light"]) .hero-body { color: #4a4433; }
 
   /* Buttons */
   .btn-primary, .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.95rem 1.7rem;
-    font-family: 'Anton', sans-serif;
-    font-size: 1.02rem;
-    font-weight: 400;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 3px solid var(--sg-ink);
-    transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease, color 0.16s ease;
-    cursor: pointer;
-    line-height: 1;
+    display: inline-flex; align-items: center; gap: 0.55rem;
+    padding: 0.9rem 1.7rem; font-family: 'Big Shoulders Display', sans-serif;
+    font-size: 1.05rem; font-weight: 700; letter-spacing: 0.04em;
+    text-transform: uppercase; text-decoration: none;
+    border: 2.5px solid var(--us-ink);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
+    cursor: pointer; line-height: 1;
   }
-  :global([data-theme="dark"]) .btn-primary, :global([data-theme="dark"]) .btn-secondary { border-color: #2a0a0a; }
-  .btn-primary {
-    background: var(--sg-red);
-    color: #fff;
-    box-shadow: 5px 5px 0 var(--sg-gold);
-  }
-  .btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--sg-gold); background: var(--sg-red-bright); }
-  .btn-secondary {
-    background: var(--sg-gold);
-    color: #2a1500;
-    box-shadow: 5px 5px 0 var(--sg-blue);
-  }
-  .btn-secondary:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--sg-blue); }
-  .btn-primary-big, .btn-secondary-big { padding: 1.15rem 2.3rem; font-size: 1.15rem; }
+  :global([data-theme="dark"]) .btn-primary, :global([data-theme="dark"]) .btn-secondary { border-color: #071228; }
+  .btn-primary { background: var(--us-red); color: #fff; box-shadow: 5px 5px 0 var(--us-gold); }
+  .btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--us-gold); background: var(--us-red-deep); }
+  .btn-secondary { background: var(--us-gold); color: #201500; box-shadow: 5px 5px 0 var(--us-navy); }
+  .btn-secondary:hover { transform: translate(-2px, -2px); box-shadow: 7px 7px 0 var(--us-navy); }
+  .btn-primary-big, .btn-secondary-big { padding: 1.15rem 2.3rem; font-size: 1.2rem; }
   .hero-cta-row { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-bottom: 2.8rem; }
 
   /* Tally */
   .hero-tally {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 1.2rem;
-    border-top: 3px solid var(--sg-red);
-    padding-top: 1.7rem;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem;
+    border-top: 3px solid var(--us-red); padding-top: 1.7rem;
   }
   .tally-value {
-    font-family: 'Anton', sans-serif;
-    font-weight: 400;
-    font-size: 2.6rem;
-    color: var(--sg-red);
-    line-height: 1;
-    -webkit-text-stroke: 1px var(--sg-ink);
+    font-family: 'Big Shoulders Display', sans-serif; font-weight: 800;
+    font-size: 2.5rem; color: var(--us-red); line-height: 1;
   }
-  :global([data-theme="dark"]) .tally-value { -webkit-text-stroke: 1px #2a0a0a; }
   .tally-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--sg-muted);
-    margin-top: 0.4rem;
+    font-family: 'Space Mono', monospace; font-size: 0.56rem;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--us-muted); margin-top: 0.4rem;
   }
-  @media (max-width: 620px) {
-    .hero-tally { grid-template-columns: repeat(2, 1fr); gap: 1.4rem 1rem; }
-  }
+  @media (max-width: 620px) { .hero-tally { grid-template-columns: repeat(2, 1fr); gap: 1.4rem 1rem; } }
 
-  /* ------------------------------------------------------------
-     COMIC COVER (hero right)
-     ------------------------------------------------------------ */
-  .hero-image-wrap { position: relative; z-index: 2; display: flex; justify-content: center; align-items: flex-start; }
-  .cover {
-    position: relative;
-    margin: 0;
-    width: 100%;
-    max-width: 640px;
-    background: var(--sg-surface);
-    border: 5px solid var(--sg-ink);
-    box-shadow: 10px 10px 0 var(--sg-red);
-    display: flex;
-    flex-direction: column;
+  /* ---------- HERO POSTER FRAME ---------- */
+  .hero-image-wrap { position: relative; z-index: 2; display: flex; justify-content: center; }
+  .poster {
+    position: relative; margin: 0; width: 100%; max-width: 640px;
+    background: var(--us-surface); border: 4px solid var(--us-ink);
+    box-shadow: 10px 10px 0 var(--us-red); display: flex; flex-direction: column;
   }
-  :global([data-theme="dark"]) .cover { border-color: var(--sg-gold); box-shadow: 10px 10px 0 var(--sg-red); }
-  .cover-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.6rem 1rem;
-    background: var(--sg-blue);
-    color: #fff;
-    border-bottom: 4px solid var(--sg-ink);
+  :global([data-theme="dark"]) .poster { border-color: var(--us-gold); }
+  .poster-top {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    padding: 0.6rem 1rem; background: var(--us-navy); color: #fff;
+    border-bottom: 3px solid var(--us-ink);
   }
-  :global([data-theme="dark"]) .cover-top { border-bottom-color: var(--sg-gold); }
-  .cover-logo { font-family: 'Bangers', cursive; font-size: 1.6rem; letter-spacing: 0.06em; color: var(--sg-gold); -webkit-text-stroke: 0.8px #07122e; }
-  .cover-price {
-    font-family: 'Anton', sans-serif;
-    font-size: 0.7rem;
-    line-height: 1;
-    text-align: center;
-    background: #fff;
-    color: var(--sg-ink);
-    border: 2px solid var(--sg-ink);
-    padding: 0.25rem 0.4rem;
-    text-transform: uppercase;
+  :global([data-theme="dark"]) .poster-top { border-bottom-color: var(--us-gold); }
+  .poster-logo { font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 1.15rem; letter-spacing: 0.05em; color: var(--us-gold); }
+  .poster-price {
+    font-family: 'Big Shoulders Display', sans-serif; font-weight: 700; font-size: 0.7rem;
+    line-height: 1; text-align: center; background: #fff; color: var(--us-ink);
+    border: 2px solid var(--us-ink); padding: 0.25rem 0.4rem; text-transform: uppercase;
   }
-  .cover-window { position: relative; background: var(--sg-bg-deep); }
-  .cover-image { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
-  .cover-burst {
-    position: absolute;
-    bottom: -14px;
-    right: 16px;
-    font-family: 'Bangers', cursive;
-    font-size: 2rem;
-    color: var(--sg-gold);
-    -webkit-text-stroke: 1.4px var(--sg-ink);
-    transform: rotate(-8deg);
-    text-shadow: 3px 3px 0 var(--sg-red);
-    letter-spacing: 0.04em;
+  .poster-window { position: relative; background: var(--us-bg-deep); }
+  .poster-image { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
+  .poster-bottom {
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    padding: 0.7rem 1rem; background: var(--us-red); color: #fff;
+    font-family: 'Big Shoulders Display', sans-serif; font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 0.05em; text-transform: uppercase; border-top: 3px solid var(--us-ink); flex-wrap: wrap;
   }
-  .cover-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.7rem 1rem;
-    background: var(--sg-red);
-    color: #fff;
-    font-family: 'Anton', sans-serif;
-    font-size: 0.82rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    border-top: 4px solid var(--sg-ink);
-    flex-wrap: wrap;
-  }
-  :global([data-theme="dark"]) .cover-bottom { border-top-color: var(--sg-gold); }
+  :global([data-theme="dark"]) .poster-bottom { border-top-color: var(--us-gold); }
 
-  /* ------------------------------------------------------------
-     SFX TICKER
-     ------------------------------------------------------------ */
+  /* ---------- TICKER ---------- */
   .ticker {
-    background: var(--sg-gold);
-    color: var(--sg-ink);
-    border-top: 4px solid var(--sg-ink);
-    border-bottom: 4px solid var(--sg-ink);
-    overflow: hidden;
-    padding: 0.55rem 0;
-    font-family: 'Bangers', cursive;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    font-size: 1.35rem;
+    background: var(--us-gold); color: var(--us-ink);
+    border-top: 3px solid var(--us-ink); border-bottom: 3px solid var(--us-ink);
+    overflow: hidden; padding: 0.5rem 0;
+    font-family: 'Big Shoulders Display', sans-serif; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; font-size: 1.15rem;
   }
-  .ticker-track { display: inline-flex; gap: 2.6rem; white-space: nowrap; animation: tickerScroll 60s linear infinite; }
-  .ticker-item::after { content: '★'; margin-left: 2.6rem; color: var(--sg-red); }
+  .ticker-track { display: inline-flex; gap: 2.6rem; white-space: nowrap; animation: tickerScroll 62s linear infinite; }
+  .ticker-item::after { content: '\2605'; margin-left: 2.6rem; color: var(--us-red-deep); }
   @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
   @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
 
-  /* ------------------------------------------------------------
-     SECTION HEADERS
-     ------------------------------------------------------------ */
-  .section-header { max-width: 820px; margin: 0 auto 3.5rem; text-align: center; }
+  /* ---------- SECTION HEADERS ---------- */
+  .section-header { max-width: 830px; margin: 0 auto 3.5rem; text-align: center; }
   .section-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: var(--sg-red);
-    margin-bottom: 1.1rem;
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-family: 'Space Mono', monospace; font-size: 0.68rem;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--us-red); margin-bottom: 1.1rem;
   }
-  .section-tag-dot { width: 10px; height: 10px; background: var(--sg-red); border-radius: 50%; flex-shrink: 0; }
+  .section-tag-dot { width: 10px; height: 10px; background: var(--us-red); border-radius: 50%; flex-shrink: 0; }
   .section-title {
-    font-family: 'Anton', sans-serif;
-    font-weight: 400;
-    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-    line-height: 1.0;
-    margin: 0 0 1.2rem;
-    color: var(--sg-fg);
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
+    font-family: 'Big Shoulders Display', sans-serif; font-weight: 800;
+    font-size: clamp(2.3rem, 5.4vw, 4rem); line-height: 1.0; margin: 0 0 1.2rem;
+    color: var(--us-fg); letter-spacing: 0.01em; text-transform: uppercase;
   }
-  .section-title em { font-style: normal; color: var(--sg-red); -webkit-text-stroke: 1px var(--sg-ink); }
-  :global([data-theme="dark"]) .section-title em { -webkit-text-stroke: 1px #2a0a0a; }
+  .section-title em { font-style: normal; color: var(--us-red); }
   .section-deck {
-    font-family: 'Barlow', system-ui, sans-serif;
-    font-size: 1.08rem;
-    line-height: 1.65;
-    color: var(--sg-muted);
-    max-width: 44em;
-    margin: 0 auto;
-    font-weight: 500;
+    font-family: 'Bitter', serif; font-size: 1.05rem; line-height: 1.7;
+    color: var(--us-muted); max-width: 44em; margin: 0 auto; font-weight: 400;
   }
-  :global([data-theme="light"]) .section-deck { color: #44557c; }
+  :global([data-theme="light"]) .section-deck { color: #4a4433; }
 
-  /* ------------------------------------------------------------
-     ROGUES' GALLERY (scene gallery)
-     ------------------------------------------------------------ */
-  .rogues-section {
-    background: var(--sg-bg);
-    color: var(--sg-fg);
-    padding: 6.5rem 2rem 7rem;
-    position: relative;
-  }
-  :global([data-theme="light"]) .rogues-section { background: var(--sg-surface-2); }
-  .rogues-inner { max-width: 1320px; margin: 0 auto; position: relative; }
-  .rogues-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.4rem; }
+  /* ---------- ATTEMPTS GALLERY ---------- */
+  .attempts-section { background: var(--us-bg); color: var(--us-fg); padding: 6rem 2rem 6.5rem; }
+  :global([data-theme="light"]) .attempts-section { background: var(--us-surface-2); }
+  .attempts-inner { max-width: 1320px; margin: 0 auto; }
+  .attempts-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.2rem; }
   @media (max-width: 820px) {
-    .rogues-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .rogues-section { padding: 4rem 1.25rem 5rem; }
+    .attempts-grid { grid-template-columns: 1fr; gap: 1.8rem; }
+    .attempts-section { padding: 4rem 1.25rem 4.5rem; }
   }
   .panel-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--sg-surface);
-    border: 4px solid var(--sg-ink);
-    overflow: hidden;
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-    box-shadow: 6px 6px 0 var(--sg-blue);
+    display: flex; flex-direction: column; background: var(--us-surface);
+    border: 3px solid var(--us-ink); overflow: hidden;
+    transition: transform 0.18s ease, box-shadow 0.18s ease; box-shadow: 6px 6px 0 var(--us-navy);
   }
-  :global([data-theme="dark"]) .panel-card { border-color: var(--sg-gold); box-shadow: 6px 6px 0 var(--sg-blue-deep); }
-  .panel-card:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 var(--sg-red); }
-  .panel-card-feature { grid-column: 1 / -1; display: grid; grid-template-columns: 1.4fr 1fr; align-items: stretch; box-shadow: 8px 8px 0 var(--sg-red); }
+  :global([data-theme="dark"]) .panel-card { border-color: var(--us-gold); box-shadow: 6px 6px 0 var(--us-red-deep); }
+  .panel-card:hover { transform: translate(-3px, -3px); box-shadow: 10px 10px 0 var(--us-red); }
+  .panel-card-feature { grid-column: 1 / -1; display: grid; grid-template-columns: 1.35fr 1fr; align-items: stretch; box-shadow: 8px 8px 0 var(--us-red); }
   .panel-card-feature .panel-meta { display: flex; flex-direction: column; justify-content: center; }
   @media (max-width: 820px) { .panel-card-feature { grid-template-columns: 1fr; } }
-  .panel-frame { position: relative; background: var(--sg-bg-deep); border-bottom: 4px solid var(--sg-ink); }
-  :global([data-theme="dark"]) .panel-frame { border-bottom-color: var(--sg-gold); }
-  .panel-card-feature .panel-frame { border-bottom: none; border-right: 4px solid var(--sg-ink); }
-  :global([data-theme="dark"]) .panel-card-feature .panel-frame { border-right-color: var(--sg-gold); }
+  .panel-frame { position: relative; background: var(--us-bg-deep); border-bottom: 3px solid var(--us-ink); }
+  :global([data-theme="dark"]) .panel-frame { border-bottom-color: var(--us-gold); }
+  .panel-card-feature .panel-frame { border-bottom: none; border-right: 3px solid var(--us-ink); }
+  :global([data-theme="dark"]) .panel-card-feature .panel-frame { border-right-color: var(--us-gold); }
   @media (max-width: 820px) {
-    .panel-card-feature .panel-frame { border-right: none; border-bottom: 4px solid var(--sg-ink); }
-    :global([data-theme="dark"]) .panel-card-feature .panel-frame { border-bottom-color: var(--sg-gold); }
+    .panel-card-feature .panel-frame { border-right: none; border-bottom: 3px solid var(--us-ink); }
+    :global([data-theme="dark"]) .panel-card-feature .panel-frame { border-bottom-color: var(--us-gold); }
   }
-  .panel-image { display: block; width: 100%; height: 100%; aspect-ratio: 3/4; object-fit: cover; }
-  .panel-card-feature .panel-image { aspect-ratio: 16/9; }
+  .panel-image { display: block; width: 100%; height: 100%; aspect-ratio: 3/2; object-fit: cover; }
+  .panel-card-feature .panel-image { aspect-ratio: 3/2; }
   .panel-kicker {
-    position: absolute;
-    top: 0; left: 0;
-    background: var(--sg-red);
-    color: #fff;
-    padding: 0.35rem 0.7rem;
-    border-right: 3px solid var(--sg-ink);
-    border-bottom: 3px solid var(--sg-ink);
-    font-family: 'Anton', sans-serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    position: absolute; top: 0; left: 0; background: var(--us-red); color: #fff;
+    padding: 0.35rem 0.7rem; border-right: 3px solid var(--us-ink); border-bottom: 3px solid var(--us-ink);
+    font-family: 'Big Shoulders Display', sans-serif; font-weight: 700; font-size: 0.72rem;
+    letter-spacing: 0.06em; text-transform: uppercase;
   }
-  :global([data-theme="dark"]) .panel-kicker { border-color: var(--sg-gold); }
+  .panel-kicker-gold { background: var(--us-gold); color: var(--us-ink); }
+  :global([data-theme="dark"]) .panel-kicker { border-color: var(--us-gold); }
   .panel-meta { padding: 1.5rem 1.6rem 1.8rem; }
   .panel-name {
-    font-family: 'Anton', sans-serif;
-    font-weight: 400;
-    font-size: 1.9rem;
-    margin: 0 0 0.6rem;
-    color: var(--sg-fg);
-    line-height: 1.0;
-    text-transform: uppercase;
-    letter-spacing: 0.01em;
+    font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 1.85rem;
+    margin: 0 0 0.6rem; color: var(--us-fg); line-height: 1.0; text-transform: uppercase; letter-spacing: 0.01em;
   }
-  .panel-card-feature .panel-name { font-size: 2.4rem; color: var(--sg-red); -webkit-text-stroke: 1px var(--sg-ink); }
-  :global([data-theme="dark"]) .panel-card-feature .panel-name { -webkit-text-stroke: 1px #2a0a0a; }
+  .panel-name-feature { font-size: 2.3rem; color: var(--us-red); }
   .panel-caption {
-    font-family: 'Barlow', system-ui, sans-serif;
-    font-size: 1.02rem;
-    line-height: 1.6;
-    color: var(--sg-muted);
-    margin: 0;
-    font-weight: 500;
+    font-family: 'Bitter', serif; font-size: 1rem; line-height: 1.65; color: var(--us-muted); margin: 0; font-weight: 400;
   }
-  :global([data-theme="light"]) .panel-caption { color: #44557c; }
+  :global([data-theme="light"]) .panel-caption { color: #4a4433; }
 
-  /* ------------------------------------------------------------
-     CAPTION-BOX PULL QUOTE
-     ------------------------------------------------------------ */
+  /* ---------- NARRATION PULL-QUOTE ---------- */
   .statement-section {
-    background: var(--sg-red);
-    color: #fff;
-    padding: 5.5rem 2rem;
-    position: relative;
-    border-top: 5px solid var(--sg-ink);
-    border-bottom: 5px solid var(--sg-ink);
+    background: var(--us-red-deep); color: #fff; padding: 5.5rem 2rem; position: relative;
+    border-top: 4px solid var(--us-ink); border-bottom: 4px solid var(--us-ink);
   }
-  :global([data-theme="dark"]) .statement-section { border-color: var(--sg-gold); }
+  :global([data-theme="dark"]) .statement-section { border-color: var(--us-gold); }
   .statement-section::before {
-    content: '';
-    position: absolute; inset: 0; pointer-events: none;
-    background-image: radial-gradient(rgba(0,0,0,0.14) 1.5px, transparent 1.6px);
-    background-size: 16px 16px;
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(0,0,0,0.14) 1.5px, transparent 1.6px); background-size: 16px 16px;
   }
   .statement-inner { max-width: 980px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-  .statement-tag {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #ffe08a;
-    margin-bottom: 1.5rem;
-  }
+  .statement-tag { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #f2d68a; margin-bottom: 1.5rem; }
   .statement-q {
-    font-family: 'Anton', sans-serif;
-    font-weight: 400;
-    font-size: clamp(1.6rem, 3.6vw, 2.7rem);
-    line-height: 1.15;
-    margin: 0 0 1.5rem;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.005em;
+    font-family: 'Big Shoulders Display', sans-serif; font-weight: 700;
+    font-size: clamp(1.6rem, 3.6vw, 2.7rem); line-height: 1.15; margin: 0 0 1.5rem;
+    color: #fff; text-transform: uppercase; letter-spacing: 0.005em;
   }
   .statement-line {
-    display: block;
-    margin-top: 0.9rem;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.5em;
-    letter-spacing: 0.02em;
-    text-transform: none;
-    color: #ffe08a;
+    display: block; margin-top: 0.9rem; font-family: 'Bitter', serif; font-size: 0.42em;
+    letter-spacing: 0.01em; text-transform: none; color: #f2d68a; font-style: italic; font-weight: 400;
   }
-  .statement-attrib-name { display: block; font-family: 'Anton', sans-serif; font-size: 1.3rem; letter-spacing: 0.03em; color: #fff; text-transform: uppercase; }
-  .statement-attrib-role { display: block; font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: #ffe08a; margin-top: 0.4rem; }
+  .statement-attrib-name { display: block; font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: 0.03em; color: #fff; text-transform: uppercase; }
+  .statement-attrib-role { display: block; font-family: 'Space Mono', monospace; font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: #f2d68a; margin-top: 0.4rem; }
 
-  /* ------------------------------------------------------------
-     ARSENAL (project cards)
-     ------------------------------------------------------------ */
-  .arsenal-section { background: var(--sg-bg); color: var(--sg-fg); padding: 7rem 2rem; position: relative; }
+  /* ---------- ARSENAL / PROJECTS ---------- */
+  .arsenal-section { background: var(--us-bg); color: var(--us-fg); padding: 6.5rem 2rem; }
   .arsenal-inner { max-width: 1320px; margin: 0 auto; }
   .arsenal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
   @media (max-width: 1080px) { .arsenal-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 680px) {
-    .arsenal-grid { grid-template-columns: 1fr; }
-    .arsenal-section { padding: 4rem 1.25rem; }
-  }
+  @media (max-width: 680px) { .arsenal-grid { grid-template-columns: 1fr; } .arsenal-section { padding: 4rem 1.25rem; } }
   .power-card {
-    position: relative;
-    background: var(--sg-surface);
-    border: 4px solid var(--sg-ink);
-    padding: 1.7rem 1.6rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-    box-shadow: 5px 5px 0 var(--sg-blue);
+    position: relative; background: var(--us-surface); border: 2px solid var(--us-line);
+    padding: 1.7rem 1.6rem; display: flex; flex-direction: column; gap: 0.85rem;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
   }
-  :global([data-theme="dark"]) .power-card { border-color: var(--sg-line); box-shadow: 5px 5px 0 var(--sg-blue-deep); }
-  .power-card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--sg-red); }
-  :global([data-theme="dark"]) .power-card:hover { border-color: var(--sg-gold); }
-  .power-card-head {
-    display: flex; align-items: center; justify-content: space-between; gap: 0.8rem;
-    padding-bottom: 0.7rem; border-bottom: 2px solid var(--sg-line); flex-wrap: wrap;
-  }
-  .power-code { font-family: 'Anton', sans-serif; font-size: 0.85rem; letter-spacing: 0.05em; color: var(--sg-red); text-transform: uppercase; }
-  .power-cat { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; color: var(--sg-muted); text-transform: uppercase; }
-  .power-title { font-family: 'Anton', sans-serif; font-weight: 400; font-size: 1.6rem; margin: 0; color: var(--sg-fg); line-height: 1.02; text-transform: uppercase; letter-spacing: 0.01em; }
-  .power-body { font-family: 'Barlow', system-ui, sans-serif; font-size: 0.98rem; line-height: 1.58; color: var(--sg-muted); margin: 0; flex-grow: 1; font-weight: 500; }
-  :global([data-theme="light"]) .power-body { color: #44557c; }
+  .power-card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--us-red); border-color: var(--us-ink); }
+  :global([data-theme="dark"]) .power-card:hover { border-color: var(--us-gold); }
+  .power-card-head { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding-bottom: 0.7rem; border-bottom: 1.5px solid var(--us-line); flex-wrap: wrap; }
+  .power-code { font-family: 'Big Shoulders Display', sans-serif; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; color: var(--us-red); text-transform: uppercase; }
+  .power-cat { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.08em; color: var(--us-muted); text-transform: uppercase; }
+  .power-title { font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 1.55rem; margin: 0; color: var(--us-fg); line-height: 1.02; text-transform: uppercase; letter-spacing: 0.01em; }
+  .power-body { font-family: 'Bitter', serif; font-size: 0.96rem; line-height: 1.62; color: var(--us-muted); margin: 0; flex-grow: 1; font-weight: 400; }
+  :global([data-theme="light"]) .power-body { color: #4a4433; }
   .power-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
-  .power-badge {
-    font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--sg-fg); background: var(--sg-surface-2); border: 1.5px solid var(--sg-line); padding: 0.25rem 0.5rem;
-  }
-  .power-status {
-    font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700;
-    padding: 0.25rem 0.5rem; color: #2a1500; background: var(--sg-gold);
-  }
-  .power-status-shipped { background: var(--sg-gold); }
-  .power-status-running { background: #4fd07f; }
-  .power-status-in-prototype { background: var(--sg-blue); color: #fff; }
-  .power-status-call-for-speakers-open { background: var(--sg-red); color: #fff; }
+  .power-badge { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--us-fg); background: var(--us-surface-2); border: 1.5px solid var(--us-line); padding: 0.25rem 0.5rem; }
+  .power-status { font-family: 'Space Mono', monospace; font-size: 0.56rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; padding: 0.25rem 0.5rem; color: var(--us-ink); background: var(--us-gold); }
+  .power-status-shipped { background: var(--us-gold); }
+  .power-status-running { background: #5aa06a; color: #06210f; }
+  .power-status-in-prototype { background: var(--us-navy); color: #fff; }
+  .power-status-call-for-speakers-open { background: var(--us-red); color: #fff; }
   .power-foot { margin-top: 0.3rem; }
-  .power-cta {
-    display: inline-flex; align-items: center; gap: 0.45rem;
-    font-family: 'Anton', sans-serif; font-weight: 400; font-size: 1rem; letter-spacing: 0.03em; text-transform: uppercase;
-    color: var(--sg-red); text-decoration: none; transition: gap 0.2s ease, color 0.2s ease;
-  }
-  .power-cta:hover { gap: 0.75rem; color: var(--sg-red-bright); }
-  .power-cta-disabled { color: var(--sg-muted); cursor: default; }
-  .power-cta-disabled:hover { gap: 0.45rem; color: var(--sg-muted); }
+  .power-cta { display: inline-flex; align-items: center; gap: 0.45rem; font-family: 'Big Shoulders Display', sans-serif; font-weight: 700; font-size: 1rem; letter-spacing: 0.03em; text-transform: uppercase; color: var(--us-red); text-decoration: none; transition: gap 0.2s ease, color 0.2s ease; }
+  .power-cta:hover { gap: 0.75rem; color: var(--us-red-deep); }
+  .power-cta-disabled { color: var(--us-muted); cursor: default; }
+  .power-cta-disabled:hover { gap: 0.45rem; color: var(--us-muted); }
 
-  /* ------------------------------------------------------------
-     LATE ADD
-     ------------------------------------------------------------ */
-  .late-section { background: var(--sg-surface-2); color: var(--sg-fg); padding: 6rem 2rem; position: relative; }
-  :global([data-theme="dark"]) .late-section { background: var(--sg-bg-deep); }
+  /* ---------- BLOG TEASER ---------- */
+  .late-section { background: var(--us-surface-2); color: var(--us-fg); padding: 6rem 2rem; }
+  :global([data-theme="dark"]) .late-section { background: var(--us-bg-deep); }
   .late-inner { max-width: 900px; margin: 0 auto; }
   .late-grid { display: grid; grid-template-columns: 1fr; gap: 1.8rem; }
-  .late-card {
-    background: var(--sg-surface);
-    border: 4px dashed var(--sg-blue);
-    padding: 2.2rem 2rem;
-    text-align: center;
-    box-shadow: 6px 6px 0 var(--sg-gold);
-  }
-  .late-card-tag { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sg-red); margin-bottom: 0.8rem; }
-  .late-card-title { font-family: 'Anton', sans-serif; font-weight: 400; font-size: 2.1rem; margin: 0 0 0.5rem; color: var(--sg-fg); text-transform: uppercase; }
-  .late-card-line { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sg-muted); margin-bottom: 1.1rem; }
-  .late-card-body { font-family: 'Barlow', system-ui, sans-serif; font-size: 1.05rem; line-height: 1.65; color: var(--sg-muted); margin: 0 auto 1.5rem; max-width: 40em; font-weight: 500; }
-  :global([data-theme="light"]) .late-card-body { color: #44557c; }
-  .late-cta {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    font-family: 'Anton', sans-serif; font-weight: 400; font-size: 1.05rem; letter-spacing: 0.03em; text-transform: uppercase;
-    color: #fff; background: var(--sg-red); padding: 0.8rem 1.6rem; text-decoration: none;
-    border: 3px solid var(--sg-ink); box-shadow: 4px 4px 0 var(--sg-blue); transition: transform 0.16s ease, box-shadow 0.16s ease;
-  }
-  :global([data-theme="dark"]) .late-cta { border-color: #2a0a0a; }
-  .late-cta:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--sg-blue); }
+  .late-card { background: var(--us-surface); border: 3px dashed var(--us-navy); padding: 2.2rem 2rem; text-align: center; box-shadow: 6px 6px 0 var(--us-gold); }
+  .late-card-tag { font-family: 'Space Mono', monospace; font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--us-red); margin-bottom: 0.8rem; }
+  .late-card-title { font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: 2rem; margin: 0 0 0.5rem; color: var(--us-fg); text-transform: uppercase; line-height: 1.02; }
+  .late-card-line { font-family: 'Space Mono', monospace; font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--us-muted); margin-bottom: 1.1rem; }
+  .late-card-body { font-family: 'Bitter', serif; font-size: 1.04rem; line-height: 1.7; color: var(--us-muted); margin: 0 auto 1.5rem; max-width: 42em; font-weight: 400; }
+  :global([data-theme="light"]) .late-card-body { color: #4a4433; }
+  .late-cta { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Big Shoulders Display', sans-serif; font-weight: 700; font-size: 1.05rem; letter-spacing: 0.03em; text-transform: uppercase; color: #fff; background: var(--us-red); padding: 0.8rem 1.6rem; text-decoration: none; border: 2.5px solid var(--us-ink); box-shadow: 4px 4px 0 var(--us-navy); transition: transform 0.16s ease, box-shadow 0.16s ease; }
+  :global([data-theme="dark"]) .late-cta { border-color: #071228; }
+  .late-cta:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--us-navy); }
 
-  /* ------------------------------------------------------------
-     CLOSING CTA
-     ------------------------------------------------------------ */
-  .closing-section { position: relative; background: var(--sg-bg); color: var(--sg-fg); padding: 6.5rem 2rem 7rem; overflow: hidden; text-align: center; }
-  .closing-section::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none;
-    background-image: radial-gradient(var(--sg-dot) 1.5px, transparent 1.6px); background-size: 16px 16px; opacity: 0.7;
-  }
-  :global([data-theme="dark"]) .closing-section {
-    background: radial-gradient(circle at 50% 0%, rgba(58,120,255,0.2) 0%, transparent 55%), linear-gradient(180deg, #0a1230 0%, #060b22 100%);
-  }
-  :global([data-theme="light"]) .closing-section { background: linear-gradient(180deg, #e9f1ff 0%, #d4e4ff 100%); }
+  /* ---------- CLOSING CTA ---------- */
+  .closing-section { position: relative; background: var(--us-bg); color: var(--us-fg); padding: 6.5rem 2rem 7rem; overflow: hidden; text-align: center; }
+  .closing-section::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: radial-gradient(var(--us-dot) 1.5px, transparent 1.6px); background-size: 17px 17px; opacity: 0.8; }
+  :global([data-theme="dark"]) .closing-section { background: radial-gradient(circle at 50% 0%, rgba(36,69,126,0.24) 0%, transparent 55%), linear-gradient(180deg, #0b1a33 0%, #071228 100%); }
+  :global([data-theme="light"]) .closing-section { background: linear-gradient(180deg, #f4ecd8 0%, #e9dcc0 100%); }
   .closing-inner { position: relative; z-index: 2; max-width: 820px; margin: 0 auto; }
-  .closing-eyebrow {
-    display: flex; align-items: center; justify-content: center; gap: 1rem;
-    font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
-    color: var(--sg-red); margin-bottom: 1.5rem;
-  }
-  .closing-rule { width: 40px; height: 3px; background: var(--sg-red); }
-  .closing-title {
-    font-family: 'Anton', sans-serif; font-weight: 400; font-size: clamp(2.4rem, 5.8vw, 4.4rem);
-    line-height: 0.98; margin: 0 0 1.4rem; color: var(--sg-fg); letter-spacing: 0.01em; text-transform: uppercase;
-  }
-  .closing-title em { font-style: normal; color: var(--sg-red); -webkit-text-stroke: 1px var(--sg-ink); }
-  :global([data-theme="dark"]) .closing-title em { -webkit-text-stroke: 1px #2a0a0a; }
-  .closing-deck { font-family: 'Barlow', system-ui, sans-serif; font-size: 1.12rem; line-height: 1.65; color: var(--sg-muted); max-width: 46em; margin: 0 auto 2.4rem; font-weight: 500; }
-  :global([data-theme="light"]) .closing-deck { color: #34456a; }
+  .closing-eyebrow { display: flex; align-items: center; justify-content: center; gap: 1rem; font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--us-red); margin-bottom: 1.5rem; }
+  .closing-rule { width: 40px; height: 3px; background: var(--us-red); }
+  .closing-title { font-family: 'Big Shoulders Display', sans-serif; font-weight: 800; font-size: clamp(2.4rem, 5.8vw, 4.4rem); line-height: 0.98; margin: 0 0 1.4rem; color: var(--us-fg); letter-spacing: 0.01em; text-transform: uppercase; }
+  .closing-title em { font-style: normal; color: var(--us-red); }
+  .closing-deck { font-family: 'Bitter', serif; font-size: 1.08rem; line-height: 1.7; color: var(--us-muted); max-width: 46em; margin: 0 auto 2.4rem; font-weight: 400; }
+  :global([data-theme="light"]) .closing-deck { color: #4a4433; }
   .closing-cta-row { display: flex; flex-wrap: wrap; gap: 1.4rem; justify-content: center; }
 
-  /* ------------------------------------------------------------
-     INDICIA / BACK PANEL
-     ------------------------------------------------------------ */
-  .indicia-section { background: var(--sg-bg-deep); color: var(--sg-fg); padding: 4.5rem 2rem 5rem; border-top: 5px solid var(--sg-ink); }
-  :global([data-theme="dark"]) .indicia-section { background: var(--sg-blue-deep); color: #fff; border-top-color: var(--sg-gold); }
-  :global([data-theme="light"]) .indicia-section { background: var(--sg-blue); color: #fff; }
+  /* ---------- COLOPHON / INDICIA ---------- */
+  .indicia-section { background: var(--us-bg-deep); color: var(--us-fg); padding: 4.5rem 2rem 5rem; border-top: 4px solid var(--us-ink); }
+  :global([data-theme="dark"]) .indicia-section { background: var(--us-navy); color: #fff; border-top-color: var(--us-gold); }
+  :global([data-theme="light"]) .indicia-section { background: var(--us-navy); color: #fff; }
   .indicia-inner { max-width: 1100px; margin: 0 auto; }
-  .indicia-tag { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sg-gold); margin-bottom: 2rem; text-align: center; }
+  .indicia-tag { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--us-gold); margin-bottom: 2rem; text-align: center; }
   .indicia-roll { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3rem 2.5rem; }
   @media (max-width: 680px) { .indicia-roll { grid-template-columns: 1fr; } }
   .indicia-block { display: flex; flex-direction: column; gap: 0.25rem; padding-bottom: 1rem; border-bottom: 1px dashed rgba(255,255,255,0.3); }
-  .indicia-role { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--sg-gold); }
-  .indicia-name { font-family: 'Barlow', system-ui, sans-serif; font-size: 0.95rem; font-weight: 700; color: #fff; line-height: 1.4; }
-  .indicia-footnote {
-    margin-top: 2.4rem; padding-top: 1.6rem; border-top: 1px solid rgba(255,255,255,0.3);
-    font-family: 'Space Mono', monospace; font-size: 0.72rem; line-height: 1.7; color: rgba(255,255,255,0.8);
-    text-align: center; max-width: 62em; margin-left: auto; margin-right: auto;
-  }
+  .indicia-role { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--us-gold); }
+  .indicia-name { font-family: 'Bitter', serif; font-size: 0.95rem; font-weight: 600; color: #fff; line-height: 1.4; }
+  .indicia-footnote { margin-top: 2.4rem; padding-top: 1.6rem; border-top: 1px solid rgba(255,255,255,0.3); font-family: 'Space Mono', monospace; font-size: 0.7rem; line-height: 1.7; color: rgba(255,255,255,0.8); text-align: center; max-width: 62em; margin-left: auto; margin-right: auto; }
 </style>

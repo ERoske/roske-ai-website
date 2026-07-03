@@ -77,46 +77,46 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "Supergirl: Crime Doesn't Pay",
-  week: "2026-06-27",
-  inspiration: "Supergirl hits US theaters June 26, 2026 (international June 24). Edward watched it and took exactly the wrong lesson: the villains looked like they were doing well for themselves, so he spent the week finding out whether supervillainy actually pays. He tried becoming Lobo, then Lex Luthor, Brainiac, Bizarro, and General Zod. Supergirl foiled him at every pass, usually before lunch. By Friday he'd run the numbers and confirmed that crime does not pay, so he's going back to telling people about AI. The site is built like a comic book. The one cool shot is the hero image, where Edward rides his intergalactic chopper as Lobo (long hair, leathers, cigar, the works) with Supergirl flying alongside, faintly unimpressed. The blue fedora survives every costume, which is the joke and the brand. Halftone dots, bold panel borders, and comic-book color (Supergirl red, Krypton blue, sidekick gold) carry the whole thing.",
-  tagline: "Edward spent the week trying to become a supervillain. Supergirl foiled every attempt. Crime, it turns out, doesn't pay.",
+  name: "America 250: Still Shipping",
+  week: "2026-07-04",
+  inspiration: "July 4, 2026 is America's Semiquincentennial, the 250th, which happens exactly once, and the rebuild ships on Independence Day itself. Fresh hook (NOT 'Edward plays every character' again, which just ran twice): America as the world's most improbable long-running startup, founded 1776 by a small unfunded team with a strongly worded exit memo, still shipping updates a quarter-millennium later. Edward, the data scientist who can't resist a longevity stat, spends the week trying to help celebrate and mostly inserting himself into the festivities: he tries out for the USMNT and pulls a hamstring, crashes the 250th birthday party, shows up 250 years late to sign the Declaration, and finally does the one thing he's actually qualified for, running America's longevity report. The 2026 World Cup (co-hosted by the USA) is in the knockout rounds: the USMNT beat Bosnia 2-0 on July 1 and is alive heading into Monday's Belgium match (no US match before publish, so status is locked; do not claim a July 6 result). The hero is Edward as Uncle Sam in the classic 'I Want You' pose, wearing a stars-and-stripes FEDORA (not a top hat), captioned 'I want you to ask good questions.' Design is a vintage American commemorative broadside / WPA recruiting poster: aged cream paper, Old-Glory red, federal navy, brass gold, halftone print grain, bunting. Fireworks animation is justified (holiday carve-out). The fedora is the one constant across 250 years.",
+  tagline: "America turns 250. Edward tried to help, mostly by pulling a hamstring. The fedora survived.",
 
   colors: {
-    // Comic-book superhero palette: Supergirl red, Krypton blue, sidekick
-    // gold, on bright newsprint sky (light) or deep cosmic night (dark).
-    primary: "#2f6bf0",           // Krypton / hero blue
-    secondary: "#f5c518",          // S-shield gold
-    accent: "#ec1c2b",             // Supergirl red, the CTA pop
-    accentHover: "#ff3b46",
-    background: "#0a1230",         // deep cosmic night (dark mode)
-    backgroundLight: "#e9f1ff",    // bright comic sky (light mode)
-    surface: "#131d44",            // panel navy (dark)
-    surfaceLight: "#ffffff",       // comic-page white (light)
-    text: "#f3f6ff",               // page white on dark
-    textMuted: "#9fb0d8",          // muted hero-blue gray
-    textDark: "#0e1a3d",           // ink navy on light
-    textDarkMuted: "#4a5b80",      // muted ink
-    border: "#2a3a72",             // panel rule (dark)
-    borderLight: "#b9ccec",        // panel rule (light)
-    gradient: "linear-gradient(135deg, #0b3bb0 0%, #2f6bf0 45%, #ec1c2b 100%)",
+    // Vintage commemorative broadside: Old-Glory red, federal navy, brass
+    // gold, on deep navy night (dark) or aged cream paper (light).
+    primary: "#1b3a6b",           // federal navy
+    secondary: "#b8862b",          // brass / commemorative gold
+    accent: "#b22234",             // Old Glory red, the CTA pop
+    accentHover: "#9a1d2c",
+    background: "#0b1a33",         // deep navy night (dark mode)
+    backgroundLight: "#f4ecd8",    // aged cream paper (light mode)
+    surface: "#12294d",            // panel navy (dark)
+    surfaceLight: "#fbf6e9",       // paper white (light)
+    text: "#f4ecd8",               // warm cream on dark
+    textMuted: "#a7bad9",          // muted federal-blue gray (AA on surface)
+    textDark: "#152a4d",           // ink navy on light
+    textDarkMuted: "#5c5340",      // aged ink (AA on cream)
+    border: "#274873",             // rule (dark)
+    borderLight: "#d6c8a4",        // rule (light)
+    gradient: "linear-gradient(135deg, #1b3a6b 0%, #b22234 100%)",
   },
 
   fonts: {
-    // Anton: tall condensed poster/impact display, all the comic-cover shout.
-    // Barlow: clean slightly-condensed body, comic-adjacent and readable.
-    // Space Mono: the cold "tech / Brainiac" voice (labels, ERROR, codes).
-    // Bangers: comic SFX flourish, used only in index scoped CSS.
-    heading: "'Anton', 'Arial Narrow', system-ui, sans-serif",
-    body: "'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif",
+    // Big Shoulders Display: bold civic/WPA condensed display (American public
+    //   signage DNA), the broadside shout.
+    // Bitter: warm slab serif, reads like an old newspaper / almanac body.
+    // Space Mono: the cold "tech / data-scientist" voice for labels and stats.
+    heading: "'Big Shoulders Display', 'Arial Narrow', system-ui, sans-serif",
+    body: "'Bitter', Georgia, 'Times New Roman', serif",
     mono: "'Space Mono', 'JetBrains Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Anton&family=Bangers&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Space+Mono:wght@400;700&display=swap",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap",
   },
 
   layout: {
     heroStyle: "split",
     navStyle: "fixed",
-    cardStyle: "elevated",
+    cardStyle: "outlined",
     sectionStyle: "alternating",
     footerStyle: "creative",
   },
@@ -130,11 +130,11 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Edward spent the week trying to become a supervillain. Supergirl foiled every attempt.",
-    description: "Supergirl is in theaters this week, so I drew the obvious wrong conclusion and spent five days testing whether being a supervillain pays. I started with Lobo, on the theory that a bounty hunter at least bills for the work, then worked through Lex Luthor, Brainiac, Bizarro, and General Zod. Supergirl foiled all five attempts, usually before lunch. The blue fedora survived every costume (my dignity did not). Crime doesn't pay, so I'm back to telling people about AI.",
-    heroImage: "hero-2026-06-27.jpg",
-    imageAlt: "Edward Roske reimagined as the intergalactic biker anti-hero Lobo (pale skin, long black hair and beard, leather jacket, cigar) in his royal-blue felt fedora, riding a chrome space motorcycle through a starfield while Supergirl flies alongside him in her red, blue and gold suit, looking faintly unimpressed.",
-    ctaText: "See the damage",
+    subtitle: "America turns 250. Edward spent the week trying to help.",
+    description: "America turns 250 this weekend, which makes it the longest-running startup I've ever studied. It was founded by a small team with no funding and a strongly worded exit memo, and it's still shipping updates a quarter-millennium later. Naturally, I tried to help celebrate. I tried out for the World Cup squad and pulled a hamstring, crashed the birthday party, and showed up 250 years late to sign the Declaration. The stars-and-stripes fedora stayed on through all of it. Then I did the one useful thing I'm actually qualified for.",
+    heroImage: "hero-2026-07-04.jpg",
+    imageAlt: "Edward Roske illustrated as Uncle Sam in the classic 'I Want You' recruiting-poster pose, pointing directly at the viewer, wearing a wide-brimmed stars-and-stripes American flag fedora (not a top hat), a navy tailcoat and star-spangled vest, with his glasses and a white goatee, against a weathered American flag with a faint 250 and fireworks.",
+    ctaText: "See the attempts",
     ctaLink: "#current-work",
   },
 };
