@@ -1,0 +1,123 @@
+---
+/**
+ * NewsletterSignup.astro - reusable, theme-aware email signup.
+ *
+ * TRANSPORT: dual-mode, controlled by ONE constant below.
+ *   - BUTTONDOWN_USERNAME empty (default, current state): posts to Web3Forms,
+ *     which emails the signup to Edward. Works today, captures nothing lost.
+ *   - BUTTONDOWN_USERNAME set: posts straight to Buttondown's embed endpoint
+ *     (plain HTML form POST, no external JS, double opt-in on Buttondown's
+ *     hosted confirmation page). This is the real newsletter home.
+ *
+ * To go live on Buttondown: Edward creates a free Buttondown account, connects
+ * Edward@Roske.AI as the sending domain (DKIM/Return-Path/DMARC DNS records at
+ * name.com), and gives us his Buttondown username. Set it below. Nothing else
+ * in the form changes. See TODO.md Phase 10.
+ *
+ * Styles itself through the global theme CSS variables, so it re-skins with the
+ * weekly theme. `variant="inline"` is a one-row form (footer); `variant="stacked"`
+ * is a boxed block (contact page, landing sections).
+ */
+const BUTTONDOWN_USERNAME = ''; // <- set to Edward's Buttondown handle to switch transport
+const WEB3FORMS_KEY = '927fd498-3a0f-470c-89af-80a8558e8530';
+
+interface Props {
+  variant?: 'inline' | 'stacked';
+  heading?: string;
+  blurb?: string;
+  buttonText?: string;
+  redirect?: string; // Web3Forms success redirect (ignored in Buttondown mode)
+}
+
+const {
+  variant = 'inline',
+  heading = 'Stay in the loop',
+  blurb = "AI, finance, MCP servers, the occasional D&D tangent. Low volume, no spam, and you can leave whenever you like (although I hope you won't).",
+  buttonText = 'Keep me posted',
+  redirect = 'https://roske.ai/?subscribed=true',
+} = Astro.props as Props;
+
+const useButtondown = BUTTONDOWN_USERNAME.length > 0;
+const action = useButtondown
+  ? `https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`
+  : 'https://api.web3forms.com/submit';
+---
+
+<div class:list={["ns", variant === 'stacked' ? 'ns-stacked' : 'ns-inline']}>
+  {heading && <h3 class="ns-heading">{heading}</h3>}
+  {blurb && <p class="ns-blurb">{blurb}</p>}
+
+  <form action={action} method="POST" class="ns-form">
+    {!useButtondown && (
+      <>
+        <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+        <input type="hidden" name="subject" value="New newsletter signup from roske.ai" />
+        <input type="hidden" name="from_name" value="Roske.AI Newsletter" />
+        <input type="hidden" name="redirect" value={redirect} />
+      </>
+    )}
+    {useButtondown && <input type="hidden" name="embed" value="1" />}
+
+    <div class="ns-fields">
+      <input
+        type="email"
+        name="email"
+        required
+        autocomplete="email"
+        placeholder="you@example.com"
+        aria-label="Email address"
+        class="ns-input"
+      />
+      <button type="submit" class="ns-btn">{buttonText}</button>
+    </div>
+
+    {/* Honeypot: real people never fill this. */}
+    <div class="ns-honeypot" aria-hidden="true">
+      <input type="text" name="botcheck" tabindex="-1" autocomplete="off" />
+    </div>
+  </form>
+</div>
+
+<style>
+  .ns-heading {
+    font-family: var(--font-heading);
+    font-weight: 700; font-size: 1.05rem; text-transform: uppercase;
+    letter-spacing: 0.02em; margin: 0 0 0.5rem;
+  }
+  :global([data-theme="dark"]) .ns-heading { color: var(--color-text); }
+  :global([data-theme="light"]) .ns-heading { color: var(--color-text-dark); }
+  .ns-blurb { font-size: 0.9rem; line-height: 1.55; margin: 0 0 1rem; max-width: 40em; }
+  :global([data-theme="dark"]) .ns-blurb { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .ns-blurb { color: var(--color-text-dark-muted); }
+
+  .ns-fields { display: flex; gap: 0.6rem; }
+  .ns-stacked .ns-fields { flex-direction: column; }
+  @media (max-width: 520px) { .ns-inline .ns-fields { flex-direction: column; } }
+
+  .ns-input {
+    flex: 1; min-width: 0;
+    padding: 0.7rem 0.9rem; font-size: 0.92rem;
+    border: 1px solid var(--color-border); border-radius: 8px;
+    background: transparent; transition: border-color 0.15s ease;
+  }
+  :global([data-theme="dark"]) .ns-input { color: var(--color-text); border-color: var(--color-border); background: rgba(255,255,255,0.04); }
+  :global([data-theme="light"]) .ns-input { color: var(--color-text-dark); border-color: var(--color-border-light); background: #fff; }
+  .ns-input:focus { outline: none; border-color: var(--color-accent); }
+  .ns-input::placeholder { opacity: 0.5; }
+
+  .ns-btn {
+    padding: 0.7rem 1.3rem; font-size: 0.92rem; font-weight: 600;
+    white-space: nowrap; cursor: pointer;
+    background: var(--color-accent); color: #fff;
+    border: none; border-radius: 8px;
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .ns-btn:hover { transform: translateY(-1px); background: var(--color-accent-hover); }
+
+  .ns-honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+  .ns-stacked {
+    border: 1px solid color-mix(in srgb, var(--color-accent) 25%, transparent);
+    border-radius: 12px; padding: 1.6rem 1.5rem;
+  }
+</style>

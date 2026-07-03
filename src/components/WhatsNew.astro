@@ -1,0 +1,202 @@
+---
+/**
+ * WhatsNew.astro - PERMANENT, theme-aware "signals" module.
+ *
+ * Surfaces the freshest cross-channel signals about Edward: press/interview
+ * mentions (src/data/news-mentions.json), X posts (src/data/social-posts.json),
+ * and, as a fallback when those are thin, the latest video brief
+ * (src/data/youtube-videos.json). It doubles as press proof for the speaking
+ * funnel.
+ *
+ * Styles itself entirely through the global theme CSS variables defined in
+ * BaseLayout, so it re-skins to match each week's theme with no per-week edits.
+ * It renders NOTHING when every source is empty (graceful degradation), so a
+ * missing X token or unseeded news file never leaves a broken box on the page.
+ *
+ * The weekly rebuild may restyle it and pass themed `eyebrow` / `heading` /
+ * `deck` props, but must not remove it (see scripts/weekly-rebuild-prompt.md).
+ */
+import newsData from '../data/news-mentions.json';
+import socialData from '../data/social-posts.json';
+import youtubeData from '../data/youtube-videos.json';
+
+interface Props {
+  eyebrow?: string;
+  heading?: string; // may contain an <em> for the accent word
+  deck?: string;
+  max?: number;
+}
+
+const {
+  eyebrow = 'Signals',
+  heading = 'In the <em>news.</em>',
+  deck = 'Where Edward has turned up lately: interviews, press, and the occasional post worth keeping.',
+  max = 5,
+} = Astro.props;
+
+interface NewsMention {
+  title: string; outlet: string; url: string; date: string;
+  type: string; blurb: string; curated: boolean;
+}
+interface SocialPost { id: string; text: string; url: string; date: string; platform: string; }
+interface YouTubeVideo { title: string; videoId: string; published: string; description: string; category: string; }
+
+type Signal = {
+  kind: 'news' | 'social' | 'video';
+  label: string;
+  title: string;
+  meta: string;
+  url: string;
+  date: string;
+};
+
+const TYPE_LABEL: Record<string, string> = {
+  interview: 'Interview', podcast: 'Podcast', press: 'Press',
+  award: 'Award', article: 'In the news', mention: 'Mention',
+};
+
+const news: Signal[] = (newsData as NewsMention[]).map((n) => ({
+  kind: 'news',
+  label: TYPE_LABEL[n.type] || 'In the news',
+  title: n.title,
+  meta: n.outlet,
+  url: n.url,
+  date: n.date || '',
+}));
+
+const social: Signal[] = (socialData as SocialPost[]).map((s) => ({
+  kind: 'social',
+  label: 'On X',
+  title: s.text.length > 140 ? s.text.slice(0, 137) + '...' : s.text,
+  meta: '@eroske',
+  url: s.url,
+  date: s.date || '',
+}));
+
+// News + social are the visible signal set. If that's thin (e.g. before the
+// news file is seeded), fall back to the newest video so the module still
+// earns its place rather than rendering empty.
+let signals: Signal[] = [...news, ...social];
+if (signals.length < 2) {
+  const latestVideo = [...(youtubeData as YouTubeVideo[])]
+    .sort((a, b) => new Date(b.published).valueOf() - new Date(a.published).valueOf())[0];
+  if (latestVideo) {
+    signals.push({
+      kind: 'video',
+      label: 'New video',
+      title: latestVideo.title,
+      meta: 'YouTube',
+      url: `https://www.youtube.com/watch?v=${latestVideo.videoId}`,
+      date: latestVideo.published,
+    });
+  }
+}
+
+signals.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+signals = signals.slice(0, max);
+
+const fmtDate = (s: string) => {
+  if (!s) return '';
+  try {
+    return new Date(s).toLocaleDateString('en-US', { year: 'numeric', month: 'short' });
+  } catch {
+    return '';
+  }
+};
+
+const hasSignals = signals.length > 0;
+---
+
+{hasSignals && (
+  <section class="wn-section" aria-label="Latest signals">
+    <div class="wn-inner">
+      <header class="wn-header animate-on-scroll">
+        <p class="wn-eyebrow">{eyebrow}</p>
+        <h2 class="wn-heading" set:html={heading} />
+        <p class="wn-deck">{deck}</p>
+      </header>
+      <ul class="wn-list">
+        {signals.map((s) => (
+          <li class="wn-item animate-on-scroll">
+            <a href={s.url} target="_blank" rel="noopener noreferrer" class="wn-link">
+              <span class="wn-badge">{s.label}</span>
+              <span class="wn-title">{s.title}</span>
+              <span class="wn-meta">
+                {s.meta}{s.date && fmtDate(s.date) ? ` · ${fmtDate(s.date)}` : ''}
+              </span>
+              <svg class="wn-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .wn-section { padding: 4.5rem 2rem; }
+  :global([data-theme="dark"]) .wn-section { background: var(--color-bg); color: var(--color-text); }
+  :global([data-theme="light"]) .wn-section { background: var(--color-bg-light); color: var(--color-text-dark); }
+
+  .wn-inner { max-width: 1100px; margin: 0 auto; }
+  .wn-header { margin-bottom: 2rem; }
+  .wn-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--color-accent); margin: 0 0 0.8rem;
+  }
+  .wn-heading {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.05; margin: 0 0 0.8rem;
+  }
+  :global([data-theme="dark"]) .wn-heading { color: var(--color-text); }
+  :global([data-theme="light"]) .wn-heading { color: var(--color-text-dark); }
+  .wn-heading :global(em) { font-style: normal; color: var(--color-accent); }
+  .wn-deck { max-width: 42em; margin: 0; line-height: 1.6; }
+  :global([data-theme="dark"]) .wn-deck { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .wn-deck { color: var(--color-text-dark-muted); }
+
+  .wn-list { list-style: none; margin: 0; padding: 0; }
+  .wn-item { border-top: 1px solid color-mix(in srgb, var(--color-accent) 22%, transparent); }
+  .wn-item:last-child { border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 22%, transparent); }
+
+  .wn-link {
+    display: grid;
+    grid-template-columns: 8.5rem 1fr auto;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.15rem 0.5rem;
+    text-decoration: none;
+    transition: background 0.15s ease, padding-left 0.15s ease;
+  }
+  :global([data-theme="dark"]) .wn-link { color: var(--color-text); }
+  :global([data-theme="light"]) .wn-link { color: var(--color-text-dark); }
+  .wn-link:hover { padding-left: 1rem; }
+  :global([data-theme="dark"]) .wn-link:hover { background: rgba(255,255,255,0.03); }
+  :global([data-theme="light"]) .wn-link:hover { background: rgba(0,0,0,0.02); }
+
+  .wn-badge {
+    font-family: var(--font-mono);
+    font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--color-accent);
+    border: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+    padding: 0.28rem 0.55rem; border-radius: 4px;
+    justify-self: start; white-space: nowrap;
+  }
+  .wn-title { font-weight: 600; font-size: 1.02rem; line-height: 1.35; }
+  .wn-meta {
+    font-family: var(--font-mono); font-size: 0.72rem; white-space: nowrap;
+    justify-self: end; text-align: right;
+  }
+  :global([data-theme="dark"]) .wn-meta { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .wn-meta { color: var(--color-text-dark-muted); }
+  .wn-arrow { color: var(--color-accent); opacity: 0; transition: opacity 0.15s ease; }
+  .wn-link:hover .wn-arrow { opacity: 1; }
+
+  @media (max-width: 720px) {
+    .wn-link { grid-template-columns: 1fr auto; gap: 0.5rem 1rem; padding: 1.1rem 0.25rem; }
+    .wn-badge { grid-column: 1 / -1; }
+    .wn-meta { grid-column: 1 / 2; justify-self: start; text-align: left; }
+    .wn-arrow { display: none; }
+  }
+</style>

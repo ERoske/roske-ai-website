@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 /* ============================================
-   ROSKE.AI — Global Styles & Theme System
+   ROSKE.AI - Global Styles & Theme System
    ============================================ */
 
-/* Theme CSS Custom Properties — overridden weekly */
+/* Theme CSS Custom Properties - overridden weekly */
 @theme {
   --color-primary: #1a1a2e;
   --color-secondary: #16213e;

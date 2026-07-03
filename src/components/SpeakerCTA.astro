@@ -1,6 +1,6 @@
 ---
 /**
- * SpeakerCTA.astro — PERMANENT, theme-aware "book Edward to speak" module.
+ * SpeakerCTA.astro - PERMANENT, theme-aware "book Edward to speak" module.
  *
  * The speaking business is the site's primary conversion goal. This module
  * guarantees every weekly homepage carries a clear route to /speaking/,
@@ -105,8 +105,10 @@ const stats = [
   .sc-proofline { font-family: var(--font-mono); font-size: 0.78rem; margin: 0; max-width: 46em; line-height: 1.6; }
   :global([data-theme="dark"]) .sc-proofline { color: var(--color-text-muted); }
   :global([data-theme="light"]) .sc-proofline { color: var(--color-text-dark-muted); }
-  .sc-proofline a { color: var(--color-accent); text-decoration: none; }
-  .sc-proofline a:hover { text-decoration: underline; }
+  /* Inline text-block links must be distinguishable by more than color
+     (WCAG: link-in-text-block), so underline at rest, not just on hover. */
+  .sc-proofline a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+  .sc-proofline a:hover { text-decoration-thickness: 2px; }
 
   .sc-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
   @media (max-width: 900px) { .sc-stats { grid-template-columns: repeat(4, 1fr); } }

@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import WeeklyAnimation from '../components/WeeklyAnimation.astro';
 import LatestContent from '../components/LatestContent.astro';
 import SpeakerCTA from '../components/SpeakerCTA.astro';
+import WhatsNew from '../components/WhatsNew.astro';
 import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
@@ -260,6 +261,15 @@ const indicia = [
        BOOK EDWARD: permanent module (never remove)
        ============================================ -->
   <SpeakerCTA eyebrow="Section 02.5 · The paying gig" />
+
+  <!-- ============================================
+       WHAT'S NEW: permanent signals module (never remove)
+       ============================================ -->
+  <WhatsNew
+    eyebrow="Section 02.6 · The clippings file"
+    heading={"In the <em>news.</em>"}
+    deck="Where Edward keeps turning up: interviews, press, awards, and the odd post worth keeping. (Yes, the site tracks its own press. The agents insisted.)"
+  />
 
   <!-- ============================================
        THE ROGUES' GALLERY: scene gallery
