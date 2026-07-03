@@ -53,21 +53,30 @@ const effective = 'July 3, 2026';
       <a href="https://developers.google.com/youtube/terms/api-services-terms-of-service" target="_blank" rel="noopener">YouTube API Services Terms of Service</a>.
     </p>
 
-    <h2>Authentication and OAuth</h2>
+    <h2>Authentication and OAuth (owner use only)</h2>
     <p>
-      roske.ai does <strong>not</strong> ask you to sign in with Google and does
-      not request access to your Google or YouTube account. It uses no OAuth
-      login flow and holds no OAuth tokens, because it works only with public,
-      non-personal video information. There is therefore no OAuth consent screen
-      in the normal visitor experience: nothing on this site asks you to grant
-      it permission to your account.
+      The public roske.ai website does <strong>not</strong> ask you to sign in
+      with Google and does not request access to your Google or YouTube account.
+      As a visitor, you are never prompted for credentials and never shown an
+      OAuth consent screen.
     </p>
     <p>
-      If that ever changes and the site adds a feature that needs access to your
-      Google account, it would use Google's standard OAuth 2.0 consent flow, you
-      would see and approve Google's own consent screen before any access was
-      granted, and this policy would be updated to describe exactly what is
-      requested and why.
+      OAuth is used in exactly one place, and by exactly one person. Edward Roske,
+      the sole owner of this website and of the
+      <a href="https://www.youtube.com/@Roske-AI" target="_blank" rel="noopener">@Roske-AI</a>
+      YouTube channel, runs a private, behind-the-scenes tool that uses YouTube
+      API Services to publish his own videos, with their titles, descriptions,
+      and metadata, to his own channel. That tool authenticates through Google's
+      standard OAuth 2.0 flow using the YouTube upload scope, authorized once by
+      Edward against his own Google account.
+    </p>
+    <p>
+      To be explicit for the record: this project <strong>never</strong> asks any
+      other person for their Google or YouTube credentials, never obtains or
+      stores OAuth tokens for anyone other than the owner, and never uses OAuth
+      access for anything other than the owner publishing his own content to his
+      own channel. No visitor, subscriber, or third party is ever authenticated,
+      authorized, or accessed.
     </p>
 
     <h2>Google Privacy Policy</h2>
