@@ -1,0 +1,172 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const effective = 'July 3, 2026';
+---
+
+<BaseLayout
+  title="YouTube Data Privacy | Roske.AI"
+  description="How roske.ai uses YouTube content and handles YouTube data, including links to the Google Privacy Policy and the YouTube Terms of Service, and how to have data deleted or revoke access."
+>
+  <article class="prose">
+    <div class="yt-header">
+      <span class="yt-logo" role="img" aria-label="YouTube">
+        <svg viewBox="0 0 90 20" width="120" height="27" aria-hidden="true">
+          <path d="M27.97 3.12A3.56 3.56 0 0 0 25.46.6C23.24 0 14.36 0 14.36 0S5.49 0 3.27.6A3.56 3.56 0 0 0 .76 3.12C.16 5.35.16 10 .16 10s0 4.65.6 6.88a3.56 3.56 0 0 0 2.51 2.52c2.22.6 11.09.6 11.09.6s8.88 0 11.1-.6a3.56 3.56 0 0 0 2.51-2.52c.6-2.23.6-6.88.6-6.88s0-4.65-.6-6.88Z" fill="#FF0000"/>
+          <path d="M11.51 14.29 18.9 10l-7.39-4.29v8.58Z" fill="#fff"/>
+          <path d="M40.9 15.6c-.56-.38-.96-.97-1.2-1.77-.23-.8-.35-1.87-.35-3.2v-1.81c0-1.34.13-2.42.4-3.24.27-.82.68-1.42 1.25-1.8.57-.37 1.31-.56 2.24-.56.91 0 1.64.19 2.19.57.55.38.95.98 1.2 1.8.26.81.39 1.89.39 3.23v1.81c0 1.33-.13 2.4-.38 3.21-.25.81-.65 1.4-1.2 1.78-.55.38-1.3.56-2.25.56-.98 0-1.74-.19-2.3-.57Zm3.2-1.96c.15-.4.23-1.05.23-1.95V7.88c0-.88-.08-1.52-.23-1.93-.15-.41-.42-.61-.81-.61-.37 0-.63.2-.79.61-.15.41-.23 1.05-.23 1.93v3.81c0 .9.07 1.55.22 1.95.15.4.42.61.8.61.39 0 .66-.2.81-.61Z" fill="currentColor"/>
+          <path d="M85.62 10.83v.63c0 .8.02 1.4.07 1.8.05.4.14.69.29.87.15.18.38.27.69.27.42 0 .71-.16.86-.49.16-.33.24-.87.25-1.63l2.44.14c.01.11.02.26.02.45 0 1.15-.31 2.01-.94 2.58-.63.57-1.52.85-2.67.85-1.38 0-2.35-.43-2.9-1.3-.56-.87-.83-2.21-.83-4.02V9.29c0-1.87.29-3.23.86-4.09.57-.86 1.56-1.29 2.96-1.29.97 0 1.71.18 2.23.53.52.36.89.91 1.1 1.66.22.75.32 1.79.32 3.11v2.13h-5.03Zm.36-5.24c-.14.18-.23.46-.28.86-.05.4-.07 1-.07 1.82v.89h2.2v-.89c0-.8-.03-1.4-.08-1.82-.05-.41-.15-.7-.29-.87-.14-.17-.36-.25-.65-.25-.3 0-.51.09-.65.26Z" fill="currentColor"/>
+          <path d="M34.03 12.59 30.8 0h2.82l1.13 5.29c.29 1.3.5 2.41.64 3.33h.08c.1-.66.31-1.76.64-3.31L37.4 0h2.82l-3.27 12.59v6.04h-2.8v-6.04Z" fill="currentColor"/>
+          <path d="M55.14 4.14v14.49h-2.23l-.24-1.55h-.06c-.6 1.17-1.51 1.75-2.72 1.75-.84 0-1.46-.28-1.86-.83-.4-.55-.6-1.42-.6-2.6V4.14h2.85v10.94c0 .57.06.98.19 1.22.12.24.33.36.62.36.25 0 .49-.08.72-.23.23-.15.4-.35.51-.59V4.14h2.82Z" fill="currentColor"/>
+          <path d="M62.7 4.14v2.32h-2.83v12.17h-2.79V6.46h-2.83V4.14H62.7Z" fill="currentColor"/>
+          <path d="M71.87 4.14v14.49h-2.23l-.24-1.55h-.06c-.6 1.17-1.51 1.75-2.72 1.75-.84 0-1.46-.28-1.86-.83-.4-.55-.6-1.42-.6-2.6V4.14h2.85v10.94c0 .57.06.98.19 1.22.12.24.33.36.62.36.25 0 .49-.08.72-.23.23-.15.4-.35.51-.59V4.14h2.82Z" fill="currentColor"/>
+          <path d="M81.6 6.5c-.17-.8-.45-1.37-.83-1.73-.38-.36-.91-.54-1.58-.54-.52 0-1.01.15-1.46.44-.45.3-.8.68-1.05 1.16h-.02V0h-2.74v18.63h2.35l.29-1.2h.06c.22.43.55.76 1 1.01.44.24.94.36 1.48.36.97 0 1.69-.45 2.15-1.35.46-.9.69-2.3.69-4.21v-2.02c0-1.44-.09-2.57-.26-3.37Zm-2.62 5.24c0 .93-.04 1.66-.11 2.19-.08.53-.2.9-.38 1.13-.17.22-.41.34-.7.34-.23 0-.44-.05-.63-.16-.19-.11-.35-.27-.47-.48V7.13c.09-.34.26-.61.49-.83.23-.21.48-.32.75-.32.28 0 .5.11.65.34.15.22.26.6.32 1.13.06.53.09 1.28.09 2.26v2.03Z" fill="currentColor"/>
+        </svg>
+      </span>
+    </div>
+
+    <h1>YouTube Data Privacy</h1>
+    <p class="effective"><strong>Effective:</strong> {effective}</p>
+
+    <p>
+      This page explains how <strong>roske.ai</strong> (the personal website of
+      Edward Roske) uses YouTube content and handles data related to YouTube. It
+      supplements the site's general
+      <a href="/privacy/">Privacy Policy</a>. If anything here conflicts with
+      Google's or YouTube's own terms, those terms control.
+    </p>
+
+    <h2>Use of YouTube content and API Services</h2>
+    <p>
+      roske.ai displays and embeds videos from Edward Roske's YouTube channel
+      (<a href="https://www.youtube.com/@Roske-AI" target="_blank" rel="noopener">@Roske-AI</a>).
+      To do this, the site retrieves publicly available video information (titles,
+      video IDs, thumbnails, publish dates, and descriptions) and shows it on the
+      Videos and Speaking pages, and embeds the YouTube player so visitors can
+      watch without leaving the site.
+    </p>
+    <p>
+      To the extent the site or its tooling accesses YouTube data, that use is
+      subject to the
+      <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener">YouTube Terms of Service</a>
+      and, where YouTube API Services are used, the
+      <a href="https://developers.google.com/youtube/terms/api-services-terms-of-service" target="_blank" rel="noopener">YouTube API Services Terms of Service</a>.
+    </p>
+
+    <h2>Google Privacy Policy</h2>
+    <p>
+      Any data that YouTube or Google collects through embedded players or your
+      interaction with YouTube is governed by the
+      <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a>.
+      Please review it to understand how Google handles your information.
+    </p>
+
+    <h2>What data this site collects through YouTube</h2>
+    <ul>
+      <li>
+        <strong>From YouTube:</strong> only public, non-personal video metadata
+        (titles, video IDs, thumbnails, dates, descriptions) from Edward's own
+        channel, used to display his videos. The site does not request or store
+        your personal YouTube account data.
+      </li>
+      <li>
+        <strong>When you watch an embedded video:</strong> the embed uses
+        YouTube's privacy-enhanced mode (youtube-nocookie.com). Even so, YouTube
+        and Google may collect information about your interaction and may set
+        cookies, as described in the Google Privacy Policy. roske.ai does not
+        receive or store that data.
+      </li>
+    </ul>
+
+    <h2>Data storage and retention</h2>
+    <p>
+      The public video metadata described above is cached in the site's own
+      files so the pages load quickly, and it is refreshed periodically from
+      YouTube. It contains no personal information about site visitors. No
+      YouTube user data is sold, rented, or shared with third parties.
+    </p>
+
+    <h2>Deleting your data and revoking access</h2>
+    <p>
+      You are in control of the data Google and YouTube hold about you:
+    </p>
+    <ul>
+      <li>
+        Review or delete your Google and YouTube activity through your
+        <a href="https://myaccount.google.com/" target="_blank" rel="noopener">Google Account</a>
+        and
+        <a href="https://myactivity.google.com/" target="_blank" rel="noopener">My Google Activity</a>.
+      </li>
+      <li>
+        Revoke third-party access to your Google or YouTube data at the
+        <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Google security settings page</a>
+        (<code>https://myaccount.google.com/permissions</code>).
+      </li>
+      <li>
+        To request deletion of any data associated with you that this site may
+        hold, email
+        <a href="mailto:Edward@Roske.AI">Edward@Roske.AI</a>
+        and it will be removed. Because the site stores only public video
+        metadata and no personal YouTube data, there is typically nothing tied
+        to an individual to delete.
+      </li>
+    </ul>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      If this policy changes, the updated version will be published at this URL
+      (roske.ai/youtube-privacy) and the effective date above will be revised.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this YouTube data policy can be sent to
+      <a href="mailto:Edward@Roske.AI">Edward@Roske.AI</a>.
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+    line-height: 1.7;
+  }
+  :global([data-theme="dark"]) .prose { color: var(--color-text); }
+  :global([data-theme="light"]) .prose { color: var(--color-text-dark); }
+  .yt-header { margin-bottom: 24px; }
+  .yt-logo { display: inline-flex; }
+  :global([data-theme="dark"]) .yt-logo svg { color: #fff; }
+  :global([data-theme="light"]) .yt-logo svg { color: #0f0f0f; }
+  .prose h1 {
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    margin-bottom: 8px;
+    font-family: var(--font-heading);
+  }
+  :global([data-theme="dark"]) .prose h1 { color: var(--color-text); }
+  :global([data-theme="light"]) .prose h1 { color: var(--color-text-dark); }
+  .prose .effective { margin-bottom: 32px; }
+  :global([data-theme="dark"]) .prose .effective { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .prose .effective { color: var(--color-text-dark-muted); }
+  .prose h2 {
+    margin-top: 40px;
+    margin-bottom: 12px;
+    font-size: 1.3rem;
+    font-family: var(--font-heading);
+  }
+  :global([data-theme="dark"]) .prose h2 { color: var(--color-text); }
+  :global([data-theme="light"]) .prose h2 { color: var(--color-text-dark); }
+  .prose ul { margin: 0 0 16px 24px; }
+  .prose li { margin-bottom: 8px; }
+  .prose p { margin-bottom: 16px; }
+  .prose strong { font-weight: 700; }
+  .prose code {
+    padding: 1px 6px; border-radius: 4px; font-size: 0.88em;
+    font-family: var(--font-mono);
+  }
+  :global([data-theme="dark"]) .prose code { background: rgba(255,255,255,0.08); }
+  :global([data-theme="light"]) .prose code { background: rgba(0,0,0,0.06); }
+  .prose a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 2px; }
+  .prose a:hover { text-decoration-thickness: 2px; }
+</style>

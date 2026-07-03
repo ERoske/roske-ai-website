@@ -106,9 +106,11 @@ const year = new Date().getFullYear();
       <p class="text-xs dark:text-[var(--color-text-muted)]/50 text-[var(--color-text-dark-muted)]/50 font-[var(--font-mono)]">
         &copy; {year} Edward Roske. Built, themed, and deployed (by an AI Edward Roske built). Rebuilt every Saturday.
       </p>
-      <p class="text-xs dark:text-[var(--color-text-muted)]/30 text-[var(--color-text-dark-muted)]/30 font-[var(--font-mono)]">
-        Asking good questions since 1974.
-      </p>
+      <div class="flex items-center gap-4 text-xs font-[var(--font-mono)]">
+        <a href="/privacy/" class="dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60 hover:text-[var(--color-accent)] transition-colors">Privacy</a>
+        <a href="/youtube-privacy/" class="dark:text-[var(--color-text-muted)]/60 text-[var(--color-text-dark-muted)]/60 hover:text-[var(--color-accent)] transition-colors">YouTube Privacy</a>
+        <span class="dark:text-[var(--color-text-muted)]/30 text-[var(--color-text-dark-muted)]/30">Asking good questions since 1974.</span>
+      </div>
     </div>
   </div>
 </footer>
