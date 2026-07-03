@@ -65,7 +65,7 @@ export interface ThemeConfig {
     title: string;         // Main title (usually "ROSKE.AI")
     subtitle: string;      // Subtitle for the week
     description: string;   // Brief themed description
-    heroImage: string;     // Hero image filename (unique per week, e.g. "hero-2026-03-28.png")
+    heroImage: string;     // Hero image filename (unique per week, e.g. "hero-2026-03-28.jpg")
     imageAlt: string;      // Alt text for hero image
     ctaText: string;       // Call-to-action button text
     ctaLink: string;       // CTA destination
@@ -132,7 +132,7 @@ export const currentTheme: ThemeConfig = {
     title: "ROSKE.AI",
     subtitle: "Edward spent the week trying to become a supervillain. Supergirl foiled every attempt.",
     description: "Supergirl is in theaters this week, so I drew the obvious wrong conclusion and spent five days testing whether being a supervillain pays. I started with Lobo, on the theory that a bounty hunter at least bills for the work, then worked through Lex Luthor, Brainiac, Bizarro, and General Zod. Supergirl foiled all five attempts, usually before lunch. The blue fedora survived every costume (my dignity did not). Crime doesn't pay, so I'm back to telling people about AI.",
-    heroImage: "hero-2026-06-27.png",
+    heroImage: "hero-2026-06-27.jpg",
     imageAlt: "Edward Roske reimagined as the intergalactic biker anti-hero Lobo (pale skin, long black hair and beard, leather jacket, cigar) in his royal-blue felt fedora, riding a chrome space motorcycle through a starfield while Supergirl flies alongside him in her red, blue and gold suit, looking faintly unimpressed.",
     ctaText: "See the damage",
     ctaLink: "#current-work",
