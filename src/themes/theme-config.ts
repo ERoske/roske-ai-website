@@ -77,47 +77,48 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "America 250: Still Shipping",
-  week: "2026-07-04",
-  inspiration: "July 4, 2026 is America's Semiquincentennial, the 250th, which happens exactly once, and the rebuild ships on Independence Day itself. Fresh hook (NOT 'Edward plays every character' again, which just ran twice): America as the world's most improbable long-running startup, founded 1776 by a small unfunded team with a strongly worded exit memo, still shipping updates a quarter-millennium later. Edward, the data scientist who can't resist a longevity stat, spends the week trying to help celebrate and mostly inserting himself into the festivities: he tries out for the USMNT and pulls a hamstring, crashes the 250th birthday party, shows up 250 years late to sign the Declaration, and finally does the one thing he's actually qualified for, running America's longevity report. The 2026 World Cup (co-hosted by the USA) is in the knockout rounds: the USMNT beat Bosnia 2-0 on July 1 and is alive heading into Monday's Belgium match (no US match before publish, so status is locked; do not claim a July 6 result). The hero is Edward as Uncle Sam in the classic 'I Want You' pose, wearing a stars-and-stripes FEDORA (not a top hat), captioned 'I want you to ask good questions.' Design is a vintage American commemorative broadside / WPA recruiting poster: aged cream paper, Old-Glory red, federal navy, brass gold, halftone print grain, bunting. Fireworks animation is justified (holiday carve-out). The fedora is the one constant across 250 years.",
-  tagline: "America turns 250. Edward tried to help, mostly by pulling a hamstring. The fedora survived.",
+  name: "The Roske Odyssey",
+  week: "2026-07-11",
+  inspiration: "Christopher Nolan's The Odyssey opens July 17, 2026 (Matt Damon as Odysseus, shot entirely on IMAX film, the summer's most anticipated release). The 2026 World Cup is at the quarterfinals this same weekend, but the USA is OUT (eliminated by Belgium in the Round of 16), so no USA lean-in. The Odyssey is the theme. The hook: Edward as Odysseus, the brilliant man who took ten years to get home from a two-week sail because he kept refusing to ask good questions. Homer's epic recast as the greatest cautionary tale ever told about NOT asking good questions: Odysseus taunted the Cyclops and shouted his real name and address (so Poseidon knew exactly whom to curse), his crew opened the bag of winds within sight of home, he lingered a year with Circe and seven with Calypso. Information was never his bottleneck (Tiresias literally told him what would happen); judgment was. Edward, the AI practitioner who tells finance leaders to ask good questions, retells it as the story of a clever man who kept not asking them, and is of course the butt of the joke throughout: he pitches the Cyclops a business card, takes eager conference notes at the Sirens, overstays a full year at Circe's banquet, and finally gets home by using his head. Design is a fine-press illustrated edition of the epic crossed with Nolan's IMAX 65mm film grain: wine-dark sea navy, oxidized bronze gold, amphora terracotta, on aged papyrus (light). Cormorant Garamond display, Spectral body, JetBrains Mono ship's-log labels. Greek meander friezes, canto drop-caps, film-plate galleries. The homepage is framed as THE ROSKE ODYSSEY, an epic in six books. Animation stays OFF (no holiday carve-out; atmosphere is carried by static meander/grain/dawn-gradient detail, not drifting particles). The blue fedora replaces the bronze helmet in every image.",
+  tagline: "A two-week sail. Ten years late. Edward retells the Odyssey as the greatest story ever told about not asking good questions.",
 
   colors: {
-    // Vintage commemorative broadside: Old-Glory red, federal navy, brass
-    // gold, on deep navy night (dark) or aged cream paper (light).
-    primary: "#1b3a6b",           // federal navy
-    secondary: "#b8862b",          // brass / commemorative gold
-    accent: "#b22234",             // Old Glory red, the CTA pop
-    accentHover: "#9a1d2c",
-    background: "#0b1a33",         // deep navy night (dark mode)
-    backgroundLight: "#f4ecd8",    // aged cream paper (light mode)
-    surface: "#12294d",            // panel navy (dark)
-    surfaceLight: "#fbf6e9",       // paper white (light)
-    text: "#f4ecd8",               // warm cream on dark
-    textMuted: "#a7bad9",          // muted federal-blue gray (AA on surface)
-    textDark: "#152a4d",           // ink navy on light
-    textDarkMuted: "#5c5340",      // aged ink (AA on cream)
-    border: "#274873",             // rule (dark)
-    borderLight: "#d6c8a4",        // rule (light)
-    gradient: "linear-gradient(135deg, #1b3a6b 0%, #b22234 100%)",
+    // Wine-dark sea / bronze-age Aegean: sea teal, oxidized bronze gold,
+    // amphora terracotta, on wine-dark sea night (dark) or aged papyrus (light).
+    // Contrast verified for WCAG AA in both modes.
+    primary: "#1f5568",           // Aegean sea teal
+    secondary: "#b3873f",          // oxidized bronze gold
+    accent: "#b23e24",             // amphora terracotta / wine red, the CTA pop
+    accentHover: "#97331c",
+    background: "#0b1a24",         // wine-dark sea night (dark mode)
+    backgroundLight: "#efe4cd",    // aged papyrus (light mode)
+    surface: "#122b38",            // deep sea panel (dark)
+    surfaceLight: "#f7eeda",       // lighter papyrus (light)
+    text: "#f1e7d2",               // warm bone on dark
+    textMuted: "#a6bcc1",          // muted sea-foam gray (7.5:1 on surface)
+    textDark: "#17303b",           // deep ink teal on papyrus
+    textDarkMuted: "#5a4d34",      // aged ink brown (7:1 on papyrus)
+    border: "#284c5a",             // rule (dark)
+    borderLight: "#d7c7a2",        // rule (light)
+    gradient: "linear-gradient(135deg, #0b1a24 0%, #1f5568 55%, #b23e24 100%)",
   },
 
   fonts: {
-    // Big Shoulders Display: bold civic/WPA condensed display (American public
-    //   signage DNA), the broadside shout.
-    // Bitter: warm slab serif, reads like an old newspaper / almanac body.
-    // Space Mono: the cold "tech / data-scientist" voice for labels and stats.
-    heading: "'Big Shoulders Display', 'Arial Narrow', system-ui, sans-serif",
-    body: "'Bitter', Georgia, 'Times New Roman', serif",
-    mono: "'Space Mono', 'JetBrains Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@500;600;700;800;900&family=Bitter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap",
+    // Cormorant Garamond: high-contrast literary display serif, the illustrated
+    //   fine-press-edition voice for giant headlines.
+    // Spectral: a serif built for screens, warm and readable, the printed-epic body.
+    // JetBrains Mono: the cold data-scientist / ship's-log voice for labels + stats.
+    heading: "'Cormorant Garamond', Georgia, 'Times New Roman', serif",
+    body: "'Spectral', Georgia, 'Times New Roman', serif",
+    mono: "'JetBrains Mono', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap",
   },
 
   layout: {
-    heroStyle: "split",
+    heroStyle: "editorial",
     navStyle: "fixed",
     cardStyle: "outlined",
-    sectionStyle: "alternating",
+    sectionStyle: "magazine",
     footerStyle: "creative",
   },
 
@@ -130,11 +131,11 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "America turns 250. Edward spent the week trying to help.",
-    description: "America turns 250 this weekend, which makes it the longest-running startup I've ever studied. It was founded by a small team with no funding and a strongly worded exit memo, and it's still shipping updates a quarter-millennium later. Naturally, I tried to help celebrate. I tried out for the World Cup squad and pulled a hamstring, crashed the birthday party, and showed up 250 years late to sign the Declaration. The stars-and-stripes fedora stayed on through all of it. Then I did the one useful thing I'm actually qualified for.",
-    heroImage: "hero-2026-07-04.jpg",
-    imageAlt: "Edward Roske illustrated as Uncle Sam in the classic 'I Want You' recruiting-poster pose, pointing directly at the viewer, wearing a wide-brimmed stars-and-stripes American flag fedora (not a top hat), a navy tailcoat and star-spangled vest, with his glasses and a white goatee, against a weathered American flag with a faint 250 and fireworks.",
-    ctaText: "See the attempts",
+    subtitle: "A two-week sail home. It took him ten years.",
+    description: "This week the whole world gets a new Odyssey. So here's mine. Odysseus was the cleverest man in any room, which is exactly why the story lands: a sail from Troy to Ithaca should have taken two weeks, and it took him ten years. He taunted the Cyclops and shouted his own name and address on the way out. His crew opened the bag of winds within sight of home. He lingered a year with Circe. Information was never his problem (a prophet told him precisely what would happen). Asking good questions, and listening to the answers, was. I've been playing him all week, which was closer to typecasting than I'd like.",
+    heroImage: "hero-2026-07-11.jpg",
+    imageAlt: "Edward Roske illustrated as Odysseus, a weathered bronze-age Greek hero, bracing at the wooden steering-oar at the stern of a battered galley on the wine-dark Aegean at golden dawn, torn crimson cloak whipping in the wind, wearing his signature deep blue felt fedora with a bronze band instead of a war helmet, sea spray and rolling swells around him, in the style of an IMAX 65mm film still.",
+    ctaText: "Follow the crossing",
     ctaLink: "#current-work",
   },
 };

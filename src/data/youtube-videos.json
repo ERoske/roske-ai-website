@@ -1,6 +1,174 @@
 [
   {
-    "title": "Why does the richest company on Earth rent its AI?",
+    "title": "How can a fake bug report hijack your AI?",
+    "videoId": "zdSwu_azPP8",
+    "published": "2026-07-11T04:00:10+00:00",
+    "description": "A security firm showed that a planted \"error report\" can make AI coding agents like Claude Code and Cursor run a stranger's code, with the developer's own permissions, and it worked about 85% of the time. The catch is that none of your usual security tools even fire. Before you...",
+    "thumbnail": "https://i.ytimg.com/vi/zdSwu_azPP8/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What Is MCP? (The Thing That Gives AI Eyes And Hands)",
+    "videoId": "6LzfUClDsTI",
+    "published": "2026-07-10T14:00:28+00:00",
+    "description": "MCP, the Model Context Protocol, is the wiring that lets any AI read your live data and take real actions across your tools. It's USB-C for AI: build a tool once, and every model can use it. Anthropic open-sourced it in late 2024, and within a year OpenAI, Google, and Microsoft...",
+    "thumbnail": "https://i.ytimg.com/vi/6LzfUClDsTI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why doesn't Europe have its own ChatGPT?",
+    "videoId": "GINzScQJNBw",
+    "published": "2026-07-10T04:00:21+00:00",
+    "description": "Every company in the AI conversation is American or Chinese. Europe's biggest entrant, Mistral, is a fraction of OpenAI's or Anthropic's size. But Europe is upstream of all of it: ASML in the Netherlands is the only company on Earth that makes the machines every advanced AI chip...",
+    "thumbnail": "https://i.ytimg.com/vi/GINzScQJNBw/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Which AI chatbot is the most politically biased?",
+    "videoId": "1EmTVUU66kw",
+    "published": "2026-07-09T06:00:21+00:00",
+    "description": "The Washington Post tested six major AI models on 30 political questions and scored whether each gave one side or both. ChatGPT gave only the left-leaning argument 80% of the time. Google's Gemini gave both sides 93%. And Musk's Grok, built to be \"anti-woke,\" still leaned left...",
+    "thumbnail": "https://i.ytimg.com/vi/1EmTVUU66kw/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What Is Vibe Coding (And How Do You Do It)?",
+    "videoId": "mthIDY_sOAY",
+    "published": "2026-07-08T14:00:27+00:00",
+    "description": "Vibe coding lets you build software by describing it in plain English and letting AI write the code. Edward Roske explains where the term came from, the tools a non-coder can actually use, and the catch nobody mentions: AI-written code carried a security hole about 45% of the...",
+    "thumbnail": "https://i.ytimg.com/vi/mthIDY_sOAY/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Does Claude Want a Photo of Your Face?",
+    "videoId": "Gd0CQWsH9h8",
+    "published": "2026-07-08T04:00:09+00:00",
+    "description": "Anthropic updated its policy so regular Claude users can be asked to verify with a government ID, a live selfie, and facial-geometry data through a vendor called Persona. It traces back to a government export fight over who's allowed to use the strongest AI. The privacy wall...",
+    "thumbnail": "https://i.ytimg.com/vi/Gd0CQWsH9h8/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How do you catch a fake AI model?",
+    "videoId": "8hLsWFNPbpA",
+    "published": "2026-07-07T06:00:32+00:00",
+    "description": "Rio de Janeiro's city IT agency released an AI model it presented as a homegrown 397-billion-parameter Brazilian build. One researcher deleted a single hidden instruction, asked the model who it was, and it answered \"Nex, from Nex-AGI.\" Edward Roske on why the cheapest question...",
+    "thumbnail": "https://i.ytimg.com/vi/8hLsWFNPbpA/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How To Write A Prompt That Actually Works",
+    "videoId": "sKWGYanwoAQ",
+    "published": "2026-07-06T14:00:07+00:00",
+    "description": "Researchers tested the famous prompt tricks, tipping the AI, threatening it, calling it a world-class expert, and almost none of it reliably improved the answers. Edward Roske breaks down what actually works (context, specifics, and one good example) and why the real skill is...",
+    "thumbnail": "https://i.ytimg.com/vi/sKWGYanwoAQ/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why does AI use so much electricity?",
+    "videoId": "SR5H1vdHLBM",
+    "published": "2026-07-06T06:00:04+00:00",
+    "description": "AI's real ceiling isn't chips, it's the power grid. Data centers used about 485 terawatt-hours last year, on track to roughly double by 2030. Researchers at Penn ran a core computing step on a half-light, half-matter particle using about four quadrillionths of a joule, less than...",
+    "thumbnail": "https://i.ytimg.com/vi/SR5H1vdHLBM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why did Anthropic buy Stainless? And who is Stainless?",
+    "videoId": "D-x8SMm6IzI",
+    "published": "2026-07-05T06:00:28+00:00",
+    "description": "Anthropic acquired Stainless, the tool that generated the official software kits for OpenAI, Google, Cloudflare, and others, then started winding the hosted product down. Once every frontier model is about as smart, the fight moves to who owns the wiring between a model and real...",
+    "thumbnail": "https://i.ytimg.com/vi/D-x8SMm6IzI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What did an AI put in America's 250th-birthday time capsule?",
+    "videoId": "YUeKOO_g_gU",
+    "published": "2026-07-04T04:00:24+00:00",
+    "description": "For its 250th birthday, America sealed a national time capsule to be opened in 2276, and California's entry is a prediction written by an AI, which forecasts the state seceding from the Union. A federal commission buried the machine's words at Independence Hall without anyone...",
+    "thumbnail": "https://i.ytimg.com/vi/YUeKOO_g_gU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why did the government turn off Claude?",
+    "videoId": "Dorz4r7STQ0",
+    "published": "2026-07-03T19:20:04+00:00",
+    "description": "The US government ordered the world's most powerful AI model offline, worldwide, for nineteen days. It came back with usage caps and a government-ID requirement.",
+    "thumbnail": "https://i.ytimg.com/vi/Dorz4r7STQ0/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How Does AI Score Your Resume?",
+    "videoId": "vbaCidjMmVc",
+    "published": "2026-07-03T13:00:18+00:00",
+    "description": "If you applied for a job online, an AI may have scored your resume before any human read it. A developer took the open-sourced code behind one of these screeners and ran the same resume through it a hundred times. The score swung from 66 to 99, and at a typical 85-point cutoff...",
+    "thumbnail": "https://i.ytimg.com/vi/vbaCidjMmVc/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What happens when you let an AI agent dream?",
+    "videoId": "EFuzWys0PR0",
+    "published": "2026-07-03T06:00:07+00:00",
+    "description": "Anthropic shipped \"Dreaming\" for Claude agents: a scheduled process that reads an agent's past work between sessions and rewrites its memory so it improves over time. A legal-AI startup called Harvey saw completion rates jump roughly six times. But the same mechanism can teach...",
+    "thumbnail": "https://i.ytimg.com/vi/EFuzWys0PR0/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Is It Cheating To Use AI? (Here's The Real Line)",
+    "videoId": "EX5NyswKlcs",
+    "published": "2026-07-02T14:00:19+00:00",
+    "description": "Ninety-four percent of knowledge workers use AI, but a Duke study found the people who admit it get judged as lazier for identical work. So is it cheating? Edward Roske makes the case that the line was never the tool. It's whether you can stand behind what you turned in, and...",
+    "thumbnail": "https://i.ytimg.com/vi/EX5NyswKlcs/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI can now write a million lines of code with basically no human involvement",
+    "videoId": "hbj46itxEDg",
+    "published": "2026-07-02T06:00:35+00:00",
+    "description": "Bun's creator merged a rewrite of the entire runtime into Rust: a little over a million lines, written by Claude agents in about a week. Anthropic owns Bun, so its own AI did this to its own runtime, and Anthropic's own audit found roughly thirteen thousand unsafe blocks and...",
+    "thumbnail": "https://i.ytimg.com/vi/hbj46itxEDg/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI News for June 2026 (in 13 minutes)",
+    "videoId": "YninmoBDTRU",
+    "published": "2026-07-01T20:35:19+00:00",
+    "description": "In June 2026 the US government shut off the most powerful AI in the country, the market finally asked whether the whole boom pays for itself, and a rocket company became one of the biggest AI players on the board. Then, at the buzzer, Washington turned the AI back on, dimmed. My...",
+    "thumbnail": "https://i.ytimg.com/vi/YninmoBDTRU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How did Ford turn into an AI stock?",
+    "videoId": "i08h_aO7ewo",
+    "published": "2026-07-01T06:00:30+00:00",
+    "description": "Ford launched Ford Energy, a battery-storage business for AI data centers, and the stock surged about twenty-one percent. Then it signed a real twenty gigawatt-hour deal and hit a three-year high. Then it gave almost all of it back, and not because of the AI bet. Monthly vehicle...",
+    "thumbnail": "https://i.ytimg.com/vi/i08h_aO7ewo/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How is Anthropic profitable when every AI lab loses money?",
+    "videoId": "2dUwB9qdU-g",
+    "published": "2026-06-30T06:00:09+00:00",
+    "description": "Anthropic told investors it wouldn't see a full-year profit before 2028, then guided to an operating profit of about 559 million dollars in a single quarter, on revenue up about 130 percent. But a big chunk of the improvement came from a temporary discount on a huge compute...",
+    "thumbnail": "https://i.ytimg.com/vi/2dUwB9qdU-g/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "SpaceX just had the largest IPO in history, and it's a money loser",
+    "videoId": "DLWDtnrdkTs",
+    "published": "2026-06-29T06:00:20+00:00",
+    "description": "SpaceX went public in the largest IPO in history: about seventy-five billion dollars raised at a one-and-three-quarter trillion dollar valuation, up roughly twenty percent on day one. But the company lost about five billion dollars last year. Starlink is one of the best consumer...",
+    "thumbnail": "https://i.ytimg.com/vi/DLWDtnrdkTs/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "The auditors who forgot to audit their own AI report",
+    "videoId": "qgg3DD_btrA",
+    "published": "2026-06-28T06:00:25+00:00",
+    "description": "KPMG published a glossy report about the wonders of agentic AI. Then GPTZero checked the footnotes. Of forty-five sources, only five pointed to anything real, and named clients like UBS and the NHS said the AI projects described were news to them. So KPMG took the report down. I...",
+    "thumbnail": "https://i.ytimg.com/vi/qgg3DD_btrA/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Apple throws in the towel on the AI race",
     "videoId": "VTU2All3pm0",
     "published": "2026-06-27T06:00:34+00:00",
     "description": "Apple rebuilt Siri and put its heaviest reasoning on a Google Gemini model, for about a billion dollars a year, while sitting on a hundred and seventy billion in cash. My read: Apple just declared the AI model a commodity and kept the only part that matters, the customer.",
@@ -24,7 +192,7 @@
     "category": "youtube"
   },
   {
-    "title": "How Are They Using AI At The World Cup?",
+    "title": "AI at the World Cup",
     "videoId": "eKmOGPUn7BE",
     "published": "2026-06-26T21:42:46+00:00",
     "description": "Explainer: Part 1 of 3 on AI at the World Cup. Next up: who's actually running it.",
@@ -32,7 +200,7 @@
     "category": "youtube"
   },
   {
-    "title": "Why is Ethan Mollick the best follow in AI?",
+    "title": "The best AI guide is a Wharton professor who actually tests the tools",
     "videoId": "SJyxBrFeN70",
     "published": "2026-06-26T21:15:38+00:00",
     "description": "If you want to understand AI, the instinct is to follow the engineers building it or the CEOs selling it. The better follow is quieter: Ethan Mollick, a Wharton professor who actually uses the tools and reports back in plain English. He coined \"the jagged frontier,\" and his own...",
@@ -40,7 +208,7 @@
     "category": "youtube"
   },
   {
-    "title": "Who decides when an AI is too powerful to release?",
+    "title": "First Anthropic, then OpenAI: the government is gating AI releases",
     "videoId": "yVUCX1wrFoU",
     "published": "2026-06-26T21:03:00+00:00",
     "description": "The government forced Anthropic's most capable model offline worldwide with a single letter, then asked OpenAI to hold its newest model, GPT 5.6, back from a public launch. A new executive order even set up a classified, NSA-run process to decide when a model is too powerful...",
@@ -48,7 +216,7 @@
     "category": "youtube"
   },
   {
-    "title": "What Is Jeff Bezos Building After Amazon?",
+    "title": "Bezos Raised $12 Billion for an AI That Designs Jet Engines",
     "videoId": "g2Yp840IJZQ",
     "published": "2026-06-26T06:00:12+00:00",
     "description": "Jeff Bezos took his first operating job since Amazon to build Project Prometheus, an AI that designs jet engines and drug compounds, and raised $12 billion at a $41 billion valuation. His jobs prediction is the opposite of everyone else's: AI makes human labor scarce, not...",
