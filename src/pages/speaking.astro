@@ -156,17 +156,30 @@ const faqs = [
 const testimonials = [
   {
     quote:
-      "At Kscope, people don't just attend Edward's sessions, they look for them on the agenda. His ability to blend technical depth, practical insights, and humor keeps audiences engaged while ensuring they leave having learned something they can immediately apply.",
+      'Edward has a gift for turning complex technical concepts into stories people understand and remember. He teaches with humor, energy, and genuine expertise, making every room he speaks to smarter and more engaged by the end.',
     name: 'Elizabeth Ferrell',
     role: 'Assistant Corporate Controller & Finance AI Leader, The Kroger Co.',
-    tag: 'ODTUG Board Member',
+    tag: 'User Group President',
+  },
+  {
+    quote:
+      "If there was an award for winning the most speaker awards, Edward would win that too. He fills any room, he's funnier than a talk about financial software has any right to be, and I constantly hear attendees quoting him for the rest of the conference.",
+    name: 'Monty Latiolais',
+    role: 'Director of Business Development, Talan Oracle Technologies',
+    tag: 'Past ODTUG President',
   },
   {
     quote:
       "I've seen Edward fill rooms with finance and systems people and then leave them laughing about consolidation. As a thought leader, he knows the material cold and he's honestly funny with it, which is unsurprisingly rare in our world.",
     name: 'Fred Mamadjanov',
-    role: 'Co-founder, Canadian Oracle Technology User Group',
+    role: 'Cofounder, Canadian Oracle Technology User Group',
     tag: 'Oracle ACE Pro',
+  },
+  {
+    quote:
+      "Edward commands a stage like nobody else I've seen, and he's the only speaker I know who makes AI fun without dumbing it down.",
+    name: 'JD Torres',
+    role: 'Cofounder, Puerto Rico AI Community',
   },
 ];
 
@@ -348,8 +361,9 @@ const serviceSchema = {
         <p class="spk-eyebrow">From the room</p>
         <h2 class="spk-h2">The tough rooms, on the record.</h2>
         <p class="spk-deck">
-          Conference chairs, ODTUG board members, and finance leaders who've watched Edward
-          work a technical crowd (the audiences that don't hand out compliments for fun).
+          Oracle community leaders, a Fortune 500 finance executive, and the organizers who
+          keep putting Edward on their stages (the kind of crowd that doesn't hand out
+          compliments for fun).
         </p>
         <div class="spk-quotes">
           {testimonials.map((t) => (
@@ -358,7 +372,7 @@ const serviceSchema = {
               <figcaption>
                 <span class="spk-quote-name">{t.name}</span>
                 <span class="spk-quote-role">{t.role}</span>
-                <span class="spk-quote-tag">{t.tag}</span>
+                {t.tag && <span class="spk-quote-tag">{t.tag}</span>}
               </figcaption>
             </figure>
           ))}
