@@ -166,7 +166,7 @@ const testimonials = [
       "If there was an award for winning the most speaker awards, Edward would win that too. He fills any room, he's funnier than a talk about financial software has any right to be, and I constantly hear attendees quoting him for the rest of the conference.",
     name: 'Monty Latiolais',
     role: 'Director of Business Development, Talan Oracle Technologies',
-    tag: 'Past ODTUG President',
+    tag: 'Past User Group President',
   },
   {
     quote:
@@ -178,8 +178,9 @@ const testimonials = [
   {
     quote:
       "Edward commands a stage like nobody else I've seen, and he's the only speaker I know who makes AI fun without dumbing it down.",
-    name: 'JD Torres',
+    name: 'José David Torres, Lcdo.',
     role: 'Cofounder, Puerto Rico AI Community',
+    tag: 'Attorney',
   },
 ];
 
@@ -284,6 +285,31 @@ const serviceSchema = {
       </div>
     </section>
 
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="spk-section spk-quotes-section">
+      <div class="spk-wrap">
+        <p class="spk-eyebrow">From the room</p>
+        <h2 class="spk-h2">The tough rooms, on the record.</h2>
+        <p class="spk-deck">
+          Oracle community leaders, a Fortune 500 finance executive, and the organizers who
+          keep putting Edward on their stages (the kind of crowd that doesn't hand out
+          compliments for fun).
+        </p>
+        <div class="spk-quotes">
+          {testimonials.map((t) => (
+            <figure class="spk-quote">
+              <blockquote>{t.quote}</blockquote>
+              <figcaption>
+                <span class="spk-quote-name">{t.name}</span>
+                <span class="spk-quote-role">{t.role}</span>
+                {t.tag && <span class="spk-quote-tag">{t.tag}</span>}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <!-- ============ WATCH ============ -->
     <section id="watch" class="spk-section">
       <div class="spk-wrap">
@@ -355,36 +381,11 @@ const serviceSchema = {
       </div>
     </section>
 
-    <!-- ============ TESTIMONIALS ============ -->
-    <section class="spk-section spk-quotes-section">
-      <div class="spk-wrap">
-        <p class="spk-eyebrow">From the room</p>
-        <h2 class="spk-h2">The tough rooms, on the record.</h2>
-        <p class="spk-deck">
-          Oracle community leaders, a Fortune 500 finance executive, and the organizers who
-          keep putting Edward on their stages (the kind of crowd that doesn't hand out
-          compliments for fun).
-        </p>
-        <div class="spk-quotes">
-          {testimonials.map((t) => (
-            <figure class="spk-quote">
-              <blockquote>{t.quote}</blockquote>
-              <figcaption>
-                <span class="spk-quote-name">{t.name}</span>
-                <span class="spk-quote-role">{t.role}</span>
-                {t.tag && <span class="spk-quote-tag">{t.tag}</span>}
-              </figcaption>
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-
     <!-- ============ FORMATS & FEES ============ -->
     <section class="spk-section">
       <div class="spk-wrap">
         <p class="spk-eyebrow">Formats and fees</p>
-        <h2 class="spk-h2">Pick a format. The fee is right there.</h2>
+        <h2 class="spk-h2">Every format shows its fee (still rare in this business).</h2>
         <p class="spk-deck">
           Published fees save both of us a discovery call about money. Terms: 50% deposit at
           signing, balance 30 days before the event. Domestic travel is a flat buyout
