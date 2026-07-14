@@ -153,6 +153,23 @@ const faqs = [
   },
 ];
 
+const testimonials = [
+  {
+    quote:
+      "At Kscope, people don't just attend Edward's sessions, they look for them on the agenda. His ability to blend technical depth, practical insights, and humor keeps audiences engaged while ensuring they leave having learned something they can immediately apply.",
+    name: 'Elizabeth Ferrell',
+    role: 'Assistant Corporate Controller & Finance AI Leader, The Kroger Co.',
+    tag: 'ODTUG Board Member',
+  },
+  {
+    quote:
+      "I've seen Edward fill rooms with finance and systems people and then leave them laughing about consolidation. As a thought leader, he knows the material cold and he's honestly funny with it, which is unsurprisingly rare in our world.",
+    name: 'Fred Mamadjanov',
+    role: 'Co-founder, Canadian Oracle Technology User Group',
+    tag: 'Oracle ACE Pro',
+  },
+];
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -181,6 +198,11 @@ const serviceSchema = {
     { '@type': 'Offer', name: 'Private board briefing', price: '12500', priceCurrency: 'USD' },
     { '@type': 'Offer', name: 'Virtual keynote', price: '7500', priceCurrency: 'USD' },
   ],
+  review: testimonials.map((t) => ({
+    '@type': 'Review',
+    reviewBody: t.quote,
+    author: { '@type': 'Person', name: t.name, jobTitle: t.role },
+  })),
 };
 ---
 
@@ -315,6 +337,30 @@ const serviceSchema = {
                 </ul>
               </div>
             </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="spk-section spk-quotes-section">
+      <div class="spk-wrap">
+        <p class="spk-eyebrow">From the room</p>
+        <h2 class="spk-h2">The tough rooms, on the record.</h2>
+        <p class="spk-deck">
+          Conference chairs, ODTUG board members, and finance leaders who've watched Edward
+          work a technical crowd (the audiences that don't hand out compliments for fun).
+        </p>
+        <div class="spk-quotes">
+          {testimonials.map((t) => (
+            <figure class="spk-quote">
+              <blockquote>{t.quote}</blockquote>
+              <figcaption>
+                <span class="spk-quote-name">{t.name}</span>
+                <span class="spk-quote-role">{t.role}</span>
+                <span class="spk-quote-tag">{t.tag}</span>
+              </figcaption>
+            </figure>
           ))}
         </div>
       </div>

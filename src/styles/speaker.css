@@ -205,6 +205,36 @@
     .spk-talk-outcomes ul { margin: 0; padding: 0 0 0 1.1rem; }
     .spk-talk-outcomes li { font-size: 0.92rem; color: var(--spk-ink); margin-bottom: 0.35rem; }
 
+    /* ---------- testimonials ---------- */
+    .spk-quotes-section { border-bottom: 1px solid var(--spk-line); }
+    .spk-quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+    @media (max-width: 860px) { .spk-quotes { grid-template-columns: 1fr; } }
+    .spk-quote {
+      position: relative; margin: 0;
+      background: var(--spk-surface); border: 1px solid var(--spk-line);
+      border-left: 3px solid var(--spk-accent);
+      padding: 2.6rem 2rem 1.8rem; display: flex; flex-direction: column;
+    }
+    .spk-quote::before {
+      content: '\201C'; position: absolute; top: 0.6rem; left: 1.3rem;
+      font-family: 'Fraunces', serif; font-weight: 600; font-size: 3.2rem; line-height: 1;
+      color: var(--spk-brass); opacity: 0.4; pointer-events: none;
+    }
+    .spk-quote blockquote {
+      position: relative; margin: 0 0 1.6rem; padding: 0; flex-grow: 1;
+      font-family: 'Fraunces', serif; font-weight: 460;
+      font-size: 1.2rem; line-height: 1.5; color: var(--spk-ink); text-wrap: pretty;
+    }
+    .spk-quote figcaption { border-top: 1px solid var(--spk-line); padding-top: 1rem; }
+    .spk-quote-name { display: block; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.08rem; color: var(--spk-ink); }
+    .spk-quote-role { display: block; font-size: 0.9rem; color: var(--spk-muted); margin-top: 0.25rem; }
+    .spk-quote-tag {
+      display: inline-block; margin-top: 0.75rem;
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--spk-brass);
+      border: 1px solid var(--spk-line); padding: 0.28rem 0.6rem;
+    }
+
     /* ---------- formats ---------- */
     .spk-formats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
     @media (max-width: 980px) { .spk-formats { grid-template-columns: repeat(2, 1fr); } }
