@@ -547,6 +547,28 @@ const showUpdated = updatedDate && updatedDate.getTime() !== date.getTime();
     border-color: var(--color-border);
   }
 
+  /* Figures with captions (photo-heavy / cross-posted pieces) */
+  .blog-content :global(figure) {
+    margin: 2.5rem 0;
+    text-align: center;
+  }
+  .blog-content :global(figure img) {
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
+  .blog-content :global(figcaption) {
+    margin-top: 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+    color: var(--color-text-dark-muted);
+  }
+  :global([data-theme="dark"]) .blog-content :global(figcaption) {
+    color: var(--color-text-muted);
+  }
+
   /* Emphasis / italics */
   .blog-content :global(em) {
     font-style: italic;
