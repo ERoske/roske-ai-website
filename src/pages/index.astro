@@ -8,60 +8,69 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// Four trials of the crossing. Three failed for want of a good question; the
-// fourth is the homecoming, where he finally used his head. Captions match
-// each generated film plate exactly (the Cyclops card really does read
-// "ODYSSEUS, CONSULTANT"; the Sirens plate shows him taking notes; Circe's
-// wall really is a year of tally marks; the homecoming plate shows the bow
-// and the dog).
-const trials = [
+// The ledger (stats), framed as a broadcast stat line. All real, plus one.
+const ledger = [
+  { value: '50+', label: 'COUNTRIES SPOKEN IN' },
+  { value: '80+', label: 'COUNTRIES REACHED' },
+  { value: '15', label: 'BOOKS WRITTEN' },
+  { value: '25+', label: 'YEARS RUNNING COMPANIES' },
+  { value: '1', label: 'FAVORITE BALL' },
+];
+
+// The fan cam: five plates from a month of supporting the wrong thing.
+// Captions match each generated image exactly.
+const fanCam = [
   {
-    src: '/images/the-odyssey/cyclops.jpg',
-    plate: 'TRIAL I . THE CYCLOPS',
-    title: 'The Sales Pitch',
-    caption: "Trapped in the cave of a one-eyed giant, I did the natural thing and handed him my card. It says 'Odysseus, Consultant.' The good question was how to leave quietly. Instead I shouted my real name on the way out, which is how you turn one bad afternoon into a ten-year problem with the god of the sea.",
+    src: '/images/ai-ball/edward-charging-station.jpg',
+    tag: 'CAM 01 . THE CHARGING DOCK',
+    title: 'Battery Watch',
+    caption: `Every ball gets charged between shifts, and a real person really does watch each battery on a screen. I offered to help, repeatedly. (Powerade, if you're reading this, I'm available.)`,
   },
   {
-    src: '/images/the-odyssey/sirens.jpg',
-    plate: 'TRIAL II . THE SIRENS',
-    title: 'The Note-Taker',
-    caption: "The Sirens sing the one song that kills you, so the crew plugged their ears with wax and had me lashed to the mast. Sensible. Then I spent the whole pass taking notes, like it was a keynote I'd flown in for. Some of us can't behave at a good session.",
+    src: '/images/ai-ball/edward-ball-costume-stands.jpg',
+    tag: 'CAM 02 . SECTION 114',
+    title: 'Come as the Ball',
+    caption: `The fans around me couldn't place my allegiance, because it isn't to a country. The ball would have understood, if the ball understood anything, which is sort of the whole point.`,
   },
   {
-    src: '/images/the-odyssey/circe.jpg',
-    plate: 'TRIAL III . CIRCE’S HALL',
-    title: 'The Long Weekend',
-    caption: "Circe turned my crew into pigs, then set a genuinely excellent table. I meant to stay one night. Those tally marks behind me are days. The right question was when to leave, and I got to it about a year late, which for me counts as early.",
+    src: '/images/ai-ball/edward-ball-on-head.jpg',
+    tag: 'CAM 03 . THE STATEMENT',
+    title: 'Here for the Ball',
+    caption: `The sign says exactly what I'm doing there, which is more honesty than most signs at a match manage.`,
+  },
+  {
+    src: '/images/ai-ball/edward-ball-jersey.jpg',
+    tag: 'CAM 04 . NUMBER ONE',
+    title: 'No Surname Needed',
+    caption: `Number 1, no last name, and it doesn't need one. You already know who THE BALL is.`,
+  },
+  {
+    src: '/images/ai-ball/edward-both-jerseys.jpg',
+    tag: 'CAM 05 . BOTH SIDES',
+    title: 'Just to Be Safe',
+    caption: `Before I understood my true loyalty, I hedged and wore both kits at once. Turns out I was on the ball's side the whole time. The jerseys make excellent pajamas.`,
   },
 ];
 
-// The homecoming: the pivot, where asking (and listening) finally worked.
-const homecoming = {
-  src: '/images/the-odyssey/homecoming.jpg',
-  plate: 'BOOK XXIV . ITHACA',
-  title: 'The Homecoming',
-  caption: "Then I got home the way I should have run the entire trip: quietly, patiently, and by finally using my head instead of my mouth. I strung the one bow nobody else could bend, and the old dog still knew me. Ten years late. I'd argue the destination held up.",
-};
-
-// The rhapsode's ticker: dry epigraphs from the crossing.
-const epigraphs = [
-  "TEN YEARS FOR A TWO-WEEK SAIL",
-  "HE TAUNTED THE CYCLOPS, THEN LEFT A FORWARDING ADDRESS",
-  "THE CREW OPENED THE BAG OF WINDS WITHIN SIGHT OF HOME",
-  "A PROPHET TOLD HIM EXACTLY WHAT WOULD HAPPEN",
-  "HE STILL DID NOT ASK",
-  "SING, MUSE, OF THE MAN WHO WOULDN’T READ THE MAP",
-  "NOW A NOLAN PICTURE . THIS SATURDAY, A ROSKE ONE",
+// The wire: dry facts about the ball, most of them real.
+const wire = [
+  'ADIDAS TRIONDA . OFFICIAL BALL OF THE 2026 WORLD CUP',
+  '500Hz MOTION SENSOR INSIDE',
+  'FEEDS THE AI OFFSIDE SYSTEM IN REAL TIME',
+  'FOUR PANELS . FEWEST IN WORLD CUP HISTORY',
+  'YES, IT HAS TO BE CHARGED',
+  'A HUMAN WATCHES ITS BATTERY ON A SCREEN',
+  'RUNS ON A NEURAL NET AND A USB-C',
+  'TRIONDA MEANS THREE WAVES . THREE HOST NATIONS',
 ];
 
-// The cargo worth carrying home: the real work, framed as the manifest. Six
-// projects. All real, all shipping or close to it.
-const cargo = [
+// The roster: the real work, framed as a team sheet. Six, all real.
+const roster = [
   {
-    code: 'No. I',
-    cat: 'THE REAL WORK',
+    num: '01',
+    pos: 'THE REAL WORK',
     title: 'MCP Servers for Finance',
-    body: "The connective tissue between AI agents and enterprise finance systems. The Oracle Essbase and EPM Planning servers ship today. Financial Close and Consolidations is in beta. This is the part of the voyage I'm actually good at: getting a model to answer honestly about your close.",
+    body: `The connective tissue between AI agents and enterprise finance systems. The Oracle Essbase and EPM Planning servers ship today. Financial Close and Consolidations is in beta. Same idea as the ball, honestly: instrument the thing, report the truth, and let a human make the call.`,
     badge: 'ORACLE EPM . MCP',
     status: 'SHIPPING',
     href: 'https://caprus.ai/agentcube/',
@@ -69,10 +78,10 @@ const cargo = [
     cta: 'See how it works',
   },
   {
-    code: 'No. II',
-    cat: 'THE GATHERING',
+    num: '02',
+    pos: 'THE GATHERING',
     title: 'Caribbean AI Summit',
-    body: "Co-chairing the largest AI conference Puerto Rico has hosted, October 9 and 10 in San Juan. The lineup is public: Kay Firth-Butterfield, MIT's Fabio Duarte, and EU AI advisor Idoia Salazar, with more every week. (Co-chairing is ten percent stagecraft and ninety percent email, which Homer left out.)",
+    body: `Co-chairing the largest AI conference Puerto Rico has hosted, October 9 and 10 in San Juan. The lineup is public and growing: Kay Firth-Butterfield, MIT's Fabio Duarte, EU AI advisor Idoia Salazar. (Co-chairing is ten percent stagecraft and ninety percent email.)`,
     badge: '9-10 OCT 2026 . SAN JUAN',
     status: 'CALL FOR SPEAKERS OPEN',
     href: 'https://www.caribbeansummit.ai/en/speakers/submit',
@@ -80,32 +89,32 @@ const cargo = [
     cta: 'Submit a speaker',
   },
   {
-    code: 'No. III',
-    cat: 'THE CREW',
+    num: '03',
+    pos: 'THE SQUAD',
     title: 'Caprus',
-    body: "Investor and contributor at Caprus, the AI software and services firm giving finance teams faster, smarter operations. The crew who do the actual rowing while I take the cover photo and imply the whole epic was my idea.",
+    body: `Investor and contributor at Caprus, the AI software and services firm giving finance teams faster, smarter operations. They do the real work. I mostly show up and point at it, like a man in a ball jersey.`,
     badge: 'AI . FINANCE',
     status: 'RUNNING',
     href: 'https://caprus.ai',
     external: true,
-    cta: 'Meet the crew',
+    cta: 'Meet the team',
   },
   {
-    code: 'No. IV',
-    cat: 'THE OTHER ODYSSEY',
+    num: '04',
+    pos: 'THE ROAD GAME',
     title: 'Everest Base Camp',
-    body: "This spring I walked to the foot of the tallest mountain on Earth, the closest I've come to an actual odyssey. Unlike Odysseus, I brought a map and asked the Sherpas everything. The trail log is on the blog, altitude headaches and all.",
+    body: `This spring I walked to the foot of the tallest mountain on Earth. I brought a map, asked the guides everything, and kept my head down. The trail log is on the blog, altitude headaches and all.`,
     badge: 'NEPAL . 2026',
-    status: 'THE APPROACH, DONE',
+    status: 'TRAIL LOG LIVE',
     href: '/blog/everest-base-camp-summit/',
     external: false,
     cta: 'Read the trail log',
   },
   {
-    code: 'No. V',
-    cat: 'AFTER HOURS',
-    title: "AI Dungeon Master’s Screen",
-    body: "An AI-driven DM's screen for running better D&D 5e campaigns: initiative, lore, and improv help for the person behind the screen. If there's going to be an oracle at the table, it should earn its seat. (I still won't tell the party.)",
+    num: '05',
+    pos: 'AFTER HOURS',
+    title: "AI Dungeon Master's Screen",
+    body: `An AI-driven DM's screen for running better D&D 5e campaigns: initiative, lore, and improv help for the person behind the screen. If there's going to be an oracle at the table, it should earn its seat. (I still won't tell the party.)`,
     badge: 'D&D . 5E . EBERRON',
     status: 'IN PROTOTYPE',
     href: null,
@@ -113,10 +122,10 @@ const cargo = [
     cta: 'Quiet build',
   },
   {
-    code: 'No. VI',
-    cat: 'THE MOVEMENT',
+    num: '06',
+    pos: 'THE MOVEMENT',
     title: 'Puerto Rico AI Community',
-    body: "President of the Puerto Rico AI Community, more than 850 people across our events. We meet every other month to work out, in public, what AI means for the island. What happens here is usually a preview of what happens everywhere else.",
+    body: `President of the Puerto Rico AI Community, more than 850 people across our events. We meet every other month to work out, in public, what AI means for the island. What happens here is usually a preview of what happens everywhere else.`,
     badge: '850+ . BI-MONTHLY',
     status: 'RUNNING',
     href: 'https://praicommunity.org/',
@@ -124,54 +133,32 @@ const cargo = [
     cta: 'Join the next one',
   },
 ];
-
-// The ledger (stats), framed as the ship's manifest.
-const ledger = [
-  { value: '50+', label: 'COUNTRIES SPOKEN IN' },
-  { value: '80+', label: 'COUNTRIES REACHED' },
-  { value: '15', label: 'BOOKS WRITTEN' },
-  { value: '2', label: 'U.S. PATENTS' },
-  { value: '25+', label: 'YEARS RUNNING COMPANIES' },
-];
-
-// Back-plate colophon, in the manner of a fine-press edition.
-const colophon = [
-  { role: 'EDITION', name: 'THE ROSKE ODYSSEY . JULY 11, 2026' },
-  { role: 'AFTER', name: 'HOMER (c. 800 BC) & CHRISTOPHER NOLAN (JULY 17, 2026)' },
-  { role: 'STARRING', name: 'EDWARD ROSKE AS ODYSSEUS (TYPECAST)' },
-  { role: 'TRIALS FACED', name: 'FOUR . PASSED CLEANLY: ZERO . EVENTUALLY: ALL' },
-  { role: 'VOYAGE LENGTH', name: 'TEN YEARS . BILLABLE HOURS: NONE' },
-  { role: 'NAVIGATION', name: 'BY STARS, BY OMENS, BY NOT ASKING' },
-  { role: 'HEADGEAR', name: 'ONE (1) BLUE FELT FEDORA, SALT-STAINED' },
-  { role: 'CORRESPONDENCE', name: 'EDWARD@ROSKE.AI . CARRIER PIGEON DISCOURAGED' },
-];
 ---
 
 <BaseLayout>
   <WeeklyAnimation />
 
-  <!-- MASTHEAD STRIP -->
-  <div class="od-bar">
-    <div class="od-bar-inner">
-      <span class="od-bar-brand">ROSKE.AI</span>
-      <span class="od-bar-meta od-bar-center">THE ROSKE ODYSSEY . AN EPIC IN SIX BOOKS</span>
-      <span class="od-bar-meta od-bar-end">SUNG SINCE c. 800 BC</span>
+  <!-- BROADCAST BAR -->
+  <div class="tv-bar">
+    <div class="tv-bar-inner">
+      <span class="tv-bar-brand">ROSKE.AI</span>
+      <span class="tv-bar-meta tv-bar-center">THE BALL APPRECIATION SOCIETY . MEMBERSHIP: 1</span>
+      <span class="tv-bar-live"><span class="tv-live-dot"></span>LIVE . CHARGE 97%</span>
     </div>
   </div>
 
   <!-- HERO -->
-  <section class="hero-section">
-    <div class="fret hero-fret" aria-hidden="true"></div>
+  <section class="hero">
     <div class="hero-grid">
       <div class="hero-text">
         <div class="hero-eyebrow">
           <span class="hero-eyebrow-pip"></span>
-          <span>BOOK I . THE MAN OF TWISTS AND TURNS</span>
+          <span>FAN NO. 1 . THE ONLY PLAYER MADE OF SILICON</span>
         </div>
 
         <h1 class="hero-title">
-          <span class="hero-title-line">Ten years.</span>
-          <span class="hero-title-line hero-title-em"><em>For a two-week sail.</em></span>
+          <span class="hero-title-line">I'm just here</span>
+          <span class="hero-title-line hero-title-em"><em>for the ball.</em></span>
         </h1>
 
         <p class="hero-body">{theme.hero.description}</p>
@@ -181,7 +168,7 @@ const colophon = [
             Book 13 minutes
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
           </a>
-          <a href="#current-work" class="btn-secondary">
+          <a href={theme.hero.ctaLink} class="btn-secondary">
             <span>{theme.hero.ctaText}</span>
           </a>
         </div>
@@ -196,140 +183,136 @@ const colophon = [
         </div>
       </div>
 
-      <div class="hero-image-wrap">
-        <figure class="plate hero-plate">
-          <div class="plate-top">
-            <span class="plate-logo">THE ROSKE ODYSSEY</span>
-            <span class="plate-num">PLATE I</span>
+      <div class="hero-monitor-wrap">
+        <figure class="monitor">
+          <div class="monitor-top">
+            <span class="monitor-feed"><span class="monitor-rec"></span>FEED . PITCHSIDE CAM</span>
+            <span class="monitor-num">4K . 500Hz</span>
           </div>
-          <div class="plate-window">
-            <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1600" height="900" loading="eager" decoding="async" class="plate-image" />
+          <div class="monitor-window">
+            <img src={`/images/${theme.hero.heroImage}`} alt={theme.hero.imageAlt} width="1600" height="1067" loading="eager" decoding="async" class="monitor-image" />
+            <div class="monitor-hud">
+              <span class="hud-chip hud-chip-charge"><span class="hud-batt"><span class="hud-batt-fill"></span></span>BALL . 95% . CHARGING</span>
+              <span class="hud-chip hud-chip-sensor">SENSOR: LOCKED</span>
+            </div>
+            <div class="monitor-lower3">
+              <span class="lower3-kicker">MATCH IGNORED</span>
+              <span class="lower3-text">Edward monitors the important player</span>
+            </div>
           </div>
-          <div class="plate-caption">Odysseus at the helm, steering with total confidence in the wrong direction.</div>
+          <figcaption class="monitor-caption">The final is happening directly behind him. He is checking the battery.</figcaption>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- TICKER / RHAPSODE'S SCROLL -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      {[...epigraphs, ...epigraphs].map(item => (
-        <span class="ticker-item">{item}</span>
+  <!-- WIRE / TICKER -->
+  <div class="wire" aria-hidden="true">
+    <div class="wire-track">
+      {[...wire, ...wire].map(item => (
+        <span class="wire-item">{item}</span>
       ))}
     </div>
   </div>
 
   <!-- LATEST CONTENT (permanent) -->
   <LatestContent
-    eyebrow="Book II . Dispatches from the crossing"
-    heading={"New <em>this week.</em>"}
-    deck="The latest writing and video briefs, sent back from the voyage. Fresh reports, and no ten-year delay this time."
+    eyebrow="Post-match . Dispatches"
+    heading={"Fresh <em>off the wire.</em>"}
+    deck="The latest writing and video briefs, filed between charging cycles. New reports up top, no extra time required."
   />
 
   <!-- BOOK EDWARD (permanent) -->
-  <SpeakerCTA eyebrow="Book II·V . The paying voyage" />
+  <SpeakerCTA eyebrow="The paid fixtures" />
 
   <!-- WHAT'S NEW (permanent) -->
   <WhatsNew
-    eyebrow="Book III . The ship’s log"
+    eyebrow="The highlight reel"
     heading={"In the <em>news.</em>"}
-    deck="Where Edward has been sighted lately: interviews, press, awards, and the odd post worth keeping. (The log gets kept whether or not anyone reads it.)"
+    deck="Where Edward has turned up lately: interviews, press, awards, and the odd post worth keeping. (The reel runs whether or not anyone's watching.)"
   />
 
-  <!-- THE TRIALS GALLERY -->
-  <section class="trials-section">
-    <div class="fret" aria-hidden="true"></div>
-    <div class="trials-inner">
+  <!-- FAN CAM GALLERY -->
+  <section class="fancam">
+    <div class="fancam-inner">
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>BOOK IV . FOUR TRIALS . THREE FAILED FOR WANT OF A QUESTION</span>
+          <span>THE FAN CAM . FIVE PLATES . ONE MISPLACED LOYALTY</span>
         </div>
-        <h2 class="section-title">Every trial had a good question. <em>I asked it last.</em></h2>
+        <h2 class="section-title">A month of supporting <em>the wrong thing.</em></h2>
         <p class="section-deck">
-          The Odyssey is usually sold as an adventure. Read it as a data scientist and it's a decade-long case study in a clever man ignoring the obvious question in front of him. I played all four scenes this week. Typecasting, honestly.
+          I showed up in earnest, dressed for it, and made a sign. At no point was I cheering for a country, which confused the people around me and, briefly, my wife.
         </p>
       </header>
 
-      <div class="trials-grid">
-        {trials.map((t) => (
-          <article class="plate-card">
-            <div class="plate-card-frame">
-              <img src={t.src} alt={t.caption} loading="lazy" decoding="async" class="plate-card-image" />
-              <span class="plate-card-tag">{t.plate}</span>
+      <div class="fancam-grid">
+        {fanCam.map((f, i) => (
+          <article class={`fc-card ${i === 0 ? 'fc-card-lead' : ''}`}>
+            <div class="fc-frame">
+              <img src={f.src} alt={f.caption} loading="lazy" decoding="async" class="fc-image" />
+              <span class="fc-tag">{f.tag}</span>
             </div>
-            <div class="plate-card-meta">
-              <h3 class="plate-card-name">{t.title}</h3>
-              <p class="plate-card-caption">{t.caption}</p>
+            <div class="fc-meta">
+              <h3 class="fc-name">{f.title}</h3>
+              <p class="fc-caption">{f.caption}</p>
             </div>
           </article>
         ))}
-
-        <article class="plate-card plate-card-feature">
-          <div class="plate-card-frame">
-            <img src={homecoming.src} alt={homecoming.caption} loading="lazy" decoding="async" class="plate-card-image" />
-            <span class="plate-card-tag plate-card-tag-gold">{homecoming.plate}</span>
-          </div>
-          <div class="plate-card-meta">
-            <h3 class="plate-card-name plate-card-name-feature">{homecoming.title}</h3>
-            <p class="plate-card-caption">{homecoming.caption}</p>
-          </div>
-        </article>
       </div>
     </div>
   </section>
 
-  <!-- THE INVOCATION / PULL QUOTE -->
-  <section class="invocation-section">
-    <div class="invocation-inner">
-      <div class="invocation-tag">BOOK V . FROM THE INVOCATION</div>
-      <blockquote class="invocation-q">
-        Sing to me of the man of twists and turns, who wandered ten full years because he trusted his own cleverness over one simple question. I've read it as a warning ever since. The tools were always there. A prophet told him precisely what would happen. He just didn't ask, and then didn't listen.
-        <span class="invocation-line">(I run AI companies for a living. You can see why the story keeps me up.)</span>
+  <!-- MANIFESTO / PULL QUOTE -->
+  <section class="creed">
+    <div class="creed-inner">
+      <div class="creed-tag">WHY THE BALL . A STATEMENT OF SUPPORT</div>
+      <blockquote class="creed-q">
+        I build AI for finance teams, so I recognize one when I see it. The ball is the only honest AI at this tournament. It doesn't have opinions about the offside call. It reports where it was, 500 times a second, and lets a human make the decision. Then it goes to the sideline and charges, like the rest of us.
+        <span class="creed-line">(My companies do the same thing, minus the shin pads.)</span>
       </blockquote>
-      <div class="invocation-attrib">
-        <span class="invocation-name">EDWARD ROSKE</span>
-        <span class="invocation-role">ITHACA, EVENTUALLY</span>
+      <div class="creed-attrib">
+        <span class="creed-name">EDWARD ROSKE</span>
+        <span class="creed-role">FAN NO. 1</span>
       </div>
     </div>
   </section>
 
-  <!-- THE CARGO / PROJECTS -->
-  <section id="current-work" class="cargo-section">
-    <div class="cargo-inner">
+  <!-- ROSTER / PROJECTS -->
+  <section id="current-work" class="roster">
+    <div class="roster-inner">
       <header class="section-header">
         <div class="section-tag">
           <span class="section-tag-dot"></span>
-          <span>BOOK VI . THE CARGO WORTH CARRYING HOME</span>
+          <span>THE TEAM SHEET . SIX THINGS I ACTUALLY DO</span>
         </div>
-        <h2 class="section-title">Six things I actually <em>brought home.</em></h2>
+        <h2 class="section-title">The real roster, <em>fully charged.</em></h2>
         <p class="section-deck">
-          Odysseus came back with a good story and not much else. My haul is more practical: six things that are real, shipping or close to it, and considerably more useful than a bag of winds.
+          Between fixtures I run a few companies. Six things that are real, shipping or close to it, and considerably more useful than a foam finger.
         </p>
       </header>
 
-      <div class="cargo-grid">
-        {cargo.map(item => (
-          <article class="cargo-card">
-            <div class="cargo-card-head">
-              <span class="cargo-code">{item.code}</span>
-              <span class="cargo-cat">{item.cat}</span>
+      <div class="roster-grid">
+        {roster.map(item => (
+          <article class="rt-card">
+            <div class="rt-head">
+              <span class="rt-num">{item.num}</span>
+              <span class="rt-pos">{item.pos}</span>
             </div>
-            <h3 class="cargo-title">{item.title}</h3>
-            <p class="cargo-body">{item.body}</p>
-            <div class="cargo-meta">
-              <span class="cargo-badge">{item.badge}</span>
-              <span class={`cargo-status cargo-status-${item.status.toLowerCase().replace(/[^a-z]+/g, '-').replace(/^-|-$/g, '')}`}>{item.status}</span>
+            <h3 class="rt-title">{item.title}</h3>
+            <p class="rt-body">{item.body}</p>
+            <div class="rt-meta">
+              <span class="rt-badge">{item.badge}</span>
+              <span class={`rt-status rt-status-${item.status.toLowerCase().replace(/[^a-z]+/g, '-').replace(/^-|-$/g, '')}`}>{item.status}</span>
             </div>
-            <div class="cargo-foot">
+            <div class="rt-foot">
               {item.href ? (
-                <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener' : undefined} class="cargo-cta">
+                <a href={item.href} target={item.external ? '_blank' : undefined} rel={item.external ? 'noopener' : undefined} class="rt-cta">
                   {item.cta}
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg>
                 </a>
               ) : (
-                <span class="cargo-cta cargo-cta-disabled">{item.cta}</span>
+                <span class="rt-cta rt-cta-disabled">{item.cta}</span>
               )}
             </div>
           </article>
@@ -338,48 +321,46 @@ const colophon = [
     </div>
   </section>
 
-  <!-- BLOG TEASER -->
-  <section class="dispatch-section">
-    <div class="dispatch-inner">
-      <header class="section-header dispatch-header">
-        <div class="section-tag">
-          <span class="section-tag-dot"></span>
-          <span>BOOK VII . THIS WEEK’S DISPATCH</span>
+  <!-- FAN PAGE TEASER -->
+  <section class="fanpage">
+    <div class="fanpage-inner">
+      <div class="fanpage-copy">
+        <div class="fanpage-tag">NOW WITH A DEDICATED FAN PAGE</div>
+        <h2 class="fanpage-title">The ball gets its <em>own page.</em></h2>
+        <p class="fanpage-deck">
+          One player this good deserves more than a section. I gave it a permanent home: the specs, the sensor, the charging habit, and the full case for why a data scientist spent a World Cup rooting for hardware.
+        </p>
+        <a href="/ai-ball/" class="btn-primary btn-primary-big">
+          Visit the fan page
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+        </a>
+      </div>
+      <div class="fanpage-card" aria-hidden="true">
+        <div class="fanpage-card-top">
+          <span>MEMBER CARD</span>
+          <span>NO. 0001</span>
         </div>
-        <h2 class="section-title">A question for <em>the crossing.</em></h2>
-      </header>
-
-      <div class="dispatch-grid">
-        <article class="dispatch-card">
-          <div class="dispatch-card-tag">NEW ON THE BLOG . JULY 11, 2026</div>
-          <h3 class="dispatch-card-title">Would Odysseus Have Made It Home Sooner With an AI?</h3>
-          <div class="dispatch-card-line">HOMER . TIRESIAS . THE ORACLE ON YOUR DESK</div>
-          <p class="dispatch-card-body">
-            Short answer: probably not, and the reason is the whole point. Odysseus already had the best oracle in the ancient world. He had prophecy on tap and still sailed in circles. An AI hands you Tiresias-grade answers on demand, but it can't make you ask, and it certainly can't stop you taunting the Cyclops.
-          </p>
-          <a href="/blog/would-odysseus-have-made-it-home-sooner-with-an-ai/" class="dispatch-cta">
-            Read the post
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
-          </a>
-        </article>
+        <div class="fanpage-card-big">THE BALL</div>
+        <div class="fanpage-card-row"><span>FAN</span><span>EDWARD ROSKE</span></div>
+        <div class="fanpage-card-row"><span>STATUS</span><span class="fanpage-card-ok">FULLY CHARGED</span></div>
+        <div class="fanpage-card-row"><span>SINCE</span><span>KICKOFF</span></div>
       </div>
     </div>
   </section>
 
   <!-- CLOSING CTA -->
-  <section class="harbor-section">
-    <div class="fret" aria-hidden="true"></div>
-    <div class="harbor-inner">
-      <div class="harbor-eyebrow">
-        <span class="harbor-rule"></span>
-        <span>BOOK VIII . THE HARBOR IS OPEN . 13 MINUTES</span>
-        <span class="harbor-rule"></span>
+  <section class="signoff">
+    <div class="signoff-inner">
+      <div class="signoff-eyebrow">
+        <span class="signoff-rule"></span>
+        <span>FULL TIME . THE LINE IS OPEN . 13 MINUTES</span>
+        <span class="signoff-rule"></span>
       </div>
-      <h2 class="harbor-title">Come home.<br/><em>Ask a good question.</em></h2>
-      <p class="harbor-deck">
-        Book thirteen minutes. Ask about AI in finance, MCP servers, the Caribbean AI Summit, what Nolan gets right about the Odyssey, or how a grown man ends up taking conference notes at the Sirens. No wax required. Opinions arrive whether or not you asked for them.
+      <h2 class="signoff-title">Ask a good question.<br/><em>I'll allow it.</em></h2>
+      <p class="signoff-deck">
+        Book thirteen minutes. Ask about AI in finance, MCP servers, the Caribbean AI Summit, whether the ball is technically a teammate, or how a grown man ends up dressed as sporting equipment in Section 114. Opinions arrive whether or not you asked for them.
       </p>
-      <div class="harbor-cta-row">
+      <div class="signoff-cta-row">
         <a href="/question/" target="_blank" rel="noopener" class="btn-primary btn-primary-big">
           Book 13 minutes
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
@@ -392,19 +373,10 @@ const colophon = [
   </section>
 
   <!-- COLOPHON -->
-  <section class="colophon-section">
-    <div class="colophon-inner">
-      <div class="colophon-tag">COLOPHON . THE BACK PLATE . 2026</div>
-      <div class="colophon-roll">
-        {colophon.map(entry => (
-          <div class="colophon-block">
-            <span class="colophon-role">{entry.role}</span>
-            <span class="colophon-name">{entry.name}</span>
-          </div>
-        ))}
-      </div>
-      <div class="colophon-footnote">
-        Not affiliated with Universal Pictures, Christopher Nolan, the estate of Homer, or the Greek Ministry of Culture. No Cyclopes were pitched to in the making of this website (one was, actually). The Sirens' notes have been lost. Odysseus is a literary character, the bad decisions are dramatized, and the fedora is real and stays on. Any resemblance to a data scientist who talks too long about AI is entirely accurate.
+  <section class="colo">
+    <div class="colo-inner">
+      <div class="colo-foot">
+        Not affiliated with adidas, FIFA, Powerade, or the Adidas Trionda, which is a soccer ball and cannot consent to being a website's favorite. Ball facts are real: it carries a 500Hz sensor, feeds the AI offside system, and does need charging. The jerseys are real. The membership card is not. The fedora is real and stays on. Any resemblance to a data scientist who talks too long about AI is entirely accurate.
       </div>
     </div>
   </section>
@@ -413,364 +385,368 @@ const colophon = [
 
 <style>
   /* ============================================================
-     THE ROSKE ODYSSEY (a fine-press illustrated edition,
-     crossed with Nolan IMAX film grain)
-     Palette: sea teal / oxidized bronze / amphora terracotta on
-              wine-dark sea night (dark) or aged papyrus (light)
-     Type: Cormorant Garamond (display), Spectral (body),
-           JetBrains Mono (ship's-log labels)
+     I'M JUST HERE FOR THE BALL
+     A sports-broadcast telemetry package crossed with a fan-zine.
+     Palette: floodlit pitch-green + charging-cyan + trophy gold
+     Type: Bricolage Grotesque (display), Hanken Grotesk (body),
+           Space Mono (telemetry labels + jersey numbers)
      ============================================================ */
 
   :global([data-theme="dark"]) {
-    --od-bg: #0b1a24;
-    --od-bg-deep: #06121a;
-    --od-surface: #122b38;
-    --od-surface-2: #163545;
-    --od-fg: #f1e7d2;
-    --od-muted: #a6bcc1;
-    --od-line: #284c5a;
-    --od-teal: #3f8ba0;
-    --od-bronze: #cba653;
-    --od-terra: #d5563a;
-    --od-terra-deep: #b23e24;
-    --od-ink: #06121a;
-    --od-wine: #7d2b3a;
-    --od-fret: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='34'%20height='28'%20viewBox='0%200%2034%2028'%3E%3Cpath%20d='M4%2024V6H24V20H12V12H18'%20fill='none'%20stroke='%23cba653'%20stroke-width='2.4'/%3E%3C/svg%3E");
-    --od-grain: 0.06;
+    --b-bg: #0a1712;
+    --b-bg2: #06100c;
+    --b-surf: #11231b;
+    --b-surf2: #16301f;
+    --b-fg: #eaf3ec;
+    --b-muted: #a2c1af;
+    --b-line: #244a38;
+    --b-green: #37c98b;
+    --b-cyan: #35d0e8;
+    --b-gold: #e6b23c;
+    --b-charge: #37d97f;
+    --b-ink: #06100c;
   }
   :global([data-theme="light"]) {
-    --od-bg: #efe4cd;
-    --od-bg-deep: #e5d7ba;
-    --od-surface: #f7eeda;
-    --od-surface-2: #f0e4c8;
-    --od-fg: #17303b;
-    --od-muted: #5a4d34;
-    --od-line: #d7c7a2;
-    --od-teal: #1f5568;
-    --od-bronze: #7a5818;
-    --od-terra: #b23e24;
-    --od-terra-deep: #97331c;
-    --od-ink: #17303b;
-    --od-wine: #7d2b3a;
-    --od-fret: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='34'%20height='28'%20viewBox='0%200%2034%2028'%3E%3Cpath%20d='M4%2024V6H24V20H12V12H18'%20fill='none'%20stroke='%237a5818'%20stroke-width='2.4'/%3E%3C/svg%3E");
-    --od-grain: 0.05;
+    --b-bg: #eef4ee;
+    --b-bg2: #e2ebe3;
+    --b-surf: #ffffff;
+    --b-surf2: #f2f8f2;
+    --b-fg: #0f241a;
+    --b-muted: #45604e;
+    --b-line: #d0e2d5;
+    --b-green: #0e7a53;
+    --b-cyan: #0e7490;
+    --b-gold: #8a6410;
+    --b-charge: #12894e;
+    --b-ink: #0f241a;
   }
 
-  /* Shared film grain (the IMAX texture) */
-  .hero-section::after,
-  .invocation-section::after,
-  .harbor-section::after {
-    content: '';
-    position: absolute; inset: 0; pointer-events: none; z-index: 1;
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='140'%20height='140'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.82'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='140'%20height='140'%20filter='url(%23n)'%20opacity='0.55'/%3E%3C/svg%3E");
-    opacity: var(--od-grain); mix-blend-mode: soft-light;
-  }
-
-  /* Greek-key meander frieze divider */
-  .fret {
-    height: 28px; width: 100%;
-    background-image: var(--od-fret);
-    background-repeat: repeat-x; background-position: center;
-    opacity: 0.85;
-  }
-  .hero-fret { position: absolute; bottom: 0; left: 0; z-index: 3; opacity: 0.55; }
-
-  /* ---------- MASTHEAD ---------- */
-  .od-bar {
+  /* ---------- BROADCAST BAR ---------- */
+  .tv-bar {
     width: 100%;
-    background: var(--od-ink);
-    color: var(--od-fg);
-    border-bottom: 2px solid var(--od-bronze);
-    font-family: 'JetBrains Mono', monospace;
-    letter-spacing: 0.14em; text-transform: uppercase;
+    background: var(--b-ink);
+    color: var(--b-fg);
+    border-bottom: 2px solid var(--color-accent);
+    font-family: 'Space Mono', monospace;
+    letter-spacing: 0.12em; text-transform: uppercase;
   }
-  :global([data-theme="light"]) .od-bar { background: #1a2c33; color: #f1e7d2; }
-  .od-bar-inner {
+  :global([data-theme="light"]) .tv-bar { background: #0b1c14; color: #eaf3ec; }
+  .tv-bar-inner {
     max-width: 1500px; margin: 0 auto; padding: 0.5rem 2rem;
     display: flex; align-items: center; justify-content: space-between;
-    gap: 1.5rem; font-size: 0.66rem;
+    gap: 1.5rem; font-size: 0.64rem;
   }
-  .od-bar-brand {
-    font-family: 'Cormorant Garamond', serif; font-weight: 700;
-    letter-spacing: 0.04em; font-size: 1.3rem; color: var(--od-bronze);
+  .tv-bar-brand {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+    letter-spacing: 0.02em; font-size: 1.15rem; color: var(--b-gold);
   }
-  .od-bar-meta { white-space: nowrap; }
-  .od-bar-center { flex: 1; text-align: center; letter-spacing: 0.24em; opacity: 0.92; }
-  .od-bar-end { text-align: right; opacity: 0.75; }
+  :global([data-theme="light"]) .tv-bar-brand { color: #f0c04e; }
+  .tv-bar-meta { white-space: nowrap; }
+  .tv-bar-center { flex: 1; text-align: center; letter-spacing: 0.2em; opacity: 0.9; }
+  .tv-bar-live { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--b-cyan); text-align: right; }
+  :global([data-theme="light"]) .tv-bar-live { color: #58e0f2; }
+  .tv-live-dot { width: 8px; height: 8px; border-radius: 50%; background: #ff4d4d; box-shadow: 0 0 0 0 rgba(255,77,77,0.7); animation: livePulse 1.8s infinite; }
+  @keyframes livePulse { 0% { box-shadow: 0 0 0 0 rgba(255,77,77,0.6); } 70% { box-shadow: 0 0 0 7px rgba(255,77,77,0); } 100% { box-shadow: 0 0 0 0 rgba(255,77,77,0); } }
+  @media (prefers-reduced-motion: reduce) { .tv-live-dot { animation: none; } }
   @media (max-width: 820px) {
-    .od-bar-inner { padding: 0.5rem 1rem; gap: 0.6rem; font-size: 0.5rem; }
-    .od-bar-end { display: none; }
-    .od-bar-center { letter-spacing: 0.14em; }
+    .tv-bar-inner { padding: 0.5rem 1rem; gap: 0.6rem; font-size: 0.5rem; }
+    .tv-bar-center { display: none; }
   }
 
   /* ---------- HERO ---------- */
-  .hero-section {
-    position: relative; background: var(--od-bg); color: var(--od-fg);
-    padding: 5.5rem 2rem 6rem; overflow: hidden;
+  .hero {
+    position: relative; background: var(--b-bg); color: var(--b-fg);
+    padding: 5rem 2rem 5.5rem; overflow: hidden;
   }
-  :global([data-theme="dark"]) .hero-section {
+  :global([data-theme="dark"]) .hero {
     background:
-      radial-gradient(circle at 82% 22%, rgba(213,86,58,0.16) 0%, transparent 46%),
-      radial-gradient(circle at 12% 88%, rgba(47,125,146,0.20) 0%, transparent 52%),
-      linear-gradient(168deg, #06121a 0%, #0b1a24 52%, #0f2733 100%);
+      radial-gradient(circle at 84% 18%, rgba(53,208,232,0.16) 0%, transparent 46%),
+      radial-gradient(circle at 10% 92%, rgba(15,122,83,0.28) 0%, transparent 52%),
+      linear-gradient(168deg, #06100c 0%, #0a1712 54%, #0c2018 100%);
   }
-  :global([data-theme="light"]) .hero-section {
+  :global([data-theme="light"]) .hero {
     background:
-      radial-gradient(circle at 84% 12%, rgba(178,62,36,0.10) 0%, transparent 42%),
-      radial-gradient(circle at 50% -6%, #f7eeda 0%, transparent 46%),
-      linear-gradient(180deg, #efe4cd 0%, #e9dcbf 100%);
+      radial-gradient(circle at 86% 10%, rgba(14,116,144,0.10) 0%, transparent 44%),
+      radial-gradient(circle at 12% 100%, rgba(14,122,83,0.12) 0%, transparent 50%),
+      linear-gradient(180deg, #eef4ee 0%, #e4ede5 100%);
   }
+  /* faint pitch stripes */
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: 0.5;
+    background-image: repeating-linear-gradient(90deg, transparent 0 78px, rgba(255,255,255,0.018) 78px 156px);
+  }
+  :global([data-theme="light"]) .hero::before { background-image: repeating-linear-gradient(90deg, transparent 0 78px, rgba(14,60,40,0.03) 78px 156px); }
   .hero-grid {
     position: relative; z-index: 2; max-width: 1500px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1.06fr; gap: 4rem; align-items: center;
+    display: grid; grid-template-columns: 1fr 1.04fr; gap: 4rem; align-items: center;
   }
   @media (max-width: 1024px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 3.4rem; }
-    .hero-section { padding: 3.75rem 1.25rem 4.75rem; }
+    .hero-grid { grid-template-columns: 1fr; gap: 3.2rem; }
+    .hero { padding: 3.5rem 1.25rem 4.25rem; }
   }
   .hero-text { max-width: 660px; }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 0.7rem;
-    font-family: 'JetBrains Mono', monospace; font-size: 0.66rem;
-    letter-spacing: 0.16em; text-transform: uppercase; color: var(--od-bronze);
-    margin-bottom: 1.6rem; padding: 0.4rem 0.9rem;
-    border: 1px solid var(--od-line); background: rgba(203,166,83,0.07);
+    font-family: 'Space Mono', monospace; font-size: 0.64rem;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--b-cyan);
+    margin-bottom: 1.5rem; padding: 0.4rem 0.85rem;
+    border: 1px solid var(--b-line); background: rgba(14,116,144,0.08);
   }
-  .hero-eyebrow-pip { width: 7px; height: 7px; background: var(--od-terra); border-radius: 50%; flex-shrink: 0; }
-  .hero-title { margin: 0 0 1.7rem; line-height: 0.94; }
+  .hero-eyebrow-pip { width: 7px; height: 7px; background: var(--b-charge); border-radius: 50%; flex-shrink: 0; }
+  .hero-title { margin: 0 0 1.6rem; line-height: 0.9; }
   .hero-title-line {
-    display: block; font-family: 'Cormorant Garamond', serif;
-    font-weight: 600; font-size: clamp(3.3rem, 8.2vw, 7rem);
-    color: var(--od-fg); letter-spacing: -0.01em; line-height: 0.9;
+    display: block; font-family: 'Bricolage Grotesque', sans-serif;
+    font-weight: 800; font-size: clamp(3rem, 8vw, 6.6rem);
+    color: var(--b-fg); letter-spacing: -0.02em; line-height: 0.9;
   }
-  .hero-title-em em { font-style: italic; font-weight: 500; color: var(--od-terra); }
+  .hero-title-em em { font-style: normal; color: var(--color-accent); }
+  :global([data-theme="dark"]) .hero-title-em em { color: var(--b-cyan); }
   .hero-body {
-    font-family: 'Spectral', serif; font-size: 1.1rem; line-height: 1.72;
-    color: var(--od-muted); margin: 0 0 2.1rem; max-width: 40em; font-weight: 400;
+    font-family: 'Hanken Grotesk', sans-serif; font-size: 1.08rem; line-height: 1.68;
+    color: var(--b-muted); margin: 0 0 2rem; max-width: 40em; font-weight: 400;
   }
 
   /* Buttons */
   .btn-primary, .btn-secondary {
     display: inline-flex; align-items: center; gap: 0.55rem;
-    padding: 0.85rem 1.7rem; font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em;
+    padding: 0.85rem 1.7rem; font-family: 'Space Mono', monospace;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em;
     text-transform: uppercase; text-decoration: none;
-    border: 1.5px solid transparent;
+    border: 1.5px solid transparent; border-radius: 3px;
     transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease;
     cursor: pointer; line-height: 1;
   }
-  .btn-primary { background: var(--color-accent); color: #fff; box-shadow: 4px 4px 0 var(--od-bronze); }
-  .btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--od-bronze); background: var(--color-accent-hover); }
-  .btn-secondary { background: transparent; color: var(--od-bronze); border-color: var(--od-bronze); box-shadow: 4px 4px 0 rgba(63,139,160,0.25); }
-  .btn-secondary:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 rgba(63,139,160,0.35); background: rgba(203,166,83,0.08); }
-  .btn-primary-big, .btn-secondary-big { padding: 1.05rem 2.2rem; font-size: 0.92rem; }
-  .hero-cta-row { display: flex; flex-wrap: wrap; gap: 1.3rem; margin-bottom: 3rem; }
+  .btn-primary { background: var(--color-accent); color: #fff; box-shadow: 4px 4px 0 var(--b-gold); }
+  .btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--b-gold); background: var(--color-accent-hover); }
+  .btn-secondary { background: transparent; color: var(--b-cyan); border-color: var(--b-cyan); box-shadow: 4px 4px 0 rgba(14,122,83,0.28); }
+  :global([data-theme="dark"]) .btn-secondary { color: var(--b-cyan); border-color: #2a7d8f; }
+  .btn-secondary:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 rgba(14,122,83,0.4); background: rgba(14,116,144,0.08); }
+  .btn-primary-big, .btn-secondary-big { padding: 1.05rem 2.2rem; font-size: 0.9rem; }
+  .hero-cta-row { display: flex; flex-wrap: wrap; gap: 1.2rem; margin-bottom: 2.8rem; }
 
-  /* Ledger (stats) */
+  /* Ledger */
   .hero-ledger {
-    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem;
-    border-top: 1px solid var(--od-line); padding-top: 1.8rem;
+    display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.1rem;
+    border-top: 1px solid var(--b-line); padding-top: 1.7rem;
   }
   .ledger-value {
-    font-family: 'Cormorant Garamond', serif; font-weight: 700;
-    font-size: 2.9rem; color: var(--od-terra); line-height: 0.9;
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+    font-size: 2.6rem; color: var(--b-fg); line-height: 0.9;
   }
+  .ledger-item:last-child .ledger-value { color: var(--b-gold); }
   .ledger-label {
-    font-family: 'JetBrains Mono', monospace; font-size: 0.54rem;
-    letter-spacing: 0.1em; text-transform: uppercase; color: var(--od-muted); margin-top: 0.5rem;
+    font-family: 'Space Mono', monospace; font-size: 0.52rem;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--b-muted); margin-top: 0.5rem;
   }
-  @media (max-width: 620px) { .hero-ledger { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; } }
+  @media (max-width: 620px) { .hero-ledger { grid-template-columns: repeat(2, 1fr); gap: 1.4rem 1rem; } }
 
-  /* ---------- HERO PLATE FRAME ---------- */
-  .hero-image-wrap { position: relative; z-index: 2; display: flex; justify-content: center; }
-  .plate {
-    position: relative; margin: 0; width: 100%; max-width: 660px;
-    background: var(--od-surface); border: 1px solid var(--od-bronze);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.4); display: flex; flex-direction: column;
-    padding: 0.6rem;
+  /* ---------- HERO MONITOR ---------- */
+  .hero-monitor-wrap { position: relative; z-index: 2; display: flex; justify-content: center; }
+  .monitor {
+    position: relative; margin: 0; width: 100%; max-width: 680px;
+    background: #0c1a13; border: 1px solid var(--b-line); border-radius: 8px;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.45); display: flex; flex-direction: column;
+    padding: 0.55rem;
   }
-  :global([data-theme="light"]) .plate { box-shadow: 0 20px 46px rgba(90,77,52,0.28); }
-  .plate-top {
+  :global([data-theme="light"]) .monitor { background: #10231a; box-shadow: 0 20px 46px rgba(15,60,40,0.28); }
+  .monitor-top {
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-    padding: 0.35rem 0.5rem 0.7rem;
+    padding: 0.3rem 0.5rem 0.6rem; font-family: 'Space Mono', monospace;
+    font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
   }
-  .plate-logo { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.62rem; letter-spacing: 0.18em; color: var(--od-bronze); text-transform: uppercase; }
-  .plate-num { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; color: var(--od-muted); text-transform: uppercase; }
-  .plate-window { position: relative; background: var(--od-bg-deep); border: 1px solid var(--od-line); overflow: hidden; }
-  .plate-image { display: block; width: 100%; height: auto; aspect-ratio: 16/9; object-fit: cover; }
-  .plate-caption {
-    padding: 0.7rem 0.5rem 0.35rem; font-family: 'Spectral', serif; font-style: italic;
-    font-size: 0.9rem; line-height: 1.4; color: var(--od-muted); text-align: center;
+  .monitor-feed { display: inline-flex; align-items: center; gap: 0.45rem; color: #ff5b5b; font-weight: 700; }
+  .monitor-rec { width: 8px; height: 8px; border-radius: 50%; background: #ff5b5b; }
+  .monitor-num { color: #78d7c0; }
+  .monitor-window { position: relative; background: #05100b; border: 1px solid #1e3a2c; border-radius: 4px; overflow: hidden; }
+  .monitor-image { display: block; width: 100%; height: auto; aspect-ratio: 3/2; object-fit: cover; }
+  .monitor-hud { position: absolute; top: 0.7rem; left: 0.7rem; right: 0.7rem; display: flex; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap; }
+  .hud-chip {
+    font-family: 'Space Mono', monospace; font-size: 0.56rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; color: #eafff6;
+    background: rgba(4,16,11,0.72); border: 1px solid rgba(55,217,127,0.5);
+    padding: 0.28rem 0.5rem; border-radius: 3px; backdrop-filter: blur(2px);
+    display: inline-flex; align-items: center; gap: 0.4rem;
+  }
+  .hud-chip-sensor { border-color: rgba(53,208,232,0.5); color: #cfeffb; }
+  .hud-batt { display: inline-flex; align-items: center; width: 18px; height: 9px; border: 1px solid #37d97f; border-radius: 2px; padding: 1px; position: relative; }
+  .hud-batt::after { content: ''; position: absolute; right: -3px; top: 2px; width: 2px; height: 3px; background: #37d97f; border-radius: 0 1px 1px 0; }
+  .hud-batt-fill { display: block; width: 80%; height: 100%; background: #37d97f; border-radius: 1px; }
+  .monitor-lower3 { position: absolute; left: 0; bottom: 0; display: flex; align-items: stretch; }
+  .lower3-kicker { background: var(--color-accent); color: #fff; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.56rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0.6rem; display: flex; align-items: center; }
+  .lower3-text { background: rgba(4,16,11,0.82); color: #eafff6; font-family: 'Hanken Grotesk', sans-serif; font-weight: 600; font-size: 0.74rem; padding: 0.4rem 0.7rem; display: flex; align-items: center; }
+  .monitor-caption {
+    padding: 0.65rem 0.5rem 0.3rem; font-family: 'Hanken Grotesk', sans-serif; font-style: italic;
+    font-size: 0.86rem; line-height: 1.4; color: #9ec3ad; text-align: center;
   }
 
-  /* ---------- TICKER ---------- */
-  .ticker {
-    background: var(--od-bg-deep); color: var(--od-bronze);
-    border-top: 1px solid var(--od-line); border-bottom: 1px solid var(--od-line);
-    overflow: hidden; padding: 0.7rem 0;
-    font-family: 'JetBrains Mono', monospace; font-weight: 400;
-    letter-spacing: 0.14em; text-transform: uppercase; font-size: 0.72rem;
+  /* ---------- WIRE / TICKER ---------- */
+  .wire {
+    background: var(--b-bg2); color: var(--b-gold);
+    border-top: 1px solid var(--b-line); border-bottom: 1px solid var(--b-line);
+    overflow: hidden; padding: 0.65rem 0;
+    font-family: 'Space Mono', monospace; font-weight: 400;
+    letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.7rem;
   }
-  :global([data-theme="light"]) .ticker { background: #1a2c33; color: #cba653; border-color: #2b4149; }
-  .ticker-track { display: inline-flex; gap: 2.4rem; white-space: nowrap; animation: tickerScroll 68s linear infinite; }
-  .ticker-item::after { content: '\25C8'; margin-left: 2.4rem; color: var(--od-terra); }
-  @keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-  @media (prefers-reduced-motion: reduce) { .ticker-track { animation: none; } }
+  :global([data-theme="light"]) .wire { background: #0b1c14; color: #f0c04e; border-color: #123024; }
+  .wire-track { display: inline-flex; gap: 2.2rem; white-space: nowrap; animation: wireScroll 62s linear infinite; }
+  .wire-item::after { content: '\25C9'; margin-left: 2.2rem; color: var(--b-cyan); }
+  :global([data-theme="light"]) .wire-item::after { color: #4fd0e6; }
+  @keyframes wireScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce) { .wire-track { animation: none; } }
 
   /* ---------- SECTION HEADERS ---------- */
-  .section-header { max-width: 850px; margin: 0 auto 3.6rem; text-align: center; }
+  .section-header { max-width: 850px; margin: 0 auto 3.4rem; text-align: center; }
   .section-tag {
     display: inline-flex; align-items: center; gap: 0.6rem;
-    font-family: 'JetBrains Mono', monospace; font-size: 0.64rem;
-    letter-spacing: 0.14em; text-transform: uppercase; color: var(--od-bronze); margin-bottom: 1.3rem;
+    font-family: 'Space Mono', monospace; font-size: 0.62rem;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--b-cyan); margin-bottom: 1.2rem;
   }
-  .section-tag-dot { width: 7px; height: 7px; background: var(--od-terra); border-radius: 50%; flex-shrink: 0; }
+  .section-tag-dot { width: 7px; height: 7px; background: var(--b-charge); border-radius: 50%; flex-shrink: 0; }
   .section-title {
-    font-family: 'Cormorant Garamond', serif; font-weight: 600;
-    font-size: clamp(2.5rem, 5.6vw, 4.4rem); line-height: 1.0; margin: 0 0 1.3rem;
-    color: var(--od-fg); letter-spacing: -0.01em;
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800;
+    font-size: clamp(2.3rem, 5.4vw, 4.1rem); line-height: 0.98; margin: 0 0 1.2rem;
+    color: var(--b-fg); letter-spacing: -0.02em;
   }
-  .section-title em { font-style: italic; font-weight: 500; color: var(--od-terra); }
+  .section-title em { font-style: normal; color: var(--color-accent); }
+  :global([data-theme="dark"]) .section-title em { color: var(--b-cyan); }
   .section-deck {
-    font-family: 'Spectral', serif; font-size: 1.06rem; line-height: 1.72;
-    color: var(--od-muted); max-width: 44em; margin: 0 auto; font-weight: 400;
+    font-family: 'Hanken Grotesk', sans-serif; font-size: 1.04rem; line-height: 1.68;
+    color: var(--b-muted); max-width: 44em; margin: 0 auto; font-weight: 400;
   }
 
-  /* ---------- TRIALS GALLERY ---------- */
-  .trials-section { position: relative; background: var(--od-surface); color: var(--od-fg); padding: 0 2rem 6.5rem; }
-  .trials-section > .fret { margin: 0 -2rem 5rem; width: auto; }
-  .trials-inner { max-width: 1320px; margin: 0 auto; }
-  .trials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.2rem; }
-  @media (max-width: 900px) {
-    .trials-grid { grid-template-columns: 1fr; gap: 1.8rem; }
-    .trials-section { padding: 0 1.25rem 4.5rem; }
-    .trials-section > .fret { margin: 0 -1.25rem 3.5rem; }
+  /* ---------- FAN CAM ---------- */
+  .fancam { background: var(--b-surf); color: var(--b-fg); padding: 5.5rem 2rem 6rem; }
+  .fancam-inner { max-width: 1320px; margin: 0 auto; }
+  .fancam-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+  .fc-card-lead { grid-column: 1 / -1; }
+  @media (max-width: 820px) {
+    .fancam-grid { grid-template-columns: 1fr; gap: 1.6rem; }
+    .fancam { padding: 4rem 1.25rem 4.5rem; }
+    .fc-card-lead { grid-column: auto; }
   }
-  .plate-card {
-    display: flex; flex-direction: column; background: var(--od-bg);
-    border: 1px solid var(--od-line); overflow: hidden;
+  .fc-card {
+    display: flex; flex-direction: column; background: var(--b-bg);
+    border: 1px solid var(--b-line); border-radius: 6px; overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
-  :global([data-theme="light"]) .plate-card { background: #fff; }
-  .plate-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.32); border-color: var(--od-bronze); }
-  :global([data-theme="light"]) .plate-card:hover { box-shadow: 0 16px 34px rgba(90,77,52,0.24); }
-  .plate-card-feature { grid-column: 1 / -1; display: grid; grid-template-columns: 1.35fr 1fr; align-items: stretch; }
-  .plate-card-feature .plate-card-meta { display: flex; flex-direction: column; justify-content: center; }
-  @media (max-width: 820px) { .plate-card-feature { grid-template-columns: 1fr; } }
-  .plate-card-frame { position: relative; background: var(--od-bg-deep); }
-  .plate-card-image { display: block; width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover; }
-  .plate-card-tag {
-    position: absolute; top: 0.8rem; left: 0.8rem; background: var(--od-ink); color: var(--od-bronze);
-    padding: 0.3rem 0.65rem; border: 1px solid var(--od-bronze);
-    font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.6rem;
-    letter-spacing: 0.1em; text-transform: uppercase;
+  :global([data-theme="light"]) .fc-card { background: #fff; }
+  .fc-card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,0.3); border-color: var(--b-cyan); }
+  :global([data-theme="light"]) .fc-card:hover { box-shadow: 0 16px 34px rgba(15,60,40,0.18); }
+  .fc-card-lead { display: grid; grid-template-columns: 1.4fr 1fr; align-items: stretch; }
+  .fc-card-lead .fc-meta { display: flex; flex-direction: column; justify-content: center; }
+  @media (max-width: 820px) { .fc-card-lead { grid-template-columns: 1fr; display: flex; } }
+  .fc-frame { position: relative; background: #05100b; }
+  .fc-image { display: block; width: 100%; height: 100%; aspect-ratio: 4/3; object-fit: cover; }
+  .fc-tag {
+    position: absolute; top: 0.8rem; left: 0.8rem; background: rgba(4,16,11,0.82); color: var(--b-charge);
+    padding: 0.3rem 0.6rem; border: 1px solid rgba(55,217,127,0.5); border-radius: 3px;
+    font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.58rem;
+    letter-spacing: 0.08em; text-transform: uppercase;
   }
-  .plate-card-tag-gold { background: var(--od-bronze); color: var(--od-ink); border-color: var(--od-ink); }
-  .plate-card-meta { padding: 1.6rem 1.7rem 1.9rem; }
-  .plate-card-name {
-    font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 2rem;
-    margin: 0 0 0.6rem; color: var(--od-fg); line-height: 1.0;
+  .fc-meta { padding: 1.5rem 1.6rem 1.8rem; }
+  .fc-name {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 1.7rem;
+    margin: 0 0 0.55rem; color: var(--b-fg); line-height: 1.02;
   }
-  .plate-card-name-feature { font-size: 2.5rem; color: var(--od-terra); }
-  .plate-card-caption {
-    font-family: 'Spectral', serif; font-size: 1rem; line-height: 1.66; color: var(--od-muted); margin: 0; font-weight: 400;
+  .fc-caption {
+    font-family: 'Hanken Grotesk', sans-serif; font-size: 0.98rem; line-height: 1.6; color: var(--b-muted); margin: 0; font-weight: 400;
   }
 
-  /* ---------- INVOCATION / PULL QUOTE ---------- */
-  .invocation-section {
-    position: relative; background: var(--od-ink); color: #f1e7d2; padding: 6rem 2rem; overflow: hidden;
-    border-top: 2px solid var(--od-bronze); border-bottom: 2px solid var(--od-bronze);
+  /* ---------- CREED / PULL QUOTE ---------- */
+  .creed {
+    position: relative; background: var(--b-ink); color: #eaf3ec; padding: 5.5rem 2rem; overflow: hidden;
+    border-top: 2px solid var(--color-accent); border-bottom: 2px solid var(--color-accent);
   }
-  :global([data-theme="light"]) .invocation-section { background: #16282f; }
-  .invocation-inner { max-width: 1000px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
-  .invocation-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; color: #cba653; margin-bottom: 1.8rem; }
-  .invocation-q {
-    font-family: 'Cormorant Garamond', serif; font-weight: 500;
-    font-size: clamp(1.7rem, 3.7vw, 2.9rem); line-height: 1.28; margin: 0 0 1.8rem;
-    color: #f1e7d2; letter-spacing: -0.005em;
+  :global([data-theme="light"]) .creed { background: #0b1c14; }
+  .creed-inner { max-width: 1000px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+  .creed-tag { font-family: 'Space Mono', monospace; font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; color: #58e0f2; margin-bottom: 1.6rem; }
+  .creed-q {
+    font-family: 'Bricolage Grotesque', sans-serif; font-weight: 600;
+    font-size: clamp(1.5rem, 3.4vw, 2.5rem); line-height: 1.3; margin: 0 0 1.6rem;
+    color: #eaf3ec; letter-spacing: -0.015em;
   }
-  .invocation-q::first-letter {
-    font-size: 3.4em; float: left; line-height: 0.72; padding: 0.05em 0.1em 0 0;
-    color: #cba653; font-weight: 700; font-style: italic;
+  .creed-line {
+    display: block; margin-top: 1rem; font-family: 'Hanken Grotesk', sans-serif; font-size: 0.46em;
+    letter-spacing: 0; color: #f0c04e; font-style: italic; font-weight: 500;
   }
-  .invocation-line {
-    display: block; margin-top: 1.1rem; font-family: 'Spectral', serif; font-size: 0.4em;
-    letter-spacing: 0; color: #d5563a; font-style: italic; font-weight: 400;
-  }
-  .invocation-name { display: block; font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.4rem; letter-spacing: 0.04em; color: #f1e7d2; }
-  .invocation-role { display: block; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: #cba653; margin-top: 0.5rem; }
+  .creed-name { display: block; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: 0.02em; color: #eaf3ec; }
+  .creed-role { display: block; font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: #58e0f2; margin-top: 0.5rem; }
 
-  /* ---------- CARGO / PROJECTS ---------- */
-  .cargo-section { background: var(--od-bg); color: var(--od-fg); padding: 6.5rem 2rem; }
-  .cargo-inner { max-width: 1320px; margin: 0 auto; }
-  .cargo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
-  @media (max-width: 1080px) { .cargo-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 680px) { .cargo-grid { grid-template-columns: 1fr; } .cargo-section { padding: 4.5rem 1.25rem; } }
-  .cargo-card {
-    position: relative; background: var(--od-surface); border: 1px solid var(--od-line);
-    padding: 1.8rem 1.7rem; display: flex; flex-direction: column; gap: 0.85rem;
+  /* ---------- ROSTER / PROJECTS ---------- */
+  .roster { background: var(--b-bg); color: var(--b-fg); padding: 6rem 2rem; }
+  .roster-inner { max-width: 1320px; margin: 0 auto; }
+  .roster-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.7rem; }
+  @media (max-width: 1080px) { .roster-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 680px) { .roster-grid { grid-template-columns: 1fr; } .roster { padding: 4.25rem 1.25rem; } }
+  .rt-card {
+    position: relative; background: var(--b-surf); border: 1px solid var(--b-line); border-radius: 6px;
+    padding: 1.7rem 1.6rem; display: flex; flex-direction: column; gap: 0.8rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
-  .cargo-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.3); border-color: var(--od-bronze); }
-  :global([data-theme="light"]) .cargo-card:hover { box-shadow: 0 14px 30px rgba(90,77,52,0.2); }
-  .cargo-card-head { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding-bottom: 0.75rem; border-bottom: 1px solid var(--od-line); flex-wrap: wrap; }
-  .cargo-code { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.2rem; letter-spacing: 0.02em; color: var(--od-terra); }
-  .cargo-cat { font-family: 'JetBrains Mono', monospace; font-size: 0.54rem; letter-spacing: 0.1em; color: var(--od-muted); text-transform: uppercase; }
-  .cargo-title { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1.75rem; margin: 0; color: var(--od-fg); line-height: 1.04; }
-  .cargo-body { font-family: 'Spectral', serif; font-size: 0.98rem; line-height: 1.64; color: var(--od-muted); margin: 0; flex-grow: 1; font-weight: 400; }
-  .cargo-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
-  .cargo-badge { font-family: 'JetBrains Mono', monospace; font-size: 0.54rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--od-fg); background: var(--od-surface-2); border: 1px solid var(--od-line); padding: 0.28rem 0.5rem; }
-  .cargo-status { font-family: 'JetBrains Mono', monospace; font-size: 0.54rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; padding: 0.28rem 0.5rem; color: var(--od-ink); background: var(--od-bronze); }
-  .cargo-status-running { background: #4f9e86; color: #06231a; }
-  .cargo-status-in-prototype { background: var(--od-teal); color: #06121a; }
-  .cargo-status-call-for-speakers-open { background: var(--color-accent); color: #fff; }
-  .cargo-status-the-approach-done { background: var(--od-teal); color: #06121a; }
-  .cargo-foot { margin-top: 0.3rem; }
-  .cargo-cta { display: inline-flex; align-items: center; gap: 0.45rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--od-terra); text-decoration: none; transition: gap 0.2s ease, color 0.2s ease; }
-  .cargo-cta:hover { gap: 0.75rem; color: var(--od-terra-deep); }
-  .cargo-cta-disabled { color: var(--od-muted); cursor: default; }
-  .cargo-cta-disabled:hover { gap: 0.45rem; color: var(--od-muted); }
+  .rt-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(0,0,0,0.28); border-color: var(--b-cyan); }
+  :global([data-theme="light"]) .rt-card:hover { box-shadow: 0 14px 30px rgba(15,60,40,0.16); }
+  .rt-head { display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; padding-bottom: 0.7rem; border-bottom: 1px solid var(--b-line); }
+  .rt-num { font-family: 'Space Mono', monospace; font-weight: 700; font-size: 1.5rem; letter-spacing: 0.02em; color: var(--color-accent); }
+  :global([data-theme="dark"]) .rt-num { color: var(--b-cyan); }
+  .rt-pos { font-family: 'Space Mono', monospace; font-size: 0.54rem; letter-spacing: 0.1em; color: var(--b-muted); text-transform: uppercase; }
+  .rt-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 1.5rem; margin: 0; color: var(--b-fg); line-height: 1.06; }
+  .rt-body { font-family: 'Hanken Grotesk', sans-serif; font-size: 0.96rem; line-height: 1.6; color: var(--b-muted); margin: 0; flex-grow: 1; font-weight: 400; }
+  .rt-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+  .rt-badge { font-family: 'Space Mono', monospace; font-size: 0.53rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--b-fg); background: var(--b-surf2); border: 1px solid var(--b-line); padding: 0.28rem 0.5rem; border-radius: 3px; }
+  .rt-status { font-family: 'Space Mono', monospace; font-size: 0.53rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; padding: 0.28rem 0.5rem; border-radius: 3px; color: #06100c; background: var(--b-gold); }
+  .rt-status-running { background: var(--b-charge); color: #052015; }
+  .rt-status-shipping { background: var(--b-cyan); color: #04171c; }
+  .rt-status-in-prototype { background: #7d8a83; color: #0a1712; }
+  .rt-status-call-for-speakers-open { background: var(--color-accent); color: #fff; }
+  .rt-status-trail-log-live { background: var(--b-green); color: #eafff2; }
+  :global([data-theme="dark"]) .rt-status-trail-log-live { color: #052015; }
+  .rt-foot { margin-top: 0.2rem; }
+  .rt-cta { display: inline-flex; align-items: center; gap: 0.45rem; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-accent); text-decoration: none; transition: gap 0.2s ease, color 0.2s ease; }
+  :global([data-theme="dark"]) .rt-cta { color: var(--b-cyan); }
+  .rt-cta:hover { gap: 0.72rem; color: var(--color-accent-hover); }
+  .rt-cta-disabled { color: var(--b-muted); cursor: default; }
+  .rt-cta-disabled:hover { gap: 0.45rem; color: var(--b-muted); }
 
-  /* ---------- BLOG DISPATCH ---------- */
-  .dispatch-section { background: var(--od-surface); color: var(--od-fg); padding: 6rem 2rem; }
-  :global([data-theme="dark"]) .dispatch-section { background: var(--od-bg-deep); }
-  .dispatch-inner { max-width: 900px; margin: 0 auto; }
-  .dispatch-grid { display: grid; grid-template-columns: 1fr; }
-  .dispatch-card { background: var(--od-bg); border: 1px solid var(--od-bronze); padding: 2.4rem 2.2rem; text-align: center; }
-  :global([data-theme="light"]) .dispatch-card { background: #fff; }
-  .dispatch-card-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--od-terra); margin-bottom: 1rem; }
-  .dispatch-card-title { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: clamp(1.9rem, 4vw, 2.7rem); margin: 0 0 0.6rem; color: var(--od-fg); line-height: 1.04; }
-  .dispatch-card-line { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--od-muted); margin-bottom: 1.3rem; }
-  .dispatch-card-body { font-family: 'Spectral', serif; font-size: 1.06rem; line-height: 1.72; color: var(--od-muted); margin: 0 auto 1.8rem; max-width: 42em; font-weight: 400; }
-  .dispatch-cta { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: var(--color-accent); padding: 0.8rem 1.6rem; text-decoration: none; box-shadow: 4px 4px 0 var(--od-bronze); transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease; }
-  .dispatch-cta:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--od-bronze); background: var(--color-accent-hover); }
+  /* ---------- FAN PAGE TEASER ---------- */
+  .fanpage { background: var(--b-surf); color: var(--b-fg); padding: 5.5rem 2rem; }
+  :global([data-theme="dark"]) .fanpage { background: var(--b-bg2); }
+  .fanpage-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.35fr 1fr; gap: 3.5rem; align-items: center; }
+  @media (max-width: 900px) { .fanpage-inner { grid-template-columns: 1fr; gap: 2.5rem; } .fanpage { padding: 4rem 1.25rem; } }
+  .fanpage-tag { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--b-cyan); margin-bottom: 1.1rem; }
+  .fanpage-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(2rem, 4.6vw, 3.4rem); line-height: 1.0; margin: 0 0 1.1rem; color: var(--b-fg); letter-spacing: -0.02em; }
+  .fanpage-title em { font-style: normal; color: var(--color-accent); }
+  :global([data-theme="dark"]) .fanpage-title em { color: var(--b-cyan); }
+  .fanpage-deck { font-family: 'Hanken Grotesk', sans-serif; font-size: 1.04rem; line-height: 1.66; color: var(--b-muted); margin: 0 0 1.8rem; font-weight: 400; }
+  .fanpage-card {
+    background: linear-gradient(150deg, #10231a 0%, #0a3a3f 100%); color: #eafff6;
+    border: 1px solid var(--b-cyan); border-radius: 10px; padding: 1.5rem 1.6rem;
+    box-shadow: 0 18px 44px rgba(0,0,0,0.35); font-family: 'Space Mono', monospace;
+  }
+  .fanpage-card-top { display: flex; justify-content: space-between; font-size: 0.58rem; letter-spacing: 0.12em; color: #78d7c0; text-transform: uppercase; padding-bottom: 1rem; border-bottom: 1px solid rgba(53,208,232,0.3); }
+  .fanpage-card-big { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 2.6rem; letter-spacing: -0.02em; margin: 1rem 0 1.2rem; color: #fff; }
+  .fanpage-card-row { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.5rem 0; border-top: 1px solid rgba(53,208,232,0.16); color: #bfe6d8; }
+  .fanpage-card-ok { color: #37d97f; }
 
-  /* ---------- HARBOR / CLOSING CTA ---------- */
-  .harbor-section { position: relative; background: var(--od-bg); color: var(--od-fg); padding: 0 2rem 7rem; overflow: hidden; text-align: center; }
-  .harbor-section > .fret { margin: 0 -2rem 5rem; width: auto; opacity: 0.7; }
-  :global([data-theme="dark"]) .harbor-section {
-    background: radial-gradient(circle at 50% 120%, rgba(47,125,146,0.20) 0%, transparent 55%), linear-gradient(180deg, #0b1a24 0%, #06121a 100%);
+  /* ---------- CLOSING CTA ---------- */
+  .signoff { position: relative; background: var(--b-bg); color: var(--b-fg); padding: 6rem 2rem 6.5rem; overflow: hidden; text-align: center; }
+  :global([data-theme="dark"]) .signoff {
+    background: radial-gradient(circle at 50% 118%, rgba(14,116,144,0.24) 0%, transparent 55%), linear-gradient(180deg, #0a1712 0%, #06100c 100%);
   }
-  :global([data-theme="light"]) .harbor-section {
-    background: radial-gradient(circle at 50% 120%, rgba(178,62,36,0.09) 0%, transparent 55%), linear-gradient(180deg, #efe4cd 0%, #e5d7ba 100%);
+  :global([data-theme="light"]) .signoff {
+    background: radial-gradient(circle at 50% 118%, rgba(14,122,83,0.12) 0%, transparent 55%), linear-gradient(180deg, #eef4ee 0%, #e2ebe3 100%);
   }
-  .harbor-inner { position: relative; z-index: 2; max-width: 840px; margin: 0 auto; }
-  .harbor-eyebrow { display: flex; align-items: center; justify-content: center; gap: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--od-bronze); margin-bottom: 1.7rem; }
-  .harbor-rule { width: 34px; height: 1px; background: var(--od-bronze); }
-  .harbor-title { font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: clamp(2.7rem, 6.2vw, 5rem); line-height: 0.98; margin: 0 0 1.5rem; color: var(--od-fg); letter-spacing: -0.01em; }
-  .harbor-title em { font-style: italic; font-weight: 500; color: var(--od-terra); }
-  .harbor-deck { font-family: 'Spectral', serif; font-size: 1.1rem; line-height: 1.72; color: var(--od-muted); max-width: 46em; margin: 0 auto 2.6rem; font-weight: 400; }
-  .harbor-cta-row { display: flex; flex-wrap: wrap; gap: 1.3rem; justify-content: center; }
+  .signoff-inner { position: relative; z-index: 2; max-width: 840px; margin: 0 auto; }
+  .signoff-eyebrow { display: flex; align-items: center; justify-content: center; gap: 1rem; font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--b-cyan); margin-bottom: 1.6rem; }
+  .signoff-rule { width: 34px; height: 1px; background: var(--b-cyan); }
+  .signoff-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(2.5rem, 6vw, 4.6rem); line-height: 0.98; margin: 0 0 1.4rem; color: var(--b-fg); letter-spacing: -0.02em; }
+  .signoff-title em { font-style: normal; color: var(--color-accent); }
+  :global([data-theme="dark"]) .signoff-title em { color: var(--b-cyan); }
+  .signoff-deck { font-family: 'Hanken Grotesk', sans-serif; font-size: 1.08rem; line-height: 1.68; color: var(--b-muted); max-width: 46em; margin: 0 auto 2.4rem; font-weight: 400; }
+  .signoff-cta-row { display: flex; flex-wrap: wrap; gap: 1.2rem; justify-content: center; }
 
   /* ---------- COLOPHON ---------- */
-  .colophon-section { background: var(--od-ink); color: #f1e7d2; padding: 4.75rem 2rem 5.25rem; border-top: 2px solid var(--od-bronze); }
-  :global([data-theme="light"]) .colophon-section { background: #16282f; }
-  .colophon-inner { max-width: 1100px; margin: 0 auto; }
-  .colophon-tag { font-family: 'JetBrains Mono', monospace; font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: #cba653; margin-bottom: 2.2rem; text-align: center; }
-  .colophon-roll { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.3rem 2.6rem; }
-  @media (max-width: 680px) { .colophon-roll { grid-template-columns: 1fr; } }
-  .colophon-block { display: flex; flex-direction: column; gap: 0.3rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(203,166,83,0.28); }
-  .colophon-role { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: #cba653; }
-  .colophon-name { font-family: 'Spectral', serif; font-size: 0.98rem; font-weight: 500; color: #f1e7d2; line-height: 1.4; }
-  .colophon-footnote { margin-top: 2.6rem; padding-top: 1.7rem; border-top: 1px solid rgba(203,166,83,0.28); font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; line-height: 1.75; color: rgba(241,231,210,0.72); text-align: center; max-width: 64em; margin-left: auto; margin-right: auto; }
+  .colo { background: var(--b-ink); color: #eaf3ec; padding: 3rem 2rem 3.5rem; border-top: 2px solid var(--color-accent); }
+  :global([data-theme="light"]) .colo { background: #0b1c14; }
+  .colo-inner { max-width: 1000px; margin: 0 auto; }
+  .colo-foot { font-family: 'Space Mono', monospace; font-size: 0.66rem; line-height: 1.75; color: rgba(234,243,236,0.72); text-align: center; }
 </style>

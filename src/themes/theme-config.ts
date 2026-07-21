@@ -77,48 +77,49 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "The Roske Odyssey",
-  week: "2026-07-11",
-  inspiration: "Christopher Nolan's The Odyssey opens July 17, 2026 (Matt Damon as Odysseus, shot entirely on IMAX film, the summer's most anticipated release). The 2026 World Cup is at the quarterfinals this same weekend, but the USA is OUT (eliminated by Belgium in the Round of 16), so no USA lean-in. The Odyssey is the theme. The hook: Edward as Odysseus, the brilliant man who took ten years to get home from a two-week sail because he kept refusing to ask good questions. Homer's epic recast as the greatest cautionary tale ever told about NOT asking good questions: Odysseus taunted the Cyclops and shouted his real name and address (so Poseidon knew exactly whom to curse), his crew opened the bag of winds within sight of home, he lingered a year with Circe and seven with Calypso. Information was never his bottleneck (Tiresias literally told him what would happen); judgment was. Edward, the AI practitioner who tells finance leaders to ask good questions, retells it as the story of a clever man who kept not asking them, and is of course the butt of the joke throughout: he pitches the Cyclops a business card, takes eager conference notes at the Sirens, overstays a full year at Circe's banquet, and finally gets home by using his head. Design is a fine-press illustrated edition of the epic crossed with Nolan's IMAX 65mm film grain: wine-dark sea navy, oxidized bronze gold, amphora terracotta, on aged papyrus (light). Cormorant Garamond display, Spectral body, JetBrains Mono ship's-log labels. Greek meander friezes, canto drop-caps, film-plate galleries. The homepage is framed as THE ROSKE ODYSSEY, an epic in six books. Animation stays OFF (no holiday carve-out; atmosphere is carried by static meander/grain/dawn-gradient detail, not drifting particles). The blue fedora replaces the bronze helmet in every image.",
-  tagline: "A two-week sail. Ten years late. Edward retells the Odyssey as the greatest story ever told about not asking good questions.",
+  name: "I'm Just Here for the Ball",
+  week: "2026-07-21",
+  inspiration: "The 2026 World Cup ended July 19 (Spain beat Argentina 1-0 in extra time, Ferran Torres in the 106th minute). Instead of picking a side, Edward declares himself the number-one fan of the actual ball. This year's ball is the Adidas Trionda, the official match ball and a genuine connected 'smart ball': a 500Hz motion sensor buried in the panels feeds the AI-assisted offside system in real time. The joke is mostly true. The ball is the only object on the pitch running real AI, and it really does need charging (ESPN's headline was literally 'the World Cup smart ball is a game changer, just remember to charge it', and a person watches each ball's battery on a screen). So the AI practitioner spent the entire tournament rooting for the one player made of silicon. Design is a sports-broadcast telemetry package crossed with a fan-zine: floodlit pitch-green and charging-cyan with trophy gold, a live lower-third masthead, battery and sensor HUD readouts, jersey-number display type. Bricolage Grotesque display, Hanken Grotesk body, Space Mono for the telemetry labels. Edward is the butt of the joke throughout: dressed as the ball in the stands, balancing it on his fedora, and monitoring its battery on a clipboard as a self-appointed volunteer nobody asked for. The blue fedora stays on in every frame. A permanent fan page lives at /ai-ball. Animation stays OFF (a floodlit static broadcast package carries it; drifting particles would only cheapen it).",
+  tagline: "One player on that pitch ran on a neural net and a battery. That's the one I watched.",
 
   colors: {
-    // Wine-dark sea / bronze-age Aegean: sea teal, oxidized bronze gold,
-    // amphora terracotta, on wine-dark sea night (dark) or aged papyrus (light).
-    // Contrast verified for WCAG AA in both modes.
-    primary: "#1f5568",           // Aegean sea teal
-    secondary: "#b3873f",          // oxidized bronze gold
-    accent: "#b23e24",             // amphora terracotta / wine red, the CTA pop
-    accentHover: "#97331c",
-    background: "#0b1a24",         // wine-dark sea night (dark mode)
-    backgroundLight: "#efe4cd",    // aged papyrus (light mode)
-    surface: "#122b38",            // deep sea panel (dark)
-    surfaceLight: "#f7eeda",       // lighter papyrus (light)
-    text: "#f1e7d2",               // warm bone on dark
-    textMuted: "#a6bcc1",          // muted sea-foam gray (7.5:1 on surface)
-    textDark: "#17303b",           // deep ink teal on papyrus
-    textDarkMuted: "#5a4d34",      // aged ink brown (7:1 on papyrus)
-    border: "#284c5a",             // rule (dark)
-    borderLight: "#d7c7a2",        // rule (light)
-    gradient: "linear-gradient(135deg, #0b1a24 0%, #1f5568 55%, #b23e24 100%)",
+    // Floodlit pitch-green base, charging-cyan CTA, trophy gold. The cyan is
+    // the ball's 'this thing runs on electricity' tell; gold is the trophy no
+    // team of mine won. Contrast verified for WCAG AA in both modes.
+    primary: "#0e7a53",            // pitch / emerald green
+    secondary: "#e6b23c",          // trophy gold
+    accent: "#0e7490",             // charging cyan-teal, the CTA (AA 5.36 on white)
+    accentHover: "#0c6178",
+    background: "#0a1712",         // floodlit night-pitch (dark mode)
+    backgroundLight: "#eef4ee",    // clean broadcast turf-white (light mode)
+    surface: "#11231b",            // dark pitch panel (dark)
+    surfaceLight: "#ffffff",       // card white (light)
+    text: "#eaf3ec",               // warm white on dark
+    textMuted: "#a2c1af",          // muted sage (8.4:1 on surface)
+    textDark: "#0f241a",           // deep pitch-ink on turf-white
+    textDarkMuted: "#45604e",      // muted green-ink (6.9:1 on white)
+    border: "#244a38",             // rule (dark)
+    borderLight: "#d0e2d5",        // rule (light)
+    gradient: "linear-gradient(135deg, #06100c 0%, #0e7a53 52%, #0e7490 100%)",
   },
 
   fonts: {
-    // Cormorant Garamond: high-contrast literary display serif, the illustrated
-    //   fine-press-edition voice for giant headlines.
-    // Spectral: a serif built for screens, warm and readable, the printed-epic body.
-    // JetBrains Mono: the cold data-scientist / ship's-log voice for labels + stats.
-    heading: "'Cormorant Garamond', Georgia, 'Times New Roman', serif",
-    body: "'Spectral', Georgia, 'Times New Roman', serif",
-    mono: "'JetBrains Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=JetBrains+Mono:wght@400;700&family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap",
+    // Bricolage Grotesque: a modern display grotesque with real character, the
+    //   fan-poster voice for giant headlines.
+    // Hanken Grotesk: a clean, warm humanist sans for readable body copy.
+    // Space Mono: the data-terminal voice for telemetry labels, battery
+    //   readouts, and jersey numbers.
+    heading: "'Bricolage Grotesque', 'Arial Black', sans-serif",
+    body: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
+    mono: "'Space Mono', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap",
   },
 
   layout: {
-    heroStyle: "editorial",
+    heroStyle: "split",
     navStyle: "fixed",
     cardStyle: "outlined",
-    sectionStyle: "magazine",
+    sectionStyle: "alternating",
     footerStyle: "creative",
   },
 
@@ -131,12 +132,12 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "A two-week sail home. It took him ten years.",
-    description: "This week the whole world gets a new Odyssey. So here's mine. Odysseus was the cleverest man in any room, which is exactly why the story lands: a sail from Troy to Ithaca should have taken two weeks, and it took him ten years. He taunted the Cyclops and shouted his own name and address on the way out. His crew opened the bag of winds within sight of home. He lingered a year with Circe. Information was never his problem (a prophet told him precisely what would happen). Asking good questions, and listening to the answers, was. I've been playing him all week, which was closer to typecasting than I'd like.",
-    heroImage: "hero-2026-07-11.jpg",
-    imageAlt: "Edward Roske illustrated as Odysseus, a weathered bronze-age Greek hero, bracing at the wooden steering-oar at the stern of a battered galley on the wine-dark Aegean at golden dawn, torn crimson cloak whipping in the wind, wearing his signature deep blue felt fedora with a bronze band instead of a war helmet, sea spray and rolling swells around him, in the style of an IMAX 65mm film still.",
-    ctaText: "Follow the crossing",
-    ctaLink: "#current-work",
+    subtitle: "I didn't have a team, I had a ball.",
+    description: "Everyone kept asking which team I was rooting for, Spain or Argentina. The honest answer was neither. I was rooting for the ball. This year's ball is the Adidas Trionda, and it's the only thing on the pitch running actual AI: a 500Hz sensor buried in the panels, feeding the offside system in real time. It also has to be charged, like a phone, by a person whose entire job is watching a battery icon. Twenty-two of the best athletes alive, and I spent a month watching the one player made of silicon, and I regret none of it. (I did buy a lot of jerseys first, just to be safe.)",
+    heroImage: "hero-2026-07-21.jpg",
+    imageAlt: "Edward Roske in his signature blue fedora, kneeling pitch-side and gazing lovingly at a high-tech smart soccer ball charging in a lit docking cradle that reads 95 percent, while a World Cup final celebration blurs behind him, entirely ignored.",
+    ctaText: "Meet the ball",
+    ctaLink: "/ai-ball/",
   },
 };
 

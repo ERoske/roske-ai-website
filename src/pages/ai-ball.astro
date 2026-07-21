@@ -1,0 +1,274 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// The Ball: a permanent fan page. Self-contained on purpose. It loads its own
+// fonts (head slot) and defines its own palette tokens (--aib-*), so the weekly
+// homepage rebuild never restyles it. This page is evergreen.
+
+const spec = [
+  { k: 'OFFICIAL NAME', v: 'Adidas Trionda' },
+  { k: 'ROLE', v: 'Official match ball, 2026 World Cup' },
+  { k: 'BRAIN', v: '500Hz motion sensor, sealed inside one panel' },
+  { k: 'OUTPUT', v: 'Real-time ball data to the video room, feeding the AI offside system' },
+  { k: 'PANELS', v: 'Four. The fewest in World Cup history' },
+  { k: 'NAME MEANS', v: '"Three waves," for the three host nations' },
+  { k: 'KNOWN WEAKNESS', v: 'The battery. It has to be charged' },
+  { k: 'HANDLER', v: 'A human who watches its charge and swaps in a fresh one' },
+  { k: 'ALLEGIANCE', v: 'None. Beautifully, completely neutral' },
+];
+
+const album = [
+  { src: '/images/ai-ball/edward-charging-station.jpg', cap: 'Volunteering at the charging dock. Nobody asked.' },
+  { src: '/images/ai-ball/edward-ball-jersey.jpg', cap: 'Number 1, no surname. It has earned the shirt.' },
+  { src: '/images/ai-ball/edward-ball-costume-stands.jpg', cap: 'Section 114 could not place my allegiance.' },
+  { src: '/images/ai-ball/edward-both-jerseys.jpg', cap: 'The brief, confused period when I still thought this was about countries.' },
+];
+---
+
+<BaseLayout
+  title="The Ball: A Fan Page | Roske.AI"
+  description="A dedicated fan page for the Adidas Trionda, the 2026 World Cup smart ball: the specs, the 500Hz sensor, the charging habit, and why a data scientist spent a tournament rooting for the hardware."
+>
+  <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
+  <link slot="head" rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link slot="head" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <div class="aib">
+
+    <!-- HERO -->
+    <section class="aib-hero">
+      <div class="aib-hero-grid">
+        <div class="aib-hero-text">
+          <div class="aib-eyebrow"><span class="aib-pip"></span>OFFICIAL FAN PAGE . UNOFFICIAL FAN CLUB</div>
+          <h1 class="aib-h1">THE BALL</h1>
+          <p class="aib-lede">
+            A dedicated page for the best player at the 2026 World Cup: the one made of silicon. It has no country and no surname. What it does have: a 500Hz sensor, a battery, and my full support (the fan club has one member).
+          </p>
+          <div class="aib-hero-cta">
+            <a href="#meet" class="aib-btn">Meet the ball</a>
+            <a href="/" class="aib-btn aib-btn-ghost">Back to roske.ai</a>
+          </div>
+        </div>
+        <figure class="aib-hero-fig">
+          <img src="/images/ai-ball/edward-ball-on-head.jpg" alt="Edward Roske in his blue fedora with the smart ball balanced on top of it, holding a cardboard sign that reads HERE FOR THE BALL, deadpan, in a crowd of cheering fans." width="1200" height="900" loading="eager" decoding="async" />
+          <figcaption>Exhibit A. The sign is accurate.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- MEET THE BALL / SPEC -->
+    <section id="meet" class="aib-sec aib-sec-dark">
+      <div class="aib-wrap">
+        <div class="aib-sec-head">
+          <span class="aib-tag">THE SPEC SHEET</span>
+          <h2 class="aib-h2">Meet the ball.</h2>
+          <p class="aib-deck">
+            Most "AI" announcements are really just a press release. This one is a sensor buried in the ball, taking 500 readings a second. Here's what's inside, and all of it is real.
+          </p>
+        </div>
+        <div class="aib-spec">
+          {spec.map(row => (
+            <div class="aib-spec-row">
+              <span class="aib-spec-k">{row.k}</span>
+              <span class="aib-spec-v">{row.v}</span>
+            </div>
+          ))}
+        </div>
+        <p class="aib-fine">
+          Sources, because I take this seriously: ESPN on <a class="aib-link" href="https://www.espn.com/soccer/story/_/id/49083534/world-cup-smart-ball-adidas-trionda-charge-balls-sam-borden" target="_blank" rel="noopener">the smart ball you have to remember to charge</a>, Squawka's <a class="aib-link" href="https://www.squawka.com/us/news/world-cup-2026-ball/" target="_blank" rel="noopener">explainer on the Trionda</a>, and Man of Many on <a class="aib-link" href="https://manofmany.com/entertainment/sport/adidas-trionda-2026-fifa-world-cup-ball" target="_blank" rel="noopener">the tech powering it</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- CHARGING STATUS -->
+    <section class="aib-sec">
+      <div class="aib-wrap aib-charge-wrap">
+        <div class="aib-charge-copy">
+          <span class="aib-tag">CURRENT STATUS</span>
+          <h2 class="aib-h2">Fully charged.</h2>
+          <p class="aib-deck">
+            The best ball in the world spends its downtime on a charger. A person on the sideline watches its battery on a screen and swaps in a fresh one when it drains. I found this the single most relatable fact of the tournament.
+          </p>
+        </div>
+        <div class="aib-batt-card" aria-hidden="true">
+          <div class="aib-batt-top"><span>BALL 001</span><span class="aib-batt-ok">ONLINE</span></div>
+          <div class="aib-batt-shell"><span class="aib-batt-level"></span></div>
+          <div class="aib-batt-read">97%</div>
+          <div class="aib-batt-foot"><span>SENSOR: LOCKED</span><span>500Hz</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY I'M A FAN -->
+    <section class="aib-sec aib-sec-dark">
+      <div class="aib-wrap aib-narrow">
+        <span class="aib-tag">THE CASE</span>
+        <h2 class="aib-h2">Why I'm a fan.</h2>
+        <p class="aib-body">
+          I build AI for a living, so I know the difference between a thing that runs AI and a thing that just says so in a slide deck. The Trionda is the real version. A 500Hz sensor sits inside one of its four panels and reports the ball's position hundreds of times a second. It doesn't decide anything. The data just goes to a human in the video room, who makes the call, which is how the fast new offside rulings happen. I've spent three years building that same pattern for finance teams. The ball beat me to the World Cup.
+        </p>
+        <p class="aib-body">
+          My favorite part is that it has to be charged. The best ball on Earth naps between shifts, like the rest of us. I have never felt closer to a piece of sporting equipment, and I've thought about this more than is healthy.
+        </p>
+        <p class="aib-body">
+          I did try to root for a country first. I bought both finalists' kits, wore them at the same time, and felt nothing. Spain won, Argentina didn't, and I was already down at the charging dock asking if it needed anything. (It never answers. That's part of the appeal.)
+        </p>
+      </div>
+    </section>
+
+    <!-- THE ALBUM -->
+    <section class="aib-sec">
+      <div class="aib-wrap">
+        <div class="aib-sec-head">
+          <span class="aib-tag">THE ALBUM</span>
+          <h2 class="aib-h2">A supporter, documented.</h2>
+        </div>
+        <div class="aib-album">
+          {album.map(a => (
+            <figure class="aib-album-item">
+              <img src={a.src} alt={a.cap} loading="lazy" decoding="async" />
+              <figcaption>{a.cap}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERSHIP -->
+    <section class="aib-sec aib-sec-dark">
+      <div class="aib-wrap aib-member-wrap">
+        <div class="aib-member-copy">
+          <span class="aib-tag">FAN CLUB</span>
+          <h2 class="aib-h2">Membership: 1.</h2>
+          <p class="aib-deck">
+            That is the entire membership, and it is the correct size. If you want to talk about AI that reports the truth instead of having opinions about it, that conversation I'll actually answer.
+          </p>
+          <a href="/question/" target="_blank" rel="noopener" class="aib-btn">Book 13 minutes</a>
+        </div>
+        <div class="aib-card">
+          <div class="aib-card-top"><span>MEMBER CARD</span><span>NO. 0001</span></div>
+          <div class="aib-card-big">THE BALL</div>
+          <div class="aib-card-row"><span>FAN</span><span>EDWARD ROSKE</span></div>
+          <div class="aib-card-row"><span>STATUS</span><span class="aib-card-ok">FULLY CHARGED</span></div>
+          <div class="aib-card-row"><span>SINCE</span><span>KICKOFF</span></div>
+          <div class="aib-card-row"><span>RENEWS</span><span>NEXT WORLD CUP</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOT -->
+    <section class="aib-foot">
+      <div class="aib-wrap">
+        <p class="aib-foot-note">
+          Not affiliated with adidas, FIFA, Powerade, or the Adidas Trionda itself, which is a soccer ball and cannot consent to being a website's favorite athlete. The ball facts are real. The membership card is not. The fedora is real and stays on.
+        </p>
+        <a href="/" class="aib-link aib-back">Back to roske.ai</a>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  /* ============================================================
+     /ai-ball  -  THE BALL, a permanent self-contained fan page.
+     Own palette (--aib-*), own fonts (loaded via head slot).
+     Deliberately theme-independent so weekly rebuilds leave it be.
+     ============================================================ */
+  :global([data-theme="dark"]) .aib {
+    --aib-bg: #0a1712; --aib-bg2: #06100c; --aib-surf: #11231b; --aib-surf2: #16301f;
+    --aib-fg: #eaf3ec; --aib-muted: #a2c1af; --aib-line: #244a38;
+    --aib-cyan: #35d0e8; --aib-green: #37d97f; --aib-gold: #e6b23c; --aib-accent: #0e7490; --aib-accent-h: #0c6178;
+  }
+  :global([data-theme="light"]) .aib {
+    --aib-bg: #eef4ee; --aib-bg2: #e2ebe3; --aib-surf: #ffffff; --aib-surf2: #f2f8f2;
+    --aib-fg: #0f241a; --aib-muted: #45604e; --aib-line: #d0e2d5;
+    --aib-cyan: #0e7490; --aib-green: #12894e; --aib-gold: #8a6410; --aib-accent: #0e7490; --aib-accent-h: #0c6178;
+  }
+
+  .aib { font-family: 'Hanken Grotesk', system-ui, sans-serif; background: var(--aib-bg); color: var(--aib-fg); }
+  .aib-wrap { max-width: 1140px; margin: 0 auto; padding: 0 2rem; }
+  .aib-narrow { max-width: 780px; }
+  @media (max-width: 640px) { .aib-wrap { padding: 0 1.25rem; } }
+
+  .aib-tag { font-family: 'Space Mono', monospace; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--aib-cyan); }
+  .aib-h2 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(2.1rem, 4.6vw, 3.4rem); line-height: 1.0; margin: 0.7rem 0 1rem; color: var(--aib-fg); letter-spacing: -0.02em; }
+  .aib-deck, .aib-body { font-family: 'Hanken Grotesk', sans-serif; color: var(--aib-muted); line-height: 1.68; }
+  .aib-deck { font-size: 1.05rem; max-width: 42em; margin: 0; }
+  .aib-body { font-size: 1.08rem; margin: 0 0 1.4rem; }
+
+  /* HERO */
+  .aib-hero { position: relative; overflow: hidden; padding: 4.5rem 2rem 4rem; }
+  :global([data-theme="dark"]) .aib-hero { background: radial-gradient(circle at 84% 16%, rgba(53,208,232,0.16) 0%, transparent 48%), linear-gradient(168deg, #06100c 0%, #0a1712 60%, #0c2018 100%); }
+  :global([data-theme="light"]) .aib-hero { background: radial-gradient(circle at 84% 12%, rgba(14,116,144,0.1) 0%, transparent 46%), linear-gradient(180deg, #eef4ee 0%, #e4ede5 100%); }
+  .aib-hero-grid { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 3rem; align-items: center; }
+  @media (max-width: 900px) { .aib-hero-grid { grid-template-columns: 1fr; gap: 2.2rem; } }
+  .aib-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--aib-cyan); border: 1px solid var(--aib-line); padding: 0.4rem 0.85rem; border-radius: 3px; margin-bottom: 1.4rem; }
+  .aib-pip { width: 7px; height: 7px; border-radius: 50%; background: var(--aib-green); }
+  .aib-h1 { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: clamp(3.4rem, 11vw, 7rem); line-height: 0.86; margin: 0 0 1.2rem; letter-spacing: -0.03em; color: var(--aib-fg); }
+  .aib-lede { font-family: 'Hanken Grotesk', sans-serif; font-size: 1.14rem; line-height: 1.62; color: var(--aib-muted); margin: 0 0 1.8rem; max-width: 34em; }
+  .aib-hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .aib-hero-fig { margin: 0; }
+  .aib-hero-fig img { width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; border-radius: 8px; border: 1px solid var(--aib-line); box-shadow: 0 20px 50px rgba(0,0,0,0.4); }
+  .aib-hero-fig figcaption { font-family: 'Space Mono', monospace; font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--aib-muted); margin-top: 0.7rem; text-align: center; }
+
+  /* BUTTONS */
+  .aib-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; text-decoration: none; padding: 0.85rem 1.6rem; border-radius: 3px; border: 1.5px solid transparent; background: var(--aib-accent); color: #fff; box-shadow: 4px 4px 0 var(--aib-gold); transition: transform 0.16s ease, box-shadow 0.16s ease, background 0.16s ease; }
+  .aib-btn:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--aib-gold); background: var(--aib-accent-h); }
+  .aib-btn-ghost { background: transparent; color: var(--aib-cyan); border-color: var(--aib-cyan); box-shadow: none; }
+  .aib-btn-ghost:hover { background: rgba(14,116,144,0.1); box-shadow: none; }
+
+  /* SECTIONS */
+  .aib-sec { padding: 4.75rem 0; }
+  .aib-sec-dark { background: var(--aib-bg2); border-top: 1px solid var(--aib-line); border-bottom: 1px solid var(--aib-line); }
+  .aib-sec-head { text-align: center; max-width: 720px; margin: 0 auto 2.6rem; }
+  .aib-sec-head .aib-deck { margin: 0 auto; }
+
+  /* SPEC SHEET */
+  .aib-spec { max-width: 820px; margin: 0 auto; border: 1px solid var(--aib-line); border-radius: 8px; overflow: hidden; }
+  .aib-spec-row { display: grid; grid-template-columns: 0.8fr 1.6fr; gap: 1rem; padding: 0.95rem 1.4rem; border-bottom: 1px solid var(--aib-line); background: var(--aib-surf); }
+  .aib-spec-row:nth-child(even) { background: var(--aib-surf2); }
+  .aib-spec-row:last-child { border-bottom: none; }
+  .aib-spec-k { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--aib-cyan); align-self: center; }
+  .aib-spec-v { font-family: 'Hanken Grotesk', sans-serif; font-size: 1rem; color: var(--aib-fg); font-weight: 500; line-height: 1.45; }
+  @media (max-width: 560px) { .aib-spec-row { grid-template-columns: 1fr; gap: 0.25rem; } }
+  .aib-fine { font-family: 'Hanken Grotesk', sans-serif; font-size: 0.92rem; line-height: 1.7; color: var(--aib-muted); max-width: 820px; margin: 1.5rem auto 0; text-align: center; }
+
+  /* CHARGE WIDGET */
+  .aib-charge-wrap { display: grid; grid-template-columns: 1.3fr 0.9fr; gap: 3rem; align-items: center; }
+  @media (max-width: 820px) { .aib-charge-wrap { grid-template-columns: 1fr; gap: 2rem; } }
+  .aib-charge-copy .aib-deck { margin-top: 0.4rem; }
+  .aib-batt-card { background: linear-gradient(150deg, #10231a 0%, #0a3a3f 100%); border: 1px solid var(--aib-cyan); border-radius: 12px; padding: 1.6rem; color: #eafff6; font-family: 'Space Mono', monospace; box-shadow: 0 18px 44px rgba(0,0,0,0.32); }
+  .aib-batt-top { display: flex; justify-content: space-between; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: #78d7c0; }
+  .aib-batt-ok { color: #37d97f; }
+  .aib-batt-shell { height: 34px; margin: 1.1rem 0 0.7rem; border: 2px solid #37d97f; border-radius: 5px; padding: 3px; position: relative; }
+  .aib-batt-shell::after { content: ''; position: absolute; right: -7px; top: 9px; width: 5px; height: 12px; background: #37d97f; border-radius: 0 2px 2px 0; }
+  .aib-batt-level { display: block; height: 100%; width: 97%; background: linear-gradient(90deg, #37d97f, #35d0e8); border-radius: 2px; }
+  .aib-batt-read { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 2.6rem; color: #fff; line-height: 1; }
+  .aib-batt-foot { display: flex; justify-content: space-between; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: #78d7c0; margin-top: 0.5rem; }
+
+  /* ALBUM */
+  .aib-album { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; max-width: 960px; margin: 0 auto; }
+  @media (max-width: 720px) { .aib-album { grid-template-columns: 1fr; } }
+  .aib-album-item { margin: 0; background: var(--aib-surf); border: 1px solid var(--aib-line); border-radius: 8px; overflow: hidden; }
+  .aib-album-item img { display: block; width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; }
+  .aib-album-item figcaption { font-family: 'Hanken Grotesk', sans-serif; font-style: italic; font-size: 0.92rem; color: var(--aib-muted); padding: 0.85rem 1.1rem 1.1rem; line-height: 1.45; }
+
+  /* MEMBERSHIP */
+  .aib-member-wrap { display: grid; grid-template-columns: 1.2fr 0.9fr; gap: 3rem; align-items: center; }
+  @media (max-width: 820px) { .aib-member-wrap { grid-template-columns: 1fr; gap: 2.2rem; } }
+  .aib-member-copy .aib-deck { margin: 0 0 1.7rem; }
+  .aib-card { background: linear-gradient(150deg, #10231a 0%, #0a3a3f 100%); border: 1px solid var(--aib-cyan); border-radius: 12px; padding: 1.6rem 1.7rem; color: #eafff6; font-family: 'Space Mono', monospace; box-shadow: 0 18px 44px rgba(0,0,0,0.35); }
+  .aib-card-top { display: flex; justify-content: space-between; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #78d7c0; padding-bottom: 1rem; border-bottom: 1px solid rgba(53,208,232,0.3); }
+  .aib-card-big { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 2.5rem; letter-spacing: -0.02em; margin: 1rem 0 1.1rem; color: #fff; }
+  .aib-card-row { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.64rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.5rem 0; border-top: 1px solid rgba(53,208,232,0.16); color: #bfe6d8; }
+  .aib-card-ok { color: #37d97f; }
+
+  /* LINKS + FOOT */
+  .aib-link { color: var(--aib-cyan); text-decoration: underline; text-underline-offset: 2px; font-weight: 600; }
+  .aib-link:hover { color: var(--aib-accent-h); }
+  :global([data-theme="dark"]) .aib-link:hover { color: #7fe2f2; }
+  .aib-foot { padding: 3rem 0 4rem; background: var(--aib-bg); text-align: center; }
+  .aib-foot-note { font-family: 'Space Mono', monospace; font-size: 0.68rem; line-height: 1.75; color: var(--aib-muted); max-width: 60em; margin: 0 auto 1.4rem; }
+  .aib-back { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
+</style>
