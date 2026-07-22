@@ -45,12 +45,12 @@ const album = [
             A dedicated page for the best player at the 2026 World Cup: the one made of silicon. It has no country and no surname. What it does have: a 500Hz sensor, a battery, and my full support (the fan club has one member).
           </p>
           <div class="aib-hero-cta">
-            <a href="#meet" class="aib-btn">Meet the ball</a>
-            <a href="/" class="aib-btn aib-btn-ghost">Back to roske.ai</a>
+            <a href="#join" class="aib-btn">Join the AI Ball Fan Club</a>
+            <a href="#meet" class="aib-btn aib-btn-ghost">Meet the ball</a>
           </div>
         </div>
         <figure class="aib-hero-fig">
-          <img src="/images/ai-ball/edward-ball-on-head.jpg" alt="Edward Roske in his blue fedora with the smart ball balanced on top of it, holding a cardboard sign that reads HERE FOR THE BALL, deadpan, in a crowd of cheering fans." width="1200" height="900" loading="eager" decoding="async" />
+          <img src="/images/ai-ball/edward-ball-on-head.jpg" alt="Edward Roske wearing the World Cup smart ball as a helmet with his blue fedora perched on top of it, holding a cardboard sign that reads HERE FOR THE BALL, deadpan, in a crowd of cheering fans." width="1200" height="900" loading="eager" decoding="async" />
           <figcaption>Exhibit A. The sign is accurate.</figcaption>
         </figure>
       </div>
@@ -134,16 +134,45 @@ const album = [
       </div>
     </section>
 
-    <!-- MEMBERSHIP -->
-    <section class="aib-sec aib-sec-dark">
+    <!-- JOIN THE FAN CLUB -->
+    <section id="join" class="aib-sec aib-sec-dark">
       <div class="aib-wrap aib-member-wrap">
         <div class="aib-member-copy">
           <span class="aib-tag">FAN CLUB</span>
-          <h2 class="aib-h2">Membership: 1.</h2>
+          <h2 class="aib-h2">Join the fan club.</h2>
           <p class="aib-deck">
-            That is the entire membership, and it is the correct size. If you want to talk about AI that reports the truth instead of having opinions about it, that conversation I'll actually answer.
+            Founding membership is taken (No. 0001, me, non-negotiable). Everything after that is a list I read by hand, which means it lands in my actual inbox and I get to it between flights. Apply anyway. The roster could use the company, even if it never grows.
           </p>
-          <a href="/question/" target="_blank" rel="noopener" class="aib-btn">Book 13 minutes</a>
+
+          <form id="aib-join-form" class="aib-form" novalidate>
+            <input type="hidden" name="access_key" value="927fd498-3a0f-470c-89af-80a8558e8530" />
+            <input type="hidden" name="subject" value="Someone wants to join the AI Ball Fan Club" />
+            <input type="hidden" name="from_name" value="AI Ball Fan Club" />
+
+            <div class="aib-field">
+              <label class="aib-label" for="aib-name">Your name</label>
+              <input class="aib-input" id="aib-name" name="name" type="text" required autocomplete="name" placeholder="The name for your imaginary card" />
+            </div>
+            <div class="aib-field">
+              <label class="aib-label" for="aib-email">Your email</label>
+              <input class="aib-input" id="aib-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+            </div>
+            <div class="aib-field">
+              <label class="aib-label" for="aib-why">Why you <span class="aib-opt">(optional. The founding member never had to explain himself.)</span></label>
+              <textarea class="aib-textarea" id="aib-why" name="why" rows="3" placeholder="Make the case for member No. 0002."></textarea>
+            </div>
+
+            <input type="checkbox" name="botcheck" class="aib-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+            <div class="aib-form-row">
+              <button type="submit" class="aib-btn" id="aib-join-btn">Apply to join</button>
+              <span class="aib-form-msg" id="aib-join-msg" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+
+          <p class="aib-note">
+            Rather talk shop? If you want AI that reports the truth instead of having opinions about it, <a class="aib-link" href="/question/" target="_blank" rel="noopener">book 13 minutes</a>. That conversation I'll actually answer.
+          </p>
         </div>
         <div class="aib-card">
           <div class="aib-card-top"><span>MEMBER CARD</span><span>NO. 0001</span></div>
@@ -271,4 +300,78 @@ const album = [
   .aib-foot { padding: 3rem 0 4rem; background: var(--aib-bg); text-align: center; }
   .aib-foot-note { font-family: 'Space Mono', monospace; font-size: 0.68rem; line-height: 1.75; color: var(--aib-muted); max-width: 60em; margin: 0 auto 1.4rem; }
   .aib-back { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* JOIN FORM */
+  .aib-form { margin: 1.9rem 0 0; display: flex; flex-direction: column; gap: 1.05rem; }
+  .aib-field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .aib-label { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--aib-cyan); }
+  .aib-opt { text-transform: none; letter-spacing: 0; color: var(--aib-muted); font-size: 0.66rem; }
+  .aib-input, .aib-textarea { font-family: 'Hanken Grotesk', sans-serif; font-size: 1rem; color: var(--aib-fg); background: var(--aib-surf); border: 1px solid var(--aib-line); border-radius: 6px; padding: 0.8rem 0.95rem; width: 100%; transition: border-color 0.16s ease, box-shadow 0.16s ease; }
+  .aib-textarea { resize: vertical; min-height: 3.3rem; line-height: 1.5; }
+  .aib-input::placeholder, .aib-textarea::placeholder { color: var(--aib-muted); opacity: 0.65; }
+  .aib-input:focus, .aib-textarea:focus { outline: none; border-color: var(--aib-cyan); box-shadow: 0 0 0 3px rgba(53,208,232,0.16); }
+  .aib-hp { position: absolute; left: -9999px; width: 0; height: 0; opacity: 0; }
+  .aib-form-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.25rem; }
+  .aib-form-msg { font-family: 'Space Mono', monospace; font-size: 0.72rem; letter-spacing: 0.02em; color: var(--aib-muted); }
+  .aib-form-msg.err { color: #ff9a9a; }
+  .aib-btn:disabled { opacity: 0.55; cursor: default; transform: none; box-shadow: 4px 4px 0 var(--aib-gold); }
+  .aib-note { font-family: 'Hanken Grotesk', sans-serif; font-size: 0.92rem; line-height: 1.6; color: var(--aib-muted); margin: 1.5rem 0 0; }
+
+  /* JOINED (success) */
+  .aib-joined { margin: 1.9rem 0 0; border: 1px solid var(--aib-cyan); border-radius: 10px; padding: 1.5rem 1.6rem; background: linear-gradient(150deg, rgba(53,208,232,0.07), rgba(55,217,127,0.05)); }
+  .aib-joined-h { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1.7rem; color: var(--aib-fg); margin: 0.55rem 0 0.7rem; letter-spacing: -0.01em; }
+  .aib-joined p { font-family: 'Hanken Grotesk', sans-serif; color: var(--aib-muted); line-height: 1.62; font-size: 1rem; margin: 0; }
 </style>
+
+<script is:inline>
+  (function () {
+    var form = document.getElementById('aib-join-form');
+    if (!form) return;
+    var btn = document.getElementById('aib-join-btn');
+    var msg = document.getElementById('aib-join-msg');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Honeypot: a real person never checks this. If it's set, bail quietly.
+      var hp = form.querySelector('input[name="botcheck"]');
+      if (hp && hp.checked) return;
+
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+
+      msg.className = 'aib-form-msg';
+      msg.textContent = 'Filing it...';
+      btn.disabled = true;
+
+      var obj = {};
+      new FormData(form).forEach(function (value, key) { obj[key] = value; });
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(obj)
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (json) {
+          if (json && json.success) {
+            var done = document.createElement('div');
+            done.className = 'aib-joined';
+            done.innerHTML =
+              '<span class="aib-tag">APPLICATION RECEIVED</span>' +
+              '<h3 class="aib-joined-h">You\'re on the record.</h3>' +
+              '<p>It\'s in my inbox, which is where all fan club business happens. Membership holds at one for now (check the card), but you\'re officially the next person on Earth to care about a soccer ball\'s battery life. Welcome, more or less.</p>';
+            form.replaceWith(done);
+          } else {
+            btn.disabled = false;
+            msg.className = 'aib-form-msg err';
+            msg.textContent = (json && json.message) ? json.message : 'Something jammed. Give it another go in a moment.';
+          }
+        })
+        .catch(function () {
+          btn.disabled = false;
+          msg.className = 'aib-form-msg err';
+          msg.textContent = 'Network hiccup. Try that again.';
+        });
+    });
+  })();
+</script>
