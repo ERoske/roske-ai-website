@@ -1,5 +1,125 @@
 [
   {
+    "title": "Tesla Ranked Employees by AI Use, Then Capped It",
+    "videoId": "wjfnUW5EoeE",
+    "published": "2026-07-24T14:00:20+00:00",
+    "description": "Tesla spent months pushing its own employees to use more AI, even ranking them on a leaderboard by tokens burned. Then the bill arrived, and Tesla capped AI spending at about two hundred dollars a week per person, approval required to go over. The one exemption is Elon Musk's...",
+    "thumbnail": "https://i.ytimg.com/vi/wjfnUW5EoeE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Did Godot Ban AI-Written Code?",
+    "videoId": "LIPLxllWBCs",
+    "published": "2026-07-23T14:00:20+00:00",
+    "description": "Godot, one of the most popular open-source game engines, rewrote its rules to keep AI-written code out of the project. The code mostly runs fine. The problem was that the people submitting it couldn't explain or fix it, and the maintainers decided AI can't take responsibility...",
+    "thumbnail": "https://i.ytimg.com/vi/LIPLxllWBCs/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Dr. AI Says That for Puerto Rico, AI Is Life and Death | Nesty Delgado",
+    "videoId": "nGNfFTPD0rs",
+    "published": "2026-07-22T04:07:08+00:00",
+    "description": "Nesty Delgado commanded a Puerto Rico National Guard task force through Hurricane Maria. Per Nesty: \"We were making life-and-death decisions back there, with incomplete data.\" Today, on the island, they call him Dr. AI.",
+    "thumbnail": "https://i.ytimg.com/vi/nGNfFTPD0rs/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Did Claude Code Change Your Apostrophe?",
+    "videoId": "1sH6CGFJ4ZE",
+    "published": "2026-07-22T04:00:28+00:00",
+    "description": "A developer took apart Claude Code and found Anthropic had been hiding an invisible fingerprint in the text its coding tool sends the AI, swapping the apostrophe in \"Today's\" between four identical-looking characters to flag suspected copycats. The motive was real. They just...",
+    "thumbnail": "https://i.ytimg.com/vi/1sH6CGFJ4ZE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why OpenAI's Engineers Stopped Using ChatGPT",
+    "videoId": "VKpbL340aL4",
+    "published": "2026-07-21T04:00:15+00:00",
+    "description": "OpenAI published data on how its own people work, and the headline is blunt: the average OpenAI engineer now produces around ninety-nine percent of their output through agents instead of the chatbot. Even its lawyers and recruiters are past eighty-five percent, and about a...",
+    "thumbnail": "https://i.ytimg.com/vi/VKpbL340aL4/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why is OpenAI building its own chip?",
+    "videoId": "mGPsxX_LTyU",
+    "published": "2026-07-20T04:00:23+00:00",
+    "description": "OpenAI and Broadcom unveiled Jalapeño, OpenAI's first custom chip. Plenty of companies build their own AI chips; Google, Amazon, and Meta already do. The surprise here is the speed: about nine months, when these chips usually take years. OpenAI's president says they used their...",
+    "thumbnail": "https://i.ytimg.com/vi/mGPsxX_LTyU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What did AI just build for the government?",
+    "videoId": "Xmh7FsbYVWE",
+    "published": "2026-07-19T04:00:12+00:00",
+    "description": "The government's nuclear agency showed off Aires Tide, an 11-foot, 3D-printed flight test vehicle whose internal design was done by AI, and parked it at a state fair on the National Mall. The number that matters: AI cut a roughly two-year hardware design cycle down to five...",
+    "thumbnail": "https://i.ytimg.com/vi/Xmh7FsbYVWE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Does OpenAI Lose Money When You Use ChatGPT?",
+    "videoId": "-ThYRnPtfAM",
+    "published": "2026-07-18T04:00:10+00:00",
+    "description": "The top ChatGPT plan costs two hundred dollars a month, and OpenAI's own CEO admits it loses money. One stress-test found a maxed-out plan can burn as much as fourteen thousand dollars of compute at API rates. My take: the price you got hooked on was never the real price, and...",
+    "thumbnail": "https://i.ytimg.com/vi/-ThYRnPtfAM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What does the Pope have to say about AI?",
+    "videoId": "5bJ9U_cMQsU",
+    "published": "2026-07-17T06:00:23+00:00",
+    "description": "Pope Leo XIV made his first encyclical about artificial intelligence, \"Magnifica Humanitas.\" He called AI a defining moral test, framed it as a choice between Babel and Jerusalem, and told the world to \"disarm\" it of the drive to dominate. Then the irony arrived: within a day...",
+    "thumbnail": "https://i.ytimg.com/vi/5bJ9U_cMQsU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Can AI Be Good for Business and Good for Humanity? | Richard Benjamins",
+    "videoId": "b8w4wbRAhMA",
+    "published": "2026-07-16T16:06:15+00:00",
+    "description": "Richard Benjamins's new book, The AI-Driven Company, explains how organizations can move beyond AI hype and experiments to create scalable, tangible economic value. Edward and Richard also discuss whether AI can create both business value and social value, who should lead AI...",
+    "thumbnail": "https://i.ytimg.com/vi/b8w4wbRAhMA/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Did Amazon Bury Its Own Sam Altman Movie?",
+    "videoId": "Bafq-WHlLb4",
+    "published": "2026-07-16T04:00:24+00:00",
+    "description": "Amazon's own studio finished a $40 million movie about Sam Altman, starring Andrew Garfield, tested it to good reviews, and then decided not to release it. Four months earlier, Amazon had put about fifty billion dollars into OpenAI and made Altman a strategic partner. My take...",
+    "thumbnail": "https://i.ytimg.com/vi/Bafq-WHlLb4/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Is Midjourney Building a Body Scanner?",
+    "videoId": "gtOSp0FI68k",
+    "published": "2026-07-15T04:00:09+00:00",
+    "description": "Midjourney, the AI that makes pictures, just launched a medical division and a full-body ultrasound scanner it plans to put in a San Francisco spa. The founder admits it barely uses any AI, and the imaging tech comes from a partner. A look at what an AI company flush with cash...",
+    "thumbnail": "https://i.ytimg.com/vi/gtOSp0FI68k/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How good is AI at real science?",
+    "videoId": "ZQrXmJazkWc",
+    "published": "2026-07-14T04:00:24+00:00",
+    "description": "OpenAI built LifeSciBench, a 750-task research test written by 173 PhD scientists, then ran its own best science model against it. The result: about one task in three. The company selling the \"AI replaces the experts\" dream just published the number that says not yet. The score...",
+    "thumbnail": "https://i.ytimg.com/vi/ZQrXmJazkWc/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Does the Same Uber Cost Different Prices?",
+    "videoId": "kVbx8KC7kJA",
+    "published": "2026-07-13T04:00:32+00:00",
+    "description": "Consumer Reports priced the same rideshare trip across 174 volunteers in 18 states and found Uber and Lyft routinely quote different riders different prices for the same trip at the same minute. My take: the question isn't whether AI sets prices. It already does, and rideshare...",
+    "thumbnail": "https://i.ytimg.com/vi/kVbx8KC7kJA/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Did Ford Rehire the Engineers AI Replaced?",
+    "videoId": "6YK1NOCZmmQ",
+    "published": "2026-07-12T04:00:00+00:00",
+    "description": "Ford spent about three years leaning on automated, AI-driven quality systems, then un-retired around 350 veteran \"gray beard\" engineers when the quality slipped. The twist: those humans came back to reprogram the AI and train it, and Ford now tops J.D. Power's quality rankings...",
+    "thumbnail": "https://i.ytimg.com/vi/6YK1NOCZmmQ/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "How can a fake bug report hijack your AI?",
     "videoId": "zdSwu_azPP8",
     "published": "2026-07-11T04:00:10+00:00",

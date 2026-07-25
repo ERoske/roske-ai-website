@@ -1,0 +1,61 @@
+---
+title: "What Should Your AI Forget?"
+description: "Spider-Man: Brand New Day opens Friday on a world that forgot Peter Parker. Everyone building AI agents is obsessed with making them remember more. The harder question is what they should forget, and who gets to decide."
+date: 2026-07-25
+tags: ["AI", "AI Agents", "Asking Good Questions", "Spider-Man"]
+---
+
+[Spider-Man: Brand New Day](https://www.marvel.com/movies/spider-man-brand-new-day) opens Friday, and the premise is a memory wipe. The world no longer knows who Peter Parker is, so he still does the job and nobody can connect the job back to the person.
+
+Comic readers have seen this before. The [original "Brand New Day" storyline](https://en.wikipedia.org/wiki/One_More_Day) in 2008 rebooted Peter's life by erasing what everyone knew about him, and readers spent years arguing about whether the erasure was a gift or a theft. That argument is now a live engineering question, because I spend my working weeks building systems that remember things about people.
+
+The question I keep coming back to: what should your AI forget?
+
+## Everyone is optimizing the wrong direction
+
+Right now the entire agent industry is pushing one way: longer context windows, persistent memory, vector stores that recall a conversation from March, retrieval across your whole Slack history, and a bunch more. [Anthropic's memory tooling](https://docs.claude.com/en/docs/build-with-claude/context-windows) and every competing implementation sell the same promise: your assistant will finally remember.
+
+That promise is real and it's genuinely useful. An agent that forgets your chart of accounts every Monday is a demo, and I've built a few of those (they demo beautifully, which is exactly the trap).
+
+But "remember everything" is a design default nobody actually chose. It's just where you land if you never ask the other question. And in the Office of the CFO, where I do most of my work, remembering everything is how you build a system that turns into a liability.
+
+## Some things to make your agent forget
+
+**The number that was wrong.** During a close, figures move. Somebody posts an accrual and somebody else reverses it, and then at 11 p.m. the intercompany mismatch nobody had booked finally turns up. If your agent cached the Tuesday version of a revenue number and cheerfully repeats it on Friday, it's laundering a stale number through a confident voice. Anything that comes out of a live system should be a live lookup. This is most of why I build [MCP servers](https://modelcontextprotocol.io/) instead of stuffing financial data into a prompt: the server goes and asks the source, every single time, even when it's annoying.
+
+**The thing a person told it in confidence.** Somebody types something into an agent during a reorg that they'd never put in an email. If that lands in a shared memory store, you've built a surveillance tool by accident. Nobody wrote a requirement for it. It's just what happens when retention has no expiry.
+
+**Its own bad conclusions.** An agent that reasoned its way to a wrong answer in January and still treats that answer as settled in July is just being stubborn, expensively. Give conclusions a shorter expiry than the data they were drawn from.
+
+**The org chart from two reorgs ago.** Routing, approvals, all the "who signs off on this" wiring. Nothing ages worse, and nobody ever remembers to go update it.
+
+There's more depending on what you actually do, but those four cover most of the damage I've watched happen.
+
+## The real question is who holds the eraser
+
+Deciding what gets deleted is a governance call, and by default whoever wrote the retention code makes it, and that person is almost always the wrong one for the job.
+
+Europe already made a version of this call. The [GDPR right to erasure](https://gdpr-info.eu/art-17-gdpr/) says a person can require an organization to delete data about them. Written for databases, it now points straight at model weights and memory stores, and the honest answer about how you fully remove one person from a trained system is still "with difficulty."
+
+So the questions worth asking before you turn memory on:
+
+- What is the expiry on each kind of thing this agent stores?
+- Who can inspect what it remembers about a named person?
+- Who can delete it, and does that deletion actually propagate?
+- What does the agent do when the memory and the live system disagree?
+
+That last one is the one that bites. An agent should trust the source of truth over its own recollection every time, without being asked, and most implementations do the opposite because recollection is cheap and a query costs something.
+
+## What Peter gets out of it
+
+The interesting turn in Brand New Day is that the memory wipe isn't purely a loss. Nobody expects the old Peter Parker from him, so he gets to be whatever he is now.
+
+I got a duller version of the same deal. I ran interRel for 25 years, and inside the Oracle finance world the name did my introducing for me. Then I sold it, walked into AI rooms, and became a guy in a hat with opinions. That was uncomfortable for about six months and useful ever since, because nobody in those rooms wanted my 2015 answer and I had to go find a 2026 one. (Edward, you spent 25 years building name recognition and now you're writing a thousand words about the upside of losing it. Pick a lane.)
+
+Companies get the same thing from institutional memory that people get from a reputation. It's load-bearing right up until it turns into the reason nothing changes, and "we tried that in 2019" has probably killed more good ideas in the Office of the CFO than any budget committee.
+
+So build the memory. You need it. Then decide, on purpose and in writing, what it's required to let go of and how often.
+
+Short answer to the title: your AI should forget anything it can go look up, anything a person didn't consent to it keeping, whatever it concluded back before the facts moved, the old org chart, last quarter's approval routing, and a bunch more that nobody ever put an expiry on.
+
+The rest it can hang onto. (Including, apparently, that I used to run a consulting company. The internet remembers that one fine.)

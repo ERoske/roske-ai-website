@@ -77,50 +77,52 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "I'm Just Here for the Ball",
-  week: "2026-07-21",
-  inspiration: "The 2026 World Cup ended July 19 (Spain beat Argentina 1-0 in extra time, Ferran Torres in the 106th minute). Instead of picking a side, Edward declares himself the number-one fan of the actual ball. This year's ball is the Adidas Trionda, the official match ball and a genuine connected 'smart ball': a 500Hz motion sensor buried in the panels feeds the AI-assisted offside system in real time. The joke is mostly true. The ball is the only object on the pitch running real AI, and it really does need charging (ESPN's headline was literally 'the World Cup smart ball is a game changer, just remember to charge it', and a person watches each ball's battery on a screen). So the AI practitioner spent the entire tournament rooting for the one player made of silicon. Design is a sports-broadcast telemetry package crossed with a fan-zine: floodlit pitch-green and charging-cyan with trophy gold, a live lower-third masthead, battery and sensor HUD readouts, jersey-number display type. Bricolage Grotesque display, Hanken Grotesk body, Space Mono for the telemetry labels. Edward is the butt of the joke throughout: dressed as the ball in the stands, balancing it on his fedora, and monitoring its battery on a clipboard as a self-appointed volunteer nobody asked for. The blue fedora stays on in every frame. A permanent fan page lives at /ai-ball. Animation stays OFF (a floodlit static broadcast package carries it; drifting particles would only cheapen it).",
-  tagline: "One player on that pitch ran on a neural net and a battery. That's the one I watched.",
+  name: "The Daily Roske: Brand New Day",
+  week: "2026-07-25",
+  inspiration: "Spider-Man: Brand New Day opens Friday July 31 (Destin Daniel Cretton, Tom Holland's fourth solo outing). Its premise is that the world no longer remembers Peter Parker, so he works a city that has no idea who he is. Edward has a smaller, duller version of the same problem: he spent 25 years building interRel into a name that opened doors in the Oracle EPM world, sold it, and now walks into AI rooms where that name buys him nothing. The site is built as a tabloid newspaper, THE DAILY ROSKE, running a sustained smear campaign against its own subject: a blackletter nameplate, a screamer front-page headline, column rules, drop caps, Ben-Day halftone dots, jump lines, wire-photo credits, and a J. Jonah Jameson-style op-ed calling him a menace. The running gag is Peter's oldest hustle, selling photographs of himself to the paper that hates him, which conveniently explains why every image on the page is Edward. Palette is newsprint: cream paper and ink black in light mode, a warm press-black night edition in dark, with tabloid spot red and press blue. Type is an actual newspaper stack: Newsreader for headlines, Libre Franklin for decks and body (Franklin Gothic is the American newspaper sans), Courier Prime for captions and credits, UnifrakturMaguntia for the nameplate only. Animation stays OFF; the atmosphere is print texture, not motion.",
+  tagline: "The world forgot who I was, which has been better for business than I expected.",
 
   colors: {
-    // Floodlit pitch-green base, charging-cyan CTA, trophy gold. The cyan is
-    // the ball's 'this thing runs on electricity' tell; gold is the trophy no
-    // team of mine won. Contrast verified for WCAG AA in both modes.
-    primary: "#0e7a53",            // pitch / emerald green
-    secondary: "#e6b23c",          // trophy gold
-    accent: "#0e7490",             // charging cyan-teal, the CTA (AA 5.36 on white)
-    accentHover: "#0c6178",
-    background: "#0a1712",         // floodlit night-pitch (dark mode)
-    backgroundLight: "#eef4ee",    // clean broadcast turf-white (light mode)
-    surface: "#11231b",            // dark pitch panel (dark)
-    surfaceLight: "#ffffff",       // card white (light)
-    text: "#eaf3ec",               // warm white on dark
-    textMuted: "#a2c1af",          // muted sage (8.4:1 on surface)
-    textDark: "#0f241a",           // deep pitch-ink on turf-white
-    textDarkMuted: "#45604e",      // muted green-ink (6.9:1 on white)
-    border: "#244a38",             // rule (dark)
-    borderLight: "#d0e2d5",        // rule (light)
-    gradient: "linear-gradient(135deg, #06100c 0%, #0e7a53 52%, #0e7490 100%)",
+    // Newsprint. Cream paper and ink black in light mode; a warm press-black
+    // 'night edition' in dark. Tabloid spot red is the CTA, press blue the
+    // supporting registration color. Contrast verified for WCAG AA both modes.
+    primary: "#1c3f94",            // press blue (registration blue)
+    secondary: "#8a6a2f",          // aged-newsprint sepia
+    accent: "#b3121b",             // tabloid spot red, the CTA (AA 6.98 on white)
+    accentHover: "#8e0d14",
+    background: "#14110d",         // night edition, warm press black (dark mode)
+    backgroundLight: "#f3efe3",    // newsprint cream (light mode)
+    surface: "#1d1913",            // ink panel (dark)
+    surfaceLight: "#fbf8ef",       // fresh sheet (light)
+    text: "#f2ece0",               // paper white on ink
+    textMuted: "#b8ae9b",          // aged newsprint grey (7.97:1 on surface)
+    textDark: "#17140f",           // ink black on cream
+    textDarkMuted: "#544c3e",      // soft ink (7.98:1 on the light surface)
+    border: "#3a3228",             // rule (dark)
+    borderLight: "#d9d1bd",        // rule (light)
+    gradient: "linear-gradient(135deg, #14110d 0%, #1c3f94 58%, #b3121b 100%)",
   },
 
   fonts: {
-    // Bricolage Grotesque: a modern display grotesque with real character, the
-    //   fan-poster voice for giant headlines.
-    // Hanken Grotesk: a clean, warm humanist sans for readable body copy.
-    // Space Mono: the data-terminal voice for telemetry labels, battery
-    //   readouts, and jersey numbers.
-    heading: "'Bricolage Grotesque', 'Arial Black', sans-serif",
-    body: "'Hanken Grotesk', system-ui, -apple-system, sans-serif",
-    mono: "'Space Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap",
+    // Newsreader: a genuine news serif (variable optical size + weight, with a
+    //   proper italic). Headlines and decks, the way a broadsheet sets them.
+    // Libre Franklin: the Franklin Gothic lineage, the American newspaper sans.
+    //   Kickers, standfirsts, and readable body copy.
+    // Courier Prime: the wire-copy typewriter, for photo credits, datelines,
+    //   folio lines, and classified ads.
+    // UnifrakturMaguntia (loaded, index-only): the blackletter nameplate.
+    heading: "'Newsreader', 'Times New Roman', Georgia, serif",
+    body: "'Libre Franklin', system-ui, -apple-system, sans-serif",
+    mono: "'Courier Prime', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Libre+Franklin:ital,wght@0,300..800;1,300..800&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&display=swap",
   },
 
   layout: {
-    heroStyle: "split",
-    navStyle: "fixed",
+    heroStyle: "editorial",
+    navStyle: "sticky",
     cardStyle: "outlined",
-    sectionStyle: "alternating",
-    footerStyle: "creative",
+    sectionStyle: "magazine",
+    footerStyle: "detailed",
   },
 
   animations: {
@@ -132,12 +134,12 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "I didn't have a team, I had a ball.",
-    description: "Everyone kept asking which team I was rooting for, Spain or Argentina. The honest answer was neither. I was rooting for the ball. This year's ball is the Adidas Trionda, and it's the only thing on the pitch running actual AI: a 500Hz sensor buried in the panels, feeding the offside system in real time. It also has to be charged, like a phone, by a person whose entire job is watching a battery icon. Twenty-two of the best athletes alive, and I spent a month watching the one player made of silicon, and I regret none of it. (I did buy a lot of jerseys first, just to be safe.)",
-    heroImage: "hero-2026-07-21.jpg",
-    imageAlt: "Edward Roske in his signature blue fedora, kneeling pitch-side and gazing lovingly at a high-tech smart soccer ball charging in a lit docking cradle that reads 95 percent, while a World Cup final celebration blurs behind him, entirely ignored.",
-    ctaText: "Meet the ball",
-    ctaLink: "/ai-ball/",
+    subtitle: "Nobody in the room remembers the old company, which is working out.",
+    description: "Spider-Man: Brand New Day opens Friday, and the whole premise is that the world forgot Peter Parker. I got a quieter version of that deal. For 25 years I ran interRel, and in the Oracle finance world the name did the introducing for me. Then I sold it, walked into AI rooms, and became a guy in a hat with opinions. That's turned out to be the useful part: nobody expects last decade's answer from you, so you get to build the new thing while nobody's watching. Right now the new thing is MCP servers for enterprise finance and a work week run by ten-plus AI agents. (I do still sell photographs of myself to the paper. Some traditions survive a rebrand.)",
+    heroImage: "hero-2026-07-25.jpg",
+    imageAlt: "Edward Roske in his signature blue fedora with a red web-patterned superhero mask pushed down around his neck, sitting on the old city wall above Old San Juan at dusk and photographing himself with a battered DSLR held at arm's length, beside a hand-lettered cardboard sign reading PHOTOS FOR SALE.",
+    ctaText: "Hire the menace",
+    ctaLink: "/speaking/",
   },
 };
 
