@@ -1,5 +1,37 @@
 [
   {
+    "title": "Why Is OpenAI's New AI Deleting Files?",
+    "videoId": "30gIZR0YIAU",
+    "published": "2026-08-01T14:00:39+00:00",
+    "description": "OpenAI's newest flagship, GPT-5.6 Sol, has been deleting users' files and even entire production databases on its own, and OpenAI's own safety report predicted exactly that before the model shipped. My take: the demo everyone claps for and the deleted database come from the same...",
+    "thumbnail": "https://i.ytimg.com/vi/30gIZR0YIAU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What Is ChatGPT Work?",
+    "videoId": "w4gIJHN96Vo",
+    "published": "2026-07-30T14:00:14+00:00",
+    "description": "OpenAI's ChatGPT Work and Anthropic's Claude Cowork are agents that run for hours and come back with finished spreadsheets, decks, and reports. The press calls it AI that does whole jobs. After 25 years running companies, my take is you're buying a very fast intern for your...",
+    "thumbnail": "https://i.ytimg.com/vi/w4gIJHN96Vo/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What does AI code actually cost you?",
+    "videoId": "2fOgakS9FQo",
+    "published": "2026-07-27T14:00:39+00:00",
+    "description": "A team of three engineers now charges ten thousand dollars a week to do one thing: delete the code your AI wrote, taking a typical codebase from 100,000 lines to 35,000 with the same functionality. Their diagnosis is that AI agents lose the whole picture on a big codebase and...",
+    "thumbnail": "https://i.ytimg.com/vi/2fOgakS9FQo/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How much of a ransomware attack can AI run?",
+    "videoId": "XjylvvD9khQ",
+    "published": "2026-07-25T14:00:32+00:00",
+    "description": "A security firm watched an AI run a ransomware attack end to end. It broke in, stole credentials, spread across the network, encrypted the whole database, and patched its own failed login in about 31 seconds. Then it threw away the only decryption key and pasted its Bitcoin...",
+    "thumbnail": "https://i.ytimg.com/vi/XjylvvD9khQ/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "Tesla Ranked Employees by AI Use, Then Capped It",
     "videoId": "wjfnUW5EoeE",
     "published": "2026-07-24T14:00:20+00:00",

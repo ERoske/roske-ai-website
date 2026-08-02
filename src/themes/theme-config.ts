@@ -77,51 +77,50 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "The Daily Roske: Brand New Day",
-  week: "2026-07-25",
-  inspiration: "Spider-Man: Brand New Day opens Friday July 31 (Destin Daniel Cretton, Tom Holland's fourth solo outing). Its premise is that the world no longer remembers Peter Parker, so he works a city that has no idea who he is. Edward has a smaller, duller version of the same problem: he spent 25 years building interRel into a name that opened doors in the Oracle EPM world, sold it, and now walks into AI rooms where that name buys him nothing. The site is built as a tabloid newspaper, THE DAILY ROSKE, running a sustained smear campaign against its own subject: a blackletter nameplate, a screamer front-page headline, column rules, drop caps, Ben-Day halftone dots, jump lines, wire-photo credits, and a J. Jonah Jameson-style op-ed calling him a menace. The running gag is Peter's oldest hustle, selling photographs of himself to the paper that hates him, which conveniently explains why every image on the page is Edward. Palette is newsprint: cream paper and ink black in light mode, a warm press-black night edition in dark, with tabloid spot red and press blue. Type is an actual newspaper stack: Newsreader for headlines, Libre Franklin for decks and body (Franklin Gothic is the American newspaper sans), Courier Prime for captions and credits, UnifrakturMaguntia for the nameplate only. Animation stays OFF; the atmosphere is print texture, not motion.",
-  tagline: "The world forgot who I was, which has been better for business than I expected.",
+  name: "AFC Roske: Believe",
+  week: "2026-08-01",
+  inspiration: "Ted Lasso season 4 premieres Wednesday, August 5 on Apple TV: Ted comes back to Richmond to coach the second-division women's team, starting over yet again in a job he is not qualified for, armed with nothing but questions and biscuits. Which is the only management situation Edward has ever been in. The site becomes AFC ROSKE, a small football club run by one relentlessly optimistic American in a fedora: a matchday-programme layout with a scoreboard strip, a knitted club scarf, a training-ground photo wall, the squad list, a taped-up BELIEVE sign, and biscuits with the boss. The genuine hook: Ted's whole method (be curious, not judgmental) is Edward's actual brand, asking good questions. Palette is club kit: royal kit blue, pitch green, spot red, and Believe-sign gold on programme cream, with a floodlit navy night mode. Type is athletic: Archivo for headings, Anton for scarf letters and kit numbers, Nunito Sans for warm body copy, Space Mono for fixture data. Animation stays OFF; the atmosphere is club identity, not motion.",
+  tagline: "I've been coaching a sport I don't understand for three years now. It's called AI.",
 
   colors: {
-    // Newsprint. Cream paper and ink black in light mode; a warm press-black
-    // 'night edition' in dark. Tabloid spot red is the CTA, press blue the
-    // supporting registration color. Contrast verified for WCAG AA both modes.
-    primary: "#1c3f94",            // press blue (registration blue)
-    secondary: "#8a6a2f",          // aged-newsprint sepia
-    accent: "#b3121b",             // tabloid spot red, the CTA (AA 6.98 on white)
-    accentHover: "#8e0d14",
-    background: "#14110d",         // night edition, warm press black (dark mode)
-    backgroundLight: "#f3efe3",    // newsprint cream (light mode)
-    surface: "#1d1913",            // ink panel (dark)
-    surfaceLight: "#fbf8ef",       // fresh sheet (light)
-    text: "#f2ece0",               // paper white on ink
-    textMuted: "#b8ae9b",          // aged newsprint grey (7.97:1 on surface)
-    textDark: "#17140f",           // ink black on cream
-    textDarkMuted: "#544c3e",      // soft ink (7.98:1 on the light surface)
-    border: "#3a3228",             // rule (dark)
-    borderLight: "#d9d1bd",        // rule (light)
-    gradient: "linear-gradient(135deg, #14110d 0%, #1c3f94 58%, #b3121b 100%)",
+    // Club kit. Programme cream + kit blue in light mode; floodlit navy night
+    // mode. Spot red is the CTA, pitch green the supporting color, and the
+    // BELIEVE gold lives as a local var on the homepage. AA checked both modes.
+    primary: "#2a3ba0",            // kit blue
+    secondary: "#0e7a3d",          // pitch green
+    accent: "#c11425",             // spot red, the CTA (AA on cream and white)
+    accentHover: "#960e1c",
+    background: "#0e1330",         // floodlit navy night (dark mode)
+    backgroundLight: "#f7f5ec",    // matchday programme cream (light mode)
+    surface: "#171e42",            // club room panel (dark)
+    surfaceLight: "#fffdf6",       // fresh programme page (light)
+    text: "#f0f2fa",               // floodlight white on navy
+    textMuted: "#aeb6d8",          // terrace grey (7.5:1 on surface)
+    textDark: "#151a2b",           // ink on cream
+    textDarkMuted: "#4b5268",      // programme grey (7.4:1 on the light surface)
+    border: "#2c3563",             // pitch line (dark)
+    borderLight: "#ded9c6",        // pitch line (light)
+    gradient: "linear-gradient(135deg, #0e1330 0%, #2a3ba0 55%, #c11425 100%)",
   },
 
   fonts: {
-    // Newsreader: a genuine news serif (variable optical size + weight, with a
-    //   proper italic). Headlines and decks, the way a broadsheet sets them.
-    // Libre Franklin: the Franklin Gothic lineage, the American newspaper sans.
-    //   Kickers, standfirsts, and readable body copy.
-    // Courier Prime: the wire-copy typewriter, for photo credits, datelines,
-    //   folio lines, and classified ads.
-    // UnifrakturMaguntia (loaded, index-only): the blackletter nameplate.
-    heading: "'Newsreader', 'Times New Roman', Georgia, serif",
-    body: "'Libre Franklin', system-ui, -apple-system, sans-serif",
-    mono: "'Courier Prime', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Libre+Franklin:ital,wght@0,300..800;1,300..800&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=UnifrakturMaguntia&display=swap",
+    // Archivo: an athletic grotesque with real heft at 800-900, the club's
+    //   wordmark and headline face.
+    // Anton (loaded, index accents): condensed poster caps for scarf letters
+    //   and kit numbers.
+    // Nunito Sans: warm, rounded, the Lasso-optimism body face.
+    // Space Mono: fixture lists, league tables, and stat lines.
+    heading: "'Archivo', 'Helvetica Neue', Arial, sans-serif",
+    body: "'Nunito Sans', system-ui, -apple-system, sans-serif",
+    mono: "'Space Mono', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400..900;1,400..900&family=Anton&family=Nunito+Sans:ital,opsz,wght@0,6..12,300..900;1,6..12,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap",
   },
 
   layout: {
-    heroStyle: "editorial",
+    heroStyle: "split",
     navStyle: "sticky",
-    cardStyle: "outlined",
-    sectionStyle: "magazine",
+    cardStyle: "solid",
+    sectionStyle: "alternating",
     footerStyle: "detailed",
   },
 
@@ -134,11 +133,11 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Nobody in the room remembers the old company, which is working out.",
-    description: "Spider-Man: Brand New Day opens Friday, and the whole premise is that the world forgot Peter Parker. I got a quieter version of that deal. For 25 years I ran interRel, and in the Oracle finance world the name did the introducing for me. Then I sold it, walked into AI rooms, and became a guy in a hat with opinions. That's turned out to be the useful part: nobody expects last decade's answer from you, so you get to build the new thing while nobody's watching. Right now the new thing is MCP servers for enterprise finance and a work week run by ten-plus AI agents. (I do still sell photographs of myself to the paper. Some traditions survive a rebrand.)",
-    heroImage: "hero-2026-07-25.jpg",
-    imageAlt: "Edward Roske in his signature blue fedora with a red web-patterned superhero mask pushed down around his neck, sitting on the old city wall above Old San Juan at dusk and photographing himself with a battered DSLR held at arm's length, beside a hand-lettered cardboard sign reading PHOTOS FOR SALE.",
-    ctaText: "Hire the menace",
+    subtitle: "New head coach arrives with no relevant experience, remains weirdly confident.",
+    description: "Ted Lasso comes back Wednesday, coaching a team in a sport he doesn't understand, on the theory that curiosity outruns expertise. I've been running the same play since 2023, when I sold the company I actually understood and walked into AI with nothing but questions, which got better the longer I asked them. These days I coach finance teams through the same transfer window and build MCP servers so AI agents can work inside enterprise systems, and ten of those agents rebuild this website every Saturday. The sign over the door says Believe, and I taped it up there myself.",
+    heroImage: "hero-2026-08-01.jpg",
+    imageAlt: "Edward Roske in his signature blue fedora and a tan coach's jacket with a red whistle lanyard, standing on the touchline of an English football stadium at golden hour, pointing forward with an enormous grin and holding a clipboard covered in incomprehensible diagrams.",
+    ctaText: "Hire the gaffer",
     ctaLink: "/speaking/",
   },
 };

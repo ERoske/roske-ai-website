@@ -8,87 +8,71 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// The lead story, set as newspaper columns. First paragraph gets the drop cap.
-const lead = [
-  `Spider-Man: Brand New Day opens Friday, and the entire premise is that the world forgot Peter Parker. He still does the job, and nobody knows whose job it is.`,
-  `I got a quieter version of that deal. For 25 years I ran interRel, and inside the Oracle finance world the name did the introducing for me. Then I sold it, walked into AI rooms, and became a guy in a hat with opinions.`,
-  `That turned out to be the useful part. When nobody expects last decade's answer from you, you get to build the new thing while nobody's watching. Right now the new thing is MCP servers that let AI agents work inside enterprise finance systems, plus a work week run by ten-plus AI agents who redesign this website every Saturday without asking me first.`,
-  `I do still sell photographs of myself to the paper, because some habits survive a rebrand and that one pays.`,
-];
-
-// BY THE NUMBERS box. All real, plus the last one.
-const numbers = [
-  { value: '50+', label: 'Countries spoken in' },
+// The club's form guide. All real, formatted like a league table.
+const formGuide = [
+  { value: '80+', label: 'Countries toured' },
+  { value: '50+', label: 'Nations spoken in' },
   { value: '15', label: 'Books published' },
-  { value: '25+', label: 'Years running companies' },
-  { value: '10+', label: 'Agents running the week' },
-  { value: '0', label: 'People at the badge table who knew' },
+  { value: '25+', label: 'Years managing clubs (companies)' },
 ];
 
-// Late bulletins. Static strap, no ticker.
-const bulletins = [
-  `SPIDER-MAN: BRAND NEW DAY OPENS FRIDAY, JULY 31. THIS PAPER HAS NO COMMENT ON THE COSTUME.`,
-  `CARIBBEAN AI SUMMIT, OCTOBER 9-10, SAN JUAN. HE VOLUNTEERED TO CO-CHAIR IT AND HAS BEEN ANSWERING EMAIL ABOUT IT EVER SINCE.`,
-  `WEBSITE REDESIGNED AGAIN OVERNIGHT BY HIS OWN AI AGENTS. NO ONE CONSULTED THE EDITOR.`,
-];
-
-// PAGE 3: the photo desk. Captions verified against each generated image.
-// `alt` describes the picture for screen readers; `caption` is the joke.
-const photoDesk = [
+// PRESEASON, WEEK ONE: the training-ground photo wall.
+// `alt` describes the picture for screen readers; `caption` is the coach's note.
+const trainingWall = [
   {
-    src: '/images/brand-new-day/newsroom-desk.jpg',
-    alt: 'Edward Roske in his blue fedora, a red web-patterned mask bunched around his neck and a tweed blazer over the costume, leaning across a cluttered newsroom desk to slide a fan of black-and-white photographs toward an unimpressed cigar-chewing editor, under a corkboard of tabloid front pages.',
-    slug: 'PLATE 01 / THE SALE',
-    title: 'Selling to the Paper That Hates Him',
-    caption: `I bring the pictures in myself, wearing a tweed blazer over the suit as though that settles the dress code. The editor complains about the framing, pays under rate, and runs them on the front page anyway.`,
-    credit: 'PHOTO: E. ROSKE / SOLD TO THIS PAPER BY E. ROSKE',
-    wide: true,
+    src: '/images/ted-lasso/believe-sign.jpg',
+    alt: 'Edward Roske in a tan coach’s jacket and his blue fedora, up over a wooden folding chair in a football club locker room, taping a homemade yellow BELIEVE sign above the doorway.',
+    num: '02',
+    drill: 'CULTURE / DAY ONE',
+    title: 'The Sign Goes Up First',
+    caption: `Day one at any club: hang the sign, then figure out the sport. I've opened three companies and one AI community in this order and the sign hasn't been wrong yet. (I have a Master's in Data Science and my entire management philosophy is a piece of yellow paper.)`,
+    shape: 'landscape',
   },
   {
-    src: '/images/brand-new-day/badge-table.jpg',
-    alt: 'Edward Roske in a red-and-blue web-patterned suit and his blue fedora, leaning politely on a conference registration table while a volunteer in a staff polo scans a printed attendee list without looking up. The badge on the table reads GUEST.',
-    slug: 'PLATE 02 / REGISTRATION',
-    title: 'Name Not on the List',
-    caption: `Twenty-five years in this industry and the badge came out reading GUEST. I let it stand. A room that has no idea what you used to be will actually listen to what you're saying now, which is a better trade than it sounds.`,
-    credit: 'PHOTO: E. ROSKE / BADGE AUTHENTIC',
-    wide: false,
+    src: '/images/ted-lasso/biscuits.jpg',
+    alt: 'Edward Roske in his blue fedora with flour on his coach’s jacket, proudly presenting an open pink cardboard box of shortbread biscuits in a chaotic home kitchen before dawn.',
+    num: '03',
+    drill: 'BOARDROOM / 4 AM',
+    title: 'Biscuits With the Boss',
+    caption: `No slide deck has ever won anyone over, but shortbread closes. Baking counts as data prep if you measure everything twice, and I measure everything twice.`,
+    shape: 'portrait',
   },
   {
-    src: '/images/brand-new-day/stuck-to-wall.jpg',
-    alt: 'Edward Roske in the web-patterned suit and his blue fedora, clinging to a brick alley wall at night and thoroughly tangled in white webbing, wearing an expression of calm acceptance, with a metal trash can and a puddle below him.',
-    slug: 'PLATE 03 / THE ALLEY',
-    title: 'Caught in Something I Made',
-    caption: `Every new venture has a stretch where you're stuck to a wall in your own webbing at midnight. The trick is to hold a completely neutral expression until somebody walks past with scissors.`,
-    credit: 'PHOTO: E. ROSKE / TIMER, TRASH CAN',
-    wide: false,
+    src: '/images/ted-lasso/press-conference.jpg',
+    alt: 'Edward Roske in his blue fedora and a club scarf at a press conference table full of microphones, cheerfully holding up a small whiteboard covered in a software architecture flowchart instead of football tactics.',
+    num: '04',
+    drill: 'MEDIA DUTIES',
+    title: 'Tactics Board, Sort Of',
+    caption: `The press asked about our formation. I showed them an MCP server architecture diagram, and it got more follow-up questions than any back four ever has. We play a 4-3-3 of agents.`,
+    shape: 'portrait',
   },
   {
-    src: '/images/brand-new-day/curb-lunch.jpg',
-    alt: 'Edward Roske in the web-patterned suit and his blue fedora, sitting on a curb outside a neon-lit San Juan corner store at night eating a sandwich with both hands while a tabby street cat sits beside him, watching the sandwich intently.',
-    slug: 'PLATE 04 / COLMADO ROSA',
-    title: 'Dinner Break, Curbside',
-    caption: `The cat opened with a strong position on the sandwich and never came off it. Most productive negotiation I had all week, and I gave up less than I expected to.`,
-    credit: 'PHOTO: E. ROSKE / CAT DECLINED TO COMMENT',
-    wide: false,
+    src: '/images/ted-lasso/darts.jpg',
+    alt: 'Edward Roske in his blue fedora and coach’s jacket in a warm British pub, mid dart throw with eyes narrowed in concentration, while astonished locals with pints watch from the bar.',
+    num: '05',
+    drill: 'AWAY FIXTURE / THE PUB',
+    title: 'The American Has Played Before',
+    caption: `Everyone in that pub assumed the American in the fedora had never held a dart. I let the assumption ride for exactly three throws. Be curious about your opponents, especially the ones buying the next round.`,
+    shape: 'landscape',
   },
   {
-    src: '/images/brand-new-day/home-office-webs.jpg',
-    alt: 'Edward Roske in the web-patterned suit and his blue fedora, typing calmly at a home-office laptop in a room criss-crossed with white webbing across the bookshelves, windows and monitor, while a coffee mug stuck to the ceiling drips above his head.',
-    slug: 'PLATE 05 / THE OFFICE',
-    title: 'A Week Run by Ten Agents',
-    caption: `This is roughly what it looks like from the inside: everything wired to everything, most of it holding, and one coffee mug permanently out of reach on the ceiling. I keep working, and the mug is a problem for a different agent.`,
-    credit: 'PHOTO: E. ROSKE / MUG STILL UP THERE',
-    wide: false,
+    src: '/images/ted-lasso/whiff.jpg',
+    alt: 'Edward Roske mid fall on a professional training pitch, both feet in the air after completely missing a kick, clipboard papers flying, while players in red and blue training kits wince in the background. His blue fedora is still on.',
+    num: '06',
+    drill: 'SCOUTING REPORT',
+    title: 'First Touch: Theoretical',
+    caption: `The scouting report called my first touch "theoretical," which is fair. I contribute in other ways: vision, morale, and knowing exactly when to stop kicking things I don't understand. (The fedora never left my head, which is the only part of that drill I passed.)`,
+    shape: 'wide',
   },
 ];
 
-// PAGE 6: the city desk. Six real things, filed as news briefs.
-const cityDesk = [
+// THE SQUAD: six real projects, filed as a club roster.
+const squad = [
   {
-    kicker: 'TECHNOLOGY',
-    dateline: 'SAN JUAN, P.R.',
-    title: 'The Servers That Let AI Touch the Ledger',
-    body: `MCP servers are the connective tissue between AI agents and enterprise finance systems. Oracle Essbase and EPM Planning are shipping now, and Financial Close and Consolidations is in beta. It's unglamorous plumbing, and it's the part that decides whether any of this survives a real close. (I have now explained out loud what the letters MCP stand for something like four hundred times, and I'll happily do it again on request.)`,
+    num: '08',
+    position: 'Central Midfield',
+    name: 'MCP Servers for Enterprise Finance',
+    note: `This is the engine room. MCP servers are how AI agents actually work inside enterprise finance systems: Oracle Essbase and EPM Planning are shipping, Financial Close and Consolidations is in beta. It's the unglamorous passing that wins the match, and someone has to do it on purpose.`,
     tag: 'ORACLE EPM / MCP',
     status: 'SHIPPING',
     href: 'https://caprus.ai/agentcube/',
@@ -96,10 +80,10 @@ const cityDesk = [
     cta: 'See how it works',
   },
   {
-    kicker: 'EVENTS',
-    dateline: 'SAN JUAN, P.R.',
-    title: 'Summit Returns to the Island in October',
-    body: `Co-chairing the largest AI conference Puerto Rico has hosted, October 9 and 10 at the Convention Center. The lineup is public: Kay Firth-Butterfield, formerly Head of AI at the World Economic Forum, MIT's Fabio Duarte, EU Parliament AI advisor Idoia Salazar, and a bunch more still landing. (Co-chairing is ten percent stagecraft and ninety percent email.)`,
+    num: '10',
+    position: 'Home Fixture',
+    name: 'Caribbean AI Summit',
+    note: `Co-chairing the biggest AI conference Puerto Rico has hosted, October 9 and 10 at the Convention Center. The bill so far: Kay Firth-Butterfield, MIT's Fabio Duarte, EU Parliament AI advisor Idoia Salazar, and a bunch more still landing. (Co-chairing is ten percent stagecraft and ninety percent email.)`,
     tag: '9-10 OCT 2026',
     status: 'CALL FOR SPEAKERS OPEN',
     href: 'https://www.caribbeansummit.ai/en/speakers/submit',
@@ -107,10 +91,10 @@ const cityDesk = [
     cta: 'Submit a speaker',
   },
   {
-    kicker: 'BUSINESS',
-    dateline: 'SAN JUAN, P.R.',
-    title: 'Where the Actual Work Gets Done',
-    body: `Investor and contributor at Caprus, the AI software and services firm building faster operations for finance teams. They do the engineering. I show up, point at it, and occasionally get quoted about it in this newspaper.`,
+    num: '04',
+    position: 'Front Office',
+    name: 'Caprus',
+    note: `Investor and contributor at the AI software and services firm building faster operations for finance teams. They do the engineering. I show up to training and point at things.`,
     tag: 'AI / FINANCE',
     status: 'RUNNING',
     href: 'https://caprus.ai',
@@ -118,32 +102,32 @@ const cityDesk = [
     cta: 'Meet the team',
   },
   {
-    kicker: 'TRAVEL',
-    dateline: 'KHUMBU, NEPAL',
-    title: 'A Walk to the Foot of Everest',
-    body: `This spring I walked to Everest Base Camp. I brought a map, asked the guides everything I could think of, and largely kept my head down through the altitude headaches. The full trail log is on the blog, including the parts that went badly.`,
+    num: '07',
+    position: 'The Long Away Day',
+    name: 'Everest Base Camp',
+    note: `This spring I walked to the foot of Everest: seventeen days, one map, altitude headaches, and every question I could think of asked of the guides. The full report is on the blog, including the parts that went badly.`,
     tag: 'NEPAL / 2026',
-    status: 'TRAIL LOG LIVE',
+    status: 'REPORT FILED',
     href: '/blog/everest-base-camp-summit/',
     external: false,
-    cta: 'Read the trail log',
+    cta: 'Read the away-day report',
   },
   {
-    kicker: 'AFTER HOURS',
-    dateline: 'EBERRON',
-    title: "An AI Behind the Dungeon Master's Screen",
-    body: `A prototype AI screen for running 5e: initiative, lore lookups, and improv help for the person behind the cardboard. If there's going to be an oracle at my table, it can earn its seat like everyone else. (The party still gets told nothing.)`,
+    num: '12',
+    position: 'Set Pieces',
+    name: "AI Dungeon Master's Screen",
+    note: `A prototype AI screen for running D&D 5e: lore lookups and improv help for the person behind the cardboard. Set pieces are just encounters you rehearsed in advance, and I rehearse mine. (The party still gets told nothing.)`,
     tag: 'D&D / 5E',
-    status: 'IN PROTOTYPE',
+    status: 'CLOSED TRAINING',
     href: null,
     external: false,
     cta: 'Quiet build',
   },
   {
-    kicker: 'COMMUNITY',
-    dateline: 'SAN JUAN, P.R.',
-    title: '850 People Arguing About AI on an Island',
-    body: `President of the Puerto Rico AI Community, now past 850 people across our events. We meet every other month and work out in public what AI actually means here, which mostly means arguing about it in two languages until something useful falls out.`,
+    num: '06',
+    position: "Supporters' Trust",
+    name: 'Puerto Rico AI Community',
+    note: `President of the island's AI community, now past 850 people. We meet every other month and argue about what AI means for Puerto Rico in two languages until something useful falls out. Best supporters in the league, and I say that with total bias.`,
     tag: '850+ MEMBERS',
     status: 'RUNNING',
     href: 'https://praicommunity.org/',
@@ -151,143 +135,121 @@ const cityDesk = [
     cta: 'Join the next one',
   },
 ];
+
+const scarfLetters = 'ASK GOOD QUESTIONS'.split('');
 ---
 
 <BaseLayout>
   <WeeklyAnimation />
 
-  <!-- ================= NAMEPLATE ================= -->
-  <header class="np">
-    <div class="np-inner">
-      <div class="np-row">
-        <div class="np-ear np-ear-l">
-          <span>Late Edition</span>
-          <span>San Juan, P.R.</span>
-        </div>
-        <div class="np-title" aria-label="The Daily Roske">The Daily Roske</div>
-        <div class="np-ear np-ear-r">
-          <span>Vol. LIV, No. 30</span>
-          <span>Price: Still Free</span>
-        </div>
-      </div>
-      <div class="np-rule"></div>
-      <div class="np-folio">
-        <span>SATURDAY, JULY 25, 2026</span>
-        <span class="np-motto">"ALL THE NEWS ABOUT ONE GUY, WHETHER OR NOT YOU ASKED"</span>
-        <span>WEATHER: HIGH OF 88, HUMID, WEBBING LIKELY</span>
-      </div>
+  <!-- ================= SCOREBOARD STRIP ================= -->
+  <div class="score" role="presentation">
+    <div class="score-inner">
+      <span class="score-item">AFC ROSKE, EST. 1997</span>
+      <span class="score-board" aria-label="Scoreboard: AFC Roske 4, Ordinary 0">
+        <span class="score-team">ROSKE</span>
+        <span class="score-num">4</span>
+        <span class="score-dash">:</span>
+        <span class="score-num">0</span>
+        <span class="score-team">ORDINARY</span>
+      </span>
+      <span class="score-item">HOME FIXTURES: SATURDAYS, 5 AM AST</span>
     </div>
-  </header>
+  </div>
 
-  <!-- ================= FRONT PAGE ================= -->
-  <section class="front">
-    <div class="front-inner">
-      <div class="strap">
-        <span class="strap-flag">EXCLUSIVE</span>
-        <span class="strap-text">He sold the company and kept the hat, and he has not stopped filing copy since.</span>
-      </div>
-
-      <h1 class="screamer">Who <em>Is</em> This Man?</h1>
-
-      <p class="subdeck">{theme.hero.subtitle} Formerly a name in Oracle finance, now unrecognized in every AI room he walks into. Says it's going better than it sounds.</p>
-
-      <div class="byline">
-        <span>By THE DAILY ROSKE STAFF</span>
-        <span class="byline-sep">|</span>
-        <span>Photographs by E. ROSKE</span>
-        <span class="byline-sep">|</span>
-        <span>Sold to this paper by E. ROSKE, at a rate we regret agreeing to</span>
-      </div>
-
-      <div class="front-grid">
-        <figure class="lead-photo">
-          <div class="lead-photo-frame">
-            <img
-              src={`/images/${theme.hero.heroImage}`}
-              alt={theme.hero.imageAlt}
-              width="1600"
-              height="893"
-              loading="eager"
-              decoding="async"
-              class="lead-photo-img"
-            />
-          </div>
-          <figcaption class="lead-photo-cap">
-            <strong>ABOVE:</strong> The subject photographs himself on the old city wall at dusk, beside a sign offering the results for sale. This paper bought four.
-            <span class="credit">PHOTO: E. ROSKE / SELF, ARM'S LENGTH</span>
-          </figcaption>
-        </figure>
-
-        <div class="lead-col">
-          {lead.map((p, i) => (
-            <p class={i === 0 ? 'lead-p lead-p-first' : 'lead-p'}>{p}</p>
-          ))}
-          <p class="jump">Continued on Page 3, with pictures</p>
-
-          <div class="front-cta">
-            <a href="/question/" target="_blank" rel="noopener" class="btn-ink">Book 13 minutes</a>
-            <a href={theme.hero.ctaLink} class="btn-outline">{theme.hero.ctaText}</a>
-          </div>
+  <!-- ================= HERO: THE TOUCHLINE ================= -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="hero-kicker">Official club site of one man | Season 4 of coaching a sport I don't understand</p>
+        <h1 class="hero-h1">Be curious,<br /><em>not judgmental.</em></h1>
+        <p class="hero-aside">(Ted says Walt Whitman said that. Whitman didn't, but it's still the entire job description.)</p>
+        <p class="hero-sub">{theme.hero.subtitle}</p>
+        <p class="hero-desc">
+          Ted Lasso comes back Wednesday, coaching a team in a sport he doesn't understand, on the theory that curiosity outruns expertise. I've been running the same play since 2023, when I sold the company I actually understood and walked into AI with nothing but questions, which got better the longer I asked them. These days I coach finance teams through the same transfer window and build MCP servers so AI agents can work inside enterprise systems. Ten of those agents rebuild this website every Saturday morning. They picked this theme, and I found out when you did.
+        </p>
+        <div class="hero-cta">
+          <a href="/question/" target="_blank" rel="noopener" class="btn-red">Book 13 minutes</a>
+          <a href={theme.hero.ctaLink} class="btn-line">{theme.hero.ctaText}</a>
         </div>
+      </div>
 
-        <aside class="numbers-box" aria-label="By the numbers">
-          <h2 class="numbers-head">By the Numbers</h2>
-          <dl class="numbers-list">
-            {numbers.map(n => (
-              <div class="numbers-row">
-                <dt class="numbers-value">{n.value}</dt>
-                <dd class="numbers-label">{n.label}</dd>
-              </div>
-            ))}
-          </dl>
-          <p class="numbers-foot">Figures supplied by the subject, who has an obvious interest in them.</p>
-        </aside>
+      <figure class="hero-fig">
+        <div class="hero-frame">
+          <span class="hero-badge">MATCHDAY</span>
+          <img
+            src={`/images/${theme.hero.heroImage}`}
+            alt={theme.hero.imageAlt}
+            width="1600"
+            height="900"
+            loading="eager"
+            decoding="async"
+            class="hero-img"
+          />
+          <span class="hero-numtag" aria-hidden="true">01</span>
+        </div>
+        <figcaption class="hero-cap">
+          The new gaffer arrives at the ground with a clipboard of diagrams no one on the coaching staff can read, including him.
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="form" aria-label="Club form guide">
+      <div class="form-inner">
+        <span class="form-head">FORM GUIDE</span>
+        {formGuide.map(s => (
+          <span class="form-stat">
+            <span class="form-value">{s.value}</span>
+            <span class="form-label">{s.label}</span>
+          </span>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- ================= LATE BULLETINS ================= -->
-  <section class="bulletins" aria-label="Late bulletins">
-    <div class="bulletins-inner">
-      <span class="bulletins-flag">Stop Press</span>
-      <ul class="bulletins-list">
-        {bulletins.map(b => <li class="bulletins-item">{b}</li>)}
-      </ul>
+  <!-- ================= CLUB SCARF ================= -->
+  <div class="scarf" aria-hidden="true">
+    <span class="scarf-fringe scarf-fringe-l"></span>
+    <div class="scarf-body">
+      {scarfLetters.map(ch => (
+        ch === ' ' ? <span class="scarf-gap"></span> : <span class="scarf-ch">{ch}</span>
+      ))}
     </div>
-  </section>
+    <span class="scarf-fringe scarf-fringe-r"></span>
+  </div>
 
   <!-- ================= LATEST CONTENT (permanent) ================= -->
   <LatestContent
-    eyebrow="Off the wire"
-    heading={"Filed <em>this week.</em>"}
-    deck="The newest writing and video briefs, straight off the desk. Nothing here is held for a slow news day."
+    eyebrow="Match highlights"
+    heading={"Fresh off <em>the pitch.</em>"}
+    deck="The newest writing and video briefs, posted the week they happen. The video briefs cover AI news, and I have never once run out of AI news, which tells you something about AI news."
   />
 
   <!-- ================= BOOK EDWARD (permanent) ================= -->
-  <SpeakerCTA eyebrow="Classified / Situations wanted" />
+  <SpeakerCTA eyebrow="Hire the gaffer" />
 
-  <!-- ================= PAGE 3: THE PHOTO DESK ================= -->
-  <section class="photodesk">
-    <div class="photodesk-inner">
+  <!-- ================= PRESEASON: TRAINING WALL ================= -->
+  <section class="wall">
+    <div class="wall-inner">
       <header class="sec-head">
-        <div class="sec-slug">Page 3 / The Photo Desk</div>
-        <h2 class="sec-title">Wire photos we <em>paid for.</em></h2>
+        <div class="sec-slug">Preseason | Week One</div>
+        <h2 class="sec-title">Training ground <em>footage.</em></h2>
         <p class="sec-deck">
-          Every photograph in this issue is of the same man and was invoiced by the same man. Accounting has raised this twice. (We ran them anyway, which is the part he was counting on.)
+          Photos from the first week at the club. The coaching staff would like it noted that none of this was their idea, and that the biscuits were excellent.
         </p>
       </header>
 
-      <div class="pd-grid">
-        {photoDesk.map(p => (
-          <figure class={p.wide ? 'pd-item pd-item-wide' : 'pd-item'}>
-            <div class="pd-frame">
-              <img src={p.src} alt={p.alt} loading="lazy" decoding="async" class="pd-img" />
-              <span class="pd-slug">{p.slug}</span>
+      <div class="wall-grid">
+        {trainingWall.map(p => (
+          <figure class={`wall-item wall-${p.shape}`}>
+            <div class="wall-frame">
+              <img src={p.src} alt={p.alt} loading="lazy" decoding="async" class="wall-img" />
+              <span class="wall-num" aria-hidden="true">{p.num}</span>
+              <span class="wall-drill">{p.drill}</span>
             </div>
-            <figcaption class="pd-cap">
-              <h3 class="pd-title">{p.title}</h3>
-              <p class="pd-text">{p.caption}</p>
-              <span class="credit">{p.credit}</span>
+            <figcaption class="wall-cap">
+              <h3 class="wall-title">{p.title}</h3>
+              <p class="wall-text">{p.caption}</p>
             </figcaption>
           </figure>
         ))}
@@ -297,73 +259,71 @@ const cityDesk = [
 
   <!-- ================= WHAT'S NEW (permanent) ================= -->
   <WhatsNew
-    eyebrow="Press clippings"
-    heading={"What the <em>other</em> papers ran."}
-    deck="Interviews, mentions, awards, and the odd post worth clipping. Filed here so you can check the story against a second source."
+    eyebrow="Club news"
+    heading={"From the <em>press room.</em>"}
+    deck="Interviews, mentions, and the odd post worth pinning to the noticeboard. Filed here so you can check the manager's claims against a second source."
   />
 
-  <!-- ================= PAGE 12: OPINION ================= -->
-  <section class="oped">
-    <div class="oped-inner">
-      <div class="oped-slug">Page 12 / Opinion / Signed, The Editor</div>
-      <div class="oped-grid">
-        <div class="oped-main">
-          <h2 class="oped-scream">Menace!</h2>
-          <p class="oped-p">
-            This paper has said it before and will say it again. The man is a menace. He rebuilds his own website every Saturday morning without consulting anybody, including himself. He answers questions before they're finished, holds published opinions about Freeze Panes, and has been photographed webbed to a wall behind a colmado at an hour when respectable people are asleep.
-          </p>
-          <p class="oped-p">
-            Our position is unchanged and will remain unchanged until he takes off the hat, which he has declined to do in writing.
-          </p>
-          <div class="oped-sig">The Editor</div>
+  <!-- ================= THE BELIEVE SIGN ================= -->
+  <section class="believe">
+    <div class="believe-inner">
+      <div class="believe-signwrap">
+        <div class="believe-sign" role="img" aria-label="A homemade yellow paper sign reading BELIEVE, taped up at a slight angle">
+          <span class="believe-tape believe-tape-l" aria-hidden="true"></span>
+          <span class="believe-tape believe-tape-r" aria-hidden="true"></span>
+          <span class="believe-word" aria-hidden="true">BELIEVE</span>
         </div>
-        <aside class="reply">
-          <div class="reply-head">Right of Reply</div>
-          <p class="reply-p">
-            The hat stays. Everything else is negotiable, which is a more generous offer than most people lead with.
-          </p>
-          <p class="reply-p">
-            If you want the long version, take thirteen minutes and decide for yourself. Bring the hard one.
-          </p>
-          <p class="reply-p reply-p-small">
-            (A Roske never removes his fedora in the presence of others. There is one exception, and it is Memorial Day.)
-          </p>
-          <div class="reply-sig">Edward Roske</div>
-        </aside>
+        <p class="believe-under">(in verified data)</p>
+      </div>
+      <div class="believe-copy">
+        <div class="sec-slug">Next fixture | Wednesday, August 5</div>
+        <h2 class="believe-title">Season 4 is about starting over. I recommend it.</h2>
+        <p class="believe-p">
+          The new season sends Ted back to Richmond to coach the women's team, with a new squad and the same total absence of qualifications. That's the part I believe in. I've started over at 22 with a consulting firm, at 45 with a data science degree, and at 48 with AI, and every time the only transferable skill was asking better questions than the people who already knew everything.
+        </p>
+        <p class="believe-p">
+          The sign in my office says what the sign in his office says, with one edit underneath in Sharpie. Belief will carry a team through a whole season, but nobody has ever passed an audit on morale.
+        </p>
+        <p class="believe-tune">Ted Lasso season 4 premieres Wednesday on Apple TV. AFC Roske plays at home every Saturday at 5 AM, whether or not anyone asked.</p>
       </div>
     </div>
   </section>
 
-  <!-- ================= PAGE 6: CITY DESK ================= -->
-  <section id="current-work" class="citydesk">
-    <div class="citydesk-inner">
-      <header class="sec-head">
-        <div class="sec-slug">Page 6 / City Desk / Ongoing</div>
-        <h2 class="sec-title">Six stories <em>still developing.</em></h2>
-        <p class="sec-deck">
-          The work behind the costume. All six are real, and none of them involve webbing.
+  <!-- ================= THE SQUAD ================= -->
+  <section id="current-work" class="squad">
+    <div class="squad-inner">
+      <header class="sec-head sec-head-onpitch">
+        <div class="sec-slug sec-slug-onpitch">Squad list | 2026/27 season</div>
+        <h2 class="sec-title sec-title-onpitch">The <em>squad.</em></h2>
+        <p class="sec-deck sec-deck-onpitch">
+          Six names on the team sheet, all real, all currently getting minutes. The manager insists on playing every one of them at the same time.
         </p>
       </header>
 
-      <div class="cd-grid">
-        {cityDesk.map(item => (
-          <article class="cd-brief">
-            <div class="cd-kicker">{item.kicker}</div>
-            <h3 class="cd-title">{item.title}</h3>
-            <p class="cd-body"><span class="cd-dateline">{item.dateline} |</span>{item.body}</p>
-            <div class="cd-meta">
-              <span class="cd-tag">{item.tag}</span>
-              <span class="cd-status">{item.status}</span>
+      <div class="squad-grid">
+        {squad.map(item => (
+          <article class="player">
+            <div class="player-head">
+              <span class="player-num" aria-hidden="true">{item.num}</span>
+              <div class="player-id">
+                <span class="player-pos">{item.position}</span>
+                <h3 class="player-name">{item.name}</h3>
+              </div>
+            </div>
+            <p class="player-note">{item.note}</p>
+            <div class="player-meta">
+              <span class="player-tag">{item.tag}</span>
+              <span class="player-status">{item.status}</span>
             </div>
             {item.href ? (
               <a
                 href={item.href}
                 target={item.external ? '_blank' : undefined}
                 rel={item.external ? 'noopener' : undefined}
-                class="cd-cta"
+                class="player-cta"
               >{item.cta}</a>
             ) : (
-              <span class="cd-cta cd-cta-off">{item.cta}</span>
+              <span class="player-cta player-cta-off">{item.cta}</span>
             )}
           </article>
         ))}
@@ -371,26 +331,26 @@ const cityDesk = [
     </div>
   </section>
 
-  <!-- ================= PAGE 20: LETTERS ================= -->
-  <section class="letters">
-    <div class="letters-inner">
-      <div class="letters-slug">Page 20 / Letters to the Editor</div>
-      <h2 class="letters-title">Write in. <em>I'll allow it.</em></h2>
-      <p class="letters-deck">
-        Thirteen minutes on the phone, no charge and no pitch. Ask about AI inside the Office of the CFO, what an MCP server actually does on a Tuesday, whether the Caribbean AI Summit is worth the flight, or how a grown man ends up webbed to a wall in an alley. Answers arrive whether or not anyone requested them.
+  <!-- ================= BISCUITS WITH THE BOSS (CTA) ================= -->
+  <section class="biscuits">
+    <div class="biscuits-inner">
+      <div class="sec-slug">Biscuits with the boss</div>
+      <h2 class="biscuits-title">Thirteen minutes. <em>I'll allow it.</em></h2>
+      <p class="biscuits-deck">
+        A short call, no charge and no pitch deck. Ask about AI inside the Office of the CFO, what an MCP server actually does on a Tuesday, whether the Caribbean AI Summit is worth the flight, or why a grown man is running a football club that doesn't exist. Google Calendar still can't attach shortbread, which I consider its largest remaining product gap.
       </p>
-      <div class="letters-cta">
-        <a href="/question/" target="_blank" rel="noopener" class="btn-ink btn-big">Book 13 minutes</a>
-        <a href="/contact" class="btn-outline btn-big">Send a note</a>
+      <div class="biscuits-cta">
+        <a href="/question/" target="_blank" rel="noopener" class="btn-red btn-big">Book 13 minutes</a>
+        <a href="/contact" class="btn-line btn-big">Send a note</a>
       </div>
     </div>
   </section>
 
-  <!-- ================= COLOPHON ================= -->
-  <footer class="colophon">
-    <div class="colophon-inner">
+  <!-- ================= CLUB NOTICE ================= -->
+  <footer class="notice">
+    <div class="notice-inner">
       <p>
-        THE DAILY ROSKE is a parody newspaper published by its own subject and is not affiliated with Marvel, Sony Pictures, the Daily Bugle, or any newspaper that employs actual reporters. Spider-Man: Brand New Day opens in theaters Friday, July 31, 2026, and had nothing to do with this. Edward really did run interRel for 25 years and really does build MCP servers for enterprise finance. The webbing is not real, the badge is, and the fedora stays on.
+        AFC ROSKE is a football club with no players, no ground, no league affiliation, and one extremely committed manager. It is not associated with Apple TV, Ted Lasso, AFC Richmond, or any organization that has successfully kicked a ball. Ted Lasso season 4 premieres August 5, 2026, and had no say in this. Edward really did found interRel at 22, really does build MCP servers for enterprise finance, and really will bring biscuits. The fedora stays on.
       </p>
     </div>
   </footer>
@@ -399,705 +359,675 @@ const cityDesk = [
 
 <style>
   /* ============================================================
-     THE DAILY ROSKE  |  BRAND NEW DAY  |  2026-07-25
-     A tabloid front page running a smear campaign on its owner.
-     Palette: newsprint cream + ink black, tabloid spot red,
-              press blue. Dark mode is the "night edition".
-     Type: Newsreader (headlines), Libre Franklin (decks/body),
-           Courier Prime (slugs, credits, folio),
-           UnifrakturMaguntia (nameplate only).
-     Atmosphere: Ben-Day halftone, column rules, drop caps,
-                 jump lines, wire-photo credits. No motion.
+     AFC ROSKE: BELIEVE  |  TED LASSO S4  |  2026-08-01
+     A small football club run by one optimistic American.
+     Palette: programme cream + kit blue, spot red CTA, pitch
+              green, Believe gold. Dark mode is the floodlit
+              night match.
+     Type: Archivo (headlines), Anton (kit numbers, scarf),
+           Nunito Sans (body), Space Mono (fixture data).
+     Atmosphere: scoreboard strip, knitted scarf, pitch-line
+                 rules, taped paper sign. No motion.
      ============================================================ */
 
   :global([data-theme="dark"]) {
-    --n-paper: #14110d;
-    --n-paper2: #1d1913;
-    --n-paper3: #221d16;
-    --n-ink: #f2ece0;
-    --n-muted: #b8ae9b;
-    --n-rule: #3a3228;
-    --n-red: #e2453f;
-    --n-blue: #7ea2e8;
-    --n-dot: rgba(242, 236, 224, 0.05);
-    --n-onred: #14110d;
+    --tl-bg: #0e1330;
+    --tl-panel: #171e42;
+    --tl-panel2: #1c244f;
+    --tl-ink: #f0f2fa;
+    --tl-muted: #aeb6d8;
+    --tl-line: #2c3563;
+    --tl-red: #e45866;
+    --tl-blue: #93a4f0;
+    --tl-gold: #ffd23f;
+    --tl-pitch: #0b4526;
+    --tl-pitch2: #0d5230;
+    --tl-onred: #ffffff;
+    --tl-redsolid: #c11425;
   }
   :global([data-theme="light"]) {
-    --n-paper: #f3efe3;
-    --n-paper2: #fbf8ef;
-    --n-paper3: #ece6d6;
-    --n-ink: #17140f;
-    --n-muted: #544c3e;
-    --n-rule: #d9d1bd;
-    --n-red: #b3121b;
-    --n-blue: #1c3f94;
-    --n-dot: rgba(23, 20, 15, 0.055);
-    --n-onred: #fbf8ef;
+    --tl-bg: #f7f5ec;
+    --tl-panel: #fffdf6;
+    --tl-panel2: #efecdd;
+    --tl-ink: #151a2b;
+    --tl-muted: #4b5268;
+    --tl-line: #ded9c6;
+    --tl-red: #c11425;
+    --tl-blue: #2a3ba0;
+    --tl-gold: #ffd23f;
+    --tl-pitch: #0b5c2e;
+    --tl-pitch2: #0e6b36;
+    --tl-onred: #ffffff;
+    --tl-redsolid: #c11425;
   }
 
-  /* Ben-Day halftone, used as a section texture */
-  .front, .photodesk, .citydesk, .letters {
-    background-image: radial-gradient(var(--n-dot) 1px, transparent 1px);
-    background-size: 5px 5px;
+  /* ---------------- SCOREBOARD STRIP ---------------- */
+  .score {
+    background: var(--tl-ink);
+    color: var(--tl-bg);
+    padding: 0.55rem 2rem;
   }
-
-  .credit {
-    display: block;
-    margin-top: 0.6rem;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    color: var(--n-muted);
-  }
-
-  /* ---------------- NAMEPLATE ---------------- */
-  .np {
-    background: var(--n-paper2);
-    color: var(--n-ink);
-    border-bottom: 3px double var(--n-ink);
-    padding: 2.4rem 2rem 0.7rem;
-  }
-  .np-inner { max-width: 1360px; margin: 0 auto; }
-  .np-row {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    gap: 1.5rem;
-    align-items: end;
-  }
-  .np-ear {
+  .score-inner {
+    max-width: 1320px;
+    margin: 0 auto;
     display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--n-muted);
-    padding-bottom: 0.6rem;
-  }
-  .np-ear-r { text-align: right; }
-  .np-title {
-    font-family: 'UnifrakturMaguntia', 'Newsreader', serif;
-    font-size: clamp(2.5rem, 8.5vw, 6.5rem);
-    line-height: 0.95;
-    text-align: center;
-    color: var(--n-ink);
-    white-space: nowrap;
-  }
-  .np-rule {
-    height: 0;
-    border-top: 1px solid var(--n-ink);
-    border-bottom: 3px solid var(--n-ink);
-    margin: 0.9rem 0 0.5rem;
-  }
-  .np-folio {
-    display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
     gap: 1.5rem;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.63rem;
-    letter-spacing: 0.1em;
-    color: var(--n-muted);
-  }
-  .np-motto { color: var(--n-red); text-align: center; }
-  @media (max-width: 900px) {
-    .np { padding: 1.6rem 1.1rem 0.6rem; }
-    .np-row { grid-template-columns: 1fr; gap: 0.5rem; }
-    .np-ear { flex-direction: row; gap: 1rem; justify-content: center; padding-bottom: 0; font-size: 0.58rem; }
-    .np-ear-r { text-align: center; }
-    .np-folio { flex-direction: column; gap: 0.4rem; text-align: center; font-size: 0.55rem; }
-  }
-
-  /* ---------------- FRONT PAGE ---------------- */
-  .front {
-    background-color: var(--n-paper);
-    color: var(--n-ink);
-    padding: 2.6rem 2rem 4rem;
-  }
-  .front-inner { max-width: 1360px; margin: 0 auto; }
-
-  .strap {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
     flex-wrap: wrap;
-    border-top: 1px solid var(--n-rule);
-    border-bottom: 1px solid var(--n-rule);
-    padding: 0.55rem 0;
-    margin-bottom: 1.6rem;
   }
-  .strap-flag {
-    background: var(--n-red);
-    color: var(--n-onred);
-    font-family: 'Courier Prime', monospace;
-    font-weight: 700;
-    font-size: 0.66rem;
-    letter-spacing: 0.16em;
+  .score-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.64rem;
+    letter-spacing: 0.13em;
+  }
+  .score-board {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .score-team {
+    font-family: 'Anton', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+  }
+  .score-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    background: var(--tl-redsolid);
+    color: var(--tl-onred);
+    padding: 0.1rem 0.45rem;
+  }
+  .score-dash { font-family: 'Space Mono', monospace; font-size: 0.7rem; }
+  @media (max-width: 760px) {
+    .score { padding: 0.5rem 1.1rem; }
+    .score-inner { justify-content: center; }
+    .score-item { display: none; }
+  }
+
+  /* ---------------- HERO ---------------- */
+  .hero {
+    background:
+      linear-gradient(to bottom, transparent 0 calc(100% - 1px), var(--tl-line) calc(100% - 1px)),
+      var(--tl-bg);
+    color: var(--tl-ink);
+    padding: 4.2rem 2rem 0;
+  }
+  .hero-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 3.5rem;
+    align-items: center;
+    padding-bottom: 3.6rem;
+  }
+  @media (max-width: 1020px) {
+    .hero { padding: 2.8rem 1.1rem 0; }
+    .hero-inner { grid-template-columns: 1fr; gap: 2.4rem; }
+  }
+
+  .hero-kicker {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding: 0.28rem 0.6rem;
+    color: var(--tl-red);
+    margin: 0 0 1.3rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 3px solid var(--tl-red);
+    display: inline-block;
   }
-  .strap-text {
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 0.9rem;
+  .hero-h1 {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.9rem, 7.2vw, 5.6rem);
+    line-height: 0.96;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+    margin: 0 0 0.9rem;
+    color: var(--tl-ink);
+  }
+  .hero-h1 em {
+    font-style: normal;
+    color: var(--tl-blue);
+  }
+  .hero-aside {
+    font-family: 'Nunito Sans', sans-serif;
     font-style: italic;
-    color: var(--n-muted);
+    font-size: 0.95rem;
+    color: var(--tl-muted);
+    margin: 0 0 1.6rem;
   }
-
-  .screamer {
-    font-family: 'Newsreader', serif;
-    font-weight: 800;
-    font-size: clamp(3.2rem, 11vw, 9rem);
-    line-height: 0.87;
-    letter-spacing: -0.03em;
+  .hero-sub {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    line-height: 1.35;
+    color: var(--tl-ink);
     margin: 0 0 1.1rem;
-    color: var(--n-ink);
   }
-  .screamer em { font-style: italic; color: var(--n-red); }
-
-  .subdeck {
-    font-family: 'Libre Franklin', sans-serif;
-    font-weight: 500;
-    font-size: clamp(1.05rem, 1.9vw, 1.45rem);
-    line-height: 1.45;
-    color: var(--n-muted);
-    max-width: 52em;
-    margin: 0 0 1.4rem;
-    border-left: 4px solid var(--n-red);
-    padding-left: 1.1rem;
+  .hero-desc {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--tl-muted);
+    margin: 0 0 1.8rem;
+    max-width: 38em;
   }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 0.85rem; }
 
-  .byline {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
+  .btn-red, .btn-line {
+    display: inline-flex;
     align-items: center;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.66rem;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 0.82rem;
     letter-spacing: 0.09em;
     text-transform: uppercase;
-    color: var(--n-muted);
-    border-top: 1px solid var(--n-rule);
-    border-bottom: 1px solid var(--n-rule);
-    padding: 0.6rem 0;
-    margin-bottom: 2.4rem;
+    text-decoration: none;
+    padding: 0.85rem 1.5rem;
+    border: 2px solid var(--tl-redsolid);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
   }
-  .byline-sep { color: var(--n-red); }
+  .btn-red {
+    background: var(--tl-redsolid);
+    color: var(--tl-onred);
+    box-shadow: 4px 4px 0 var(--tl-ink);
+  }
+  .btn-red:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tl-ink); }
+  .btn-line {
+    background: transparent;
+    border-color: var(--tl-ink);
+    color: var(--tl-ink);
+    box-shadow: 4px 4px 0 var(--tl-line);
+  }
+  .btn-line:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tl-line); background: var(--tl-panel); }
+  .btn-big { padding: 1rem 2rem; font-size: 0.9rem; }
 
-  .front-grid {
-    display: grid;
-    grid-template-columns: 1.55fr 1fr 0.72fr;
-    gap: 2.4rem;
-    align-items: start;
+  .hero-fig { margin: 0; }
+  .hero-frame {
+    position: relative;
+    border: 3px solid var(--tl-ink);
+    background: var(--tl-panel);
+    padding: 0.55rem;
+    box-shadow: 10px 10px 0 var(--tl-redsolid);
   }
-  @media (max-width: 1100px) {
-    .front-grid { grid-template-columns: 1fr 1fr; }
-    .numbers-box { grid-column: 1 / -1; }
-  }
-  @media (max-width: 760px) {
-    .front { padding: 2rem 1.1rem 3rem; }
-    .front-grid { grid-template-columns: 1fr; gap: 2rem; }
-  }
-
-  .lead-photo { margin: 0; }
-  .lead-photo-frame {
-    border: 1px solid var(--n-ink);
-    padding: 0.5rem;
-    background: var(--n-paper2);
-  }
-  .lead-photo-img {
+  .hero-img {
     display: block;
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    filter: contrast(1.04) saturate(0.94);
   }
-  .lead-photo-cap {
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 0.86rem;
-    line-height: 1.55;
-    color: var(--n-muted);
-    margin-top: 0.75rem;
-    padding-top: 0.65rem;
-    border-top: 1px solid var(--n-rule);
-  }
-  .lead-photo-cap strong {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    color: var(--n-ink);
-  }
-
-  .lead-col { border-left: 1px solid var(--n-rule); padding-left: 2.2rem; }
-  @media (max-width: 760px) { .lead-col { border-left: 0; padding-left: 0; } }
-  .lead-p {
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 1rem;
-    line-height: 1.68;
-    color: var(--n-ink);
-    margin: 0 0 1.05rem;
-    hyphens: auto;
-  }
-  .lead-p-first::first-letter {
-    float: left;
-    font-family: 'Newsreader', serif;
-    font-weight: 800;
-    font-size: 4.2rem;
-    line-height: 0.78;
-    padding: 0.12em 0.12em 0 0;
-    color: var(--n-red);
-  }
-  .jump {
-    font-family: 'Courier Prime', monospace;
-    font-style: italic;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    color: var(--n-muted);
-    border-top: 1px solid var(--n-rule);
-    padding-top: 0.7rem;
-    margin: 0 0 1.6rem;
-  }
-
-  .front-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; }
-  .btn-ink, .btn-outline {
-    display: inline-flex;
-    align-items: center;
-    font-family: 'Courier Prime', monospace;
-    font-weight: 700;
+  .hero-badge {
+    position: absolute;
+    top: -0.85rem;
+    left: 1.2rem;
+    background: var(--tl-gold);
+    color: #1f2d7a;
+    font-family: 'Anton', sans-serif;
     font-size: 0.78rem;
-    letter-spacing: 0.11em;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 0.8rem 1.35rem;
-    border: 2px solid var(--n-ink);
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+    letter-spacing: 0.18em;
+    padding: 0.32rem 0.75rem;
+    border: 2px solid #1f2d7a;
+    z-index: 2;
   }
-  .btn-ink { background: var(--n-red); border-color: var(--n-red); color: var(--n-onred); box-shadow: 4px 4px 0 var(--n-ink); }
-  .btn-ink:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--n-ink); }
-  .btn-outline { background: transparent; color: var(--n-ink); box-shadow: 4px 4px 0 var(--n-rule); }
-  .btn-outline:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--n-rule); background: var(--n-paper2); }
-  .btn-big { padding: 1rem 1.9rem; font-size: 0.85rem; }
-
-  .numbers-box {
-    border: 3px double var(--n-ink);
-    background: var(--n-paper2);
-    padding: 1.4rem 1.3rem 1.2rem;
-  }
-  .numbers-head {
-    font-family: 'Newsreader', serif;
-    font-weight: 700;
-    font-size: 1.35rem;
-    margin: 0 0 0.9rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--n-ink);
-    color: var(--n-ink);
-  }
-  .numbers-list { margin: 0; }
-  .numbers-row {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    padding: 0.55rem 0;
-    border-bottom: 1px dotted var(--n-rule);
-  }
-  .numbers-value {
-    font-family: 'Newsreader', serif;
-    font-weight: 800;
-    font-size: 1.9rem;
+  .hero-numtag {
+    position: absolute;
+    right: 0.55rem;
+    bottom: 0.55rem;
+    background: var(--tl-ink);
+    color: var(--tl-bg);
+    font-family: 'Anton', sans-serif;
+    font-size: 1.3rem;
     line-height: 1;
-    color: var(--n-red);
-    min-width: 2.6rem;
+    padding: 0.4rem 0.6rem 0.3rem;
   }
-  .numbers-label {
-    margin: 0;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--n-muted);
-    line-height: 1.4;
-  }
-  .numbers-foot {
-    margin: 0.9rem 0 0;
-    font-family: 'Libre Franklin', sans-serif;
+  .hero-cap {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.86rem;
     font-style: italic;
-    font-size: 0.76rem;
-    line-height: 1.5;
-    color: var(--n-muted);
+    line-height: 1.55;
+    color: var(--tl-muted);
+    margin-top: 0.9rem;
   }
 
-  /* ---------------- LATE BULLETINS ---------------- */
-  .bulletins {
-    background: var(--n-ink);
-    color: var(--n-paper2);
-    padding: 1.1rem 2rem;
+  /* Form guide bar */
+  .form {
+    border-top: 3px solid var(--tl-ink);
+    background: var(--tl-panel);
   }
-  .bulletins-inner {
-    max-width: 1360px;
+  .form-inner {
+    max-width: 1320px;
     margin: 0 auto;
     display: flex;
-    align-items: flex-start;
-    gap: 1.4rem;
+    align-items: stretch;
     flex-wrap: wrap;
   }
-  .bulletins-flag {
-    font-family: 'Newsreader', serif;
-    font-weight: 800;
-    font-style: italic;
-    font-size: 1.3rem;
-    color: var(--n-paper2);
+  .form-head {
+    font-family: 'Anton', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.16em;
+    color: var(--tl-onred);
+    background: var(--tl-redsolid);
+    display: inline-flex;
+    align-items: center;
+    padding: 0.9rem 1.3rem;
+  }
+  .form-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.9rem 1.6rem;
+    border-right: 1px solid var(--tl-line);
+  }
+  .form-stat:last-child { border-right: 0; }
+  .form-value {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--tl-red);
+  }
+  .form-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tl-muted);
+  }
+  @media (max-width: 900px) {
+    .form-inner { flex-direction: column; }
+    .form-head { justify-content: center; }
+    .form-stat { border-right: 0; border-bottom: 1px solid var(--tl-line); justify-content: center; }
+    .form-stat:last-child { border-bottom: 0; }
+  }
+
+  /* ---------------- CLUB SCARF ---------------- */
+  .scarf {
+    display: flex;
+    align-items: stretch;
+    background: var(--tl-bg);
+    padding: 2.6rem 0;
+    overflow: hidden;
+  }
+  .scarf-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.15rem;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        #2a3ba0 0 72px,
+        #ffffff 72px 84px,
+        #c11425 84px 156px,
+        #ffffff 156px 168px
+      );
+    padding: 0.9rem 1.2rem;
+    border-top: 3px solid var(--tl-ink);
+    border-bottom: 3px solid var(--tl-ink);
+  }
+  .scarf-ch {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(1.15rem, 2.6vw, 2rem);
+    line-height: 1;
+    color: #ffffff;
+    background: rgba(16, 22, 58, 0.82);
+    padding: 0.32rem 0.5rem 0.22rem;
+  }
+  .scarf-gap { width: clamp(0.7rem, 2vw, 1.6rem); }
+  .scarf-fringe {
+    width: 26px;
     flex-shrink: 0;
-    padding-right: 1.4rem;
-    border-right: 2px solid var(--n-red);
-  }
-  .bulletins-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.4rem; flex: 1; min-width: 260px; }
-  .bulletins-item {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.07em;
-    line-height: 1.5;
-    color: var(--n-paper2);
-    opacity: 0.92;
-  }
-  .bulletins-item::before { content: '\25AA'; color: var(--n-red); margin-right: 0.55rem; }
-  @media (max-width: 700px) {
-    .bulletins { padding: 1rem 1.1rem; }
-    .bulletins-flag { border-right: 0; padding-right: 0; }
+    background:
+      repeating-linear-gradient(
+        90deg,
+        var(--tl-ink) 0 3px,
+        transparent 3px 8px
+      );
+    margin: 0.4rem 0;
   }
 
   /* ---------------- SHARED SECTION HEADS ---------------- */
-  .sec-head { max-width: 900px; margin: 0 0 2.8rem; }
+  .sec-head { max-width: 880px; margin: 0 0 2.8rem; }
   .sec-slug {
     display: inline-block;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--n-red);
-    border-bottom: 2px solid var(--n-red);
-    padding-bottom: 0.3rem;
+    color: var(--tl-red);
+    border-bottom: 3px solid var(--tl-red);
+    padding-bottom: 0.35rem;
     margin-bottom: 1.1rem;
   }
   .sec-title {
-    font-family: 'Newsreader', serif;
-    font-weight: 800;
-    font-size: clamp(2.2rem, 5.6vw, 4rem);
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.3rem, 5.4vw, 4rem);
     line-height: 0.98;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
     margin: 0 0 1rem;
-    color: var(--n-ink);
+    color: var(--tl-ink);
   }
-  .sec-title em { font-style: italic; color: var(--n-red); }
+  .sec-title em { font-style: normal; color: var(--tl-red); }
   .sec-deck {
-    font-family: 'Libre Franklin', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 1.02rem;
     line-height: 1.66;
-    color: var(--n-muted);
+    color: var(--tl-muted);
     margin: 0;
     max-width: 46em;
   }
 
-  /* ---------------- PAGE 3: PHOTO DESK ---------------- */
-  .photodesk {
-    background-color: var(--n-paper2);
-    color: var(--n-ink);
-    padding: 4.5rem 2rem 5rem;
-    border-top: 1px solid var(--n-rule);
+  /* ---------------- TRAINING WALL ---------------- */
+  .wall {
+    background: var(--tl-panel);
+    color: var(--tl-ink);
+    padding: 4.6rem 2rem 5rem;
+    border-top: 1px solid var(--tl-line);
   }
-  .photodesk-inner { max-width: 1360px; margin: 0 auto; }
-  .pd-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem 1.8rem; }
-  .pd-item { margin: 0; display: flex; flex-direction: column; }
-  .pd-item-wide { grid-column: span 4; display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.2rem; align-items: center; }
-  @media (max-width: 1100px) {
-    .pd-grid { grid-template-columns: repeat(2, 1fr); }
-    .pd-item-wide { grid-column: span 2; }
+  .wall-inner { max-width: 1320px; margin: 0 auto; }
+  .wall-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2.2rem 1.8rem;
   }
-  @media (max-width: 680px) {
-    .photodesk { padding: 3.5rem 1.1rem 4rem; }
-    .pd-grid { grid-template-columns: 1fr; }
-    .pd-item-wide { grid-column: span 1; grid-template-columns: 1fr; gap: 1rem; }
+  .wall-item { margin: 0; display: flex; flex-direction: column; }
+  .wall-landscape { grid-column: span 4; }
+  .wall-portrait { grid-column: span 2; }
+  .wall-wide { grid-column: span 6; display: grid; grid-template-columns: 1.6fr 1fr; gap: 2rem; align-items: center; }
+  .wall-landscape .wall-img { aspect-ratio: 4 / 3; }
+  .wall-portrait .wall-img { aspect-ratio: 3 / 4; }
+  .wall-wide .wall-img { aspect-ratio: 16 / 9; }
+  @media (max-width: 1020px) {
+    .wall { padding: 3.4rem 1.1rem 3.8rem; }
+    .wall-grid { grid-template-columns: 1fr 1fr; }
+    .wall-landscape, .wall-portrait { grid-column: span 1; }
+    .wall-landscape .wall-img, .wall-portrait .wall-img { aspect-ratio: 4 / 5; }
+    .wall-wide { grid-column: span 2; grid-template-columns: 1fr; gap: 1rem; }
   }
-  .pd-frame {
+  @media (max-width: 640px) {
+    .wall-grid { grid-template-columns: 1fr; }
+    .wall-landscape, .wall-portrait, .wall-wide { grid-column: span 1; }
+  }
+  .wall-frame {
     position: relative;
-    border: 1px solid var(--n-ink);
-    padding: 0.4rem;
-    background: var(--n-paper);
+    border: 3px solid var(--tl-ink);
+    background: var(--tl-bg);
+    padding: 0.45rem;
+    box-shadow: 7px 7px 0 var(--tl-line);
   }
-  .pd-img {
+  .wall-img {
     display: block;
     width: 100%;
     height: auto;
-    aspect-ratio: 3 / 4;
     object-fit: cover;
-    filter: contrast(1.05) saturate(0.9);
   }
-  .pd-item-wide .pd-img { aspect-ratio: 4 / 3; }
-  .pd-slug {
+  .wall-num {
     position: absolute;
-    left: 0.4rem;
-    bottom: 0.4rem;
-    background: var(--n-ink);
-    color: var(--n-paper2);
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.58rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    padding: 0.28rem 0.5rem;
+    left: 0.45rem;
+    top: 0.45rem;
+    background: var(--tl-redsolid);
+    color: var(--tl-onred);
+    font-family: 'Anton', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1;
+    padding: 0.38rem 0.55rem 0.28rem;
   }
-  .pd-cap { padding-top: 0.85rem; }
-  .pd-title {
-    font-family: 'Newsreader', serif;
+  .wall-drill {
+    position: absolute;
+    right: 0.45rem;
+    bottom: 0.45rem;
+    background: var(--tl-ink);
+    color: var(--tl-bg);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.56rem;
     font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 1.15;
+    letter-spacing: 0.12em;
+    padding: 0.3rem 0.55rem;
+  }
+  .wall-cap { padding-top: 0.9rem; }
+  .wall-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 1.28rem;
+    line-height: 1.12;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
     margin: 0 0 0.5rem;
-    color: var(--n-ink);
+    color: var(--tl-ink);
   }
-  .pd-item-wide .pd-title { font-size: 2rem; }
-  .pd-text {
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 0.88rem;
-    line-height: 1.62;
-    color: var(--n-muted);
+  .wall-wide .wall-title { font-size: 1.9rem; }
+  .wall-text {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.64;
+    color: var(--tl-muted);
     margin: 0;
   }
-  .pd-item-wide .pd-text { font-size: 1rem; }
+  .wall-wide .wall-text { font-size: 1rem; }
 
-  /* ---------------- PAGE 12: OPINION ----------------
-     Deliberately NOT theme-inverting: this is a physical sheet of newsprint
-     torn out and pinned to the page, so it stays cream-with-ink in BOTH
-     modes. Every color here is a literal, never a --n-* var that flips. */
-  .oped {
-    background: #efe9db;
-    color: #17140f;
-    padding: 4.5rem 2rem 5rem;
-    background-image: radial-gradient(rgba(23, 20, 15, 0.06) 1px, transparent 1px);
-    background-size: 5px 5px;
-    border-top: 3px double #17140f;
-    border-bottom: 3px double #17140f;
+  /* ---------------- BELIEVE ----------------
+     The sign is a physical object: yellow paper, blue paint, tape.
+     It stays gold-with-blue in BOTH modes, like the real thing. */
+  .believe {
+    background: var(--tl-bg);
+    color: var(--tl-ink);
+    padding: 5rem 2rem;
+    border-top: 1px solid var(--tl-line);
   }
-  .oped-inner { max-width: 1200px; margin: 0 auto; }
-  .oped-slug {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #b3121b;
-    border-bottom: 1px solid rgba(23, 20, 15, 0.22);
-    padding-bottom: 0.7rem;
-    margin-bottom: 2.2rem;
+  .believe-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 3.6rem;
+    align-items: center;
   }
-  .oped-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 3rem; align-items: start; }
-  @media (max-width: 860px) {
-    .oped { padding: 3.5rem 1.1rem 4rem; }
-    .oped-grid { grid-template-columns: 1fr; gap: 2.2rem; }
+  @media (max-width: 940px) {
+    .believe { padding: 3.6rem 1.1rem; }
+    .believe-inner { grid-template-columns: 1fr; gap: 2.4rem; }
   }
-  .oped-scream {
-    font-family: 'Newsreader', serif;
-    font-weight: 800;
-    font-style: italic;
-    font-size: clamp(3.5rem, 10vw, 7rem);
-    line-height: 0.9;
-    letter-spacing: -0.03em;
-    margin: 0 0 1.4rem;
-    color: #17140f;
-    text-shadow: 5px 5px 0 #b3121b;
-  }
-  .oped-p {
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 1.04rem;
-    line-height: 1.72;
-    color: #4a4335;
-    margin: 0 0 1.1rem;
-    max-width: 40em;
-  }
-  .oped-sig {
-    font-family: 'Newsreader', serif;
-    font-style: italic;
-    font-weight: 700;
-    font-size: 1.3rem;
-    color: #17140f;
-    margin-top: 1.6rem;
-    padding-top: 0.9rem;
-    border-top: 1px solid rgba(23, 20, 15, 0.25);
+  .believe-signwrap { text-align: center; }
+  .believe-sign {
+    position: relative;
     display: inline-block;
+    background: #ffd23f;
+    padding: 1.6rem 2.8rem 1.4rem;
+    transform: rotate(-2deg);
+    box-shadow: 0 10px 24px rgba(10, 14, 40, 0.28);
   }
-  .reply {
-    border: 3px double #17140f;
-    padding: 1.5rem 1.5rem 1.3rem;
-    background: #fbf8ef;
+  .believe-word {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    line-height: 1;
+    color: #1f2d7a;
+    letter-spacing: 0.05em;
   }
-  .reply-head {
-    font-family: 'Courier Prime', monospace;
-    font-weight: 700;
-    font-size: 0.7rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #17140f;
-    border-bottom: 1px solid rgba(23, 20, 15, 0.3);
-    padding-bottom: 0.6rem;
-    margin-bottom: 1rem;
+  .believe-tape {
+    position: absolute;
+    top: -0.7rem;
+    width: 3.4rem;
+    height: 1.4rem;
+    background: rgba(250, 248, 240, 0.75);
+    border: 1px solid rgba(31, 45, 122, 0.15);
   }
-  .reply-p {
-    font-family: 'Libre Franklin', sans-serif;
-    font-size: 0.95rem;
-    line-height: 1.68;
-    color: #4a4335;
-    margin: 0 0 0.9rem;
-  }
-  .reply-p-small { font-size: 0.85rem; font-style: italic; color: #5c5445; }
-  .reply-sig {
-    font-family: 'Newsreader', serif;
+  .believe-tape-l { left: -1rem; transform: rotate(-14deg); }
+  .believe-tape-r { right: -1rem; transform: rotate(12deg); }
+  .believe-under {
+    font-family: 'Nunito Sans', sans-serif;
     font-style: italic;
-    font-weight: 700;
-    font-size: 1.15rem;
-    color: #17140f;
-    margin-top: 0.4rem;
+    font-size: 1rem;
+    color: var(--tl-muted);
+    margin: 1.3rem 0 0;
+  }
+  .believe-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.9rem, 4.4vw, 3rem);
+    line-height: 1.04;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.2rem;
+    color: var(--tl-ink);
+  }
+  .believe-p {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--tl-muted);
+    margin: 0 0 1.05rem;
+    max-width: 42em;
+  }
+  .believe-tune {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--tl-red);
+    border-top: 1px solid var(--tl-line);
+    padding-top: 1rem;
+    margin: 1.4rem 0 0;
   }
 
-  /* ---------------- PAGE 6: CITY DESK ---------------- */
-  .citydesk {
-    background-color: var(--n-paper);
-    color: var(--n-ink);
+  /* ---------------- THE SQUAD (on the pitch) ----------------
+     Literal floodlit-pitch green in both modes, white pitch lines. */
+  .squad {
+    background:
+      linear-gradient(90deg, var(--tl-pitch) 0 50%, var(--tl-pitch2) 50% 100%);
+    background-size: 25% 100%;
+    color: #ffffff;
     padding: 4.8rem 2rem 5.2rem;
+    border-top: 4px solid #ffffff;
+    border-bottom: 4px solid #ffffff;
   }
-  .citydesk-inner { max-width: 1360px; margin: 0 auto; }
-  .cd-grid {
+  .sec-head-onpitch { margin-bottom: 2.6rem; }
+  .sec-slug-onpitch { color: #ffd23f; border-bottom-color: #ffd23f; }
+  .sec-title-onpitch { color: #ffffff; }
+  .sec-title-onpitch em { color: #ffd23f; }
+  .sec-deck-onpitch { color: rgba(255, 255, 255, 0.85); }
+  .squad-inner { max-width: 1320px; margin: 0 auto; }
+  .squad-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border-top: 3px double var(--n-ink);
+    gap: 1.6rem;
   }
-  .cd-brief {
-    padding: 1.8rem 1.7rem 1.9rem;
-    border-bottom: 1px solid var(--n-rule);
-    border-right: 1px solid var(--n-rule);
+  @media (max-width: 1020px) { .squad-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 660px) {
+    .squad { padding: 3.4rem 1.1rem 3.8rem; }
+    .squad-grid { grid-template-columns: 1fr; }
+  }
+  .player {
+    background: rgba(8, 30, 17, 0.55);
+    border: 2px solid rgba(255, 255, 255, 0.55);
+    padding: 1.5rem 1.4rem 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.65rem;
-    transition: background 0.18s ease;
+    gap: 0.8rem;
+    transition: background 0.18s ease, transform 0.18s ease;
   }
-  .cd-brief:hover { background: var(--n-paper2); }
-  .cd-brief:nth-child(3n) { border-right: 0; }
-  @media (max-width: 1000px) {
-    .cd-grid { grid-template-columns: repeat(2, 1fr); }
-    .cd-brief:nth-child(3n) { border-right: 1px solid var(--n-rule); }
-    .cd-brief:nth-child(2n) { border-right: 0; }
+  .player:hover { background: rgba(8, 30, 17, 0.78); transform: translateY(-3px); }
+  .player-head { display: flex; gap: 0.9rem; align-items: flex-start; }
+  .player-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 2.3rem;
+    line-height: 0.9;
+    color: #ffd23f;
+    flex-shrink: 0;
   }
-  @media (max-width: 660px) {
-    .citydesk { padding: 3.5rem 1.1rem 4rem; }
-    .cd-grid { grid-template-columns: 1fr; }
-    .cd-brief { border-right: 0; padding: 1.5rem 0 1.6rem; }
-  }
-  .cd-kicker {
-    font-family: 'Courier Prime', monospace;
-    font-weight: 700;
-    font-size: 0.62rem;
-    letter-spacing: 0.16em;
+  .player-pos {
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--n-red);
+    color: #ffd23f;
+    margin-bottom: 0.3rem;
   }
-  .cd-title {
-    font-family: 'Newsreader', serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 1.14;
+  .player-name {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 1.22rem;
+    line-height: 1.12;
     margin: 0;
-    color: var(--n-ink);
+    color: #ffffff;
   }
-  .cd-body {
-    font-family: 'Libre Franklin', sans-serif;
+  .player-note {
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 0.92rem;
-    line-height: 1.66;
-    color: var(--n-muted);
+    line-height: 1.62;
+    color: rgba(255, 255, 255, 0.85);
     margin: 0;
     flex-grow: 1;
   }
-  .cd-dateline {
-    font-family: 'Courier Prime', monospace;
-    font-weight: 700;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    color: var(--n-ink);
-    margin-right: 0.4rem;
-  }
-  .cd-meta { display: flex; flex-wrap: wrap; gap: 0.45rem; align-items: center; }
-  .cd-tag, .cd-status {
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.09em;
+  .player-meta { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .player-tag, .player-status {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.56rem;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     padding: 0.26rem 0.5rem;
   }
-  .cd-tag { border: 1px solid var(--n-rule); color: var(--n-muted); }
-  .cd-status { background: var(--n-ink); color: var(--n-paper2); font-weight: 700; }
-  .cd-cta {
-    font-family: 'Courier Prime', monospace;
-    font-weight: 700;
-    font-size: 0.72rem;
-    letter-spacing: 0.09em;
+  .player-tag { border: 1px solid rgba(255, 255, 255, 0.5); color: rgba(255, 255, 255, 0.85); }
+  .player-status { background: #ffd23f; color: #1f2d7a; font-weight: 700; }
+  .player-cta {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 800;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--n-red);
+    color: #ffd23f;
     text-decoration: underline;
-    text-underline-offset: 3px;
+    text-underline-offset: 4px;
     align-self: flex-start;
   }
-  .cd-cta:hover { text-decoration-thickness: 2px; }
-  .cd-cta-off { color: var(--n-muted); text-decoration: none; cursor: default; }
+  .player-cta:hover { text-decoration-thickness: 3px; }
+  .player-cta-off { color: rgba(255, 255, 255, 0.55); text-decoration: none; cursor: default; }
 
-  /* ---------------- PAGE 20: LETTERS ---------------- */
-  .letters {
-    background-color: var(--n-paper2);
-    color: var(--n-ink);
-    padding: 5rem 2rem 5.5rem;
-    border-top: 3px double var(--n-ink);
+  /* ---------------- BISCUITS CTA ---------------- */
+  .biscuits {
+    background: var(--tl-panel);
+    color: var(--tl-ink);
+    padding: 5rem 2rem 5.4rem;
     text-align: center;
   }
-  .letters-inner { max-width: 820px; margin: 0 auto; }
-  .letters-slug {
-    display: inline-block;
-    font-family: 'Courier Prime', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--n-red);
-    border-bottom: 2px solid var(--n-red);
-    padding-bottom: 0.3rem;
-    margin-bottom: 1.4rem;
-  }
-  .letters-title {
-    font-family: 'Newsreader', serif;
-    font-weight: 800;
-    font-size: clamp(2.4rem, 6.5vw, 4.6rem);
+  .biscuits-inner { max-width: 820px; margin: 0 auto; }
+  .biscuits-title {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.3rem, 6vw, 4.2rem);
     line-height: 0.98;
     letter-spacing: -0.03em;
+    text-transform: uppercase;
     margin: 0 0 1.2rem;
-    color: var(--n-ink);
+    color: var(--tl-ink);
   }
-  .letters-title em { font-style: italic; color: var(--n-red); }
-  .letters-deck {
-    font-family: 'Libre Franklin', sans-serif;
+  .biscuits-title em { font-style: normal; color: var(--tl-red); }
+  .biscuits-deck {
+    font-family: 'Nunito Sans', sans-serif;
     font-size: 1.04rem;
     line-height: 1.7;
-    color: var(--n-muted);
+    color: var(--tl-muted);
     margin: 0 auto 2.2rem;
     max-width: 44em;
   }
-  .letters-cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-  @media (max-width: 640px) { .letters { padding: 3.8rem 1.1rem 4.2rem; } }
+  .biscuits-cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  @media (max-width: 640px) { .biscuits { padding: 3.8rem 1.1rem 4.2rem; } }
 
-  /* ---------------- COLOPHON ---------------- */
-  .colophon {
-    background: var(--n-paper3);
-    color: var(--n-muted);
-    border-top: 1px solid var(--n-rule);
+  /* ---------------- CLUB NOTICE ---------------- */
+  .notice {
+    background: var(--tl-panel2);
+    color: var(--tl-muted);
+    border-top: 1px solid var(--tl-line);
     padding: 2.4rem 2rem 2.8rem;
   }
-  .colophon-inner { max-width: 1000px; margin: 0 auto; }
-  .colophon p {
-    font-family: 'Courier Prime', monospace;
+  .notice-inner { max-width: 980px; margin: 0 auto; }
+  .notice p {
+    font-family: 'Space Mono', monospace;
     font-size: 0.68rem;
     line-height: 1.85;
     margin: 0;
