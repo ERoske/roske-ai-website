@@ -134,7 +134,7 @@ export const currentTheme: ThemeConfig = {
   hero: {
     title: "ROSKE.AI",
     subtitle: "New head coach arrives with no relevant experience, remains weirdly confident.",
-    description: "Ted Lasso comes back Wednesday, coaching a team in a sport he doesn't understand, on the theory that curiosity outruns expertise. I've been running the same play since 2023, when I sold the company I actually understood and walked into AI with nothing but questions, which got better the longer I asked them. These days I coach finance teams through the same transfer window and build MCP servers so AI agents can work inside enterprise systems, and ten of those agents rebuild this website every Saturday. The sign over the door says Believe, and I taped it up there myself.",
+    description: "Ted Lasso is back, coaching a team in a sport he doesn't understand, on the theory that curiosity outruns expertise. I've been running the same play since 2023, when I sold the company I actually understood and walked into AI with nothing but questions, which got better the longer I asked them. These days I coach finance teams through the same transfer window and build MCP servers so AI agents can work inside enterprise systems, and ten of those agents rebuild this website every Saturday. The sign over the door says Believe, and I taped it up there myself.",
     heroImage: "hero-2026-08-01.jpg",
     imageAlt: "Edward Roske in his signature blue fedora and a tan coach's jacket with a red whistle lanyard, standing on the touchline of an English football stadium at golden hour, pointing forward with an enormous grin and holding a clipboard covered in incomprehensible diagrams.",
     ctaText: "Hire the gaffer",
