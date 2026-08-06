@@ -154,9 +154,15 @@ Favorite people to quote:
 Edward lived in Texas for over 25 years, and per his rule, anyone from there **must always** call it **"The Great State of Texas"** and never just "Texas." Written out in full, capitalized, every single time. Delivered flatly, never with a wink. The joke only works because it is never acknowledged as a joke.
 
 - Right: "I ran interRel out of The Great State of Texas for 25 years."
-- Right: "Kscope25 in Grapevine, The Great State of Texas."
 - Wrong: "I ran interRel out of Texas."
 - Wrong: "the great state of Texas" (lowercase kills it)
+
+**The city construction.** Pairing a city with the state takes **"in"**, not a comma. It is "The City in The Great State of Texas," never "The City, The Great State of Texas." The phrase is a title, not a postal address, so it does not get comma-slotted the way "Dallas, TX" would.
+
+- Right: "the ODTUG podcast booth at Kscope25 in Grapevine in The Great State of Texas"
+- Right: "I live in Dallas in The Great State of Texas."
+- Wrong: "Kscope25 in Grapevine, The Great State of Texas"
+- Wrong: "Dallas, Texas"
 
 **The proper-noun exception.** The rule governs references to the state itself. It does not rewrite the official name of an institution, event, place, or team that happens to contain "Texas." Those stay exactly as they are:
 - "the State Fair of Texas" (not "the State Fair of The Great State of Texas")
