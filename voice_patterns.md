@@ -149,6 +149,22 @@ Favorite people to quote:
 - "(cause asides are fun)" (meta-parenthetical)
 - Work-life "blend" not "balance"
 
+### "The Great State of Texas" (absolute rule)
+
+Edward lived in Texas for over 25 years, and per his rule, anyone from there **must always** call it **"The Great State of Texas"** and never just "Texas." Written out in full, capitalized, every single time. Delivered flatly, never with a wink. The joke only works because it is never acknowledged as a joke.
+
+- Right: "I ran interRel out of The Great State of Texas for 25 years."
+- Right: "Kscope25 in Grapevine, The Great State of Texas."
+- Wrong: "I ran interRel out of Texas."
+- Wrong: "the great state of Texas" (lowercase kills it)
+
+**The proper-noun exception.** The rule governs references to the state itself. It does not rewrite the official name of an institution, event, place, or team that happens to contain "Texas." Those stay exactly as they are:
+- "the State Fair of Texas" (not "the State Fair of The Great State of Texas")
+- "North Texas," "West Texas," "East Texas" (regional names)
+- "the University of Texas," "Texas Rangers," "Texas A&M," "Texas Instruments"
+
+If you can swap in another state's name and the phrase is still that thing's actual name, it is a proper noun. Leave it.
+
 ### Words/phrases Edward NEVER uses:
 - Em dashes
 - Emojis
