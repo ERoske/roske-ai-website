@@ -5,57 +5,25 @@ date: 2026-07-25
 tags: ["AI", "AI Agents", "Asking Good Questions", "Spider-Man"]
 ---
 
-[Spider-Man: Brand New Day](https://www.marvel.com/movies/spider-man-brand-new-day) opens Friday, and the premise is a memory wipe. The world no longer knows who Peter Parker is, so he still does the job and nobody can connect the job back to the person.
+I spend most of my working weeks building systems that remember things about people, so you'd think I'd be all the way on team memory. My own assistant remembers my calendar, my travel, my sons' dietary weirdness (well, ours… all three of us are vegetarians), which hotel I liked in Cleveland, you name it. The entire agent industry is sprinting in that one direction right now: longer context windows, persistent memory, vector stores that can recall a conversation from March, retrieval across your whole Slack history, and a bunch more coming every quarter.
 
-Comic readers have seen this before. The [original "Brand New Day" storyline](https://en.wikipedia.org/wiki/One_More_Day) in 2008 rebooted Peter's life by erasing what everyone knew about him, and readers spent years arguing about whether the erasure was a gift or a theft. That argument is now a live engineering question, because I spend my working weeks building systems that remember things about people.
+And then Spider-Man: Brand New Day opens this Friday, and the whole premise is a memory wipe. The world forgot Peter Parker. Comic readers went through a version of this back in 2008 (or 2007? the retcon makes it genuinely hard to date, which is almost too on-theme), when the comics rebooted Peter's life by erasing what everyone knew about him, and readers spent years arguing about whether that was a gift or a theft. I've been chewing on it since the trailer, because the argument stopped being hypothetical the day people like me started shipping agent memory. I build the stuff, so somebody around here should probably be asking the other question: what should your AI forget?
 
-The question I keep coming back to: what should your AI forget?
+I've got a starter list, learned the expensive way in the Office of the CFO, where I've spent a few decades (an industry where the KPI's have KPI's). It starts with the number that was wrong. During a close, figures move… somebody posts an accrual, somebody else reverses it, and at 11 PM the intercompany mismatch nobody booked (it's always intercompany) finally shows up, so if your agent cached Tuesday's revenue number and cheerfully repeats it on Friday, congratulations, you've built a machine that launders stale numbers through a confident voice, and nobody notices until the worst possible meeting. Anything that lives in a live system should be a live lookup, every time, even when it's annoying. It's most of why I build MCP servers (modelcontextprotocol.io, if you want the plumbing): the server asks the source, the source answers, nobody trusts a memory, everybody goes home on time.
 
-## Everyone is optimizing the wrong direction
+Also on the list: the org chart from two reorgs ago. Approval routing, signing authority, who owns what… nothing ages worse and nobody ever remembers to update it. (I once watched a workflow route an approval to a man who had retired to Scottsdale. The system was very confident. So, reportedly, was he… happy, too, golfing five days a week while that purchase order aged like milk in his abandoned queue, and honestly I've thought about him at least once a quarter ever since, a man at complete peace while finance hunted for his successor, but I digress.) An agent's own bad conclusions belong on the pile too, cause an agent that reasoned its way to a wrong answer in January and still treats it as settled by July is just being stubborn at scale, and conclusions should expire faster than the data they came from (mine included).
 
-Right now the entire agent industry is pushing one way: longer context windows, persistent memory, vector stores that recall a conversation from March, retrieval across your whole Slack history, and a bunch more. [Anthropic's memory tooling](https://docs.claude.com/en/docs/build-with-claude/context-windows) and every competing implementation sell the same promise: your assistant will finally remember.
+Oh, and I skipped the creepy one, which is really the whole ballgame: the thing somebody typed in confidence. People tell an AI things during a reorg that they'd never put in an email. If that lands in a shared memory store, you've built a surveillance tool by accident, and nobody wrote that requirement or chose it or even noticed! It's just what happens when retention has no expiry date, and "we'll figure out retention later" is how every company I've ever advised ends up explaining something awkward to a lawyer.
 
-That promise is real and it's genuinely useful. An agent that forgets your chart of accounts every Monday is a demo, and I've built a few of those (they demo beautifully, which is exactly the trap).
+(Edward, you opened with Spider-Man and you've arrived at data-retention governance in under 600 words. That may be a personal record for fun-to-compliance decay, and no, "governance" still can't go on the website banner, no matter how many superheroes you staple to it.)
 
-But "remember everything" is a design default nobody actually chose. It's just where you land if you never ask the other question. And in the Office of the CFO, where I do most of my work, remembering everything is how you build a system that turns into a liability.
+Europe already forced a version of this conversation. The GDPR right to erasure (Article 17… I had to look it up, so now you don't have to) says a person can make an organization delete data about them, and it was written for databases but now points straight at model weights and memory stores, where the honest answer to "how do you fully remove one person" is still… with difficulty. Which is why the eraser can't belong to whoever happened to write the retention code. That developer is lovely, and they're also exactly the wrong person to be deciding what your company is allowed to remember. So ask the boring questions: what's the expiry on each kind of thing this agent stores, and who gets to see what it remembers about a named person? And then my favorite, the one that actually bites: what does the agent do when its memory and the live system disagree? It should trust the source of truth every single time, and most implementations do the opposite, because recollection is free and a query costs something, so the lazy path wins by default and everybody acts surprised later.
 
-## Some things to make your agent forget
+The movie, to its credit, treats the wipe as more than a loss. Nobody expects the old Peter Parker from him anymore, so he gets to find out who comes next, and I got a duller version of the same deal. I ran interRel for 25 years, and inside the Oracle finance world the name did my introducing for me. Then we merged it with Keste in 2020 to help found Argano, and when I eventually walked into AI rooms where nobody had heard of any of it, I was just a guy in a hat (the hat is non-negotiable) with opinions. Uncomfortable for about six months and useful ever since, cause nobody in those rooms wanted my 2015 answers, so I had to go find current ones. Companies get the same trade from institutional memory that people get from a reputation… load-bearing right up until it's the reason nothing changes. "We tried that in 2019" has killed more good ideas than any budget committee I've ever sat across, and I've sat across a bunch.
 
-**The number that was wrong.** During a close, figures move. Somebody posts an accrual and somebody else reverses it, and then at 11 p.m. the intercompany mismatch nobody had booked finally turns up. If your agent cached the Tuesday version of a revenue number and cheerfully repeats it on Friday, it's laundering a stale number through a confident voice. Anything that comes out of a live system should be a live lookup. This is most of why I build [MCP servers](https://modelcontextprotocol.io/) instead of stuffing financial data into a prompt: the server goes and asks the source, every single time, even when it's annoying.
+So build the memory. You genuinely need it (an agent that forgets your chart of accounts every Monday is a demo, and I've built a few of those… they demo beautifully, which is exactly the trap). Then decide, on purpose and in writing, what it's required to let go of and how often.
 
-**The thing a person told it in confidence.** Somebody types something into an agent during a reorg that they'd never put in an email. If that lands in a shared memory store, you've built a surveillance tool by accident. Nobody wrote a requirement for it. It's just what happens when retention has no expiry.
+What would you put on the forget list? Write me (Edward@Roske.AI). I read them all, and unlike my agents, I'm allowed to remember the good ones.
 
-**Its own bad conclusions.** An agent that reasoned its way to a wrong answer in January and still treats that answer as settled in July is just being stubborn, expensively. Give conclusions a shorter expiry than the data they were drawn from.
-
-**The org chart from two reorgs ago.** Routing, approvals, all the "who signs off on this" wiring. Nothing ages worse, and nobody ever remembers to go update it.
-
-There's more depending on what you actually do, but those four cover most of the damage I've watched happen.
-
-## The real question is who holds the eraser
-
-Deciding what gets deleted is a governance call, and by default whoever wrote the retention code makes it, and that person is almost always the wrong one for the job.
-
-Europe already made a version of this call. The [GDPR right to erasure](https://gdpr-info.eu/art-17-gdpr/) says a person can require an organization to delete data about them. Written for databases, it now points straight at model weights and memory stores, and the honest answer about how you fully remove one person from a trained system is still "with difficulty."
-
-So the questions worth asking before you turn memory on:
-
-- What is the expiry on each kind of thing this agent stores?
-- Who can inspect what it remembers about a named person?
-- Who can delete it, and does that deletion actually propagate?
-- What does the agent do when the memory and the live system disagree?
-
-That last one is the one that bites. An agent should trust the source of truth over its own recollection every time, without being asked, and most implementations do the opposite because recollection is cheap and a query costs something.
-
-## What Peter gets out of it
-
-The interesting turn in Brand New Day is that the memory wipe isn't purely a loss. Nobody expects the old Peter Parker from him, so he gets to be whatever he is now.
-
-I got a duller version of the same deal. I ran interRel for 25 years, and inside the Oracle finance world the name did my introducing for me. Then I sold it, walked into AI rooms, and became a guy in a hat with opinions. That was uncomfortable for about six months and useful ever since, because nobody in those rooms wanted my 2015 answer and I had to go find a 2026 one. (Edward, you spent 25 years building name recognition and now you're writing a thousand words about the upside of losing it. Pick a lane.)
-
-Companies get the same thing from institutional memory that people get from a reputation. It's load-bearing right up until it turns into the reason nothing changes, and "we tried that in 2019" has probably killed more good ideas in the Office of the CFO than any budget committee.
-
-So build the memory. You need it. Then decide, on purpose and in writing, what it's required to let go of and how often.
-
-Short answer to the title: your AI should forget anything it can go look up, anything a person didn't consent to it keeping, whatever it concluded back before the facts moved, the old org chart, last quarter's approval routing, and a bunch more that nobody ever put an expiry on.
-
-The rest it can hang onto. (Including, apparently, that I used to run a consulting company. The internet remembers that one fine.)
+Asking good questions,
+Edward
