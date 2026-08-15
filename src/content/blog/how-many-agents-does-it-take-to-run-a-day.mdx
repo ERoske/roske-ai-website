@@ -1,0 +1,74 @@
+---
+title: "How Many Agents Does It Take to Run a Day?"
+description: "10 AI agents run my week, and about 1 in 10 of the things they produce is wrong. Here's the honest arithmetic on why that's still worth it, and the 4 rules that keep it from getting expensive."
+date: 2026-08-15
+tags: ["AI", "Agents", "Productivity", "Leadership"]
+draft: false
+---
+
+At 5 AM this morning, while I was asleep, a scheduled task on my machine woke up, decided that this website should become a naturalist's field guide, wrote about 4,000 words of copy, generated 6 photographs of me crouching in shrubbery, [built the site](https://astro.build/), ran the tests, and pushed it live. It runs on [Claude Code](https://www.claude.com/product/claude-code), on a Windows box, in my house, about 15 feet from where I was sleeping through the whole thing.
+
+I found out when you did.
+
+That's 1 agent. There are 9 more, and people keep asking me the same thing in the hallway after keynotes: how many of these do you actually run? 10. It's been 10 for about 4 months, which in this field counts as stability. (It was 6 in April. Two of the newer ones took over a job I used to do on Sunday nights, and I have not gone back for it.)
+
+So that's the easy half. The part I'd want answered if I were the one signing is how often they're wrong.
+
+Short answer: about 1 in 10.
+
+## The specimen that ate 3 days
+
+In July, the agent that rebuilds this site hung for 72 hours.
+
+It didn't crash. It hung, which is worse, because a crash at least tells you something happened. It hit a command that wanted to install something, the command politely asked "y/n?", and it asked that question inside a window I had deliberately configured to be invisible, because I don't want console windows flashing on my screen all day. So a process sat there, patient as a stone, waiting for a keystroke from a human who couldn't see it and didn't know it existed. Three days later I noticed the site hadn't changed and went looking. (My first theory was that GitHub was down. My second theory was that GitHub was down. It took me an embarrassing while to get to a third theory.)
+
+The fix was 2 lines. The lesson was bigger, which is that anything running unattended has to be incapable of asking permission in the first place. If it can block on a prompt, it eventually will, at the worst possible time, in a window nobody's watching.
+
+That's one bite. There are others. The image generator puts me in the wrong hat about 1 time in 8 (it's under strict orders to produce a fedora, and it keeps coming back with baseball caps, which I take personally). The meeting-prep agent has confidently briefed me on the wrong human being, twice, both times someone who shares a name with the person I was about to meet.
+
+None of that made me turn any of them off.
+
+## An error rate means nothing on its own
+
+Every CFO I say "1 in 10" to makes the same face. Nobody signs off on a control that fails 10% of the time. But an error rate on its own tells you nothing at all, because what actually matters is what a given error costs and who catches it.
+
+My morning brief mislabels a meeting. Cost: I read one wrong sentence at 6 AM and fix it in 4 seconds. My research agent brings back a bad source. Cost: potentially a wrong claim on a stage in front of 400 people who paid to be there, which is exactly why that one gets checked hardest. My email agent drafts a reply that misreads somebody's tone. Cost: zero, because it has never once had permission to send (this is rule 1 below, and it is the only one I have never been tempted to break).
+
+Same failure rate across all three of those, and wildly different exposure. A 10% error rate on something reversible and visible is a rounding error. A 1% error rate on something irreversible and invisible will end your quarter, and you'll find out in the audit.
+
+That's the whole calculation, and it has almost nothing to do with which model you picked.
+
+## The interesting failure is always upstream
+
+The thing I didn't expect, and the thing that took me the better part of a year to see clearly: these 10 things form a food web. They eat each other's output.
+
+The calendar agent feeds the meeting-prep agent. The research agent feeds the writer, the podcast producer, and the pitch engine (which is 3 mouths on 1 source, and yes, that keeps me up occasionally). The writer feeds the site rebuild, which also eats the image generator's output. Draw the arrows and you get a diagram that looks exactly like the ones in an ecology textbook, and it has the same property: damage at the bottom moves all the way up the web without ever announcing itself.
+
+So when the meeting brief is wrong, the meeting brief is almost never the problem. The calendar entry was wrong at 5 AM (usually because I accepted an invite on my phone, in an elevator, without reading it). Everything downstream then did precisely what it was built to do with a bad input, at machine speed, with total confidence, and handed me a beautifully formatted page about a stranger.
+
+I spent 25 years watching companies pay real money to fix the top of that web, and the thing that was actually broken was almost always a field somebody typed wrong years earlier that nobody had looked at since, and that cost about $40 to fix once you found it. That was true of data warehouses in 2004 and it's true of agents in 2026, which is either reassuring or depressing depending on your afternoon.
+
+## 4 rules, which is all I've got
+
+I don't have a framework. I have 4 rules, and I arrived at every one of them by getting bitten:
+
+1. **Nothing gets send authority.** Not the email agent, not the pitch engine. They find, sort, and draft. A human presses send. The day I relax this is the day one of them apologizes at length to a client for something that never happened. (It would be a lovely apology. That's the problem.)
+2. **Anything unattended has to be unable to block.** No prompts, no confirmations, no invisible windows waiting on a keystroke. See above, at a cost of 3 days and most of my dignity.
+3. **Check hardest where the output is public.** The image generator gets more human review than anything else I run. Its failure rate is middling. Its failures are the only ones that strangers see.
+4. **Instrument the substrate.** If you're auditing the last agent in the chain, you're auditing the one with the best excuse. Go watch what it was fed. (This is the rule I am worst at following, because the bottom of the stack is boring and the top of it makes pictures.)
+
+None of that is exotic. All of it is the same operational discipline you'd apply to a close process, which is the real reason finance people turn out to be unusually good at this once they stop being scared of it. Dawn's version is shorter than all 4 of mine: if the thing can embarrass you in front of somebody, you press the button yourself.
+
+It's also most of why I spend my build time on [MCP servers](https://modelcontextprotocol.io/) for enterprise finance instead of on cleverer prompts. An agent that reaches your actual system, under your actual permissions, leaving a log of everything it touched, is a governance problem you already know how to solve. An agent pasting numbers into a chat window is a governance problem nobody has solved, including the vendor who sold it to you.
+
+## So, how many?
+
+10 agents, roughly 1 in 10 outputs needing a human, and something like 15 hours a week handed back to me that I used to spend producing nothing of value. Both numbers are the answer. The second one is the one that gets left out of the pitch, and I've got [a whole field guide](/) up this week on how to tell a real one from the software wearing its coat.
+
+I'll be arguing about most of this in San Juan on October 9 and 10, at the [Caribbean AI Summit](https://www.caribbeansummit.ai/), with a room full of people who disagree with me about it.
+
+The better question, and the one I'd be asking if I were the buyer instead of the guy on stage, is this: what happens in your organization when one of these things is confidently, fluently wrong, and how long before anyone notices?
+
+If you can't answer that in a sentence, the number of agents you should be running is currently zero.
+
+*If you want the long version, it's the talk I give most: [Your Day, Run by Ten Agents](/speaking/). If you want the short version, [13 minutes](/question/) is usually enough to work out which specimen you actually have.*

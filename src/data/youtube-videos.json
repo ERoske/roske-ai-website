@@ -1,5 +1,53 @@
 [
   {
+    "title": "Who Keeps Voting Down AI Data Centers?",
+    "videoId": "hdo9j0Gzh24",
+    "published": "2026-08-13T14:00:13+00:00",
+    "description": "Texas halted approvals for new data centers until every project waiting for a grid connection passes an audit covering power, water, tax breaks, and ownership. The queue held 474 gigawatts of requests, five times the state's record demand.",
+    "thumbnail": "https://i.ytimg.com/vi/hdo9j0Gzh24/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "The Library's Most Popular Class Is How to Turn Off AI",
+    "videoId": "fc3ZgVyeObM",
+    "published": "2026-08-11T14:00:43+00:00",
+    "description": "Public librarians in Bangor, Maine and South Philadelphia launched free \"Avoiding AI\" workshops that walk people through switching off Apple Intelligence and Gemini. The classes filled up and spawned waitlists.",
+    "thumbnail": "https://i.ytimg.com/vi/fc3ZgVyeObM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How Many Health Questions Does ChatGPT Get?",
+    "videoId": "uFULJS4NxXY",
+    "published": "2026-08-07T14:00:26+00:00",
+    "description": "OpenAI turned on Health in ChatGPT for every US adult and let slip that people already ask ChatGPT about their health more than 300 million times a week, up from 230 million in January. Now it plugs into your actual medical records from Epic and Apple Health.",
+    "thumbnail": "https://i.ytimg.com/vi/uFULJS4NxXY/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What Blocked Hugging Face's Own Security Team?",
+    "videoId": "HW6HzftLcrI",
+    "published": "2026-08-05T14:00:38+00:00",
+    "description": "Hugging Face is where most of the world's open AI models live. It disclosed an intrusion that it says an AI agent ran end to end, leaving more than 17,000 separate actions in the logs. When the security team sent the attack payloads to commercial AI models, the guardrails...",
+    "thumbnail": "https://i.ytimg.com/vi/HW6HzftLcrI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "We're Running an AI Experiment on Our Kids | Bivin Sadler",
+    "videoId": "SoKRrgz4Das",
+    "published": "2026-08-04T20:11:13+00:00",
+    "description": "We're running an experiment on our kids. And we won't see the results for about 20 years.",
+    "thumbnail": "https://i.ytimg.com/vi/SoKRrgz4Das/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How Did Grok Upload Code It Never Read?",
+    "videoId": "8yWyb-VjGzE",
+    "published": "2026-08-02T14:00:12+00:00",
+    "description": "A researcher told xAI's Grok coding tool to reply OK and read no files. It read nothing, and he still found the untouched file in xAI's cloud storage, along with the file holding all his passwords and keys. Switching off \"Improve the model\" changed nothing. The setting wasn't...",
+    "thumbnail": "https://i.ytimg.com/vi/8yWyb-VjGzE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "Why Is OpenAI's New AI Deleting Files?",
     "videoId": "30gIZR0YIAU",
     "published": "2026-08-01T14:00:39+00:00",

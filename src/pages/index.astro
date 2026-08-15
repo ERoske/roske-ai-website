@@ -8,71 +8,227 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// The club's form guide. All real, formatted like a league table.
-const formGuide = [
-  { value: '80+', label: 'Countries toured' },
+// The collector's record. All real, set as field data.
+const collectorRecord = [
+  { value: '80+', label: 'Countries surveyed' },
   { value: '50+', label: 'Nations spoken in' },
   { value: '15', label: 'Books published' },
-  { value: '25+', label: 'Years managing clubs (companies)' },
+  { value: '25+', label: 'Years running companies' },
 ];
 
-// PRESEASON, WEEK ONE: the training-ground photo wall.
-// `alt` describes the picture for screen readers; `caption` is the coach's note.
-const trainingWall = [
+// ---------------------------------------------------------------------------
+// THE TEN PLATES. One entry per agent that actually runs a piece of Edward's
+// week. The `stack` line names real software on purpose: the credibility of
+// the whole guide depends on a technical reader being able to check it.
+// Everything here is observed as of August 2026 and will date, which is what
+// the edition line at the top of the page is for.
+// ---------------------------------------------------------------------------
+const plates = [
   {
-    src: '/images/ted-lasso/believe-sign.jpg',
-    alt: 'Edward Roske in a tan coach’s jacket and his blue fedora, up over a wooden folding chair in a football club locker room, taping a homemade yellow BELIEVE sign above the doorway.',
-    num: '02',
-    drill: 'CULTURE / DAY ONE',
-    title: 'The Sign Goes Up First',
-    caption: `Day one at any club: hang the sign, then figure out the sport. I've opened three companies and one AI community in this order and the sign hasn't been wrong yet. (I have a Master's in Data Science and my entire management philosophy is a piece of yellow paper.)`,
-    shape: 'landscape',
+    plate: 'I',
+    binomial: 'Chronographa matutina',
+    common: 'The Morning Brief',
+    stack: 'Claude Code, the gws Google Workspace CLI, reading Calendar and Tasks',
+    habitat: 'First light. A terminal window I never open.',
+    range: "Every weekday. San Juan (Atlantic time, so my 6 AM is most people's bedtime).",
+    call: "One message before 6 AM: who I'm seeing today, and why.",
+    feeding: 'Calendar entries, task lists, and whatever it can find on the people already on the invite.',
+    markings: 'Refuses to editorialize. States the day and stops.',
+    status: 'Abundant',
+    tone: 'good',
+    notes: `It's the base of the whole food web, which took me the better part of a year to notice. Everything downstream inherits its mistakes, so a meeting it mislabels at 5 AM is a meeting I'm still wrong about at 4 PM. (I've asked it to be blunter about which days are stupid. No progress so far.)`,
   },
   {
-    src: '/images/ted-lasso/biscuits.jpg',
-    alt: 'Edward Roske in his blue fedora with flour on his coach’s jacket, proudly presenting an open pink cardboard box of shortbread biscuits in a chaotic home kitchen before dawn.',
-    num: '03',
-    drill: 'BOARDROOM / 4 AM',
-    title: 'Biscuits With the Boss',
-    caption: `No slide deck has ever won anyone over, but shortbread closes. Baking counts as data prep if you measure everything twice, and I measure everything twice.`,
-    shape: 'portrait',
+    plate: 'II',
+    binomial: 'Vespa epistolaris',
+    common: 'The Inbox Wasp',
+    stack: 'An email triage skill plus a response drafter, both hitting Gmail through gws',
+    habitat: 'The inbox, which is less a habitat than a weather system.',
+    range: 'Continuous. No off season.',
+    call: 'Sorts, drafts, flags. Silent otherwise.',
+    feeding: 'About 200 messages a day, most of which deserve none of my attention.',
+    markings: 'Confident on speaking inquiries. Hopeless at family email.',
+    status: 'Vulnerable',
+    tone: 'warn',
+    notes: `It's never sent a message on its own and it never will. The day I hand it send authority is the day it apologizes to a client, warmly and at length, for something that didn't happen.`,
   },
   {
-    src: '/images/ted-lasso/press-conference.jpg',
-    alt: 'Edward Roske in his blue fedora and a club scarf at a press conference table full of microphones, cheerfully holding up a small whiteboard covered in a software architecture flowchart instead of football tactics.',
-    num: '04',
-    drill: 'MEDIA DUTIES',
-    title: 'Tactics Board, Sort Of',
-    caption: `The press asked about our formation. I showed them an MCP server architecture diagram, and it got more follow-up questions than any back four ever has. We play a 4-3-3 of agents.`,
-    shape: 'portrait',
+    plate: 'III',
+    binomial: 'Forficula vocalis',
+    common: 'The Cutting-Room Earwig',
+    stack: 'Descript over MCP, then a YouTube helper pushing the cut through the Data API',
+    habitat: 'Asking Good Questions, in the gap between recording and release.',
+    range: 'Weekly.',
+    call: 'Strips filler words at a rate no human editor would tolerate being paid for.',
+    feeding: 'Raw audio, transcripts, chapter markers, thumbnails.',
+    markings: 'Cannot tell a thinking pause from a mistake.',
+    status: 'Stable',
+    tone: 'good',
+    notes: `It once cut 4 seconds of silence where a guest was genuinely thinking. Technically a correct edit, and it deleted the best moment in the episode. I put the silence back by hand and wrote a rule about it (the rule is that silence is content, which I have since started applying to meetings).`,
   },
   {
-    src: '/images/ted-lasso/darts.jpg',
-    alt: 'Edward Roske in his blue fedora and coach’s jacket in a warm British pub, mid dart throw with eyes narrowed in concentration, while astonished locals with pints watch from the bar.',
-    num: '05',
-    drill: 'AWAY FIXTURE / THE PUB',
-    title: 'The American Has Played Before',
-    caption: `Everyone in that pub assumed the American in the fedora had never held a dart. I let the assumption ride for exactly three throws. Be curious about your opponents, especially the ones buying the next round.`,
-    shape: 'landscape',
+    plate: 'IV',
+    binomial: 'Corvus interrogans',
+    common: 'The Research Crow',
+    stack: 'A fan-out of research subagents, web search, and Gemini Notebook over MCP',
+    habitat: 'Open tabs. Hundreds of them, none of them mine.',
+    range: "Anywhere I'm about to make a claim on a stage.",
+    call: 'Comes back with sources, and with shiny things nobody asked for.',
+    feeding: "Filings, transcripts, vendor documentation, other people's slide decks.",
+    markings: 'Hoards. Returns 40 sources when 6 would have done the job.',
+    status: 'Abundant',
+    tone: 'good',
+    notes: `It feeds 4 other specimens, which is exactly why it gets checked hardest. A bad source here shows up in a keynote 6 weeks later with my name on it, in front of 400 people who paid to be in the room.`,
   },
   {
-    src: '/images/ted-lasso/whiff.jpg',
-    alt: 'Edward Roske mid fall on a professional training pitch, both feet in the air after completely missing a kick, clipboard papers flying, while players in red and blue training kits wince in the background. His blue fedora is still on.',
-    num: '06',
-    drill: 'SCOUTING REPORT',
-    title: 'First Touch: Theoretical',
-    caption: `The scouting report called my first touch "theoretical," which is fair. I contribute in other ways: vision, morale, and knowing exactly when to stop kicking things I don't understand. (The fedora never left my head, which is the only part of that drill I passed.)`,
-    shape: 'wide',
+    plate: 'V',
+    binomial: 'Scriptor nocturnus',
+    common: 'The Night Writer',
+    stack: 'A drafting skill, then a voice checker that grades the draft against my real sentences',
+    habitat: "Drafts, written at hours I'm not awake for.",
+    range: 'Weekly, usually Friday.',
+    call: "Writes something. A second agent then tells it that it doesn't sound like me.",
+    feeding: "Research output, everything I've published on this site, and a voice spec I keep adding rules to.",
+    markings: 'Reaches for the em dash constantly. Gets it removed constantly.',
+    status: 'Under review',
+    tone: 'warn',
+    notes: `The voice checker rejects more drafts than it passes, and that ratio is about right. Anything that reads smoothly while saying nothing goes back. (It rejected this sentence twice.)`,
+  },
+  {
+    plate: 'VI',
+    binomial: 'Ptilonorhynchus hebdomadalis',
+    common: 'The Saturday Bowerbird',
+    stack: 'Windows Task Scheduler into PowerShell into Claude Code, building Astro, deployed by GitHub Actions',
+    habitat: 'This page.',
+    range: 'Saturdays, 5 AM Atlantic.',
+    call: "None. It works while I'm asleep.",
+    feeding: "Podcast RSS, the YouTube channel, my weekly questionnaire, and whatever's topical.",
+    markings: "The only specimen in this guide that builds the habitat you're standing in.",
+    status: 'Abundant',
+    tone: 'good',
+    notes: `It chose this theme, wrote this sentence, and made the photograph of me crouching in a shrub. I found out when you did. (Edward, you built an observation hide for your own software, gave the software a Latin name, and then wrote a field guide about the thing that wrote the field guide. Somewhere there's a version of you who just uses a to-do list and he is outside right now.) It also once hung for 72 hours waiting on a yes-or-no prompt inside a window I had deliberately made invisible, which is the dumbest 3 days I have spent in years, so now anything that runs unattended gets its stdin taken away.)`,
+  },
+  {
+    plate: 'VII',
+    binomial: 'Accipiter mercatorius',
+    common: 'The Monday Hawk',
+    stack: 'A scheduled pitch engine working call-for-speakers pages, keeping its own pipeline file',
+    habitat: 'Event sites, conference programs, and submission deadlines.',
+    range: 'Mondays.',
+    call: 'A ranked list: event, date, deadline, and one line on why I fit.',
+    feeding: 'Event calendars, past programs, and the tracker it maintains itself.',
+    markings: 'Will pitch me for anything with a stage and a microphone.',
+    status: 'Introduced',
+    tone: 'warn',
+    notes: `Newest specimen in the collection, and the only one with a revenue number attached to it. It doesn't send either. It finds and it drafts, and deciding who's actually worth writing to stays my job (the part I'd keep even if it got good at it).`,
+  },
+  {
+    plate: 'VIII',
+    binomial: 'Chamaeleo confabulans',
+    common: 'The Plate Painter',
+    stack: 'Gemini image models, flash for drafts and pro for finals, always fed my real headshot',
+    habitat: 'Every picture of me on this website.',
+    range: '6 to 12 images a week.',
+    call: 'Silent. Simply produces.',
+    feeding: 'A prompt, a reference photograph, and a fedora rule it violates about 1 time in 8 (baseball caps, mostly).',
+    markings: 'Hallucinates in the field: spare fingers, wrong hat, occasionally a second me in the background.',
+    status: 'Invasive',
+    tone: 'bad',
+    notes: `The specimen I check hardest, because it's the only one whose mistakes are visible to strangers. Every image on this page got looked at by a human first. The rejects were worse than you're imagining, and one of them gave me 3 hands.`,
+  },
+  {
+    plate: 'IX',
+    binomial: 'Suricata praeparans',
+    common: 'The Sentry',
+    stack: 'A pre-meeting research brief skill, reading public filings, press, and prior threads',
+    habitat: 'The 30 minutes before a call.',
+    range: "Whenever the calendar produces a name it doesn't recognize.",
+    call: "One page: who they are, what they've shipped, and what they'll probably ask.",
+    feeding: 'Public filings, professional profiles, press, and everything we have said to each other before.',
+    markings: 'Confuses people who share a name. Twice now.',
+    status: 'Near threatened',
+    tone: 'warn',
+    notes: `It sits directly downstream of the calendar agent, so it inherits every mislabeled invite. I've walked into a call briefed thoroughly, confidently, and completely on the wrong person, which is a design failure, and the design is mine.`,
+  },
+  {
+    plate: 'X',
+    binomial: 'Chimaera fabulatrix',
+    common: "The Dungeon Master's Familiar",
+    stack: 'An adventure-writing skill feeding a DM screen prototype I am still building',
+    habitat: "An Eberron campaign, and a screen that isn't finished.",
+    range: 'Monthly, and never during business hours.',
+    call: "Lore lookups, tavern names, and a stat block for whatever the party found in the room I didn't prepare.",
+    feeding: "Session notes, rules text, and whatever my players did that I didn't plan for.",
+    markings: "Occupies no position in the food web at all. Feeds nothing, earns nothing, and I'd keep it over half the others.",
+    status: 'Least concern',
+    tone: 'good',
+    notes: `It's in the guide because I use it every month and it costs me nothing but a Saturday. A catalog of only the profitable species is a pitch deck with a nicer cover. Last month my party asked whether they could bribe a dragon with a quarterly forecast, and I allowed it.`,
   },
 ];
 
-// THE SQUAD: six real projects, filed as a club roster.
-const squad = [
+// ---------------------------------------------------------------------------
+// COMMONLY CONFUSED WITH. The similar-species section, aimed at a buyer who
+// has already been sold one of the lookalikes.
+// ---------------------------------------------------------------------------
+const lookalikes = [
   {
-    num: '08',
-    position: 'Central Midfield',
+    name: 'The chatbot on a cron job',
+    tell: 'It runs on a schedule and produces the same shape of output every time, regardless of what it found.',
+    test: 'Feed it a week where nothing happened. A real agent says so and stops. This one files its usual report, on time, at the usual length.',
+  },
+  {
+    name: 'The macro in a new coat',
+    tell: 'Identical from a distance, and genuinely useful, right up until a button moves.',
+    test: 'Change one thing about the input. If it breaks instead of adapting, you bought a macro at agent prices.',
+  },
+  {
+    name: 'The vendor demo',
+    tell: 'Only ever observed in captivity, in a curated environment, on data the vendor prepared himself.',
+    test: 'Ask to run it on your own closing numbers, live, with your own messy chart of accounts. Watch what happens next (something always happens next).',
+  },
+  {
+    name: 'The sidebar assistant',
+    tell: 'Waits to be asked. Answers well. Then goes back to sleep and forgets you.',
+    test: 'Do nothing for a day. If nothing arrived without you asking, what you have is a tool. Tools are great. You were just sold the other thing.',
+  },
+];
+
+// ---------------------------------------------------------------------------
+// UNSURVEYED TERRITORY. The range map has to show the wilderness or it is
+// marketing. These are the parts of the week no agent touches.
+// ---------------------------------------------------------------------------
+const wilderness = [
+  {
+    zone: 'Deciding what is worth building',
+    note: '10 agents will execute any bad idea at full speed, on schedule, and beautifully formatted.',
+  },
+  {
+    zone: 'The room',
+    note: 'Nothing in this guide has ever stood in front of 400 finance people and read the temperature of the room at minute 9.',
+  },
+  {
+    zone: 'Telling someone something they do not want to hear',
+    note: "It'll draft the message just fine. Sitting across from somebody while they read it isn't a thing I'd hand off.",
+  },
+  {
+    zone: 'Knowing a number is wrong',
+    note: "A number can look wrong to me before I've checked any of it. I can't explain that to a model, because I can't explain it to myself. 25 years and I've got nothing better than that.",
+  },
+  {
+    zone: 'What Dawn thinks of the idea',
+    note: "Unsurveyed and unsurveyable, and she's right more often than the agents are.",
+  },
+];
+
+// ---------------------------------------------------------------------------
+// APPENDIX B: FIELD STATIONS. The six real projects, kept every week.
+// ---------------------------------------------------------------------------
+const stations = [
+  {
+    ref: 'B-01',
+    kind: 'Instrumentation',
     name: 'MCP Servers for Enterprise Finance',
-    note: `This is the engine room. MCP servers are how AI agents actually work inside enterprise finance systems: Oracle Essbase and EPM Planning are shipping, Financial Close and Consolidations is in beta. It's the unglamorous passing that wins the match, and someone has to do it on purpose.`,
+    note: `The plumbing that lets an agent work inside a real finance system rather than beside it. Oracle Essbase and EPM Planning are shipping, and Financial Close and Consolidations is in beta. None of this matters if the agent can't reach the actual system.`,
     tag: 'ORACLE EPM / MCP',
     status: 'SHIPPING',
     href: 'https://caprus.ai/agentcube/',
@@ -80,10 +236,10 @@ const squad = [
     cta: 'See how it works',
   },
   {
-    num: '10',
-    position: 'Home Fixture',
+    ref: 'B-02',
+    kind: 'Annual gathering',
     name: 'Caribbean AI Summit',
-    note: `Co-chairing the biggest AI conference Puerto Rico has hosted, October 9 and 10 at the Convention Center. The bill so far: Kay Firth-Butterfield, MIT's Fabio Duarte, EU Parliament AI advisor Idoia Salazar, and a bunch more still landing. (Co-chairing is ten percent stagecraft and ninety percent email.)`,
+    note: `Co-chairing the largest AI conference Puerto Rico has ever hosted, October 9 and 10 at the Convention Center. Confirmed so far: Kay Firth-Butterfield, MIT's Fabio Duarte, and EU Parliament AI advisor Idoia Salazar, with more still signing. (Co-chairing is 10% stagecraft and 90% email.)`,
     tag: '9-10 OCT 2026',
     status: 'CALL FOR SPEAKERS OPEN',
     href: 'https://www.caribbeansummit.ai/en/speakers/submit',
@@ -91,10 +247,10 @@ const squad = [
     cta: 'Submit a speaker',
   },
   {
-    num: '04',
-    position: 'Front Office',
+    ref: 'B-03',
+    kind: 'Breeding program',
     name: 'Caprus',
-    note: `Investor and contributor at the AI software and services firm building faster operations for finance teams. They do the engineering. I show up to training and point at things.`,
+    note: `Investor and contributor at the AI software and services firm building faster operations for finance teams. They do the engineering. I show up and point at things.`,
     tag: 'AI / FINANCE',
     status: 'RUNNING',
     href: 'https://caprus.ai',
@@ -102,33 +258,33 @@ const squad = [
     cta: 'Meet the team',
   },
   {
-    num: '07',
-    position: 'The Long Away Day',
+    ref: 'B-04',
+    kind: 'Expedition record',
     name: 'Everest Base Camp',
-    note: `This spring I walked to the foot of Everest: seventeen days, one map, altitude headaches, and every question I could think of asked of the guides. The full report is on the blog, including the parts that went badly.`,
+    note: `This spring Dawn and I walked to the foot of Everest: 2 weeks, 18,571 feet, and every question I could think of asked of the guides. The full report is on the blog, including the parts that went badly.`,
     tag: 'NEPAL / 2026',
     status: 'REPORT FILED',
     href: '/blog/everest-base-camp-summit/',
     external: false,
-    cta: 'Read the away-day report',
+    cta: 'Read the trail log',
   },
   {
-    num: '12',
-    position: 'Set Pieces',
+    ref: 'B-05',
+    kind: 'Captive specimen',
     name: "AI Dungeon Master's Screen",
-    note: `A prototype AI screen for running D&D 5e: lore lookups and improv help for the person behind the cardboard. Set pieces are just encounters you rehearsed in advance, and I rehearse mine. (The party still gets told nothing.)`,
+    note: `A prototype screen for running D&D 5e: lore lookups and improvisation help for the person behind the cardboard. See Plate X. It isn't finished and I'm in no hurry.`,
     tag: 'D&D / 5E',
-    status: 'CLOSED TRAINING',
+    status: 'IN DEVELOPMENT',
     href: null,
     external: false,
     cta: 'Quiet build',
   },
   {
-    num: '06',
-    position: "Supporters' Trust",
+    ref: 'B-06',
+    kind: 'Local population',
     name: 'Puerto Rico AI Community',
-    note: `President of the island's AI community, now past 850 people. We meet every other month and argue about what AI means for Puerto Rico in two languages until something useful falls out. Best supporters in the league, and I say that with total bias.`,
-    tag: '850+ MEMBERS',
+    note: `President of the island's AI community, now past 1,000 different people through the door. We meet every other month and argue in 2 languages about what AI means for Puerto Rico until something useful falls out. Come to one!`,
+    tag: '1,000+ ATTENDEES',
     status: 'RUNNING',
     href: 'https://praicommunity.org/',
     external: true,
@@ -136,47 +292,67 @@ const squad = [
   },
 ];
 
-const scarfLetters = 'ASK GOOD QUESTIONS'.split('');
+// Food-web nodes, laid out by trophic level for the diagram below.
+const webLevels = [
+  {
+    tier: 'Substrate',
+    caption: 'My calendar, my inbox, my files. Everything above this eats it.',
+    nodes: [{ id: 'raw', label: 'The raw day' }],
+  },
+  {
+    tier: 'Producers',
+    caption: 'They convert the mess into something the others can eat.',
+    nodes: [
+      { id: 'cal', label: 'I. Morning Brief' },
+      { id: 'mail', label: 'II. Inbox Wasp' },
+      { id: 'res', label: 'IV. Research Crow' },
+    ],
+  },
+  {
+    tier: 'Primary consumers',
+    caption: 'None of these can survive without something on the tier below.',
+    nodes: [
+      { id: 'prep', label: 'IX. Sentry' },
+      { id: 'write', label: 'V. Night Writer' },
+      { id: 'img', label: 'VIII. Plate Painter' },
+    ],
+  },
+  {
+    tier: 'Secondary consumers',
+    caption: 'The visible output. Also the last place a mistake is cheap to catch.',
+    nodes: [
+      { id: 'pod', label: 'III. Cutting Room' },
+      { id: 'site', label: 'VI. Bowerbird' },
+      { id: 'pitch', label: 'VII. Monday Hawk' },
+    ],
+  },
+  {
+    tier: 'Outside the web',
+    caption: 'Feeds nothing, earns nothing, stays in the guide anyway.',
+    detached: true,
+    nodes: [{ id: 'dnd', label: 'X. Familiar' }],
+  },
+];
 ---
 
 <BaseLayout>
   <WeeklyAnimation />
 
-  <!-- ================= SCOREBOARD STRIP ================= -->
-  <div class="score" role="presentation">
-    <div class="score-inner">
-      <span class="score-item">AFC ROSKE, EST. 1997</span>
-      <span class="score-board" aria-label="Scoreboard: AFC Roske 4, Ordinary 0">
-        <span class="score-team">ROSKE</span>
-        <span class="score-num">4</span>
-        <span class="score-dash">:</span>
-        <span class="score-num">0</span>
-        <span class="score-team">ORDINARY</span>
-      </span>
-      <span class="score-item">HOME FIXTURES: SATURDAYS, 5 AM AST</span>
+  <!-- ================= EDITION STRIP ================= -->
+  <div class="ed" role="presentation">
+    <div class="ed-inner">
+      <span class="ed-item">A Field Guide to the Ten Agents</span>
+      <span class="ed-item ed-mid">First edition</span>
+      <span class="ed-item">Observed as of August 2026</span>
     </div>
   </div>
 
-  <!-- ================= HERO: THE TOUCHLINE ================= -->
+  <!-- ================= HERO / FRONTISPIECE ================= -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-copy">
-        <p class="hero-kicker">Official club site of one man | Season 4 of coaching a sport I don't understand</p>
-        <h1 class="hero-h1">Be curious,<br /><em>not judgmental.</em></h1>
-        <p class="hero-aside">(Ted says Walt Whitman said that. Whitman didn't, but it's still the entire job description.)</p>
-        <p class="hero-sub">{theme.hero.subtitle}</p>
-        <p class="hero-desc">
-          Ted Lasso is back, coaching a team in a sport he doesn't understand, on the theory that curiosity outruns expertise. I've been running the same play since 2023, when I sold the company I actually understood and walked into AI with nothing but questions, which got better the longer I asked them. These days I coach finance teams through the same transfer window and build MCP servers so AI agents can work inside enterprise systems. Ten of those agents rebuild this website every Saturday morning. They picked this theme, and I found out when you did.
-        </p>
-        <div class="hero-cta">
-          <a href="/question/" target="_blank" rel="noopener" class="btn-red">Book 13 minutes</a>
-          <a href={theme.hero.ctaLink} class="btn-line">{theme.hero.ctaText}</a>
-        </div>
-      </div>
-
       <figure class="hero-fig">
         <div class="hero-frame">
-          <span class="hero-badge">MATCHDAY</span>
+          <span class="hero-plate">Frontispiece</span>
           <img
             src={`/images/${theme.hero.heroImage}`}
             alt={theme.hero.imageAlt}
@@ -186,851 +362,816 @@ const scarfLetters = 'ASK GOOD QUESTIONS'.split('');
             decoding="async"
             class="hero-img"
           />
-          <span class="hero-numtag" aria-hidden="true">01</span>
         </div>
         <figcaption class="hero-cap">
-          The new gaffer arrives at the ground with a clipboard of diagrams no one on the coaching staff can read, including him.
+          The author in the field, observing a specimen at close range. The specimen is aware of this
+          and has factored it in.
         </figcaption>
       </figure>
+
+      <div class="hero-copy">
+        <p class="hero-kicker">Roske.AI | Natural history of a working week</p>
+        <h1 class="hero-h1">A Field Guide<br /><span class="hero-h1-sub">to the</span><br />Ten Agents</h1>
+        <p class="hero-binomial">Being a complete account of ten species of working software, their habitats, their feeding behavior, and which of them bite.</p>
+        <div class="hero-rule" aria-hidden="true"></div>
+        <p class="hero-sub">{theme.hero.subtitle}</p>
+        <p class="hero-desc">{theme.hero.description}</p>
+        <div class="hero-cta">
+          <a href={theme.hero.ctaLink} class="btn-solid">{theme.hero.ctaText}</a>
+          <a href="/question/" target="_blank" rel="noopener" class="btn-line">Book 13 minutes</a>
+        </div>
+      </div>
     </div>
 
-    <div class="form" aria-label="Club form guide">
-      <div class="form-inner">
-        <span class="form-head">FORM GUIDE</span>
-        {formGuide.map(s => (
-          <span class="form-stat">
-            <span class="form-value">{s.value}</span>
-            <span class="form-label">{s.label}</span>
+    <div class="record" aria-label="Collector's record">
+      <div class="record-inner">
+        <span class="record-head">Collector's record</span>
+        {collectorRecord.map(s => (
+          <span class="record-stat">
+            <span class="record-value">{s.value}</span>
+            <span class="record-label">{s.label}</span>
           </span>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ================= CLUB SCARF ================= -->
-  <div class="scarf" aria-hidden="true">
-    <span class="scarf-fringe scarf-fringe-l"></span>
-    <div class="scarf-body">
-      {scarfLetters.map(ch => (
-        ch === ' ' ? <span class="scarf-gap"></span> : <span class="scarf-ch">{ch}</span>
-      ))}
-    </div>
-    <span class="scarf-fringe scarf-fringe-r"></span>
-  </div>
-
   <!-- ================= LATEST CONTENT (permanent) ================= -->
   <LatestContent
-    eyebrow="Match highlights"
-    heading={"Fresh off <em>the pitch.</em>"}
-    deck="The newest writing and video briefs, posted the week they happen. The video briefs cover AI news, and I have never once run out of AI news, which tells you something about AI news."
+    eyebrow="Recent sightings"
+    heading="Logged <em>this month.</em>"
+    deck="New writing and new video briefs, in the order they were recorded."
   />
 
   <!-- ================= BOOK EDWARD (permanent) ================= -->
-  <SpeakerCTA eyebrow="Hire the gaffer" />
+  <div class="author-frame">
+    <p class="author-plate">About the author</p>
+    <SpeakerCTA eyebrow="From the back cover" />
+  </div>
 
-  <!-- ================= PRESEASON: TRAINING WALL ================= -->
-  <section class="wall">
-    <div class="wall-inner">
-      <header class="sec-head">
-        <div class="sec-slug">Preseason | Week One</div>
-        <h2 class="sec-title">Training ground <em>footage.</em></h2>
-        <p class="sec-deck">
-          Photos from the first week at the club. The coaching staff would like it noted that none of this was their idea, and that the biscuits were excellent.
-        </p>
-      </header>
+  <!-- ================= THE PLATES ================= -->
+  <section class="plates" id="plates">
+    <div class="plates-head">
+      <p class="sec-eyebrow">Part one</p>
+      <h2 class="sec-h2">The Specimens</h2>
+      <p class="sec-deck">
+        10 agents run my week. Each one is a process that produces real work while I'm doing
+        something else, and each entry below names the actual software, because I don't trust a
+        guide that won't tell you what it's looking at. All of this will be wrong by spring, which
+        is exactly why a real guide prints the year on its cover.
+      </p>
+      <p class="sec-margin">Observed Aug 2026. Ranges shift. 2 of these didn't exist in January.</p>
+    </div>
 
-      <div class="wall-grid">
-        {trainingWall.map(p => (
-          <figure class={`wall-item wall-${p.shape}`}>
-            <div class="wall-frame">
-              <img src={p.src} alt={p.alt} loading="lazy" decoding="async" class="wall-img" />
-              <span class="wall-num" aria-hidden="true">{p.num}</span>
-              <span class="wall-drill">{p.drill}</span>
+    <div class="plate-grid">
+      {plates.map(p => (
+        <article class="plate">
+          <header class="plate-head">
+            <span class="plate-no">Plate {p.plate}</span>
+            <span class={`plate-status status-${p.tone}`}>{p.status}</span>
+          </header>
+          <h3 class="plate-binomial">{p.binomial}</h3>
+          <p class="plate-common">{p.common}</p>
+          <p class="plate-stack">{p.stack}</p>
+          <dl class="plate-data">
+            <div class="pd-row"><dt>Habitat</dt><dd>{p.habitat}</dd></div>
+            <div class="pd-row"><dt>Range</dt><dd>{p.range}</dd></div>
+            <div class="pd-row"><dt>Call</dt><dd>{p.call}</dd></div>
+            <div class="pd-row"><dt>Feeding</dt><dd>{p.feeding}</dd></div>
+            <div class="pd-row"><dt>Markings</dt><dd>{p.markings}</dd></div>
+          </dl>
+          <p class="plate-notes"><span class="pn-label">Field notes.</span> {p.notes}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ================= THE FOOD WEB ================= -->
+  <section class="web" id="food-web">
+    <div class="web-head">
+      <p class="sec-eyebrow">Part two</p>
+      <h2 class="sec-h2">The Food Web</h2>
+      <p class="sec-deck">
+        Here's the part a specimen list can't show you. These 10 things form a stack with
+        dependencies: they eat each other's output, they inherit each other's mistakes at machine
+        speed, and the failure that actually costs you money is almost never in the animal you were
+        watching, it's 2 tiers down in something boring that happened 4 hours earlier while you were
+        in a meeting about something else.
+      </p>
+    </div>
+
+    <div class="web-body">
+      <figure class="web-fig">
+        <img src="/images/field-guide/hide.jpg" width="1600" height="893" loading="lazy" decoding="async"
+          alt="Edward Roske in his blue fedora, seen from behind inside a wooden birdwatching hide, taking notes in pencil while watching a scattering of old beige computer monitors standing in the moss and ferns of a misty dawn clearing." />
+        <figcaption>Observation blind, built after the third time I found out about a failure from a customer instead of a log.</figcaption>
+      </figure>
+
+      <div class="web-diagram" role="img" aria-label="Food web diagram: the raw day feeds the Morning Brief, Inbox Wasp and Research Crow; those feed the Sentry, Night Writer and Plate Painter; those feed the Cutting Room, Saturday Bowerbird and Monday Hawk. The Dungeon Master's Familiar sits outside the web and feeds nothing.">
+        {webLevels.map((lvl, i) => (
+          <div class={`web-tier ${lvl.detached ? 'web-tier-detached' : ''}`}>
+            <div class="web-tier-label">
+              <span class="wt-name">{lvl.tier}</span>
+              <span class="wt-cap">{lvl.caption}</span>
             </div>
-            <figcaption class="wall-cap">
-              <h3 class="wall-title">{p.title}</h3>
-              <p class="wall-text">{p.caption}</p>
-            </figcaption>
-          </figure>
+            <div class="web-nodes">
+              {lvl.nodes.map(n => (
+                <span class={`web-node ${n.id === 'dnd' ? 'web-node-loose' : ''}`}>{n.label}</span>
+              ))}
+            </div>
+            {!webLevels[i + 1]?.detached && i < webLevels.length - 1 && (
+              <div class="web-arrows" aria-hidden="true">
+                <span></span><span></span><span></span>
+              </div>
+            )}
+          </div>
         ))}
       </div>
     </div>
+
+    <p class="web-punch">
+      Every consulting engagement I've ever walked into wanted to fix the top tier. The problem was in
+      the substrate, in a field somebody typed wrong in 2019, and the agents at the top were doing
+      exactly what they were built to do with it.
+    </p>
   </section>
 
   <!-- ================= WHAT'S NEW (permanent) ================= -->
   <WhatsNew
-    eyebrow="Club news"
-    heading={"From the <em>press room.</em>"}
-    deck="Interviews, mentions, and the odd post worth pinning to the noticeboard. Filed here so you can check the manager's claims against a second source."
+    eyebrow="Sightings by others"
+    heading="Recorded <em>elsewhere.</em>"
+    deck="Independent observations: press, interviews, and whatever I posted that turned out to be worth keeping."
   />
 
-  <!-- ================= THE BELIEVE SIGN ================= -->
-  <section class="believe">
-    <div class="believe-inner">
-      <div class="believe-signwrap">
-        <div class="believe-sign" role="img" aria-label="A homemade yellow paper sign reading BELIEVE, taped up at a slight angle">
-          <span class="believe-tape believe-tape-l" aria-hidden="true"></span>
-          <span class="believe-tape believe-tape-r" aria-hidden="true"></span>
-          <span class="believe-word" aria-hidden="true">BELIEVE</span>
-        </div>
-        <p class="believe-under">(in verified data)</p>
-      </div>
-      <div class="believe-copy">
-        <div class="sec-slug">Season 4 kickoff | Wednesday, August 5</div>
-        <h2 class="believe-title">Season 4 is about starting over. I recommend it.</h2>
-        <p class="believe-p">
-          The new season sends Ted back to Richmond to coach the women's team, with a new squad and the same total absence of qualifications. That's the part I believe in. I've started over at 22 with a consulting firm, at 45 with a data science degree, and at 48 with AI, and every time the only transferable skill was asking better questions than the people who already knew everything.
+  <!-- ================= COMMONLY CONFUSED WITH ================= -->
+  <section class="confused">
+    <div class="confused-inner">
+      <div class="confused-copy">
+        <p class="sec-eyebrow">Part three</p>
+        <h2 class="sec-h2">Commonly Confused With</h2>
+        <p class="sec-deck">
+          Every real field guide has this section, because the expensive mistakes are always the
+          lookalikes. 4 things get sold as agents around here, and 3 of them are perfectly good
+          software wearing somebody else's label (I've bought at least 2 of them myself, at list
+          price, with a completely straight face). Here's how to tell them apart before you sign.
         </p>
-        <p class="believe-p">
-          The sign in my office says what the sign in his office says, with one edit underneath in Sharpie. Belief will carry a team through a whole season, but nobody has ever passed an audit on morale.
-        </p>
-        <p class="believe-tune">Ted Lasso season 4 is out August 5 on Apple TV. AFC Roske plays at home every Saturday at 5 AM, whether or not anyone asked.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- ================= THE SQUAD ================= -->
-  <section id="current-work" class="squad">
-    <div class="squad-inner">
-      <header class="sec-head sec-head-onpitch">
-        <div class="sec-slug sec-slug-onpitch">Squad list | 2026/27 season</div>
-        <h2 class="sec-title sec-title-onpitch">The <em>squad.</em></h2>
-        <p class="sec-deck sec-deck-onpitch">
-          Six names on the team sheet, all real, all currently getting minutes. The manager insists on playing every one of them at the same time.
-        </p>
-      </header>
-
-      <div class="squad-grid">
-        {squad.map(item => (
-          <article class="player">
-            <div class="player-head">
-              <span class="player-num" aria-hidden="true">{item.num}</span>
-              <div class="player-id">
-                <span class="player-pos">{item.position}</span>
-                <h3 class="player-name">{item.name}</h3>
+        <ol class="conf-list">
+          {lookalikes.map((l, i) => (
+            <li class="conf-item">
+              <span class="conf-no">{String(i + 1).padStart(2, '0')}</span>
+              <div class="conf-body">
+                <h3 class="conf-name">{l.name}</h3>
+                <p class="conf-tell"><span class="conf-lbl">In the field.</span> {l.tell}</p>
+                <p class="conf-test"><span class="conf-lbl">How to tell.</span> {l.test}</p>
               </div>
-            </div>
-            <p class="player-note">{item.note}</p>
-            <div class="player-meta">
-              <span class="player-tag">{item.tag}</span>
-              <span class="player-status">{item.status}</span>
-            </div>
-            {item.href ? (
-              <a
-                href={item.href}
-                target={item.external ? '_blank' : undefined}
-                rel={item.external ? 'noopener' : undefined}
-                class="player-cta"
-              >{item.cta}</a>
-            ) : (
-              <span class="player-cta player-cta-off">{item.cta}</span>
-            )}
-          </article>
+            </li>
+          ))}
+        </ol>
+      </div>
+
+      <figure class="confused-fig">
+        <img src="/images/field-guide/confused.jpg" width="1195" height="1600" loading="lazy" decoding="async"
+          alt="Edward Roske in his blue fedora at a field workbench, holding two nearly identical glass specimen jars up to the light and comparing them with a skeptical squint." />
+        <figcaption>Two specimens, one afternoon, and a difference of about $400,000 over three years.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= WHICH ONES BITE ================= -->
+  <section class="bite">
+    <div class="bite-inner">
+      <figure class="bite-fig">
+        <img src="/images/field-guide/bite.jpg" width="1600" height="1195" loading="lazy" decoding="async"
+          alt="Edward Roske in his blue fedora sitting on a mossy fallen log in a sunlit forest, calmly holding up his bandaged right hand, with an open laptop sitting in the tall grass at his feet." />
+      </figure>
+      <div class="bite-copy">
+        <p class="sec-eyebrow">Part four</p>
+        <h2 class="sec-h2">Which Ones Bite</h2>
+        <p class="sec-deck">
+          Here's what has gone wrong, which is the part the brochures leave out. The site rebuild once
+          ran for 72 hours because it sat waiting on a keystroke inside a window I had deliberately
+          made invisible (I spent 2 of those days convinced GitHub was down). The image generator puts
+          me in the wrong hat about 1 time in 8. The meeting brief has confidently, thoroughly prepared
+          me for the wrong human being, twice, and both times I worked it out during the handshake.
+        </p>
+        <p class="sec-deck">
+          None of that made me stop using them, and none of it should. It's a reason to know which one
+          you're holding. The honest failure rate across the whole collection sits somewhere near 1 in
+          10, which sounds disqualifying right up until you price the alternative, and which is exactly
+          why nothing in this guide has send authority.
+        </p>
+        <p class="bite-margin">Bandage is real. So is the log. The laptop was fine, which is more than I can say for the hand.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RANGE MAP / WILDERNESS ================= -->
+  <section class="range">
+    <div class="range-head">
+      <p class="sec-eyebrow">Part five</p>
+      <h2 class="sec-h2">Range Map</h2>
+      <p class="sec-deck">
+        Here's where none of them go. These are the parts of my week where no specimen in this guide
+        has ever been observed, and where I've stopped waiting for one to turn up.
+      </p>
+    </div>
+
+    <div class="range-body">
+      <ul class="range-list">
+        {wilderness.map(w => (
+          <li class="range-item">
+            <span class="range-tag">Unsurveyed</span>
+            <h3 class="range-zone">{w.zone}</h3>
+            <p class="range-note">{w.note}</p>
+          </li>
         ))}
+      </ul>
+
+      <figure class="range-fig">
+        <img src="/images/field-guide/range.jpg" width="1600" height="893" loading="lazy" decoding="async"
+          alt="Edward Roske in his blue fedora on a high ridge at first light, holding a large unfolded paper survey map open in both hands, looking out past it over a wide valley of forest, cliffs and drifting cloud." />
+        <figcaption>The surveyed portion is smaller than the brochure suggests.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= APPENDIX B: FIELD STATIONS ================= -->
+  <section class="stations">
+    <div class="stations-head">
+      <p class="sec-eyebrow">Appendix B</p>
+      <h2 class="sec-h2">Field Stations</h2>
+      <p class="sec-deck">6 places the observation actually happens, and what's running at each one right now.</p>
+    </div>
+
+    <div class="station-grid">
+      {stations.map(s => (
+        <article class="station">
+          <div class="station-top">
+            <span class="station-ref">{s.ref}</span>
+            <span class="station-kind">{s.kind}</span>
+          </div>
+          <h3 class="station-name">{s.name}</h3>
+          <p class="station-note">{s.note}</p>
+          <div class="station-foot">
+            <span class="station-tag">{s.tag}</span>
+            <span class="station-status">{s.status}</span>
+          </div>
+          {s.href ? (
+            <a
+              class="station-cta"
+              href={s.href}
+              target={s.external ? '_blank' : undefined}
+              rel={s.external ? 'noopener noreferrer' : undefined}
+            >{s.cta}</a>
+          ) : (
+            <span class="station-cta station-cta-off">{s.cta}</span>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- ================= CORRESPONDENCE (CTA) ================= -->
+  <section class="corr">
+    <div class="corr-inner">
+      <figure class="corr-fig">
+        <img src="/images/field-guide/desk.jpg" width="1195" height="1600" loading="lazy" decoding="async"
+          alt="Edward Roske in his blue fedora working at night inside a canvas field tent by the light of a brass oil lamp, pinning a specimen card to a corkboard already covered with dozens of them." />
+      </figure>
+      <div class="corr-copy">
+        <p class="sec-eyebrow">Correspondence</p>
+        <h2 class="corr-h2">Write to the author.</h2>
+        <p class="corr-deck">
+          If your organization is somewhere in this guide and you're not sure which plate you're on,
+          that's a good 13 minutes. I'll tell you which specimen you actually have, and whether it's
+          worth keeping.
+        </p>
+        <div class="corr-cta">
+          <a href="/question/" target="_blank" rel="noopener" class="btn-solid">Book 13 minutes</a>
+          <a href="/contact/" class="btn-line">Send a letter</a>
+          <a href="/speaking/" class="btn-line">Book the keynote</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= BISCUITS WITH THE BOSS (CTA) ================= -->
-  <section class="biscuits">
-    <div class="biscuits-inner">
-      <div class="sec-slug">Biscuits with the boss</div>
-      <h2 class="biscuits-title">Thirteen minutes. <em>I'll allow it.</em></h2>
-      <p class="biscuits-deck">
-        A short call, no charge and no pitch deck. Ask about AI inside the Office of the CFO, what an MCP server actually does on a Tuesday, whether the Caribbean AI Summit is worth the flight, or why a grown man is running a football club that doesn't exist. Google Calendar still can't attach shortbread, which I consider its largest remaining product gap.
-      </p>
-      <div class="biscuits-cta">
-        <a href="/question/" target="_blank" rel="noopener" class="btn-red btn-big">Book 13 minutes</a>
-        <a href="/contact" class="btn-line btn-big">Send a note</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CLUB NOTICE ================= -->
-  <footer class="notice">
-    <div class="notice-inner">
-      <p>
-        AFC ROSKE is a football club with no players, no ground, no league affiliation, and one extremely committed manager. It is not associated with Apple TV, Ted Lasso, AFC Richmond, or any organization that has successfully kicked a ball. Ted Lasso season 4 is out August 5, 2026, and had no say in this. Edward really did found interRel at 22, really does build MCP servers for enterprise finance, and really will bring biscuits. The fedora stays on.
-      </p>
-    </div>
-  </footer>
-
+  <!-- ================= COLOPHON ================= -->
+  <div class="colophon">
+    <p class="colo-line">
+      Printed weekly at 5 AM Atlantic by Plate VI, which also selected this week's subject, wrote
+      most of these captions, and painted every illustration. Species names are invented. The software
+      is real. No vendor paid to appear in this guide, and at least 2 of them would like a word.
+    </p>
+  </div>
 </BaseLayout>
 
 <style>
   /* ============================================================
-     AFC ROSKE: BELIEVE  |  TED LASSO S4  |  2026-08-01
-     A small football club run by one optimistic American.
-     Palette: programme cream + kit blue, spot red CTA, pitch
-              green, Believe gold. Dark mode is the floodlit
-              night match.
-     Type: Archivo (headlines), Anton (kit numbers, scarf),
-           Nunito Sans (body), Space Mono (fixture data).
-     Atmosphere: scoreboard strip, knitted scarf, pitch-line
-                 rules, taped paper sign. No motion.
+     A FIELD GUIDE TO THE TEN AGENTS - week of 2026-08-15
+     Plate-book typography on aged paper, read by headlamp in dark
+     mode. Locals: lamp yellow, ink washes, paper grain.
      ============================================================ */
-
-  :global([data-theme="dark"]) {
-    --tl-bg: #0e1330;
-    --tl-panel: #171e42;
-    --tl-panel2: #1c244f;
-    --tl-ink: #f0f2fa;
-    --tl-muted: #aeb6d8;
-    --tl-line: #2c3563;
-    --tl-red: #e45866;
-    --tl-blue: #93a4f0;
-    --tl-gold: #ffd23f;
-    --tl-pitch: #0b4526;
-    --tl-pitch2: #0d5230;
-    --tl-onred: #ffffff;
-    --tl-redsolid: #c11425;
-  }
-  :global([data-theme="light"]) {
-    --tl-bg: #f7f5ec;
-    --tl-panel: #fffdf6;
-    --tl-panel2: #efecdd;
-    --tl-ink: #151a2b;
-    --tl-muted: #4b5268;
-    --tl-line: #ded9c6;
-    --tl-red: #c11425;
-    --tl-blue: #2a3ba0;
-    --tl-gold: #ffd23f;
-    --tl-pitch: #0b5c2e;
-    --tl-pitch2: #0e6b36;
-    --tl-onred: #ffffff;
-    --tl-redsolid: #c11425;
+  :root {
+    --fg-lamp: #e0a83c;
+    --fg-green: #2f5d3a;
+    --fg-sepia: #7d5c2c;
+    --fg-label: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    --fg-hand: 'Caveat', 'Segoe Script', cursive;
   }
 
-  /* ---------------- SCOREBOARD STRIP ---------------- */
-  .score {
-    background: var(--tl-ink);
-    color: var(--tl-bg);
-    padding: 0.55rem 2rem;
-  }
-  .score-inner {
-    max-width: 1320px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-  .score-item {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.64rem;
-    letter-spacing: 0.13em;
-  }
-  .score-board {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-  }
-  .score-team {
-    font-family: 'Anton', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.14em;
-  }
-  .score-num {
-    font-family: 'Anton', sans-serif;
-    font-size: 0.85rem;
-    background: var(--tl-redsolid);
-    color: var(--tl-onred);
-    padding: 0.1rem 0.45rem;
-  }
-  .score-dash { font-family: 'Space Mono', monospace; font-size: 0.7rem; }
-  @media (max-width: 760px) {
-    .score { padding: 0.5rem 1.1rem; }
-    .score-inner { justify-content: center; }
-    .score-item { display: none; }
+  /* Paper grain, applied per section rather than globally so the
+     page reads as separate printed sheets. */
+  .hero, .plates, .web, .confused, .bite, .range, .stations, .corr {
+    position: relative;
   }
 
-  /* ---------------- HERO ---------------- */
-  .hero {
-    background:
-      linear-gradient(to bottom, transparent 0 calc(100% - 1px), var(--tl-line) calc(100% - 1px)),
-      var(--tl-bg);
-    color: var(--tl-ink);
-    padding: 4.2rem 2rem 0;
-  }
-  .hero-inner {
-    max-width: 1320px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.05fr 1fr;
-    gap: 3.5rem;
-    align-items: center;
-    padding-bottom: 3.6rem;
-  }
-  @media (max-width: 1020px) {
-    .hero { padding: 2.8rem 1.1rem 0; }
-    .hero-inner { grid-template-columns: 1fr; gap: 2.4rem; }
-  }
-
-  .hero-kicker {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
+  /* ---------- shared section furniture ---------- */
+  .sec-eyebrow {
+    font-family: var(--fg-label);
     text-transform: uppercase;
-    color: var(--tl-red);
-    margin: 0 0 1.3rem;
-    padding-bottom: 0.8rem;
-    border-bottom: 3px solid var(--tl-red);
-    display: inline-block;
+    letter-spacing: 0.26em;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin: 0 0 0.7rem;
+    color: var(--color-accent);
   }
-  .hero-h1 {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 900;
-    font-size: clamp(2.9rem, 7.2vw, 5.6rem);
-    line-height: 0.96;
-    letter-spacing: -0.035em;
-    text-transform: uppercase;
-    margin: 0 0 0.9rem;
-    color: var(--tl-ink);
-  }
-  .hero-h1 em {
-    font-style: normal;
-    color: var(--tl-blue);
-  }
-  .hero-aside {
-    font-family: 'Nunito Sans', sans-serif;
-    font-style: italic;
-    font-size: 0.95rem;
-    color: var(--tl-muted);
-    margin: 0 0 1.6rem;
-  }
-  .hero-sub {
-    font-family: 'Archivo', sans-serif;
+  .sec-h2 {
+    font-family: var(--font-heading);
     font-weight: 700;
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
-    line-height: 1.35;
-    color: var(--tl-ink);
+    font-size: clamp(2.3rem, 5.5vw, 4.2rem);
+    line-height: 1.02;
+    margin: 0 0 1.1rem;
+    letter-spacing: -0.01em;
+  }
+  :global([data-theme="dark"]) .sec-h2 { color: var(--color-text); }
+  :global([data-theme="light"]) .sec-h2 { color: var(--color-text-dark); }
+  .sec-deck {
+    font-family: var(--font-body);
+    font-size: 1.08rem;
+    line-height: 1.72;
+    max-width: 40em;
     margin: 0 0 1.1rem;
   }
-  .hero-desc {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 1.02rem;
-    line-height: 1.7;
-    color: var(--tl-muted);
-    margin: 0 0 1.8rem;
-    max-width: 38em;
-  }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+  :global([data-theme="dark"]) .sec-deck { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .sec-deck { color: var(--color-text-dark-muted); }
 
-  .btn-red, .btn-line {
-    display: inline-flex;
-    align-items: center;
-    font-family: 'Archivo', sans-serif;
-    font-weight: 800;
-    font-size: 0.82rem;
-    letter-spacing: 0.09em;
-    text-transform: uppercase;
-    text-decoration: none;
+  .sec-margin {
+    font-family: var(--fg-hand);
+    font-size: 1.28rem;
+    line-height: 1.35;
+    max-width: 22em;
+    transform: rotate(-1.1deg);
+    margin: 1.6rem 0 0;
+  }
+  :global([data-theme="dark"]) .sec-margin { color: var(--fg-lamp); }
+  :global([data-theme="light"]) .sec-margin { color: var(--fg-sepia); }
+
+  /* ---------- buttons ---------- */
+  .btn-solid, .btn-line {
+    display: inline-flex; align-items: center;
+    font-family: var(--fg-label);
+    text-transform: uppercase; letter-spacing: 0.14em;
+    font-size: 0.92rem; font-weight: 600;
     padding: 0.85rem 1.5rem;
-    border: 2px solid var(--tl-redsolid);
-    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+    text-decoration: none;
+    border: 1.5px solid var(--color-accent);
+    transition: transform 0.14s ease, background-color 0.14s ease, color 0.14s ease;
   }
-  .btn-red {
-    background: var(--tl-redsolid);
-    color: var(--tl-onred);
-    box-shadow: 4px 4px 0 var(--tl-ink);
-  }
-  .btn-red:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tl-ink); }
-  .btn-line {
-    background: transparent;
-    border-color: var(--tl-ink);
-    color: var(--tl-ink);
-    box-shadow: 4px 4px 0 var(--tl-line);
-  }
-  .btn-line:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tl-line); background: var(--tl-panel); }
-  .btn-big { padding: 1rem 2rem; font-size: 0.9rem; }
+  .btn-solid { background: var(--color-accent); color: #fdf8ec; }
+  .btn-solid:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); transform: translateY(-2px); }
+  .btn-line { color: var(--color-accent); background: transparent; }
+  .btn-line:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
 
-  .hero-fig { margin: 0; }
+  /* ---------- edition strip ---------- */
+  .ed {
+    border-bottom: 3px double var(--color-border);
+    font-family: var(--fg-label);
+  }
+  :global([data-theme="dark"]) .ed { background: var(--color-surface); border-color: var(--color-border); }
+  :global([data-theme="light"]) .ed { background: var(--color-surface-light); border-color: var(--color-border-light); }
+  .ed-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0.6rem 2rem;
+    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+    text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.72rem; font-weight: 500;
+  }
+  :global([data-theme="dark"]) .ed-item { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .ed-item { color: var(--color-text-dark-muted); }
+  .ed-mid { color: var(--color-accent) !important; }
+  @media (max-width: 760px) { .ed-mid { display: none; } .ed-inner { padding: 0.6rem 1.2rem; font-size: 0.62rem; } }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 4rem 2rem 0; }
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.5rem; align-items: center;
+  }
+  @media (max-width: 940px) { .hero-inner { grid-template-columns: 1fr; gap: 2.4rem; } .hero { padding: 2.5rem 1.2rem 0; } }
+
   .hero-frame {
     position: relative;
-    border: 3px solid var(--tl-ink);
-    background: var(--tl-panel);
-    padding: 0.55rem;
-    box-shadow: 10px 10px 0 var(--tl-redsolid);
+    padding: 0.8rem;
+    border: 1px solid var(--color-border);
+    outline: 4px solid transparent;
   }
-  .hero-img {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
+  :global([data-theme="dark"]) .hero-frame { border-color: var(--color-border); background: var(--color-surface); }
+  :global([data-theme="light"]) .hero-frame { border-color: var(--color-border-light); background: var(--color-surface-light); }
+  .hero-frame::after {
+    content: ''; position: absolute; inset: 0.35rem; border: 1px solid currentColor; opacity: 0.28; pointer-events: none;
   }
-  .hero-badge {
-    position: absolute;
-    top: -0.85rem;
-    left: 1.2rem;
-    background: var(--tl-gold);
-    color: #1f2d7a;
-    font-family: 'Anton', sans-serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    padding: 0.32rem 0.75rem;
-    border: 2px solid #1f2d7a;
-    z-index: 2;
+  .hero-img { display: block; width: 100%; height: auto; }
+  .hero-plate {
+    position: absolute; top: -0.75rem; left: 1.4rem; z-index: 2;
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.24em;
+    font-size: 0.66rem; font-weight: 600; padding: 0.24rem 0.7rem;
+    background: var(--color-accent); color: #fdf8ec;
   }
-  .hero-numtag {
-    position: absolute;
-    right: 0.55rem;
-    bottom: 0.55rem;
-    background: var(--tl-ink);
-    color: var(--tl-bg);
-    font-family: 'Anton', sans-serif;
-    font-size: 1.3rem;
-    line-height: 1;
-    padding: 0.4rem 0.6rem 0.3rem;
-  }
+  .hero-fig { margin: 0; }
   .hero-cap {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 0.86rem;
-    font-style: italic;
-    line-height: 1.55;
-    color: var(--tl-muted);
-    margin-top: 0.9rem;
+    font-family: var(--font-body); font-style: italic;
+    font-size: 0.92rem; line-height: 1.6; margin-top: 0.9rem; max-width: 34em;
   }
+  :global([data-theme="dark"]) .hero-cap { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .hero-cap { color: var(--color-text-dark-muted); }
 
-  /* Form guide bar */
-  .form {
-    border-top: 3px solid var(--tl-ink);
-    background: var(--tl-panel);
+  .hero-kicker {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.22em;
+    font-size: 0.74rem; font-weight: 600; margin: 0 0 1.2rem; color: var(--color-accent);
   }
-  .form-inner {
-    max-width: 1320px;
-    margin: 0 auto;
-    display: flex;
-    align-items: stretch;
-    flex-wrap: wrap;
-  }
-  .form-head {
-    font-family: 'Anton', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.16em;
-    color: var(--tl-onred);
-    background: var(--tl-redsolid);
-    display: inline-flex;
-    align-items: center;
-    padding: 0.9rem 1.3rem;
-  }
-  .form-stat {
-    display: flex;
-    align-items: baseline;
-    gap: 0.6rem;
-    padding: 0.9rem 1.6rem;
-    border-right: 1px solid var(--tl-line);
-  }
-  .form-stat:last-child { border-right: 0; }
-  .form-value {
-    font-family: 'Anton', sans-serif;
-    font-size: 1.6rem;
-    line-height: 1;
-    color: var(--tl-red);
-  }
-  .form-label {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--tl-muted);
-  }
-  @media (max-width: 900px) {
-    .form-inner { flex-direction: column; }
-    .form-head { justify-content: center; }
-    .form-stat { border-right: 0; border-bottom: 1px solid var(--tl-line); justify-content: center; }
-    .form-stat:last-child { border-bottom: 0; }
-  }
-
-  /* ---------------- CLUB SCARF ---------------- */
-  .scarf {
-    display: flex;
-    align-items: stretch;
-    background: var(--tl-bg);
-    padding: 2.6rem 0;
-    overflow: hidden;
-  }
-  .scarf-body {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.15rem;
-    background:
-      repeating-linear-gradient(
-        90deg,
-        #2a3ba0 0 72px,
-        #ffffff 72px 84px,
-        #c11425 84px 156px,
-        #ffffff 156px 168px
-      );
-    padding: 0.9rem 1.2rem;
-    border-top: 3px solid var(--tl-ink);
-    border-bottom: 3px solid var(--tl-ink);
-  }
-  .scarf-ch {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(1.15rem, 2.6vw, 2rem);
-    line-height: 1;
-    color: #ffffff;
-    background: rgba(16, 22, 58, 0.82);
-    padding: 0.32rem 0.5rem 0.22rem;
-  }
-  .scarf-gap { width: clamp(0.7rem, 2vw, 1.6rem); }
-  .scarf-fringe {
-    width: 26px;
-    flex-shrink: 0;
-    background:
-      repeating-linear-gradient(
-        90deg,
-        var(--tl-ink) 0 3px,
-        transparent 3px 8px
-      );
-    margin: 0.4rem 0;
-  }
-
-  /* ---------------- SHARED SECTION HEADS ---------------- */
-  .sec-head { max-width: 880px; margin: 0 0 2.8rem; }
-  .sec-slug {
-    display: inline-block;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.66rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--tl-red);
-    border-bottom: 3px solid var(--tl-red);
-    padding-bottom: 0.35rem;
-    margin-bottom: 1.1rem;
-  }
-  .sec-title {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 900;
-    font-size: clamp(2.3rem, 5.4vw, 4rem);
-    line-height: 0.98;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
+  .hero-h1 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2.9rem, 7vw, 5.4rem);
+    line-height: 0.94;
+    letter-spacing: -0.015em;
     margin: 0 0 1rem;
-    color: var(--tl-ink);
   }
-  .sec-title em { font-style: normal; color: var(--tl-red); }
-  .sec-deck {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 1.02rem;
-    line-height: 1.66;
-    color: var(--tl-muted);
-    margin: 0;
-    max-width: 46em;
-  }
-
-  /* ---------------- TRAINING WALL ---------------- */
-  .wall {
-    background: var(--tl-panel);
-    color: var(--tl-ink);
-    padding: 4.6rem 2rem 5rem;
-    border-top: 1px solid var(--tl-line);
-  }
-  .wall-inner { max-width: 1320px; margin: 0 auto; }
-  .wall-grid {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 2.2rem 1.8rem;
-  }
-  .wall-item { margin: 0; display: flex; flex-direction: column; }
-  .wall-landscape { grid-column: span 4; }
-  .wall-portrait { grid-column: span 2; }
-  .wall-wide { grid-column: span 6; display: grid; grid-template-columns: 1.6fr 1fr; gap: 2rem; align-items: center; }
-  .wall-landscape .wall-img { aspect-ratio: 4 / 3; }
-  .wall-portrait .wall-img { aspect-ratio: 3 / 4; }
-  .wall-wide .wall-img { aspect-ratio: 16 / 9; }
-  @media (max-width: 1020px) {
-    .wall { padding: 3.4rem 1.1rem 3.8rem; }
-    .wall-grid { grid-template-columns: 1fr 1fr; }
-    .wall-landscape, .wall-portrait { grid-column: span 1; }
-    .wall-landscape .wall-img, .wall-portrait .wall-img { aspect-ratio: 4 / 5; }
-    .wall-wide { grid-column: span 2; grid-template-columns: 1fr; gap: 1rem; }
-  }
-  @media (max-width: 640px) {
-    .wall-grid { grid-template-columns: 1fr; }
-    .wall-landscape, .wall-portrait, .wall-wide { grid-column: span 1; }
-  }
-  .wall-frame {
-    position: relative;
-    border: 3px solid var(--tl-ink);
-    background: var(--tl-bg);
-    padding: 0.45rem;
-    box-shadow: 7px 7px 0 var(--tl-line);
-  }
-  .wall-img {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-  .wall-num {
-    position: absolute;
-    left: 0.45rem;
-    top: 0.45rem;
-    background: var(--tl-redsolid);
-    color: var(--tl-onred);
-    font-family: 'Anton', sans-serif;
-    font-size: 1.05rem;
-    line-height: 1;
-    padding: 0.38rem 0.55rem 0.28rem;
-  }
-  .wall-drill {
-    position: absolute;
-    right: 0.45rem;
-    bottom: 0.45rem;
-    background: var(--tl-ink);
-    color: var(--tl-bg);
-    font-family: 'Space Mono', monospace;
-    font-size: 0.56rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    padding: 0.3rem 0.55rem;
-  }
-  .wall-cap { padding-top: 0.9rem; }
-  .wall-title {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 800;
-    font-size: 1.28rem;
-    line-height: 1.12;
-    text-transform: uppercase;
-    letter-spacing: -0.01em;
-    margin: 0 0 0.5rem;
-    color: var(--tl-ink);
-  }
-  .wall-wide .wall-title { font-size: 1.9rem; }
-  .wall-text {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 0.92rem;
-    line-height: 1.64;
-    color: var(--tl-muted);
-    margin: 0;
-  }
-  .wall-wide .wall-text { font-size: 1rem; }
-
-  /* ---------------- BELIEVE ----------------
-     The sign is a physical object: yellow paper, blue paint, tape.
-     It stays gold-with-blue in BOTH modes, like the real thing. */
-  .believe {
-    background: var(--tl-bg);
-    color: var(--tl-ink);
-    padding: 5rem 2rem;
-    border-top: 1px solid var(--tl-line);
-  }
-  .believe-inner {
-    max-width: 1180px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.25fr;
-    gap: 3.6rem;
-    align-items: center;
-  }
-  @media (max-width: 940px) {
-    .believe { padding: 3.6rem 1.1rem; }
-    .believe-inner { grid-template-columns: 1fr; gap: 2.4rem; }
-  }
-  .believe-signwrap { text-align: center; }
-  .believe-sign {
-    position: relative;
+  :global([data-theme="dark"]) .hero-h1 { color: var(--color-text); }
+  :global([data-theme="light"]) .hero-h1 { color: var(--color-text-dark); }
+  .hero-h1-sub {
     display: inline-block;
-    background: #ffd23f;
-    padding: 1.6rem 2.8rem 1.4rem;
-    transform: rotate(-2deg);
-    box-shadow: 0 10px 24px rgba(10, 14, 40, 0.28);
+    font-style: italic; font-weight: 400;
+    font-size: 0.42em; letter-spacing: 0.04em;
+    color: var(--color-accent);
   }
-  .believe-word {
-    font-family: 'Anton', sans-serif;
-    font-size: clamp(2.6rem, 7vw, 4.6rem);
-    line-height: 1;
-    color: #1f2d7a;
-    letter-spacing: 0.05em;
+  .hero-binomial {
+    font-family: var(--font-body); font-style: italic;
+    font-size: 1.06rem; line-height: 1.6; max-width: 32em; margin: 0 0 1.4rem;
   }
-  .believe-tape {
-    position: absolute;
-    top: -0.7rem;
-    width: 3.4rem;
-    height: 1.4rem;
-    background: rgba(250, 248, 240, 0.75);
-    border: 1px solid rgba(31, 45, 122, 0.15);
+  :global([data-theme="dark"]) .hero-binomial { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .hero-binomial { color: var(--color-text-dark-muted); }
+  .hero-rule { height: 0; border-top: 3px double var(--color-border); margin: 0 0 1.4rem; max-width: 32em; }
+  :global([data-theme="light"]) .hero-rule { border-color: var(--color-border-light); }
+
+  .hero-sub {
+    font-family: var(--font-heading); font-weight: 600;
+    font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.35; margin: 0 0 1.1rem; max-width: 26em;
   }
-  .believe-tape-l { left: -1rem; transform: rotate(-14deg); }
-  .believe-tape-r { right: -1rem; transform: rotate(12deg); }
-  .believe-under {
-    font-family: 'Nunito Sans', sans-serif;
-    font-style: italic;
-    font-size: 1rem;
-    color: var(--tl-muted);
-    margin: 1.3rem 0 0;
+  :global([data-theme="dark"]) .hero-sub { color: var(--color-text); }
+  :global([data-theme="light"]) .hero-sub { color: var(--color-text-dark); }
+  .hero-desc { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.75; max-width: 36em; margin: 0 0 1.8rem; }
+  :global([data-theme="dark"]) .hero-desc { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .hero-desc { color: var(--color-text-dark-muted); }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+
+  /* ---------- collector's record ---------- */
+  .record { max-width: 1200px; margin: 3.5rem auto 0; padding: 0 0 3.5rem; }
+  .record-inner {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 2.4rem;
+    border-top: 3px double var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.3rem 0;
   }
-  .believe-title {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 900;
-    font-size: clamp(1.9rem, 4.4vw, 3rem);
-    line-height: 1.04;
-    letter-spacing: -0.02em;
-    margin: 0 0 1.2rem;
-    color: var(--tl-ink);
+  :global([data-theme="light"]) .record-inner { border-color: var(--color-border-light); }
+  .record-head {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.24em;
+    font-size: 0.7rem; font-weight: 600; color: var(--color-accent);
   }
-  .believe-p {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 1.02rem;
-    line-height: 1.7;
-    color: var(--tl-muted);
-    margin: 0 0 1.05rem;
-    max-width: 42em;
-  }
-  .believe-tune {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--tl-red);
-    border-top: 1px solid var(--tl-line);
-    padding-top: 1rem;
-    margin: 1.4rem 0 0;
+  .record-stat { display: flex; align-items: baseline; gap: 0.6rem; }
+  .record-value { font-family: var(--font-heading); font-weight: 700; font-size: 1.9rem; line-height: 1; }
+  :global([data-theme="dark"]) .record-value { color: var(--color-text); }
+  :global([data-theme="light"]) .record-value { color: var(--color-text-dark); }
+  .record-label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; }
+  :global([data-theme="dark"]) .record-label { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .record-label { color: var(--color-text-dark-muted); }
+
+  /* ---------- about the author frame ---------- */
+  .author-frame { position: relative; }
+  .author-plate {
+    position: absolute; top: 1.1rem; left: 50%; transform: translateX(-50%); z-index: 2; margin: 0;
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.3em;
+    font-size: 0.66rem; font-weight: 600; color: var(--color-accent);
   }
 
-  /* ---------------- THE SQUAD (on the pitch) ----------------
-     Literal floodlit-pitch green in both modes, white pitch lines. */
-  .squad {
-    background:
-      linear-gradient(90deg, var(--tl-pitch) 0 50%, var(--tl-pitch2) 50% 100%);
-    background-size: 25% 100%;
-    color: #ffffff;
-    padding: 4.8rem 2rem 5.2rem;
-    border-top: 4px solid #ffffff;
-    border-bottom: 4px solid #ffffff;
+  /* ---------- the plates ---------- */
+  .plates { padding: 5rem 2rem; }
+  :global([data-theme="dark"]) .plates { background: var(--color-background); }
+  :global([data-theme="light"]) .plates { background: var(--color-background-light); }
+  .plates-head { max-width: 1200px; margin: 0 auto 3rem; }
+  .plate-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;
+    border-top: 1px solid var(--color-border); border-left: 1px solid var(--color-border);
   }
-  .sec-head-onpitch { margin-bottom: 2.6rem; }
-  .sec-slug-onpitch { color: #ffd23f; border-bottom-color: #ffd23f; }
-  .sec-title-onpitch { color: #ffffff; }
-  .sec-title-onpitch em { color: #ffd23f; }
-  .sec-deck-onpitch { color: rgba(255, 255, 255, 0.85); }
-  .squad-inner { max-width: 1320px; margin: 0 auto; }
-  .squad-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.6rem;
-  }
-  @media (max-width: 1020px) { .squad-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 660px) {
-    .squad { padding: 3.4rem 1.1rem 3.8rem; }
-    .squad-grid { grid-template-columns: 1fr; }
-  }
-  .player {
-    background: rgba(8, 30, 17, 0.55);
-    border: 2px solid rgba(255, 255, 255, 0.55);
-    padding: 1.5rem 1.4rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    transition: background 0.18s ease, transform 0.18s ease;
-  }
-  .player:hover { background: rgba(8, 30, 17, 0.78); transform: translateY(-3px); }
-  .player-head { display: flex; gap: 0.9rem; align-items: flex-start; }
-  .player-num {
-    font-family: 'Anton', sans-serif;
-    font-size: 2.3rem;
-    line-height: 0.9;
-    color: #ffd23f;
-    flex-shrink: 0;
-  }
-  .player-pos {
-    display: block;
-    font-family: 'Space Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #ffd23f;
-    margin-bottom: 0.3rem;
-  }
-  .player-name {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 800;
-    font-size: 1.22rem;
-    line-height: 1.12;
-    margin: 0;
-    color: #ffffff;
-  }
-  .player-note {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 0.92rem;
-    line-height: 1.62;
-    color: rgba(255, 255, 255, 0.85);
-    margin: 0;
-    flex-grow: 1;
-  }
-  .player-meta { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-  .player-tag, .player-status {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.56rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.26rem 0.5rem;
-  }
-  .player-tag { border: 1px solid rgba(255, 255, 255, 0.5); color: rgba(255, 255, 255, 0.85); }
-  .player-status { background: #ffd23f; color: #1f2d7a; font-weight: 700; }
-  .player-cta {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 800;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #ffd23f;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    align-self: flex-start;
-  }
-  .player-cta:hover { text-decoration-thickness: 3px; }
-  .player-cta-off { color: rgba(255, 255, 255, 0.55); text-decoration: none; cursor: default; }
+  :global([data-theme="light"]) .plate-grid { border-color: var(--color-border-light); }
+  @media (max-width: 860px) { .plate-grid { grid-template-columns: 1fr; } .plates { padding: 3rem 1.2rem; } }
 
-  /* ---------------- BISCUITS CTA ---------------- */
-  .biscuits {
-    background: var(--tl-panel);
-    color: var(--tl-ink);
-    padding: 5rem 2rem 5.4rem;
-    text-align: center;
+  .plate {
+    padding: 1.8rem 1.7rem 2rem;
+    border-right: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);
   }
-  .biscuits-inner { max-width: 820px; margin: 0 auto; }
-  .biscuits-title {
-    font-family: 'Archivo', sans-serif;
-    font-weight: 900;
-    font-size: clamp(2.3rem, 6vw, 4.2rem);
-    line-height: 0.98;
-    letter-spacing: -0.03em;
-    text-transform: uppercase;
-    margin: 0 0 1.2rem;
-    color: var(--tl-ink);
+  :global([data-theme="light"]) .plate { border-color: var(--color-border-light); background: var(--color-surface-light); }
+  :global([data-theme="dark"]) .plate { background: var(--color-surface); }
+  .plate-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .plate-no {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.24em;
+    font-size: 0.72rem; font-weight: 600;
   }
-  .biscuits-title em { font-style: normal; color: var(--tl-red); }
-  .biscuits-deck {
-    font-family: 'Nunito Sans', sans-serif;
-    font-size: 1.04rem;
-    line-height: 1.7;
-    color: var(--tl-muted);
-    margin: 0 auto 2.2rem;
-    max-width: 44em;
+  :global([data-theme="dark"]) .plate-no { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .plate-no { color: var(--color-text-dark-muted); }
+  .plate-status {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.16em;
+    font-size: 0.64rem; font-weight: 600; padding: 0.22rem 0.6rem; border: 1px solid currentColor;
+    white-space: nowrap;
   }
-  .biscuits-cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-  @media (max-width: 640px) { .biscuits { padding: 3.8rem 1.1rem 4.2rem; } }
+  .status-good { color: var(--fg-green); }
+  :global([data-theme="dark"]) .status-good { color: #86b98f; }
+  .status-warn { color: var(--fg-sepia); }
+  :global([data-theme="dark"]) .status-warn { color: var(--fg-lamp); }
+  .status-bad { color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
 
-  /* ---------------- CLUB NOTICE ---------------- */
-  .notice {
-    background: var(--tl-panel2);
-    color: var(--tl-muted);
-    border-top: 1px solid var(--tl-line);
-    padding: 2.4rem 2rem 2.8rem;
+  .plate-binomial {
+    font-family: var(--font-body); font-style: italic; font-weight: 500;
+    font-size: 1.5rem; line-height: 1.2; margin: 0 0 0.2rem;
   }
-  .notice-inner { max-width: 980px; margin: 0 auto; }
-  .notice p {
-    font-family: 'Space Mono', monospace;
-    font-size: 0.68rem;
-    line-height: 1.85;
-    margin: 0;
-    text-align: center;
+  :global([data-theme="dark"]) .plate-binomial { color: var(--color-text); }
+  :global([data-theme="light"]) .plate-binomial { color: var(--color-text-dark); }
+  .plate-common {
+    font-family: var(--font-heading); font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.92rem;
+    margin: 0 0 0.9rem; color: var(--color-accent);
   }
+  .plate-stack {
+    font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.6;
+    margin: 0 0 1.2rem; padding: 0.6rem 0.75rem;
+    border-left: 3px solid var(--color-accent);
+  }
+  :global([data-theme="dark"]) .plate-stack { color: var(--color-text-muted); background: color-mix(in srgb, var(--color-text) 4%, transparent); }
+  :global([data-theme="light"]) .plate-stack { color: var(--color-text-dark-muted); background: color-mix(in srgb, var(--color-text-dark) 5%, transparent); }
+
+  .plate-data { margin: 0 0 1.1rem; }
+  .pd-row {
+    display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.9rem;
+    padding: 0.4rem 0; border-bottom: 1px dotted var(--color-border);
+  }
+  :global([data-theme="light"]) .pd-row { border-color: var(--color-border-light); }
+  .pd-row dt {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.14em;
+    font-size: 0.68rem; font-weight: 600; padding-top: 0.15rem;
+  }
+  :global([data-theme="dark"]) .pd-row dt { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .pd-row dt { color: var(--color-text-dark-muted); }
+  .pd-row dd { margin: 0; font-family: var(--font-body); font-size: 0.94rem; line-height: 1.5; }
+  :global([data-theme="dark"]) .pd-row dd { color: var(--color-text); }
+  :global([data-theme="light"]) .pd-row dd { color: var(--color-text-dark); }
+
+  .plate-notes { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.68; margin: 0; }
+  :global([data-theme="dark"]) .plate-notes { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .plate-notes { color: var(--color-text-dark-muted); }
+  .pn-label {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.14em;
+    font-size: 0.72rem; font-weight: 600; color: var(--color-accent);
+  }
+
+  /* ---------- food web ---------- */
+  .web { padding: 5rem 2rem; border-top: 3px double var(--color-border); }
+  :global([data-theme="dark"]) .web { background: var(--color-surface); border-color: var(--color-border); }
+  :global([data-theme="light"]) .web { background: var(--color-surface-light); border-color: var(--color-border-light); }
+  .web-head { max-width: 1200px; margin: 0 auto 2.6rem; }
+  .web-body {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 3rem; align-items: start;
+  }
+  @media (max-width: 940px) { .web-body { grid-template-columns: 1fr; gap: 2rem; } .web { padding: 3rem 1.2rem; } }
+  .web-fig { margin: 0; position: sticky; top: 6rem; }
+  @media (max-width: 940px) { .web-fig { position: static; } }
+  .web-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
+  :global([data-theme="light"]) .web-fig img { border-color: var(--color-border-light); }
+  .web-fig figcaption {
+    font-family: var(--font-body); font-style: italic; font-size: 0.9rem; line-height: 1.6; margin-top: 0.8rem;
+  }
+  :global([data-theme="dark"]) .web-fig figcaption { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .web-fig figcaption { color: var(--color-text-dark-muted); }
+
+  .web-diagram { display: flex; flex-direction: column; }
+  .web-tier { display: block; }
+  /* The Familiar is not fed by anything, so it gets a gap and a dashed rule
+     instead of an arrow. */
+  .web-tier-detached { margin-top: 1.6rem; padding-top: 1.3rem; border-top: 1px dashed var(--color-border); }
+  :global([data-theme="light"]) .web-tier-detached { border-color: var(--color-border-light); }
+  .web-tier-label { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 0.6rem; }
+  .wt-name {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.22em;
+    font-size: 0.68rem; font-weight: 600; color: var(--color-accent);
+  }
+  .wt-cap { font-family: var(--font-body); font-style: italic; font-size: 0.86rem; line-height: 1.45; }
+  :global([data-theme="dark"]) .wt-cap { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .wt-cap { color: var(--color-text-dark-muted); }
+  .web-nodes { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .web-node {
+    font-family: var(--font-mono); font-size: 0.78rem; padding: 0.5rem 0.8rem;
+    border: 1px solid var(--color-accent); white-space: nowrap;
+  }
+  :global([data-theme="dark"]) .web-node { color: var(--color-text); }
+  :global([data-theme="light"]) .web-node { color: var(--color-text-dark); }
+  .web-node-loose { border-style: dashed; opacity: 0.8; }
+  .web-arrows { display: flex; gap: 2.2rem; padding: 0.55rem 1.4rem 0.9rem; }
+  .web-arrows span {
+    display: block; width: 1px; height: 1.6rem; background: var(--color-border); position: relative;
+  }
+  :global([data-theme="light"]) .web-arrows span { background: var(--color-border-light); }
+  .web-arrows span::after {
+    content: ''; position: absolute; bottom: 0; left: -3px;
+    border-left: 3.5px solid transparent; border-right: 3.5px solid transparent;
+    border-top: 5px solid var(--color-accent);
+  }
+  .web-punch {
+    max-width: 1200px; margin: 3rem auto 0; padding-top: 1.6rem;
+    border-top: 1px solid var(--color-border);
+    font-family: var(--font-heading); font-style: italic; font-weight: 500;
+    font-size: clamp(1.15rem, 2.2vw, 1.6rem); line-height: 1.45; max-width: 46em;
+  }
+  :global([data-theme="light"]) .web-punch { border-color: var(--color-border-light); color: var(--color-text-dark); }
+  :global([data-theme="dark"]) .web-punch { color: var(--color-text); }
+
+  /* ---------- commonly confused with ---------- */
+  .confused { padding: 5rem 2rem; }
+  :global([data-theme="dark"]) .confused { background: var(--color-background); }
+  :global([data-theme="light"]) .confused { background: var(--color-background-light); }
+  .confused-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.35fr 1fr; gap: 3.2rem; align-items: start;
+  }
+  @media (max-width: 940px) { .confused-inner { grid-template-columns: 1fr; gap: 2.2rem; } .confused { padding: 3rem 1.2rem; } }
+  .conf-list { list-style: none; margin: 2rem 0 0; padding: 0; }
+  .conf-item {
+    display: grid; grid-template-columns: 3rem 1fr; gap: 1rem;
+    padding: 1.4rem 0; border-top: 1px solid var(--color-border);
+  }
+  :global([data-theme="light"]) .conf-item { border-color: var(--color-border-light); }
+  .conf-no { font-family: var(--font-heading); font-weight: 700; font-size: 1.6rem; line-height: 1; color: var(--color-accent); }
+  .conf-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.28rem; margin: 0 0 0.55rem; }
+  :global([data-theme="dark"]) .conf-name { color: var(--color-text); }
+  :global([data-theme="light"]) .conf-name { color: var(--color-text-dark); }
+  .conf-tell, .conf-test { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.62; margin: 0 0 0.45rem; }
+  :global([data-theme="dark"]) .conf-tell, :global([data-theme="dark"]) .conf-test { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .conf-tell, :global([data-theme="light"]) .conf-test { color: var(--color-text-dark-muted); }
+  .conf-lbl {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.14em;
+    font-size: 0.7rem; font-weight: 600; color: var(--color-accent);
+  }
+  .confused-fig { margin: 0; position: sticky; top: 6rem; }
+  .confused-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
+  :global([data-theme="light"]) .confused-fig img { border-color: var(--color-border-light); }
+  .confused-fig figcaption { font-family: var(--font-body); font-style: italic; font-size: 0.9rem; line-height: 1.6; margin-top: 0.8rem; }
+  :global([data-theme="dark"]) .confused-fig figcaption { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .confused-fig figcaption { color: var(--color-text-dark-muted); }
+  @media (max-width: 940px) { .confused-fig { position: static; } }
+
+  /* ---------- which ones bite ---------- */
+  .bite { padding: 5rem 2rem; border-top: 3px double var(--color-border); }
+  :global([data-theme="dark"]) .bite { background: var(--color-surface); border-color: var(--color-border); }
+  :global([data-theme="light"]) .bite { background: var(--color-surface-light); border-color: var(--color-border-light); }
+  .bite-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.15fr; gap: 3.2rem; align-items: center;
+  }
+  @media (max-width: 940px) { .bite-inner { grid-template-columns: 1fr; gap: 2rem; } .bite { padding: 3rem 1.2rem; } }
+  .bite-fig { margin: 0; }
+  .bite-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
+  :global([data-theme="light"]) .bite-fig img { border-color: var(--color-border-light); }
+  .bite-margin {
+    font-family: var(--fg-hand); font-size: 1.3rem; transform: rotate(-1.4deg); margin: 1.4rem 0 0;
+  }
+  :global([data-theme="dark"]) .bite-margin { color: var(--fg-lamp); }
+  :global([data-theme="light"]) .bite-margin { color: var(--fg-sepia); }
+
+  /* ---------- range map ---------- */
+  .range { padding: 5rem 2rem; }
+  :global([data-theme="dark"]) .range { background: var(--color-background); }
+  :global([data-theme="light"]) .range { background: var(--color-background-light); }
+  .range-head { max-width: 1200px; margin: 0 auto 2.6rem; }
+  .range-body {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+  }
+  @media (max-width: 940px) { .range-body { grid-template-columns: 1fr; gap: 2rem; } .range { padding: 3rem 1.2rem; } }
+  .range-list { list-style: none; margin: 0; padding: 0; }
+  .range-item { padding: 1.2rem 0; border-bottom: 1px dotted var(--color-border); }
+  :global([data-theme="light"]) .range-item { border-color: var(--color-border-light); }
+  .range-tag {
+    display: inline-block; margin-bottom: 0.5rem;
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.18em;
+    font-size: 0.62rem; font-weight: 600; padding: 0.18rem 0.55rem;
+    border: 1px dashed var(--color-accent); color: var(--color-accent);
+  }
+  .range-zone { font-family: var(--font-heading); font-weight: 700; font-size: 1.24rem; margin: 0 0 0.4rem; }
+  :global([data-theme="dark"]) .range-zone { color: var(--color-text); }
+  :global([data-theme="light"]) .range-zone { color: var(--color-text-dark); }
+  .range-note { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.65; margin: 0; }
+  :global([data-theme="dark"]) .range-note { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .range-note { color: var(--color-text-dark-muted); }
+  .range-fig { margin: 0; position: sticky; top: 6rem; }
+  .range-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
+  :global([data-theme="light"]) .range-fig img { border-color: var(--color-border-light); }
+  .range-fig figcaption { font-family: var(--font-body); font-style: italic; font-size: 0.9rem; line-height: 1.6; margin-top: 0.8rem; }
+  :global([data-theme="dark"]) .range-fig figcaption { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .range-fig figcaption { color: var(--color-text-dark-muted); }
+  @media (max-width: 940px) { .range-fig { position: static; } }
+
+  /* ---------- field stations ---------- */
+  .stations { padding: 5rem 2rem; border-top: 3px double var(--color-border); }
+  :global([data-theme="dark"]) .stations { background: var(--color-surface); border-color: var(--color-border); }
+  :global([data-theme="light"]) .stations { background: var(--color-surface-light); border-color: var(--color-border-light); }
+  .stations-head { max-width: 1200px; margin: 0 auto 2.6rem; }
+  .station-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem;
+  }
+  @media (max-width: 980px) { .station-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 640px) { .station-grid { grid-template-columns: 1fr; } .stations { padding: 3rem 1.2rem; } }
+  .station {
+    display: flex; flex-direction: column;
+    padding: 1.5rem 1.4rem;
+    border: 1px solid var(--color-border);
+    transition: transform 0.16s ease, border-color 0.16s ease;
+  }
+  :global([data-theme="light"]) .station { border-color: var(--color-border-light); background: var(--color-background-light); }
+  :global([data-theme="dark"]) .station { background: var(--color-background); }
+  .station:hover { transform: translateY(-3px); border-color: var(--color-accent); }
+  .station-top { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; }
+  .station-ref { font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-accent); }
+  .station-kind {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.64rem; font-weight: 600;
+  }
+  :global([data-theme="dark"]) .station-kind { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .station-kind { color: var(--color-text-dark-muted); }
+  .station-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.22rem; line-height: 1.2; margin: 0 0 0.7rem; }
+  :global([data-theme="dark"]) .station-name { color: var(--color-text); }
+  :global([data-theme="light"]) .station-name { color: var(--color-text-dark); }
+  .station-note { font-family: var(--font-body); font-size: 0.94rem; line-height: 1.62; margin: 0 0 1.1rem; flex: 1; }
+  :global([data-theme="dark"]) .station-note { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .station-note { color: var(--color-text-dark-muted); }
+  .station-foot {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1rem;
+    font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.05em;
+  }
+  .station-tag { padding: 0.2rem 0.5rem; border: 1px solid var(--color-border); }
+  :global([data-theme="light"]) .station-tag { border-color: var(--color-border-light); color: var(--color-text-dark-muted); }
+  :global([data-theme="dark"]) .station-tag { color: var(--color-text-muted); }
+  .station-status { color: var(--color-accent); }
+  .station-cta {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.14em;
+    font-size: 0.78rem; font-weight: 600; text-decoration: none;
+    color: var(--color-accent); border-bottom: 1.5px solid var(--color-accent); align-self: flex-start;
+  }
+  .station-cta:hover { border-bottom-width: 3px; }
+  .station-cta-off { opacity: 0.6; border-bottom-style: dashed; }
+  :global([data-theme="dark"]) .station-cta-off { color: var(--color-text-muted); border-color: var(--color-text-muted); }
+  :global([data-theme="light"]) .station-cta-off { color: var(--color-text-dark-muted); border-color: var(--color-text-dark-muted); }
+
+  /* ---------- correspondence ---------- */
+  .corr { padding: 5rem 2rem; border-top: 3px double var(--color-border); }
+  :global([data-theme="dark"]) .corr { background: var(--color-background); border-color: var(--color-border); }
+  :global([data-theme="light"]) .corr { background: var(--color-background-light); border-color: var(--color-border-light); }
+  .corr-inner {
+    max-width: 1000px; margin: 0 auto;
+    display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; align-items: center;
+  }
+  @media (max-width: 860px) { .corr-inner { grid-template-columns: 1fr; gap: 2rem; } .corr { padding: 3rem 1.2rem; } }
+  .corr-fig { margin: 0; }
+  .corr-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
+  :global([data-theme="light"]) .corr-fig img { border-color: var(--color-border-light); }
+  .corr-h2 {
+    font-family: var(--font-heading); font-weight: 700;
+    font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.05; margin: 0 0 1rem;
+  }
+  :global([data-theme="dark"]) .corr-h2 { color: var(--color-text); }
+  :global([data-theme="light"]) .corr-h2 { color: var(--color-text-dark); }
+  .corr-deck { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.72; margin: 0 0 1.6rem; max-width: 34em; }
+  :global([data-theme="dark"]) .corr-deck { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .corr-deck { color: var(--color-text-dark-muted); }
+  .corr-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+
+  /* ---------- colophon ---------- */
+  .colophon { padding: 2.5rem 2rem 3.5rem; }
+  :global([data-theme="dark"]) .colophon { background: var(--color-background); }
+  :global([data-theme="light"]) .colophon { background: var(--color-background-light); }
+  .colo-line {
+    max-width: 62em; margin: 0 auto; text-align: center;
+    font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.8;
+  }
+  :global([data-theme="dark"]) .colo-line { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .colo-line { color: var(--color-text-dark-muted); }
 </style>

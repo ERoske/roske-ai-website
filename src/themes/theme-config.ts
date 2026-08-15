@@ -77,50 +77,52 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "AFC Roske: Believe",
-  week: "2026-08-01",
-  inspiration: "Ted Lasso season 4 premieres Wednesday, August 5 on Apple TV: Ted comes back to Richmond to coach the second-division women's team, starting over yet again in a job he is not qualified for, armed with nothing but questions and biscuits. Which is the only management situation Edward has ever been in. The site becomes AFC ROSKE, a small football club run by one relentlessly optimistic American in a fedora: a matchday-programme layout with a scoreboard strip, a knitted club scarf, a training-ground photo wall, the squad list, a taped-up BELIEVE sign, and biscuits with the boss. The genuine hook: Ted's whole method (be curious, not judgmental) is Edward's actual brand, asking good questions. Palette is club kit: royal kit blue, pitch green, spot red, and Believe-sign gold on programme cream, with a floodlit navy night mode. Type is athletic: Archivo for headings, Anton for scarf letters and kit numbers, Nunito Sans for warm body copy, Space Mono for fixture data. Animation stays OFF; the atmosphere is club identity, not motion.",
-  tagline: "I've been coaching a sport I don't understand for three years now. It's called AI.",
+  name: "A Field Guide to the Ten Agents",
+  week: "2026-08-15",
+  inspiration: "Edward's most-booked keynote is 'Your Day, Run by Ten Agents,' so this week the site stops describing it and becomes it: a naturalist's field guide to the ten AI agents that actually run his life, played completely straight and never winking. Ten numbered specimen plates with Latin binomials, habitat, range, call, feeding behavior, distinguishing markings and conservation status, every one naming the real software rather than a generic 'AI assistant.' A guide dates its edition, so this one is observed as of August 2026. The centerpiece is not the list, it's the food web: agents are a stack with dependencies, and the interesting failure is always upstream. A 'commonly confused with' section separates a real agent from a chatbot on a cron job, a macro, and a vendor demo. The field notes say which specimens bite, and the range map shows the wilderness where no agent goes. Design is plate-book: aged paper stock, hairline rules, plate numbers in small caps, italic binomials, ruled specimen boxes, pencil marginalia. Bodoni Moda for engraved plate titles, Newsreader for bookish body, Barlow Condensed for field labels, Courier Prime for field data, Caveat for the margins. Palette is paper cream, botanical green, sepia ink, and one vermilion reserved for conservation-status tags; dark mode is the same guide read by headlamp. Animation OFF, because a field guide is a printed object.",
+  tagline: "10 agents run my day. I've been watching them for 3 years, and 2 of them bite.",
 
   colors: {
-    // Club kit. Programme cream + kit blue in light mode; floodlit navy night
-    // mode. Spot red is the CTA, pitch green the supporting color, and the
-    // BELIEVE gold lives as a local var on the homepage. AA checked both modes.
-    primary: "#2a3ba0",            // kit blue
-    secondary: "#0e7a3d",          // pitch green
-    accent: "#c11425",             // spot red, the CTA (AA on cream and white)
-    accentHover: "#960e1c",
-    background: "#0e1330",         // floodlit navy night (dark mode)
-    backgroundLight: "#f7f5ec",    // matchday programme cream (light mode)
-    surface: "#171e42",            // club room panel (dark)
-    surfaceLight: "#fffdf6",       // fresh programme page (light)
-    text: "#f0f2fa",               // floodlight white on navy
-    textMuted: "#aeb6d8",          // terrace grey (7.5:1 on surface)
-    textDark: "#151a2b",           // ink on cream
-    textDarkMuted: "#4b5268",      // programme grey (7.4:1 on the light surface)
-    border: "#2c3563",             // pitch line (dark)
-    borderLight: "#ded9c6",        // pitch line (light)
-    gradient: "linear-gradient(135deg, #0e1330 0%, #2a3ba0 55%, #c11425 100%)",
+    // Plate-book palette. Aged paper and sepia ink in light mode; the same
+    // guide read by headlamp in dark mode (ink navy board, deep forest panels,
+    // lamp-lit paper text). Vermilion is the conservation-status tag and the
+    // only saturated color in the guide. Contrast checked in both modes.
+    primary: "#2f5d3a",            // botanical green
+    secondary: "#7d5c2c",          // sepia umber
+    accent: "#c8532e",             // field-marker vermilion (status tags, CTAs)
+    accentHover: "#a03d1f",
+    background: "#0d1319",         // ink navy, the guide read by headlamp
+    backgroundLight: "#e8dfc9",    // aged paper stock (the board)
+    surface: "#16211d",            // deep forest panel (dark)
+    surfaceLight: "#f7f1e3",       // fresh plate page (light)
+    text: "#f1e9d6",               // lamp-lit paper
+    textMuted: "#a9b3a5",          // lichen grey (7.5:1 on the dark surface)
+    textDark: "#241d14",           // sepia ink
+    textDarkMuted: "#574c3c",      // faded ink (7.4:1 on the light plate page)
+    border: "#2c3a33",             // hairline rule (dark)
+    borderLight: "#cdbf9f",        // hairline rule (light)
+    gradient: "linear-gradient(135deg, #0d1319 0%, #2f5d3a 55%, #c8532e 100%)",
   },
 
   fonts: {
-    // Archivo: an athletic grotesque with real heft at 800-900, the club's
-    //   wordmark and headline face.
-    // Anton (loaded, index accents): condensed poster caps for scarf letters
-    //   and kit numbers.
-    // Nunito Sans: warm, rounded, the Lasso-optimism body face.
-    // Space Mono: fixture lists, league tables, and stat lines.
-    heading: "'Archivo', 'Helvetica Neue', Arial, sans-serif",
-    body: "'Nunito Sans', system-ui, -apple-system, sans-serif",
-    mono: "'Space Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400..900;1,400..900&family=Anton&family=Nunito+Sans:ital,opsz,wght@0,6..12,300..900;1,6..12,300..900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap",
+    // Bodoni Moda: a Didone, the engraved-plate face of 19th century natural
+    //   history books. Plate titles and display.
+    // Newsreader: warm bookish serif with a real italic, for the guide's prose.
+    // Barlow Condensed (loaded, index labels): condensed field labels on the
+    //   specimen boxes.
+    // Courier Prime (mono): typewritten field data, ledgers, coordinates.
+    // Caveat (loaded, index marginalia): the naturalist's pencil annotations.
+    heading: "'Bodoni Moda', 'Didot', Georgia, serif",
+    body: "'Newsreader', Georgia, 'Times New Roman', serif",
+    mono: "'Courier Prime', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..700&family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Caveat:wght@400..700&display=swap",
   },
 
   layout: {
-    heroStyle: "split",
+    heroStyle: "editorial",
     navStyle: "sticky",
-    cardStyle: "solid",
-    sectionStyle: "alternating",
+    cardStyle: "outlined",
+    sectionStyle: "magazine",
     footerStyle: "detailed",
   },
 
@@ -133,11 +135,11 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "New head coach arrives with no relevant experience, remains weirdly confident.",
-    description: "Ted Lasso is back, coaching a team in a sport he doesn't understand, on the theory that curiosity outruns expertise. I've been running the same play since 2023, when I sold the company I actually understood and walked into AI with nothing but questions, which got better the longer I asked them. These days I coach finance teams through the same transfer window and build MCP servers so AI agents can work inside enterprise systems, and ten of those agents rebuild this website every Saturday. The sign over the door says Believe, and I taped it up there myself.",
-    heroImage: "hero-2026-08-01.jpg",
-    imageAlt: "Edward Roske in his signature blue fedora and a tan coach's jacket with a red whistle lanyard, standing on the touchline of an English football stadium at golden hour, pointing forward with an enormous grin and holding a clipboard covered in incomprehensible diagrams.",
-    ctaText: "Hire the gaffer",
+    subtitle: "Ten species of working software, observed in the wild, with notes on which ones bite.",
+    description: "Everybody selling you AI has 10 slides about agents. I have 10 agents. They draft my calendar brief, triage my inbox, cut the podcast, research the things I claim on stage, and rebuild this entire website every Saturday at 5 AM while I'm asleep. So I did what a naturalist does with anything he's watched for 3 years and I wrote the guide: Latin names, habitat, range, feeding behavior, and honest field notes, including the specimen that ate 3 days of work and the parts of my day where nothing lives at all.",
+    heroImage: "hero-2026-08-15.jpg",
+    imageAlt: "Edward Roske in his signature blue fedora and a khaki field shirt, crouched in dense undergrowth with binoculars and an open field notebook, watching an open laptop that is sitting in a large twig bird's nest.",
+    ctaText: "Book the ten-agents keynote",
     ctaLink: "/speaking/",
   },
 };
