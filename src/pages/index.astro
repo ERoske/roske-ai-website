@@ -17,57 +17,78 @@ const collectorRecord = [
 ];
 
 // ---------------------------------------------------------------------------
-// THE TEN PLATES. One entry per agent that actually runs a piece of Edward's
-// week. The `stack` line names real software on purpose: the credibility of
+// THE PLATES. One entry per agent that actually runs a piece of Edward's week,
+// one project per plate. Second edition: the personal assistant was described as
+// 3 separate species in the first edition (brief, inbox, sentry) and is lumped
+// here, which freed the slots for travel, video, and the Summit recruiter. The `stack` line names real software on purpose: the credibility of
 // the whole guide depends on a technical reader being able to check it.
 // Everything here is observed as of August 2026 and will date, which is what
 // the edition line at the top of the page is for.
 // ---------------------------------------------------------------------------
-const plates = [
+const plates: Array<{
+  plate: string; binomial: string; common: string; forms?: string[];
+  stack: string; habitat: string; range: string; call: string; feeding: string;
+  markings: string; status: string; tone: string; notes: string; supernumerary?: boolean;
+}> = [
   {
     plate: 'I',
-    binomial: 'Chronographa matutina',
-    common: 'The Morning Brief',
-    stack: 'Claude Code, the gws Google Workspace CLI, reading Calendar and Tasks',
-    habitat: 'First light. A terminal window I never open.',
-    range: "Every weekday. San Juan (Atlantic time, so my 6 AM is most people's bedtime).",
-    call: "One message before 6 AM: who I'm seeing today, and why.",
-    feeding: 'Calendar entries, task lists, and whatever it can find on the people already on the invite.',
-    markings: 'Refuses to editorialize. States the day and stops.',
+    binomial: 'Vespula secretaria',
+    common: 'The Chief of Staff',
+    forms: ['Dawn brief', 'Inbox triage', 'Pre-meeting sentry'],
+    stack: 'Claude Code running a stack of skills over Gmail, Calendar and Tasks through the gws CLI',
+    habitat: 'The inbox and the calendar, which are less habitats than weather systems.',
+    range: 'Continuous. No off season, and no evidence it would take one.',
+    call: `One message before 6 AM: who I'm seeing today and why. After that it sorts, drafts, flags, and stays quiet.`,
+    feeding: 'About 200 messages a day, every invite on the calendar, and whatever it can find on the people already on the invite.',
+    markings: 'Confident on speaking inquiries. Hopeless at family email. Occasionally briefs me on a stranger who shares a name with my actual meeting.',
     status: 'Abundant',
     tone: 'good',
-    notes: `It's the base of the whole food web, which took me the better part of a year to notice. Everything downstream inherits its mistakes, so a meeting it mislabels at 5 AM is a meeting I'm still wrong about at 4 PM. (I've asked it to be blunter about which days are stupid. No progress so far.)`,
+    notes: `The first edition of this guide described 3 species here: a dawn briefer, an inbox triager, and a sentry that reads up on whoever I'm about to meet. They share a nest, a memory and a set of mistakes, so they're one animal wearing 3 hats (I established this by reading my own code, which isn't how naturalists are supposed to work). It sits at the base of the whole food web, so a meeting it mislabels at 5 AM is a meeting I'm still wrong about at 4 PM. It has never sent a message on its own and it never will. The day I hand it send authority is the day it apologizes to a client, warmly and at length, for something that didn't happen.`,
   },
   {
     plate: 'II',
-    binomial: 'Vespa epistolaris',
-    common: 'The Inbox Wasp',
-    stack: 'An email triage skill plus a response drafter, both hitting Gmail through gws',
-    habitat: 'The inbox, which is less a habitat than a weather system.',
-    range: 'Continuous. No off season.',
-    call: 'Sorts, drafts, flags. Silent otherwise.',
-    feeding: 'About 200 messages a day, most of which deserve none of my attention.',
-    markings: 'Confident on speaking inquiries. Hopeless at family email.',
-    status: 'Vulnerable',
-    tone: 'warn',
-    notes: `It's never sent a message on its own and it never will. The day I hand it send authority is the day it apologizes to a client, warmly and at length, for something that didn't happen.`,
+    binomial: 'Hirundo praevia',
+    common: 'The Advance Party',
+    stack: 'A travel-briefing skill and a trip-research pack, both re-checking hours, rates and routes live before they print',
+    habitat: 'The 2 weeks before a departure. Gone the rest of the year.',
+    range: 'Migratory. Wherever the next trip is, which this spring meant Nepal.',
+    call: `One document: flights, hotel, ground transport, who I'm seeing, and where a vegetarian eats in a steak town.`,
+    feeding: 'Confirmation emails, calendar entries, and a standing file on what Dawn and I actually enjoy doing.',
+    markings: 'Will not book anything. It finds the flight, confirms the fare is still real that morning, and hands it back to me.',
+    status: 'Migratory',
+    tone: 'good',
+    notes: `Sometimes treated as a caste of Plate I, since it lives in the same project and eats the same calendar. It behaves like its own animal, so it gets its own plate. The trip that proved it was Everest Base Camp in April: 2 weeks of walking, 18,571 feet, and a brief that knew which teahouses could feed a vegetarian at altitude. Its one real failure is staleness, because hours and prices rot quietly, so it verifies every one of them the morning I leave and prints the phone number anyway (I've used the phone number).`,
   },
   {
     plate: 'III',
     binomial: 'Forficula vocalis',
-    common: 'The Cutting-Room Earwig',
-    stack: 'Descript over MCP, then a YouTube helper pushing the cut through the Data API',
+    common: 'The Producer',
+    stack: 'Descript over MCP for the cut, Buzzsprout for the feed, and a YouTube helper that publishes to the channel',
     habitat: 'Asking Good Questions, in the gap between recording and release.',
-    range: 'Weekly.',
-    call: 'Strips filler words at a rate no human editor would tolerate being paid for.',
-    feeding: 'Raw audio, transcripts, chapter markers, thumbnails.',
+    range: 'Weekly in theory. Recordings now pile up faster than it can turn them into episodes, which is a new problem to have.',
+    call: 'Strips filler words at a rate no human editor would tolerate being paid for, then writes the notes, cuts the clips and posts the thing.',
+    feeding: 'Raw audio, separate guest tracks, transcripts, chapter markers, thumbnails.',
     markings: 'Cannot tell a thinking pause from a mistake.',
     status: 'Stable',
     tone: 'good',
-    notes: `It once cut 4 seconds of silence where a guest was genuinely thinking. Technically a correct edit, and it deleted the best moment in the episode. I put the silence back by hand and wrote a rule about it (the rule is that silence is content, which I have since started applying to meetings).`,
+    notes: `This job belonged to a human producer until June. That's a worse reason to automate something than any reason in the brochures, and it worked anyway: the specimen does about 90% of the job and I record and approve the rest. Anybody selling you unattended record-to-publish in 2026 is selling you the demo. It once cut 4 seconds of silence where a guest was genuinely thinking, which was technically a correct edit and deleted the best moment in the episode. I put the silence back by hand and wrote a rule about it (the rule is that silence is content, which I have since started applying to meetings).`,
   },
   {
     plate: 'IV',
+    binomial: 'Cicada quotidiana',
+    common: 'The Daily Cicada',
+    stack: 'A daily-content skill into a deck builder, Gemini thumbnails, and captions from a Whisper model running on my own GPU',
+    habitat: 'The YouTube channel, and every slide behind it.',
+    range: 'Every morning. Full episode Monday, Wednesday and Friday, a short take the other 4 days.',
+    call: `A script, a branded deck, a thumbnail and a vertical cut, all finished before I'm awake. My job is to read it out loud.`,
+    feeding: 'The last 24 hours of AI news, plus every episode it has already made, so it stops itself repeating.',
+    markings: `Always finds a story. Some mornings there isn't one.`,
+    status: 'Abundant',
+    tone: 'warn',
+    notes: `This is the specimen that most resembles the lookalikes in Part three, and I can say that with authority because I built both. Left alone it will produce a confident 3 minutes about a funding round that deserved a sentence (and it is very good at sounding like the sentence mattered). The rule that fixed it is embarrassingly simple: on a thin news day it ships 90 seconds and admits that's all there was. It builds the decks for paid talks too, which is the same pipeline with the stakes turned up and a human reading every slide before a room does.`,
+  },
+  {
+    plate: 'V',
     binomial: 'Corvus interrogans',
     common: 'The Research Crow',
     stack: 'A fan-out of research subagents, web search, and Gemini Notebook over MCP',
@@ -78,10 +99,10 @@ const plates = [
     markings: 'Hoards. Returns 40 sources when 6 would have done the job.',
     status: 'Abundant',
     tone: 'good',
-    notes: `It feeds 4 other specimens, which is exactly why it gets checked hardest. A bad source here shows up in a keynote 6 weeks later with my name on it, in front of 400 people who paid to be in the room.`,
+    notes: `It feeds 6 other specimens, which is exactly why it gets checked hardest. A bad source here shows up in a keynote 6 weeks later with my name on it, in front of 400 people who paid to be in the room.`,
   },
   {
-    plate: 'V',
+    plate: 'VI',
     binomial: 'Scriptor nocturnus',
     common: 'The Night Writer',
     stack: 'A drafting skill, then a voice checker that grades the draft against my real sentences',
@@ -95,21 +116,21 @@ const plates = [
     notes: `The voice checker rejects more drafts than it passes, and that ratio is about right. Anything that reads smoothly while saying nothing goes back. (It rejected this sentence twice.)`,
   },
   {
-    plate: 'VI',
+    plate: 'VII',
     binomial: 'Ptilonorhynchus hebdomadalis',
     common: 'The Saturday Bowerbird',
     stack: 'Windows Task Scheduler into PowerShell into Claude Code, building Astro, deployed by GitHub Actions',
-    habitat: 'This page.',
+    habitat: 'This page. The rest of Roske.AI as well, but this page most of all.',
     range: 'Saturdays, 5 AM Atlantic.',
     call: "None. It works while I'm asleep.",
-    feeding: "Podcast RSS, the YouTube channel, my weekly questionnaire, and whatever's topical.",
+    feeding: "Podcast RSS, the YouTube channel, blog drafts, my weekly questionnaire, and whatever's topical.",
     markings: "The only specimen in this guide that builds the habitat you're standing in.",
     status: 'Abundant',
     tone: 'good',
-    notes: `It chose this theme, wrote this sentence, and made the photograph of me crouching in a shrub. I found out when you did. (Edward, you built an observation hide for your own software, gave the software a Latin name, and then wrote a field guide about the thing that wrote the field guide. Somewhere there's a version of you who just uses a to-do list and he is outside right now.) It also once hung for 72 hours waiting on a yes-or-no prompt inside a window I had deliberately made invisible, which is the dumbest 3 days I have spent in years, so now anything that runs unattended gets its stdin taken away.)`,
+    notes: `It chose this theme, wrote this sentence, and made the photograph of me crouching in a shrub. I found out when you did. (Edward, you built an observation hide for your own software, gave the software a Latin name, and then wrote a field guide about the thing that wrote the field guide. Somewhere there's a version of you who just uses a to-do list and he is outside right now.) It also once hung for 72 hours waiting on a yes-or-no prompt inside a window I had deliberately made invisible, which is the dumbest 3 days I have spent in years, so now anything that runs unattended gets its stdin taken away.`,
   },
   {
-    plate: 'VII',
+    plate: 'VIII',
     binomial: 'Accipiter mercatorius',
     common: 'The Monday Hawk',
     stack: 'A scheduled pitch engine working call-for-speakers pages, keeping its own pipeline file',
@@ -120,10 +141,24 @@ const plates = [
     markings: 'Will pitch me for anything with a stage and a microphone.',
     status: 'Introduced',
     tone: 'warn',
-    notes: `Newest specimen in the collection, and the only one with a revenue number attached to it. It doesn't send either. It finds and it drafts, and deciding who's actually worth writing to stays my job (the part I'd keep even if it got good at it).`,
+    notes: `One of the newest specimens in the collection, and the only one with a revenue number attached to it. It doesn't send either. It finds and it drafts, and deciding who's actually worth writing to stays my job (the part I'd keep even if it got good at it).`,
   },
   {
-    plate: 'VIII',
+    plate: 'IX',
+    binomial: 'Apis convocans',
+    common: 'The Summit Recruiter',
+    stack: 'Speaker and sponsor outreach skills over Gmail, keeping their own tracker and sweeping for replies each morning',
+    habitat: "A conference that doesn't exist yet: October 9 and 10, Puerto Rico Convention Center.",
+    range: 'Peaks in the 8 weeks before the doors open, which is where we are now.',
+    call: 'A ranked list of people worth inviting, a drafted invitation for each, and a note on who answered overnight.',
+    feeding: 'Past conference programs, speaker bios, sponsor tiers, and replies as they land.',
+    markings: 'Cannot tell a polite no from a slow yes, so it keeps both alive in the pipeline and makes me choose.',
+    status: 'Seasonal',
+    tone: 'warn',
+    notes: `Co-chairing a conference is 10% stagecraft and 90% email, and this animal does the 90%. It drafts the invitation, files the reply, and tells me each morning which conversations moved while I slept. What it can't do is the part that closes a speaker, which is me on a call explaining why 2 days in San Juan is worth the flight. All of it runs on a tracker, and a tracker is only as honest as the last person who touched it (that person is me, and I'm not the strongest link in this chain).`,
+  },
+  {
+    plate: 'X',
     binomial: 'Chamaeleo confabulans',
     common: 'The Plate Painter',
     stack: 'Gemini image models, flash for drafts and pro for finals, always fed my real headshot',
@@ -137,35 +172,21 @@ const plates = [
     notes: `The specimen I check hardest, because it's the only one whose mistakes are visible to strangers. Every image on this page got looked at by a human first. The rejects were worse than you're imagining, and one of them gave me 3 hands.`,
   },
   {
-    plate: 'IX',
-    binomial: 'Suricata praeparans',
-    common: 'The Sentry',
-    stack: 'A pre-meeting research brief skill, reading public filings, press, and prior threads',
-    habitat: 'The 30 minutes before a call.',
-    range: "Whenever the calendar produces a name it doesn't recognize.",
-    call: "One page: who they are, what they've shipped, and what they'll probably ask.",
-    feeding: 'Public filings, professional profiles, press, and everything we have said to each other before.',
-    markings: 'Confuses people who share a name. Twice now.',
-    status: 'Near threatened',
-    tone: 'warn',
-    notes: `It sits directly downstream of the calendar agent, so it inherits every mislabeled invite. I've walked into a call briefed thoroughly, confidently, and completely on the wrong person, which is a design failure, and the design is mine.`,
-  },
-  {
-    plate: 'X',
+    plate: 'XI',
     binomial: 'Chimaera fabulatrix',
     common: "The Dungeon Master's Familiar",
+    supernumerary: true,
     stack: 'An adventure-writing skill feeding a DM screen prototype I am still building',
     habitat: "An Eberron campaign, and a screen that isn't finished.",
     range: 'Monthly, and never during business hours.',
     call: "Lore lookups, tavern names, and a stat block for whatever the party found in the room I didn't prepare.",
     feeding: "Session notes, rules text, and whatever my players did that I didn't plan for.",
-    markings: "Occupies no position in the food web at all. Feeds nothing, earns nothing, and I'd keep it over half the others.",
+    markings: `Occupies no position in the food web at all. Feeds nothing, earns nothing, and I'd keep it over half the others.`,
     status: 'Least concern',
     tone: 'good',
-    notes: `It's in the guide because I use it every month and it costs me nothing but a Saturday. A catalog of only the profitable species is a pitch deck with a nicer cover. Last month my party asked whether they could bribe a dragon with a quarterly forecast, and I allowed it.`,
+    notes: `The guide is named for 10 agents and describes 11. This is the 11th, it has never earned a dollar, and the title survives on that technicality. It's here because I use it every month and it costs me nothing but a Saturday, and because a catalog of only the profitable species is a pitch deck with a nicer cover. Last month my party asked whether they could bribe a dragon with a quarterly forecast, and I allowed it.`,
   },
 ];
-
 // ---------------------------------------------------------------------------
 // COMMONLY CONFUSED WITH. The similar-species section, aimed at a buyer who
 // has already been sold one of the lookalikes.
@@ -239,7 +260,7 @@ const stations = [
     ref: 'B-02',
     kind: 'Annual gathering',
     name: 'Caribbean AI Summit',
-    note: `Co-chairing the largest AI conference Puerto Rico has ever hosted, October 9 and 10 at the Convention Center. Confirmed so far: Kay Firth-Butterfield, MIT's Fabio Duarte, and EU Parliament AI advisor Idoia Salazar, with more still signing. (Co-chairing is 10% stagecraft and 90% email.)`,
+    note: `Co-chairing the largest AI conference Puerto Rico has ever hosted, October 9 and 10 at the Convention Center. Confirmed so far: Kay Firth-Butterfield, MIT's Fabio Duarte, and EU Parliament AI advisor Idoia Salazar, with more still signing. See Plate IX for the animal that does the recruiting.`,
     tag: '9-10 OCT 2026',
     status: 'CALL FOR SPEAKERS OPEN',
     href: 'https://www.caribbeansummit.ai/en/speakers/submit',
@@ -272,7 +293,7 @@ const stations = [
     ref: 'B-05',
     kind: 'Captive specimen',
     name: "AI Dungeon Master's Screen",
-    note: `A prototype screen for running D&D 5e: lore lookups and improvisation help for the person behind the cardboard. See Plate X. It isn't finished and I'm in no hurry.`,
+    note: `A prototype screen for running D&D 5e: lore lookups and improvisation help for the person behind the cardboard. See Plate XI. It isn't finished and I'm in no hurry.`,
     tag: 'D&D / 5E',
     status: 'IN DEVELOPMENT',
     href: null,
@@ -303,34 +324,35 @@ const webLevels = [
     tier: 'Producers',
     caption: 'They convert the mess into something the others can eat.',
     nodes: [
-      { id: 'cal', label: 'I. Morning Brief' },
-      { id: 'mail', label: 'II. Inbox Wasp' },
-      { id: 'res', label: 'IV. Research Crow' },
+      { id: 'cos', label: 'I. Chief of Staff' },
+      { id: 'res', label: 'V. Research Crow' },
     ],
   },
   {
     tier: 'Primary consumers',
     caption: 'None of these can survive without something on the tier below.',
     nodes: [
-      { id: 'prep', label: 'IX. Sentry' },
-      { id: 'write', label: 'V. Night Writer' },
-      { id: 'img', label: 'VIII. Plate Painter' },
+      { id: 'trip', label: 'II. Advance Party' },
+      { id: 'write', label: 'VI. Night Writer' },
+      { id: 'img', label: 'X. Plate Painter' },
     ],
   },
   {
     tier: 'Secondary consumers',
     caption: 'The visible output. Also the last place a mistake is cheap to catch.',
     nodes: [
-      { id: 'pod', label: 'III. Cutting Room' },
-      { id: 'site', label: 'VI. Bowerbird' },
-      { id: 'pitch', label: 'VII. Monday Hawk' },
+      { id: 'pod', label: 'III. Producer' },
+      { id: 'vid', label: 'IV. Daily Cicada' },
+      { id: 'site', label: 'VII. Bowerbird' },
+      { id: 'pitch', label: 'VIII. Monday Hawk' },
+      { id: 'cais', label: 'IX. Recruiter' },
     ],
   },
   {
     tier: 'Outside the web',
     caption: 'Feeds nothing, earns nothing, stays in the guide anyway.',
     detached: true,
-    nodes: [{ id: 'dnd', label: 'X. Familiar' }],
+    nodes: [{ id: 'dnd', label: 'XI. Familiar' }],
   },
 ];
 ---
@@ -342,7 +364,7 @@ const webLevels = [
   <div class="ed" role="presentation">
     <div class="ed-inner">
       <span class="ed-item">A Field Guide to the Ten Agents</span>
-      <span class="ed-item ed-mid">First edition</span>
+      <span class="ed-item ed-mid">Second edition, revised</span>
       <span class="ed-item">Observed as of August 2026</span>
     </div>
   </div>
@@ -372,7 +394,7 @@ const webLevels = [
       <div class="hero-copy">
         <p class="hero-kicker">Roske.AI | Natural history of a working week</p>
         <h1 class="hero-h1">A Field Guide<br /><span class="hero-h1-sub">to the</span><br />Ten Agents</h1>
-        <p class="hero-binomial">Being a complete account of ten species of working software, their habitats, their feeding behavior, and which of them bite.</p>
+        <p class="hero-binomial">Being a complete account of ten species of working software (and an eleventh that has never earned a dollar), their habitats, their feeding behavior, and which of them bite.</p>
         <div class="hero-rule" aria-hidden="true"></div>
         <p class="hero-sub">{theme.hero.subtitle}</p>
         <p class="hero-desc">{theme.hero.description}</p>
@@ -415,23 +437,26 @@ const webLevels = [
       <p class="sec-eyebrow">Part one</p>
       <h2 class="sec-h2">The Specimens</h2>
       <p class="sec-deck">
-        10 agents run my week. Each one is a process that produces real work while I'm doing
-        something else, and each entry below names the actual software, because I don't trust a
-        guide that won't tell you what it's looking at. All of this will be wrong by spring, which
-        is exactly why a real guide prints the year on its cover.
+        10 agents run my week, one per project, and each entry below names the actual software,
+        because I don't trust a guide that won't tell you what it's looking at. This is the second
+        edition. The first described one animal 3 times (the assistant, described once for each of its 3 jobs) and left out
+        4 others entirely, including the one that plans every trip I take. All of this will be wrong
+        by spring, which is exactly why a real guide prints the year on its cover.
       </p>
-      <p class="sec-margin">Observed Aug 2026. Ranges shift. 2 of these didn't exist in January.</p>
+      <p class="sec-margin">Observed Aug 2026. Ranges shift. 4 of these didn't exist in January, and Plate XI pays for nothing.</p>
     </div>
 
     <div class="plate-grid">
       {plates.map(p => (
-        <article class="plate">
+        <article class={`plate ${p.supernumerary ? 'plate-wide' : ''}`}>
           <header class="plate-head">
             <span class="plate-no">Plate {p.plate}</span>
+            {p.supernumerary && <span class="plate-off">Not in the census</span>}
             <span class={`plate-status status-${p.tone}`}>{p.status}</span>
           </header>
           <h3 class="plate-binomial">{p.binomial}</h3>
           <p class="plate-common">{p.common}</p>
+          {p.forms && <p class="plate-forms">Described forms: {p.forms.join(' / ')}</p>}
           <p class="plate-stack">{p.stack}</p>
           <dl class="plate-data">
             <div class="pd-row"><dt>Habitat</dt><dd>{p.habitat}</dd></div>
@@ -467,7 +492,7 @@ const webLevels = [
         <figcaption>Observation blind, built after the third time I found out about a failure from a customer instead of a log.</figcaption>
       </figure>
 
-      <div class="web-diagram" role="img" aria-label="Food web diagram: the raw day feeds the Morning Brief, Inbox Wasp and Research Crow; those feed the Sentry, Night Writer and Plate Painter; those feed the Cutting Room, Saturday Bowerbird and Monday Hawk. The Dungeon Master's Familiar sits outside the web and feeds nothing.">
+      <div class="web-diagram" role="img" aria-label="Food web diagram: the raw day feeds the Chief of Staff and the Research Crow; those feed the Advance Party, the Night Writer and the Plate Painter; those feed the Producer, the Daily Cicada, the Saturday Bowerbird, the Monday Hawk and the Summit Recruiter. The Dungeon Master's Familiar sits outside the web and feeds nothing.">
         {webLevels.map((lvl, i) => (
           <div class={`web-tier ${lvl.detached ? 'web-tier-detached' : ''}`}>
             <div class="web-tier-label">
@@ -560,6 +585,13 @@ const webLevels = [
           you're holding. The honest failure rate across the whole collection sits somewhere near 1 in
           10, which sounds disqualifying right up until you price the alternative, and which is exactly
           why nothing in this guide has send authority.
+        </p>
+        <p class="sec-deck">
+          The most expensive failure in the collection had nothing to do with a bug. This month I
+          measured what all of it produces against what I actually read: roughly 1,000 documents a
+          month written, about 25 read. I deleted 1,319 files in one afternoon and the week got
+          quieter. 10 agents producing work nobody reads is a faster way to be busy, and I built
+          every one of them.
         </p>
         <p class="bite-margin">Bandage is real. So is the log. The laptop was fine, which is more than I can say for the hand.</p>
       </div>
@@ -659,7 +691,7 @@ const webLevels = [
   <!-- ================= COLOPHON ================= -->
   <div class="colophon">
     <p class="colo-line">
-      Printed weekly at 5 AM Atlantic by Plate VI, which also selected this week's subject, wrote
+      Printed weekly at 5 AM Atlantic by Plate VII, which also selected this week's subject, wrote
       most of these captions, and painted every illustration. Species names are invented. The software
       is real. No vendor paid to appear in this guide, and at least 2 of them would like a word.
     </p>
@@ -883,7 +915,15 @@ const webLevels = [
   }
   :global([data-theme="light"]) .plate { border-color: var(--color-border-light); background: var(--color-surface-light); }
   :global([data-theme="dark"]) .plate { background: var(--color-surface); }
-  .plate-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .plate-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.6rem 1rem; margin-bottom: 1rem; }
+  .plate-wide { grid-column: 1 / -1; }
+  .plate-off {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.16em;
+    font-size: 0.64rem; font-weight: 600; padding: 0.22rem 0.6rem;
+    border: 1px dashed currentColor; white-space: nowrap;
+  }
+  :global([data-theme="dark"]) .plate-off { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .plate-off { color: var(--color-text-dark-muted); }
   .plate-no {
     font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.24em;
     font-size: 0.72rem; font-weight: 600;
@@ -912,6 +952,13 @@ const webLevels = [
     text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.92rem;
     margin: 0 0 0.9rem; color: var(--color-accent);
   }
+  .plate-forms {
+    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.16em;
+    font-size: 0.68rem; font-weight: 600; margin: -0.55rem 0 1.1rem;
+  }
+  :global([data-theme="dark"]) .plate-forms { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .plate-forms { color: var(--color-text-dark-muted); }
+
   .plate-stack {
     font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.6;
     margin: 0 0 1.2rem; padding: 0.6rem 0.75rem;
