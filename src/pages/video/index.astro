@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/archive.css';
+
+// PERMANENT ARCHIVE INDEX. Theme-independent (src/styles/archive.css). Do not
+// re-theme during a weekly rebuild. Add a row here whenever a new /video/*
+// archive page goes up.
+
+const items = [
+  {
+    href: '/video/eddie-and-the-consultants/',
+    poster: '/images/eddie-consultants/poster.jpg',
+    when: 'ORLANDO . 2007 . 58 MIN',
+    title: 'Eddie and the Consultants',
+    desc: 'A full musical about Hyperion System 9, written as a prank abstract and then, unfortunately, accepted. Edward plays Eddie from IT.',
+  },
+  {
+    href: '/video/this-is-me/',
+    poster: '/images/this-is-me/poster.jpg',
+    when: 'KSCOPE . YEAR DISPUTED . 4 MIN',
+    title: 'This Is Me',
+    desc: 'interRel performs the big number from The Greatest Showman in a hotel ballroom. Edward is the Bearded Lady.',
+  },
+];
+---
+
+<BaseLayout
+  title="Video Evidence | Roske.AI"
+  description="Permanent roske.ai copies of footage worth keeping: interRel's Eddie and the Consultants musical from the 2007 Hyperion Solutions Conference, and This Is Me from The Greatest Showman at ODTUG Kscope."
+  ogImage="/images/eddie-consultants/poster.jpg"
+>
+  <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
+  <link slot="head" rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link slot="head" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <div class="arc">
+    <section class="arc-top">
+      <div class="arc-wrap">
+        <div class="arc-eyebrow"><span class="arc-pip"></span>THE ARCHIVE</div>
+        <h1 class="arc-h1">Video Evidence</h1>
+        <p class="arc-sub">Footage that lived in exactly one place, on a channel I don't own anymore</p>
+        <div class="arc-rule"></div>
+        <p class="arc-lede">
+          Both of these were sitting on a YouTube channel that belonged to a company I sold, which was
+          fine right up until I went looking for them in 2026 and worked out that I can't take them down,
+          put them back up, or do anything else with them ever again. So there are copies here now, on a
+          domain I pay for and intend to keep paying for, and you can download either one and put it
+          wherever you like. Everything in this archive involves me in a costume. (I promise that wasn't
+          the filter. It is, however, a pattern, and I have decided not to examine it.)
+        </p>
+
+        <div class="arc-index">
+          {items.map((it) => (
+            <a class="arc-card" href={it.href}>
+              <img src={it.poster} alt={`Still frame from ${it.title}`} width="640" height="360" loading="lazy" decoding="async" />
+              <div class="arc-card-body">
+                <div class="arc-card-when">{it.when}</div>
+                <h2 class="arc-card-title">{it.title}</h2>
+                <p class="arc-card-desc">{it.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <p class="arc-fine">
+          If you have footage of something interRel did that isn't here, I want it! Edward@Roske.AI.
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import '../../styles/archive.css';
 
-// PERMANENT ARCHIVE PAGE. Self-contained on purpose: it loads its own fonts
-// (head slot) and defines its own palette tokens (--edc-*), so the weekly
-// homepage rebuild never restyles it. Do not theme-rewrite this page.
+// PERMANENT ARCHIVE PAGE. Styling comes from src/styles/archive.css, which is
+// theme-INDEPENDENT on purpose. Do not re-theme this page during a rebuild.
 //
 // It exists to hold a roske.ai copy of the only known recording of the 2007
 // performance. The original lives on a YouTube channel Edward no longer
@@ -21,7 +21,7 @@ const storyLive = (await getCollection('blog')).some((p) => p.id === STORY && !p
 const cast = [
   { role: 'Eddie from IT', who: 'Edward Roske', note: 'Orlando, 2007' },
   { role: 'Eddie from IT', who: 'Tom Myers', note: 'Las Vegas, 2006' },
-  { role: 'Penny from Accounting', who: 'Danielle White', note: 'Orlando, 2007' },
+  { role: 'Penny from Accounting', who: 'Danielle White', note: 'Orlando, 2007. Pregnant, and right to be nervous about the lift' },
   { role: 'Penny from Accounting', who: 'Name lost', note: 'Las Vegas, 2006' },
   { role: 'Aquaman', who: 'John Vorhies, Jr.', note: 'On video in 2006, flown in and live in 2007' },
   { role: 'Director', who: 'A graduate of an actual film school', note: 'Name also lost' },
@@ -38,17 +38,17 @@ const cast = [
   <link slot="head" rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link slot="head" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-  <div class="edc">
+  <div class="arc">
 
-    <section class="edc-top">
-      <div class="edc-wrap">
-        <div class="edc-eyebrow">
-          <span class="edc-pip"></span>ARCHIVE . ORLANDO . 2007
+    <section class="arc-top">
+      <div class="arc-wrap">
+        <div class="arc-eyebrow">
+          <span class="arc-pip"></span>ARCHIVE . ORLANDO . 2007
         </div>
-        <h1 class="edc-h1">Eddie and the Consultants</h1>
-        <p class="edc-sub">A System 9 Musical</p>
-        <div class="edc-rule"></div>
-        <p class="edc-lede">
+        <h1 class="arc-h1">Eddie and the Consultants</h1>
+        <p class="arc-sub">A System 9 Musical</p>
+        <div class="arc-rule"></div>
+        <p class="arc-lede">
           58 minutes of musical theater about budgeting software, staged at the last Hyperion Solutions
           Conference before Oracle bought Hyperion and ended it. It started as a prank abstract written
           entirely in 50s and 60s rock parodies (nobody submits an abstract like that expecting a yes,
@@ -58,7 +58,7 @@ const cast = [
           software conference.
         </p>
 
-        <figure class="edc-player">
+        <figure class="arc-player">
           <video
             controls
             preload="metadata"
@@ -74,60 +74,86 @@ const cast = [
           </figcaption>
         </figure>
 
-        <div class="edc-actions">
-          <a class="edc-btn" href={FILE} download>Download the file (mp4)</a>
-          <a class="edc-btn edc-btn-ghost" href={YOUTUBE} target="_blank" rel="noopener noreferrer">Watch the original on YouTube</a>
+        <div class="arc-actions">
+          <a class="arc-btn" href={FILE} download>Download the file (mp4)</a>
+          <a class="arc-btn arc-btn-ghost" href={YOUTUBE} target="_blank" rel="noopener noreferrer">Watch the original on YouTube</a>
           {storyLive && (
-            <a class="edc-btn edc-btn-ghost" href={`/blog/${STORY}/`}>Read how this happened</a>
+            <a class="arc-btn arc-btn-ghost" href={`/blog/${STORY}/`}>Read how this happened</a>
           )}
+          <a class="arc-btn arc-btn-ghost" href="/video/">The rest of the archive</a>
         </div>
       </div>
     </section>
 
-    <section class="edc-sec">
-      <div class="edc-wrap edc-wrap-narrow">
-        <h2 class="edc-h2">The company</h2>
-        <div class="edc-cast">
+    <section class="arc-sec">
+      <div class="arc-wrap arc-wrap-narrow">
+        <h2 class="arc-h2">The company</h2>
+        <div class="arc-cast">
           {cast.map((c) => (
-            <div class="edc-cast-row">
-              <div class="edc-cast-role">{c.role}</div>
-              <div class="edc-cast-who">
-                <span class="edc-cast-name">{c.who}</span>
-                <span class="edc-cast-note">{c.note}</span>
+            <div class="arc-cast-row">
+              <div class="arc-cast-role">{c.role}</div>
+              <div class="arc-cast-who">
+                <span class="arc-cast-name">{c.who}</span>
+                <span class="arc-cast-note">{c.note}</span>
               </div>
             </div>
           ))}
         </div>
-        <p class="edc-fine">
+        <p class="arc-fine">
           Two of the names are gone and I would like them back. If you were in that room, or in that
           cast, Edward@Roske.AI.
         </p>
       </div>
     </section>
 
-    <section class="edc-sec edc-sec-alt">
-      <div class="edc-wrap edc-wrap-narrow">
-        <h2 class="edc-h2">Why this page exists</h2>
-        <p class="edc-body">
+    <section class="arc-sec arc-sec-alt">
+      <div class="arc-wrap arc-wrap-narrow">
+        <h2 class="arc-h2">Why this page exists</h2>
+        <p class="arc-body">
           The musical ran twice: Las Vegas in 2006, where they broke down the airwall to the next room
           and it still wasn't big enough, and Orlando in 2007. interRel recorded it, pressed CDs and
           DVDs, mailed them to anyone who wrote in and asked, and for a while gave the entire news
           section of the company home page over to the cover art and an email address. Every one of
           those discs is gone now, at least the ones I had.
         </p>
-        <p class="edc-body">
+        <p class="arc-body">
           In 2020 somebody at interRel (I still don't know who) put the recording on the company YouTube
           channel, where it sat at 45 views until I went looking for it in 2026. I don't control that
           channel anymore, so I put a copy here, on a site I actually pay for.
         </p>
-        <p class="edc-body">
+        <p class="arc-body">
           Songs include CFO, which is Duke of Earl with new words, and the Summer of System 9, which is
           exactly the Bryan Adams song you are already hearing in your head. There is an Aquaman in it.
           (Edward, you wrote a jukebox musical about enterprise software while sick in bed, put a
           superhero in it, and then got on stage in Orlando and performed it for your own customers.
           Nobody asked you to do any of this.) I wrote the thing and I still can't tell you why.
         </p>
-        <p class="edc-body">
+      </div>
+    </section>
+
+    <section class="arc-sec">
+      <div class="arc-wrap arc-wrap-narrow">
+        <h2 class="arc-h2">The catch</h2>
+        <p class="arc-body">
+          The recording doesn't explain this part. Danielle was pregnant with her second child when we
+          did Orlando, and the show ends with Penny leaping into Eddie's arms, and Eddie is me. She was
+          genuinely worried I'd drop her, and by extension her daughter, and that was a completely fair
+          thing to worry about. (Edward, you wrote the part, you cast yourself in the part, you flew
+          everybody in for the rehearsals, and the one physical requirement in the entire show was
+          catching a pregnant woman. At no point did it occur to you to write that out.) I caught her.
+        </p>
+        <p class="arc-body">
+          The other thing you can't unsee once you've seen it is that Penny spends the whole show
+          looking for a guy while Danielle was visibly pregnant, and we went ahead and staged it exactly
+          like that, in front of a full room, in Orlando.
+        </p>
+        <p class="arc-body">
+          Danielle is still in the EPM world. 18 years in Oracle EPM, now at Donyati, and elected
+          Secretary of the ODTUG Executive Committee for FY26, which as far as I know makes her the only
+          officer on that committee ever thrown at me in front of a full ballroom. I interviewed her at
+          Kscope25 and we were both perfectly professional about it.
+        </p>
+        <p class="arc-body">
           If you were in either of those rooms, I'd love to hear what you remember, and if you know who
           directed it, even better. Edward@Roske.AI. Somebody out there knows!
         </p>
@@ -136,191 +162,3 @@ const cast = [
 
   </div>
 </BaseLayout>
-
-<style>
-  .edc {
-    --edc-ink: #16130e;
-    --edc-paper: #f5edda;
-    --edc-paper-2: #ece2ca;
-    --edc-gold: #9a7b2f;
-    --edc-red: #7d1f1c;
-    --edc-muted: #5d5443;
-    --edc-line: rgba(22, 19, 14, 0.16);
-    font-family: 'Inter', system-ui, sans-serif;
-    background: var(--edc-paper);
-    color: var(--edc-ink);
-  }
-
-  /* Dark palette. Declared twice on purpose: this page has to answer to the
-     site's data-theme toggle AND to the OS preference, since Tailwind's dark:
-     variant on this site keys off prefers-color-scheme rather than the toggle.
-     An explicit light choice still wins over a dark OS preference. */
-  @media (prefers-color-scheme: dark) {
-    :global(html:not([data-theme='light'])) .edc {
-      --edc-ink: #f2e9d4;
-      --edc-paper: #100d0a;
-      --edc-paper-2: #17130e;
-      --edc-gold: #d8b25c;
-      --edc-red: #d4635c;
-      --edc-muted: #a2957c;
-      --edc-line: rgba(242, 233, 212, 0.16);
-    }
-  }
-
-  :global([data-theme='dark']) .edc {
-    --edc-ink: #f2e9d4;
-    --edc-paper: #100d0a;
-    --edc-paper-2: #17130e;
-    --edc-gold: #d8b25c;
-    --edc-red: #d4635c;
-    --edc-muted: #a2957c;
-    --edc-line: rgba(242, 233, 212, 0.16);
-  }
-
-  .edc-wrap {
-    max-width: 68rem;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  .edc-wrap-narrow { max-width: 46rem; }
-
-  .edc-top { padding: 4rem 0 3.5rem; background: var(--edc-paper); }
-
-  .edc-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.18em;
-    color: var(--edc-muted);
-    margin-bottom: 1.1rem;
-  }
-  .edc-pip {
-    width: 0.5rem; height: 0.5rem; border-radius: 50%;
-    background: var(--edc-red); display: inline-block;
-  }
-
-  .edc-h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 900;
-    font-size: clamp(2.4rem, 7vw, 4.6rem);
-    line-height: 1.02;
-    letter-spacing: -0.015em;
-    margin: 0;
-  }
-  .edc-sub {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    color: var(--edc-red);
-    margin: 0.45rem 0 0;
-  }
-  .edc-rule {
-    height: 3px;
-    width: 100%;
-    margin: 1.6rem 0;
-    background: linear-gradient(90deg, var(--edc-gold) 0%, var(--edc-gold) 22%, var(--edc-line) 22%, var(--edc-line) 100%);
-  }
-  .edc-lede {
-    font-size: clamp(1.02rem, 1.6vw, 1.16rem);
-    line-height: 1.65;
-    max-width: 44rem;
-    color: var(--edc-ink);
-    margin: 0 0 2.2rem;
-  }
-
-  .edc-player { margin: 0; }
-  .edc-player video {
-    width: 100%;
-    height: auto;
-    display: block;
-    background: #000;
-    border: 1px solid var(--edc-line);
-    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
-  }
-  .edc-player figcaption {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 0.72rem;
-    line-height: 1.6;
-    color: var(--edc-muted);
-    margin-top: 0.7rem;
-  }
-
-  .edc-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem;
-    margin-top: 1.6rem;
-  }
-  .edc-btn {
-    display: inline-block;
-    padding: 0.72rem 1.15rem;
-    font-size: 0.86rem;
-    font-weight: 600;
-    text-decoration: none;
-    background: var(--edc-ink);
-    color: var(--edc-paper);
-    border: 1px solid var(--edc-ink);
-    transition: opacity 0.15s ease;
-  }
-  .edc-btn:hover { opacity: 0.84; }
-  .edc-btn-ghost {
-    background: transparent;
-    color: var(--edc-ink);
-    border-color: var(--edc-line);
-  }
-
-  .edc-sec { padding: 3.4rem 0; background: var(--edc-paper); }
-  .edc-sec-alt { background: var(--edc-paper-2); }
-
-  .edc-h2 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 700;
-    font-size: clamp(1.5rem, 3.4vw, 2rem);
-    margin: 0 0 1.5rem;
-  }
-
-  .edc-cast { border-top: 1px solid var(--edc-line); }
-  .edc-cast-row {
-    display: grid;
-    grid-template-columns: 14rem 1fr;
-    gap: 1rem;
-    padding: 0.85rem 0;
-    border-bottom: 1px solid var(--edc-line);
-    align-items: baseline;
-  }
-  .edc-cast-role {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--edc-muted);
-  }
-  .edc-cast-who { display: flex; flex-direction: column; gap: 0.15rem; }
-  .edc-cast-name {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 1.12rem;
-    font-weight: 700;
-  }
-  .edc-cast-note { font-size: 0.82rem; color: var(--edc-muted); }
-
-  .edc-fine {
-    margin-top: 1.4rem;
-    font-size: 0.88rem;
-    line-height: 1.6;
-    color: var(--edc-muted);
-  }
-
-  .edc-body {
-    font-size: 1.02rem;
-    line-height: 1.72;
-    margin: 0 0 1.1rem;
-  }
-
-  @media (max-width: 640px) {
-    .edc-cast-row { grid-template-columns: 1fr; gap: 0.2rem; }
-    .edc-top { padding: 2.6rem 0 2.6rem; }
-  }
-</style>

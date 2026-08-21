@@ -1,0 +1,286 @@
+/* ============================================================================
+   ARCHIVE PAGES design system  (prefix: --arc-* / .arc-*)
+   ============================================================================
+   Shared by the permanent /video/* archive pages. These hold roske.ai copies of
+   footage Edward does not want to lose, so they are deliberately theme
+   INDEPENDENT: own palette tokens, own fonts, loaded per page in the head slot.
+   The weekly rebuild must never re-theme them. Same idea as speaker.css.
+
+   Each page may override --arc-accent (and nothing else) to give itself an
+   identity. Everything else stays consistent so the archive reads as one set.
+   ============================================================================ */
+
+.arc {
+  --arc-ink: #16130e;
+  --arc-paper: #f5edda;
+  --arc-paper-2: #ece2ca;
+  --arc-gold: #9a7b2f;
+  --arc-accent: #7d1f1c;
+  --arc-muted: #5d5443;
+  --arc-line: rgba(22, 19, 14, 0.16);
+  font-family: "Inter", system-ui, sans-serif;
+  background: var(--arc-paper);
+  color: var(--arc-ink);
+}
+
+/* Dark palette, declared twice on purpose: these pages have to answer to the
+   site's data-theme toggle AND to the OS preference, because Tailwind's dark:
+   variant on this site keys off prefers-color-scheme rather than the toggle.
+   An explicit light choice still beats a dark OS preference. */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) .arc {
+    --arc-ink: #f2e9d4;
+    --arc-paper: #100d0a;
+    --arc-paper-2: #17130e;
+    --arc-gold: #d8b25c;
+    --arc-accent: #d4635c;
+    --arc-muted: #a2957c;
+    --arc-line: rgba(242, 233, 212, 0.16);
+  }
+}
+
+[data-theme="dark"] .arc {
+  --arc-ink: #f2e9d4;
+  --arc-paper: #100d0a;
+  --arc-paper-2: #17130e;
+  --arc-gold: #d8b25c;
+  --arc-accent: #d4635c;
+  --arc-muted: #a2957c;
+  --arc-line: rgba(242, 233, 212, 0.16);
+}
+
+.arc-wrap {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.arc-wrap-narrow {
+  max-width: 46rem;
+}
+
+.arc-top {
+  padding: 4rem 0 3.5rem;
+  background: var(--arc-paper);
+}
+
+.arc-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--arc-muted);
+  margin-bottom: 1.1rem;
+}
+.arc-pip {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--arc-accent);
+  display: inline-block;
+}
+
+.arc-h1 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(2.4rem, 7vw, 4.6rem);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+.arc-sub {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  color: var(--arc-accent);
+  margin: 0.45rem 0 0;
+}
+.arc-rule {
+  height: 3px;
+  width: 100%;
+  margin: 1.6rem 0;
+  background: linear-gradient(
+    90deg,
+    var(--arc-gold) 0%,
+    var(--arc-gold) 22%,
+    var(--arc-line) 22%,
+    var(--arc-line) 100%
+  );
+}
+.arc-lede {
+  font-size: clamp(1.02rem, 1.6vw, 1.16rem);
+  line-height: 1.65;
+  max-width: 44rem;
+  color: var(--arc-ink);
+  margin: 0 0 2.2rem;
+}
+
+.arc-player {
+  margin: 0;
+}
+.arc-player video {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: #000;
+  border: 1px solid var(--arc-line);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+}
+.arc-player figcaption {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+  line-height: 1.6;
+  color: var(--arc-muted);
+  margin-top: 0.7rem;
+}
+
+.arc-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 1.6rem;
+}
+.arc-btn {
+  display: inline-block;
+  padding: 0.72rem 1.15rem;
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: var(--arc-ink);
+  color: var(--arc-paper);
+  border: 1px solid var(--arc-ink);
+  transition: opacity 0.15s ease;
+}
+.arc-btn:hover {
+  opacity: 0.84;
+}
+.arc-btn-ghost {
+  background: transparent;
+  color: var(--arc-ink);
+  border-color: var(--arc-line);
+}
+
+.arc-sec {
+  padding: 3.4rem 0;
+  background: var(--arc-paper);
+}
+.arc-sec-alt {
+  background: var(--arc-paper-2);
+}
+
+.arc-h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.4vw, 2rem);
+  margin: 0 0 1.5rem;
+}
+
+.arc-cast {
+  border-top: 1px solid var(--arc-line);
+}
+.arc-cast-row {
+  display: grid;
+  grid-template-columns: 14rem 1fr;
+  gap: 1rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--arc-line);
+  align-items: baseline;
+}
+.arc-cast-role {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--arc-muted);
+}
+.arc-cast-who {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.arc-cast-name {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+}
+.arc-cast-note {
+  font-size: 0.82rem;
+  color: var(--arc-muted);
+}
+
+.arc-fine {
+  margin-top: 1.4rem;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--arc-muted);
+}
+
+.arc-body {
+  font-size: 1.02rem;
+  line-height: 1.72;
+  margin: 0 0 1.1rem;
+}
+
+/* Index listing: one card per archived item */
+.arc-index {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+}
+.arc-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid var(--arc-line);
+  background: var(--arc-paper);
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+.arc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.16);
+}
+.arc-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  /* Posters come from different eras and different aspect ratios (4:3 stage
+     video, 16:9 phone video), so normalise them or the cards sit ragged. */
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #000;
+  border-bottom: 1px solid var(--arc-line);
+}
+.arc-card-body {
+  padding: 1.05rem 1.15rem 1.25rem;
+}
+.arc-card-when {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--arc-muted);
+}
+.arc-card-title {
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0.3rem 0 0.45rem;
+  line-height: 1.18;
+}
+.arc-card-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--arc-muted);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .arc-cast-row {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+  .arc-top {
+    padding: 2.6rem 0 2.6rem;
+  }
+}

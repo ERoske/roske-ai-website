@@ -1,0 +1,106 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '../../styles/archive.css';
+
+// PERMANENT ARCHIVE PAGE. Styling comes from src/styles/archive.css, which is
+// theme-INDEPENDENT on purpose. Do not re-theme this page during a rebuild.
+//
+// Edward asked for this one to be kept forever (2026-08-21). The mp4 in
+// public/video/ is a roske.ai copy of interRel's upload, same reasoning as the
+// Eddie and the Consultants archive: he no longer controls that channel.
+//
+// The Kscope17 label in the filename is interRel's, and it is provably wrong.
+// The real year is UNCONFIRMED. Do not assert one without asking Edward.
+
+const YOUTUBE = 'https://www.youtube.com/watch?v=F-mS4LsjPI0';
+const FILE = '/video/this-is-me-kscope17.mp4';
+---
+
+<BaseLayout
+  title="This Is Me: interRel at Kscope | Roske.AI"
+  description="interRel performs This Is Me from The Greatest Showman at ODTUG Kscope, in full costume, in a hotel ballroom. Edward Roske plays the Bearded Lady. Archived copy of the original interRel recording."
+  ogImage="/images/this-is-me/poster.jpg"
+>
+  <link slot="head" rel="preconnect" href="https://fonts.googleapis.com" />
+  <link slot="head" rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link slot="head" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <div class="arc arc-showman">
+
+    <section class="arc-top">
+      <div class="arc-wrap">
+        <div class="arc-eyebrow">
+          <span class="arc-pip"></span>ARCHIVE . KSCOPE . THE BEARDED LADY
+        </div>
+        <h1 class="arc-h1">This Is Me</h1>
+        <p class="arc-sub">interRel does The Greatest Showman</p>
+        <div class="arc-rule"></div>
+        <p class="arc-lede">
+          4 minutes of a consulting company performing the big number from The Greatest Showman in full
+          costume, on the patterned carpet of a hotel ballroom, at an Oracle technology conference, with
+          the confetti already down before anyone starts singing. I am the Bearded Lady. I'd rather say
+          that at the top than have you work it out on your own around the 90 second mark. (Edward, you
+          were running an Oracle consulting firm at the time, with a booth to staff and a pipeline to
+          close, and you spent part of that conference in a beard and a costume, and now, years later,
+          you have gone and put the footage on your own website. Nobody is making you do this.)
+        </p>
+
+        <figure class="arc-player">
+          <video
+            controls
+            preload="metadata"
+            playsinline
+            poster="/images/this-is-me/poster.jpg"
+            src={FILE}
+            width="1280"
+            height="720"
+          ></video>
+          <figcaption>
+            Shot by somebody in the crowd on a phone. That's the correct way to record this, and I
+            wouldn't take a cleaner copy if one turned up.
+          </figcaption>
+        </figure>
+
+        <div class="arc-actions">
+          <a class="arc-btn" href={FILE} download>Download the file (mp4)</a>
+          <a class="arc-btn arc-btn-ghost" href={YOUTUBE} target="_blank" rel="noopener noreferrer">Watch the original on YouTube</a>
+          <a class="arc-btn arc-btn-ghost" href="/video/">The rest of the archive</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="arc-sec arc-sec-alt">
+      <div class="arc-wrap arc-wrap-narrow">
+        <h2 class="arc-h2">A note on the year</h2>
+        <p class="arc-body">
+          interRel posted this as Kscope17. Kscope17 ran June 25 to 29 of 2017, and This Is Me wasn't
+          released until October 26 of that year, so one of those two things is wrong and it isn't the
+          song. My guess is Kscope18. For a show whose entire thesis is that the outcasts were right all
+          along, staging it for a ballroom of Essbase administrators was either the perfect audience or a
+          cry for help, and I have never been able to decide which.
+        </p>
+        <p class="arc-body">
+          This is the second musical number on this site. Most consulting firms manage zero, and I'm
+          aware that clearing that bar twice says more about me than it does about the firms. The other
+          one runs 58 minutes and has an Aquaman in it, so by the standards of this archive, 4 minutes of
+          me in a beard is the restrained entry.
+        </p>
+        <p class="arc-body">
+          If you were in that ballroom and you remember which year you watched your consulting vendor
+          perform a circus number at you, Edward@Roske.AI. I would genuinely like to know!
+        </p>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  /* Circus red, a shade hotter than the archive default. Both modes declared so
+     the toggle and the OS preference each land somewhere legible. */
+  .arc-showman { --arc-accent: #a3202b; }
+  @media (prefers-color-scheme: dark) {
+    :global(html:not([data-theme='light'])) .arc-showman { --arc-accent: #e8757c; }
+  }
+  :global([data-theme='dark']) .arc-showman { --arc-accent: #e8757c; }
+</style>
