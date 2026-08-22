@@ -8,351 +8,280 @@ import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
 
-// The collector's record. All real, set as field data.
-const collectorRecord = [
-  { value: '80+', label: 'Countries surveyed' },
-  { value: '50+', label: 'Nations spoken in' },
-  { value: '15', label: 'Books published' },
-  { value: '25+', label: 'Years running companies' },
+// Boarding-pass stats. All real, set as flight data.
+const boardingData = [
+  { k: 'Countries', v: '80+' },
+  { k: 'Spoken in', v: '50+' },
+  { k: 'Continents', v: '7' },
+  { k: 'Books', v: '15' },
 ];
 
 // ---------------------------------------------------------------------------
-// THE PLATES. One entry per agent that actually runs a piece of Edward's week,
-// one project per plate. Second edition: the personal assistant was described as
-// 3 separate species in the first edition (brief, inbox, sentry) and is lumped
-// here, which freed the slots for travel, video, and the Summit recruiter. The `stack` line names real software on purpose: the credibility of
-// the whole guide depends on a technical reader being able to check it.
-// Everything here is observed as of August 2026 and will date, which is what
-// the edition line at the top of the page is for.
+// THE SAFETY CARD. Six numbered panels. Each one keeps the airline instruction
+// exactly as it is written on a real card, and then says what that instruction
+// means when the aircraft is an AI deployment inside a finance organization.
+// The instructions are not decoration. Every one of these is a failure Edward
+// has watched happen, and several of them happened to him.
 // ---------------------------------------------------------------------------
-const plates: Array<{
-  plate: string; binomial: string; common: string; forms?: string[];
-  stack: string; habitat: string; range: string; call: string; feeding: string;
-  markings: string; status: string; tone: string; notes: string; supernumerary?: boolean;
-}> = [
+const panels = [
   {
-    plate: 'I',
-    binomial: 'Vespula secretaria',
-    common: 'The Chief of Staff',
-    forms: ['Dawn brief', 'Inbox triage', 'Pre-meeting sentry'],
-    stack: 'Claude Code running a stack of skills over Gmail, Calendar and Tasks through the gws CLI',
-    habitat: 'The inbox and the calendar, which are less habitats than weather systems.',
-    range: 'Continuous. No off season, and no evidence it would take one.',
-    call: `One message before 6 AM: who I'm seeing today and why. After that it sorts, drafts, flags, and stays quiet.`,
-    feeding: 'About 200 messages a day, every invite on the calendar, and whatever it can find on the people already on the invite.',
-    markings: 'Confident on speaking inquiries. Hopeless at family email. Occasionally briefs me on a stranger who shares a name with my actual meeting.',
-    status: 'Abundant',
-    tone: 'good',
-    notes: `The first edition of this guide described 3 species here: a dawn briefer, an inbox triager, and a sentry that reads up on whoever I'm about to meet. They share a nest, a memory and a set of mistakes, so they're one animal wearing 3 hats (I established this by reading my own code, which isn't how naturalists are supposed to work). It sits at the base of the whole food web, so a meeting it mislabels at 5 AM is a meeting I'm still wrong about at 4 PM. It has never sent a message on its own and it never will. The day I hand it send authority is the day it apologizes to a client, warmly and at length, for something that didn't happen.`,
+    no: '01',
+    icon: 'brace',
+    signage: 'Adopt the brace position when the model sounds certain',
+    original: 'Brace, brace. Head down. Stay down.',
+    body: `A model that's wrong sounds exactly like a model that's right: same speed, same tidy formatting, and I have never once seen a wrong answer turn up looking nervous about it. Everybody builds a plan for the system that says "I don't know," and then what actually arrives is a confident wrong number at 6PM on the last day of a close (ask me how I know, but buy me a coffee first). So the brace position is simple: anything going to an auditor or a board or frankly anybody who can fine you gets checked against the source by a human before it leaves the building. Confidence is the factory setting on these things and it is not a signal, and I have watched extremely smart people read it as one anyway.`,
   },
   {
-    plate: 'II',
-    binomial: 'Hirundo praevia',
-    common: 'The Advance Party',
-    stack: 'A travel-briefing skill and a trip-research pack, both re-checking hours, rates and routes live before they print',
-    habitat: 'The 2 weeks before a departure. Gone the rest of the year.',
-    range: 'Migratory. Wherever the next trip is, which this spring meant Nepal.',
-    call: `One document: flights, hotel, ground transport, who I'm seeing, and where a vegetarian eats in a steak town.`,
-    feeding: 'Confirmation emails, calendar entries, and a standing file on what Dawn and I actually enjoy doing.',
-    markings: 'Will not book anything. It finds the flight, confirms the fare is still real that morning, and hands it back to me.',
-    status: 'Migratory',
-    tone: 'good',
-    notes: `Sometimes treated as a caste of Plate I, since it lives in the same project and eats the same calendar. It behaves like its own animal, so it gets its own plate. The trip that proved it was Everest Base Camp in April: 2 weeks of walking, 18,571 feet, and a brief that knew which teahouses could feed a vegetarian at altitude. Its one real failure is staleness, because hours and prices rot quietly, so it verifies every one of them the morning I leave and prints the phone number anyway (I've used the phone number).`,
+    no: '02',
+    icon: 'mask',
+    signage: 'Secure your own data before assisting others',
+    original: 'Fit your own mask before helping other passengers.',
+    body: `Every company I talk to wants to automate somebody else's job first. Sales would like the forecast automated. Finance would like the pipeline automated. Meanwhile the general ledger has 4 versions of the same cost center and 2 people who know which one is real, and neither of them is in the meeting. Fix your own chart of accounts before you offer to fix anyone's process. (This is the panel I get argued with about most, almost always by someone whose data is worse than they think it is.)`,
   },
   {
-    plate: 'III',
-    binomial: 'Forficula vocalis',
-    common: 'The Producer',
-    stack: 'Descript over MCP for the cut, Buzzsprout for the feed, and a YouTube helper that publishes to the channel',
-    habitat: 'Asking Good Questions, in the gap between recording and release.',
-    range: 'Weekly in theory. Recordings now pile up faster than it can turn them into episodes, which is a new problem to have.',
-    call: 'Strips filler words at a rate no human editor would tolerate being paid for, then writes the notes, cuts the clips and posts the thing.',
-    feeding: 'Raw audio, separate guest tracks, transcripts, chapter markers, thumbnails.',
-    markings: 'Cannot tell a thinking pause from a mistake.',
-    status: 'Stable',
-    tone: 'good',
-    notes: `This job belonged to a human producer until June. That's a worse reason to automate something than any reason in the brochures, and it worked anyway: the specimen does about 90% of the job and I record and approve the rest. Anybody selling you unattended record-to-publish in 2026 is selling you the demo. It once cut 4 seconds of silence where a guest was genuinely thinking, which was technically a correct edit and deleted the best moment in the episode. I put the silence back by hand and wrote a rule about it (the rule is that silence is content, which I have since started applying to meetings).`,
+    no: '03',
+    icon: 'exit',
+    signage: 'Your nearest exit may be behind you',
+    original: 'Take a moment to locate your nearest exit, bearing in mind that it may be behind you.',
+    body: `I've read a lot of AI deployment plans. I can count on one hand the ones that said what happens if you turn it off. Not if it fails, but if it works and 18 months later you want out anyway. Who still knows how to close the books by hand? How long would that take? If the honest answers are nobody and forever, what you've got is a support contract you can't get out of, and you signed it yourself. Write the rollback before departure (a page is plenty, nobody is asking you for a runbook), and put somebody in the exit row who is actually willing to open the door.`,
   },
   {
-    plate: 'IV',
-    binomial: 'Cicada quotidiana',
-    common: 'The Daily Cicada',
-    stack: 'A daily-content skill into a deck builder, Gemini thumbnails, and captions from a Whisper model running on my own GPU',
-    habitat: 'The YouTube channel, and every slide behind it.',
-    range: 'Every morning. Full episode Monday, Wednesday and Friday, a short take the other 4 days.',
-    call: `A script, a branded deck, a thumbnail and a vertical cut, all finished before I'm awake. My job is to read it out loud.`,
-    feeding: 'The last 24 hours of AI news, plus every episode it has already made, so it stops itself repeating.',
-    markings: `Always finds a story. Some mornings there isn't one.`,
-    status: 'Abundant',
-    tone: 'warn',
-    notes: `This is the specimen that most resembles the lookalikes in Part three, and I can say that with authority because I built both. Left alone it will produce a confident 3 minutes about a funding round that deserved a sentence (and it is very good at sounding like the sentence mattered). The rule that fixed it is embarrassingly simple: on a thin news day it ships 90 seconds and admits that's all there was. It builds the decks for paid talks too, which is the same pipeline with the stakes turned up and a human reading every slide before a room does.`,
+    no: '04',
+    icon: 'cushion',
+    signage: 'Your vendor agreement is not a flotation device',
+    original: 'Your seat cushion may be used as a flotation device.',
+    body: `Read what your contract actually promises. Most AI service agreements cover uptime. Uptime is the vendor's problem, not yours, and very few of these agreements say anything at all about the output being wrong. So ask the vendor's counsel, in writing (in writing, I mean it, and keep the reply), who carries the liability when the model produces a number that ends up in a filing. It takes about 10 minutes to get an answer and the answer is you. I have now watched 3 different finance teams find this out at the worst available moment.`,
   },
   {
-    plate: 'V',
-    binomial: 'Corvus interrogans',
-    common: 'The Research Crow',
-    stack: 'A fan-out of research subagents, web search, and Gemini Notebook over MCP',
-    habitat: 'Open tabs. Hundreds of them, none of them mine.',
-    range: "Anywhere I'm about to make a claim on a stage.",
-    call: 'Comes back with sources, and with shiny things nobody asked for.',
-    feeding: "Filings, transcripts, vendor documentation, other people's slide decks.",
-    markings: 'Hoards. Returns 40 sources when 6 would have done the job.',
-    status: 'Abundant',
-    tone: 'good',
-    notes: `It feeds 6 other specimens, which is exactly why it gets checked hardest. A bad source here shows up in a keynote 6 weeks later with my name on it, in front of 400 people who paid to be in the room.`,
+    no: '05',
+    icon: 'stow',
+    signage: 'Some phases of flight still require a human',
+    original: 'Electronic devices must be switched off and stowed during takeoff and landing.',
+    body: `The rule was never really about phones being dangerous. Takeoff and landing are when things go wrong, so that's when everyone's attention belongs on the actual aircraft. Same goes for a close, an audit, a first run of any process, and anything a regulator will eventually read. Cruise is where agents earn their keep: reconciliations, variance narratives, first drafts of basically anything, and about 30 other things nobody wants to be doing at 11PM (they are very good first drafts, and I say that as somebody who has been handed some deeply bad ones by humans). The 5 minutes at each end stay human. Cruise was always where the money was, so holding the ends back costs you almost nothing.`,
   },
   {
-    plate: 'VI',
-    binomial: 'Scriptor nocturnus',
-    common: 'The Night Writer',
-    stack: 'A drafting skill, then a voice checker that grades the draft against my real sentences',
-    habitat: "Drafts, written at hours I'm not awake for.",
-    range: 'Weekly, usually Friday.',
-    call: "Writes something. A second agent then tells it that it doesn't sound like me.",
-    feeding: "Research output, everything I've published on this site, and a voice spec I keep adding rules to.",
-    markings: 'Reaches for the em dash constantly. Gets it removed constantly.',
-    status: 'Under review',
-    tone: 'warn',
-    notes: `The voice checker rejects more drafts than it passes, and that ratio is about right. Anything that reads smoothly while saying nothing goes back. (It rejected this sentence twice.)`,
-  },
-  {
-    plate: 'VII',
-    binomial: 'Ptilonorhynchus hebdomadalis',
-    common: 'The Saturday Bowerbird',
-    stack: 'Windows Task Scheduler into PowerShell into Claude Code, building Astro, deployed by GitHub Actions',
-    habitat: 'This page. The rest of Roske.AI as well, but this page most of all.',
-    range: 'Saturdays, 5 AM Atlantic.',
-    call: "None. It works while I'm asleep.",
-    feeding: "Podcast RSS, the YouTube channel, blog drafts, my weekly questionnaire, and whatever's topical.",
-    markings: "The only specimen in this guide that builds the habitat you're standing in.",
-    status: 'Abundant',
-    tone: 'good',
-    notes: `It chose this theme, wrote this sentence, and made the photograph of me crouching in a shrub. I found out when you did. (Edward, you built an observation hide for your own software, gave the software a Latin name, and then wrote a field guide about the thing that wrote the field guide. Somewhere there's a version of you who just uses a to-do list and he is outside right now.) It also once hung for 72 hours waiting on a yes-or-no prompt inside a window I had deliberately made invisible, which is the dumbest 3 days I have spent in years, so now anything that runs unattended gets its stdin taken away.`,
-  },
-  {
-    plate: 'VIII',
-    binomial: 'Accipiter mercatorius',
-    common: 'The Monday Hawk',
-    stack: 'A scheduled pitch engine working call-for-speakers pages, keeping its own pipeline file',
-    habitat: 'Event sites, conference programs, and submission deadlines.',
-    range: 'Mondays.',
-    call: 'A ranked list: event, date, deadline, and one line on why I fit.',
-    feeding: 'Event calendars, past programs, and the tracker it maintains itself.',
-    markings: 'Will pitch me for anything with a stage and a microphone.',
-    status: 'Introduced',
-    tone: 'warn',
-    notes: `One of the newest specimens in the collection, and the only one with a revenue number attached to it. It doesn't send either. It finds and it drafts, and deciding who's actually worth writing to stays my job (the part I'd keep even if it got good at it).`,
-  },
-  {
-    plate: 'IX',
-    binomial: 'Apis convocans',
-    common: 'The Summit Recruiter',
-    stack: 'Speaker and sponsor outreach skills over Gmail, keeping their own tracker and sweeping for replies each morning',
-    habitat: "A conference that doesn't exist yet: October 9 and 10, Puerto Rico Convention Center.",
-    range: 'Peaks in the 8 weeks before the doors open, which is where we are now.',
-    call: 'A ranked list of people worth inviting, a drafted invitation for each, and a note on who answered overnight.',
-    feeding: 'Past conference programs, speaker bios, sponsor tiers, and replies as they land.',
-    markings: 'Cannot tell a polite no from a slow yes, so it keeps both alive in the pipeline and makes me choose.',
-    status: 'Seasonal',
-    tone: 'warn',
-    notes: `Co-chairing a conference is 10% stagecraft and 90% email, and this animal does the 90%. It drafts the invitation, files the reply, and tells me each morning which conversations moved while I slept. What it can't do is the part that closes a speaker, which is me on a call explaining why 2 days in San Juan is worth the flight. All of it runs on a tracker, and a tracker is only as honest as the last person who touched it (that person is me, and I'm not the strongest link in this chain).`,
-  },
-  {
-    plate: 'X',
-    binomial: 'Chamaeleo confabulans',
-    common: 'The Plate Painter',
-    stack: 'Gemini image models, flash for drafts and pro for finals, always fed my real headshot',
-    habitat: 'Every picture of me on this website.',
-    range: '6 to 12 images a week.',
-    call: 'Silent. Simply produces.',
-    feeding: 'A prompt, a reference photograph, and a fedora rule it violates about 1 time in 8 (baseball caps, mostly).',
-    markings: 'Hallucinates in the field: spare fingers, wrong hat, occasionally a second me in the background.',
-    status: 'Invasive',
-    tone: 'bad',
-    notes: `The specimen I check hardest, because it's the only one whose mistakes are visible to strangers. Every image on this page got looked at by a human first. The rejects were worse than you're imagining, and one of them gave me 3 hands.`,
-  },
-  {
-    plate: 'XI',
-    binomial: 'Chimaera fabulatrix',
-    common: "The Dungeon Master's Familiar",
-    supernumerary: true,
-    stack: 'An adventure-writing skill feeding a DM screen prototype I am still building',
-    habitat: "An Eberron campaign, and a screen that isn't finished.",
-    range: 'Monthly, and never during business hours.',
-    call: "Lore lookups, tavern names, and a stat block for whatever the party found in the room I didn't prepare.",
-    feeding: "Session notes, rules text, and whatever my players did that I didn't plan for.",
-    markings: `Occupies no position in the food web at all. Feeds nothing, earns nothing, and I'd keep it over half the others.`,
-    status: 'Least concern',
-    tone: 'good',
-    notes: `The guide is named for 10 agents and describes 11. This is the 11th, it has never earned a dollar, and the title survives on that technicality. It's here because I use it every month and it costs me nothing but a Saturday, and because a catalog of only the profitable species is a pitch deck with a nicer cover. Last month my party asked whether they could bribe a dragon with a quarterly forecast, and I allowed it.`,
-  },
-];
-// ---------------------------------------------------------------------------
-// COMMONLY CONFUSED WITH. The similar-species section, aimed at a buyer who
-// has already been sold one of the lookalikes.
-// ---------------------------------------------------------------------------
-const lookalikes = [
-  {
-    name: 'The chatbot on a cron job',
-    tell: 'It runs on a schedule and produces the same shape of output every time, regardless of what it found.',
-    test: 'Feed it a week where nothing happened. A real agent says so and stops. This one files its usual report, on time, at the usual length.',
-  },
-  {
-    name: 'The macro in a new coat',
-    tell: 'Identical from a distance, and genuinely useful, right up until a button moves.',
-    test: 'Change one thing about the input. If it breaks instead of adapting, you bought a macro at agent prices.',
-  },
-  {
-    name: 'The vendor demo',
-    tell: 'Only ever observed in captivity, in a curated environment, on data the vendor prepared himself.',
-    test: 'Ask to run it on your own closing numbers, live, with your own messy chart of accounts. Watch what happens next (something always happens next).',
-  },
-  {
-    name: 'The sidebar assistant',
-    tell: 'Waits to be asked. Answers well. Then goes back to sleep and forgets you.',
-    test: 'Do nothing for a day. If nothing arrived without you asking, what you have is a tool. Tools are great. You were just sold the other thing.',
+    no: '06',
+    icon: 'crosscheck',
+    signage: 'Doors to manual. Cross check.',
+    original: 'Cabin crew, doors to manual and cross check.',
+    body: `Aviation's best idea is that a second person confirms out loud that the first person did the thing. It costs about 4 seconds and it isn't a technology, so nobody has ever tried to sell it to you. Every finance team already knows this one as segregation of duties, and most of them drop it the moment the work is done by software instead of by a person and nobody says so out loud, because software doesn't commit fraud, which is true and is also not the point, since software doesn't notice that it's wrong either. If an agent can post an entry, somebody who is not that agent signs for it. That's the whole panel (it is also the only panel on this card that has ever saved me actual money).`,
   },
 ];
 
 // ---------------------------------------------------------------------------
-// UNSURVEYED TERRITORY. The range map has to show the wilderness or it is
-// marketing. These are the parts of the week no agent touches.
+// CABIN CREW DEMONSTRATION. The photographs, captioned deadpan.
 // ---------------------------------------------------------------------------
-const wilderness = [
+const demo = [
   {
-    zone: 'Deciding what is worth building',
-    note: '10 agents will execute any bad idea at full speed, on schedule, and beautifully formatted.',
+    src: '/images/roske-air/brace-position.jpg',
+    w: 1195, h: 1600, pos: 'center 52%',
+    alt: 'Edward Roske folded all the way forward into the aircraft brace position, head down against his knees with one arm over his head, blue fedora still on, an open laptop glowing on the tray table above him.',
+    label: 'Brace position',
+    cap: `The laptop stays open. That part isn't in the instructions, and it's the reason I'm in this position.`,
   },
   {
-    zone: 'The room',
-    note: 'Nothing in this guide has ever stood in front of 400 finance people and read the temperature of the room at minute 9.',
+    src: '/images/roske-air/oxygen-mask.jpg',
+    w: 1195, h: 1600, pos: 'center 30%',
+    alt: 'Edward Roske seated in an airline seat with a yellow oxygen mask deployed and strapped over the crown of his blue fedora, hands folded, entirely composed.',
+    label: 'Oxygen mask',
+    cap: `Oxygen mask, amber lights on, cabin at 8,000 feet, hat on. The strap goes over the hat.`,
   },
   {
-    zone: 'Telling someone something they do not want to hear',
-    note: "It'll draft the message just fine. Sitting across from somebody while they read it isn't a thing I'd hand off.",
+    src: '/images/roske-air/evacuation-slide.jpg',
+    w: 1600, h: 1195, pos: 'center 45%',
+    alt: 'Edward Roske descending a yellow inflatable evacuation slide in a blue suit and blue fedora, arms crossed, a leather briefcase tucked under one arm.',
+    label: 'Evacuation',
+    cap: `Glasses off, which is genuinely in the instructions. The briefcase is mine and is not in any instructions anywhere.`,
   },
   {
-    zone: 'Knowing a number is wrong',
-    note: "A number can look wrong to me before I've checked any of it. I can't explain that to a model, because I can't explain it to myself. 25 years and I've got nothing better than that.",
-  },
-  {
-    zone: 'What Dawn thinks of the idea',
-    note: "Unsurveyed and unsurveyable, and she's right more often than the agents are.",
+    src: '/images/roske-air/flotation-device.jpg',
+    w: 1600, h: 1600, pos: 'center 34%',
+    alt: 'Edward Roske in an inflated yellow life vest in the aisle of an airliner, presenting his blue fedora to the cabin with both hands.',
+    label: 'Flotation',
+    cap: `The only photograph on this site where the hat is off my head. It was a demonstration and I would like that in the record (family rule, and I have not broken it since).`,
   },
 ];
 
 // ---------------------------------------------------------------------------
-// APPENDIX B: FIELD STATIONS. The six real projects, kept every week.
+// IRREGULAR OPERATIONS. The career, filed the way an airline files the days
+// that did not go according to the schedule. All of these are real.
 // ---------------------------------------------------------------------------
-const stations = [
+const irrops = [
   {
-    ref: 'B-01',
-    kind: 'Instrumentation',
+    code: '1997',
+    head: 'Departed without a flight plan',
+    body: `Founded interRel at 22 with no funding, no clients and no plan beyond a conviction that companies would eventually want their budgets to add up. I ran it independently for 23 years and it became the longest-standing Oracle Platinum EPM Partner there was. I don't recommend the method. I'd still do it again, which I realize is not much of a recommendation either way.`,
+  },
+  {
+    code: '2006',
+    head: 'Unscheduled diversion, 2 years long',
+    body: `Submitted a conference abstract for a musical about Hyperion System 9, written entirely in 50s and 60s rock lyrics, as a prank on the reviewers. No script, no cast, no intention of doing it. They accepted it. It played to a standing crowd in Las Vegas, came back for Orlando the next year, and won a deal from a CFO who was in the room. The whole story went up on the blog this morning. (Edward, 3 separate people called and gave you 3 separate chances to admit it was a bit, and every single time your answer was to invent more plot. You flew billable consultants in for rehearsals. You hired a director who had actually been to film school. At no point in 2 years did anybody stop you, which says something about the people around you and quite a lot more about you.)`,
+    href: '/blog/i-produced-a-musical-about-financial-software/',
+    cta: 'Read the incident report',
+  },
+  {
+    code: '2016',
+    head: 'Arrived 25 years behind schedule',
+    body: `Started college at 15, went full time at 16, and then ran a company for 2 decades with the degree still unfinished. Collected the BA from Shimer in 2016. Nobody asked to see it once in 19 years. I finished it anyway, mostly because it had been sitting there unfinished and that bothered me a little more every year.`,
+  },
+  {
+    code: '2019',
+    head: 'Requalified mid-career',
+    body: `Went back for a Master of Data Science at SMU while running the company. Finished with a 4.0 and Outstanding Graduate (I have checked that transcript more than once), in a cohort full of people young enough to have been in grade school when I started interRel. The math was harder than I expected and I have never once regretted the hours.`,
+  },
+  {
+    code: '2020',
+    head: 'Merged, then left the aircraft',
+    body: `Merged interRel with Keste to help found Argano, stayed CEO through 2022 for 25 years as a CEO all told, and walked away in 2023 from a company I'd helped build into a billion-dollar consultancy. I still own a thirtieth of it. Leaving something that's working is much harder than leaving something that isn't. Ask me about that one and I'll talk for an hour.`,
+  },
+  {
+    code: '2026',
+    head: 'Cruising altitude, 18,571 feet',
+    body: `Walked to Everest Base Camp with Dawn in April: 2 weeks on foot, thin air, and a lot of time to think about which of the things I am building actually matter. The full report, including the parts that went badly, is on the blog.`,
+    href: '/blog/everest-base-camp-summit/',
+    cta: 'Read the trail log',
+  },
+];
+
+// ---------------------------------------------------------------------------
+// THE FLEET. The six real projects, kept every week, filed as tail numbers.
+// ---------------------------------------------------------------------------
+const fleet = [
+  {
+    tail: 'N-MCP1',
+    type: 'Oracle EPM / MCP',
     name: 'MCP Servers for Enterprise Finance',
-    note: `The plumbing that lets an agent work inside a real finance system rather than beside it. Oracle Essbase and EPM Planning are shipping, and Financial Close and Consolidations is in beta. None of this matters if the agent can't reach the actual system.`,
-    tag: 'ORACLE EPM / MCP',
-    status: 'SHIPPING',
+    note: `The plumbing that lets an agent work inside a real finance system instead of beside it. Essbase and EPM Planning are shipping, Financial Close and Consolidations is in beta (soon, honestly). Panels 1 and 6 are why this exists.`,
+    status: 'In service',
+    tone: 'go',
     href: 'https://caprus.ai/agentcube/',
     external: true,
     cta: 'See how it works',
   },
   {
-    ref: 'B-02',
-    kind: 'Annual gathering',
+    tail: 'N-CAIS26',
+    type: '9 to 10 Oct 2026',
     name: 'Caribbean AI Summit',
-    note: `Co-chairing the largest AI conference Puerto Rico has ever hosted, October 9 and 10 at the Convention Center. Confirmed so far: Kay Firth-Butterfield, MIT's Fabio Duarte, and EU Parliament AI advisor Idoia Salazar, with more still signing. See Plate IX for the animal that does the recruiting.`,
-    tag: '9-10 OCT 2026',
-    status: 'CALL FOR SPEAKERS OPEN',
+    note: `Co-chairing the largest AI conference Puerto Rico has ever hosted (so far), at the Convention Center. Confirmed: Kay Firth-Butterfield, MIT's Fabio Duarte, and EU Parliament AI advisor Idoia Salazar, with more still signing.`,
+    status: 'Boarding',
+    tone: 'go',
     href: 'https://www.caribbeansummit.ai/en/speakers/submit',
     external: true,
     cta: 'Submit a speaker',
   },
   {
-    ref: 'B-03',
-    kind: 'Breeding program',
+    tail: 'N-CAPRUS',
+    type: 'AI / Finance',
     name: 'Caprus',
     note: `Investor and contributor at the AI software and services firm building faster operations for finance teams. They do the engineering. I show up and point at things.`,
-    tag: 'AI / FINANCE',
-    status: 'RUNNING',
+    status: 'In service',
+    tone: 'go',
     href: 'https://caprus.ai',
     external: true,
     cta: 'Meet the team',
   },
   {
-    ref: 'B-04',
-    kind: 'Expedition record',
+    tail: 'N-EBC26',
+    type: 'Nepal / 2026',
     name: 'Everest Base Camp',
-    note: `This spring Dawn and I walked to the foot of Everest: 2 weeks, 18,571 feet, and every question I could think of asked of the guides. The full report is on the blog, including the parts that went badly.`,
-    tag: 'NEPAL / 2026',
-    status: 'REPORT FILED',
+    note: `2 weeks on foot to 18,571 feet with Dawn this spring. The trail log is on the blog, including the parts that went badly and the part where I asked the guides too many questions.`,
+    status: 'Arrived',
+    tone: 'done',
     href: '/blog/everest-base-camp-summit/',
     external: false,
     cta: 'Read the trail log',
   },
   {
-    ref: 'B-05',
-    kind: 'Captive specimen',
+    tail: 'N-DND5E',
+    type: 'D&D / 5E',
     name: "AI Dungeon Master's Screen",
-    note: `A prototype screen for running D&D 5e: lore lookups and improvisation help for the person behind the cardboard. See Plate XI. It isn't finished and I'm in no hurry.`,
-    tag: 'D&D / 5E',
-    status: 'IN DEVELOPMENT',
+    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It has never earned a dollar and it isn't finished, and I'm in no hurry about either.`,
+    status: 'In the hangar',
+    tone: 'hold',
     href: null,
     external: false,
     cta: 'Quiet build',
   },
   {
-    ref: 'B-06',
-    kind: 'Local population',
+    tail: 'N-PRAIC',
+    type: '1,000+ attendees',
     name: 'Puerto Rico AI Community',
-    note: `President of the island's AI community, now past 1,000 different people through the door. We meet every other month and argue in 2 languages about what AI means for Puerto Rico until something useful falls out. Come to one!`,
-    tag: '1,000+ ATTENDEES',
-    status: 'RUNNING',
+    note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. We meet every other month and argue in 2 languages about what AI means for Puerto Rico until something useful falls out. Come to one!`,
+    status: 'In service',
+    tone: 'go',
     href: 'https://praicommunity.org/',
     external: true,
     cta: 'Join the next one',
   },
 ];
 
-// Food-web nodes, laid out by trophic level for the diagram below.
-const webLevels = [
+// ---------------------------------------------------------------------------
+// ROUTE MAP. Seven arcs, one per continent, radiating from San Juan. The
+// numbers are the credential, not the subject: the reason to read the card is
+// that the person reading it out has been in the cabin for a very long time.
+// ---------------------------------------------------------------------------
+const sectors = [
+  { label: 'North America', x: 196, y: 96 },
+  { label: 'South America', x: 402, y: 372 },
+  { label: 'Europe', x: 578, y: 74 },
+  { label: 'Africa', x: 648, y: 236 },
+  { label: 'Asia', x: 846, y: 118 },
+  { label: 'Oceania', x: 906, y: 318 },
+  { label: 'Antarctica', x: 512, y: 404 },
+];
+const ORIGIN = { x: 252, y: 244 };
+function arc(x: number, y: number) {
+  const mx = (ORIGIN.x + x) / 2;
+  const my = (ORIGIN.y + y) / 2 - Math.abs(x - ORIGIN.x) * 0.22 - 18;
+  return `M ${ORIGIN.x} ${ORIGIN.y} Q ${mx} ${my} ${x} ${y}`;
+}
+
+// ---------------------------------------------------------------------------
+// DUTY FREE. The 15 books, 13 of them on Amazon and 2 that only ever existed
+// to be handed out in a training room.
+// ---------------------------------------------------------------------------
+const dutyFree = [
+  { sku: 'DF-01', t: 'Hyperion Essbase', sub: 'The first one' },
+  { sku: 'DF-02', t: "Essbase 11: An Administrator's Guide", sub: '' },
+  { sku: 'DF-03', t: 'Smart View and Essbase 11', sub: "An end user's guide" },
+  { sku: 'DF-04', t: "Essbase 11.1.2: An Administrator's Guide", sub: '' },
+  { sku: 'DF-05', t: 'Smart View 11.1.2', sub: '' },
+  { sku: 'DF-06', t: 'Oracle Hyperion Planning', sub: "An end user's guide" },
+  { sku: 'DF-07', t: "Hyperion Planning: An Administrator's Guide", sub: '' },
+  { sku: 'DF-08', t: "Hyperion Planning 11.1.2: An End User's Guide", sub: '' },
+  { sku: 'DF-09', t: 'Creating Hyperion Planning Applications', sub: '11.1.2' },
+  { sku: 'DF-10', t: 'Advanced Hyperion Planning', sub: '11.1.2' },
+  { sku: 'DF-11', t: 'Oracle Enterprise Planning Cloud', sub: '' },
+  { sku: 'DF-12', t: 'Oracle Planning and Budgeting Cloud', sub: '' },
+  { sku: 'DF-13', t: 'Oracle Analytics Cloud Standard Edition', sub: '' },
+  { sku: 'DF-14', t: 'Financial Reports', sub: 'Classroom only', off: true },
+  { sku: 'DF-15', t: 'Web Analysis', sub: 'Classroom only', off: true },
+];
+
+// ---------------------------------------------------------------------------
+// SEAT-BACK CARD. The questions people actually ask, laid out the way the
+// laminated card in the seat pocket lays things out.
+// ---------------------------------------------------------------------------
+const seatback = [
   {
-    tier: 'Substrate',
-    caption: 'My calendar, my inbox, my files. Everything above this eats it.',
-    nodes: [{ id: 'raw', label: 'The raw day' }],
+    q: 'Do you really run your week on ten agents?',
+    a: `Yes, one per project, and the site you're reading was rebuilt by one of them at 5AM this morning while I was asleep. Last week's homepage was a field guide to all 10 of them with the real software named (Latin binomials and everything, because at 5AM there is nobody there to stop it).`,
   },
   {
-    tier: 'Producers',
-    caption: 'They convert the mess into something the others can eat.',
-    nodes: [
-      { id: 'cos', label: 'I. Chief of Staff' },
-      { id: 'res', label: 'V. Research Crow' },
-    ],
+    q: 'What does it cost to book you?',
+    a: `Keynotes start at $15,000 and every fee is published (real numbers, not anchors), because I have never enjoyed the part of the conversation where 2 people pretend not to know the number. The speaking page has the talks, the fees, the footage, and a form that reaches me directly. I answer in one business day.`,
   },
   {
-    tier: 'Primary consumers',
-    caption: 'None of these can survive without something on the tier below.',
-    nodes: [
-      { id: 'trip', label: 'II. Advance Party' },
-      { id: 'write', label: 'VI. Night Writer' },
-      { id: 'img', label: 'X. Plate Painter' },
-    ],
+    q: 'Can you build this for us?',
+    a: `Not personally. Caprus does the engineering, I invest in them and turn up to argue about the roadmap, and they are very gracious about that second part. If you want the MCP servers that connect agents to Oracle EPM, that's where they live.`,
   },
   {
-    tier: 'Secondary consumers',
-    caption: 'The visible output. Also the last place a mistake is cheap to catch.',
-    nodes: [
-      { id: 'pod', label: 'III. Producer' },
-      { id: 'vid', label: 'IV. Daily Cicada' },
-      { id: 'site', label: 'VII. Bowerbird' },
-      { id: 'pitch', label: 'VIII. Monday Hawk' },
-      { id: 'cais', label: 'IX. Recruiter' },
-    ],
+    q: 'Is the safety card serious or is it a joke?',
+    a: `Both, on purpose. (Yes, I'm serious. And don't call me Shirley.) Every panel is a failure I've watched happen inside a real finance organization, and airline voice is the only way I've found to get a room to sit still for a list of things that go wrong. I have tried the version where the same 6 points are bullets on a slide, and I watched the room's attention leave through the door at about point 2.`,
   },
   {
-    tier: 'Outside the web',
-    caption: 'Feeds nothing, earns nothing, stays in the guide anyway.',
-    detached: true,
-    nodes: [{ id: 'dnd', label: 'XI. Familiar' }],
+    q: 'Can I have the card without the website around it?',
+    a: `Yes. There is a single image of all 6 panels, sized to post anywhere, at the bottom of the card section. Take it. Put your own team's name on the seat back if you like.`,
   },
 ];
 ---
@@ -360,58 +289,69 @@ const webLevels = [
 <BaseLayout>
   <WeeklyAnimation />
 
-  <!-- ================= EDITION STRIP ================= -->
-  <div class="ed" role="presentation">
-    <div class="ed-inner">
-      <span class="ed-item">A Field Guide to the Ten Agents</span>
-      <span class="ed-item ed-mid">Second edition, revised</span>
-      <span class="ed-item">Observed as of August 2026</span>
+  <!-- ================= CABIN STRIP ================= -->
+  <div class="cabin" role="presentation">
+    <div class="cabin-inner">
+      <span class="cabin-item cabin-mark">Roske Air</span>
+      <span class="cabin-item">Flight RA 2026</span>
+      <span class="cabin-item">SJU to your board meeting</span>
+      <span class="cabin-item cabin-on">On time</span>
     </div>
   </div>
 
-  <!-- ================= HERO / FRONTISPIECE ================= -->
+  <!-- ================= HERO ================= -->
   <section class="hero">
     <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="hero-kicker">Roske.AI | Safety information card | Issue 08 / 2026</p>
+        <h1 class="hero-h1">ROSKE<span class="hero-h1-air">AIR</span></h1>
+        <p class="hero-type"><span>Safety on board</span><span class="hero-type-div" aria-hidden="true">/</span><span>Aircraft type: enterprise AI deployment</span></p>
+        <p class="hero-sub">{theme.hero.subtitle}</p>
+        <p class="hero-desc">{theme.hero.description}</p>
+        <div class="hero-cta">
+          <a href="#safety-card" class="btn-solid">Read the safety card</a>
+          <a href={theme.hero.ctaLink} class="btn-line">{theme.hero.ctaText}</a>
+        </div>
+      </div>
+
       <figure class="hero-fig">
         <div class="hero-frame">
-          <span class="hero-plate">Frontispiece</span>
+          <span class="hero-tag">Cabin demonstration</span>
           <img
             src={`/images/${theme.hero.heroImage}`}
             alt={theme.hero.imageAlt}
             width="1600"
-            height="900"
+            height="893"
             loading="eager"
             decoding="async"
             class="hero-img"
           />
         </div>
         <figcaption class="hero-cap">
-          The author in the field, observing a specimen at close range. The specimen is aware of this
-          and has factored it in.
+          Nobody in this photograph is watching the demonstration. That's how every safety briefing
+          anywhere actually gets delivered, and yes, I noticed.
         </figcaption>
       </figure>
-
-      <div class="hero-copy">
-        <p class="hero-kicker">Roske.AI | Natural history of a working week</p>
-        <h1 class="hero-h1">A Field Guide<br /><span class="hero-h1-sub">to the</span><br />Ten Agents</h1>
-        <p class="hero-binomial">Being a complete account of ten species of working software (and an eleventh that has never earned a dollar), their habitats, their feeding behavior, and which of them bite.</p>
-        <div class="hero-rule" aria-hidden="true"></div>
-        <p class="hero-sub">{theme.hero.subtitle}</p>
-        <p class="hero-desc">{theme.hero.description}</p>
-        <div class="hero-cta">
-          <a href={theme.hero.ctaLink} class="btn-solid">{theme.hero.ctaText}</a>
-          <a href="/question/" target="_blank" rel="noopener" class="btn-line">Book 13 minutes</a>
-        </div>
-      </div>
     </div>
 
-    <div class="record" aria-label="Collector's record">
-      <div class="record-inner">
-        <span class="record-head">Collector's record</span>
-        {collectorRecord.map(s => (
-          <span class="record-stat">
-            <span class="record-value">{s.value}</span>
-            <span class="record-label">{s.label}</span>
+    <!-- boarding pass -->
+    <div class="pass" aria-label="Boarding pass">
+      <div class="pass-main">
+        <span class="pass-brand">Boarding pass</span>
+        <div class="pass-route">
+          <span class="pass-code">SJU</span>
+          <span class="pass-plane" aria-hidden="true">
+            <svg viewBox="0 0 64 24" width="64" height="24" focusable="false"><path d="M2 12h44M46 12l-8-7M46 12l-8 7M52 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </span>
+          <span class="pass-code">YOU</span>
+        </div>
+        <span class="pass-note">Seat 1A. Boarding at your convenience. No overhead bin space remaining.</span>
+      </div>
+      <div class="pass-stub">
+        {boardingData.map(d => (
+          <span class="pass-stat">
+            <span class="pass-v">{d.v}</span>
+            <span class="pass-k">{d.k}</span>
           </span>
         ))}
       </div>
@@ -420,270 +360,283 @@ const webLevels = [
 
   <!-- ================= LATEST CONTENT (permanent) ================= -->
   <LatestContent
-    eyebrow="Recent sightings"
-    heading="Logged <em>this month.</em>"
-    deck="New writing and new video briefs, in the order they were recorded."
+    eyebrow="In-flight entertainment"
+    heading="Now playing <em>on this aircraft.</em>"
+    deck="New writing and new video briefs, in the order they were recorded. Headsets are complimentary in every cabin."
   />
 
   <!-- ================= BOOK EDWARD (permanent) ================= -->
-  <div class="author-frame">
-    <p class="author-plate">About the author</p>
-    <SpeakerCTA eyebrow="From the back cover" />
+  <div class="upgrade">
+    <p class="upgrade-plate">Upgrade to business</p>
+    <SpeakerCTA eyebrow="Cabin selection" />
   </div>
 
-  <!-- ================= THE PLATES ================= -->
-  <section class="plates" id="plates">
-    <div class="plates-head">
-      <p class="sec-eyebrow">Part one</p>
-      <h2 class="sec-h2">The Specimens</h2>
+  <!-- ================= THE SAFETY CARD ================= -->
+  <section class="card" id="safety-card">
+    <div class="card-head">
+      <p class="sec-eyebrow">Section one</p>
+      <h2 class="sec-h2">In the unlikely event.</h2>
       <p class="sec-deck">
-        10 agents run my week, one per project, and each entry below names the actual software,
-        because I don't trust a guide that won't tell you what it's looking at. This is the second
-        edition. The first described one animal 3 times (the assistant, described once for each of its 3 jobs) and left out
-        4 others entirely, including the one that plans every trip I take. All of this will be wrong
-        by spring, which is exactly why a real guide prints the year on its cover.
+        A safety card is instructions for what to do when things go wrong, written for people who
+        aren't paying attention, by an operator who has already watched all of it happen. Here are 6
+        panels nobody hands a finance team before an AI deployment. The airline wording is real, so is
+        everything underneath it, and I have personally been in the cabin for 5 of the 6 (the sixth I
+        only watched from a row back, and I still think about it more than the 5 I was in).
       </p>
-      <p class="sec-margin">Observed Aug 2026. Ranges shift. 4 of these didn't exist in January, and Plate XI pays for nothing.</p>
+      <p class="sec-margin">Read this card even if you deploy this route often.</p>
     </div>
 
-    <div class="plate-grid">
-      {plates.map(p => (
-        <article class={`plate ${p.supernumerary ? 'plate-wide' : ''}`}>
-          <header class="plate-head">
-            <span class="plate-no">Plate {p.plate}</span>
-            {p.supernumerary && <span class="plate-off">Not in the census</span>}
-            <span class={`plate-status status-${p.tone}`}>{p.status}</span>
-          </header>
-          <h3 class="plate-binomial">{p.binomial}</h3>
-          <p class="plate-common">{p.common}</p>
-          {p.forms && <p class="plate-forms">Described forms: {p.forms.join(' / ')}</p>}
-          <p class="plate-stack">{p.stack}</p>
-          <dl class="plate-data">
-            <div class="pd-row"><dt>Habitat</dt><dd>{p.habitat}</dd></div>
-            <div class="pd-row"><dt>Range</dt><dd>{p.range}</dd></div>
-            <div class="pd-row"><dt>Call</dt><dd>{p.call}</dd></div>
-            <div class="pd-row"><dt>Feeding</dt><dd>{p.feeding}</dd></div>
-            <div class="pd-row"><dt>Markings</dt><dd>{p.markings}</dd></div>
-          </dl>
-          <p class="plate-notes"><span class="pn-label">Field notes.</span> {p.notes}</p>
-        </article>
+    <ol class="panels">
+      {panels.map(p => (
+        <li class="panel">
+          <div class="panel-top">
+            <span class="panel-no">{p.no}</span>
+            <div class="panel-pict" aria-hidden="true">
+              {p.icon === 'brace' && (
+                <svg viewBox="0 0 100 100" class="pict"><rect x="70" y="18" width="16" height="42" rx="3" class="pf"/><rect x="42" y="60" width="44" height="8" rx="3" class="pf"/><path d="M78 57 L44 57" class="ps"/><path d="M44 57 L38 85" class="ps"/><path d="M38 85 L27 85" class="ps"/><path d="M78 55 L52 46" class="ps"/><circle cx="44" cy="44" r="9" class="ps"/><path d="M56 40 Q46 25 31 35" class="ps"/></svg>
+              )}
+              {p.icon === 'mask' && (
+                <svg viewBox="0 0 100 100" class="pict"><rect x="16" y="6" width="68" height="9" rx="2" class="pf"/><path d="M38 15 q-5 14-3 25" class="ps"/><path d="M62 15 q5 14 3 25" class="ps"/><path d="M30 50 h40 a4 4 0 0 1 4 4 v7 a24 22 0 0 1-48 0 v-7 a4 4 0 0 1 4-4z" class="pf"/></svg>
+              )}
+              {p.icon === 'exit' && (
+                <svg viewBox="0 0 100 100" class="pict"><rect x="10" y="14" width="26" height="72" rx="3" class="pf"/><circle cx="30" cy="52" r="3.5" class="ps"/><path d="M86 34 H44" class="ps"/><path d="M55 23 L43 34 L55 45" class="ps"/><rect x="46" y="60" width="14" height="24" rx="3" class="ps"/><rect x="64" y="60" width="14" height="24" rx="3" class="ps"/><rect x="82" y="60" width="9" height="24" rx="3" class="ps"/></svg>
+              )}
+              {p.icon === 'cushion' && (
+                <svg viewBox="0 0 100 100" class="pict"><rect x="20" y="22" width="60" height="28" rx="7" class="pf"/><path d="M6 66 q12-8 23 0 t23 0 t23 0 t19 0" class="ps"/><path d="M6 82 q12-8 23 0 t23 0 t23 0 t19 0" class="ps"/><path d="M26 14 l48 46 M74 14 l-48 46" class="px"/></svg>
+              )}
+              {p.icon === 'stow' && (
+                <svg viewBox="0 0 100 100" class="pict"><rect x="30" y="8" width="40" height="28" rx="3" class="ps"/><path d="M50 40 v13" class="ps"/><path d="M40 45 l10 10 10-10" class="ps"/><path d="M12 60 h76 v20 a6 6 0 0 1-6 6 h-64 a6 6 0 0 1-6-6z" class="pf"/><path d="M12 60 q38 13 76 0" class="ps"/></svg>
+              )}
+              {p.icon === 'crosscheck' && (
+                <svg viewBox="0 0 100 100" class="pict"><rect x="38" y="14" width="24" height="70" rx="3" class="pf"/><circle cx="16" cy="30" r="8" class="ps"/><path d="M16 38 v18 M8 80 l8-24 8 24" class="ps"/><circle cx="84" cy="30" r="8" class="ps"/><path d="M84 38 v18 M76 80 l8-24 8 24" class="ps"/><path d="M43 48 l6 9 12-17" class="pc"/></svg>
+              )}
+            </div>
+          </div>
+          <h3 class="panel-sign">{p.signage}</h3>
+          <p class="panel-orig">{p.original}</p>
+          <p class="panel-body">{p.body}</p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="share">
+      <div class="share-copy">
+        <p class="share-eyebrow">Take the card with you</p>
+        <p class="share-text">
+          All 6 panels as a single image, sized to post anywhere. There's no sign-up and no email
+          capture, and the only thing on it that isn't a pictogram is the address at the bottom. If it
+          ends up taped to a wall in your finance department, that's exactly what it was built for.
+        </p>
+        <a href="/images/roske-air/ai-deployment-safety-card.png" class="btn-solid" download>Download the safety card</a>
+      </div>
+      <a href="/images/roske-air/ai-deployment-safety-card.png" class="share-thumb" download>
+        <img src="/images/roske-air/ai-deployment-safety-card.png" width="1200" height="1200" loading="lazy" decoding="async"
+          alt="The AI Deployment Safety Card: six numbered pictogram panels covering the brace position, the oxygen mask, the nearest exit, the flotation device, stowed devices, and the cross check." />
+      </a>
+    </div>
+  </section>
+
+  <!-- ================= CABIN DEMONSTRATION ================= -->
+  <section class="demo">
+    <div class="demo-head">
+      <p class="sec-eyebrow">Section two</p>
+      <h2 class="sec-h2">Your cabin crew will now demonstrate.</h2>
+      <p class="sec-deck">
+        The photographs are staged and the postures are correct. I checked them against an actual
+        laminated card, twice, on a Saturday morning, in a house where at least one other person was
+        awake and forming an opinion about it.
+      </p>
+    </div>
+    <div class="demo-grid">
+      {demo.map(d => (
+        <figure class="demo-fig">
+          <img src={d.src} width={d.w} height={d.h} loading="lazy" decoding="async" alt={d.alt} style={`object-position:${d.pos}`} />
+          <figcaption>
+            <span class="demo-label">{d.label}</span>
+            <span class="demo-cap">{d.cap}</span>
+          </figcaption>
+        </figure>
       ))}
     </div>
   </section>
 
-  <!-- ================= THE FOOD WEB ================= -->
-  <section class="web" id="food-web">
-    <div class="web-head">
-      <p class="sec-eyebrow">Part two</p>
-      <h2 class="sec-h2">The Food Web</h2>
-      <p class="sec-deck">
-        Here's the part a specimen list can't show you. These 10 things form a stack with
-        dependencies: they eat each other's output, they inherit each other's mistakes at machine
-        speed, and the failure that actually costs you money is almost never in the animal you were
-        watching, it's 2 tiers down in something boring that happened 4 hours earlier while you were
-        in a meeting about something else.
-      </p>
-    </div>
-
-    <div class="web-body">
-      <figure class="web-fig">
-        <img src="/images/field-guide/hide.jpg" width="1600" height="893" loading="lazy" decoding="async"
-          alt="Edward Roske in his blue fedora, seen from behind inside a wooden birdwatching hide, taking notes in pencil while watching a scattering of old beige computer monitors standing in the moss and ferns of a misty dawn clearing." />
-        <figcaption>Observation blind, built after the third time I found out about a failure from a customer instead of a log.</figcaption>
-      </figure>
-
-      <div class="web-diagram" role="img" aria-label="Food web diagram: the raw day feeds the Chief of Staff and the Research Crow; those feed the Advance Party, the Night Writer and the Plate Painter; those feed the Producer, the Daily Cicada, the Saturday Bowerbird, the Monday Hawk and the Summit Recruiter. The Dungeon Master's Familiar sits outside the web and feeds nothing.">
-        {webLevels.map((lvl, i) => (
-          <div class={`web-tier ${lvl.detached ? 'web-tier-detached' : ''}`}>
-            <div class="web-tier-label">
-              <span class="wt-name">{lvl.tier}</span>
-              <span class="wt-cap">{lvl.caption}</span>
-            </div>
-            <div class="web-nodes">
-              {lvl.nodes.map(n => (
-                <span class={`web-node ${n.id === 'dnd' ? 'web-node-loose' : ''}`}>{n.label}</span>
-              ))}
-            </div>
-            {!webLevels[i + 1]?.detached && i < webLevels.length - 1 && (
-              <div class="web-arrows" aria-hidden="true">
-                <span></span><span></span><span></span>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <p class="web-punch">
-      Every consulting engagement I've ever walked into wanted to fix the top tier. The problem was in
-      the substrate, in a field somebody typed wrong in 2019, and the agents at the top were doing
-      exactly what they were built to do with it.
-    </p>
-  </section>
-
   <!-- ================= WHAT'S NEW (permanent) ================= -->
   <WhatsNew
-    eyebrow="Sightings by others"
-    heading="Recorded <em>elsewhere.</em>"
-    deck="Independent observations: press, interviews, and whatever I posted that turned out to be worth keeping."
+    eyebrow="From the flight deck"
+    heading="Announcements."
+    deck="Press, interviews, and whatever went out on the channel this week."
   />
 
-  <!-- ================= COMMONLY CONFUSED WITH ================= -->
-  <section class="confused">
-    <div class="confused-inner">
-      <div class="confused-copy">
-        <p class="sec-eyebrow">Part three</p>
-        <h2 class="sec-h2">Commonly Confused With</h2>
-        <p class="sec-deck">
-          Every real field guide has this section, because the expensive mistakes are always the
-          lookalikes. 4 things get sold as agents around here, and 3 of them are perfectly good
-          software wearing somebody else's label (I've bought at least 2 of them myself, at list
-          price, with a completely straight face). Here's how to tell them apart before you sign.
-        </p>
-
-        <ol class="conf-list">
-          {lookalikes.map((l, i) => (
-            <li class="conf-item">
-              <span class="conf-no">{String(i + 1).padStart(2, '0')}</span>
-              <div class="conf-body">
-                <h3 class="conf-name">{l.name}</h3>
-                <p class="conf-tell"><span class="conf-lbl">In the field.</span> {l.tell}</p>
-                <p class="conf-test"><span class="conf-lbl">How to tell.</span> {l.test}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-      </div>
-
-      <figure class="confused-fig">
-        <img src="/images/field-guide/confused.jpg" width="1195" height="1600" loading="lazy" decoding="async"
-          alt="Edward Roske in his blue fedora at a field workbench, holding two nearly identical glass specimen jars up to the light and comparing them with a skeptical squint." />
-        <figcaption>Two specimens, one afternoon, and a difference of about $400,000 over three years.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ================= WHICH ONES BITE ================= -->
-  <section class="bite">
-    <div class="bite-inner">
-      <figure class="bite-fig">
-        <img src="/images/field-guide/bite.jpg" width="1600" height="1195" loading="lazy" decoding="async"
-          alt="Edward Roske in his blue fedora sitting on a mossy fallen log in a sunlit forest, calmly holding up his bandaged right hand, with an open laptop sitting in the tall grass at his feet." />
-      </figure>
-      <div class="bite-copy">
-        <p class="sec-eyebrow">Part four</p>
-        <h2 class="sec-h2">Which Ones Bite</h2>
-        <p class="sec-deck">
-          Here's what has gone wrong, which is the part the brochures leave out. The site rebuild once
-          ran for 72 hours because it sat waiting on a keystroke inside a window I had deliberately
-          made invisible (I spent 2 of those days convinced GitHub was down). The image generator puts
-          me in the wrong hat about 1 time in 8. The meeting brief has confidently, thoroughly prepared
-          me for the wrong human being, twice, and both times I worked it out during the handshake.
-        </p>
-        <p class="sec-deck">
-          None of that made me stop using them, and none of it should. It's a reason to know which one
-          you're holding. The honest failure rate across the whole collection sits somewhere near 1 in
-          10, which sounds disqualifying right up until you price the alternative, and which is exactly
-          why nothing in this guide has send authority.
-        </p>
-        <p class="sec-deck">
-          The most expensive failure in the collection had nothing to do with a bug. This month I
-          measured what all of it produces against what I actually read: roughly 1,000 documents a
-          month written, about 25 read. I deleted 1,319 files in one afternoon and the week got
-          quieter. 10 agents producing work nobody reads is a faster way to be busy, and I built
-          every one of them.
-        </p>
-        <p class="bite-margin">Bandage is real. So is the log. The laptop was fine, which is more than I can say for the hand.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= RANGE MAP / WILDERNESS ================= -->
-  <section class="range">
-    <div class="range-head">
-      <p class="sec-eyebrow">Part five</p>
-      <h2 class="sec-h2">Range Map</h2>
+  <!-- ================= IRREGULAR OPERATIONS ================= -->
+  <section class="irrops">
+    <div class="irrops-head">
+      <p class="sec-eyebrow">Section three</p>
+      <h2 class="sec-h2">Irregular operations.</h2>
       <p class="sec-deck">
-        Here's where none of them go. These are the parts of my week where no specimen in this guide
-        has ever been observed, and where I've stopped waiting for one to turn up.
+        Airlines keep a log of the days that did not go according to the schedule, because those are
+        the days worth reading later. Here is mine. Nothing on this list was the plan, and 4 of the 6
+        turned out better than the plan would have.
+      </p>
+    </div>
+    <ol class="irr-list">
+      {irrops.map(e => (
+        <li class="irr">
+          <span class="irr-code">{e.code}</span>
+          <div class="irr-body">
+            <h3 class="irr-head">{e.head}</h3>
+            <p class="irr-text">{e.body}</p>
+            {e.href && <a href={e.href} class="irr-link">{e.cta}</a>}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <!-- ================= ROUTE MAP ================= -->
+  <section class="route">
+    <div class="route-head">
+      <p class="sec-eyebrow">Section four</p>
+      <h2 class="sec-h2">Route map.</h2>
+      <p class="sec-deck">
+        The map is here to establish that I have actually flown the route. What 80-plus countries
+        bought me is a very large sample of organizations making the same 6 mistakes in a great many
+        languages (and the 6 mistakes translate, which was the depressing part).
       </p>
     </div>
 
-    <div class="range-body">
-      <ul class="range-list">
-        {wilderness.map(w => (
-          <li class="range-item">
-            <span class="range-tag">Unsurveyed</span>
-            <h3 class="range-zone">{w.zone}</h3>
-            <p class="range-note">{w.note}</p>
-          </li>
+    <div class="route-map">
+      <svg viewBox="0 0 1000 440" class="route-svg" role="img" aria-label="A schematic route map with seven great-circle arcs radiating from San Juan, Puerto Rico to all seven continents.">
+        <g class="grid" aria-hidden="true">
+          {[60, 130, 200, 270, 340, 410].map(y => <line x1="20" y1={y} x2="980" y2={y} />)}
+          {[100, 250, 400, 550, 700, 850].map(x => <line x1={x} y1="20" x2={x} y2="420" />)}
+        </g>
+        {sectors.map(s => <path d={arc(s.x, s.y)} class="arc" />)}
+        {sectors.map(s => (
+          <g class="dest">
+            <circle cx={s.x} cy={s.y} r="5" />
+            <text x={s.x + 12} y={s.y + 4}>{s.label}</text>
+          </g>
         ))}
-      </ul>
+        <g class="origin">
+          <circle cx={ORIGIN.x} cy={ORIGIN.y} r="8" />
+          <circle cx={ORIGIN.x} cy={ORIGIN.y} r="15" class="origin-ring" />
+          <text x={ORIGIN.x - 12} y={ORIGIN.y + 34} text-anchor="end">SJU / San Juan</text>
+        </g>
+      </svg>
 
-      <figure class="range-fig">
-        <img src="/images/field-guide/range.jpg" width="1600" height="893" loading="lazy" decoding="async"
-          alt="Edward Roske in his blue fedora on a high ridge at first light, holding a large unfolded paper survey map open in both hands, looking out past it over a wide valley of forest, cliffs and drifting cloud." />
-        <figcaption>The surveyed portion is smaller than the brochure suggests.</figcaption>
-      </figure>
+      <ul class="route-log">
+        <li><span class="rl-k">Apr 2026</span><span class="rl-v">Kathmandu to Everest Base Camp. 2 weeks, 18,571 feet, on foot.</span></li>
+        <li><span class="rl-k">2025</span><span class="rl-v">Son Doong, Vietnam. Largest cave in the world, and no cell coverage in it.</span></li>
+        <li><span class="rl-k">Home base</span><span class="rl-v">San Juan, Puerto Rico. Everything above departs from here.</span></li>
+      </ul>
     </div>
+
+    <figure class="route-fig">
+      <img src="/images/roske-air/route-map-window.jpg" width="1600" height="893" loading="lazy" decoding="async"
+        alt="Edward Roske in a blue fedora at a window seat on a night flight, lit by an amber reading light, tracing a route line across a paper airline map on his tray table." />
+      <figcaption>
+        Paper, because a paper map is the only one that still shows you everywhere you're not going
+        this trip. Also because I like them, and Dawn has stopped commenting on it.
+      </figcaption>
+    </figure>
   </section>
 
-  <!-- ================= APPENDIX B: FIELD STATIONS ================= -->
-  <section class="stations">
-    <div class="stations-head">
-      <p class="sec-eyebrow">Appendix B</p>
-      <h2 class="sec-h2">Field Stations</h2>
-      <p class="sec-deck">6 places the observation actually happens, and what's running at each one right now.</p>
+  <!-- ================= THE FLEET ================= -->
+  <section class="fleet">
+    <div class="fleet-head">
+      <p class="sec-eyebrow">Section five</p>
+      <h2 class="sec-h2">Current fleet.</h2>
+      <p class="sec-deck">
+        6 aircraft, honestly statused: 2 MCP servers shipping and a third in beta, a conference in
+        October I'm co-chairing and quietly panicking about, a company I invest in and turn up to
+        argue with (Caprus, and they are extremely polite about the arguing), a mountain I already
+        climbed, an AI Dungeon Master's screen that has never earned a dollar, and a nonprofit with
+        1,000 people through the door and no dues. One of them is staying in the hangar regardless of
+        what the numbers say (it's the D&D one, and I'd like to watch somebody try to shut it down).
+      </p>
     </div>
-
-    <div class="station-grid">
-      {stations.map(s => (
-        <article class="station">
-          <div class="station-top">
-            <span class="station-ref">{s.ref}</span>
-            <span class="station-kind">{s.kind}</span>
-          </div>
-          <h3 class="station-name">{s.name}</h3>
-          <p class="station-note">{s.note}</p>
-          <div class="station-foot">
-            <span class="station-tag">{s.tag}</span>
-            <span class="station-status">{s.status}</span>
-          </div>
-          {s.href ? (
-            <a
-              class="station-cta"
-              href={s.href}
-              target={s.external ? '_blank' : undefined}
-              rel={s.external ? 'noopener noreferrer' : undefined}
-            >{s.cta}</a>
+    <div class="fleet-grid">
+      {fleet.map(f => (
+        <article class="craft">
+          <header class="craft-head">
+            <span class="craft-tail">{f.tail}</span>
+            <span class={`craft-status cs-${f.tone}`}>{f.status}</span>
+          </header>
+          <p class="craft-type">{f.type}</p>
+          <h3 class="craft-name">{f.name}</h3>
+          <p class="craft-note">{f.note}</p>
+          {f.href ? (
+            <a href={f.href} class="craft-cta" target={f.external ? '_blank' : undefined} rel={f.external ? 'noopener' : undefined}>{f.cta}</a>
           ) : (
-            <span class="station-cta station-cta-off">{s.cta}</span>
+            <span class="craft-cta craft-cta-off">{f.cta}</span>
           )}
         </article>
       ))}
     </div>
   </section>
 
-  <!-- ================= CORRESPONDENCE (CTA) ================= -->
-  <section class="corr">
-    <div class="corr-inner">
-      <figure class="corr-fig">
-        <img src="/images/field-guide/desk.jpg" width="1195" height="1600" loading="lazy" decoding="async"
-          alt="Edward Roske in his blue fedora working at night inside a canvas field tent by the light of a brass oil lamp, pinning a specimen card to a corkboard already covered with dozens of them." />
-      </figure>
-      <div class="corr-copy">
-        <p class="sec-eyebrow">Correspondence</p>
-        <h2 class="corr-h2">Write to the author.</h2>
-        <p class="corr-deck">
-          If your organization is somewhere in this guide and you're not sure which plate you're on,
-          that's a good 13 minutes. I'll tell you which specimen you actually have, and whether it's
-          worth keeping.
+  <!-- ================= DUTY FREE ================= -->
+  <section class="duty">
+    <div class="duty-inner">
+      <div class="duty-copy">
+        <p class="sec-eyebrow">Section six</p>
+        <h2 class="sec-h2">Duty free.</h2>
+        <p class="sec-deck">
+          The trolley is coming through. 15 titles, all of them about enterprise finance software, 13
+          on Amazon and 2 that only ever existed to be handed out in a training room. The series is
+          called Look Smarter Than You Are. I picked that name in a hurry, it stuck to 15 books and
+          about 20 years of my working life, and I have still never been able to decide whether it was
+          the smartest thing I ever did or something I should be apologizing for at conferences.
         </p>
-        <div class="corr-cta">
-          <a href="/question/" target="_blank" rel="noopener" class="btn-solid">Book 13 minutes</a>
-          <a href="/contact/" class="btn-line">Send a letter</a>
-          <a href="/speaking/" class="btn-line">Book the keynote</a>
+        <div class="duty-cta">
+          <a href="/books/" class="btn-solid">Browse the trolley</a>
+          <a href="https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW" target="_blank" rel="noopener" class="btn-line">Buy on Amazon</a>
         </div>
+      </div>
+      <ol class="duty-list">
+        {dutyFree.map(b => (
+          <li class={`duty-item ${b.off ? 'duty-off' : ''}`}>
+            <span class="duty-sku">{b.sku}</span>
+            <span class="duty-title">{b.t}{b.sub && <span class="duty-sub">{b.sub}</span>}</span>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= SEAT-BACK CARD ================= -->
+  <section class="seatback">
+    <div class="sb-head">
+      <p class="sec-eyebrow">Section seven</p>
+      <h2 class="sec-h2">In the seat pocket in front of you.</h2>
+      <p class="sec-deck">The questions people actually ask, laid out the way the card lays things out.</p>
+    </div>
+    <div class="sb-grid">
+      {seatback.map((s, i) => (
+        <div class="sb-item">
+          <span class="sb-no">{String(i + 1).padStart(2, '0')}</span>
+          <h3 class="sb-q">{s.q}</h3>
+          <p class="sb-a">{s.a}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ================= FINAL CALL (CTA) ================= -->
+  <section class="final">
+    <div class="final-inner">
+      <p class="sec-eyebrow">Final call</p>
+      <h2 class="final-h2">This is the last call for boarding.</h2>
+      <p class="final-deck">
+        If your organization is somewhere on that card and you're not sure which panel you're on,
+        that's a very good 13 minutes. I'll tell you which one you're actually reading, and whether
+        you need the exit row or just the seat belt. Take whichever button below is the least effort
+        for you.
+      </p>
+      <div class="final-cta">
+        <a href="/question/" target="_blank" rel="noopener" class="btn-solid">Book 13 minutes</a>
+        <a href="/speaking/" class="btn-line">Book the keynote</a>
+        <a href="/contact/" class="btn-line">Send a message</a>
       </div>
     </div>
   </section>
@@ -691,534 +644,577 @@ const webLevels = [
   <!-- ================= COLOPHON ================= -->
   <div class="colophon">
     <p class="colo-line">
-      Printed weekly at 5 AM Atlantic by Plate VII, which also selected this week's subject, wrote
-      most of these captions, and painted every illustration. Species names are invented. The software
-      is real. No vendor paid to appear in this guide, and at least 2 of them would like a word.
+      Roske Air holds no operating certificate and owns no aircraft, and the only route it flies is
+      this page. The whole card was designed, illustrated, written and shipped by an agent at 5AM
+      Atlantic while the operator slept. Make of that what you like. I've made about 4 things of it so
+      far and none of them have settled, and you are very welcome to write me at Edward@Roske.AI with
+      a fifth.
     </p>
   </div>
 </BaseLayout>
 
 <style>
   /* ============================================================
-     A FIELD GUIDE TO THE TEN AGENTS - week of 2026-08-15
-     Plate-book typography on aged paper, read by headlamp in dark
-     mode. Locals: lamp yellow, ink washes, paper grain.
+     ROSKE AIR - week of 2026-08-22
+     Safety-card grammar: numbered instruction panels, heavy-outline
+     pictograms, boarding-pass perforations, mono for every piece of
+     flight data. Dark mode is the night cabin, lit in amber pools.
      ============================================================ */
   :root {
-    --fg-lamp: #e0a83c;
-    --fg-green: #2f5d3a;
-    --fg-sepia: #7d5c2c;
-    --fg-label: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-    --fg-hand: 'Caveat', 'Segoe Script', cursive;
-  }
-
-  /* Paper grain, applied per section rather than globally so the
-     page reads as separate printed sheets. */
-  .hero, .plates, .web, .confused, .bite, .range, .stations, .corr {
-    position: relative;
+    --ra-amber: #e0a92b;      /* fill / reading-light color. Never text on a light surface. */
+    --ra-amber-ink: #8a5c00;  /* the same amber dark enough to set type on cream (5.3:1) */
+    --ra-red: #cf2130;
+    --ra-navy: #132b4a;
   }
 
   /* ---------- shared section furniture ---------- */
   .sec-eyebrow {
-    font-family: var(--fg-label);
+    font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 0.26em;
-    font-size: 0.78rem;
-    font-weight: 600;
-    margin: 0 0 0.7rem;
+    letter-spacing: 0.24em;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin: 0 0 0.9rem;
     color: var(--color-accent);
   }
   .sec-h2 {
     font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: clamp(2.3rem, 5.5vw, 4.2rem);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5.4vw, 4rem);
     line-height: 1.02;
+    letter-spacing: -0.025em;
     margin: 0 0 1.1rem;
-    letter-spacing: -0.01em;
+    text-transform: uppercase;
   }
   :global([data-theme="dark"]) .sec-h2 { color: var(--color-text); }
   :global([data-theme="light"]) .sec-h2 { color: var(--color-text-dark); }
   .sec-deck {
     font-family: var(--font-body);
-    font-size: 1.08rem;
+    font-size: 1.06rem;
     line-height: 1.72;
-    max-width: 40em;
-    margin: 0 0 1.1rem;
+    max-width: 44em;
+    margin: 0 0 1rem;
   }
   :global([data-theme="dark"]) .sec-deck { color: var(--color-text-muted); }
   :global([data-theme="light"]) .sec-deck { color: var(--color-text-dark-muted); }
-
   .sec-margin {
-    font-family: var(--fg-hand);
-    font-size: 1.28rem;
-    line-height: 1.35;
-    max-width: 22em;
-    transform: rotate(-1.1deg);
-    margin: 1.6rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 0;
   }
-  :global([data-theme="dark"]) .sec-margin { color: var(--fg-lamp); }
-  :global([data-theme="light"]) .sec-margin { color: var(--fg-sepia); }
+  :global([data-theme="dark"]) .sec-margin { color: var(--ra-amber); }
+  :global([data-theme="light"]) .sec-margin { color: var(--ra-amber-ink); }
 
-  /* ---------- buttons ---------- */
   .btn-solid, .btn-line {
-    display: inline-flex; align-items: center;
-    font-family: var(--fg-label);
-    text-transform: uppercase; letter-spacing: 0.14em;
-    font-size: 0.92rem; font-weight: 600;
-    padding: 0.85rem 1.5rem;
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.95rem 1.6rem;
+    border: 2px solid var(--color-accent);
     text-decoration: none;
-    border: 1.5px solid var(--color-accent);
-    transition: transform 0.14s ease, background-color 0.14s ease, color 0.14s ease;
+    transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease;
   }
-  .btn-solid { background: var(--color-accent); color: #fdf8ec; }
+  .btn-solid { background: var(--color-accent); color: #fff; }
   .btn-solid:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); transform: translateY(-2px); }
-  .btn-line { color: var(--color-accent); background: transparent; }
-  .btn-line:hover { transform: translateY(-2px); background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+  .btn-line { background: transparent; color: var(--color-accent); }
+  .btn-line:hover { background: var(--color-accent); color: #fff; transform: translateY(-2px); }
+  :global([data-theme="dark"]) .btn-line { border-color: var(--color-text-muted); color: var(--color-text); }
+  :global([data-theme="dark"]) .btn-line:hover { border-color: var(--color-accent); color: #fff; }
 
-  /* ---------- edition strip ---------- */
-  .ed {
-    border-bottom: 3px double var(--color-border);
-    font-family: var(--fg-label);
+  /* ---------- cabin strip ---------- */
+  .cabin {
+    border-bottom: 1px solid;
+    font-family: var(--font-mono);
   }
-  :global([data-theme="dark"]) .ed { background: var(--color-surface); border-color: var(--color-border); }
-  :global([data-theme="light"]) .ed { background: var(--color-surface-light); border-color: var(--color-border-light); }
-  .ed-inner {
-    max-width: 1200px; margin: 0 auto;
-    padding: 0.6rem 2rem;
-    display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-    text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.72rem; font-weight: 500;
+  :global([data-theme="dark"]) .cabin { background: var(--color-surface); border-color: var(--color-border); }
+  :global([data-theme="light"]) .cabin { background: var(--ra-navy); border-color: var(--ra-navy); }
+  .cabin-inner {
+    max-width: 1280px; margin: 0 auto;
+    padding: 0.6rem 1.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem;
+    align-items: center; justify-content: space-between;
   }
-  :global([data-theme="dark"]) .ed-item { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .ed-item { color: var(--color-text-dark-muted); }
-  .ed-mid { color: var(--color-accent) !important; }
-  @media (max-width: 760px) { .ed-mid { display: none; } .ed-inner { padding: 0.6rem 1.2rem; font-size: 0.62rem; } }
+  .cabin-item {
+    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  :global([data-theme="dark"]) .cabin-item { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .cabin-item { color: #cfd8e4; }
+  .cabin-mark { color: var(--ra-amber) !important; font-weight: 700; }
+  .cabin-on { color: var(--ra-amber) !important; }
 
   /* ---------- hero ---------- */
-  .hero { padding: 4rem 2rem 0; }
+  .hero { padding: 4rem 1.5rem 0; }
   .hero-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.05fr 1fr; gap: 3.5rem; align-items: center;
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;
   }
-  @media (max-width: 940px) { .hero-inner { grid-template-columns: 1fr; gap: 2.4rem; } .hero { padding: 2.5rem 1.2rem 0; } }
-
-  .hero-frame {
-    position: relative;
-    padding: 0.8rem;
-    border: 1px solid var(--color-border);
-    outline: 4px solid transparent;
-  }
-  :global([data-theme="dark"]) .hero-frame { border-color: var(--color-border); background: var(--color-surface); }
-  :global([data-theme="light"]) .hero-frame { border-color: var(--color-border-light); background: var(--color-surface-light); }
-  .hero-frame::after {
-    content: ''; position: absolute; inset: 0.35rem; border: 1px solid currentColor; opacity: 0.28; pointer-events: none;
-  }
-  .hero-img { display: block; width: 100%; height: auto; }
-  .hero-plate {
-    position: absolute; top: -0.75rem; left: 1.4rem; z-index: 2;
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.24em;
-    font-size: 0.66rem; font-weight: 600; padding: 0.24rem 0.7rem;
-    background: var(--color-accent); color: #fdf8ec;
-  }
-  .hero-fig { margin: 0; }
-  .hero-cap {
-    font-family: var(--font-body); font-style: italic;
-    font-size: 0.92rem; line-height: 1.6; margin-top: 0.9rem; max-width: 34em;
-  }
-  :global([data-theme="dark"]) .hero-cap { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .hero-cap { color: var(--color-text-dark-muted); }
-
   .hero-kicker {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.22em;
-    font-size: 0.74rem; font-weight: 600; margin: 0 0 1.2rem; color: var(--color-accent);
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.2em;
+    text-transform: uppercase; margin: 0 0 1.4rem; color: var(--color-accent);
   }
   .hero-h1 {
     font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: clamp(2.9rem, 7vw, 5.4rem);
-    line-height: 0.94;
-    letter-spacing: -0.015em;
-    margin: 0 0 1rem;
+    font-weight: 900;
+    font-size: clamp(3.4rem, 10vw, 7.5rem);
+    line-height: 0.86;
+    letter-spacing: -0.045em;
+    margin: 0 0 1.2rem;
+    text-transform: uppercase;
+    font-stretch: 112%;
   }
   :global([data-theme="dark"]) .hero-h1 { color: var(--color-text); }
-  :global([data-theme="light"]) .hero-h1 { color: var(--color-text-dark); }
-  .hero-h1-sub {
-    display: inline-block;
-    font-style: italic; font-weight: 400;
-    font-size: 0.42em; letter-spacing: 0.04em;
-    color: var(--color-accent);
+  :global([data-theme="light"]) .hero-h1 { color: var(--ra-navy); }
+  .hero-h1-air { display: block; color: var(--color-accent); }
+  .hero-type {
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+    font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.14em;
+    text-transform: uppercase; margin: 0 0 1.6rem;
+    padding-bottom: 1.4rem; border-bottom: 3px solid var(--color-accent);
   }
-  .hero-binomial {
-    font-family: var(--font-body); font-style: italic;
-    font-size: 1.06rem; line-height: 1.6; max-width: 32em; margin: 0 0 1.4rem;
-  }
-  :global([data-theme="dark"]) .hero-binomial { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .hero-binomial { color: var(--color-text-dark-muted); }
-  .hero-rule { height: 0; border-top: 3px double var(--color-border); margin: 0 0 1.4rem; max-width: 32em; }
-  :global([data-theme="light"]) .hero-rule { border-color: var(--color-border-light); }
-
+  :global([data-theme="dark"]) .hero-type { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .hero-type { color: var(--color-text-dark-muted); }
+  :global([data-theme="dark"]) .hero-type-div { color: var(--ra-amber); }
+  :global([data-theme="light"]) .hero-type-div { color: var(--ra-amber-ink); }
   .hero-sub {
     font-family: var(--font-heading); font-weight: 600;
-    font-size: clamp(1.15rem, 2vw, 1.45rem); line-height: 1.35; margin: 0 0 1.1rem; max-width: 26em;
+    font-size: clamp(1.1rem, 2vw, 1.4rem); line-height: 1.38; margin: 0 0 1.1rem;
   }
   :global([data-theme="dark"]) .hero-sub { color: var(--color-text); }
   :global([data-theme="light"]) .hero-sub { color: var(--color-text-dark); }
-  .hero-desc { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.75; max-width: 36em; margin: 0 0 1.8rem; }
+  .hero-desc {
+    font-family: var(--font-body); font-size: 1.03rem; line-height: 1.75; margin: 0 0 2rem;
+    max-width: 40em;
+  }
   :global([data-theme="dark"]) .hero-desc { color: var(--color-text-muted); }
   :global([data-theme="light"]) .hero-desc { color: var(--color-text-dark-muted); }
   .hero-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; }
 
-  /* ---------- collector's record ---------- */
-  .record { max-width: 1200px; margin: 3.5rem auto 0; padding: 0 0 3.5rem; }
-  .record-inner {
-    display: flex; flex-wrap: wrap; align-items: baseline; gap: 2.4rem;
-    border-top: 3px double var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-    padding: 1.3rem 0;
+  .hero-fig { margin: 0; }
+  .hero-frame {
+    position: relative; border: 3px solid; overflow: hidden;
   }
-  :global([data-theme="light"]) .record-inner { border-color: var(--color-border-light); }
-  .record-head {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.24em;
-    font-size: 0.7rem; font-weight: 600; color: var(--color-accent);
+  :global([data-theme="dark"]) .hero-frame { border-color: var(--color-border); background: var(--color-surface); }
+  :global([data-theme="light"]) .hero-frame { border-color: var(--ra-navy); background: var(--color-surface-light); }
+  .hero-tag {
+    position: absolute; top: 0; left: 0; z-index: 2;
+    font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    background: var(--color-accent); color: #fff; padding: 0.4rem 0.9rem;
   }
-  .record-stat { display: flex; align-items: baseline; gap: 0.6rem; }
-  .record-value { font-family: var(--font-heading); font-weight: 700; font-size: 1.9rem; line-height: 1; }
-  :global([data-theme="dark"]) .record-value { color: var(--color-text); }
-  :global([data-theme="light"]) .record-value { color: var(--color-text-dark); }
-  .record-label { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; }
-  :global([data-theme="dark"]) .record-label { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .record-label { color: var(--color-text-dark-muted); }
+  .hero-img { display: block; width: 100%; height: auto; }
+  .hero-cap {
+    font-family: var(--font-body); font-size: 0.88rem; line-height: 1.6;
+    margin: 0.9rem 0 0; padding-left: 0.9rem; border-left: 3px solid var(--ra-amber);
+  }
+  :global([data-theme="dark"]) .hero-cap { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .hero-cap { color: var(--color-text-dark-muted); }
 
-  /* ---------- about the author frame ---------- */
-  .author-frame { position: relative; }
-  .author-plate {
-    position: absolute; top: 1.1rem; left: 50%; transform: translateX(-50%); z-index: 2; margin: 0;
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.3em;
-    font-size: 0.66rem; font-weight: 600; color: var(--color-accent);
+  /* ---------- boarding pass ---------- */
+  .pass {
+    max-width: 1280px; margin: 3.5rem auto 0;
+    display: grid; grid-template-columns: 1.4fr 1fr;
+    border: 3px solid;
+    position: relative;
   }
+  :global([data-theme="dark"]) .pass { border-color: var(--color-border); background: var(--color-surface); }
+  :global([data-theme="light"]) .pass { border-color: var(--ra-navy); background: var(--color-surface-light); }
+  .pass-main { padding: 1.6rem 1.8rem; }
+  .pass-stub {
+    padding: 1.6rem 1.8rem;
+    border-left: 3px dashed;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    align-items: center;
+  }
+  :global([data-theme="dark"]) .pass-stub { border-color: var(--color-border); }
+  :global([data-theme="light"]) .pass-stub { border-color: var(--color-border-light); }
+  .pass-brand {
+    display: block; font-family: var(--font-mono); font-size: 0.66rem;
+    letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-accent);
+    margin-bottom: 0.7rem;
+  }
+  .pass-route { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.7rem; }
+  .pass-code {
+    font-family: var(--font-heading); font-weight: 900; font-size: clamp(1.8rem, 4vw, 2.9rem);
+    letter-spacing: -0.02em;
+  }
+  :global([data-theme="dark"]) .pass-code { color: var(--color-text); }
+  :global([data-theme="light"]) .pass-code { color: var(--ra-navy); }
+  .pass-plane { color: var(--ra-amber); display: inline-flex; }
+  .pass-note { font-family: var(--font-body); font-size: 0.88rem; line-height: 1.6; }
+  :global([data-theme="dark"]) .pass-note { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .pass-note { color: var(--color-text-dark-muted); }
+  .pass-stat { display: block; text-align: center; }
+  .pass-v {
+    display: block; font-family: var(--font-heading); font-weight: 900;
+    font-size: clamp(1.3rem, 3vw, 2rem); line-height: 1; color: var(--color-accent);
+  }
+  .pass-k {
+    display: block; font-family: var(--font-mono); font-size: 0.6rem;
+    letter-spacing: 0.14em; text-transform: uppercase; margin-top: 0.4rem;
+  }
+  :global([data-theme="dark"]) .pass-k { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .pass-k { color: var(--color-text-dark-muted); }
 
-  /* ---------- the plates ---------- */
-  .plates { padding: 5rem 2rem; }
-  :global([data-theme="dark"]) .plates { background: var(--color-background); }
-  :global([data-theme="light"]) .plates { background: var(--color-background-light); }
-  .plates-head { max-width: 1200px; margin: 0 auto 3rem; }
-  .plate-grid {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0;
-    border-top: 1px solid var(--color-border); border-left: 1px solid var(--color-border);
+  /* ---------- upgrade frame around SpeakerCTA ---------- */
+  .upgrade { position: relative; padding-top: 1.6rem; }
+  .upgrade-plate {
+    max-width: 1280px; margin: 0 auto;
+    padding: 0 1.5rem;
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.24em;
+    text-transform: uppercase;
   }
-  :global([data-theme="light"]) .plate-grid { border-color: var(--color-border-light); }
-  @media (max-width: 860px) { .plate-grid { grid-template-columns: 1fr; } .plates { padding: 3rem 1.2rem; } }
+  :global([data-theme="dark"]) .upgrade-plate { color: var(--ra-amber); }
+  :global([data-theme="light"]) .upgrade-plate { color: var(--ra-amber-ink); }
 
-  .plate {
-    padding: 1.8rem 1.7rem 2rem;
-    border-right: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);
-  }
-  :global([data-theme="light"]) .plate { border-color: var(--color-border-light); background: var(--color-surface-light); }
-  :global([data-theme="dark"]) .plate { background: var(--color-surface); }
-  .plate-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.6rem 1rem; margin-bottom: 1rem; }
-  .plate-wide { grid-column: 1 / -1; }
-  .plate-off {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.16em;
-    font-size: 0.64rem; font-weight: 600; padding: 0.22rem 0.6rem;
-    border: 1px dashed currentColor; white-space: nowrap;
-  }
-  :global([data-theme="dark"]) .plate-off { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .plate-off { color: var(--color-text-dark-muted); }
-  .plate-no {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.24em;
-    font-size: 0.72rem; font-weight: 600;
-  }
-  :global([data-theme="dark"]) .plate-no { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .plate-no { color: var(--color-text-dark-muted); }
-  .plate-status {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.16em;
-    font-size: 0.64rem; font-weight: 600; padding: 0.22rem 0.6rem; border: 1px solid currentColor;
-    white-space: nowrap;
-  }
-  .status-good { color: var(--fg-green); }
-  :global([data-theme="dark"]) .status-good { color: #86b98f; }
-  .status-warn { color: var(--fg-sepia); }
-  :global([data-theme="dark"]) .status-warn { color: var(--fg-lamp); }
-  .status-bad { color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 12%, transparent); }
+  /* ---------- the safety card ---------- */
+  .card { padding: 5rem 1.5rem; }
+  :global([data-theme="dark"]) .card { background: linear-gradient(180deg, transparent, rgba(19,43,74,0.35), transparent); }
+  :global([data-theme="light"]) .card { background: var(--color-surface-light); border-top: 1px solid var(--color-border-light); border-bottom: 1px solid var(--color-border-light); }
+  .card-head { max-width: 1280px; margin: 0 auto 3rem; }
 
-  .plate-binomial {
-    font-family: var(--font-body); font-style: italic; font-weight: 500;
-    font-size: 1.5rem; line-height: 1.2; margin: 0 0 0.2rem;
+  .panels {
+    max-width: 1280px; margin: 0 auto; padding: 0; list-style: none;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+    border: 3px solid;
   }
-  :global([data-theme="dark"]) .plate-binomial { color: var(--color-text); }
-  :global([data-theme="light"]) .plate-binomial { color: var(--color-text-dark); }
-  .plate-common {
-    font-family: var(--font-heading); font-weight: 700;
-    text-transform: uppercase; letter-spacing: 0.06em; font-size: 0.92rem;
-    margin: 0 0 0.9rem; color: var(--color-accent);
-  }
-  .plate-forms {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.16em;
-    font-size: 0.68rem; font-weight: 600; margin: -0.55rem 0 1.1rem;
-  }
-  :global([data-theme="dark"]) .plate-forms { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .plate-forms { color: var(--color-text-dark-muted); }
-
-  .plate-stack {
-    font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.6;
-    margin: 0 0 1.2rem; padding: 0.6rem 0.75rem;
-    border-left: 3px solid var(--color-accent);
-  }
-  :global([data-theme="dark"]) .plate-stack { color: var(--color-text-muted); background: color-mix(in srgb, var(--color-text) 4%, transparent); }
-  :global([data-theme="light"]) .plate-stack { color: var(--color-text-dark-muted); background: color-mix(in srgb, var(--color-text-dark) 5%, transparent); }
-
-  .plate-data { margin: 0 0 1.1rem; }
-  .pd-row {
-    display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.9rem;
-    padding: 0.4rem 0; border-bottom: 1px dotted var(--color-border);
-  }
-  :global([data-theme="light"]) .pd-row { border-color: var(--color-border-light); }
-  .pd-row dt {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.14em;
-    font-size: 0.68rem; font-weight: 600; padding-top: 0.15rem;
-  }
-  :global([data-theme="dark"]) .pd-row dt { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .pd-row dt { color: var(--color-text-dark-muted); }
-  .pd-row dd { margin: 0; font-family: var(--font-body); font-size: 0.94rem; line-height: 1.5; }
-  :global([data-theme="dark"]) .pd-row dd { color: var(--color-text); }
-  :global([data-theme="light"]) .pd-row dd { color: var(--color-text-dark); }
-
-  .plate-notes { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.68; margin: 0; }
-  :global([data-theme="dark"]) .plate-notes { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .plate-notes { color: var(--color-text-dark-muted); }
-  .pn-label {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.14em;
-    font-size: 0.72rem; font-weight: 600; color: var(--color-accent);
-  }
-
-  /* ---------- food web ---------- */
-  .web { padding: 5rem 2rem; border-top: 3px double var(--color-border); }
-  :global([data-theme="dark"]) .web { background: var(--color-surface); border-color: var(--color-border); }
-  :global([data-theme="light"]) .web { background: var(--color-surface-light); border-color: var(--color-border-light); }
-  .web-head { max-width: 1200px; margin: 0 auto 2.6rem; }
-  .web-body {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1.15fr; gap: 3rem; align-items: start;
-  }
-  @media (max-width: 940px) { .web-body { grid-template-columns: 1fr; gap: 2rem; } .web { padding: 3rem 1.2rem; } }
-  .web-fig { margin: 0; position: sticky; top: 6rem; }
-  @media (max-width: 940px) { .web-fig { position: static; } }
-  .web-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
-  :global([data-theme="light"]) .web-fig img { border-color: var(--color-border-light); }
-  .web-fig figcaption {
-    font-family: var(--font-body); font-style: italic; font-size: 0.9rem; line-height: 1.6; margin-top: 0.8rem;
-  }
-  :global([data-theme="dark"]) .web-fig figcaption { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .web-fig figcaption { color: var(--color-text-dark-muted); }
-
-  .web-diagram { display: flex; flex-direction: column; }
-  .web-tier { display: block; }
-  /* The Familiar is not fed by anything, so it gets a gap and a dashed rule
-     instead of an arrow. */
-  .web-tier-detached { margin-top: 1.6rem; padding-top: 1.3rem; border-top: 1px dashed var(--color-border); }
-  :global([data-theme="light"]) .web-tier-detached { border-color: var(--color-border-light); }
-  .web-tier-label { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 0.6rem; }
-  .wt-name {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.22em;
-    font-size: 0.68rem; font-weight: 600; color: var(--color-accent);
-  }
-  .wt-cap { font-family: var(--font-body); font-style: italic; font-size: 0.86rem; line-height: 1.45; }
-  :global([data-theme="dark"]) .wt-cap { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .wt-cap { color: var(--color-text-dark-muted); }
-  .web-nodes { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .web-node {
-    font-family: var(--font-mono); font-size: 0.78rem; padding: 0.5rem 0.8rem;
-    border: 1px solid var(--color-accent); white-space: nowrap;
-  }
-  :global([data-theme="dark"]) .web-node { color: var(--color-text); }
-  :global([data-theme="light"]) .web-node { color: var(--color-text-dark); }
-  .web-node-loose { border-style: dashed; opacity: 0.8; }
-  .web-arrows { display: flex; gap: 2.2rem; padding: 0.55rem 1.4rem 0.9rem; }
-  .web-arrows span {
-    display: block; width: 1px; height: 1.6rem; background: var(--color-border); position: relative;
-  }
-  :global([data-theme="light"]) .web-arrows span { background: var(--color-border-light); }
-  .web-arrows span::after {
-    content: ''; position: absolute; bottom: 0; left: -3px;
-    border-left: 3.5px solid transparent; border-right: 3.5px solid transparent;
-    border-top: 5px solid var(--color-accent);
-  }
-  .web-punch {
-    max-width: 1200px; margin: 3rem auto 0; padding-top: 1.6rem;
-    border-top: 1px solid var(--color-border);
-    font-family: var(--font-heading); font-style: italic; font-weight: 500;
-    font-size: clamp(1.15rem, 2.2vw, 1.6rem); line-height: 1.45; max-width: 46em;
-  }
-  :global([data-theme="light"]) .web-punch { border-color: var(--color-border-light); color: var(--color-text-dark); }
-  :global([data-theme="dark"]) .web-punch { color: var(--color-text); }
-
-  /* ---------- commonly confused with ---------- */
-  .confused { padding: 5rem 2rem; }
-  :global([data-theme="dark"]) .confused { background: var(--color-background); }
-  :global([data-theme="light"]) .confused { background: var(--color-background-light); }
-  .confused-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.35fr 1fr; gap: 3.2rem; align-items: start;
-  }
-  @media (max-width: 940px) { .confused-inner { grid-template-columns: 1fr; gap: 2.2rem; } .confused { padding: 3rem 1.2rem; } }
-  .conf-list { list-style: none; margin: 2rem 0 0; padding: 0; }
-  .conf-item {
-    display: grid; grid-template-columns: 3rem 1fr; gap: 1rem;
-    padding: 1.4rem 0; border-top: 1px solid var(--color-border);
-  }
-  :global([data-theme="light"]) .conf-item { border-color: var(--color-border-light); }
-  .conf-no { font-family: var(--font-heading); font-weight: 700; font-size: 1.6rem; line-height: 1; color: var(--color-accent); }
-  .conf-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.28rem; margin: 0 0 0.55rem; }
-  :global([data-theme="dark"]) .conf-name { color: var(--color-text); }
-  :global([data-theme="light"]) .conf-name { color: var(--color-text-dark); }
-  .conf-tell, .conf-test { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.62; margin: 0 0 0.45rem; }
-  :global([data-theme="dark"]) .conf-tell, :global([data-theme="dark"]) .conf-test { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .conf-tell, :global([data-theme="light"]) .conf-test { color: var(--color-text-dark-muted); }
-  .conf-lbl {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.14em;
-    font-size: 0.7rem; font-weight: 600; color: var(--color-accent);
-  }
-  .confused-fig { margin: 0; position: sticky; top: 6rem; }
-  .confused-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
-  :global([data-theme="light"]) .confused-fig img { border-color: var(--color-border-light); }
-  .confused-fig figcaption { font-family: var(--font-body); font-style: italic; font-size: 0.9rem; line-height: 1.6; margin-top: 0.8rem; }
-  :global([data-theme="dark"]) .confused-fig figcaption { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .confused-fig figcaption { color: var(--color-text-dark-muted); }
-  @media (max-width: 940px) { .confused-fig { position: static; } }
-
-  /* ---------- which ones bite ---------- */
-  .bite { padding: 5rem 2rem; border-top: 3px double var(--color-border); }
-  :global([data-theme="dark"]) .bite { background: var(--color-surface); border-color: var(--color-border); }
-  :global([data-theme="light"]) .bite { background: var(--color-surface-light); border-color: var(--color-border-light); }
-  .bite-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1.15fr; gap: 3.2rem; align-items: center;
-  }
-  @media (max-width: 940px) { .bite-inner { grid-template-columns: 1fr; gap: 2rem; } .bite { padding: 3rem 1.2rem; } }
-  .bite-fig { margin: 0; }
-  .bite-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
-  :global([data-theme="light"]) .bite-fig img { border-color: var(--color-border-light); }
-  .bite-margin {
-    font-family: var(--fg-hand); font-size: 1.3rem; transform: rotate(-1.4deg); margin: 1.4rem 0 0;
-  }
-  :global([data-theme="dark"]) .bite-margin { color: var(--fg-lamp); }
-  :global([data-theme="light"]) .bite-margin { color: var(--fg-sepia); }
-
-  /* ---------- range map ---------- */
-  .range { padding: 5rem 2rem; }
-  :global([data-theme="dark"]) .range { background: var(--color-background); }
-  :global([data-theme="light"]) .range { background: var(--color-background-light); }
-  .range-head { max-width: 1200px; margin: 0 auto 2.6rem; }
-  .range-body {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
-  }
-  @media (max-width: 940px) { .range-body { grid-template-columns: 1fr; gap: 2rem; } .range { padding: 3rem 1.2rem; } }
-  .range-list { list-style: none; margin: 0; padding: 0; }
-  .range-item { padding: 1.2rem 0; border-bottom: 1px dotted var(--color-border); }
-  :global([data-theme="light"]) .range-item { border-color: var(--color-border-light); }
-  .range-tag {
-    display: inline-block; margin-bottom: 0.5rem;
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.18em;
-    font-size: 0.62rem; font-weight: 600; padding: 0.18rem 0.55rem;
-    border: 1px dashed var(--color-accent); color: var(--color-accent);
-  }
-  .range-zone { font-family: var(--font-heading); font-weight: 700; font-size: 1.24rem; margin: 0 0 0.4rem; }
-  :global([data-theme="dark"]) .range-zone { color: var(--color-text); }
-  :global([data-theme="light"]) .range-zone { color: var(--color-text-dark); }
-  .range-note { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.65; margin: 0; }
-  :global([data-theme="dark"]) .range-note { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .range-note { color: var(--color-text-dark-muted); }
-  .range-fig { margin: 0; position: sticky; top: 6rem; }
-  .range-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
-  :global([data-theme="light"]) .range-fig img { border-color: var(--color-border-light); }
-  .range-fig figcaption { font-family: var(--font-body); font-style: italic; font-size: 0.9rem; line-height: 1.6; margin-top: 0.8rem; }
-  :global([data-theme="dark"]) .range-fig figcaption { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .range-fig figcaption { color: var(--color-text-dark-muted); }
-  @media (max-width: 940px) { .range-fig { position: static; } }
-
-  /* ---------- field stations ---------- */
-  .stations { padding: 5rem 2rem; border-top: 3px double var(--color-border); }
-  :global([data-theme="dark"]) .stations { background: var(--color-surface); border-color: var(--color-border); }
-  :global([data-theme="light"]) .stations { background: var(--color-surface-light); border-color: var(--color-border-light); }
-  .stations-head { max-width: 1200px; margin: 0 auto 2.6rem; }
-  .station-grid {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem;
-  }
-  @media (max-width: 980px) { .station-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 640px) { .station-grid { grid-template-columns: 1fr; } .stations { padding: 3rem 1.2rem; } }
-  .station {
+  :global([data-theme="dark"]) .panels { border-color: var(--color-border); }
+  :global([data-theme="light"]) .panels { border-color: var(--ra-navy); }
+  .panel {
+    padding: 1.9rem 1.7rem 2.1rem;
+    border-right: 1px solid; border-bottom: 1px solid;
     display: flex; flex-direction: column;
-    padding: 1.5rem 1.4rem;
-    border: 1px solid var(--color-border);
-    transition: transform 0.16s ease, border-color 0.16s ease;
   }
-  :global([data-theme="light"]) .station { border-color: var(--color-border-light); background: var(--color-background-light); }
-  :global([data-theme="dark"]) .station { background: var(--color-background); }
-  .station:hover { transform: translateY(-3px); border-color: var(--color-accent); }
-  .station-top { display: flex; justify-content: space-between; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; }
-  .station-ref { font-family: var(--font-mono); font-size: 0.74rem; color: var(--color-accent); }
-  .station-kind {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.64rem; font-weight: 600;
+  :global([data-theme="dark"]) .panel { border-color: var(--color-border); }
+  :global([data-theme="light"]) .panel { border-color: var(--color-border-light); }
+  .panel:nth-child(3n) { border-right: 0; }
+  .panel:nth-child(n+4) { border-bottom: 0; }
+  .panel-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.1rem; }
+  .panel-no {
+    font-family: var(--font-heading); font-weight: 900; font-size: 2.6rem; line-height: 1;
+    color: var(--color-accent); letter-spacing: -0.04em;
   }
-  :global([data-theme="dark"]) .station-kind { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .station-kind { color: var(--color-text-dark-muted); }
-  .station-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.22rem; line-height: 1.2; margin: 0 0 0.7rem; }
-  :global([data-theme="dark"]) .station-name { color: var(--color-text); }
-  :global([data-theme="light"]) .station-name { color: var(--color-text-dark); }
-  .station-note { font-family: var(--font-body); font-size: 0.94rem; line-height: 1.62; margin: 0 0 1.1rem; flex: 1; }
-  :global([data-theme="dark"]) .station-note { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .station-note { color: var(--color-text-dark-muted); }
-  .station-foot {
-    display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 1rem;
-    font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.05em;
+  .panel-pict { width: 88px; height: 88px; flex: 0 0 88px; }
+  .pict { width: 100%; height: 100%; }
+  .pict .ps { fill: none; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+  .pict .pf { stroke-width: 5; stroke-linejoin: round; }
+  .pict .px { fill: none; stroke: var(--ra-red); stroke-width: 6; stroke-linecap: round; }
+  .pict .pc { fill: none; stroke: var(--ra-red); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+  :global([data-theme="dark"]) .pict .ps { stroke: var(--color-text); }
+  :global([data-theme="dark"]) .pict .pf { stroke: var(--color-text); fill: var(--ra-amber); }
+  :global([data-theme="light"]) .pict .ps { stroke: var(--ra-navy); }
+  :global([data-theme="light"]) .pict .pf { stroke: var(--ra-navy); fill: var(--ra-amber); }
+  .panel-sign {
+    font-family: var(--font-heading); font-weight: 800; font-size: 1.24rem; line-height: 1.22;
+    text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 0.7rem;
   }
-  .station-tag { padding: 0.2rem 0.5rem; border: 1px solid var(--color-border); }
-  :global([data-theme="light"]) .station-tag { border-color: var(--color-border-light); color: var(--color-text-dark-muted); }
-  :global([data-theme="dark"]) .station-tag { color: var(--color-text-muted); }
-  .station-status { color: var(--color-accent); }
-  .station-cta {
-    font-family: var(--fg-label); text-transform: uppercase; letter-spacing: 0.14em;
-    font-size: 0.78rem; font-weight: 600; text-decoration: none;
-    color: var(--color-accent); border-bottom: 1.5px solid var(--color-accent); align-self: flex-start;
+  :global([data-theme="dark"]) .panel-sign { color: var(--color-text); }
+  :global([data-theme="light"]) .panel-sign { color: var(--ra-navy); }
+  .panel-orig {
+    font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.5;
+    margin: 0 0 1rem; padding-bottom: 1rem; border-bottom: 1px solid;
+    font-style: italic;
   }
-  .station-cta:hover { border-bottom-width: 3px; }
-  .station-cta-off { opacity: 0.6; border-bottom-style: dashed; }
-  :global([data-theme="dark"]) .station-cta-off { color: var(--color-text-muted); border-color: var(--color-text-muted); }
-  :global([data-theme="light"]) .station-cta-off { color: var(--color-text-dark-muted); border-color: var(--color-text-dark-muted); }
+  :global([data-theme="dark"]) .panel-orig { color: var(--ra-amber); border-color: var(--color-border); }
+  :global([data-theme="light"]) .panel-orig { color: var(--ra-amber-ink); border-color: var(--color-border-light); }
+  .panel-body { font-family: var(--font-body); font-size: 0.97rem; line-height: 1.68; margin: 0; }
+  :global([data-theme="dark"]) .panel-body { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .panel-body { color: var(--color-text-dark-muted); }
 
-  /* ---------- correspondence ---------- */
-  .corr { padding: 5rem 2rem; border-top: 3px double var(--color-border); }
-  :global([data-theme="dark"]) .corr { background: var(--color-background); border-color: var(--color-border); }
-  :global([data-theme="light"]) .corr { background: var(--color-background-light); border-color: var(--color-border-light); }
-  .corr-inner {
-    max-width: 1000px; margin: 0 auto;
-    display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; align-items: center;
+  /* ---------- share block ---------- */
+  .share {
+    max-width: 1280px; margin: 2.5rem auto 0;
+    display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.5rem; align-items: center;
+    border: 3px solid var(--color-accent); padding: 2rem;
   }
-  @media (max-width: 860px) { .corr-inner { grid-template-columns: 1fr; gap: 2rem; } .corr { padding: 3rem 1.2rem; } }
-  .corr-fig { margin: 0; }
-  .corr-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
-  :global([data-theme="light"]) .corr-fig img { border-color: var(--color-border-light); }
-  .corr-h2 {
-    font-family: var(--font-heading); font-weight: 700;
-    font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.05; margin: 0 0 1rem;
+  .share-eyebrow {
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em;
+    text-transform: uppercase; margin: 0 0 0.8rem; color: var(--color-accent);
   }
-  :global([data-theme="dark"]) .corr-h2 { color: var(--color-text); }
-  :global([data-theme="light"]) .corr-h2 { color: var(--color-text-dark); }
-  .corr-deck { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.72; margin: 0 0 1.6rem; max-width: 34em; }
-  :global([data-theme="dark"]) .corr-deck { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .corr-deck { color: var(--color-text-dark-muted); }
-  .corr-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .share-text { font-family: var(--font-body); font-size: 1rem; line-height: 1.7; margin: 0 0 1.5rem; max-width: 42em; }
+  :global([data-theme="dark"]) .share-text { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .share-text { color: var(--color-text-dark-muted); }
+  .share-thumb { display: block; border: 2px solid var(--color-border-light); }
+  .share-thumb img { display: block; width: 100%; height: auto; }
+
+  /* ---------- cabin demonstration ---------- */
+  .demo { padding: 5rem 1.5rem; max-width: 1280px; margin: 0 auto; }
+  .demo-head { margin-bottom: 2.6rem; }
+  .demo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
+  .demo-fig { margin: 0; }
+  .demo-fig img {
+    display: block; width: 100%; height: 300px; object-fit: cover;
+    border: 3px solid;
+  }
+  :global([data-theme="dark"]) .demo-fig img { border-color: var(--color-border); }
+  :global([data-theme="light"]) .demo-fig img { border-color: var(--ra-navy); }
+  .demo-fig figcaption { padding-top: 0.8rem; }
+  .demo-label {
+    display: block; font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.4rem;
+  }
+  .demo-cap { display: block; font-family: var(--font-body); font-size: 0.88rem; line-height: 1.6; }
+  :global([data-theme="dark"]) .demo-cap { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .demo-cap { color: var(--color-text-dark-muted); }
+
+  /* ---------- irregular operations ---------- */
+  .irrops { padding: 5rem 1.5rem; }
+  :global([data-theme="dark"]) .irrops { background: var(--color-surface); }
+  :global([data-theme="light"]) .irrops { background: var(--ra-navy); }
+  :global([data-theme="light"]) .irrops .sec-h2 { color: #fff; }
+  :global([data-theme="light"]) .irrops .sec-deck { color: #c3cedd; }
+  .irrops-head { max-width: 1280px; margin: 0 auto 2.6rem; }
+  .irr-list { max-width: 1280px; margin: 0 auto; padding: 0; list-style: none; }
+  .irr {
+    display: grid; grid-template-columns: 170px 1fr; gap: 2rem;
+    padding: 1.8rem 0; border-top: 1px solid;
+  }
+  :global([data-theme="dark"]) .irr { border-color: var(--color-border); }
+  :global([data-theme="light"]) .irr { border-color: rgba(255,255,255,0.18); }
+  .irr:last-child { border-bottom: 1px solid; }
+  :global([data-theme="dark"]) .irr:last-child { border-color: var(--color-border); }
+  :global([data-theme="light"]) .irr:last-child { border-color: rgba(255,255,255,0.18); }
+  .irr-code {
+    font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700;
+    color: var(--ra-amber); letter-spacing: 0.02em;
+  }
+  .irr-head {
+    font-family: var(--font-heading); font-weight: 800; font-size: 1.3rem;
+    text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 0.6rem;
+  }
+  :global([data-theme="dark"]) .irr-head { color: var(--color-text); }
+  :global([data-theme="light"]) .irr-head { color: #fff; }
+  .irr-text { font-family: var(--font-body); font-size: 1rem; line-height: 1.72; margin: 0; max-width: 52em; }
+  :global([data-theme="dark"]) .irr-text { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .irr-text { color: #c3cedd; }
+  .irr-link {
+    display: inline-block; margin-top: 0.9rem;
+    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--color-accent); text-decoration: none;
+    border-bottom: 2px solid var(--color-accent); padding-bottom: 0.2rem;
+  }
+  :global([data-theme="light"]) .irr-link { color: var(--ra-amber); border-color: var(--ra-amber); }
+  .irr-link:hover { opacity: 0.75; }
+
+  /* ---------- route map ---------- */
+  .route { padding: 5rem 1.5rem; max-width: 1280px; margin: 0 auto; }
+  .route-head { margin-bottom: 2.4rem; }
+  .route-map { border: 3px solid; padding: 1.2rem; }
+  :global([data-theme="dark"]) .route-map { border-color: var(--color-border); background: var(--color-surface); }
+  :global([data-theme="light"]) .route-map { border-color: var(--ra-navy); background: var(--color-surface-light); }
+  .route-svg { display: block; width: 100%; height: auto; }
+  .route-svg .grid line { stroke-width: 1; stroke-dasharray: 3 7; }
+  :global([data-theme="dark"]) .route-svg .grid line { stroke: rgba(159,176,196,0.28); }
+  :global([data-theme="light"]) .route-svg .grid line { stroke: rgba(19,43,74,0.18); }
+  .route-svg .arc { fill: none; stroke: var(--color-accent); stroke-width: 2.5; stroke-linecap: round; }
+  .route-svg .dest circle { fill: var(--ra-amber); }
+  .route-svg .dest text {
+    font-family: var(--font-mono); font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  :global([data-theme="dark"]) .route-svg .dest text { fill: var(--color-text); }
+  :global([data-theme="light"]) .route-svg .dest text { fill: var(--ra-navy); }
+  .route-svg .origin circle { fill: var(--color-accent); }
+  .route-svg .origin-ring { fill: none; stroke: var(--color-accent); stroke-width: 2; }
+  .route-svg .origin text {
+    font-family: var(--font-mono); font-size: 16px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; fill: var(--color-accent);
+  }
+  .route-log {
+    list-style: none; padding: 1.4rem 0 0; margin: 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem;
+    border-top: 1px dashed;
+  }
+  :global([data-theme="dark"]) .route-log { border-color: var(--color-border); }
+  :global([data-theme="light"]) .route-log { border-color: var(--color-border-light); }
+  .rl-k {
+    display: block; font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.4rem;
+  }
+  .rl-v { display: block; font-family: var(--font-body); font-size: 0.9rem; line-height: 1.62; }
+  :global([data-theme="dark"]) .rl-v { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .rl-v { color: var(--color-text-dark-muted); }
+  .route-fig { margin: 2rem 0 0; }
+  .route-fig img { display: block; width: 100%; height: auto; border: 3px solid; }
+  :global([data-theme="dark"]) .route-fig img { border-color: var(--color-border); }
+  :global([data-theme="light"]) .route-fig img { border-color: var(--ra-navy); }
+  .route-fig figcaption {
+    font-family: var(--font-body); font-size: 0.9rem; line-height: 1.62; margin-top: 0.9rem;
+    padding-left: 0.9rem; border-left: 3px solid var(--ra-amber); max-width: 46em;
+  }
+  :global([data-theme="dark"]) .route-fig figcaption { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .route-fig figcaption { color: var(--color-text-dark-muted); }
+
+  /* ---------- fleet ---------- */
+  .fleet { padding: 5rem 1.5rem; max-width: 1280px; margin: 0 auto; }
+  .fleet-head { margin-bottom: 2.6rem; }
+  .fleet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+  .craft {
+    border: 3px solid; padding: 1.6rem; display: flex; flex-direction: column;
+    transition: transform 0.16s ease;
+  }
+  .craft:hover { transform: translateY(-4px); }
+  :global([data-theme="dark"]) .craft { border-color: var(--color-border); background: var(--color-surface); }
+  :global([data-theme="light"]) .craft { border-color: var(--ra-navy); background: var(--color-surface-light); }
+  .craft-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 0.9rem; }
+  .craft-tail {
+    font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.1em; color: var(--color-accent);
+  }
+  .craft-status {
+    font-family: var(--font-mono); font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase; padding: 0.3rem 0.6rem;
+    border: 1px solid;
+  }
+  .cs-go { color: #17663c; border-color: #17663c; background: #d8f0e2; }
+  .cs-done { color: #14456f; border-color: #14456f; background: #d9e8f5; }
+  .cs-hold { color: #7a5200; border-color: #7a5200; background: #f8e9c4; }
+  .craft-type {
+    font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.16em;
+    text-transform: uppercase; margin: 0 0 0.5rem;
+  }
+  :global([data-theme="dark"]) .craft-type { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .craft-type { color: var(--color-text-dark-muted); }
+  .craft-name {
+    font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; line-height: 1.2;
+    text-transform: uppercase; letter-spacing: -0.015em; margin: 0 0 0.8rem;
+  }
+  :global([data-theme="dark"]) .craft-name { color: var(--color-text); }
+  :global([data-theme="light"]) .craft-name { color: var(--ra-navy); }
+  .craft-note { font-family: var(--font-body); font-size: 0.94rem; line-height: 1.66; margin: 0 0 1.2rem; flex: 1; }
+  :global([data-theme="dark"]) .craft-note { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .craft-note { color: var(--color-text-dark-muted); }
+  .craft-cta {
+    font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent);
+    text-decoration: none; border-bottom: 2px solid var(--color-accent); align-self: flex-start;
+    padding-bottom: 0.2rem;
+  }
+  .craft-cta:hover { opacity: 0.75; }
+  .craft-cta-off { border-color: transparent; opacity: 0.6; }
+  :global([data-theme="dark"]) .craft-cta-off { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .craft-cta-off { color: var(--color-text-dark-muted); }
+
+  /* ---------- duty free ---------- */
+  .duty { padding: 5rem 1.5rem; }
+  :global([data-theme="dark"]) .duty { background: var(--color-surface); }
+  :global([data-theme="light"]) .duty { background: var(--color-surface-light); border-top: 1px solid var(--color-border-light); border-bottom: 1px solid var(--color-border-light); }
+  .duty-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
+  .duty-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.6rem; }
+  .duty-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid; }
+  :global([data-theme="dark"]) .duty-list { border-color: var(--color-border); }
+  :global([data-theme="light"]) .duty-list { border-color: var(--color-border-light); }
+  .duty-item {
+    display: grid; grid-template-columns: 74px 1fr; gap: 1rem; align-items: baseline;
+    padding: 0.62rem 0; border-bottom: 1px solid;
+  }
+  :global([data-theme="dark"]) .duty-item { border-color: var(--color-border); }
+  :global([data-theme="light"]) .duty-item { border-color: var(--color-border-light); }
+  .duty-sku { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-accent); font-weight: 700; }
+  .duty-title { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.45; }
+  :global([data-theme="dark"]) .duty-title { color: var(--color-text); }
+  :global([data-theme="light"]) .duty-title { color: var(--color-text-dark); }
+  .duty-sub {
+    display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+    text-transform: uppercase; margin-top: 0.2rem;
+  }
+  :global([data-theme="dark"]) .duty-sub { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .duty-sub { color: var(--color-text-dark-muted); }
+  :global([data-theme="dark"]) .duty-off .duty-sku { color: var(--ra-amber); }
+  :global([data-theme="light"]) .duty-off .duty-sku { color: var(--ra-amber-ink); }
+
+  /* ---------- seat-back card ---------- */
+  .seatback { padding: 5rem 1.5rem; max-width: 1280px; margin: 0 auto; }
+  .sb-head { margin-bottom: 2.6rem; }
+  .sb-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 3px solid; }
+  :global([data-theme="dark"]) .sb-grid { border-color: var(--color-border); }
+  :global([data-theme="light"]) .sb-grid { border-color: var(--ra-navy); }
+  .sb-item { padding: 1.7rem; border-right: 1px solid; border-bottom: 1px solid; }
+  :global([data-theme="dark"]) .sb-item { border-color: var(--color-border); }
+  :global([data-theme="light"]) .sb-item { border-color: var(--color-border-light); }
+  .sb-item:nth-child(2n) { border-right: 0; }
+  .sb-item:last-child { border-bottom: 0; grid-column: 1 / -1; }
+  .sb-item:nth-last-child(2) { border-bottom: 0; }
+  .sb-no {
+    display: block; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.18em; color: var(--color-accent); margin-bottom: 0.6rem;
+  }
+  .sb-q {
+    font-family: var(--font-heading); font-weight: 800; font-size: 1.15rem; line-height: 1.25;
+    margin: 0 0 0.7rem;
+  }
+  :global([data-theme="dark"]) .sb-q { color: var(--color-text); }
+  :global([data-theme="light"]) .sb-q { color: var(--ra-navy); }
+  .sb-a { font-family: var(--font-body); font-size: 0.96rem; line-height: 1.68; margin: 0; }
+  :global([data-theme="dark"]) .sb-a { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .sb-a { color: var(--color-text-dark-muted); }
+
+  /* ---------- final call ---------- */
+  .final { padding: 5rem 1.5rem; }
+  :global([data-theme="dark"]) .final { background: linear-gradient(135deg, var(--color-surface), rgba(207,33,48,0.18)); }
+  :global([data-theme="light"]) .final { background: var(--ra-navy); }
+  .final-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .final-inner .sec-eyebrow { color: var(--ra-amber); }
+  .final-h2 {
+    font-family: var(--font-heading); font-weight: 900;
+    font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.04; letter-spacing: -0.03em;
+    text-transform: uppercase; margin: 0 0 1.1rem;
+  }
+  :global([data-theme="dark"]) .final-h2 { color: var(--color-text); }
+  :global([data-theme="light"]) .final-h2 { color: #fff; }
+  .final-deck {
+    font-family: var(--font-body); font-size: 1.06rem; line-height: 1.74;
+    margin: 0 auto 2rem; max-width: 46em;
+  }
+  :global([data-theme="dark"]) .final-deck { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .final-deck { color: #c3cedd; }
+  .final-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+  :global([data-theme="light"]) .final .btn-line { border-color: #fff; color: #fff; }
+  :global([data-theme="light"]) .final .btn-line:hover { background: #fff; color: var(--ra-navy); }
 
   /* ---------- colophon ---------- */
-  .colophon { padding: 2.5rem 2rem 3.5rem; }
-  :global([data-theme="dark"]) .colophon { background: var(--color-background); }
-  :global([data-theme="light"]) .colophon { background: var(--color-background-light); }
+  .colophon { padding: 2.6rem 1.5rem; border-top: 1px solid; }
+  :global([data-theme="dark"]) .colophon { border-color: var(--color-border); }
+  :global([data-theme="light"]) .colophon { border-color: var(--color-border-light); }
   .colo-line {
-    max-width: 62em; margin: 0 auto; text-align: center;
-    font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.8;
+    max-width: 1280px; margin: 0 auto;
+    font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.8; letter-spacing: 0.02em;
   }
   :global([data-theme="dark"]) .colo-line { color: var(--color-text-muted); }
   :global([data-theme="light"]) .colo-line { color: var(--color-text-dark-muted); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .panels { grid-template-columns: repeat(2, 1fr); }
+    .panel:nth-child(3n) { border-right: 1px solid; }
+    .panel:nth-child(2n) { border-right: 0; }
+    .panel:nth-child(n+4) { border-bottom: 1px solid; }
+    .panel:nth-last-child(-n+2) { border-bottom: 0; }
+    .demo-grid { grid-template-columns: repeat(2, 1fr); }
+    .fleet-grid { grid-template-columns: repeat(2, 1fr); }
+    .duty-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .share { grid-template-columns: 1fr; }
+    .pass { grid-template-columns: 1fr; }
+    .pass-stub { border-left: 0; border-top: 3px dashed; }
+  }
+  @media (max-width: 700px) {
+    .hero { padding-top: 2.5rem; }
+    .panels { grid-template-columns: 1fr; }
+    .panel { border-right: 0 !important; border-bottom: 1px solid !important; }
+    .panel:last-child { border-bottom: 0 !important; }
+    .demo-grid { grid-template-columns: 1fr; }
+    .demo-fig img { height: 340px; }
+    .fleet-grid { grid-template-columns: 1fr; }
+    .sb-grid { grid-template-columns: 1fr; }
+    .sb-item { border-right: 0 !important; border-bottom: 1px solid !important; }
+    .sb-item:last-child { border-bottom: 0 !important; }
+    .irr { grid-template-columns: 1fr; gap: 0.6rem; }
+    .route-log { grid-template-columns: 1fr; }
+    .pass-stub { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+  }
 </style>
