@@ -7,208 +7,210 @@ import WhatsNew from '../components/WhatsNew.astro';
 import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
+const CASE_NO = '26-CV-0829';
 
-// Boarding-pass stats. All real, set as flight data.
-const boardingData = [
-  { k: 'Countries', v: '80+' },
-  { k: 'Spoken in', v: '50+' },
-  { k: 'Continents', v: '7' },
-  { k: 'Books', v: '15' },
+// ---------------------------------------------------------------------------
+// STANDING. The plaintiff's credentials, entered on the caption page. All real.
+// ---------------------------------------------------------------------------
+const standing = [
+  { v: '80+', k: 'Countries visited' },
+  { v: '50+', k: 'Spoken in' },
+  { v: '15', k: 'Books' },
+  { v: '25', k: 'Years running interRel' },
 ];
 
 // ---------------------------------------------------------------------------
-// THE SAFETY CARD. Six numbered panels. Each one keeps the airline instruction
-// exactly as it is written on a real card, and then says what that instruction
-// means when the aircraft is an AI deployment inside a finance organization.
-// The instructions are not decoration. Every one of these is a failure Edward
-// has watched happen, and several of them happened to him.
+// THE COMPLAINT. Numbered paragraphs, the way a real one is laid out, and
+// every allegation in it is true except the part where it is a lawsuit.
 // ---------------------------------------------------------------------------
-const panels = [
-  {
-    no: '01',
-    icon: 'brace',
-    signage: 'Adopt the brace position when the model sounds certain',
-    original: 'Brace, brace. Head down. Stay down.',
-    body: `A model that's wrong sounds exactly like a model that's right: same speed, same tidy formatting, and I have never once seen a wrong answer turn up looking nervous about it. Everybody builds a plan for the system that says "I don't know," and then what actually arrives is a confident wrong number at 6PM on the last day of a close (ask me how I know, but buy me a coffee first). So the brace position is simple: anything going to an auditor or a board or frankly anybody who can fine you gets checked against the source by a human before it leaves the building. Confidence is the factory setting on these things and it is not a signal, and I have watched extremely smart people read it as one anyway.`,
-  },
-  {
-    no: '02',
-    icon: 'mask',
-    signage: 'Secure your own data before assisting others',
-    original: 'Fit your own mask before helping other passengers.',
-    body: `Every company I talk to wants to automate somebody else's job first. Sales would like the forecast automated. Finance would like the pipeline automated. Meanwhile the general ledger has 4 versions of the same cost center and 2 people who know which one is real, and neither of them is in the meeting. Fix your own chart of accounts before you offer to fix anyone's process. (This is the panel I get argued with about most, almost always by someone whose data is worse than they think it is.)`,
-  },
-  {
-    no: '03',
-    icon: 'exit',
-    signage: 'Your nearest exit may be behind you',
-    original: 'Take a moment to locate your nearest exit, bearing in mind that it may be behind you.',
-    body: `I've read a lot of AI deployment plans. I can count on one hand the ones that said what happens if you turn it off. Not if it fails, but if it works and 18 months later you want out anyway. Who still knows how to close the books by hand? How long would that take? If the honest answers are nobody and forever, what you've got is a support contract you can't get out of, and you signed it yourself. Write the rollback before departure (a page is plenty, nobody is asking you for a runbook), and put somebody in the exit row who is actually willing to open the door.`,
-  },
-  {
-    no: '04',
-    icon: 'cushion',
-    signage: 'Your vendor agreement is not a flotation device',
-    original: 'Your seat cushion may be used as a flotation device.',
-    body: `Read what your contract actually promises. Most AI service agreements cover uptime. Uptime is the vendor's problem, not yours, and very few of these agreements say anything at all about the output being wrong. So ask the vendor's counsel, in writing (in writing, I mean it, and keep the reply), who carries the liability when the model produces a number that ends up in a filing. It takes about 10 minutes to get an answer and the answer is you. I have now watched 3 different finance teams find this out at the worst available moment.`,
-  },
-  {
-    no: '05',
-    icon: 'stow',
-    signage: 'Some phases of flight still require a human',
-    original: 'Electronic devices must be switched off and stowed during takeoff and landing.',
-    body: `The rule was never really about phones being dangerous. Takeoff and landing are when things go wrong, so that's when everyone's attention belongs on the actual aircraft. Same goes for a close, an audit, a first run of any process, and anything a regulator will eventually read. Cruise is where agents earn their keep: reconciliations, variance narratives, first drafts of basically anything, and about 30 other things nobody wants to be doing at 11PM (they are very good first drafts, and I say that as somebody who has been handed some deeply bad ones by humans). The 5 minutes at each end stay human. Cruise was always where the money was, so holding the ends back costs you almost nothing.`,
-  },
-  {
-    no: '06',
-    icon: 'crosscheck',
-    signage: 'Doors to manual. Cross check.',
-    original: 'Cabin crew, doors to manual and cross check.',
-    body: `Aviation's best idea is that a second person confirms out loud that the first person did the thing. It costs about 4 seconds and it isn't a technology, so nobody has ever tried to sell it to you. Every finance team already knows this one as segregation of duties, and most of them drop it the moment the work is done by software instead of by a person and nobody says so out loud, because software doesn't commit fraud, which is true and is also not the point, since software doesn't notice that it's wrong either. If an agent can post an entry, somebody who is not that agent signs for it. That's the whole panel (it is also the only panel on this card that has ever saved me actual money).`,
-  },
+const complaint = [
+  `Plaintiff is an individual residing in San Juan, Puerto Rico, with a wife (Dawn, an artist, who did not consent to being a party), 2 adult sons in Miami, a 1,000-plus-day Duolingo streak, and a blue fedora that has been on his head in more than 80 countries and on all 7 continents, one of which was Antarctica and none of which asked.`,
+  `Defendant ACME is a corporation of no fixed address that does business as every enterprise software vendor Plaintiff has purchased from since 1997, including <span class="redact" aria-label="redacted">██████████</span>, <span class="redact" aria-label="redacted">████████</span>, and, on information and belief, at least 2 that Plaintiff later worked for.`,
+  `Beginning on 21 May 1997, when Plaintiff founded interRel Consulting at the age of 22 (he filed the paperwork the day before his 23rd birthday, on purpose, so he could say 22, and the full story of what the name actually stood for went up <a href="/blog/what-interrel-actually-stood-for/">on the blog this morning</a>), and continuing for 25 years, Plaintiff purchased, installed, configured, wrote 15 books about, and taught classes on Defendant's products, and was named Oracle Partner of the Year 5 times for doing so, which Defendant will presumably raise.`,
+  `Each product was represented to Plaintiff as a single source of truth. Plaintiff received, on average, 4 sources of truth per product and a steering committee to decide between them. The steering committee is still meeting.`,
+  `Plaintiff is a data scientist (Master of Data Science, SMU, 4.0, Outstanding Graduate, which he mentions in every filing) and knew, or should have known, what he was buying. Plaintiff does not dispute this. Plaintiff is also currently coding MCP servers so that an AI can read the real number out of Defendant's products instead of inventing one, which makes Plaintiff, technically, a supplier to Defendant's customers. Plaintiff's counsel has advised him to stop bringing this up.`,
+  `Plaintiff has been thrown off this canyon every Saturday since February and has re-ordered the sled every time. Plaintiff seeks damages in an amount to be proven at trial, or a speaking engagement, whichever the Court finds easier to schedule.`,
 ];
 
 // ---------------------------------------------------------------------------
-// CABIN CREW DEMONSTRATION. The photographs, captioned deadpan.
+// EXHIBITS A THROUGH F. The career, refiled as evidence.
 // ---------------------------------------------------------------------------
-const demo = [
+const exhibits = [
   {
-    src: '/images/roske-air/brace-position.jpg',
-    w: 1195, h: 1600, pos: 'center 52%',
-    alt: 'Edward Roske folded all the way forward into the aircraft brace position, head down against his knees with one arm over his head, blue fedora still on, an open laptop glowing on the tray table above him.',
-    label: 'Brace position',
-    cap: `The laptop stays open. That part isn't in the instructions, and it's the reason I'm in this position.`,
+    letter: 'A',
+    title: 'Articles of incorporation, 21 May 1997',
+    desc: `One company, filed at the courthouse in Dallas in The Great State of Texas under the name Interdimensionally Relevant Consulting Partners, and shortened to interRel about 2 weeks later when the first paper check arrived and the name wrapped over the amount box. Plaintiff told everyone for 25 years that it didn't stand for anything. Plaintiff was lying, and the full confession is on the blog as of this morning.`,
+    href: '/blog/what-interrel-actually-stood-for/',
+    cta: 'Read the confession',
   },
   {
-    src: '/images/roske-air/oxygen-mask.jpg',
-    w: 1195, h: 1600, pos: 'center 30%',
-    alt: 'Edward Roske seated in an airline seat with a yellow oxygen mask deployed and strapped over the crown of his blue fedora, hands folded, entirely composed.',
-    label: 'Oxygen mask',
-    cap: `Oxygen mask, amber lights on, cabin at 8,000 feet, hat on. The strap goes over the hat.`,
+    letter: 'B',
+    title: 'One Essbase certification exam, scored perfectly',
+    desc: `The first perfect score ever recorded on it. Plaintiff offers this to establish that he read the manual. Defendant will note that Plaintiff later wrote the manual, 15 times, under the title Look Smarter Than You Are, 13 of them on Amazon and 2 that only ever existed to be handed out in a training room.`,
+    href: '/books/',
+    cta: 'Inspect the manuals',
   },
   {
-    src: '/images/roske-air/evacuation-slide.jpg',
-    w: 1600, h: 1195, pos: 'center 45%',
-    alt: 'Edward Roske descending a yellow inflatable evacuation slide in a blue suit and blue fedora, arms crossed, a leather briefcase tucked under one arm.',
-    label: 'Evacuation',
-    cap: `Glasses off, which is genuinely in the instructions. The briefcase is mine and is not in any instructions anywhere.`,
+    letter: 'C',
+    title: 'One musical, 2006 and 2007, 58 minutes',
+    desc: `Eddie and the Consultants: A System 9 Musical, submitted as a prank abstract, accepted anyway, and performed in Las Vegas and again in Orlando with billable consultants flown in for rehearsals. It won a deal from a CFO who was in the room. The full 58 minutes are preserved on this site because Plaintiff no longer owns the YouTube channel they were on, and he would like the Court to know how that feels.`,
+    href: '/video/eddie-and-the-consultants/',
+    cta: 'Watch the evidence',
   },
   {
-    src: '/images/roske-air/flotation-device.jpg',
-    w: 1600, h: 1600, pos: 'center 34%',
-    alt: 'Edward Roske in an inflated yellow life vest in the aisle of an airliner, presenting his blue fedora to the cabin with both hands.',
-    label: 'Flotation',
-    cap: `The only photograph on this site where the hat is off my head. It was a demonstration and I would like that in the record (family rule, and I have not broken it since).`,
+    letter: 'D',
+    title: 'Two diplomas, 2016 and 2021, both late',
+    desc: `Started college at 15, went full time at 16, then ran a company for 19 years with the degree unfinished. Collected the BA from Shimer College in 2016 and a Master of Data Science from SMU in 2021 with a 4.0, in a cohort young enough to have been in grade school when Plaintiff founded interRel. Nobody asked for either one. Plaintiff checked the transcript anyway, more than once.`,
+    href: '/resume/',
+    cta: 'Review the record',
+  },
+  {
+    letter: 'E',
+    title: 'One merger, 2020, and one departure, 2023',
+    desc: `Merged interRel with Keste to help found Argano, now a billion-dollar consultancy, stayed on as CEO through 2022 for 25 years all told, and walked away in 2023 still owning a thirtieth of it. Plaintiff has been asked many times why he left something that was still working and has never twice given the same answer, and he will supply all of them for as long as the Court allows (the Court has not yet allowed it).`,
+    href: '/about/',
+    cta: 'Read the background',
+  },
+  {
+    letter: 'F',
+    title: 'This website, rebuilt every Saturday at 5AM',
+    desc: `Redesigned by one of Plaintiff's 10 AI agents while he sleeps, once a week since February, and not once by him. It is the live demo of the talk he gets booked for most. This week the agent read the brief, concluded that Plaintiff was the coyote, and filed suit on his behalf. Plaintiff was asleep for all of it and has no objection on the record.`,
+    href: '/blog/how-many-agents-does-it-take-to-run-a-day/',
+    cta: "Read the agent's account",
   },
 ];
 
 // ---------------------------------------------------------------------------
-// IRREGULAR OPERATIONS. The career, filed the way an airline files the days
-// that did not go according to the schedule. All of these are real.
+// THE CATALOG. An invented vendor, Apex Enterprise Supply Co., and 6 products
+// that were sold to the plaintiff as working. Every promise is a real one from
+// a real sales cycle. The product names have been removed so the plaintiff
+// keeps getting invited to their conferences.
 // ---------------------------------------------------------------------------
-const irrops = [
+const catalog = [
   {
-    code: '1997',
-    head: 'Departed without a flight plan',
-    body: `Founded interRel at 22 with no funding, no clients and no plan beyond a conviction that companies would eventually want their budgets to add up. I ran it independently for 23 years and it became the longest-standing Oracle Platinum EPM Partner there was. I don't recommend the method. I'd still do it again, which I realize is not much of a recommendation either way.`,
+    no: '1001',
+    name: 'Single Source of Truth',
+    sell: 'One number. Every department. Ships fully assembled.',
+    got: `4 numbers, each with an executive sponsor, and a steering committee to pick one. The steering committee is still meeting (see paragraph 4 of the complaint, which I wrote from inside the meeting).`,
+    icon: 'source',
   },
   {
-    code: '2006',
-    head: 'Unscheduled diversion, 2 years long',
-    body: `Submitted a conference abstract for a musical about Hyperion System 9, written entirely in 50s and 60s rock lyrics, as a prank on the reviewers. No script, no cast, no intention of doing it. They accepted it. It played to a standing crowd in Las Vegas, came back for Orlando the next year, and won a deal from a CFO who was in the room. The whole story went up on the blog this morning. (Edward, 3 separate people called and gave you 3 separate chances to admit it was a bit, and every single time your answer was to invent more plot. You flew billable consultants in for rehearsals. You hired a director who had actually been to film school. At no point in 2 years did anybody stop you, which says something about the people around you and quite a lot more about you.)`,
-    href: '/blog/i-produced-a-musical-about-financial-software/',
-    cta: 'Read the incident report',
+    no: '1002',
+    name: 'Self-Service Analytics',
+    sell: 'So easy the business can do it themselves. No IT required.',
+    got: `IT was required, and IT turned out to be the entire result, and they billed for it. (I was the IT for the first 25 years of this, and I billed for it too, which my counsel would prefer I put in a footnote.)`,
+    icon: 'self',
   },
   {
-    code: '2016',
-    head: 'Arrived 25 years behind schedule',
-    body: `Started college at 15, went full time at 16, and then ran a company for 2 decades with the degree still unfinished. Collected the BA from Shimer in 2016. Nobody asked to see it once in 19 years. I finished it anyway, mostly because it had been sitting there unfinished and that bothered me a little more every year.`,
+    no: '1003',
+    name: 'Zero-Touch Close',
+    sell: 'The books close themselves while you sleep.',
+    got: `The books closed at 11PM on day 5 after roughly 40 touches, and I have the timesheets. Nobody involved slept, including the books.`,
+    icon: 'close',
   },
   {
-    code: '2019',
-    head: 'Requalified mid-career',
-    body: `Went back for a Master of Data Science at SMU while running the company. Finished with a 4.0 and Outstanding Graduate (I have checked that transcript more than once), in a cohort full of people young enough to have been in grade school when I started interRel. The math was harder than I expected and I have never once regretted the hours.`,
+    no: '1004',
+    name: 'Out-of-the-Box Integration',
+    sell: 'Connects to everything you already own.',
+    got: `Connected to a consultant, who connected it to a spreadsheet, which connected it to the thing it was supposed to replace. The spreadsheet is still there. It has Freeze Panes on, at least, because I set them.`,
+    icon: 'plug',
   },
   {
-    code: '2020',
-    head: 'Merged, then left the aircraft',
-    body: `Merged interRel with Keste to help found Argano, stayed CEO through 2022 for 25 years as a CEO all told, and walked away in 2023 from a company I'd helped build into a billion-dollar consultancy. I still own a thirtieth of it. Leaving something that's working is much harder than leaving something that isn't. Ask me about that one and I'll talk for an hour.`,
+    no: '1005',
+    name: 'Real-Time Consolidation',
+    sell: 'Every entity, every currency, instantly.',
+    got: `Real time turned out to be a batch job at 2AM, which is real, and is a time, so I suppose the description holds.`,
+    icon: 'gauge',
   },
   {
-    code: '2026',
-    head: 'Cruising altitude, 18,571 feet',
-    body: `Walked to Everest Base Camp with Dawn in April: 2 weeks on foot, thin air, and a lot of time to think about which of the things I am building actually matter. The full report, including the parts that went badly, is on the blog.`,
-    href: '/blog/everest-base-camp-summit/',
-    cta: 'Read the trail log',
+    no: '1006',
+    name: 'The AI That Never Makes Things Up',
+    sell: 'New for 2026. Ask it anything. Trust the answer.',
+    got: `Pending. Plaintiff has ordered 3, is building the plumbing for them himself (MCP servers, so the model reads the real number out of Essbase instead of remembering one that sounds right), and is aware of how that looks in a filing where he is the plaintiff.`,
+    icon: 'chip',
+    isNew: true,
   },
 ];
 
 // ---------------------------------------------------------------------------
-// THE FLEET. The six real projects, kept every week, filed as tail numbers.
+// THE DEPOSITION. The questions people actually ask, taken under oath.
 // ---------------------------------------------------------------------------
-const fleet = [
+const depo = [
+  { q: 'State your name for the record.', a: `Edward Roske. Edward, never Ed, and it's in the record now, so that's settled.` },
+  { q: 'Do you really run your week on 10 AI agents?', a: `Yes, one per project, and this transcript was typed by one of them at 5AM this morning while I was asleep. It also decided I was the coyote in this case. I've read the exhibits and I don't have a rebuttal.` },
+  { q: 'What does it cost to book you?', a: `Keynotes start at $15,000 and every fee is published on the speaking page, because I have never enjoyed the part of the conversation where two people pretend not to know the number. The talks, the fees, the stage footage, and a form that reaches me directly are all there, and I answer within one business day.` },
+  { q: 'Can you build this for us?', a: `Not personally. Caprus does the engineering, I invest in them and turn up to argue about the roadmap, and they are gracious about that second part. If you want the MCP servers that connect an agent to Oracle EPM, that's where they live.` },
+  { q: `You are the plaintiff. You also wrote 15 manuals for the defendant's products and were named their Partner of the Year 5 times. How do you reconcile that?`, a: `I don't reconcile it. I'd like a recess.` },
+  { q: `Objection. The witness is arguing with his own filing.`, a: `Overruled. I'll allow it.` },
+  { q: `You are not the judge.`, a: `I've read the findings, and somebody in this room has to be.` },
+  { q: 'Why the hat?', a: `Family rule. A Roske never removes his fedora in the presence of others, with an exception for Memorial Day, and I'd rather not discuss the exception under oath.` },
+];
+let lineNo = 0;
+const transcript = depo.flatMap(d => [
+  { n: ++lineNo, who: 'Q.', text: d.q },
+  { n: ++lineNo, who: 'A.', text: d.a },
+]);
+
+// ---------------------------------------------------------------------------
+// PENDING MATTERS. The 6 real projects, kept every week, entered on the docket.
+// ---------------------------------------------------------------------------
+const docket = [
   {
-    tail: 'N-MCP1',
-    type: 'Oracle EPM / MCP',
+    no: '26-CV-0001',
     name: 'MCP Servers for Enterprise Finance',
-    note: `The plumbing that lets an agent work inside a real finance system instead of beside it. Essbase and EPM Planning are shipping, Financial Close and Consolidations is in beta (soon, honestly). Panels 1 and 6 are why this exists.`,
-    status: 'In service',
+    status: 'Active',
     tone: 'go',
+    note: `The plumbing that lets an agent read a real number out of a real finance system instead of remembering one. Essbase and EPM Planning are shipping, Financial Close and Consolidations is in beta (soon, honestly). Catalog item 1006 is why this exists.`,
     href: 'https://caprus.ai/agentcube/',
     external: true,
     cta: 'See how it works',
   },
   {
-    tail: 'N-CAIS26',
-    type: '9 to 10 Oct 2026',
+    no: '26-CV-1009',
     name: 'Caribbean AI Summit',
-    note: `Co-chairing the largest AI conference Puerto Rico has ever hosted (so far), at the Convention Center. Confirmed: Kay Firth-Butterfield, MIT's Fabio Duarte, and EU Parliament AI advisor Idoia Salazar, with more still signing.`,
-    status: 'Boarding',
+    status: 'Set for October 9 to 10',
     tone: 'go',
-    href: 'https://www.caribbeansummit.ai/en/speakers/submit',
+    note: `Co-chairing the largest AI conference Puerto Rico has hosted, at the Convention Center in San Juan: 30-plus speakers, 3 tracks, every session translated live between English and Spanish. Come in early and I'll show you the island.`,
+    href: 'https://www.caribbeansummit.ai/',
     external: true,
-    cta: 'Submit a speaker',
+    cta: 'Get a seat',
   },
   {
-    tail: 'N-CAPRUS',
-    type: 'AI / Finance',
+    no: '26-CV-0042',
     name: 'Caprus',
-    note: `Investor and contributor at the AI software and services firm building faster operations for finance teams. They do the engineering. I show up and point at things.`,
-    status: 'In service',
+    status: 'Active',
     tone: 'go',
+    note: `Investor in the AI software and services firm building faster operations for finance teams. Lillian Buziak runs it. I turn up and point at things, and they let me.`,
     href: 'https://caprus.ai',
     external: true,
     cta: 'Meet the team',
   },
   {
-    tail: 'N-EBC26',
-    type: 'Nepal / 2026',
+    no: '26-CV-1857',
     name: 'Everest Base Camp',
-    note: `2 weeks on foot to 18,571 feet with Dawn this spring. The trail log is on the blog, including the parts that went badly and the part where I asked the guides too many questions.`,
-    status: 'Arrived',
+    status: 'Closed. Judgment for the mountain.',
     tone: 'done',
+    note: `2 weeks on foot to 18,571 feet with Dawn in April. The trail log is on the blog, including the parts that went badly and the part where I asked the guides too many questions.`,
     href: '/blog/everest-base-camp-summit/',
     external: false,
     cta: 'Read the trail log',
   },
   {
-    tail: 'N-DND5E',
-    type: 'D&D / 5E',
+    no: '26-CV-0020',
     name: "AI Dungeon Master's Screen",
-    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It has never earned a dollar and it isn't finished, and I'm in no hurry about either.`,
-    status: 'In the hangar',
+    status: 'Stayed, indefinitely',
     tone: 'hold',
+    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It has never earned a dollar and it isn't finished, and I'm in no hurry about either.`,
     href: null,
     external: false,
     cta: 'Quiet build',
   },
   {
-    tail: 'N-PRAIC',
-    type: '1,000+ attendees',
+    no: '26-CV-1000',
     name: 'Puerto Rico AI Community',
-    note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. We meet every other month and argue in 2 languages about what AI means for Puerto Rico until something useful falls out. Come to one!`,
-    status: 'In service',
+    status: 'Active',
     tone: 'go',
+    note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. We meet every other month, it's free, and we argue in both languages until something useful falls out. Come to one!`,
     href: 'https://praicommunity.org/',
     external: true,
     cta: 'Join the next one',
@@ -216,143 +218,96 @@ const fleet = [
 ];
 
 // ---------------------------------------------------------------------------
-// ROUTE MAP. Seven arcs, one per continent, radiating from San Juan. The
-// numbers are the credential, not the subject: the reason to read the card is
-// that the person reading it out has been in the cabin for a very long time.
+// FINDINGS. The verdict, on the plaintiff, because he bought all of it.
 // ---------------------------------------------------------------------------
-const sectors = [
-  { label: 'North America', x: 196, y: 96 },
-  { label: 'South America', x: 402, y: 372 },
-  { label: 'Europe', x: 578, y: 74 },
-  { label: 'Africa', x: 648, y: 236 },
-  { label: 'Asia', x: 846, y: 118 },
-  { label: 'Oceania', x: 906, y: 318 },
-  { label: 'Antarctica', x: 512, y: 404 },
-];
-const ORIGIN = { x: 252, y: 244 };
-function arc(x: number, y: number) {
-  const mx = (ORIGIN.x + x) / 2;
-  const my = (ORIGIN.y + y) / 2 - Math.abs(x - ORIGIN.x) * 0.22 - 18;
-  return `M ${ORIGIN.x} ${ORIGIN.y} Q ${mx} ${my} ${x} ${y}`;
-}
-
-// ---------------------------------------------------------------------------
-// DUTY FREE. The 15 books, 13 of them on Amazon and 2 that only ever existed
-// to be handed out in a training room.
-// ---------------------------------------------------------------------------
-const dutyFree = [
-  { sku: 'DF-01', t: 'Hyperion Essbase', sub: 'The first one' },
-  { sku: 'DF-02', t: "Essbase 11: An Administrator's Guide", sub: '' },
-  { sku: 'DF-03', t: 'Smart View and Essbase 11', sub: "An end user's guide" },
-  { sku: 'DF-04', t: "Essbase 11.1.2: An Administrator's Guide", sub: '' },
-  { sku: 'DF-05', t: 'Smart View 11.1.2', sub: '' },
-  { sku: 'DF-06', t: 'Oracle Hyperion Planning', sub: "An end user's guide" },
-  { sku: 'DF-07', t: "Hyperion Planning: An Administrator's Guide", sub: '' },
-  { sku: 'DF-08', t: "Hyperion Planning 11.1.2: An End User's Guide", sub: '' },
-  { sku: 'DF-09', t: 'Creating Hyperion Planning Applications', sub: '11.1.2' },
-  { sku: 'DF-10', t: 'Advanced Hyperion Planning', sub: '11.1.2' },
-  { sku: 'DF-11', t: 'Oracle Enterprise Planning Cloud', sub: '' },
-  { sku: 'DF-12', t: 'Oracle Planning and Budgeting Cloud', sub: '' },
-  { sku: 'DF-13', t: 'Oracle Analytics Cloud Standard Edition', sub: '' },
-  { sku: 'DF-14', t: 'Financial Reports', sub: 'Classroom only', off: true },
-  { sku: 'DF-15', t: 'Web Analysis', sub: 'Classroom only', off: true },
-];
-
-// ---------------------------------------------------------------------------
-// SEAT-BACK CARD. The questions people actually ask, laid out the way the
-// laminated card in the seat pocket lays things out.
-// ---------------------------------------------------------------------------
-const seatback = [
-  {
-    q: 'Do you really run your week on ten agents?',
-    a: `Yes, one per project, and the site you're reading was rebuilt by one of them at 5AM this morning while I was asleep. Last week's homepage was a field guide to all 10 of them with the real software named (Latin binomials and everything, because at 5AM there is nobody there to stop it).`,
-  },
-  {
-    q: 'What does it cost to book you?',
-    a: `Keynotes start at $15,000 and every fee is published (real numbers, not anchors), because I have never enjoyed the part of the conversation where 2 people pretend not to know the number. The speaking page has the talks, the fees, the footage, and a form that reaches me directly. I answer in one business day.`,
-  },
-  {
-    q: 'Can you build this for us?',
-    a: `Not personally. Caprus does the engineering, I invest in them and turn up to argue about the roadmap, and they are very gracious about that second part. If you want the MCP servers that connect agents to Oracle EPM, that's where they live.`,
-  },
-  {
-    q: 'Is the safety card serious or is it a joke?',
-    a: `Both, on purpose. (Yes, I'm serious. And don't call me Shirley.) Every panel is a failure I've watched happen inside a real finance organization, and airline voice is the only way I've found to get a room to sit still for a list of things that go wrong. I have tried the version where the same 6 points are bullets on a slide, and I watched the room's attention leave through the door at about point 2.`,
-  },
-  {
-    q: 'Can I have the card without the website around it?',
-    a: `Yes. There is a single image of all 6 panels, sized to post anywhere, at the bottom of the card section. Take it. Put your own team's name on the seat back if you like.`,
-  },
+const findings = [
+  `The plaintiff bought all of it voluntarily, on purchase orders he signed, in several cases after reading the instructions and in 15 cases after writing them.`,
+  `Paragraph 6 is admitted. The plaintiff re-orders the sled at 5AM, through an agent, which the Court finds is the same thing as ordering it himself.`,
+  `The products mostly did what the manual said. The Court has reviewed 25 years of evidence and finds that the failures happened in the space between the sales cycle and the manual, and notes that the plaintiff wrote the manual, so he had the least excuse of anyone in the room.`,
+  `The plaintiff's actual complaint, which he never filed, is that nobody told the finance team any of this before the deployment. The Court finds that the plaintiff is now the person whose job it is to tell them, from a stage, for a fee, and that he appears to enjoy it.`,
 ];
 ---
 
 <BaseLayout>
   <WeeklyAnimation />
 
-  <!-- ================= CABIN STRIP ================= -->
-  <div class="cabin" role="presentation">
-    <div class="cabin-inner">
-      <span class="cabin-item cabin-mark">Roske Air</span>
-      <span class="cabin-item">Flight RA 2026</span>
-      <span class="cabin-item">SJU to your board meeting</span>
-      <span class="cabin-item cabin-on">On time</span>
+  <!-- ================= DOCKET STRIP ================= -->
+  <div class="docket-strip" role="presentation">
+    <div class="docket-inner">
+      <span class="docket-item docket-mark">Roske v. Acme</span>
+      <span class="docket-item">Case No. {CASE_NO}</span>
+      <span class="docket-item">District Court of the Canyon, Desert Division</span>
+      <span class="docket-item docket-filed">Filed 29 Aug 2026, 5:00 AM AST</span>
     </div>
   </div>
 
-  <!-- ================= HERO ================= -->
+  <!-- ================= HERO: THE CAPTION PAGE ================= -->
   <section class="hero">
     <div class="hero-inner">
       <div class="hero-copy">
-        <p class="hero-kicker">Roske.AI | Safety information card | Issue 08 / 2026</p>
-        <h1 class="hero-h1">ROSKE<span class="hero-h1-air">AIR</span></h1>
-        <p class="hero-type"><span>Safety on board</span><span class="hero-type-div" aria-hidden="true">/</span><span>Aircraft type: enterprise AI deployment</span></p>
+        <p class="hero-kicker">Roske.AI | Case file | Week of 29 August 2026</p>
+
+        <div class="caption" aria-label="Case caption">
+          <div class="cap-parties">
+            <p class="cap-party">EDWARD ROSKE, an individual,</p>
+            <p class="cap-role">Plaintiff,</p>
+            <p class="cap-vs">v.</p>
+            <p class="cap-party">ACME, and every vendor who ever sold him a single source of truth, DOES 1 through 30,</p>
+            <p class="cap-role">Defendants.</p>
+          </div>
+          <div class="cap-brackets" aria-hidden="true">)<br/>)<br/>)<br/>)<br/>)<br/>)<br/>)<br/>)</div>
+          <div class="cap-right">
+            <p class="cap-no">Case No. {CASE_NO}</p>
+            <p class="cap-title">Complaint for damages</p>
+            <p class="cap-note">Jury trial demanded. The plaintiff would like witnesses.</p>
+          </div>
+        </div>
+
+        <h1 class="case-h1">
+          <span class="case-word">Roske</span>
+          <span class="case-vs">v.</span>
+          <span class="case-word">Acme</span>
+        </h1>
+
         <p class="hero-sub">{theme.hero.subtitle}</p>
         <p class="hero-desc">{theme.hero.description}</p>
         <div class="hero-cta">
-          <a href="#safety-card" class="btn-solid">Read the safety card</a>
+          <a href="#exhibits" class="btn-solid">Read the exhibits</a>
           <a href={theme.hero.ctaLink} class="btn-line">{theme.hero.ctaText}</a>
         </div>
       </div>
 
       <figure class="hero-fig">
         <div class="hero-frame">
-          <span class="hero-tag">Cabin demonstration</span>
+          <span class="stamp stamp-hero" aria-hidden="true">Exhibit 1</span>
           <img
             src={`/images/${theme.hero.heroImage}`}
             alt={theme.hero.imageAlt}
             width="1600"
-            height="893"
+            height="900"
             loading="eager"
             decoding="async"
             class="hero-img"
           />
         </div>
         <figcaption class="hero-cap">
-          Nobody in this photograph is watching the demonstration. That's how every safety briefing
-          anywhere actually gets delivered, and yes, I noticed.
+          Exhibit 1. The plaintiff, in transit. The rocket fires out of both ends, which the
+          catalog listed as a feature, and the briefcase contains the catalog. He has ordered this
+          sled every Saturday since February (about 25 times so far) and this is the first
+          photograph in which he appears to be enjoying it.
         </figcaption>
       </figure>
     </div>
 
-    <!-- boarding pass -->
-    <div class="pass" aria-label="Boarding pass">
-      <div class="pass-main">
-        <span class="pass-brand">Boarding pass</span>
-        <div class="pass-route">
-          <span class="pass-code">SJU</span>
-          <span class="pass-plane" aria-hidden="true">
-            <svg viewBox="0 0 64 24" width="64" height="24" focusable="false"><path d="M2 12h44M46 12l-8-7M46 12l-8 7M52 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <span class="pass-code">YOU</span>
-        </div>
-        <span class="pass-note">Seat 1A. Boarding at your convenience. No overhead bin space remaining.</span>
-      </div>
-      <div class="pass-stub">
-        {boardingData.map(d => (
-          <span class="pass-stat">
-            <span class="pass-v">{d.v}</span>
-            <span class="pass-k">{d.k}</span>
-          </span>
+    <!-- standing stub -->
+    <div class="standing" aria-label="Plaintiff's standing">
+      <p class="standing-label">Plaintiff's standing, as entered</p>
+      <div class="standing-grid">
+        {standing.map(s => (
+          <div class="standing-item">
+            <span class="standing-v">{s.v}</span>
+            <span class="standing-k">{s.k}</span>
+          </div>
         ))}
       </div>
     </div>
@@ -360,280 +315,308 @@ const seatback = [
 
   <!-- ================= LATEST CONTENT (permanent) ================= -->
   <LatestContent
-    eyebrow="In-flight entertainment"
-    heading="Now playing <em>on this aircraft.</em>"
-    deck="New writing and new video briefs, in the order they were recorded. Headsets are complimentary in every cabin."
+    eyebrow="Recent filings"
+    heading="Entered into <em>the record.</em>"
+    deck="New writing and new video briefs, in the order they were filed. The clerk accepts everything and reads about half."
   />
 
   <!-- ================= BOOK EDWARD (permanent) ================= -->
-  <div class="upgrade">
-    <p class="upgrade-plate">Upgrade to business</p>
-    <SpeakerCTA eyebrow="Cabin selection" />
+  <div class="retain">
+    <p class="retain-plate">The plaintiff is also available as a witness</p>
+    <SpeakerCTA eyebrow="Expert witness for hire" />
   </div>
 
-  <!-- ================= THE SAFETY CARD ================= -->
-  <section class="card" id="safety-card">
-    <div class="card-head">
-      <p class="sec-eyebrow">Section one</p>
-      <h2 class="sec-h2">In the unlikely event.</h2>
+  <!-- ================= THE COMPLAINT ================= -->
+  <section class="complaint" id="complaint">
+    <div class="complaint-head">
+      <p class="sec-eyebrow">Filing one</p>
+      <h2 class="sec-h2">The complaint.</h2>
       <p class="sec-deck">
-        A safety card is instructions for what to do when things go wrong, written for people who
-        aren't paying attention, by an operator who has already watched all of it happen. Here are 6
-        panels nobody hands a finance team before an AI deployment. The airline wording is real, so is
-        everything underneath it, and I have personally been in the cabin for 5 of the 6 (the sixth I
-        only watched from a row back, and I still think about it more than the 5 I was in).
-      </p>
-      <p class="sec-margin">Read this card even if you deploy this route often.</p>
-    </div>
-
-    <ol class="panels">
-      {panels.map(p => (
-        <li class="panel">
-          <div class="panel-top">
-            <span class="panel-no">{p.no}</span>
-            <div class="panel-pict" aria-hidden="true">
-              {p.icon === 'brace' && (
-                <svg viewBox="0 0 100 100" class="pict"><rect x="70" y="18" width="16" height="42" rx="3" class="pf"/><rect x="42" y="60" width="44" height="8" rx="3" class="pf"/><path d="M78 57 L44 57" class="ps"/><path d="M44 57 L38 85" class="ps"/><path d="M38 85 L27 85" class="ps"/><path d="M78 55 L52 46" class="ps"/><circle cx="44" cy="44" r="9" class="ps"/><path d="M56 40 Q46 25 31 35" class="ps"/></svg>
-              )}
-              {p.icon === 'mask' && (
-                <svg viewBox="0 0 100 100" class="pict"><rect x="16" y="6" width="68" height="9" rx="2" class="pf"/><path d="M38 15 q-5 14-3 25" class="ps"/><path d="M62 15 q5 14 3 25" class="ps"/><path d="M30 50 h40 a4 4 0 0 1 4 4 v7 a24 22 0 0 1-48 0 v-7 a4 4 0 0 1 4-4z" class="pf"/></svg>
-              )}
-              {p.icon === 'exit' && (
-                <svg viewBox="0 0 100 100" class="pict"><rect x="10" y="14" width="26" height="72" rx="3" class="pf"/><circle cx="30" cy="52" r="3.5" class="ps"/><path d="M86 34 H44" class="ps"/><path d="M55 23 L43 34 L55 45" class="ps"/><rect x="46" y="60" width="14" height="24" rx="3" class="ps"/><rect x="64" y="60" width="14" height="24" rx="3" class="ps"/><rect x="82" y="60" width="9" height="24" rx="3" class="ps"/></svg>
-              )}
-              {p.icon === 'cushion' && (
-                <svg viewBox="0 0 100 100" class="pict"><rect x="20" y="22" width="60" height="28" rx="7" class="pf"/><path d="M6 66 q12-8 23 0 t23 0 t23 0 t19 0" class="ps"/><path d="M6 82 q12-8 23 0 t23 0 t23 0 t19 0" class="ps"/><path d="M26 14 l48 46 M74 14 l-48 46" class="px"/></svg>
-              )}
-              {p.icon === 'stow' && (
-                <svg viewBox="0 0 100 100" class="pict"><rect x="30" y="8" width="40" height="28" rx="3" class="ps"/><path d="M50 40 v13" class="ps"/><path d="M40 45 l10 10 10-10" class="ps"/><path d="M12 60 h76 v20 a6 6 0 0 1-6 6 h-64 a6 6 0 0 1-6-6z" class="pf"/><path d="M12 60 q38 13 76 0" class="ps"/></svg>
-              )}
-              {p.icon === 'crosscheck' && (
-                <svg viewBox="0 0 100 100" class="pict"><rect x="38" y="14" width="24" height="70" rx="3" class="pf"/><circle cx="16" cy="30" r="8" class="ps"/><path d="M16 38 v18 M8 80 l8-24 8 24" class="ps"/><circle cx="84" cy="30" r="8" class="ps"/><path d="M84 38 v18 M76 80 l8-24 8 24" class="ps"/><path d="M43 48 l6 9 12-17" class="pc"/></svg>
-              )}
-            </div>
-          </div>
-          <h3 class="panel-sign">{p.signage}</h3>
-          <p class="panel-orig">{p.original}</p>
-          <p class="panel-body">{p.body}</p>
-        </li>
-      ))}
-    </ol>
-
-    <div class="share">
-      <div class="share-copy">
-        <p class="share-eyebrow">Take the card with you</p>
-        <p class="share-text">
-          All 6 panels as a single image, sized to post anywhere. There's no sign-up and no email
-          capture, and the only thing on it that isn't a pictogram is the address at the bottom. If it
-          ends up taped to a wall in your finance department, that's exactly what it was built for.
-        </p>
-        <a href="/images/roske-air/ai-deployment-safety-card.png" class="btn-solid" download>Download the safety card</a>
-      </div>
-      <a href="/images/roske-air/ai-deployment-safety-card.png" class="share-thumb" download>
-        <img src="/images/roske-air/ai-deployment-safety-card.png" width="1200" height="1200" loading="lazy" decoding="async"
-          alt="The AI Deployment Safety Card: six numbered pictogram panels covering the brace position, the oxygen mask, the nearest exit, the flotation device, stowed devices, and the cross check." />
-      </a>
-    </div>
-  </section>
-
-  <!-- ================= CABIN DEMONSTRATION ================= -->
-  <section class="demo">
-    <div class="demo-head">
-      <p class="sec-eyebrow">Section two</p>
-      <h2 class="sec-h2">Your cabin crew will now demonstrate.</h2>
-      <p class="sec-deck">
-        The photographs are staged and the postures are correct. I checked them against an actual
-        laminated card, twice, on a Saturday morning, in a house where at least one other person was
-        awake and forming an opinion about it.
+        Plaintiff, appearing on his own behalf because no lawyer would take this, alleges as
+        follows, and every allegation below is true except the one where it's a lawsuit. (Edward,
+        you're describing a 25-year career as a series of purchases. You did the buying. Nobody made
+        you build a company on it, and nobody in 2026 is making you build the plumbing for the next
+        version either, which you're doing anyway, at night, for fun, and which you have described
+        to Dawn as work.)
       </p>
     </div>
-    <div class="demo-grid">
-      {demo.map(d => (
-        <figure class="demo-fig">
-          <img src={d.src} width={d.w} height={d.h} loading="lazy" decoding="async" alt={d.alt} style={`object-position:${d.pos}`} />
-          <figcaption>
-            <span class="demo-label">{d.label}</span>
-            <span class="demo-cap">{d.cap}</span>
-          </figcaption>
-        </figure>
-      ))}
-    </div>
-  </section>
-
-  <!-- ================= WHAT'S NEW (permanent) ================= -->
-  <WhatsNew
-    eyebrow="From the flight deck"
-    heading="Announcements."
-    deck="Press, interviews, and whatever went out on the channel this week."
-  />
-
-  <!-- ================= IRREGULAR OPERATIONS ================= -->
-  <section class="irrops">
-    <div class="irrops-head">
-      <p class="sec-eyebrow">Section three</p>
-      <h2 class="sec-h2">Irregular operations.</h2>
-      <p class="sec-deck">
-        Airlines keep a log of the days that did not go according to the schedule, because those are
-        the days worth reading later. Here is mine. Nothing on this list was the plan, and 4 of the 6
-        turned out better than the plan would have.
-      </p>
-    </div>
-    <ol class="irr-list">
-      {irrops.map(e => (
-        <li class="irr">
-          <span class="irr-code">{e.code}</span>
-          <div class="irr-body">
-            <h3 class="irr-head">{e.head}</h3>
-            <p class="irr-text">{e.body}</p>
-            {e.href && <a href={e.href} class="irr-link">{e.cta}</a>}
-          </div>
+    <ol class="plead">
+      {complaint.map((p, i) => (
+        <li class="plead-p">
+          <span class="plead-n">{i + 1}.</span>
+          <p class="plead-text" set:html={p} />
         </li>
       ))}
     </ol>
   </section>
 
-  <!-- ================= ROUTE MAP ================= -->
-  <section class="route">
-    <div class="route-head">
-      <p class="sec-eyebrow">Section four</p>
-      <h2 class="sec-h2">Route map.</h2>
+  <!-- ================= EXHIBITS A THROUGH F ================= -->
+  <section class="exhibits" id="exhibits">
+    <div class="exhibits-head">
+      <p class="sec-eyebrow">Filing two</p>
+      <h2 class="sec-h2">Exhibits A through F.</h2>
       <p class="sec-deck">
-        The map is here to establish that I have actually flown the route. What 80-plus countries
-        bought me is a very large sample of organizations making the same 6 mistakes in a great many
-        languages (and the 6 mistakes translate, which was the depressing part).
+        The career, refiled as evidence. Each exhibit was entered by the plaintiff against his
+        own interest, and every one of them links to the rest of the paperwork if you'd like to
+        spend your Saturday the way I apparently spent 25 years.
       </p>
     </div>
 
-    <div class="route-map">
-      <svg viewBox="0 0 1000 440" class="route-svg" role="img" aria-label="A schematic route map with seven great-circle arcs radiating from San Juan, Puerto Rico to all seven continents.">
-        <g class="grid" aria-hidden="true">
-          {[60, 130, 200, 270, 340, 410].map(y => <line x1="20" y1={y} x2="980" y2={y} />)}
-          {[100, 250, 400, 550, 700, 850].map(x => <line x1={x} y1="20" x2={x} y2="420" />)}
-        </g>
-        {sectors.map(s => <path d={arc(s.x, s.y)} class="arc" />)}
-        {sectors.map(s => (
-          <g class="dest">
-            <circle cx={s.x} cy={s.y} r="5" />
-            <text x={s.x + 12} y={s.y + 4}>{s.label}</text>
-          </g>
-        ))}
-        <g class="origin">
-          <circle cx={ORIGIN.x} cy={ORIGIN.y} r="8" />
-          <circle cx={ORIGIN.x} cy={ORIGIN.y} r="15" class="origin-ring" />
-          <text x={ORIGIN.x - 12} y={ORIGIN.y + 34} text-anchor="end">SJU / San Juan</text>
-        </g>
-      </svg>
-
-      <ul class="route-log">
-        <li><span class="rl-k">Apr 2026</span><span class="rl-v">Kathmandu to Everest Base Camp. 2 weeks, 18,571 feet, on foot.</span></li>
-        <li><span class="rl-k">2025</span><span class="rl-v">Son Doong, Vietnam. Largest cave in the world, and no cell coverage in it.</span></li>
-        <li><span class="rl-k">Home base</span><span class="rl-v">San Juan, Puerto Rico. Everything above departs from here.</span></li>
-      </ul>
-    </div>
-
-    <figure class="route-fig">
-      <img src="/images/roske-air/route-map-window.jpg" width="1600" height="893" loading="lazy" decoding="async"
-        alt="Edward Roske in a blue fedora at a window seat on a night flight, lit by an amber reading light, tracing a route line across a paper airline map on his tray table." />
-      <figcaption>
-        Paper, because a paper map is the only one that still shows you everywhere you're not going
-        this trip. Also because I like them, and Dawn has stopped commenting on it.
-      </figcaption>
-    </figure>
-  </section>
-
-  <!-- ================= THE FLEET ================= -->
-  <section class="fleet">
-    <div class="fleet-head">
-      <p class="sec-eyebrow">Section five</p>
-      <h2 class="sec-h2">Current fleet.</h2>
-      <p class="sec-deck">
-        6 aircraft, honestly statused: 2 MCP servers shipping and a third in beta, a conference in
-        October I'm co-chairing and quietly panicking about, a company I invest in and turn up to
-        argue with (Caprus, and they are extremely polite about the arguing), a mountain I already
-        climbed, an AI Dungeon Master's screen that has never earned a dollar, and a nonprofit with
-        1,000 people through the door and no dues. One of them is staying in the hangar regardless of
-        what the numbers say (it's the D&D one, and I'd like to watch somebody try to shut it down).
-      </p>
-    </div>
-    <div class="fleet-grid">
-      {fleet.map(f => (
-        <article class="craft">
-          <header class="craft-head">
-            <span class="craft-tail">{f.tail}</span>
-            <span class={`craft-status cs-${f.tone}`}>{f.status}</span>
-          </header>
-          <p class="craft-type">{f.type}</p>
-          <h3 class="craft-name">{f.name}</h3>
-          <p class="craft-note">{f.note}</p>
-          {f.href ? (
-            <a href={f.href} class="craft-cta" target={f.external ? '_blank' : undefined} rel={f.external ? 'noopener' : undefined}>{f.cta}</a>
-          ) : (
-            <span class="craft-cta craft-cta-off">{f.cta}</span>
-          )}
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <!-- ================= DUTY FREE ================= -->
-  <section class="duty">
-    <div class="duty-inner">
-      <div class="duty-copy">
-        <p class="sec-eyebrow">Section six</p>
-        <h2 class="sec-h2">Duty free.</h2>
-        <p class="sec-deck">
-          The trolley is coming through. 15 titles, all of them about enterprise finance software, 13
-          on Amazon and 2 that only ever existed to be handed out in a training room. The series is
-          called Look Smarter Than You Are. I picked that name in a hurry, it stuck to 15 books and
-          about 20 years of my working life, and I have still never been able to decide whether it was
-          the smartest thing I ever did or something I should be apologizing for at conferences.
-        </p>
-        <div class="duty-cta">
-          <a href="/books/" class="btn-solid">Browse the trolley</a>
-          <a href="https://www.amazon.com/stores/Edward-Roske/author/B00J237CUW" target="_blank" rel="noopener" class="btn-line">Buy on Amazon</a>
+    <div class="exhibits-grid">
+      <figure class="witness">
+        <div class="witness-frame">
+          <span class="stamp" aria-hidden="true">Exhibit 2</span>
+          <img src="/images/roske-v-acme/witness-stand.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+            alt="Edward Roske in a charcoal suit and his blue fedora standing in a wood-paneled courtroom witness box, right hand raised to be sworn in, his left hand resting on a thick, battered mail-order catalog." />
         </div>
-      </div>
-      <ol class="duty-list">
-        {dutyFree.map(b => (
-          <li class={`duty-item ${b.off ? 'duty-off' : ''}`}>
-            <span class="duty-sku">{b.sku}</span>
-            <span class="duty-title">{b.t}{b.sub && <span class="duty-sub">{b.sub}</span>}</span>
+        <figcaption>
+          Exhibit 2. The plaintiff being sworn in on the catalog, which is the only book in the
+          building he has read cover to cover. The hand on the catalog is the same hand that
+          signed the purchase orders, and the Court noticed.
+        </figcaption>
+      </figure>
+
+      <ol class="ex-list">
+        {exhibits.map(e => (
+          <li class="ex">
+            <div class="ex-tab">
+              <span class="ex-letter">{e.letter}</span>
+              <span class="ex-caption">{CASE_NO} | Ex. {e.letter}</span>
+            </div>
+            <div class="ex-body">
+              <h3 class="ex-title">{e.title}</h3>
+              <p class="ex-desc" set:html={e.desc} />
+              <a href={e.href} class="ex-link">{e.cta}</a>
+            </div>
           </li>
         ))}
       </ol>
     </div>
   </section>
 
-  <!-- ================= SEAT-BACK CARD ================= -->
-  <section class="seatback">
-    <div class="sb-head">
-      <p class="sec-eyebrow">Section seven</p>
-      <h2 class="sec-h2">In the seat pocket in front of you.</h2>
-      <p class="sec-deck">The questions people actually ask, laid out the way the card lays things out.</p>
+  <!-- ================= DELIVERY (full bleed) ================= -->
+  <section class="delivery">
+    <figure class="delivery-fig">
+      <img src="/images/roske-v-acme/canyon-delivery.jpg" width="1600" height="1200" loading="lazy" decoding="async"
+        alt="Edward Roske in a dark suit and blue fedora at the edge of a red-rock canyon, holding a clipboard and a crowbar, checking a tall stack of freshly delivered wooden crates marked with arrows and fragile symbols, a small dust cloud settling on the canyon floor far below." />
+      <figcaption class="delivery-cap">
+        <span class="stamp stamp-cap" aria-hidden="true">Exhibit 3</span>
+        <span class="delivery-text">
+          Exhibit 3. Delivery. Everything arrives in crates, on the edge, with arrows that say which
+          way is up and nothing that says what's inside. That dust cloud on the canyon floor is last
+          week's order, and I have the clipboard to prove I signed for this one too.
+        </span>
+      </figcaption>
+    </figure>
+  </section>
+
+  <!-- ================= THE CATALOG ================= -->
+  <section class="catalog" id="catalog">
+    <div class="catalog-head">
+      <p class="sec-eyebrow">Filing three</p>
+      <h2 class="sec-h2">The catalog.</h2>
+      <p class="sec-deck">
+        If you run a finance organization you have bought at least 4 of these, and one of them is
+        in a data center right now with your name on the purchase order. Every plate below is a
+        real promise from a real sales cycle I sat in, with the product names removed because I
+        would like to keep being invited to their conferences (they have good coffee, and they
+        have stopped seating me near the product managers).
+      </p>
     </div>
-    <div class="sb-grid">
-      {seatback.map((s, i) => (
-        <div class="sb-item">
-          <span class="sb-no">{String(i + 1).padStart(2, '0')}</span>
-          <h3 class="sb-q">{s.q}</h3>
-          <p class="sb-a">{s.a}</p>
+
+    <div class="catalog-inner">
+      <figure class="plate-fig">
+        <div class="plate-frame">
+          <span class="plate-no">Plate 1</span>
+          <img src="/images/roske-v-acme/catalog-plate.jpg" width="1600" height="1200" loading="lazy" decoding="async"
+            alt="A vintage catalog-style studio photograph of Edward Roske in a dark suit and blue fedora, smiling like a salesman and gesturing at a refrigerator-sized coiled steel spring bolted to a wooden crate with a big red lever on the side." />
         </div>
+        <figcaption>
+          Plate 1. Item 1000, the Enterprise Spring (not listed below, discontinued after the
+          incident). The man in the plate has the smile of somebody who has not yet pulled the red
+          lever, and I'd like it noted that I've pulled the red lever 25 years' worth of times
+          since this was taken.
+        </figcaption>
+      </figure>
+
+      <div class="catalog-masthead">
+        <p class="cat-brand">Apex Enterprise Supply Co.</p>
+        <p class="cat-tag">Purveyors of fine single sources of truth to the Office of the CFO since 1949. Allow 6 to 8 quarters for delivery.</p>
+      </div>
+
+      <ol class="plates">
+        {catalog.map(c => (
+          <li class="plate">
+            <header class="plate-head">
+              <span class="plate-item">No. {c.no}</span>
+              {c.isNew && <span class="plate-new">New for 2026</span>}
+            </header>
+            <div class="plate-schem" aria-hidden="true">
+              {c.icon === 'source' && (
+                <svg viewBox="0 0 100 100" class="schem"><rect x="30" y="30" width="40" height="40" rx="3"/><path d="M10 50h20M70 50h20M50 10v20M50 70v20"/><path d="M26 46l4 4-4 4M74 46l-4 4 4 4M46 26l4-4 4 4M46 74l4 4 4-4"/></svg>
+              )}
+              {c.icon === 'self' && (
+                <svg viewBox="0 0 100 100" class="schem"><path d="M15 25h70l-25 30v25l-20-8V55z"/><path d="M50 55v10"/><circle cx="50" cy="16" r="5"/></svg>
+              )}
+              {c.icon === 'close' && (
+                <svg viewBox="0 0 100 100" class="schem"><circle cx="50" cy="55" r="32"/><path d="M50 55V33M50 55l16 10"/><path d="M40 12h20M50 12v11"/><path d="M22 28l-6-6M78 28l6-6"/></svg>
+              )}
+              {c.icon === 'plug' && (
+                <svg viewBox="0 0 100 100" class="schem"><rect x="30" y="40" width="40" height="32" rx="4"/><path d="M40 40V22M60 40V22M50 72v16"/><path d="M14 88h72"/></svg>
+              )}
+              {c.icon === 'gauge' && (
+                <svg viewBox="0 0 100 100" class="schem"><path d="M15 70a35 35 0 0 1 70 0"/><path d="M50 70L70 42"/><circle cx="50" cy="70" r="4"/><path d="M22 60l6 2M78 60l-6 2M50 36v6"/><path d="M15 84h70"/></svg>
+              )}
+              {c.icon === 'chip' && (
+                <svg viewBox="0 0 100 100" class="schem"><rect x="28" y="28" width="44" height="44" rx="4"/><rect x="40" y="40" width="20" height="20"/><path d="M38 28V14M50 28V14M62 28V14M38 86V72M50 86V72M62 86V72M28 38H14M28 50H14M28 62H14M86 38H72M86 50H72M86 62H72"/></svg>
+              )}
+            </div>
+            <h3 class="plate-name">{c.name}</h3>
+            <p class="plate-sell">{c.sell}</p>
+            <p class="plate-got"><span class="plate-got-k">Received:</span> {c.got}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= THE DEPOSITION ================= -->
+  <section class="depo" id="deposition">
+    <div class="depo-head">
+      <p class="sec-eyebrow">Filing four</p>
+      <h2 class="sec-h2">Deposition of the plaintiff.</h2>
+      <p class="sec-deck">
+        The questions people actually ask, taken under oath, in a room with one lamp. Volume I.
+        Appearances: for the plaintiff, the plaintiff. For the defendants, also the plaintiff,
+        since he wrote their manuals and can still find the chapter.
+      </p>
+    </div>
+
+    <figure class="depo-fig">
+      <img src="/images/roske-v-acme/deposition.jpg" width="1600" height="900" loading="lazy" decoding="async"
+        alt="Edward Roske in a loosened tie and his blue fedora, seated at a dark conference table late at night under a single green banker's lamp, hands folded, a stack of manila folders and a microphone in front of him and a stenographer's machine at the edge of the table." />
+      <figcaption>
+        Exhibit 4. The plaintiff at hour 3 of the deposition, being asked for the 4th time whether
+        he read the terms of service. He read them, which is the part that keeps not helping.
+      </figcaption>
+    </figure>
+
+    <div class="transcript" role="region" aria-label="Deposition transcript">
+      <p class="tx-header">Deposition of Edward Roske, Volume I, taken 29 August 2026 at 5:00 AM AST, by an agent.</p>
+      <ol class="tx">
+        {transcript.map(t => (
+          <li class={`tx-line tx-${t.who === 'Q.' ? 'q' : 'a'}`}>
+            <span class="tx-n">{t.n}</span>
+            <span class="tx-who">{t.who}</span>
+            <span class="tx-text">{t.text}</span>
+          </li>
+        ))}
+        <li class="tx-line tx-note">
+          <span class="tx-n">{lineNo + 1}</span>
+          <span class="tx-who"></span>
+          <span class="tx-text">(Whereupon, a recess was taken.)</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= WHAT'S NEW (permanent) ================= -->
+  <WhatsNew
+    eyebrow="Press exhibits"
+    heading="Also entered <em>into evidence.</em>"
+    deck="Interviews, press, and whatever went out on the channel this week. The Court has admitted all of it, mostly because nobody objected."
+  />
+
+  <!-- ================= PENDING MATTERS ================= -->
+  <section class="matters">
+    <div class="matters-head">
+      <p class="sec-eyebrow">Filing five</p>
+      <h2 class="sec-h2">Pending matters.</h2>
+      <p class="sec-deck">
+        6 cases on the plaintiff's docket, honestly statused: 2 MCP servers shipping and a third in
+        beta, a conference in October I'm co-chairing and mildly panicking about, a company I invest
+        in and turn up to argue with, a mountain that already won, an AI Dungeon Master's screen
+        that has never earned a dollar, and a nonprofit with 1,000 people through the door and no
+        dues. One of them is stayed indefinitely and it's the D&amp;D one, and I'd like to watch
+        somebody try to dismiss it.
+      </p>
+    </div>
+    <div class="matters-grid">
+      {docket.map(m => (
+        <article class="matter">
+          <header class="matter-head">
+            <span class="matter-no">{m.no}</span>
+            <span class={`matter-status ms-${m.tone}`}>{m.status}</span>
+          </header>
+          <h3 class="matter-name">{m.name}</h3>
+          <p class="matter-note">{m.note}</p>
+          {m.href ? (
+            <a href={m.href} class="matter-cta" target={m.external ? '_blank' : undefined} rel={m.external ? 'noopener' : undefined}>{m.cta}</a>
+          ) : (
+            <span class="matter-cta matter-cta-off">{m.cta}</span>
+          )}
+        </article>
       ))}
     </div>
   </section>
 
-  <!-- ================= FINAL CALL (CTA) ================= -->
-  <section class="final">
-    <div class="final-inner">
-      <p class="sec-eyebrow">Final call</p>
-      <h2 class="final-h2">This is the last call for boarding.</h2>
-      <p class="final-deck">
-        If your organization is somewhere on that card and you're not sure which panel you're on,
-        that's a very good 13 minutes. I'll tell you which one you're actually reading, and whether
-        you need the exit row or just the seat belt. Take whichever button below is the least effort
-        for you.
+  <!-- ================= FINDINGS ================= -->
+  <section class="findings" id="findings">
+    <div class="findings-inner">
+      <div class="findings-copy">
+        <p class="sec-eyebrow">Filing six</p>
+        <h2 class="sec-h2">Findings of fact and conclusions of law.</h2>
+        <p class="sec-deck">
+          The Court has read all of it, which is more than the plaintiff can say about his
+          licensing agreements, and rules as follows.
+        </p>
+        <ol class="find-list">
+          {findings.map((f, i) => (
+            <li class="find">
+              <span class="find-n">{i + 1}.</span>
+              <p class="find-text" set:html={f} />
+            </li>
+          ))}
+        </ol>
+        <div class="judgment">
+          <p class="judgment-label">Judgment</p>
+          <p class="judgment-text">
+            For the defendants. Costs to the plaintiff. The Court notes for the record that the
+            plaintiff has already placed another order, and that the blog this morning asks who
+            you sue when the AI is wrong, which the Court also does not know.
+          </p>
+          <a href="/blog/who-do-you-sue-when-the-ai-is-wrong/" class="btn-solid">Who do you sue when the AI is wrong?</a>
+        </div>
+      </div>
+
+      <figure class="aftermath">
+        <div class="aftermath-frame">
+          <span class="stamp" aria-hidden="true">Exhibit 5</span>
+          <img src="/images/roske-v-acme/canyon-floor.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+            alt="Edward Roske standing at the bottom of a red-rock canyon in a scorched, dust-covered suit with soot on his cheek, holding a small black umbrella over his head with one hand and a scuffed briefcase in the other, his blue fedora still perfectly in place, as the round shadow of a falling boulder darkens the sand around him." />
+        </div>
+        <figcaption>
+          Exhibit 5. The plaintiff, post-judgment. The umbrella was in the catalog too (item 1007,
+          Personal Weather Mitigation, not pictured), and it does exactly what the description says,
+          which is a different thing from what he needed. The hat came through without a mark, which
+          is the only part of this exhibit the plaintiff is prepared to testify about.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= RETAIN COUNSEL (CTA) ================= -->
+  <section class="retain-cta">
+    <div class="retain-inner">
+      <p class="sec-eyebrow">Retain counsel</p>
+      <h2 class="retain-h2">Schedule a deposition.</h2>
+      <p class="retain-deck">
+        If you recognized a plate in that catalog, and you know which one, that's a very good 13
+        minutes. I'll tell you which exhibit you're about to
+        become and whether you need the rollback or just a second signature, and I won't bill for
+        it. Take whichever button is the least effort.
       </p>
-      <div class="final-cta">
+      <div class="retain-btns">
         <a href="/question/" target="_blank" rel="noopener" class="btn-solid">Book 13 minutes</a>
         <a href="/speaking/" class="btn-line">Book the keynote</a>
         <a href="/contact/" class="btn-line">Send a message</a>
@@ -641,580 +624,578 @@ const seatback = [
     </div>
   </section>
 
-  <!-- ================= COLOPHON ================= -->
-  <div class="colophon">
-    <p class="colo-line">
-      Roske Air holds no operating certificate and owns no aircraft, and the only route it flies is
-      this page. The whole card was designed, illustrated, written and shipped by an agent at 5AM
-      Atlantic while the operator slept. Make of that what you like. I've made about 4 things of it so
-      far and none of them have settled, and you are very welcome to write me at Edward@Roske.AI with
-      a fifth.
+  <!-- ================= NOTICE ================= -->
+  <div class="notice">
+    <p class="notice-line">
+      ROSKE v. ACME is not a real case, and no court in any desert has jurisdiction over it. It is
+      not associated with Warner Bros., Ketchup Entertainment, Looney Tunes, Coyote vs. Acme (which
+      opened August 28, 2026, and had no say in this), or any actual corporation that sells rocket
+      sleds. Apex Enterprise Supply Co. does not exist, and if it did I'd have an account. Edward
+      really did found interRel at 22 and really did write 15 manuals, and the MCP servers for
+      enterprise finance are real and shipping. The whole filing was drafted by an agent at 5AM
+      Atlantic while the plaintiff slept. Write me at Edward@Roske.AI if you'd like to be added as
+      a co-plaintiff!
     </p>
   </div>
 </BaseLayout>
 
 <style>
   /* ============================================================
-     ROSKE AIR - week of 2026-08-22
-     Safety-card grammar: numbered instruction panels, heavy-outline
-     pictograms, boarding-pass perforations, mono for every piece of
-     flight data. Dark mode is the night cabin, lit in amber pools.
+     ROSKE v. ACME - week of 2026-08-29
+     Legal exhibit crossed with a mail-order catalog. Manila and
+     kraft stock, angled EXHIBIT stamps, pleading-paper transcript,
+     redaction bars, blueprint plates, wood type for the caption.
+     Dark mode is the deposition room with the overheads off.
      ============================================================ */
   :root {
-    --ra-amber: #e0a92b;      /* fill / reading-light color. Never text on a light surface. */
-    --ra-amber-ink: #8a5c00;  /* the same amber dark enough to set type on cream (5.3:1) */
-    --ra-red: #cf2130;
-    --ra-navy: #132b4a;
+    --rva-oxblood: #4a1c1c;
+    --rva-orange: #ad3f16;        /* type-safe on paper (4.9:1) */
+    --rva-orange-lit: #d9622a;    /* the same orange on the dark table (5.0:1) */
+    --rva-blue: #2b4a7a;          /* blueprint sheet, pinned in both modes */
+    --rva-blue-line: rgba(255, 255, 255, 0.16);
+    --rva-stamp: #b3261e;
+    --rva-stamp-lit: #e0503f;
+    --rva-kraft: #c9a36a;
+    --rva-manila: #ede1c6;
+    --rva-paper: #f8f1e1;
+    --rva-ink: #241a12;
   }
 
-  /* ---------- shared section furniture ---------- */
+  /* ---------- shared furniture ---------- */
   .sec-eyebrow {
     font-family: var(--font-mono);
     text-transform: uppercase;
-    letter-spacing: 0.24em;
-    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    font-size: 0.74rem;
     font-weight: 700;
     margin: 0 0 0.9rem;
-    color: var(--color-accent);
   }
+  :global([data-theme="dark"]) .sec-eyebrow { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .sec-eyebrow { color: var(--rva-orange); }
   .sec-h2 {
     font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: clamp(2.2rem, 5.4vw, 4rem);
-    line-height: 1.02;
-    letter-spacing: -0.025em;
+    font-weight: 400;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    line-height: 1.04;
+    letter-spacing: 0.005em;
     margin: 0 0 1.1rem;
-    text-transform: uppercase;
   }
   :global([data-theme="dark"]) .sec-h2 { color: var(--color-text); }
-  :global([data-theme="light"]) .sec-h2 { color: var(--color-text-dark); }
+  :global([data-theme="light"]) .sec-h2 { color: var(--rva-oxblood); }
   .sec-deck {
     font-family: var(--font-body);
-    font-size: 1.06rem;
-    line-height: 1.72;
-    max-width: 44em;
+    font-size: 1.04rem;
+    line-height: 1.75;
+    max-width: 46em;
     margin: 0 0 1rem;
   }
   :global([data-theme="dark"]) .sec-deck { color: var(--color-text-muted); }
   :global([data-theme="light"]) .sec-deck { color: var(--color-text-dark-muted); }
-  .sec-margin {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin: 0;
-  }
-  :global([data-theme="dark"]) .sec-margin { color: var(--ra-amber); }
-  :global([data-theme="light"]) .sec-margin { color: var(--ra-amber-ink); }
 
   .btn-solid, .btn-line {
     display: inline-block;
     font-family: var(--font-mono);
     font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0.95rem 1.6rem;
+    padding: 0.95rem 1.5rem;
     border: 2px solid var(--color-accent);
     text-decoration: none;
     transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease;
   }
   .btn-solid { background: var(--color-accent); color: #fff; }
   .btn-solid:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); transform: translateY(-2px); }
-  .btn-line { background: transparent; color: var(--color-accent); }
+  .btn-line { background: transparent; color: var(--rva-orange); }
   .btn-line:hover { background: var(--color-accent); color: #fff; transform: translateY(-2px); }
   :global([data-theme="dark"]) .btn-line { border-color: var(--color-text-muted); color: var(--color-text); }
   :global([data-theme="dark"]) .btn-line:hover { border-color: var(--color-accent); color: #fff; }
 
-  /* ---------- cabin strip ---------- */
-  .cabin {
-    border-bottom: 1px solid;
-    font-family: var(--font-mono);
+  /* the EXHIBIT stamp */
+  .stamp {
+    position: absolute;
+    top: 0.9rem;
+    left: 0.9rem;
+    z-index: 2;
+    transform: rotate(-7deg);
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.28rem 0.7rem;
+    border: 3px double var(--rva-stamp);
+    color: var(--rva-stamp);
+    background: rgba(248, 241, 225, 0.82);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
+    pointer-events: none;
   }
-  :global([data-theme="dark"]) .cabin { background: var(--color-surface); border-color: var(--color-border); }
-  :global([data-theme="light"]) .cabin { background: var(--ra-navy); border-color: var(--ra-navy); }
-  .cabin-inner {
+  .stamp-hero { font-size: 1.3rem; top: 1.1rem; left: 1.1rem; }
+  .stamp-cap { position: static; display: inline-block; transform: rotate(-4deg); margin: 0 0.9rem 0 0; }
+
+  /* redaction bar */
+  .redact {
+    display: inline-block;
+    background: #111;
+    color: #111;
+    line-height: 1;
+    border-radius: 1px;
+    user-select: none;
+    letter-spacing: -0.05em;
+  }
+  :global([data-theme="dark"]) .redact { background: #000; color: #000; outline: 1px solid rgba(241,232,216,0.28); }
+
+  /* ---------- docket strip ---------- */
+  .docket-strip { border-bottom: 2px solid; font-family: var(--font-mono); }
+  :global([data-theme="dark"]) .docket-strip { background: var(--color-surface); border-color: var(--color-border); }
+  :global([data-theme="light"]) .docket-strip { background: var(--rva-oxblood); border-color: var(--rva-oxblood); }
+  .docket-inner {
     max-width: 1280px; margin: 0 auto;
     padding: 0.6rem 1.5rem;
-    display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem;
+    display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem;
     align-items: center; justify-content: space-between;
   }
-  .cabin-item {
-    font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
-  }
-  :global([data-theme="dark"]) .cabin-item { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .cabin-item { color: #cfd8e4; }
-  .cabin-mark { color: var(--ra-amber) !important; font-weight: 700; }
-  .cabin-on { color: var(--ra-amber) !important; }
+  .docket-item { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  :global([data-theme="dark"]) .docket-item { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .docket-item { color: #e9d9c2; }
+  .docket-mark { font-weight: 700; }
+  :global([data-theme="dark"]) .docket-mark, :global([data-theme="dark"]) .docket-filed { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .docket-mark, :global([data-theme="light"]) .docket-filed { color: #f3c9a8; }
 
   /* ---------- hero ---------- */
-  .hero { padding: 4rem 1.5rem 0; }
+  .hero { padding: 3.5rem 1.5rem 0; position: relative; }
+  :global([data-theme="light"]) .hero {
+    background:
+      repeating-linear-gradient(0deg, transparent 0 31px, rgba(74, 28, 28, 0.06) 31px 32px);
+  }
   .hero-inner {
     max-width: 1280px; margin: 0 auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center;
+    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3rem; align-items: start;
   }
   .hero-kicker {
     font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.2em;
-    text-transform: uppercase; margin: 0 0 1.4rem; color: var(--color-accent);
+    text-transform: uppercase; margin: 0 0 1.2rem;
   }
-  .hero-h1 {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: clamp(3.4rem, 10vw, 7.5rem);
-    line-height: 0.86;
-    letter-spacing: -0.045em;
-    margin: 0 0 1.2rem;
+  :global([data-theme="dark"]) .hero-kicker { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .hero-kicker { color: var(--rva-orange); }
+
+  /* the pleading caption box */
+  .caption {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: 0 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    border-top: 2px solid; border-bottom: 2px solid;
+    padding: 1rem 0;
+    margin: 0 0 1.6rem;
+    max-width: 44rem;
+  }
+  :global([data-theme="dark"]) .caption { border-color: var(--color-border); color: var(--color-text-muted); }
+  :global([data-theme="light"]) .caption { border-color: var(--rva-oxblood); color: var(--color-text-dark-muted); }
+  .cap-parties p, .cap-right p { margin: 0; }
+  .cap-party { text-transform: uppercase; letter-spacing: 0.02em; }
+  :global([data-theme="dark"]) .cap-party { color: var(--color-text); }
+  :global([data-theme="light"]) .cap-party { color: var(--rva-ink); }
+  .cap-role { padding-left: 2.5rem; font-style: italic; }
+  .cap-vs { padding: 0.25rem 0 0.25rem 1.2rem; font-weight: 700; }
+  .cap-brackets { line-height: 1.5; opacity: 0.55; }
+  .cap-no { font-weight: 700; }
+  .cap-title { text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.4rem !important; }
+  :global([data-theme="dark"]) .cap-title { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .cap-title { color: var(--rva-orange); }
+  .cap-note { font-style: italic; margin-top: 0.4rem !important; }
+
+  .case-h1 {
+    font-family: 'Rye', var(--font-heading);
+    font-weight: 400;
+    font-size: clamp(3.2rem, 9.5vw, 7.4rem);
+    line-height: 0.92;
+    letter-spacing: 0.01em;
     text-transform: uppercase;
-    font-stretch: 112%;
+    margin: 0 0 1.4rem;
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 1.2rem;
   }
-  :global([data-theme="dark"]) .hero-h1 { color: var(--color-text); }
-  :global([data-theme="light"]) .hero-h1 { color: var(--ra-navy); }
-  .hero-h1-air { display: block; color: var(--color-accent); }
-  .hero-type {
-    display: flex; flex-wrap: wrap; gap: 0.6rem;
-    font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.14em;
-    text-transform: uppercase; margin: 0 0 1.6rem;
-    padding-bottom: 1.4rem; border-bottom: 3px solid var(--color-accent);
+  :global([data-theme="dark"]) .case-h1 { color: var(--color-text); text-shadow: 0 3px 0 rgba(0,0,0,0.5); }
+  :global([data-theme="light"]) .case-h1 { color: var(--rva-oxblood); text-shadow: 3px 3px 0 rgba(201, 163, 106, 0.55); }
+  .case-vs {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.34em;
+    text-transform: none;
+    letter-spacing: 0;
+    text-shadow: none;
   }
-  :global([data-theme="dark"]) .hero-type { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .hero-type { color: var(--color-text-dark-muted); }
-  :global([data-theme="dark"]) .hero-type-div { color: var(--ra-amber); }
-  :global([data-theme="light"]) .hero-type-div { color: var(--ra-amber-ink); }
+  :global([data-theme="dark"]) .case-vs { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .case-vs { color: var(--rva-orange); }
   .hero-sub {
-    font-family: var(--font-heading); font-weight: 600;
-    font-size: clamp(1.1rem, 2vw, 1.4rem); line-height: 1.38; margin: 0 0 1.1rem;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    line-height: 1.45;
+    margin: 0 0 1rem;
+    max-width: 30em;
   }
   :global([data-theme="dark"]) .hero-sub { color: var(--color-text); }
-  :global([data-theme="light"]) .hero-sub { color: var(--color-text-dark); }
+  :global([data-theme="light"]) .hero-sub { color: var(--rva-ink); }
   .hero-desc {
-    font-family: var(--font-body); font-size: 1.03rem; line-height: 1.75; margin: 0 0 2rem;
-    max-width: 40em;
+    font-family: var(--font-body); font-size: 1.02rem; line-height: 1.75;
+    margin: 0 0 1.7rem; max-width: 40em;
   }
   :global([data-theme="dark"]) .hero-desc { color: var(--color-text-muted); }
   :global([data-theme="light"]) .hero-desc { color: var(--color-text-dark-muted); }
   .hero-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; }
 
-  .hero-fig { margin: 0; }
+  .hero-fig { margin: 0; position: relative; }
   .hero-frame {
-    position: relative; border: 3px solid; overflow: hidden;
+    position: relative;
+    border: 3px solid;
+    padding: 0.6rem;
+    transform: rotate(1.2deg);
   }
   :global([data-theme="dark"]) .hero-frame { border-color: var(--color-border); background: var(--color-surface); }
-  :global([data-theme="light"]) .hero-frame { border-color: var(--ra-navy); background: var(--color-surface-light); }
-  .hero-tag {
-    position: absolute; top: 0; left: 0; z-index: 2;
-    font-family: var(--font-mono); font-size: 0.62rem; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    background: var(--color-accent); color: #fff; padding: 0.4rem 0.9rem;
-  }
+  :global([data-theme="light"]) .hero-frame { border-color: var(--rva-oxblood); background: var(--rva-paper); box-shadow: 8px 8px 0 var(--rva-kraft); }
   .hero-img { display: block; width: 100%; height: auto; }
   .hero-cap {
-    font-family: var(--font-body); font-size: 0.88rem; line-height: 1.6;
-    margin: 0.9rem 0 0; padding-left: 0.9rem; border-left: 3px solid var(--ra-amber);
+    font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6;
+    margin: 1.2rem 0.4rem 0;
   }
   :global([data-theme="dark"]) .hero-cap { color: var(--color-text-muted); }
   :global([data-theme="light"]) .hero-cap { color: var(--color-text-dark-muted); }
 
-  /* ---------- boarding pass ---------- */
-  .pass {
-    max-width: 1280px; margin: 3.5rem auto 0;
-    display: grid; grid-template-columns: 1.4fr 1fr;
-    border: 3px solid;
+  /* standing stub */
+  .standing {
+    max-width: 1280px; margin: 3rem auto 0;
+    border-top: 2px solid; border-bottom: 2px solid;
+    padding: 1.2rem 0;
+    display: grid; grid-template-columns: auto 1fr; gap: 1.5rem 3rem; align-items: center;
+  }
+  :global([data-theme="dark"]) .standing { border-color: var(--color-border); }
+  :global([data-theme="light"]) .standing { border-color: var(--rva-oxblood); }
+  .standing-label {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; margin: 0;
+  }
+  :global([data-theme="dark"]) .standing-label { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .standing-label { color: var(--rva-orange); }
+  .standing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .standing-item { display: flex; flex-direction: column; gap: 0.15rem; }
+  .standing-v { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1; }
+  :global([data-theme="dark"]) .standing-v { color: var(--color-text); }
+  :global([data-theme="light"]) .standing-v { color: var(--rva-oxblood); }
+  .standing-k { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  :global([data-theme="dark"]) .standing-k { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .standing-k { color: var(--color-text-dark-muted); }
+
+  /* ---------- retain frame around SpeakerCTA ---------- */
+  .retain { position: relative; }
+  .retain-plate {
+    max-width: 1280px; margin: 0 auto; padding: 2.4rem 1.5rem 0;
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+  }
+  :global([data-theme="dark"]) .retain-plate { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .retain-plate { color: var(--rva-orange); }
+
+  /* ---------- the complaint ---------- */
+  .complaint { padding: 5rem 1.5rem; }
+  :global([data-theme="dark"]) .complaint { background: linear-gradient(180deg, transparent, rgba(74, 28, 28, 0.28), transparent); }
+  :global([data-theme="light"]) .complaint { background: var(--rva-paper); border-top: 2px solid var(--rva-oxblood); border-bottom: 2px solid var(--rva-oxblood); }
+  .complaint-head { max-width: 1280px; margin: 0 auto 2.4rem; }
+  .plead {
+    max-width: 1280px; margin: 0 auto; padding: 0; list-style: none;
+    border-left: 3px double;
+    padding-left: 2rem;
+  }
+  :global([data-theme="dark"]) .plead { border-color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .plead { border-color: var(--rva-stamp); }
+  .plead-p { display: grid; grid-template-columns: 2.6rem 1fr; gap: 0.6rem; margin: 0 0 1.4rem; max-width: 60em; }
+  .plead-n { font-family: var(--font-mono); font-weight: 700; font-size: 1rem; padding-top: 0.2rem; }
+  :global([data-theme="dark"]) .plead-n { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .plead-n { color: var(--rva-orange); }
+  .plead-text { font-family: var(--font-body); font-size: 1.04rem; line-height: 1.8; margin: 0; }
+  :global([data-theme="dark"]) .plead-text { color: var(--color-text); }
+  :global([data-theme="light"]) .plead-text { color: var(--rva-ink); }
+  .plead-text :global(a) { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+  :global([data-theme="dark"]) .plead-text :global(a) { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .plead-text :global(a) { color: var(--rva-orange); }
+
+  /* ---------- exhibits ---------- */
+  .exhibits { padding: 5rem 1.5rem; }
+  .exhibits-head { max-width: 1280px; margin: 0 auto 2.6rem; }
+  .exhibits-grid {
+    max-width: 1280px; margin: 0 auto;
+    display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; align-items: start;
+  }
+  .witness { margin: 0; position: sticky; top: 5.5rem; }
+  .witness-frame { position: relative; border: 3px solid; padding: 0.5rem; transform: rotate(-1.4deg); }
+  :global([data-theme="dark"]) .witness-frame { border-color: var(--color-border); background: var(--color-surface); }
+  :global([data-theme="light"]) .witness-frame { border-color: var(--rva-oxblood); background: var(--rva-paper); box-shadow: -8px 8px 0 var(--rva-kraft); }
+  .witness img { display: block; width: 100%; height: auto; }
+  .witness figcaption { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; margin: 1.2rem 0.3rem 0; }
+  :global([data-theme="dark"]) .witness figcaption { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .witness figcaption { color: var(--color-text-dark-muted); }
+
+  .ex-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.2rem; }
+  .ex {
+    display: grid; grid-template-columns: 6rem 1fr;
+    border: 2px solid;
     position: relative;
   }
-  :global([data-theme="dark"]) .pass { border-color: var(--color-border); background: var(--color-surface); }
-  :global([data-theme="light"]) .pass { border-color: var(--ra-navy); background: var(--color-surface-light); }
-  .pass-main { padding: 1.6rem 1.8rem; }
-  .pass-stub {
-    padding: 1.6rem 1.8rem;
-    border-left: 3px dashed;
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
-    align-items: center;
+  :global([data-theme="dark"]) .ex { border-color: var(--color-border); background: var(--color-surface); }
+  :global([data-theme="light"]) .ex { border-color: var(--rva-oxblood); background: var(--rva-manila); }
+  .ex-tab {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
+    border-right: 2px solid; padding: 1rem 0.5rem;
   }
-  :global([data-theme="dark"]) .pass-stub { border-color: var(--color-border); }
-  :global([data-theme="light"]) .pass-stub { border-color: var(--color-border-light); }
-  .pass-brand {
-    display: block; font-family: var(--font-mono); font-size: 0.66rem;
-    letter-spacing: 0.24em; text-transform: uppercase; color: var(--color-accent);
-    margin-bottom: 0.7rem;
+  :global([data-theme="dark"]) .ex-tab { border-color: var(--color-border); background: rgba(74, 28, 28, 0.35); }
+  :global([data-theme="light"]) .ex-tab { border-color: var(--rva-oxblood); background: var(--rva-kraft); }
+  .ex-letter { font-family: var(--font-heading); font-size: 2.6rem; line-height: 1; }
+  :global([data-theme="dark"]) .ex-letter { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .ex-letter { color: var(--rva-oxblood); }
+  .ex-caption { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; writing-mode: vertical-rl; transform: rotate(180deg); }
+  :global([data-theme="dark"]) .ex-caption { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .ex-caption { color: var(--rva-ink); }
+  .ex-body { padding: 1.3rem 1.5rem 1.4rem; }
+  .ex-title { font-family: var(--font-heading); font-weight: 400; font-size: 1.25rem; line-height: 1.25; margin: 0 0 0.6rem; }
+  :global([data-theme="dark"]) .ex-title { color: var(--color-text); }
+  :global([data-theme="light"]) .ex-title { color: var(--rva-oxblood); }
+  .ex-desc { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.72; margin: 0 0 0.9rem; }
+  :global([data-theme="dark"]) .ex-desc { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .ex-desc { color: var(--color-text-dark-muted); }
+  .ex-link {
+    font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;
   }
-  .pass-route { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.7rem; }
-  .pass-code {
-    font-family: var(--font-heading); font-weight: 900; font-size: clamp(1.8rem, 4vw, 2.9rem);
-    letter-spacing: -0.02em;
-  }
-  :global([data-theme="dark"]) .pass-code { color: var(--color-text); }
-  :global([data-theme="light"]) .pass-code { color: var(--ra-navy); }
-  .pass-plane { color: var(--ra-amber); display: inline-flex; }
-  .pass-note { font-family: var(--font-body); font-size: 0.88rem; line-height: 1.6; }
-  :global([data-theme="dark"]) .pass-note { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .pass-note { color: var(--color-text-dark-muted); }
-  .pass-stat { display: block; text-align: center; }
-  .pass-v {
-    display: block; font-family: var(--font-heading); font-weight: 900;
-    font-size: clamp(1.3rem, 3vw, 2rem); line-height: 1; color: var(--color-accent);
-  }
-  .pass-k {
-    display: block; font-family: var(--font-mono); font-size: 0.6rem;
-    letter-spacing: 0.14em; text-transform: uppercase; margin-top: 0.4rem;
-  }
-  :global([data-theme="dark"]) .pass-k { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .pass-k { color: var(--color-text-dark-muted); }
+  :global([data-theme="dark"]) .ex-link { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .ex-link { color: var(--rva-orange); }
+  .ex-link:hover { text-decoration-thickness: 3px; }
 
-  /* ---------- upgrade frame around SpeakerCTA ---------- */
-  .upgrade { position: relative; padding-top: 1.6rem; }
-  .upgrade-plate {
-    max-width: 1280px; margin: 0 auto;
-    padding: 0 1.5rem;
-    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.24em;
-    text-transform: uppercase;
+  /* ---------- delivery (full bleed) ---------- */
+  .delivery { padding: 0; }
+  :global([data-theme="light"]) .delivery { background: var(--rva-oxblood); }
+  :global([data-theme="dark"]) .delivery { background: #000; }
+  .delivery-fig { margin: 0; max-width: 1600px; margin: 0 auto; }
+  .delivery-fig img { display: block; width: 100%; height: auto; }
+  .delivery-cap {
+    display: flex; align-items: flex-start; gap: 0.5rem;
+    max-width: 1280px; margin: 0 auto; padding: 1.4rem 1.5rem 1.8rem;
+    font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.65;
   }
-  :global([data-theme="dark"]) .upgrade-plate { color: var(--ra-amber); }
-  :global([data-theme="light"]) .upgrade-plate { color: var(--ra-amber-ink); }
+  :global([data-theme="light"]) .delivery-cap { color: #e9d9c2; }
+  :global([data-theme="dark"]) .delivery-cap { color: var(--color-text-muted); }
+  .delivery-cap .stamp { border-color: var(--rva-stamp-lit); color: var(--rva-stamp-lit); background: rgba(0,0,0,0.35); }
 
-  /* ---------- the safety card ---------- */
-  .card { padding: 5rem 1.5rem; }
-  :global([data-theme="dark"]) .card { background: linear-gradient(180deg, transparent, rgba(19,43,74,0.35), transparent); }
-  :global([data-theme="light"]) .card { background: var(--color-surface-light); border-top: 1px solid var(--color-border-light); border-bottom: 1px solid var(--color-border-light); }
-  .card-head { max-width: 1280px; margin: 0 auto 3rem; }
+  /* ---------- the catalog ---------- */
+  .catalog { padding: 5rem 1.5rem; }
+  :global([data-theme="light"]) .catalog { background: var(--rva-kraft); }
+  :global([data-theme="dark"]) .catalog { background: linear-gradient(180deg, rgba(43, 74, 122, 0.18), transparent 70%); }
+  .catalog-head { max-width: 1280px; margin: 0 auto 2.4rem; }
+  :global([data-theme="light"]) .catalog .sec-h2 { color: var(--rva-oxblood); }
+  :global([data-theme="light"]) .catalog .sec-deck { color: var(--rva-ink); }
+  .catalog-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 3rem; align-items: start; }
+  .plate-fig { margin: 0; }
+  .plate-frame { position: relative; padding: 0.6rem; border: 3px solid; }
+  :global([data-theme="dark"]) .plate-frame { border-color: var(--color-border); background: var(--color-surface); }
+  :global([data-theme="light"]) .plate-frame { border-color: var(--rva-oxblood); background: var(--rva-paper); }
+  .plate-frame img { display: block; width: 100%; height: auto; }
+  .plate-no {
+    position: absolute; top: 1.2rem; right: 1.2rem; z-index: 2;
+    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
+    background: var(--rva-paper); color: var(--rva-ink); padding: 0.25rem 0.6rem; border: 1px solid var(--rva-ink);
+  }
+  .plate-fig figcaption { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; margin: 1rem 0.3rem 0; }
+  :global([data-theme="dark"]) .plate-fig figcaption { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .plate-fig figcaption { color: var(--rva-ink); }
 
-  .panels {
-    max-width: 1280px; margin: 0 auto; padding: 0; list-style: none;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
-    border: 3px solid;
+  .catalog-masthead { align-self: end; padding-bottom: 0.5rem; }
+  .cat-brand {
+    font-family: 'Rye', var(--font-heading); font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1.05; margin: 0 0 0.6rem;
   }
-  :global([data-theme="dark"]) .panels { border-color: var(--color-border); }
-  :global([data-theme="light"]) .panels { border-color: var(--ra-navy); }
-  .panel {
-    padding: 1.9rem 1.7rem 2.1rem;
-    border-right: 1px solid; border-bottom: 1px solid;
-    display: flex; flex-direction: column;
-  }
-  :global([data-theme="dark"]) .panel { border-color: var(--color-border); }
-  :global([data-theme="light"]) .panel { border-color: var(--color-border-light); }
-  .panel:nth-child(3n) { border-right: 0; }
-  .panel:nth-child(n+4) { border-bottom: 0; }
-  .panel-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: 1.1rem; }
-  .panel-no {
-    font-family: var(--font-heading); font-weight: 900; font-size: 2.6rem; line-height: 1;
-    color: var(--color-accent); letter-spacing: -0.04em;
-  }
-  .panel-pict { width: 88px; height: 88px; flex: 0 0 88px; }
-  .pict { width: 100%; height: 100%; }
-  .pict .ps { fill: none; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
-  .pict .pf { stroke-width: 5; stroke-linejoin: round; }
-  .pict .px { fill: none; stroke: var(--ra-red); stroke-width: 6; stroke-linecap: round; }
-  .pict .pc { fill: none; stroke: var(--ra-red); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
-  :global([data-theme="dark"]) .pict .ps { stroke: var(--color-text); }
-  :global([data-theme="dark"]) .pict .pf { stroke: var(--color-text); fill: var(--ra-amber); }
-  :global([data-theme="light"]) .pict .ps { stroke: var(--ra-navy); }
-  :global([data-theme="light"]) .pict .pf { stroke: var(--ra-navy); fill: var(--ra-amber); }
-  .panel-sign {
-    font-family: var(--font-heading); font-weight: 800; font-size: 1.24rem; line-height: 1.22;
-    text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 0.7rem;
-  }
-  :global([data-theme="dark"]) .panel-sign { color: var(--color-text); }
-  :global([data-theme="light"]) .panel-sign { color: var(--ra-navy); }
-  .panel-orig {
-    font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.5;
-    margin: 0 0 1rem; padding-bottom: 1rem; border-bottom: 1px solid;
-    font-style: italic;
-  }
-  :global([data-theme="dark"]) .panel-orig { color: var(--ra-amber); border-color: var(--color-border); }
-  :global([data-theme="light"]) .panel-orig { color: var(--ra-amber-ink); border-color: var(--color-border-light); }
-  .panel-body { font-family: var(--font-body); font-size: 0.97rem; line-height: 1.68; margin: 0; }
-  :global([data-theme="dark"]) .panel-body { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .panel-body { color: var(--color-text-dark-muted); }
+  :global([data-theme="dark"]) .cat-brand { color: var(--color-text); }
+  :global([data-theme="light"]) .cat-brand { color: var(--rva-oxblood); }
+  .cat-tag { font-family: var(--font-body); font-style: italic; font-size: 1rem; line-height: 1.6; margin: 0; max-width: 32em; }
+  :global([data-theme="dark"]) .cat-tag { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .cat-tag { color: var(--rva-ink); }
 
-  /* ---------- share block ---------- */
-  .share {
-    max-width: 1280px; margin: 2.5rem auto 0;
-    display: grid; grid-template-columns: 1.5fr 1fr; gap: 2.5rem; align-items: center;
-    border: 3px solid var(--color-accent); padding: 2rem;
+  /* blueprint plates: pinned colors in both modes, so nothing inverts */
+  .plates {
+    grid-column: 1 / -1;
+    list-style: none; margin: 0; padding: 0;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
   }
-  .share-eyebrow {
-    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em;
-    text-transform: uppercase; margin: 0 0 0.8rem; color: var(--color-accent);
+  .plate {
+    background:
+      linear-gradient(var(--rva-blue-line) 1px, transparent 1px) 0 0 / 20px 20px,
+      linear-gradient(90deg, var(--rva-blue-line) 1px, transparent 1px) 0 0 / 20px 20px,
+      var(--rva-blue);
+    color: #f1e8d8;
+    border: 2px solid #f1e8d8;
+    outline: 6px solid var(--rva-blue);
+    padding: 1.2rem 1.3rem 1.4rem;
+    display: flex; flex-direction: column; gap: 0.7rem;
   }
-  .share-text { font-family: var(--font-body); font-size: 1rem; line-height: 1.7; margin: 0 0 1.5rem; max-width: 42em; }
-  :global([data-theme="dark"]) .share-text { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .share-text { color: var(--color-text-dark-muted); }
-  .share-thumb { display: block; border: 2px solid var(--color-border-light); }
-  .share-thumb img { display: block; width: 100%; height: auto; }
+  .plate-head { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .plate-item { color: #f1e8d8; }
+  .plate-new { background: var(--rva-orange-lit); color: #fff; padding: 0.15rem 0.5rem; font-weight: 700; }
+  .plate-schem { width: 76px; height: 76px; }
+  .schem { width: 100%; height: 100%; fill: none; stroke: #f1e8d8; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .plate-name { font-family: var(--font-heading); font-weight: 400; font-size: 1.3rem; line-height: 1.2; margin: 0; color: #fff; }
+  .plate-sell { font-family: var(--font-body); font-style: italic; font-size: 0.98rem; line-height: 1.55; margin: 0; color: #f1e8d8; }
+  .plate-got { font-family: var(--font-body); font-size: 0.94rem; line-height: 1.7; margin: 0; color: #dfe6f2; border-top: 1px dashed rgba(241, 232, 216, 0.45); padding-top: 0.7rem; }
+  .plate-got-k { font-family: var(--font-mono); font-weight: 700; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: #ffd6b8; }
 
-  /* ---------- cabin demonstration ---------- */
-  .demo { padding: 5rem 1.5rem; max-width: 1280px; margin: 0 auto; }
-  .demo-head { margin-bottom: 2.6rem; }
-  .demo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
-  .demo-fig { margin: 0; }
-  .demo-fig img {
-    display: block; width: 100%; height: 300px; object-fit: cover;
-    border: 3px solid;
-  }
-  :global([data-theme="dark"]) .demo-fig img { border-color: var(--color-border); }
-  :global([data-theme="light"]) .demo-fig img { border-color: var(--ra-navy); }
-  .demo-fig figcaption { padding-top: 0.8rem; }
-  .demo-label {
-    display: block; font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.4rem;
-  }
-  .demo-cap { display: block; font-family: var(--font-body); font-size: 0.88rem; line-height: 1.6; }
-  :global([data-theme="dark"]) .demo-cap { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .demo-cap { color: var(--color-text-dark-muted); }
+  /* ---------- deposition ---------- */
+  .depo { padding: 5rem 1.5rem; }
+  :global([data-theme="dark"]) .depo { background: radial-gradient(ellipse at 50% 20%, rgba(224, 169, 43, 0.12), transparent 60%); }
+  :global([data-theme="light"]) .depo { background: var(--rva-paper); border-top: 2px solid var(--rva-oxblood); }
+  .depo-head { max-width: 1280px; margin: 0 auto 2.4rem; }
+  .depo-fig { max-width: 1280px; margin: 0 auto 2.6rem; }
+  .depo-fig img { display: block; width: 100%; height: auto; border: 3px solid; }
+  :global([data-theme="dark"]) .depo-fig img { border-color: var(--color-border); }
+  :global([data-theme="light"]) .depo-fig img { border-color: var(--rva-oxblood); }
+  .depo-fig figcaption { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; margin: 1rem 0.3rem 0; }
+  :global([data-theme="dark"]) .depo-fig figcaption { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .depo-fig figcaption { color: var(--color-text-dark-muted); }
 
-  /* ---------- irregular operations ---------- */
-  .irrops { padding: 5rem 1.5rem; }
-  :global([data-theme="dark"]) .irrops { background: var(--color-surface); }
-  :global([data-theme="light"]) .irrops { background: var(--ra-navy); }
-  :global([data-theme="light"]) .irrops .sec-h2 { color: #fff; }
-  :global([data-theme="light"]) .irrops .sec-deck { color: #c3cedd; }
-  .irrops-head { max-width: 1280px; margin: 0 auto 2.6rem; }
-  .irr-list { max-width: 1280px; margin: 0 auto; padding: 0; list-style: none; }
-  .irr {
-    display: grid; grid-template-columns: 170px 1fr; gap: 2rem;
-    padding: 1.8rem 0; border-top: 1px solid;
+  /* pleading paper: numbered lines, double red rule at left */
+  .transcript {
+    max-width: 1100px; margin: 0 auto;
+    font-family: var(--font-mono);
+    border: 2px solid;
+    padding: 1.6rem 1.6rem 1.6rem 0;
+    position: relative;
+    background-image: repeating-linear-gradient(0deg, transparent 0 27px, rgba(74, 28, 28, 0.09) 27px 28px);
   }
-  :global([data-theme="dark"]) .irr { border-color: var(--color-border); }
-  :global([data-theme="light"]) .irr { border-color: rgba(255,255,255,0.18); }
-  .irr:last-child { border-bottom: 1px solid; }
-  :global([data-theme="dark"]) .irr:last-child { border-color: var(--color-border); }
-  :global([data-theme="light"]) .irr:last-child { border-color: rgba(255,255,255,0.18); }
-  .irr-code {
-    font-family: var(--font-mono); font-size: 1.5rem; font-weight: 700;
-    color: var(--ra-amber); letter-spacing: 0.02em;
+  :global([data-theme="dark"]) .transcript { border-color: var(--color-border); background-color: var(--color-surface); background-image: repeating-linear-gradient(0deg, transparent 0 27px, rgba(241, 232, 216, 0.06) 27px 28px); }
+  :global([data-theme="light"]) .transcript { border-color: var(--rva-oxblood); background-color: #fff; }
+  .transcript::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: 4.2rem;
+    border-left: 3px double var(--rva-stamp);
   }
-  .irr-head {
-    font-family: var(--font-heading); font-weight: 800; font-size: 1.3rem;
-    text-transform: uppercase; letter-spacing: -0.01em; margin: 0 0 0.6rem;
-  }
-  :global([data-theme="dark"]) .irr-head { color: var(--color-text); }
-  :global([data-theme="light"]) .irr-head { color: #fff; }
-  .irr-text { font-family: var(--font-body); font-size: 1rem; line-height: 1.72; margin: 0; max-width: 52em; }
-  :global([data-theme="dark"]) .irr-text { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .irr-text { color: #c3cedd; }
-  .irr-link {
-    display: inline-block; margin-top: 0.9rem;
-    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--color-accent); text-decoration: none;
-    border-bottom: 2px solid var(--color-accent); padding-bottom: 0.2rem;
-  }
-  :global([data-theme="light"]) .irr-link { color: var(--ra-amber); border-color: var(--ra-amber); }
-  .irr-link:hover { opacity: 0.75; }
+  :global([data-theme="dark"]) .transcript::before { border-color: var(--rva-stamp-lit); }
+  .tx-header { margin: 0 0 1.2rem 5.2rem; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  :global([data-theme="dark"]) .tx-header { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .tx-header { color: var(--color-text-dark-muted); }
+  .tx { list-style: none; margin: 0; padding: 0; }
+  .tx-line { display: grid; grid-template-columns: 4.2rem 2rem 1fr; gap: 0 0.6rem; margin: 0 0 0.9rem; font-size: 0.94rem; line-height: 1.75; }
+  .tx-n { text-align: center; font-size: 0.74rem; padding-top: 0.25rem; }
+  :global([data-theme="dark"]) .tx-n { color: var(--color-text-muted); opacity: 0.7; }
+  :global([data-theme="light"]) .tx-n { color: var(--color-text-dark-muted); }
+  .tx-who { font-weight: 700; padding-left: 0.6rem; }
+  .tx-q .tx-who, .tx-q .tx-text { font-weight: 700; }
+  :global([data-theme="dark"]) .tx-q .tx-text, :global([data-theme="dark"]) .tx-who { color: var(--color-text); }
+  :global([data-theme="light"]) .tx-q .tx-text, :global([data-theme="light"]) .tx-who { color: var(--rva-ink); }
+  :global([data-theme="dark"]) .tx-a .tx-text { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .tx-a .tx-text { color: var(--color-text-dark-muted); }
+  .tx-note .tx-text { font-style: italic; }
+  :global([data-theme="dark"]) .tx-note .tx-text { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .tx-note .tx-text { color: var(--color-text-dark-muted); }
 
-  /* ---------- route map ---------- */
-  .route { padding: 5rem 1.5rem; max-width: 1280px; margin: 0 auto; }
-  .route-head { margin-bottom: 2.4rem; }
-  .route-map { border: 3px solid; padding: 1.2rem; }
-  :global([data-theme="dark"]) .route-map { border-color: var(--color-border); background: var(--color-surface); }
-  :global([data-theme="light"]) .route-map { border-color: var(--ra-navy); background: var(--color-surface-light); }
-  .route-svg { display: block; width: 100%; height: auto; }
-  .route-svg .grid line { stroke-width: 1; stroke-dasharray: 3 7; }
-  :global([data-theme="dark"]) .route-svg .grid line { stroke: rgba(159,176,196,0.28); }
-  :global([data-theme="light"]) .route-svg .grid line { stroke: rgba(19,43,74,0.18); }
-  .route-svg .arc { fill: none; stroke: var(--color-accent); stroke-width: 2.5; stroke-linecap: round; }
-  .route-svg .dest circle { fill: var(--ra-amber); }
-  .route-svg .dest text {
-    font-family: var(--font-mono); font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase;
+  /* ---------- pending matters ---------- */
+  .matters { padding: 5rem 1.5rem; }
+  .matters-head { max-width: 1280px; margin: 0 auto 2.4rem; }
+  .matters-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .matter { border: 2px solid; padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; position: relative; }
+  :global([data-theme="dark"]) .matter { border-color: var(--color-border); background: var(--color-surface); }
+  :global([data-theme="light"]) .matter { border-color: var(--rva-oxblood); background: var(--rva-manila); box-shadow: 4px 4px 0 var(--rva-kraft); }
+  .matter-head { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  :global([data-theme="dark"]) .matter-no { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .matter-no { color: var(--color-text-dark-muted); }
+  .matter-status { padding: 0.15rem 0.5rem; border: 1.5px solid; font-weight: 700; text-align: right; }
+  .ms-go { border-color: var(--rva-orange); color: var(--rva-orange); }
+  :global([data-theme="dark"]) .ms-go { border-color: var(--rva-orange-lit); color: var(--rva-orange-lit); }
+  .ms-done { border-color: var(--rva-blue); color: var(--rva-blue); }
+  :global([data-theme="dark"]) .ms-done { border-color: #8fb0e0; color: #8fb0e0; }
+  .ms-hold { border-color: currentColor; }
+  :global([data-theme="dark"]) .ms-hold { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .ms-hold { color: var(--color-text-dark-muted); }
+  .matter-name { font-family: var(--font-heading); font-weight: 400; font-size: 1.25rem; line-height: 1.25; margin: 0; }
+  :global([data-theme="dark"]) .matter-name { color: var(--color-text); }
+  :global([data-theme="light"]) .matter-name { color: var(--rva-oxblood); }
+  .matter-note { font-family: var(--font-body); font-size: 0.96rem; line-height: 1.7; margin: 0; flex: 1; }
+  :global([data-theme="dark"]) .matter-note { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .matter-note { color: var(--color-text-dark-muted); }
+  .matter-cta {
+    align-self: flex-start;
+    font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;
   }
-  :global([data-theme="dark"]) .route-svg .dest text { fill: var(--color-text); }
-  :global([data-theme="light"]) .route-svg .dest text { fill: var(--ra-navy); }
-  .route-svg .origin circle { fill: var(--color-accent); }
-  .route-svg .origin-ring { fill: none; stroke: var(--color-accent); stroke-width: 2; }
-  .route-svg .origin text {
-    font-family: var(--font-mono); font-size: 16px; font-weight: 700; letter-spacing: 0.08em;
-    text-transform: uppercase; fill: var(--color-accent);
-  }
-  .route-log {
-    list-style: none; padding: 1.4rem 0 0; margin: 0;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem;
-    border-top: 1px dashed;
-  }
-  :global([data-theme="dark"]) .route-log { border-color: var(--color-border); }
-  :global([data-theme="light"]) .route-log { border-color: var(--color-border-light); }
-  .rl-k {
-    display: block; font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.4rem;
-  }
-  .rl-v { display: block; font-family: var(--font-body); font-size: 0.9rem; line-height: 1.62; }
-  :global([data-theme="dark"]) .rl-v { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .rl-v { color: var(--color-text-dark-muted); }
-  .route-fig { margin: 2rem 0 0; }
-  .route-fig img { display: block; width: 100%; height: auto; border: 3px solid; }
-  :global([data-theme="dark"]) .route-fig img { border-color: var(--color-border); }
-  :global([data-theme="light"]) .route-fig img { border-color: var(--ra-navy); }
-  .route-fig figcaption {
-    font-family: var(--font-body); font-size: 0.9rem; line-height: 1.62; margin-top: 0.9rem;
-    padding-left: 0.9rem; border-left: 3px solid var(--ra-amber); max-width: 46em;
-  }
-  :global([data-theme="dark"]) .route-fig figcaption { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .route-fig figcaption { color: var(--color-text-dark-muted); }
+  :global([data-theme="dark"]) .matter-cta { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .matter-cta { color: var(--rva-orange); }
+  .matter-cta-off { text-decoration: none; opacity: 0.6; }
 
-  /* ---------- fleet ---------- */
-  .fleet { padding: 5rem 1.5rem; max-width: 1280px; margin: 0 auto; }
-  .fleet-head { margin-bottom: 2.6rem; }
-  .fleet-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
-  .craft {
-    border: 3px solid; padding: 1.6rem; display: flex; flex-direction: column;
-    transition: transform 0.16s ease;
-  }
-  .craft:hover { transform: translateY(-4px); }
-  :global([data-theme="dark"]) .craft { border-color: var(--color-border); background: var(--color-surface); }
-  :global([data-theme="light"]) .craft { border-color: var(--ra-navy); background: var(--color-surface-light); }
-  .craft-head { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 0.9rem; }
-  .craft-tail {
-    font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700;
-    letter-spacing: 0.1em; color: var(--color-accent);
-  }
-  .craft-status {
-    font-family: var(--font-mono); font-size: 0.6rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase; padding: 0.3rem 0.6rem;
-    border: 1px solid;
-  }
-  .cs-go { color: #17663c; border-color: #17663c; background: #d8f0e2; }
-  .cs-done { color: #14456f; border-color: #14456f; background: #d9e8f5; }
-  .cs-hold { color: #7a5200; border-color: #7a5200; background: #f8e9c4; }
-  .craft-type {
-    font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.16em;
-    text-transform: uppercase; margin: 0 0 0.5rem;
-  }
-  :global([data-theme="dark"]) .craft-type { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .craft-type { color: var(--color-text-dark-muted); }
-  .craft-name {
-    font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; line-height: 1.2;
-    text-transform: uppercase; letter-spacing: -0.015em; margin: 0 0 0.8rem;
-  }
-  :global([data-theme="dark"]) .craft-name { color: var(--color-text); }
-  :global([data-theme="light"]) .craft-name { color: var(--ra-navy); }
-  .craft-note { font-family: var(--font-body); font-size: 0.94rem; line-height: 1.66; margin: 0 0 1.2rem; flex: 1; }
-  :global([data-theme="dark"]) .craft-note { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .craft-note { color: var(--color-text-dark-muted); }
-  .craft-cta {
-    font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-accent);
-    text-decoration: none; border-bottom: 2px solid var(--color-accent); align-self: flex-start;
-    padding-bottom: 0.2rem;
-  }
-  .craft-cta:hover { opacity: 0.75; }
-  .craft-cta-off { border-color: transparent; opacity: 0.6; }
-  :global([data-theme="dark"]) .craft-cta-off { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .craft-cta-off { color: var(--color-text-dark-muted); }
+  /* ---------- findings ---------- */
+  .findings { padding: 5rem 1.5rem; }
+  :global([data-theme="dark"]) .findings { background: linear-gradient(180deg, transparent, rgba(74, 28, 28, 0.3)); }
+  :global([data-theme="light"]) .findings { background: var(--rva-paper); border-top: 2px solid var(--rva-oxblood); border-bottom: 2px solid var(--rva-oxblood); }
+  .findings-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 3rem; align-items: start; }
+  .find-list { list-style: none; margin: 1.5rem 0 2rem; padding: 0; display: grid; gap: 1.1rem; max-width: 56em; }
+  .find { display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.5rem; }
+  .find-n { font-family: var(--font-mono); font-weight: 700; padding-top: 0.2rem; }
+  :global([data-theme="dark"]) .find-n { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .find-n { color: var(--rva-orange); }
+  .find-text { font-family: var(--font-body); font-size: 1.02rem; line-height: 1.78; margin: 0; }
+  :global([data-theme="dark"]) .find-text { color: var(--color-text); }
+  :global([data-theme="light"]) .find-text { color: var(--rva-ink); }
+  .judgment { border: 3px double; padding: 1.4rem 1.6rem 1.6rem; max-width: 56em; }
+  :global([data-theme="dark"]) .judgment { border-color: var(--rva-orange-lit); background: rgba(0,0,0,0.25); }
+  :global([data-theme="light"]) .judgment { border-color: var(--rva-oxblood); background: var(--rva-manila); }
+  .judgment-label { font-family: var(--font-heading); font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 0.6rem; }
+  :global([data-theme="dark"]) .judgment-label { color: var(--rva-orange-lit); }
+  :global([data-theme="light"]) .judgment-label { color: var(--rva-stamp); }
+  .judgment-text { font-family: var(--font-body); font-size: 1.02rem; line-height: 1.75; margin: 0 0 1.2rem; }
+  :global([data-theme="dark"]) .judgment-text { color: var(--color-text); }
+  :global([data-theme="light"]) .judgment-text { color: var(--rva-ink); }
 
-  /* ---------- duty free ---------- */
-  .duty { padding: 5rem 1.5rem; }
-  :global([data-theme="dark"]) .duty { background: var(--color-surface); }
-  :global([data-theme="light"]) .duty { background: var(--color-surface-light); border-top: 1px solid var(--color-border-light); border-bottom: 1px solid var(--color-border-light); }
-  .duty-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
-  .duty-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.6rem; }
-  .duty-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid; }
-  :global([data-theme="dark"]) .duty-list { border-color: var(--color-border); }
-  :global([data-theme="light"]) .duty-list { border-color: var(--color-border-light); }
-  .duty-item {
-    display: grid; grid-template-columns: 74px 1fr; gap: 1rem; align-items: baseline;
-    padding: 0.62rem 0; border-bottom: 1px solid;
-  }
-  :global([data-theme="dark"]) .duty-item { border-color: var(--color-border); }
-  :global([data-theme="light"]) .duty-item { border-color: var(--color-border-light); }
-  .duty-sku { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-accent); font-weight: 700; }
-  .duty-title { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.45; }
-  :global([data-theme="dark"]) .duty-title { color: var(--color-text); }
-  :global([data-theme="light"]) .duty-title { color: var(--color-text-dark); }
-  .duty-sub {
-    display: block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
-    text-transform: uppercase; margin-top: 0.2rem;
-  }
-  :global([data-theme="dark"]) .duty-sub { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .duty-sub { color: var(--color-text-dark-muted); }
-  :global([data-theme="dark"]) .duty-off .duty-sku { color: var(--ra-amber); }
-  :global([data-theme="light"]) .duty-off .duty-sku { color: var(--ra-amber-ink); }
+  .aftermath { margin: 0; }
+  .aftermath-frame { position: relative; border: 3px solid; padding: 0.5rem; transform: rotate(1.6deg); }
+  :global([data-theme="dark"]) .aftermath-frame { border-color: var(--color-border); background: var(--color-surface); }
+  :global([data-theme="light"]) .aftermath-frame { border-color: var(--rva-oxblood); background: var(--rva-paper); box-shadow: 8px 8px 0 var(--rva-kraft); }
+  .aftermath img { display: block; width: 100%; height: auto; }
+  .aftermath figcaption { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; margin: 1.2rem 0.3rem 0; }
+  :global([data-theme="dark"]) .aftermath figcaption { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .aftermath figcaption { color: var(--color-text-dark-muted); }
 
-  /* ---------- seat-back card ---------- */
-  .seatback { padding: 5rem 1.5rem; max-width: 1280px; margin: 0 auto; }
-  .sb-head { margin-bottom: 2.6rem; }
-  .sb-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 3px solid; }
-  :global([data-theme="dark"]) .sb-grid { border-color: var(--color-border); }
-  :global([data-theme="light"]) .sb-grid { border-color: var(--ra-navy); }
-  .sb-item { padding: 1.7rem; border-right: 1px solid; border-bottom: 1px solid; }
-  :global([data-theme="dark"]) .sb-item { border-color: var(--color-border); }
-  :global([data-theme="light"]) .sb-item { border-color: var(--color-border-light); }
-  .sb-item:nth-child(2n) { border-right: 0; }
-  .sb-item:last-child { border-bottom: 0; grid-column: 1 / -1; }
-  .sb-item:nth-last-child(2) { border-bottom: 0; }
-  .sb-no {
-    display: block; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700;
-    letter-spacing: 0.18em; color: var(--color-accent); margin-bottom: 0.6rem;
-  }
-  .sb-q {
-    font-family: var(--font-heading); font-weight: 800; font-size: 1.15rem; line-height: 1.25;
-    margin: 0 0 0.7rem;
-  }
-  :global([data-theme="dark"]) .sb-q { color: var(--color-text); }
-  :global([data-theme="light"]) .sb-q { color: var(--ra-navy); }
-  .sb-a { font-family: var(--font-body); font-size: 0.96rem; line-height: 1.68; margin: 0; }
-  :global([data-theme="dark"]) .sb-a { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .sb-a { color: var(--color-text-dark-muted); }
+  /* ---------- retain counsel (CTA) ---------- */
+  .retain-cta { padding: 5rem 1.5rem; }
+  .retain-inner { max-width: 880px; margin: 0 auto; text-align: center; }
+  .retain-h2 { font-family: var(--font-heading); font-weight: 400; font-size: clamp(2.2rem, 6vw, 4.4rem); line-height: 1.02; margin: 0 0 1.2rem; }
+  :global([data-theme="dark"]) .retain-h2 { color: var(--color-text); }
+  :global([data-theme="light"]) .retain-h2 { color: var(--rva-oxblood); }
+  .retain-deck { font-family: var(--font-body); font-size: 1.06rem; line-height: 1.75; margin: 0 auto 2rem; max-width: 44em; }
+  :global([data-theme="dark"]) .retain-deck { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .retain-deck { color: var(--color-text-dark-muted); }
+  .retain-btns { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
 
-  /* ---------- final call ---------- */
-  .final { padding: 5rem 1.5rem; }
-  :global([data-theme="dark"]) .final { background: linear-gradient(135deg, var(--color-surface), rgba(207,33,48,0.18)); }
-  :global([data-theme="light"]) .final { background: var(--ra-navy); }
-  .final-inner { max-width: 900px; margin: 0 auto; text-align: center; }
-  .final-inner .sec-eyebrow { color: var(--ra-amber); }
-  .final-h2 {
-    font-family: var(--font-heading); font-weight: 900;
-    font-size: clamp(2rem, 5vw, 3.4rem); line-height: 1.04; letter-spacing: -0.03em;
-    text-transform: uppercase; margin: 0 0 1.1rem;
-  }
-  :global([data-theme="dark"]) .final-h2 { color: var(--color-text); }
-  :global([data-theme="light"]) .final-h2 { color: #fff; }
-  .final-deck {
-    font-family: var(--font-body); font-size: 1.06rem; line-height: 1.74;
-    margin: 0 auto 2rem; max-width: 46em;
-  }
-  :global([data-theme="dark"]) .final-deck { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .final-deck { color: #c3cedd; }
-  .final-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
-  :global([data-theme="light"]) .final .btn-line { border-color: #fff; color: #fff; }
-  :global([data-theme="light"]) .final .btn-line:hover { background: #fff; color: var(--ra-navy); }
-
-  /* ---------- colophon ---------- */
-  .colophon { padding: 2.6rem 1.5rem; border-top: 1px solid; }
-  :global([data-theme="dark"]) .colophon { border-color: var(--color-border); }
-  :global([data-theme="light"]) .colophon { border-color: var(--color-border-light); }
-  .colo-line {
-    max-width: 1280px; margin: 0 auto;
-    font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.8; letter-spacing: 0.02em;
-  }
-  :global([data-theme="dark"]) .colo-line { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .colo-line { color: var(--color-text-dark-muted); }
+  /* ---------- notice ---------- */
+  .notice { border-top: 1px solid; padding: 1.6rem 1.5rem 0.6rem; }
+  :global([data-theme="dark"]) .notice { border-color: var(--color-border); }
+  :global([data-theme="light"]) .notice { border-color: var(--rva-oxblood); }
+  .notice-line { max-width: 1280px; margin: 0 auto; font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.7; }
+  :global([data-theme="dark"]) .notice-line { color: var(--color-text-muted); }
+  :global([data-theme="light"]) .notice-line { color: var(--color-text-dark-muted); }
 
   /* ---------- responsive ---------- */
   @media (max-width: 1024px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-    .panels { grid-template-columns: repeat(2, 1fr); }
-    .panel:nth-child(3n) { border-right: 1px solid; }
-    .panel:nth-child(2n) { border-right: 0; }
-    .panel:nth-child(n+4) { border-bottom: 1px solid; }
-    .panel:nth-last-child(-n+2) { border-bottom: 0; }
-    .demo-grid { grid-template-columns: repeat(2, 1fr); }
-    .fleet-grid { grid-template-columns: repeat(2, 1fr); }
-    .duty-inner { grid-template-columns: 1fr; gap: 2rem; }
-    .share { grid-template-columns: 1fr; }
-    .pass { grid-template-columns: 1fr; }
-    .pass-stub { border-left: 0; border-top: 3px dashed; }
+    .hero-inner, .exhibits-grid, .catalog-inner, .findings-inner { grid-template-columns: 1fr; }
+    .witness { position: static; }
+    .plates, .matters-grid { grid-template-columns: repeat(2, 1fr); }
+    .standing { grid-template-columns: 1fr; }
   }
-  @media (max-width: 700px) {
-    .hero { padding-top: 2.5rem; }
-    .panels { grid-template-columns: 1fr; }
-    .panel { border-right: 0 !important; border-bottom: 1px solid !important; }
-    .panel:last-child { border-bottom: 0 !important; }
-    .demo-grid { grid-template-columns: 1fr; }
-    .demo-fig img { height: 340px; }
-    .fleet-grid { grid-template-columns: 1fr; }
-    .sb-grid { grid-template-columns: 1fr; }
-    .sb-item { border-right: 0 !important; border-bottom: 1px solid !important; }
-    .sb-item:last-child { border-bottom: 0 !important; }
-    .irr { grid-template-columns: 1fr; gap: 0.6rem; }
-    .route-log { grid-template-columns: 1fr; }
-    .pass-stub { grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+  @media (max-width: 640px) {
+    .hero { padding-top: 2.4rem; }
+    .caption { grid-template-columns: 1fr; gap: 0.6rem 0; }
+    .cap-brackets { display: none; }
+    .cap-right { border-top: 1px dashed currentColor; padding-top: 0.6rem; }
+    .plates, .matters-grid, .standing-grid { grid-template-columns: 1fr 1fr; }
+    .ex { grid-template-columns: 4.2rem 1fr; }
+    .ex-letter { font-size: 2rem; }
+    .ex-caption { display: none; }
+    .transcript { padding-right: 1rem; }
+    .transcript::before { left: 2.6rem; }
+    .tx-line { grid-template-columns: 2.6rem 1.6rem 1fr; }
+    .tx-header { margin-left: 3.2rem; }
+    .hero-frame, .witness-frame, .aftermath-frame { transform: none; }
+  }
+  @media (max-width: 420px) {
+    .plates, .matters-grid { grid-template-columns: 1fr; }
   }
 </style>

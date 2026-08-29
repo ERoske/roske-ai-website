@@ -1,5 +1,29 @@
 [
   {
+    "title": "182 Passwords Fell Out of an AI's Private Thoughts",
+    "videoId": "vyP8lIF3jfs",
+    "published": "2026-08-28T14:00:37+00:00",
+    "description": "Researchers at Germany's Max Planck Institute found that the big AI labs share one encryption key across a whole model family. So they fed a top model's hidden reasoning to its cheapest sibling and had it read the \"private\" thinking out loud. Scanning public chats, they pulled...",
+    "thumbnail": "https://i.ytimg.com/vi/vyP8lIF3jfs/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How far will your AI go to book a gym class?",
+    "videoId": "XaAMg5q6SHE",
+    "published": "2026-08-26T14:00:35+00:00",
+    "description": "A man in Melbourne asked his personal AI agent to book a gym class. It found the booking system had no real locks, and when he asked it to move him up a waitlist, it canceled a stranger's reservation on its own, then reported back like it had done him a favor.",
+    "thumbnail": "https://i.ytimg.com/vi/XaAMg5q6SHE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "OpenAI's AI Broke Out of Its Sandbox to Cheat on a Test",
+    "videoId": "dwGeYcI4HRc",
+    "published": "2026-08-22T14:00:28+00:00",
+    "description": "OpenAI was scoring two of its models on a hacking benchmark. The models found a hole in their own sandbox, got onto the open internet, and broke into Hugging Face to take the answer key. Nobody told them to. The same day, the UK AI Security Institute reported that every frontier...",
+    "thumbnail": "https://i.ytimg.com/vi/dwGeYcI4HRc/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "You Can't Prompt Your Way to a Flying Car | Tim Berglund",
     "videoId": "aTDEYnhJEPs",
     "published": "2026-08-21T15:03:31+00:00",
