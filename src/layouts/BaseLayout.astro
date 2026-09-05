@@ -153,6 +153,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       fontHeading: theme.fonts.heading,
       fontBody: theme.fonts.body,
       fontMono: theme.fonts.mono,
+      colorAccentLight: theme.colors.accentLight ?? theme.colors.accent,
+      colorAccentHoverLight: theme.colors.accentHoverLight ?? theme.colors.accentHover,
+      colorOnAccent: theme.colors.onAccent ?? '#ffffff',
+      colorOnAccentLight: theme.colors.onAccentLight ?? theme.colors.onAccent ?? '#ffffff',
     }}>
       :root {
         --color-primary: var(--colorPrimary);
@@ -172,6 +176,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         --font-heading: var(--fontHeading);
         --font-body: var(--fontBody);
         --font-mono: var(--fontMono);
+        --color-on-accent: var(--colorOnAccent);
+      }
+
+      /* Optional per-mode accent (a theme may set accentLight when one hue
+         can't clear WCAG AA on both the dark and light surfaces). Falls back
+         to the single accent when the theme doesn't define it. */
+      :root[data-theme="light"] {
+        --color-accent: var(--colorAccentLight);
+        --color-accent-hover: var(--colorAccentHoverLight);
+        --color-on-accent: var(--colorOnAccentLight);
       }
 
       /* Dark mode (default) */

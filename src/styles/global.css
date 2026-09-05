@@ -47,7 +47,7 @@ body {
 /* Selection styling */
 ::selection {
   background-color: var(--color-accent);
-  color: white;
+  color: var(--color-on-accent, white);
 }
 
 /* Focus styles for accessibility */

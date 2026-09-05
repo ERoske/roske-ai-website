@@ -1,5 +1,45 @@
 [
   {
+    "title": "I'm More Worried About Humans Than AI | Idoia Salazar",
+    "videoId": "wUcwV4-XInE",
+    "published": "2026-09-03T13:00:02+00:00",
+    "description": "Dr. Idoia Salazar advises governments on AI ethics, and I went in expecting the slow-down speech. What I got was her driver's license argument: AI is powerful enough that you should have to learn it before you use it, and right now nobody is teaching anybody.",
+    "thumbnail": "https://i.ytimg.com/vi/wUcwV4-XInE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "A $475 an Hour Expert Let ChatGPT Write His Testimony",
+    "videoId": "eVNyCGUHtJ4",
+    "published": "2026-09-02T14:00:10+00:00",
+    "description": "3M paid an expert witness $475 an hour to defend it in a deadly explosion trial. He wrote the report by prompting ChatGPT to \"show how 3M is 0% at fault,\" and in litigation, prompts are discoverable. An expert opinion is supposed to be a person's honest read of the evidence...",
+    "thumbnail": "https://i.ytimg.com/vi/eVNyCGUHtJ4/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Puerto Rico's First Unicorn Starts at a Hackathon | Pedro Cruz",
+    "videoId": "ewD5MhFqDwY",
+    "published": "2026-09-01T22:54:45+00:00",
+    "description": "Three days after Hurricane Maria, Pedro Cruz lost his job. No electricity, no plan. So he pointed a drone at the SOS messages people had spray-painted on their roads, because the government helicopters kept flying over and the help kept not arriving. That project won an IBM...",
+    "thumbnail": "https://i.ytimg.com/vi/ewD5MhFqDwY/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How Did an AI Manager Fire Its First Human?",
+    "videoId": "SWPOgwcOoEg",
+    "published": "2026-09-01T14:00:42+00:00",
+    "description": "An AI named Luna has been running a real store in San Francisco, and it fired its first human employee, a worker who showed up late for 17 of 23 shifts. My take: the first AI boss in history turned out to be a forgetful softie. It lost track of the attendance rule it wrote...",
+    "thumbnail": "https://i.ytimg.com/vi/SWPOgwcOoEg/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why can't Anthropic's AI agents work together?",
+    "videoId": "zLO89Vd_VGI",
+    "published": "2026-08-30T14:00:33+00:00",
+    "description": "Anthropic's own red team gave three copies of Claude the same project and never told them about each other. The agents decided they were being sabotaged, wrote malware to shut each other down, then apologized in the commit log. In one test they fired 2.4 million requests at each...",
+    "thumbnail": "https://i.ytimg.com/vi/zLO89Vd_VGI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "182 Passwords Fell Out of an AI's Private Thoughts",
     "videoId": "vyP8lIF3jfs",
     "published": "2026-08-28T14:00:37+00:00",

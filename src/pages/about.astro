@@ -701,7 +701,7 @@ const awards = [
     transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
   }
   .ab-btn:hover { transform: translateY(-1px); }
-  .ab-btn-primary { background: var(--color-accent); color: #fff; }
+  .ab-btn-primary { background: var(--color-accent); color: var(--color-on-accent, #fff); }
   .ab-btn-primary:hover { background: var(--color-accent-hover); }
   .ab-btn-ghost { border: 1px solid; background: transparent; }
   :global([data-theme="dark"]) .ab-btn-ghost { color: var(--color-text); }

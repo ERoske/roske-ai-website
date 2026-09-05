@@ -1,0 +1,34 @@
+---
+title: "The $3 Million IP Address"
+description: "How I took down the largest pager company's busiest call center with one IP address in 1997, and what the CFO said when the bill came due."
+date: 2026-09-05
+tags: ["Stories", "Tech History", "Consulting"]
+draft: false
+---
+
+Before interRel existed, back when I was a consultant at a firm called Pinnacle (later Palladium), I took down the highest-revenue call center of the largest pager company on Earth with a single IP address. This was early 1997, the statute of limitations has long since expired, and I've decided you deserve the story.
+
+The client was PageNet, out of Plano, and if you're under 40 I should explain that PageNet was, at the time, the biggest pager company in the world, and that a pager was a small plastic box that beeped to tell you a phone number wanted you. When you bought a pager from AT&T back then, you were really buying it from PageNet: you'd call AT&T support, a rep at a PageNet call center would pick up while a little voice whispered "pretend you're AT&T" in their ear (a real job, held by real people), and they'd answer "AT&T, how can we help you with your pager?" I am not making any of this up, and honestly the whisper voice deserves its own blog post.
+
+We were subcontracted through a company called Comshare to build an Essbase cube of call center KPIs: performance by rep, by center, by everything. We did the design at headquarters, and then they moved us out to the call center itself, because that's where the server was going to live. Picture a former big-box superstore, 100,000-plus square feet of cubicles and headsets, with 4 cubicles roped off in a corner for the consultants (the roping was symbolic). To do anything at all, we needed to move our Essbase server over and give it an IP address, and the one IT guy back at corporate who could assign us one would not return our calls. Days of this. (Days.) Finally he told our project manager: I'm too busy, there's a spreadsheet on the network, find a line with an IP address and no name next to it, put your name down, take the address.
+
+We opened the spreadsheet. The very first line had an address with nobody's name next to it, something like 127.0.0.0 (I should remember it exactly, and I don't, but it was low and it was round and it was sitting right there at the top). Great, we said: easy to remember. Our project manager typed his name into the spreadsheet, turned to me, and said the sentence I think about to this day: "Edward, you're the technical person. Go assign this IP address to the server."
+
+So I did. Assigned it, turned the server off, turned it back on, and it came up beautifully. We could connect! We were thrilled for roughly 10 minutes, which is when somebody noticed the building had gone quiet.
+
+A 100,000 square foot call center is never quiet. We looked up, and every rep in the place was standing, headsets around their necks, just… chatting with each other. We asked what happened, and they said the mainframe that routes all the incoming calls had hung, nobody knew why, and until it came back there were no calls to take. And I'm a little ashamed to tell you my full contribution to the diagnostic effort in that moment was thinking, huh, weird, sucks to be you, and going back to my cube. (Edward. The entire building fell silent the exact moment you rebooted a server with a suspiciously round IP address, and your working theory was coincidence. It took you two full hours and a personal visit from the CIO to connect those dots, and you call yourself the technical person.)
+
+Because 2 hours later, the IT guy who never returned our calls appeared at our cubicles with the CIO, and the first thing out of anyone's mouth was: "What IP did you use?" We told them. It was the address of the mainframe that routed every call in the facility, sitting at the top of a spreadsheet with nobody's name on it, free for the taking, which is how I took it. And the reason the outage was still going was that this mainframe was old enough that it rebooted from floppy disks, and nobody could find the floppy disks, which had presumably been filed in the same government warehouse where they put the Ark of the Covenant.
+
+The center was down for over 24 hours. We ended up as a footnote in the company's financials that month: lost revenue from all the incoming calls of America trying to buy pagers, and I genuinely can't swear to the exact figure, but $3 million is the number in my head and it's the number the CFO said to my face, so we're going with it. The next day we were summoned to the CFO. He looked at us and said, "You cost us $3 million yesterday. Your entire project doesn't even cost $3 million." Our project manager, possibly the bravest man I've ever worked with, asked, "So are we done?"
+
+The CFO said he'd like to fire us, but the investigation had turned up something better. That mainframe was sitting exposed to the open internet with no firewall, and anyone on Earth could have hung it exactly the way we did, except a stranger wouldn't have been 40 feet away to confess, and the outage would have run for days instead of one. "You were told to go grab an IP address and you did exactly what you were told to do. We're firing the IT people. You get to stay and finish your project." Which we did.
+
+This wasn't even the last time I was sure I'd broken something at civilization scale, by the way. A little later, Arbor Software flew me to New Orleans to debug an Essbase server at Entergy, the power company, on a high floor of the tallest building I'd ever been in down there, with a storm rolling in and 10 people standing in a half circle watching me work. I announced "when I hit Enter, the server is going to crash, that's the point," hit Enter, and every light in the room died. We walked to the window and that whole section of New Orleans was dark. I stood there in a blackout, at the power company, having just pressed Enter, absolutely certain my heart had stopped for good. The storm had knocked out generation at that exact second, and it took several minutes and one very shaky laugh before anyone in that room, me included, believed it. I liked that one so much I opened chapter one of "Look Smarter Than You Are with Hyperion Essbase" with it: "the completely true story of how I blacked out the entire city of New Orleans using only the power of Essbase (or so I thought)."
+
+Anyway. Now I kind of know that IP addresses that start with things like 127 and 128 are terribly internal and important. I learned that the expensive way, and I've never once been annoyed at an IT department since, which I realize is a strange thing to get out of it.
+
+If you were working in that call center in 1997 and got a surprise day of talking to actual humans instead of pager customers, I hope it was a nice break. I probably owe you lunch.
+
+Asking good questions,
+Edward

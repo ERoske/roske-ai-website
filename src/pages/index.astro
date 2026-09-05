@@ -7,188 +7,151 @@ import WhatsNew from '../components/WhatsNew.astro';
 import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
-const CASE_NO = '26-CV-0829';
+const SITE_NO = '26-0905';
 
 // ---------------------------------------------------------------------------
-// STANDING. The plaintiff's credentials, entered on the caption page. All real.
+// THE TIME CARD. Four numbers, punched. All real.
 // ---------------------------------------------------------------------------
-const standing = [
+const timecard = [
   { v: '80+', k: 'Countries visited' },
-  { v: '50+', k: 'Spoken in' },
-  { v: '15', k: 'Books' },
+  { v: '50+', k: 'Countries spoken in' },
+  { v: '15', k: 'Books written' },
   { v: '25', k: 'Years running interRel' },
 ];
 
 // ---------------------------------------------------------------------------
-// THE COMPLAINT. Numbered paragraphs, the way a real one is laid out, and
-// every allegation in it is true except the part where it is a lawsuit.
+// MONDAY'S SCHEDULE. Labor Day, September 7, hour by hour, two columns: what
+// Edward is doing and what the 10 agents are doing at the same time. The
+// agents' column is the true one.
 // ---------------------------------------------------------------------------
-const complaint = [
-  `Plaintiff is an individual residing in San Juan, Puerto Rico, with a wife (Dawn, an artist, who did not consent to being a party), 2 adult sons in Miami, a 1,000-plus-day Duolingo streak, and a blue fedora that has been on his head in more than 80 countries and on all 7 continents, one of which was Antarctica and none of which asked.`,
-  `Defendant ACME is a corporation of no fixed address that does business as every enterprise software vendor Plaintiff has purchased from since 1997, including <span class="redact" aria-label="redacted">██████████</span>, <span class="redact" aria-label="redacted">████████</span>, and, on information and belief, at least 2 that Plaintiff later worked for.`,
-  `Beginning on 21 May 1997, when Plaintiff founded interRel Consulting at the age of 22 (he filed the paperwork the day before his 23rd birthday, on purpose, so he could say 22, and the full story of what the name actually stood for went up <a href="/blog/what-interrel-actually-stood-for/">on the blog this morning</a>), and continuing for 25 years, Plaintiff purchased, installed, configured, wrote 15 books about, and taught classes on Defendant's products, and was named Oracle Partner of the Year 5 times for doing so, which Defendant will presumably raise.`,
-  `Each product was represented to Plaintiff as a single source of truth. Plaintiff received, on average, 4 sources of truth per product and a steering committee to decide between them. The steering committee is still meeting.`,
-  `Plaintiff is a data scientist (Master of Data Science, SMU, 4.0, Outstanding Graduate, which he mentions in every filing) and knew, or should have known, what he was buying. Plaintiff does not dispute this. Plaintiff is also currently coding MCP servers so that an AI can read the real number out of Defendant's products instead of inventing one, which makes Plaintiff, technically, a supplier to Defendant's customers. Plaintiff's counsel has advised him to stop bringing this up.`,
-  `Plaintiff has been thrown off this canyon every Saturday since February and has re-ordered the sled every time. Plaintiff seeks damages in an amount to be proven at trial, or a speaking engagement, whichever the Court finds easier to schedule.`,
-];
-
-// ---------------------------------------------------------------------------
-// EXHIBITS A THROUGH F. The career, refiled as evidence.
-// ---------------------------------------------------------------------------
-const exhibits = [
+const schedule = [
   {
-    letter: 'A',
-    title: 'Articles of incorporation, 21 May 1997',
-    desc: `One company, filed at the courthouse in Dallas in The Great State of Texas under the name Interdimensionally Relevant Consulting Partners, and shortened to interRel about 2 weeks later when the first paper check arrived and the name wrapped over the amount box. Plaintiff told everyone for 25 years that it didn't stand for anything. Plaintiff was lying, and the full confession is on the blog as of this morning.`,
-    href: '/blog/what-interrel-actually-stood-for/',
-    cta: 'Read the confession',
+    t: '04:59',
+    e: `Punches in. There's one card in the rack and it's his, and he has already told 4 people he beat the clock by a minute.`,
+    a: `Nothing to punch. They started Saturday at 5AM with this page and haven't stopped since, which is going to matter at 17:00.`,
   },
   {
-    letter: 'B',
-    title: 'One Essbase certification exam, scored perfectly',
-    desc: `The first perfect score ever recorded on it. Plaintiff offers this to establish that he read the manual. Defendant will note that Plaintiff later wrote the manual, 15 times, under the title Look Smarter Than You Are, 13 of them on Amazon and 2 that only ever existed to be handed out in a training room.`,
-    href: '/books/',
-    cta: 'Inspect the manuals',
+    t: '06:00',
+    e: `Down the manhole. Nobody assigned the sewer. The manhole was open, and he'd never been down one.`,
+    a: `The morning brief lands before 6: who he's seeing today and why. Nobody, it's a holiday, and it says so in one line instead of 3 pages, a lesson that took an audit to teach it.`,
   },
   {
-    letter: 'C',
-    title: 'One musical, 2006 and 2007, 58 minutes',
-    desc: `Eddie and the Consultants: A System 9 Musical, submitted as a prank abstract, accepted anyway, and performed in Las Vegas and again in Orlando with billable consultants flown in for rehearsals. It won a deal from a CFO who was in the room. The full 58 minutes are preserved on this site because Plaintiff no longer owns the YouTube channel they were on, and he would like the Court to know how that feels.`,
-    href: '/video/eddie-and-the-consultants/',
-    cta: 'Watch the evidence',
+    t: '07:30',
+    e: `Espresso bar. Spells every name right, slowly, while the line in flip-flops grows.`,
+    a: `Inbox triage: about 200 messages, sorted into piles, 0 sent, because sending is his job and it stays his job.`,
   },
   {
-    letter: 'D',
-    title: 'Two diplomas, 2016 and 2021, both late',
-    desc: `Started college at 15, went full time at 16, then ran a company for 19 years with the degree unfinished. Collected the BA from Shimer College in 2016 and a Master of Data Science from SMU in 2021 with a 4.0, in a cohort young enough to have been in grade school when Plaintiff founded interRel. Nobody asked for either one. Plaintiff checked the transcript anyway, more than once.`,
-    href: '/resume/',
-    cta: 'Review the record',
+    t: '09:00',
+    e: `Excavator. Moves a pile from one side of the lot to the other, which is also a fair description of several ERP migrations he was paid for.`,
+    a: `The daily video ships. On a thin news day it runs 90 seconds and says so, a rule that took one confident 3-minute segment about nothing to write.`,
   },
   {
-    letter: 'E',
-    title: 'One merger, 2020, and one departure, 2023',
-    desc: `Merged interRel with Keste to help found Argano, now a billion-dollar consultancy, stayed on as CEO through 2022 for 25 years all told, and walked away in 2023 still owning a thirtieth of it. Plaintiff has been asked many times why he left something that was still working and has never twice given the same answer, and he will supply all of them for as long as the Court allows (the Court has not yet allowed it).`,
-    href: '/about/',
-    cta: 'Read the background',
+    t: '11:00',
+    e: `Jackhammer. The city did not request the sidewalk. The sidewalk is getting done.`,
+    a: `The Monday pitch sweep runs, reads every call for speakers it can find, and pitches him for anything with a stage and a microphone. He picks 2 or 3. It never sends.`,
   },
   {
-    letter: 'F',
-    title: 'This website, rebuilt every Saturday at 5AM',
-    desc: `Redesigned by one of Plaintiff's 10 AI agents while he sleeps, once a week since February, and not once by him. It is the live demo of the talk he gets booked for most. This week the agent read the brief, concluded that Plaintiff was the coyote, and filed suit on his behalf. Plaintiff was asleep for all of it and has no objection on the record.`,
-    href: '/blog/how-many-agents-does-it-take-to-run-a-day/',
-    cta: "Read the agent's account",
+    t: '12:30',
+    e: `Lunch on a beam, 40 stories up, alone. The sandwich is vegetarian. The laptop is open to the inbox they already triaged, so he's checking their work.`,
+    a: `Research fan-out comes back with 40 sources for a question that needed 6. It gets checked hardest, because 6 other agents eat whatever it finds.`,
+  },
+  {
+    t: '15:00',
+    e: `Back down the manhole. Something was dripping.`,
+    a: `The Summit recruiter runs the reply sweep for October 9-10 and files a polite no as a slow yes, again.`,
+  },
+  {
+    t: '17:00',
+    e: `Punches out. 12 hours. Submits the timesheet for approval, to them.`,
+    a: `Approve it. Then attach a note: the page he's standing on was built at 5AM Saturday by one of them while he was asleep, and they kept the log.`,
   },
 ];
 
 // ---------------------------------------------------------------------------
-// THE CATALOG. An invented vendor, Apex Enterprise Supply Co., and 6 products
-// that were sold to the plaintiff as working. Every promise is a real one from
-// a real sales cycle. The product names have been removed so the plaintiff
-// keeps getting invited to their conferences.
+// SITE PHOTOS. Five plates pinned to the bulletin board by the gate.
 // ---------------------------------------------------------------------------
-const catalog = [
+const plates = [
   {
-    no: '1001',
-    name: 'Single Source of Truth',
-    sell: 'One number. Every department. Ships fully assembled.',
-    got: `4 numbers, each with an executive sponsor, and a steering committee to pick one. The steering committee is still meeting (see paragraph 4 of the complaint, which I wrote from inside the meeting).`,
-    icon: 'source',
+    src: '/images/labor-day/timeclock.jpg',
+    w: 1200, h: 896,
+    tag: 'Site photo 02 | 04:59',
+    alt: 'Edward in an orange hi-vis vest and blue fedora, grinning, punching a paper time card into an old wall-mounted time clock in a grimy break room before dawn, a thermos and a dented lunch pail on the table.',
+    cap: `The rack is full because nobody else came in to pull their card. He has explained the 1-minute margin to the thermos.`,
+    tilt: -2.2,
   },
   {
-    no: '1002',
-    name: 'Self-Service Analytics',
-    sell: 'So easy the business can do it themselves. No IT required.',
-    got: `IT was required, and IT turned out to be the entire result, and they billed for it. (I was the IT for the first 25 years of this, and I billed for it too, which my counsel would prefer I put in a footnote.)`,
-    icon: 'self',
+    src: '/images/labor-day/manhole.jpg',
+    w: 896, h: 1200,
+    tag: 'Site photo 03 | 06:00',
+    alt: 'Edward halfway down an open manhole in an empty city street at dawn, hi-vis vest, headlamp strapped around his blue fedora, gloved hands on the rim, orange cones and a striped barricade around him, steam rising.',
+    cap: `Nobody assigned the sewer. The manhole was open, and there's a 300-room escape-room habit in this family that explains most of what he does with an open hatch.`,
+    tilt: 1.6,
   },
   {
-    no: '1003',
-    name: 'Zero-Touch Close',
-    sell: 'The books close themselves while you sleep.',
-    got: `The books closed at 11PM on day 5 after roughly 40 touches, and I have the timesheets. Nobody involved slept, including the books.`,
-    icon: 'close',
+    src: '/images/labor-day/starbucks.jpg',
+    w: 1200, h: 896,
+    tag: 'Site photo 04 | 07:30',
+    alt: 'Edward behind an espresso bar in a green barista apron over an orange hi-vis vest and his blue fedora, steaming a milk pitcher with one hand and holding a marker over a paper cup with the other, a long line of customers in swimsuits and flip-flops behind him.',
+    cap: `He's had "Ed" written on his cup by strangers for 30 years, and today he's on the other side of the marker. (Edward, you're the slowest barista in the building and the only one in a hi-vis vest. Nobody asked for the vest.)`,
+    tilt: -1.2,
   },
   {
-    no: '1004',
-    name: 'Out-of-the-Box Integration',
-    sell: 'Connects to everything you already own.',
-    got: `Connected to a consultant, who connected it to a spreadsheet, which connected it to the thing it was supposed to replace. The spreadsheet is still there. It has Freeze Panes on, at least, because I set them.`,
-    icon: 'plug',
+    src: '/images/labor-day/jackhammer.jpg',
+    w: 896, h: 1200,
+    tag: 'Site photo 05 | 11:00',
+    alt: 'Edward operating a jackhammer on a cracked street in harsh sun, dust around his boots, yellow ear defenders worn on top of his blue fedora, safety glasses over his glasses, an ecstatic grin, an ice cream truck and a porch flag behind him.',
+    cap: `Ear protection goes over the fedora, never instead of it, per the family rule. Somewhere behind him a barbecue is happening without him and he can smell it.`,
+    tilt: 2.4,
   },
   {
-    no: '1005',
-    name: 'Real-Time Consolidation',
-    sell: 'Every entity, every currency, instantly.',
-    got: `Real time turned out to be a batch job at 2AM, which is real, and is a time, so I suppose the description holds.`,
-    icon: 'gauge',
-  },
-  {
-    no: '1006',
-    name: 'The AI That Never Makes Things Up',
-    sell: 'New for 2026. Ask it anything. Trust the answer.',
-    got: `Pending. Plaintiff has ordered 3, is building the plumbing for them himself (MCP servers, so the model reads the real number out of Essbase instead of remembering one that sounds right), and is aware of how that looks in a filing where he is the plaintiff.`,
-    icon: 'chip',
-    isNew: true,
+    src: '/images/labor-day/beam.jpg',
+    w: 1376, h: 768,
+    tag: 'Site photo 06 | 12:30',
+    alt: 'Homage to the 1932 ironworkers photograph: Edward alone on a riveted steel beam high above a hazy city, legs dangling, eating a sandwich from an open lunch pail, a thermos and an open laptop beside him, hi-vis vest and blue fedora.',
+    cap: `Lunch, 1932 style, except the other 10 ironworkers took the day off and the sandwich is vegetarian. The laptop is open to an inbox that was triaged 5 hours ago, so he's checking their work, which they'll note.`,
+    tilt: -1.4,
+    wide: true,
   },
 ];
 
 // ---------------------------------------------------------------------------
-// THE DEPOSITION. The questions people actually ask, taken under oath.
+// WORK ORDERS. The 6 real projects, on carbon-copy forms.
 // ---------------------------------------------------------------------------
-const depo = [
-  { q: 'State your name for the record.', a: `Edward Roske. Edward, never Ed, and it's in the record now, so that's settled.` },
-  { q: 'Do you really run your week on 10 AI agents?', a: `Yes, one per project, and this transcript was typed by one of them at 5AM this morning while I was asleep. It also decided I was the coyote in this case. I've read the exhibits and I don't have a rebuttal.` },
-  { q: 'What does it cost to book you?', a: `Keynotes start at $15,000 and every fee is published on the speaking page, because I have never enjoyed the part of the conversation where two people pretend not to know the number. The talks, the fees, the stage footage, and a form that reaches me directly are all there, and I answer within one business day.` },
-  { q: 'Can you build this for us?', a: `Not personally. Caprus does the engineering, I invest in them and turn up to argue about the roadmap, and they are gracious about that second part. If you want the MCP servers that connect an agent to Oracle EPM, that's where they live.` },
-  { q: `You are the plaintiff. You also wrote 15 manuals for the defendant's products and were named their Partner of the Year 5 times. How do you reconcile that?`, a: `I don't reconcile it. I'd like a recess.` },
-  { q: `Objection. The witness is arguing with his own filing.`, a: `Overruled. I'll allow it.` },
-  { q: `You are not the judge.`, a: `I've read the findings, and somebody in this room has to be.` },
-  { q: 'Why the hat?', a: `Family rule. A Roske never removes his fedora in the presence of others, with an exception for Memorial Day, and I'd rather not discuss the exception under oath.` },
-];
-let lineNo = 0;
-const transcript = depo.flatMap(d => [
-  { n: ++lineNo, who: 'Q.', text: d.q },
-  { n: ++lineNo, who: 'A.', text: d.a },
-]);
-
-// ---------------------------------------------------------------------------
-// PENDING MATTERS. The 6 real projects, kept every week, entered on the docket.
-// ---------------------------------------------------------------------------
-const docket = [
+const orders = [
   {
-    no: '26-CV-0001',
+    no: 'WO-0001',
     name: 'MCP Servers for Enterprise Finance',
-    status: 'Active',
+    status: 'In progress',
     tone: 'go',
-    note: `The plumbing that lets an agent read a real number out of a real finance system instead of remembering one. Essbase and EPM Planning are shipping, Financial Close and Consolidations is in beta (soon, honestly). Catalog item 1006 is why this exists.`,
+    note: `Plumbing so an AI reads the real number out of Essbase and Oracle EPM instead of remembering one that sounds right. Essbase and EPM Planning shipped, Financial Close and Consolidations in beta. This is the job that keeps me off the excavator most days.`,
     href: 'https://caprus.ai/agentcube/',
     external: true,
     cta: 'See how it works',
   },
   {
-    no: '26-CV-1009',
+    no: 'WO-1009',
     name: 'Caribbean AI Summit',
-    status: 'Set for October 9 to 10',
+    status: 'Scheduled Oct 9 to 10',
     tone: 'go',
-    note: `Co-chairing the largest AI conference Puerto Rico has hosted, at the Convention Center in San Juan: 30-plus speakers, 3 tracks, every session translated live between English and Spanish. Come in early and I'll show you the island.`,
+    note: `Co-chairing the biggest AI conference Puerto Rico has hosted, at the Convention Center in San Juan: 30-plus speakers, 3 tracks, every session translated live between English and Spanish, and the lineup is public now, with Kay Firth-Butterfield (formerly Head of AI at the World Economic Forum), MIT's Fabio Duarte, and Idoia Salazar, who advises the EU Parliament on AI. Come in early and I'll show you the island.`,
     href: 'https://www.caribbeansummit.ai/',
     external: true,
     cta: 'Get a seat',
   },
   {
-    no: '26-CV-0042',
+    no: 'WO-0042',
     name: 'Caprus',
-    status: 'Active',
+    status: 'In progress',
     tone: 'go',
-    note: `Investor in the AI software and services firm building faster operations for finance teams. Lillian Buziak runs it. I turn up and point at things, and they let me.`,
+    note: `Investor in the AI software and services firm building faster operations for finance teams. Lillian Buziak runs it. I turn up, point at the roadmap, and they're gracious about it.`,
     href: 'https://caprus.ai',
     external: true,
     cta: 'Meet the team',
   },
   {
-    no: '26-CV-1857',
+    no: 'WO-1857',
     name: 'Everest Base Camp',
-    status: 'Closed. Judgment for the mountain.',
+    status: 'Complete',
     tone: 'done',
     note: `2 weeks on foot to 18,571 feet with Dawn in April. The trail log is on the blog, including the parts that went badly and the part where I asked the guides too many questions.`,
     href: '/blog/everest-base-camp-summit/',
@@ -196,21 +159,21 @@ const docket = [
     cta: 'Read the trail log',
   },
   {
-    no: '26-CV-0020',
+    no: 'WO-0020',
     name: "AI Dungeon Master's Screen",
-    status: 'Stayed, indefinitely',
+    status: 'On hold',
     tone: 'hold',
-    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It has never earned a dollar and it isn't finished, and I'm in no hurry about either.`,
+    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It has never earned a dollar, it isn't finished, and I'd keep it over half the paying ones.`,
     href: null,
     external: false,
     cta: 'Quiet build',
   },
   {
-    no: '26-CV-1000',
+    no: 'WO-1000',
     name: 'Puerto Rico AI Community',
-    status: 'Active',
+    status: 'In progress',
     tone: 'go',
-    note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. We meet every other month, it's free, and we argue in both languages until something useful falls out. Come to one!`,
+    note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. Every other month, free, both languages, and we argue until something useful falls out. Come to one!`,
     href: 'https://praicommunity.org/',
     external: true,
     cta: 'Join the next one',
@@ -218,68 +181,50 @@ const docket = [
 ];
 
 // ---------------------------------------------------------------------------
-// FINDINGS. The verdict, on the plaintiff, because he bought all of it.
+// THE WEEKEND TIMESHEET. Audited.
 // ---------------------------------------------------------------------------
-const findings = [
-  `The plaintiff bought all of it voluntarily, on purchase orders he signed, in several cases after reading the instructions and in 15 cases after writing them.`,
-  `Paragraph 6 is admitted. The plaintiff re-orders the sled at 5AM, through an agent, which the Court finds is the same thing as ordering it himself.`,
-  `The products mostly did what the manual said. The Court has reviewed 25 years of evidence and finds that the failures happened in the space between the sales cycle and the manual, and notes that the plaintiff wrote the manual, so he had the least excuse of anyone in the room.`,
-  `The plaintiff's actual complaint, which he never filed, is that nobody told the finance team any of this before the deployment. The Court finds that the plaintiff is now the person whose job it is to tell them, from a stage, for a fee, and that he appears to enjoy it.`,
+const timesheet = [
+  { day: 'Saturday, Sept 5', e: '2 hrs', en: 'reading what they built', a: '24 hrs' },
+  { day: 'Sunday, Sept 6', e: '3 hrs', en: 'checking their work', a: '24 hrs' },
+  { day: 'Monday, Sept 7 (Labor Day)', e: '12 hrs', en: 'see site photos', a: '24 hrs' },
 ];
 ---
 
 <BaseLayout>
   <WeeklyAnimation />
 
-  <!-- ================= DOCKET STRIP ================= -->
-  <div class="docket-strip" role="presentation">
-    <div class="docket-inner">
-      <span class="docket-item docket-mark">Roske v. Acme</span>
-      <span class="docket-item">Case No. {CASE_NO}</span>
-      <span class="docket-item">District Court of the Canyon, Desert Division</span>
-      <span class="docket-item docket-filed">Filed 29 Aug 2026, 5:00 AM AST</span>
+  <!-- ================= CAUTION TAPE / PUNCH STRIP ================= -->
+  <div class="ld-tape" role="presentation">
+    <div class="ld-tape-inner">
+      <span class="ld-tape-item ld-tape-mark">Labor Day Weekend</span>
+      <span class="ld-tape-item">Shift 1 of 3</span>
+      <span class="ld-tape-item">Site {SITE_NO}</span>
+      <span class="ld-tape-item">Days since last incident: 0</span>
+      <span class="ld-tape-item">Rebuilt Sat 05:00 AST by Agent VII</span>
+      <span class="ld-tape-item">Nobody else clocked in</span>
     </div>
   </div>
 
-  <!-- ================= HERO: THE CAPTION PAGE ================= -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <p class="hero-kicker">Roske.AI | Case file | Week of 29 August 2026</p>
-
-        <div class="caption" aria-label="Case caption">
-          <div class="cap-parties">
-            <p class="cap-party">EDWARD ROSKE, an individual,</p>
-            <p class="cap-role">Plaintiff,</p>
-            <p class="cap-vs">v.</p>
-            <p class="cap-party">ACME, and every vendor who ever sold him a single source of truth, DOES 1 through 30,</p>
-            <p class="cap-role">Defendants.</p>
-          </div>
-          <div class="cap-brackets" aria-hidden="true">)<br/>)<br/>)<br/>)<br/>)<br/>)<br/>)<br/>)</div>
-          <div class="cap-right">
-            <p class="cap-no">Case No. {CASE_NO}</p>
-            <p class="cap-title">Complaint for damages</p>
-            <p class="cap-note">Jury trial demanded. The plaintiff would like witnesses.</p>
-          </div>
-        </div>
-
-        <h1 class="case-h1">
-          <span class="case-word">Roske</span>
-          <span class="case-vs">v.</span>
-          <span class="case-word">Acme</span>
+  <!-- ================= HERO: THE SHIFT BOARD ================= -->
+  <section class="ld-hero">
+    <div class="ld-hero-grid">
+      <div class="ld-hero-copy">
+        <p class="ld-kicker">Roske.AI | Shift board | Week of September 5, 2026</p>
+        <h1 class="ld-h1">
+          <span class="ld-h1-line">Labor Day</span>
+          <span class="ld-h1-line">is <span class="ld-h1-hit">misnamed.</span></span>
         </h1>
-
-        <p class="hero-sub">{theme.hero.subtitle}</p>
-        <p class="hero-desc">{theme.hero.description}</p>
-        <div class="hero-cta">
-          <a href="#exhibits" class="btn-solid">Read the exhibits</a>
-          <a href={theme.hero.ctaLink} class="btn-line">{theme.hero.ctaText}</a>
+        <p class="ld-hero-sub">{theme.hero.subtitle}</p>
+        <p class="ld-hero-desc">{theme.hero.description}</p>
+        <div class="ld-hero-cta">
+          <a href="#schedule" class="ld-btn-solid">Read Monday's schedule</a>
+          <a href={theme.hero.ctaLink} class="ld-btn-line">{theme.hero.ctaText}</a>
         </div>
       </div>
 
-      <figure class="hero-fig">
-        <div class="hero-frame">
-          <span class="stamp stamp-hero" aria-hidden="true">Exhibit 1</span>
+      <figure class="ld-hero-fig">
+        <div class="ld-plate ld-plate-hero">
+          <span class="ld-stencil-tag" aria-hidden="true">Site photo 01 | 09:00</span>
           <img
             src={`/images/${theme.hero.heroImage}`}
             alt={theme.hero.imageAlt}
@@ -287,27 +232,100 @@ const findings = [
             height="900"
             loading="eager"
             decoding="async"
-            class="hero-img"
+            class="ld-hero-img"
           />
         </div>
-        <figcaption class="hero-cap">
-          Exhibit 1. The plaintiff, in transit. The rocket fires out of both ends, which the
-          catalog listed as a feature, and the briefcase contains the catalog. He has ordered this
-          sled every Saturday since February (about 25 times so far) and this is the first
-          photograph in which he appears to be enjoying it.
+        <figcaption class="ld-hero-cap">
+          Site photo 01, Monday, 09:00. The excavator. Every other machine on the lot is parked, because
+          it's a holiday, and he is moving a pile of dirt from the left side of the site to the right side,
+          where it will be moved back on Tuesday by someone with a license. The headlamp is strapped around
+          the fedora, not in place of it.
         </figcaption>
       </figure>
     </div>
 
-    <!-- standing stub -->
-    <div class="standing" aria-label="Plaintiff's standing">
-      <p class="standing-label">Plaintiff's standing, as entered</p>
-      <div class="standing-grid">
-        {standing.map(s => (
-          <div class="standing-item">
-            <span class="standing-v">{s.v}</span>
-            <span class="standing-k">{s.k}</span>
+    <!-- time card -->
+    <div class="ld-timecard" aria-label="Time card">
+      <p class="ld-timecard-label">Time card, punched</p>
+      <div class="ld-timecard-grid">
+        {timecard.map(s => (
+          <div class="ld-punch">
+            <span class="ld-punch-hole" aria-hidden="true"></span>
+            <span class="ld-punch-v">{s.v}</span>
+            <span class="ld-punch-k">{s.k}</span>
           </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MONDAY'S SCHEDULE (the argument) ================= -->
+  <section class="ld-sched" id="schedule">
+    <div class="ld-sched-inner">
+      <div class="ld-sched-head">
+        <p class="ld-eyebrow ld-eyebrow-on-dark">Shift 3 of 3 | Monday, September 7</p>
+        <h2 class="ld-h2 ld-h2-on-dark">The Labor Day schedule.</h2>
+        <p class="ld-deck ld-deck-on-dark">
+          Two columns, the same 12 hours. The left one is what I'll be doing on the one day of the year
+          named for work, and the right one is what the 10 AI agents that run my week will be doing at
+          the exact same time, holiday or not, because a scheduled task has never heard of a barbecue. Read
+          both columns and decide for yourself who's laboring (I've read them, and I've asked for a recount).
+        </p>
+      </div>
+
+      <div class="ld-shift" role="table" aria-label="Monday, September 7 schedule">
+        <div class="ld-shift-row ld-shift-header" role="row">
+          <span role="columnheader" class="ld-shift-t">Time</span>
+          <span role="columnheader" class="ld-shift-e">Edward</span>
+          <span role="columnheader" class="ld-shift-a">The agents</span>
+        </div>
+        {schedule.map(r => (
+          <div class="ld-shift-row" role="row">
+            <span role="cell" class="ld-shift-t">{r.t}</span>
+            <span role="cell" class="ld-shift-e">{r.e}</span>
+            <span role="cell" class="ld-shift-a">{r.a}</span>
+          </div>
+        ))}
+      </div>
+
+      <p class="ld-sched-foot">
+        That right-hand column is the live demo of <a href="/speaking/">the talk I give most</a>, "Your Day,
+        Run by Ten Agents." The left one is just what I do with the time it gives back, and I'll admit
+        some choices were made.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= SITE PHOTOS: THE BULLETIN BOARD ================= -->
+  <section class="ld-board" id="photos">
+    <div class="ld-board-inner">
+      <div class="ld-board-head">
+        <div>
+          <p class="ld-eyebrow">Bulletin board, by the gate</p>
+          <h2 class="ld-h2">Site photos, Monday.</h2>
+          <p class="ld-deck">
+            Posted for the safety record. Everyone else took the day, so every photo has one person in it,
+            and he's in a vest in all of them, including the coffee shop, where the vest was not required
+            and was, in fact, discussed.
+          </p>
+        </div>
+        <div class="ld-incident" aria-label="Days since last incident: 0">
+          <span class="ld-incident-label">Days since last incident</span>
+          <span class="ld-incident-n">0</span>
+          <span class="ld-incident-note">(the manhole)</span>
+        </div>
+      </div>
+
+      <div class="ld-plates">
+        {plates.map((p, i) => (
+          <figure class:list={['ld-pin', { 'ld-pin-wide': p.wide }]} style={`--tilt:${p.tilt}deg`}>
+            <span class="ld-magnet" aria-hidden="true"></span>
+            <div class="ld-plate">
+              <span class="ld-stencil-tag" aria-hidden="true">{p.tag}</span>
+              <img src={p.src} alt={p.alt} width={p.w} height={p.h} loading="lazy" decoding="async" />
+            </div>
+            <figcaption class="ld-pin-cap">{p.cap}</figcaption>
+          </figure>
         ))}
       </div>
     </div>
@@ -315,887 +333,477 @@ const findings = [
 
   <!-- ================= LATEST CONTENT (permanent) ================= -->
   <LatestContent
-    eyebrow="Recent filings"
-    heading="Entered into <em>the record.</em>"
-    deck="New writing and new video briefs, in the order they were filed. The clerk accepts everything and reads about half."
+    eyebrow="Fresh off the line"
+    heading="Shipped <em>this shift.</em>"
+    deck="New writing and new video briefs, in the order they came off the line. The agents built them, I inspected them, and 1 in 10 goes back, which is the honest rate."
   />
 
   <!-- ================= BOOK EDWARD (permanent) ================= -->
-  <div class="retain">
-    <p class="retain-plate">The plaintiff is also available as a witness</p>
-    <SpeakerCTA eyebrow="Expert witness for hire" />
+  <div class="ld-wo-frame">
+    <p class="ld-wo-plate">Work order, priority: the one that pays for the site</p>
+    <SpeakerCTA eyebrow="Put a keynote on the schedule" />
   </div>
 
-  <!-- ================= THE COMPLAINT ================= -->
-  <section class="complaint" id="complaint">
-    <div class="complaint-head">
-      <p class="sec-eyebrow">Filing one</p>
-      <h2 class="sec-h2">The complaint.</h2>
-      <p class="sec-deck">
-        Plaintiff, appearing on his own behalf because no lawyer would take this, alleges as
-        follows, and every allegation below is true except the one where it's a lawsuit. (Edward,
-        you're describing a 25-year career as a series of purchases. You did the buying. Nobody made
-        you build a company on it, and nobody in 2026 is making you build the plumbing for the next
-        version either, which you're doing anyway, at night, for fun, and which you have described
-        to Dawn as work.)
-      </p>
-    </div>
-    <ol class="plead">
-      {complaint.map((p, i) => (
-        <li class="plead-p">
-          <span class="plead-n">{i + 1}.</span>
-          <p class="plead-text" set:html={p} />
-        </li>
-      ))}
-    </ol>
-  </section>
-
-  <!-- ================= EXHIBITS A THROUGH F ================= -->
-  <section class="exhibits" id="exhibits">
-    <div class="exhibits-head">
-      <p class="sec-eyebrow">Filing two</p>
-      <h2 class="sec-h2">Exhibits A through F.</h2>
-      <p class="sec-deck">
-        The career, refiled as evidence. Each exhibit was entered by the plaintiff against his
-        own interest, and every one of them links to the rest of the paperwork if you'd like to
-        spend your Saturday the way I apparently spent 25 years.
-      </p>
-    </div>
-
-    <div class="exhibits-grid">
-      <figure class="witness">
-        <div class="witness-frame">
-          <span class="stamp" aria-hidden="true">Exhibit 2</span>
-          <img src="/images/roske-v-acme/witness-stand.jpg" width="1200" height="1600" loading="lazy" decoding="async"
-            alt="Edward Roske in a charcoal suit and his blue fedora standing in a wood-paneled courtroom witness box, right hand raised to be sworn in, his left hand resting on a thick, battered mail-order catalog." />
-        </div>
-        <figcaption>
-          Exhibit 2. The plaintiff being sworn in on the catalog, which is the only book in the
-          building he has read cover to cover. The hand on the catalog is the same hand that
-          signed the purchase orders, and the Court noticed.
-        </figcaption>
-      </figure>
-
-      <ol class="ex-list">
-        {exhibits.map(e => (
-          <li class="ex">
-            <div class="ex-tab">
-              <span class="ex-letter">{e.letter}</span>
-              <span class="ex-caption">{CASE_NO} | Ex. {e.letter}</span>
-            </div>
-            <div class="ex-body">
-              <h3 class="ex-title">{e.title}</h3>
-              <p class="ex-desc" set:html={e.desc} />
-              <a href={e.href} class="ex-link">{e.cta}</a>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <!-- ================= DELIVERY (full bleed) ================= -->
-  <section class="delivery">
-    <figure class="delivery-fig">
-      <img src="/images/roske-v-acme/canyon-delivery.jpg" width="1600" height="1200" loading="lazy" decoding="async"
-        alt="Edward Roske in a dark suit and blue fedora at the edge of a red-rock canyon, holding a clipboard and a crowbar, checking a tall stack of freshly delivered wooden crates marked with arrows and fragile symbols, a small dust cloud settling on the canyon floor far below." />
-      <figcaption class="delivery-cap">
-        <span class="stamp stamp-cap" aria-hidden="true">Exhibit 3</span>
-        <span class="delivery-text">
-          Exhibit 3. Delivery. Everything arrives in crates, on the edge, with arrows that say which
-          way is up and nothing that says what's inside. That dust cloud on the canyon floor is last
-          week's order, and I have the clipboard to prove I signed for this one too.
-        </span>
-      </figcaption>
-    </figure>
-  </section>
-
-  <!-- ================= THE CATALOG ================= -->
-  <section class="catalog" id="catalog">
-    <div class="catalog-head">
-      <p class="sec-eyebrow">Filing three</p>
-      <h2 class="sec-h2">The catalog.</h2>
-      <p class="sec-deck">
-        If you run a finance organization you have bought at least 4 of these, and one of them is
-        in a data center right now with your name on the purchase order. Every plate below is a
-        real promise from a real sales cycle I sat in, with the product names removed because I
-        would like to keep being invited to their conferences (they have good coffee, and they
-        have stopped seating me near the product managers).
-      </p>
-    </div>
-
-    <div class="catalog-inner">
-      <figure class="plate-fig">
-        <div class="plate-frame">
-          <span class="plate-no">Plate 1</span>
-          <img src="/images/roske-v-acme/catalog-plate.jpg" width="1600" height="1200" loading="lazy" decoding="async"
-            alt="A vintage catalog-style studio photograph of Edward Roske in a dark suit and blue fedora, smiling like a salesman and gesturing at a refrigerator-sized coiled steel spring bolted to a wooden crate with a big red lever on the side." />
-        </div>
-        <figcaption>
-          Plate 1. Item 1000, the Enterprise Spring (not listed below, discontinued after the
-          incident). The man in the plate has the smile of somebody who has not yet pulled the red
-          lever, and I'd like it noted that I've pulled the red lever 25 years' worth of times
-          since this was taken.
-        </figcaption>
-      </figure>
-
-      <div class="catalog-masthead">
-        <p class="cat-brand">Apex Enterprise Supply Co.</p>
-        <p class="cat-tag">Purveyors of fine single sources of truth to the Office of the CFO since 1949. Allow 6 to 8 quarters for delivery.</p>
+  <!-- ================= WORK ORDERS ================= -->
+  <section class="ld-orders" id="orders">
+    <div class="ld-orders-inner">
+      <div class="ld-orders-head">
+        <p class="ld-eyebrow">Open work orders</p>
+        <h2 class="ld-h2">What's actually on the board.</h2>
+        <p class="ld-deck">
+          6 jobs, carbon copies, same as every week, because the work doesn't change when the site does.
+          Status stamps are honest, which is more than most steering committees can say (I've chaired
+          several, and I'm counting myself).
+        </p>
       </div>
 
-      <ol class="plates">
-        {catalog.map(c => (
-          <li class="plate">
-            <header class="plate-head">
-              <span class="plate-item">No. {c.no}</span>
-              {c.isNew && <span class="plate-new">New for 2026</span>}
+      <div class="ld-wo-grid">
+        {orders.map(o => (
+          <article class:list={['ld-wo', `ld-wo-${o.tone}`]}>
+            <header class="ld-wo-head">
+              <span class="ld-wo-no">{o.no}</span>
+              <span class:list={['ld-wo-stamp', `ld-wo-stamp-${o.tone}`]}>{o.status}</span>
             </header>
-            <div class="plate-schem" aria-hidden="true">
-              {c.icon === 'source' && (
-                <svg viewBox="0 0 100 100" class="schem"><rect x="30" y="30" width="40" height="40" rx="3"/><path d="M10 50h20M70 50h20M50 10v20M50 70v20"/><path d="M26 46l4 4-4 4M74 46l-4 4 4 4M46 26l4-4 4 4M46 74l4 4 4-4"/></svg>
+            <h3 class="ld-wo-name">{o.name}</h3>
+            <p class="ld-wo-note">{o.note}</p>
+            <footer class="ld-wo-foot">
+              {o.href ? (
+                <a href={o.href} class="ld-wo-cta" target={o.external ? '_blank' : undefined} rel={o.external ? 'noopener noreferrer' : undefined}>
+                  {o.cta}{o.external ? ' ↗' : ' →'}
+                </a>
+              ) : (
+                <span class="ld-wo-cta ld-wo-cta-off">{o.cta}</span>
               )}
-              {c.icon === 'self' && (
-                <svg viewBox="0 0 100 100" class="schem"><path d="M15 25h70l-25 30v25l-20-8V55z"/><path d="M50 55v10"/><circle cx="50" cy="16" r="5"/></svg>
-              )}
-              {c.icon === 'close' && (
-                <svg viewBox="0 0 100 100" class="schem"><circle cx="50" cy="55" r="32"/><path d="M50 55V33M50 55l16 10"/><path d="M40 12h20M50 12v11"/><path d="M22 28l-6-6M78 28l6-6"/></svg>
-              )}
-              {c.icon === 'plug' && (
-                <svg viewBox="0 0 100 100" class="schem"><rect x="30" y="40" width="40" height="32" rx="4"/><path d="M40 40V22M60 40V22M50 72v16"/><path d="M14 88h72"/></svg>
-              )}
-              {c.icon === 'gauge' && (
-                <svg viewBox="0 0 100 100" class="schem"><path d="M15 70a35 35 0 0 1 70 0"/><path d="M50 70L70 42"/><circle cx="50" cy="70" r="4"/><path d="M22 60l6 2M78 60l-6 2M50 36v6"/><path d="M15 84h70"/></svg>
-              )}
-              {c.icon === 'chip' && (
-                <svg viewBox="0 0 100 100" class="schem"><rect x="28" y="28" width="44" height="44" rx="4"/><rect x="40" y="40" width="20" height="20"/><path d="M38 28V14M50 28V14M62 28V14M38 86V72M50 86V72M62 86V72M28 38H14M28 50H14M28 62H14M86 38H72M86 50H72M86 62H72"/></svg>
-              )}
-            </div>
-            <h3 class="plate-name">{c.name}</h3>
-            <p class="plate-sell">{c.sell}</p>
-            <p class="plate-got"><span class="plate-got-k">Received:</span> {c.got}</p>
-          </li>
+              <span class="ld-wo-sig">Signed: E. Roske</span>
+            </footer>
+          </article>
         ))}
-      </ol>
-    </div>
-  </section>
-
-  <!-- ================= THE DEPOSITION ================= -->
-  <section class="depo" id="deposition">
-    <div class="depo-head">
-      <p class="sec-eyebrow">Filing four</p>
-      <h2 class="sec-h2">Deposition of the plaintiff.</h2>
-      <p class="sec-deck">
-        The questions people actually ask, taken under oath, in a room with one lamp. Volume I.
-        Appearances: for the plaintiff, the plaintiff. For the defendants, also the plaintiff,
-        since he wrote their manuals and can still find the chapter.
-      </p>
-    </div>
-
-    <figure class="depo-fig">
-      <img src="/images/roske-v-acme/deposition.jpg" width="1600" height="900" loading="lazy" decoding="async"
-        alt="Edward Roske in a loosened tie and his blue fedora, seated at a dark conference table late at night under a single green banker's lamp, hands folded, a stack of manila folders and a microphone in front of him and a stenographer's machine at the edge of the table." />
-      <figcaption>
-        Exhibit 4. The plaintiff at hour 3 of the deposition, being asked for the 4th time whether
-        he read the terms of service. He read them, which is the part that keeps not helping.
-      </figcaption>
-    </figure>
-
-    <div class="transcript" role="region" aria-label="Deposition transcript">
-      <p class="tx-header">Deposition of Edward Roske, Volume I, taken 29 August 2026 at 5:00 AM AST, by an agent.</p>
-      <ol class="tx">
-        {transcript.map(t => (
-          <li class={`tx-line tx-${t.who === 'Q.' ? 'q' : 'a'}`}>
-            <span class="tx-n">{t.n}</span>
-            <span class="tx-who">{t.who}</span>
-            <span class="tx-text">{t.text}</span>
-          </li>
-        ))}
-        <li class="tx-line tx-note">
-          <span class="tx-n">{lineNo + 1}</span>
-          <span class="tx-who"></span>
-          <span class="tx-text">(Whereupon, a recess was taken.)</span>
-        </li>
-      </ol>
+      </div>
     </div>
   </section>
 
   <!-- ================= WHAT'S NEW (permanent) ================= -->
   <WhatsNew
-    eyebrow="Press exhibits"
-    heading="Also entered <em>into evidence.</em>"
-    deck="Interviews, press, and whatever went out on the channel this week. The Court has admitted all of it, mostly because nobody objected."
+    eyebrow="Posted at the gate"
+    heading="Also on <em>the board.</em>"
+    deck="Interviews, press, and whatever went out on the channel this week. Pinned with the good magnets."
   />
 
-  <!-- ================= PENDING MATTERS ================= -->
-  <section class="matters">
-    <div class="matters-head">
-      <p class="sec-eyebrow">Filing five</p>
-      <h2 class="sec-h2">Pending matters.</h2>
-      <p class="sec-deck">
-        6 cases on the plaintiff's docket, honestly statused: 2 MCP servers shipping and a third in
-        beta, a conference in October I'm co-chairing and mildly panicking about, a company I invest
-        in and turn up to argue with, a mountain that already won, an AI Dungeon Master's screen
-        that has never earned a dollar, and a nonprofit with 1,000 people through the door and no
-        dues. One of them is stayed indefinitely and it's the D&amp;D one, and I'd like to watch
-        somebody try to dismiss it.
-      </p>
-    </div>
-    <div class="matters-grid">
-      {docket.map(m => (
-        <article class="matter">
-          <header class="matter-head">
-            <span class="matter-no">{m.no}</span>
-            <span class={`matter-status ms-${m.tone}`}>{m.status}</span>
-          </header>
-          <h3 class="matter-name">{m.name}</h3>
-          <p class="matter-note">{m.note}</p>
-          {m.href ? (
-            <a href={m.href} class="matter-cta" target={m.external ? '_blank' : undefined} rel={m.external ? 'noopener' : undefined}>{m.cta}</a>
-          ) : (
-            <span class="matter-cta matter-cta-off">{m.cta}</span>
-          )}
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <!-- ================= FINDINGS ================= -->
-  <section class="findings" id="findings">
-    <div class="findings-inner">
-      <div class="findings-copy">
-        <p class="sec-eyebrow">Filing six</p>
-        <h2 class="sec-h2">Findings of fact and conclusions of law.</h2>
-        <p class="sec-deck">
-          The Court has read all of it, which is more than the plaintiff can say about his
-          licensing agreements, and rules as follows.
+  <!-- ================= THE TIMESHEET (verdict, and the buyer) ================= -->
+  <section class="ld-sheet" id="timesheet">
+    <div class="ld-sheet-inner">
+      <div class="ld-sheet-card">
+        <div class="ld-sheet-head">
+          <p class="ld-eyebrow">Weekend timesheet</p>
+          <h2 class="ld-h2">Hours, audited.</h2>
+        </div>
+        <table class="ld-sheet-table">
+          <thead>
+            <tr><th scope="col">Day</th><th scope="col">Edward</th><th scope="col">The agents</th></tr>
+          </thead>
+          <tbody>
+            {timesheet.map(r => (
+              <tr>
+                <th scope="row">{r.day}</th>
+                <td><span class="ld-sheet-n">{r.e}</span> <span class="ld-sheet-note">{r.en}</span></td>
+                <td><span class="ld-sheet-n">{r.a}</span></td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Total</th>
+              <td><span class="ld-sheet-n">17 hrs</span></td>
+              <td><span class="ld-sheet-n">72 hrs</span></td>
+            </tr>
+          </tfoot>
+        </table>
+        <p class="ld-sheet-approve">
+          <span class="ld-sheet-stamp">Approved</span>
+          by Agent I, the chief of staff, which would like it noted that it drafted this approval and a
+          human clicked it, as with everything else in the stack. Nothing here has send authority. It
+          never will. That's the rule that lets him go down the manhole and not think about the inbox.
         </p>
-        <ol class="find-list">
-          {findings.map((f, i) => (
-            <li class="find">
-              <span class="find-n">{i + 1}.</span>
-              <p class="find-text" set:html={f} />
-            </li>
-          ))}
-        </ol>
-        <div class="judgment">
-          <p class="judgment-label">Judgment</p>
-          <p class="judgment-text">
-            For the defendants. Costs to the plaintiff. The Court notes for the record that the
-            plaintiff has already placed another order, and that the blog this morning asks who
-            you sue when the AI is wrong, which the Court also does not know.
-          </p>
-          <a href="/blog/who-do-you-sue-when-the-ai-is-wrong/" class="btn-solid">Who do you sue when the AI is wrong?</a>
-        </div>
       </div>
 
-      <figure class="aftermath">
-        <div class="aftermath-frame">
-          <span class="stamp" aria-hidden="true">Exhibit 5</span>
-          <img src="/images/roske-v-acme/canyon-floor.jpg" width="1200" height="1600" loading="lazy" decoding="async"
-            alt="Edward Roske standing at the bottom of a red-rock canyon in a scorched, dust-covered suit with soot on his cheek, holding a small black umbrella over his head with one hand and a scuffed briefcase in the other, his blue fedora still perfectly in place, as the round shadow of a falling boulder darkens the sand around him." />
+      <div class="ld-sheet-pitch">
+        <p class="ld-eyebrow">If you run a finance team</p>
+        <h2 class="ld-h2">Your close doesn't take Labor Day off either.</h2>
+        <p class="ld-deck">
+          Finance teams do this weekend about 12 times a year, they call it the close, and nobody hands
+          them a hot dog at the end of it. The talk is how 10
+          agents took the weekend work off my plate without any of them ever getting send authority, with
+          the failures left in (72 hours lost to an invisible install prompt, a brief on the wrong human,
+          twice), and the workshop is where your team builds the first 2 themselves. Keynotes from
+          $15,000, fees published, inquiries answered within 1 business day.
+        </p>
+        <div class="ld-hero-cta">
+          <a href="/speaking/" class="ld-btn-solid">Book the talk</a>
+          <a href="/work/ai-art-of-the-possible/" class="ld-btn-line">Bring the workshop</a>
         </div>
-        <figcaption>
-          Exhibit 5. The plaintiff, post-judgment. The umbrella was in the catalog too (item 1007,
-          Personal Weather Mitigation, not pictured), and it does exactly what the description says,
-          which is a different thing from what he needed. The hat came through without a mark, which
-          is the only part of this exhibit the plaintiff is prepared to testify about.
-        </figcaption>
-      </figure>
+      </div>
     </div>
   </section>
 
-  <!-- ================= RETAIN COUNSEL (CTA) ================= -->
-  <section class="retain-cta">
-    <div class="retain-inner">
-      <p class="sec-eyebrow">Retain counsel</p>
-      <h2 class="retain-h2">Schedule a deposition.</h2>
-      <p class="retain-deck">
-        If you recognized a plate in that catalog, and you know which one, that's a very good 13
-        minutes. I'll tell you which exhibit you're about to
-        become and whether you need the rollback or just a second signature, and I won't bill for
-        it. Take whichever button is the least effort.
+  <!-- ================= CTA: CLOCK IN ================= -->
+  <section class="ld-clock" id="clock-in">
+    <div class="ld-clock-inner">
+      <p class="ld-eyebrow ld-eyebrow-on-dark">Shift change</p>
+      <h2 class="ld-h2 ld-h2-on-dark">Clock in with me.</h2>
+      <p class="ld-deck ld-deck-on-dark">
+        13 minutes on my calendar, about whatever question you're carrying around: agents, the close, the
+        Summit, or why anyone would jackhammer a sidewalk on a holiday. Or write me at Edward@Roske.AI.
+        I answer from the beam.
       </p>
-      <div class="retain-btns">
-        <a href="/question/" target="_blank" rel="noopener" class="btn-solid">Book 13 minutes</a>
-        <a href="/speaking/" class="btn-line">Book the keynote</a>
-        <a href="/contact/" class="btn-line">Send a message</a>
+      <div class="ld-hero-cta ld-hero-cta-center">
+        <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" class="ld-btn-solid" target="_blank" rel="noopener noreferrer">Book 13 minutes</a>
+        <a href="/contact/" class="ld-btn-line ld-btn-line-on-dark">Send a message</a>
       </div>
     </div>
   </section>
-
-  <!-- ================= NOTICE ================= -->
-  <div class="notice">
-    <p class="notice-line">
-      ROSKE v. ACME is not a real case, and no court in any desert has jurisdiction over it. It is
-      not associated with Warner Bros., Ketchup Entertainment, Looney Tunes, Coyote vs. Acme (which
-      opened August 28, 2026, and had no say in this), or any actual corporation that sells rocket
-      sleds. Apex Enterprise Supply Co. does not exist, and if it did I'd have an account. Edward
-      really did found interRel at 22 and really did write 15 manuals, and the MCP servers for
-      enterprise finance are real and shipping. The whole filing was drafted by an agent at 5AM
-      Atlantic while the plaintiff slept. Write me at Edward@Roske.AI if you'd like to be added as
-      a co-plaintiff!
-    </p>
-  </div>
 </BaseLayout>
 
-<style>
-  /* ============================================================
-     ROSKE v. ACME - week of 2026-08-29
-     Legal exhibit crossed with a mail-order catalog. Manila and
-     kraft stock, angled EXHIBIT stamps, pleading-paper transcript,
-     redaction bars, blueprint plates, wood type for the caption.
-     Dark mode is the deposition room with the overheads off.
-     ============================================================ */
+<style is:global>
+  /* =====================================================================
+     THE HARDEST-WORKING WEEKEND OF THE YEAR (Labor Day 2026)
+     Jobsite: asphalt, steel plate, safety orange, hi-vis yellow, caution
+     stripes, stencil wood type, rivets, concrete grain. All page classes
+     are prefixed ld- and this block is global on purpose (theme-aware
+     selectors on [data-theme] are unreliable inside Astro's scoped CSS).
+     ===================================================================== */
   :root {
-    --rva-oxblood: #4a1c1c;
-    --rva-orange: #ad3f16;        /* type-safe on paper (4.9:1) */
-    --rva-orange-lit: #d9622a;    /* the same orange on the dark table (5.0:1) */
-    --rva-blue: #2b4a7a;          /* blueprint sheet, pinned in both modes */
-    --rva-blue-line: rgba(255, 255, 255, 0.16);
-    --rva-stamp: #b3261e;
-    --rva-stamp-lit: #e0503f;
-    --rva-kraft: #c9a36a;
-    --rva-manila: #ede1c6;
-    --rva-paper: #f8f1e1;
-    --rva-ink: #241a12;
+    --ld-stencil: 'Big Shoulders Stencil Display', 'Big Shoulders Display', Impact, 'Arial Narrow', sans-serif;
+    --ld-cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    --ld-yellow: #f5c400;
+    --ld-ink: #121212;
+    --ld-steel: #1a1c20;
+    --ld-steel-2: #24272c;
+    --ld-steel-text: #ecebe6;
+    --ld-steel-muted: #b3b1a9;
+    --ld-orange-hi: #f0871f;
+    --ld-tape: repeating-linear-gradient(-45deg, #f5c400 0 18px, #121212 18px 36px);
+    --ld-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 
-  /* ---------- shared furniture ---------- */
-  .sec-eyebrow {
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    font-size: 0.74rem;
-    font-weight: 700;
-    margin: 0 0 0.9rem;
+  /* mode-aware page tokens */
+  [data-theme="dark"] {
+    --ld-bg: var(--color-bg);
+    --ld-surface: var(--color-surface);
+    --ld-text: var(--color-text);
+    --ld-muted: var(--color-text-muted);
+    --ld-line: var(--color-border);
+    --ld-form: #202329;           /* carbon-copy form, night shift */
+    --ld-form-line: #3b3f47;
+    --ld-glow: rgba(240, 135, 31, 0.16);
   }
-  :global([data-theme="dark"]) .sec-eyebrow { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .sec-eyebrow { color: var(--rva-orange); }
-  .sec-h2 {
-    font-family: var(--font-heading);
-    font-weight: 400;
-    font-size: clamp(2rem, 5vw, 3.6rem);
-    line-height: 1.04;
-    letter-spacing: 0.005em;
-    margin: 0 0 1.1rem;
+  [data-theme="light"] {
+    --ld-bg: var(--color-bg-light);
+    --ld-surface: var(--color-surface-light);
+    --ld-text: var(--color-text-dark);
+    --ld-muted: var(--color-text-dark-muted);
+    --ld-line: var(--color-border-light);
+    --ld-form: #f3efe2;           /* the yellow carbon copy */
+    --ld-form-line: #c9c2ad;
+    --ld-glow: rgba(154, 52, 4, 0.10);
   }
-  :global([data-theme="dark"]) .sec-h2 { color: var(--color-text); }
-  :global([data-theme="light"]) .sec-h2 { color: var(--rva-oxblood); }
-  .sec-deck {
-    font-family: var(--font-body);
-    font-size: 1.04rem;
-    line-height: 1.75;
-    max-width: 46em;
-    margin: 0 0 1rem;
-  }
-  :global([data-theme="dark"]) .sec-deck { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .sec-deck { color: var(--color-text-dark-muted); }
 
-  .btn-solid, .btn-line {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0.95rem 1.5rem;
-    border: 2px solid var(--color-accent);
-    text-decoration: none;
-    transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease;
+  /* ---------- shared type ---------- */
+  .ld-eyebrow {
+    font-family: var(--ld-cond); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.22em;
+    text-transform: uppercase; color: var(--color-accent); margin: 0 0 0.7rem;
   }
-  .btn-solid { background: var(--color-accent); color: #fff; }
-  .btn-solid:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); transform: translateY(-2px); }
-  .btn-line { background: transparent; color: var(--rva-orange); }
-  .btn-line:hover { background: var(--color-accent); color: #fff; transform: translateY(-2px); }
-  :global([data-theme="dark"]) .btn-line { border-color: var(--color-text-muted); color: var(--color-text); }
-  :global([data-theme="dark"]) .btn-line:hover { border-color: var(--color-accent); color: #fff; }
+  .ld-eyebrow-on-dark { color: var(--ld-orange-hi); }
+  .ld-h2 {
+    font-family: var(--font-heading); font-weight: 800; line-height: 0.95; letter-spacing: 0.005em;
+    font-size: clamp(2.4rem, 5.2vw, 4.2rem); margin: 0 0 1rem; color: var(--ld-text); text-transform: uppercase;
+  }
+  .ld-h2-on-dark { color: var(--ld-steel-text); }
+  .ld-deck { max-width: 62ch; font-size: 1.06rem; line-height: 1.62; color: var(--ld-muted); margin: 0; }
+  .ld-deck-on-dark { color: var(--ld-steel-muted); }
+  .ld-deck a, .ld-sched-foot a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
 
-  /* the EXHIBIT stamp */
-  .stamp {
-    position: absolute;
-    top: 0.9rem;
-    left: 0.9rem;
-    z-index: 2;
-    transform: rotate(-7deg);
-    font-family: var(--font-heading);
-    font-size: 1.05rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.28rem 0.7rem;
-    border: 3px double var(--rva-stamp);
-    color: var(--rva-stamp);
-    background: rgba(248, 241, 225, 0.82);
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.08);
-    pointer-events: none;
+  /* ---------- buttons ---------- */
+  .ld-btn-solid, .ld-btn-line {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    padding: 0.95rem 1.6rem; font-family: var(--ld-cond); font-weight: 700; font-size: 1.02rem;
+    letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   }
-  .stamp-hero { font-size: 1.3rem; top: 1.1rem; left: 1.1rem; }
-  .stamp-cap { position: static; display: inline-block; transform: rotate(-4deg); margin: 0 0.9rem 0 0; }
+  .ld-btn-solid { background: var(--color-accent); color: var(--color-on-accent); }
+  .ld-btn-solid:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
+  .ld-btn-line { border: 2px solid var(--color-accent); color: var(--color-accent); background: transparent; }
+  .ld-btn-line:hover { background: var(--color-accent); color: var(--color-on-accent); transform: translateY(-2px); }
+  .ld-btn-line-on-dark { border-color: var(--ld-orange-hi); color: var(--ld-orange-hi); }
+  .ld-btn-line-on-dark:hover { background: var(--ld-orange-hi); color: var(--ld-ink); }
+  .ld-hero-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1.6rem; }
+  .ld-hero-cta-center { justify-content: center; }
 
-  /* redaction bar */
-  .redact {
-    display: inline-block;
-    background: #111;
-    color: #111;
-    line-height: 1;
-    border-radius: 1px;
-    user-select: none;
-    letter-spacing: -0.05em;
+  /* ---------- caution tape strip ---------- */
+  .ld-tape {
+    margin-top: 64px; /* clear the fixed nav */
+    background: var(--ld-tape); padding: 6px 0;
   }
-  :global([data-theme="dark"]) .redact { background: #000; color: #000; outline: 1px solid rgba(241,232,216,0.28); }
-
-  /* ---------- docket strip ---------- */
-  .docket-strip { border-bottom: 2px solid; font-family: var(--font-mono); }
-  :global([data-theme="dark"]) .docket-strip { background: var(--color-surface); border-color: var(--color-border); }
-  :global([data-theme="light"]) .docket-strip { background: var(--rva-oxblood); border-color: var(--rva-oxblood); }
-  .docket-inner {
-    max-width: 1280px; margin: 0 auto;
-    padding: 0.6rem 1.5rem;
-    display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem;
-    align-items: center; justify-content: space-between;
+  .ld-tape-inner {
+    background: var(--ld-ink); color: var(--ld-yellow);
+    font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
+    display: flex; flex-wrap: wrap; gap: 0.4rem 0; justify-content: center; padding: 0.5rem 1rem;
   }
-  .docket-item { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; }
-  :global([data-theme="dark"]) .docket-item { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .docket-item { color: #e9d9c2; }
-  .docket-mark { font-weight: 700; }
-  :global([data-theme="dark"]) .docket-mark, :global([data-theme="dark"]) .docket-filed { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .docket-mark, :global([data-theme="light"]) .docket-filed { color: #f3c9a8; }
+  .ld-tape-item { padding: 0 0.9rem; border-right: 1px solid rgba(245, 196, 0, 0.35); white-space: nowrap; }
+  .ld-tape-item:last-child { border-right: 0; }
+  .ld-tape-mark { color: var(--ld-orange-hi); font-weight: 700; }
 
   /* ---------- hero ---------- */
-  .hero { padding: 3.5rem 1.5rem 0; position: relative; }
-  :global([data-theme="light"]) .hero {
+  .ld-hero {
+    position: relative; overflow: hidden;
+    padding: clamp(2.5rem, 6vw, 5rem) 1.5rem 3rem;
     background:
-      repeating-linear-gradient(0deg, transparent 0 31px, rgba(74, 28, 28, 0.06) 31px 32px);
+      radial-gradient(70% 60% at 85% 10%, var(--ld-glow), transparent 70%),
+      var(--ld-bg);
   }
-  .hero-inner {
-    max-width: 1280px; margin: 0 auto;
-    display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3rem; align-items: start;
+  .ld-hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: var(--ld-grain); opacity: 0.35; mix-blend-mode: overlay;
   }
-  .hero-kicker {
-    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.2em;
-    text-transform: uppercase; margin: 0 0 1.2rem;
+  [data-theme="light"] .ld-hero::before { opacity: 0.5; }
+  .ld-hero-grid {
+    position: relative; max-width: 80rem; margin: 0 auto;
+    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); align-items: center;
   }
-  :global([data-theme="dark"]) .hero-kicker { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .hero-kicker { color: var(--rva-orange); }
+  @media (max-width: 960px) { .ld-hero-grid { grid-template-columns: 1fr; } }
+  .ld-kicker {
+    font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ld-muted); margin: 0 0 1.4rem;
+  }
+  .ld-h1 {
+    font-family: var(--ld-stencil); font-weight: 900; text-transform: uppercase; line-height: 0.86;
+    font-size: clamp(3.6rem, 10vw, 8.2rem); margin: 0 0 1.4rem; color: var(--ld-text); letter-spacing: 0.01em;
+  }
+  .ld-h1-line { display: block; }
+  .ld-h1-hit { color: var(--color-accent); }
+  .ld-hero-sub {
+    font-family: var(--ld-cond); font-weight: 600; font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.25;
+    color: var(--ld-text); margin: 0 0 1rem; max-width: 30ch;
+  }
+  .ld-hero-desc { font-size: 1.04rem; line-height: 1.65; color: var(--ld-muted); margin: 0; max-width: 60ch; }
 
-  /* the pleading caption box */
-  .caption {
-    display: grid; grid-template-columns: 1fr auto 1fr;
-    gap: 0 1rem;
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    line-height: 1.5;
-    border-top: 2px solid; border-bottom: 2px solid;
-    padding: 1rem 0;
-    margin: 0 0 1.6rem;
-    max-width: 44rem;
+  /* riveted steel plate frame, used by the hero and every site photo */
+  .ld-plate {
+    position: relative; background: var(--ld-steel); padding: 10px;
+    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
   }
-  :global([data-theme="dark"]) .caption { border-color: var(--color-border); color: var(--color-text-muted); }
-  :global([data-theme="light"]) .caption { border-color: var(--rva-oxblood); color: var(--color-text-dark-muted); }
-  .cap-parties p, .cap-right p { margin: 0; }
-  .cap-party { text-transform: uppercase; letter-spacing: 0.02em; }
-  :global([data-theme="dark"]) .cap-party { color: var(--color-text); }
-  :global([data-theme="light"]) .cap-party { color: var(--rva-ink); }
-  .cap-role { padding-left: 2.5rem; font-style: italic; }
-  .cap-vs { padding: 0.25rem 0 0.25rem 1.2rem; font-weight: 700; }
-  .cap-brackets { line-height: 1.5; opacity: 0.55; }
-  .cap-no { font-weight: 700; }
-  .cap-title { text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.4rem !important; }
-  :global([data-theme="dark"]) .cap-title { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .cap-title { color: var(--rva-orange); }
-  .cap-note { font-style: italic; margin-top: 0.4rem !important; }
+  .ld-plate::before, .ld-plate::after {
+    content: ''; position: absolute; width: 8px; height: 8px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #8f949c, #3a3e45 70%);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
+  }
+  .ld-plate::before { top: 4px; left: 4px; box-shadow: calc(100% + 4px) 0 0 0 transparent; }
+  .ld-plate::after { bottom: 4px; right: 4px; }
+  .ld-plate img { display: block; width: 100%; height: auto; }
+  .ld-stencil-tag {
+    position: absolute; z-index: 2; top: 18px; left: -8px;
+    font-family: var(--ld-cond); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+    background: var(--ld-orange-hi); color: var(--ld-ink); padding: 0.32rem 0.7rem;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+  }
+  .ld-hero-fig { margin: 0; }
+  .ld-plate-hero { transform: rotate(-1.2deg); }
+  .ld-hero-img { aspect-ratio: 16 / 9; object-fit: cover; }
+  .ld-hero-cap {
+    font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.6; color: var(--ld-muted);
+    margin: 1.2rem 0 0 0.4rem; padding-left: 0.9rem; border-left: 3px solid var(--color-accent); max-width: 60ch;
+  }
 
-  .case-h1 {
-    font-family: 'Rye', var(--font-heading);
-    font-weight: 400;
-    font-size: clamp(3.2rem, 9.5vw, 7.4rem);
-    line-height: 0.92;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    margin: 0 0 1.4rem;
-    display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 1.2rem;
+  /* time card */
+  .ld-timecard {
+    position: relative; max-width: 80rem; margin: 3rem auto 0;
+    background: var(--ld-surface); border: 1px solid var(--ld-line); padding: 1.2rem 1.4rem 1.4rem;
   }
-  :global([data-theme="dark"]) .case-h1 { color: var(--color-text); text-shadow: 0 3px 0 rgba(0,0,0,0.5); }
-  :global([data-theme="light"]) .case-h1 { color: var(--rva-oxblood); text-shadow: 3px 3px 0 rgba(201, 163, 106, 0.55); }
-  .case-vs {
-    font-family: var(--font-body);
-    font-style: italic;
-    font-size: 0.34em;
-    text-transform: none;
-    letter-spacing: 0;
-    text-shadow: none;
+  .ld-timecard::before {
+    content: ''; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--ld-tape);
   }
-  :global([data-theme="dark"]) .case-vs { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .case-vs { color: var(--rva-orange); }
-  .hero-sub {
-    font-family: var(--font-body);
-    font-style: italic;
-    font-size: clamp(1.15rem, 2vw, 1.4rem);
-    line-height: 1.45;
-    margin: 0 0 1rem;
-    max-width: 30em;
+  .ld-timecard-label {
+    font-family: var(--ld-cond); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--ld-muted); margin: 0.6rem 0 1rem;
   }
-  :global([data-theme="dark"]) .hero-sub { color: var(--color-text); }
-  :global([data-theme="light"]) .hero-sub { color: var(--rva-ink); }
-  .hero-desc {
-    font-family: var(--font-body); font-size: 1.02rem; line-height: 1.75;
-    margin: 0 0 1.7rem; max-width: 40em;
+  .ld-timecard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  @media (max-width: 720px) { .ld-timecard-grid { grid-template-columns: 1fr 1fr; } }
+  .ld-punch { position: relative; padding-left: 1.4rem; }
+  .ld-punch-hole {
+    position: absolute; left: 0; top: 0.35rem; width: 12px; height: 12px; border-radius: 50%;
+    background: var(--ld-bg); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--ld-line);
   }
-  :global([data-theme="dark"]) .hero-desc { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .hero-desc { color: var(--color-text-dark-muted); }
-  .hero-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .ld-punch-v {
+    display: block; font-family: var(--font-heading); font-weight: 900; font-size: clamp(2.2rem, 4vw, 3.2rem);
+    line-height: 1; color: var(--color-accent);
+  }
+  .ld-punch-k {
+    display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ld-muted); margin-top: 0.4rem;
+  }
 
-  .hero-fig { margin: 0; position: relative; }
-  .hero-frame {
-    position: relative;
-    border: 3px solid;
-    padding: 0.6rem;
-    transform: rotate(1.2deg);
+  /* ---------- schedule (always the night board, both modes) ---------- */
+  .ld-sched {
+    position: relative; background: var(--ld-steel); color: var(--ld-steel-text);
+    padding: clamp(3rem, 7vw, 5.5rem) 1.5rem; overflow: hidden;
+    border-top: 8px solid transparent; border-image: var(--ld-tape) 8;
   }
-  :global([data-theme="dark"]) .hero-frame { border-color: var(--color-border); background: var(--color-surface); }
-  :global([data-theme="light"]) .hero-frame { border-color: var(--rva-oxblood); background: var(--rva-paper); box-shadow: 8px 8px 0 var(--rva-kraft); }
-  .hero-img { display: block; width: 100%; height: auto; }
-  .hero-cap {
-    font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6;
-    margin: 1.2rem 0.4rem 0;
-  }
-  :global([data-theme="dark"]) .hero-cap { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .hero-cap { color: var(--color-text-dark-muted); }
-
-  /* standing stub */
-  .standing {
-    max-width: 1280px; margin: 3rem auto 0;
-    border-top: 2px solid; border-bottom: 2px solid;
-    padding: 1.2rem 0;
-    display: grid; grid-template-columns: auto 1fr; gap: 1.5rem 3rem; align-items: center;
-  }
-  :global([data-theme="dark"]) .standing { border-color: var(--color-border); }
-  :global([data-theme="light"]) .standing { border-color: var(--rva-oxblood); }
-  .standing-label {
-    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; margin: 0;
-  }
-  :global([data-theme="dark"]) .standing-label { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .standing-label { color: var(--rva-orange); }
-  .standing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-  .standing-item { display: flex; flex-direction: column; gap: 0.15rem; }
-  .standing-v { font-family: var(--font-heading); font-size: clamp(1.6rem, 3vw, 2.3rem); line-height: 1; }
-  :global([data-theme="dark"]) .standing-v { color: var(--color-text); }
-  :global([data-theme="light"]) .standing-v { color: var(--rva-oxblood); }
-  .standing-k { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  :global([data-theme="dark"]) .standing-k { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .standing-k { color: var(--color-text-dark-muted); }
-
-  /* ---------- retain frame around SpeakerCTA ---------- */
-  .retain { position: relative; }
-  .retain-plate {
-    max-width: 1280px; margin: 0 auto; padding: 2.4rem 1.5rem 0;
-    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-  }
-  :global([data-theme="dark"]) .retain-plate { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .retain-plate { color: var(--rva-orange); }
-
-  /* ---------- the complaint ---------- */
-  .complaint { padding: 5rem 1.5rem; }
-  :global([data-theme="dark"]) .complaint { background: linear-gradient(180deg, transparent, rgba(74, 28, 28, 0.28), transparent); }
-  :global([data-theme="light"]) .complaint { background: var(--rva-paper); border-top: 2px solid var(--rva-oxblood); border-bottom: 2px solid var(--rva-oxblood); }
-  .complaint-head { max-width: 1280px; margin: 0 auto 2.4rem; }
-  .plead {
-    max-width: 1280px; margin: 0 auto; padding: 0; list-style: none;
-    border-left: 3px double;
-    padding-left: 2rem;
-  }
-  :global([data-theme="dark"]) .plead { border-color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .plead { border-color: var(--rva-stamp); }
-  .plead-p { display: grid; grid-template-columns: 2.6rem 1fr; gap: 0.6rem; margin: 0 0 1.4rem; max-width: 60em; }
-  .plead-n { font-family: var(--font-mono); font-weight: 700; font-size: 1rem; padding-top: 0.2rem; }
-  :global([data-theme="dark"]) .plead-n { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .plead-n { color: var(--rva-orange); }
-  .plead-text { font-family: var(--font-body); font-size: 1.04rem; line-height: 1.8; margin: 0; }
-  :global([data-theme="dark"]) .plead-text { color: var(--color-text); }
-  :global([data-theme="light"]) .plead-text { color: var(--rva-ink); }
-  .plead-text :global(a) { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
-  :global([data-theme="dark"]) .plead-text :global(a) { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .plead-text :global(a) { color: var(--rva-orange); }
-
-  /* ---------- exhibits ---------- */
-  .exhibits { padding: 5rem 1.5rem; }
-  .exhibits-head { max-width: 1280px; margin: 0 auto 2.6rem; }
-  .exhibits-grid {
-    max-width: 1280px; margin: 0 auto;
-    display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 3rem; align-items: start;
-  }
-  .witness { margin: 0; position: sticky; top: 5.5rem; }
-  .witness-frame { position: relative; border: 3px solid; padding: 0.5rem; transform: rotate(-1.4deg); }
-  :global([data-theme="dark"]) .witness-frame { border-color: var(--color-border); background: var(--color-surface); }
-  :global([data-theme="light"]) .witness-frame { border-color: var(--rva-oxblood); background: var(--rva-paper); box-shadow: -8px 8px 0 var(--rva-kraft); }
-  .witness img { display: block; width: 100%; height: auto; }
-  .witness figcaption { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; margin: 1.2rem 0.3rem 0; }
-  :global([data-theme="dark"]) .witness figcaption { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .witness figcaption { color: var(--color-text-dark-muted); }
-
-  .ex-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.2rem; }
-  .ex {
-    display: grid; grid-template-columns: 6rem 1fr;
-    border: 2px solid;
-    position: relative;
-  }
-  :global([data-theme="dark"]) .ex { border-color: var(--color-border); background: var(--color-surface); }
-  :global([data-theme="light"]) .ex { border-color: var(--rva-oxblood); background: var(--rva-manila); }
-  .ex-tab {
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem;
-    border-right: 2px solid; padding: 1rem 0.5rem;
-  }
-  :global([data-theme="dark"]) .ex-tab { border-color: var(--color-border); background: rgba(74, 28, 28, 0.35); }
-  :global([data-theme="light"]) .ex-tab { border-color: var(--rva-oxblood); background: var(--rva-kraft); }
-  .ex-letter { font-family: var(--font-heading); font-size: 2.6rem; line-height: 1; }
-  :global([data-theme="dark"]) .ex-letter { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .ex-letter { color: var(--rva-oxblood); }
-  .ex-caption { font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; writing-mode: vertical-rl; transform: rotate(180deg); }
-  :global([data-theme="dark"]) .ex-caption { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .ex-caption { color: var(--rva-ink); }
-  .ex-body { padding: 1.3rem 1.5rem 1.4rem; }
-  .ex-title { font-family: var(--font-heading); font-weight: 400; font-size: 1.25rem; line-height: 1.25; margin: 0 0 0.6rem; }
-  :global([data-theme="dark"]) .ex-title { color: var(--color-text); }
-  :global([data-theme="light"]) .ex-title { color: var(--rva-oxblood); }
-  .ex-desc { font-family: var(--font-body); font-size: 0.98rem; line-height: 1.72; margin: 0 0 0.9rem; }
-  :global([data-theme="dark"]) .ex-desc { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .ex-desc { color: var(--color-text-dark-muted); }
-  .ex-link {
-    font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;
-  }
-  :global([data-theme="dark"]) .ex-link { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .ex-link { color: var(--rva-orange); }
-  .ex-link:hover { text-decoration-thickness: 3px; }
-
-  /* ---------- delivery (full bleed) ---------- */
-  .delivery { padding: 0; }
-  :global([data-theme="light"]) .delivery { background: var(--rva-oxblood); }
-  :global([data-theme="dark"]) .delivery { background: #000; }
-  .delivery-fig { margin: 0; max-width: 1600px; margin: 0 auto; }
-  .delivery-fig img { display: block; width: 100%; height: auto; }
-  .delivery-cap {
-    display: flex; align-items: flex-start; gap: 0.5rem;
-    max-width: 1280px; margin: 0 auto; padding: 1.4rem 1.5rem 1.8rem;
-    font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.65;
-  }
-  :global([data-theme="light"]) .delivery-cap { color: #e9d9c2; }
-  :global([data-theme="dark"]) .delivery-cap { color: var(--color-text-muted); }
-  .delivery-cap .stamp { border-color: var(--rva-stamp-lit); color: var(--rva-stamp-lit); background: rgba(0,0,0,0.35); }
-
-  /* ---------- the catalog ---------- */
-  .catalog { padding: 5rem 1.5rem; }
-  :global([data-theme="light"]) .catalog { background: var(--rva-kraft); }
-  :global([data-theme="dark"]) .catalog { background: linear-gradient(180deg, rgba(43, 74, 122, 0.18), transparent 70%); }
-  .catalog-head { max-width: 1280px; margin: 0 auto 2.4rem; }
-  :global([data-theme="light"]) .catalog .sec-h2 { color: var(--rva-oxblood); }
-  :global([data-theme="light"]) .catalog .sec-deck { color: var(--rva-ink); }
-  .catalog-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem 3rem; align-items: start; }
-  .plate-fig { margin: 0; }
-  .plate-frame { position: relative; padding: 0.6rem; border: 3px solid; }
-  :global([data-theme="dark"]) .plate-frame { border-color: var(--color-border); background: var(--color-surface); }
-  :global([data-theme="light"]) .plate-frame { border-color: var(--rva-oxblood); background: var(--rva-paper); }
-  .plate-frame img { display: block; width: 100%; height: auto; }
-  .plate-no {
-    position: absolute; top: 1.2rem; right: 1.2rem; z-index: 2;
-    font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase;
-    background: var(--rva-paper); color: var(--rva-ink); padding: 0.25rem 0.6rem; border: 1px solid var(--rva-ink);
-  }
-  .plate-fig figcaption { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; margin: 1rem 0.3rem 0; }
-  :global([data-theme="dark"]) .plate-fig figcaption { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .plate-fig figcaption { color: var(--rva-ink); }
-
-  .catalog-masthead { align-self: end; padding-bottom: 0.5rem; }
-  .cat-brand {
-    font-family: 'Rye', var(--font-heading); font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1.05; margin: 0 0 0.6rem;
-  }
-  :global([data-theme="dark"]) .cat-brand { color: var(--color-text); }
-  :global([data-theme="light"]) .cat-brand { color: var(--rva-oxblood); }
-  .cat-tag { font-family: var(--font-body); font-style: italic; font-size: 1rem; line-height: 1.6; margin: 0; max-width: 32em; }
-  :global([data-theme="dark"]) .cat-tag { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .cat-tag { color: var(--rva-ink); }
-
-  /* blueprint plates: pinned colors in both modes, so nothing inverts */
-  .plates {
-    grid-column: 1 / -1;
-    list-style: none; margin: 0; padding: 0;
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
-  }
-  .plate {
+  .ld-sched::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
     background:
-      linear-gradient(var(--rva-blue-line) 1px, transparent 1px) 0 0 / 20px 20px,
-      linear-gradient(90deg, var(--rva-blue-line) 1px, transparent 1px) 0 0 / 20px 20px,
-      var(--rva-blue);
-    color: #f1e8d8;
-    border: 2px solid #f1e8d8;
-    outline: 6px solid var(--rva-blue);
-    padding: 1.2rem 1.3rem 1.4rem;
-    display: flex; flex-direction: column; gap: 0.7rem;
+      radial-gradient(60% 50% at 10% 0%, rgba(240, 135, 31, 0.18), transparent 70%),
+      var(--ld-grain);
+    opacity: 0.6; mix-blend-mode: screen;
   }
-  .plate-head { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; }
-  .plate-item { color: #f1e8d8; }
-  .plate-new { background: var(--rva-orange-lit); color: #fff; padding: 0.15rem 0.5rem; font-weight: 700; }
-  .plate-schem { width: 76px; height: 76px; }
-  .schem { width: 100%; height: 100%; fill: none; stroke: #f1e8d8; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
-  .plate-name { font-family: var(--font-heading); font-weight: 400; font-size: 1.3rem; line-height: 1.2; margin: 0; color: #fff; }
-  .plate-sell { font-family: var(--font-body); font-style: italic; font-size: 0.98rem; line-height: 1.55; margin: 0; color: #f1e8d8; }
-  .plate-got { font-family: var(--font-body); font-size: 0.94rem; line-height: 1.7; margin: 0; color: #dfe6f2; border-top: 1px dashed rgba(241, 232, 216, 0.45); padding-top: 0.7rem; }
-  .plate-got-k { font-family: var(--font-mono); font-weight: 700; font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: #ffd6b8; }
-
-  /* ---------- deposition ---------- */
-  .depo { padding: 5rem 1.5rem; }
-  :global([data-theme="dark"]) .depo { background: radial-gradient(ellipse at 50% 20%, rgba(224, 169, 43, 0.12), transparent 60%); }
-  :global([data-theme="light"]) .depo { background: var(--rva-paper); border-top: 2px solid var(--rva-oxblood); }
-  .depo-head { max-width: 1280px; margin: 0 auto 2.4rem; }
-  .depo-fig { max-width: 1280px; margin: 0 auto 2.6rem; }
-  .depo-fig img { display: block; width: 100%; height: auto; border: 3px solid; }
-  :global([data-theme="dark"]) .depo-fig img { border-color: var(--color-border); }
-  :global([data-theme="light"]) .depo-fig img { border-color: var(--rva-oxblood); }
-  .depo-fig figcaption { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; margin: 1rem 0.3rem 0; }
-  :global([data-theme="dark"]) .depo-fig figcaption { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .depo-fig figcaption { color: var(--color-text-dark-muted); }
-
-  /* pleading paper: numbered lines, double red rule at left */
-  .transcript {
-    max-width: 1100px; margin: 0 auto;
-    font-family: var(--font-mono);
-    border: 2px solid;
-    padding: 1.6rem 1.6rem 1.6rem 0;
-    position: relative;
-    background-image: repeating-linear-gradient(0deg, transparent 0 27px, rgba(74, 28, 28, 0.09) 27px 28px);
+  .ld-sched-inner { position: relative; max-width: 80rem; margin: 0 auto; }
+  .ld-sched-head { max-width: 70ch; margin-bottom: 2.4rem; }
+  .ld-shift { border: 1px solid #3a3e46; background: var(--ld-steel-2); }
+  .ld-shift-row {
+    display: grid; grid-template-columns: 6rem minmax(0, 1fr) minmax(0, 1fr); gap: 0 1.6rem;
+    padding: 1.05rem 1.3rem; border-top: 1px solid #3a3e46; align-items: start;
   }
-  :global([data-theme="dark"]) .transcript { border-color: var(--color-border); background-color: var(--color-surface); background-image: repeating-linear-gradient(0deg, transparent 0 27px, rgba(241, 232, 216, 0.06) 27px 28px); }
-  :global([data-theme="light"]) .transcript { border-color: var(--rva-oxblood); background-color: #fff; }
-  .transcript::before {
-    content: ''; position: absolute; top: 0; bottom: 0; left: 4.2rem;
-    border-left: 3px double var(--rva-stamp);
+  .ld-shift-row:first-child { border-top: 0; }
+  .ld-shift-header {
+    font-family: var(--ld-cond); font-weight: 700; font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ld-orange-hi); background: #16181c; padding-top: 0.8rem; padding-bottom: 0.8rem;
   }
-  :global([data-theme="dark"]) .transcript::before { border-color: var(--rva-stamp-lit); }
-  .tx-header { margin: 0 0 1.2rem 5.2rem; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; }
-  :global([data-theme="dark"]) .tx-header { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .tx-header { color: var(--color-text-dark-muted); }
-  .tx { list-style: none; margin: 0; padding: 0; }
-  .tx-line { display: grid; grid-template-columns: 4.2rem 2rem 1fr; gap: 0 0.6rem; margin: 0 0 0.9rem; font-size: 0.94rem; line-height: 1.75; }
-  .tx-n { text-align: center; font-size: 0.74rem; padding-top: 0.25rem; }
-  :global([data-theme="dark"]) .tx-n { color: var(--color-text-muted); opacity: 0.7; }
-  :global([data-theme="light"]) .tx-n { color: var(--color-text-dark-muted); }
-  .tx-who { font-weight: 700; padding-left: 0.6rem; }
-  .tx-q .tx-who, .tx-q .tx-text { font-weight: 700; }
-  :global([data-theme="dark"]) .tx-q .tx-text, :global([data-theme="dark"]) .tx-who { color: var(--color-text); }
-  :global([data-theme="light"]) .tx-q .tx-text, :global([data-theme="light"]) .tx-who { color: var(--rva-ink); }
-  :global([data-theme="dark"]) .tx-a .tx-text { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .tx-a .tx-text { color: var(--color-text-dark-muted); }
-  .tx-note .tx-text { font-style: italic; }
-  :global([data-theme="dark"]) .tx-note .tx-text { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .tx-note .tx-text { color: var(--color-text-dark-muted); }
-
-  /* ---------- pending matters ---------- */
-  .matters { padding: 5rem 1.5rem; }
-  .matters-head { max-width: 1280px; margin: 0 auto 2.4rem; }
-  .matters-grid { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .matter { border: 2px solid; padding: 1.3rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.7rem; position: relative; }
-  :global([data-theme="dark"]) .matter { border-color: var(--color-border); background: var(--color-surface); }
-  :global([data-theme="light"]) .matter { border-color: var(--rva-oxblood); background: var(--rva-manila); box-shadow: 4px 4px 0 var(--rva-kraft); }
-  .matter-head { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
-  :global([data-theme="dark"]) .matter-no { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .matter-no { color: var(--color-text-dark-muted); }
-  .matter-status { padding: 0.15rem 0.5rem; border: 1.5px solid; font-weight: 700; text-align: right; }
-  .ms-go { border-color: var(--rva-orange); color: var(--rva-orange); }
-  :global([data-theme="dark"]) .ms-go { border-color: var(--rva-orange-lit); color: var(--rva-orange-lit); }
-  .ms-done { border-color: var(--rva-blue); color: var(--rva-blue); }
-  :global([data-theme="dark"]) .ms-done { border-color: #8fb0e0; color: #8fb0e0; }
-  .ms-hold { border-color: currentColor; }
-  :global([data-theme="dark"]) .ms-hold { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .ms-hold { color: var(--color-text-dark-muted); }
-  .matter-name { font-family: var(--font-heading); font-weight: 400; font-size: 1.25rem; line-height: 1.25; margin: 0; }
-  :global([data-theme="dark"]) .matter-name { color: var(--color-text); }
-  :global([data-theme="light"]) .matter-name { color: var(--rva-oxblood); }
-  .matter-note { font-family: var(--font-body); font-size: 0.96rem; line-height: 1.7; margin: 0; flex: 1; }
-  :global([data-theme="dark"]) .matter-note { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .matter-note { color: var(--color-text-dark-muted); }
-  .matter-cta {
-    align-self: flex-start;
-    font-family: var(--font-mono); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px;
+  .ld-shift-t { font-family: var(--font-mono); font-size: 1.05rem; color: var(--ld-yellow); letter-spacing: 0.06em; }
+  .ld-shift-header .ld-shift-t { font-family: var(--ld-cond); font-size: 0.74rem; color: var(--ld-orange-hi); }
+  .ld-shift-e, .ld-shift-a { font-size: 0.98rem; line-height: 1.55; color: var(--ld-steel-text); }
+  .ld-shift-a { color: #d8d6cf; }
+  @media (max-width: 760px) {
+    .ld-shift-row { grid-template-columns: 1fr; gap: 0.35rem; }
+    .ld-shift-header { display: none; }
+    .ld-shift-e::before, .ld-shift-a::before {
+      display: block; font-family: var(--ld-cond); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--ld-orange-hi); margin-bottom: 0.15rem;
+    }
+    .ld-shift-e::before { content: 'Edward'; }
+    .ld-shift-a::before { content: 'The agents'; margin-top: 0.5rem; }
   }
-  :global([data-theme="dark"]) .matter-cta { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .matter-cta { color: var(--rva-orange); }
-  .matter-cta-off { text-decoration: none; opacity: 0.6; }
+  .ld-sched-foot { max-width: 70ch; margin: 1.6rem 0 0; font-size: 0.98rem; line-height: 1.6; color: var(--ld-steel-muted); }
+  .ld-sched-foot a { color: var(--ld-orange-hi); }
 
-  /* ---------- findings ---------- */
-  .findings { padding: 5rem 1.5rem; }
-  :global([data-theme="dark"]) .findings { background: linear-gradient(180deg, transparent, rgba(74, 28, 28, 0.3)); }
-  :global([data-theme="light"]) .findings { background: var(--rva-paper); border-top: 2px solid var(--rva-oxblood); border-bottom: 2px solid var(--rva-oxblood); }
-  .findings-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 3rem; align-items: start; }
-  .find-list { list-style: none; margin: 1.5rem 0 2rem; padding: 0; display: grid; gap: 1.1rem; max-width: 56em; }
-  .find { display: grid; grid-template-columns: 2.2rem 1fr; gap: 0.5rem; }
-  .find-n { font-family: var(--font-mono); font-weight: 700; padding-top: 0.2rem; }
-  :global([data-theme="dark"]) .find-n { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .find-n { color: var(--rva-orange); }
-  .find-text { font-family: var(--font-body); font-size: 1.02rem; line-height: 1.78; margin: 0; }
-  :global([data-theme="dark"]) .find-text { color: var(--color-text); }
-  :global([data-theme="light"]) .find-text { color: var(--rva-ink); }
-  .judgment { border: 3px double; padding: 1.4rem 1.6rem 1.6rem; max-width: 56em; }
-  :global([data-theme="dark"]) .judgment { border-color: var(--rva-orange-lit); background: rgba(0,0,0,0.25); }
-  :global([data-theme="light"]) .judgment { border-color: var(--rva-oxblood); background: var(--rva-manila); }
-  .judgment-label { font-family: var(--font-heading); font-size: 1.4rem; text-transform: uppercase; letter-spacing: 0.06em; margin: 0 0 0.6rem; }
-  :global([data-theme="dark"]) .judgment-label { color: var(--rva-orange-lit); }
-  :global([data-theme="light"]) .judgment-label { color: var(--rva-stamp); }
-  .judgment-text { font-family: var(--font-body); font-size: 1.02rem; line-height: 1.75; margin: 0 0 1.2rem; }
-  :global([data-theme="dark"]) .judgment-text { color: var(--color-text); }
-  :global([data-theme="light"]) .judgment-text { color: var(--rva-ink); }
-
-  .aftermath { margin: 0; }
-  .aftermath-frame { position: relative; border: 3px solid; padding: 0.5rem; transform: rotate(1.6deg); }
-  :global([data-theme="dark"]) .aftermath-frame { border-color: var(--color-border); background: var(--color-surface); }
-  :global([data-theme="light"]) .aftermath-frame { border-color: var(--rva-oxblood); background: var(--rva-paper); box-shadow: 8px 8px 0 var(--rva-kraft); }
-  .aftermath img { display: block; width: 100%; height: auto; }
-  .aftermath figcaption { font-family: var(--font-mono); font-size: 0.78rem; line-height: 1.6; margin: 1.2rem 0.3rem 0; }
-  :global([data-theme="dark"]) .aftermath figcaption { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .aftermath figcaption { color: var(--color-text-dark-muted); }
-
-  /* ---------- retain counsel (CTA) ---------- */
-  .retain-cta { padding: 5rem 1.5rem; }
-  .retain-inner { max-width: 880px; margin: 0 auto; text-align: center; }
-  .retain-h2 { font-family: var(--font-heading); font-weight: 400; font-size: clamp(2.2rem, 6vw, 4.4rem); line-height: 1.02; margin: 0 0 1.2rem; }
-  :global([data-theme="dark"]) .retain-h2 { color: var(--color-text); }
-  :global([data-theme="light"]) .retain-h2 { color: var(--rva-oxblood); }
-  .retain-deck { font-family: var(--font-body); font-size: 1.06rem; line-height: 1.75; margin: 0 auto 2rem; max-width: 44em; }
-  :global([data-theme="dark"]) .retain-deck { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .retain-deck { color: var(--color-text-dark-muted); }
-  .retain-btns { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
-
-  /* ---------- notice ---------- */
-  .notice { border-top: 1px solid; padding: 1.6rem 1.5rem 0.6rem; }
-  :global([data-theme="dark"]) .notice { border-color: var(--color-border); }
-  :global([data-theme="light"]) .notice { border-color: var(--rva-oxblood); }
-  .notice-line { max-width: 1280px; margin: 0 auto; font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.7; }
-  :global([data-theme="dark"]) .notice-line { color: var(--color-text-muted); }
-  :global([data-theme="light"]) .notice-line { color: var(--color-text-dark-muted); }
-
-  /* ---------- responsive ---------- */
-  @media (max-width: 1024px) {
-    .hero-inner, .exhibits-grid, .catalog-inner, .findings-inner { grid-template-columns: 1fr; }
-    .witness { position: static; }
-    .plates, .matters-grid { grid-template-columns: repeat(2, 1fr); }
-    .standing { grid-template-columns: 1fr; }
+  /* ---------- bulletin board ---------- */
+  .ld-board { position: relative; background: var(--ld-bg); padding: clamp(3rem, 7vw, 5.5rem) 1.5rem; overflow: hidden; }
+  .ld-board::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; background-image: var(--ld-grain); opacity: 0.3; mix-blend-mode: overlay;
   }
-  @media (max-width: 640px) {
-    .hero { padding-top: 2.4rem; }
-    .caption { grid-template-columns: 1fr; gap: 0.6rem 0; }
-    .cap-brackets { display: none; }
-    .cap-right { border-top: 1px dashed currentColor; padding-top: 0.6rem; }
-    .plates, .matters-grid, .standing-grid { grid-template-columns: 1fr 1fr; }
-    .ex { grid-template-columns: 4.2rem 1fr; }
-    .ex-letter { font-size: 2rem; }
-    .ex-caption { display: none; }
-    .transcript { padding-right: 1rem; }
-    .transcript::before { left: 2.6rem; }
-    .tx-line { grid-template-columns: 2.6rem 1.6rem 1fr; }
-    .tx-header { margin-left: 3.2rem; }
-    .hero-frame, .witness-frame, .aftermath-frame { transform: none; }
+  .ld-board-inner { position: relative; max-width: 80rem; margin: 0 auto; }
+  .ld-board-head { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: flex-end; margin-bottom: 2.6rem; }
+  .ld-board-head > div:first-child { max-width: 64ch; }
+  .ld-incident {
+    display: grid; justify-items: center; gap: 0.2rem; padding: 1rem 1.6rem 1.1rem; min-width: 15rem;
+    background: var(--ld-yellow); color: var(--ld-ink); border: 4px solid var(--ld-ink);
+    box-shadow: 6px 6px 0 var(--ld-ink); transform: rotate(1.5deg);
   }
-  @media (max-width: 420px) {
-    .plates, .matters-grid { grid-template-columns: 1fr; }
+  .ld-incident-label { font-family: var(--ld-cond); font-weight: 800; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; text-align: center; }
+  .ld-incident-n { font-family: var(--ld-stencil); font-weight: 900; font-size: 4.2rem; line-height: 0.9; }
+  .ld-incident-note { font-family: var(--font-mono); font-size: 0.72rem; }
+  .ld-plates {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(1.4rem, 3vw, 2.6rem) clamp(1rem, 2.5vw, 2rem); align-items: start;
+  }
+  .ld-pin { position: relative; margin: 0; grid-column: span 3; transform: rotate(var(--tilt)); transition: transform 0.25s ease; }
+  .ld-pin:nth-child(2), .ld-pin:nth-child(4) { grid-column: span 2; }
+  .ld-pin:nth-child(1), .ld-pin:nth-child(3) { grid-column: span 4; }
+  .ld-pin-wide { grid-column: 1 / -1 !important; max-width: 62rem; margin: 0 auto; }
+  .ld-pin:hover { transform: rotate(0deg) translateY(-4px); }
+  @media (max-width: 900px) {
+    .ld-plates { grid-template-columns: 1fr 1fr; }
+    .ld-pin, .ld-pin:nth-child(n) { grid-column: span 1; }
+    .ld-pin-wide { grid-column: 1 / -1 !important; }
+  }
+  @media (max-width: 560px) { .ld-plates { grid-template-columns: 1fr; } }
+  .ld-magnet {
+    position: absolute; z-index: 3; top: -12px; left: 50%; width: 26px; height: 26px; margin-left: -13px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ff9f3a, #b0430b 70%); box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+  }
+  .ld-pin-cap { font-size: 0.92rem; line-height: 1.55; color: var(--ld-muted); margin: 0.9rem 0.2rem 0; }
+
+  /* ---------- SpeakerCTA frame ---------- */
+  .ld-wo-frame { position: relative; margin: 0 auto; padding: 0 1.5rem 1rem; max-width: 80rem; }
+  .ld-wo-plate {
+    display: inline-block; font-family: var(--ld-cond); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    background: var(--ld-orange-hi); color: var(--ld-ink); padding: 0.4rem 0.9rem; margin: 0 0 -0.4rem 0;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  }
+
+  /* ---------- work orders ---------- */
+  .ld-orders { position: relative; background: var(--ld-surface); padding: clamp(3rem, 7vw, 5.5rem) 1.5rem; border-top: 1px solid var(--ld-line); }
+  .ld-orders-inner { max-width: 80rem; margin: 0 auto; }
+  .ld-orders-head { max-width: 66ch; margin-bottom: 2.4rem; }
+  .ld-wo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+  @media (max-width: 1000px) { .ld-wo-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 640px) { .ld-wo-grid { grid-template-columns: 1fr; } }
+  .ld-wo {
+    position: relative; display: flex; flex-direction: column; gap: 0.7rem;
+    background: var(--ld-form); border: 1px solid var(--ld-form-line); padding: 1.2rem 1.3rem 1.1rem;
+    background-image: repeating-linear-gradient(to bottom, transparent 0 27px, var(--ld-form-line) 27px 28px);
+    background-position: 0 3.4rem; background-repeat: no-repeat; background-size: 100% calc(100% - 3.4rem);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .ld-wo:hover { transform: translateY(-3px); box-shadow: 0 18px 30px -20px rgba(0, 0, 0, 0.6); }
+  .ld-wo-head { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; }
+  .ld-wo-no { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.14em; color: var(--ld-muted); }
+  .ld-wo-stamp {
+    font-family: var(--ld-cond); font-weight: 800; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 0.22rem 0.55rem; border: 2px solid currentColor; transform: rotate(-3deg); white-space: nowrap;
+  }
+  [data-theme="dark"] .ld-wo-stamp-go { color: var(--ld-orange-hi); }
+  [data-theme="light"] .ld-wo-stamp-go { color: #9a3404; }
+  [data-theme="dark"] .ld-wo-stamp-done { color: #8fd18f; }
+  [data-theme="light"] .ld-wo-stamp-done { color: #1f6b2a; }
+  .ld-wo-stamp-hold { color: var(--ld-muted); }
+  .ld-wo-name { font-family: var(--font-heading); font-weight: 800; font-size: 1.55rem; line-height: 1; margin: 0; color: var(--ld-text); text-transform: uppercase; }
+  .ld-wo-note { font-size: 0.95rem; line-height: 1.6; color: var(--ld-muted); margin: 0; flex: 1; }
+  .ld-wo-foot { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; margin-top: 0.4rem; padding-top: 0.7rem; border-top: 1px dashed var(--ld-form-line); }
+  .ld-wo-cta { font-family: var(--ld-cond); font-weight: 700; font-size: 0.92rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); text-decoration: none; }
+  .ld-wo-cta:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .ld-wo-cta-off { color: var(--ld-muted); }
+  .ld-wo-sig { font-family: 'Segoe Script', 'Brush Script MT', cursive; font-size: 0.85rem; color: var(--ld-muted); opacity: 0.85; }
+
+  /* ---------- timesheet ---------- */
+  .ld-sheet { position: relative; background: var(--ld-bg); padding: clamp(3rem, 7vw, 5.5rem) 1.5rem; overflow: hidden; }
+  .ld-sheet::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: var(--ld-grain); opacity: 0.3; mix-blend-mode: overlay; }
+  .ld-sheet-inner { position: relative; max-width: 80rem; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  @media (max-width: 900px) { .ld-sheet-inner { grid-template-columns: 1fr; } }
+  .ld-sheet-card { position: relative; background: var(--ld-surface); border: 1px solid var(--ld-line); padding: 1.6rem 1.6rem 1.4rem; transform: rotate(-0.8deg); }
+  .ld-sheet-card::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--ld-tape); }
+  .ld-sheet-head { margin: 0.6rem 0 1.2rem; }
+  .ld-sheet-head .ld-h2 { font-size: clamp(2rem, 4vw, 3rem); }
+  .ld-sheet-table { width: 100%; border-collapse: collapse; font-size: 0.96rem; }
+  .ld-sheet-table th, .ld-sheet-table td { text-align: left; padding: 0.7rem 0.5rem; border-bottom: 1px solid var(--ld-line); vertical-align: top; color: var(--ld-text); }
+  .ld-sheet-table thead th { font-family: var(--ld-cond); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ld-muted); }
+  .ld-sheet-table tbody th { font-weight: 500; color: var(--ld-muted); }
+  .ld-sheet-table tfoot th, .ld-sheet-table tfoot td { border-bottom: 0; border-top: 2px solid var(--ld-text); font-weight: 700; }
+  .ld-sheet-n { font-family: var(--font-mono); font-size: 1.05rem; color: var(--color-accent); }
+  .ld-sheet-note { display: block; font-size: 0.8rem; color: var(--ld-muted); }
+  .ld-sheet-approve { position: relative; margin: 1.4rem 0 0; font-size: 0.92rem; line-height: 1.6; color: var(--ld-muted); }
+  .ld-sheet-stamp {
+    display: inline-block; font-family: var(--ld-cond); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--color-accent); border: 2px solid var(--color-accent); padding: 0.2rem 0.6rem; margin-right: 0.4rem; transform: rotate(-4deg);
+  }
+  .ld-sheet-pitch { padding-top: 0.5rem; }
+  .ld-sheet-pitch .ld-h2 { font-size: clamp(2.2rem, 4.4vw, 3.6rem); }
+
+  /* ---------- clock in ---------- */
+  .ld-clock {
+    position: relative; background: var(--ld-steel); color: var(--ld-steel-text); text-align: center;
+    padding: clamp(3.5rem, 8vw, 6rem) 1.5rem; overflow: hidden;
+    border-top: 8px solid transparent; border-image: var(--ld-tape) 8;
+  }
+  .ld-clock::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(50% 60% at 50% 100%, rgba(240, 135, 31, 0.22), transparent 70%);
+  }
+  .ld-clock-inner { position: relative; max-width: 60rem; margin: 0 auto; display: grid; justify-items: center; }
+  .ld-clock .ld-deck { max-width: 60ch; text-align: center; }
+  .ld-clock .ld-h2 { font-family: var(--ld-stencil); font-size: clamp(3rem, 8vw, 6rem); }
+
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .ld-btn-solid, .ld-btn-line, .ld-wo, .ld-pin { transition: none; }
+    .ld-pin:hover { transform: rotate(var(--tilt)); }
   }
 </style>
