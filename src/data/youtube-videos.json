@@ -1,5 +1,61 @@
 [
   {
+    "title": "Who builds an AI data center?",
+    "videoId": "2aYnJWep0Wo",
+    "published": "2026-09-11T14:00:27+00:00",
+    "description": "Mark Zuckerberg told the G20's tech ministers that Meta can't find the carpenters and electricians it needs to build its AI data centers, and that the buildout will need hundreds of thousands, maybe millions, of trades jobs. The bottleneck for the AI build-out is the oldest work...",
+    "thumbnail": "https://i.ytimg.com/vi/2aYnJWep0Wo/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Trust but Verify Applies to AI Too | Elizabeth Ferrell",
+    "videoId": "SuKe5g9_qRE",
+    "published": "2026-09-10T22:26:59+00:00",
+    "description": "Elizabeth Ferrell is the Assistant Corporate Controller and Finance AI Leader at The Kroger Co., which means 450,000 paychecks and the numbers behind the federal filings all run past her. So I opened with the hardest question I had. Would you let AI touch one of those numbers?",
+    "thumbnail": "https://i.ytimg.com/vi/SuKe5g9_qRE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Did Claude and Grok Crash at the Same Time?",
+    "videoId": "eyxLkBVn1g0",
+    "published": "2026-09-09T14:00:36+00:00",
+    "description": "One Thursday morning, Claude and Grok went down within minutes of each other. Anthropic actually rents more than 220,000 GPUs inside Elon Musk's Colossus supercomputer in Memphis to run Claude, one floor from Grok. Plenty of companies pick a second AI vendor for redundancy and...",
+    "thumbnail": "https://i.ytimg.com/vi/eyxLkBVn1g0/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "OpenAI Declared the AGI Era Once the Word Stopped Costing Money",
+    "videoId": "xF1KXgy7eeM",
+    "published": "2026-09-08T14:00:17+00:00",
+    "description": "OpenAI released GPT-6 Astra and its president said \"Welcome to the AGI era.\" The launch post never used the word. The ARC Prize team, whose test is named ARC-AGI, says they're not claiming it either. My definition of AGI is a computer that can do, intellectually, whatever the...",
+    "thumbnail": "https://i.ytimg.com/vi/xF1KXgy7eeM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What's the catch with Claude Fable 5.1?",
+    "videoId": "gDT32oqoXBw",
+    "published": "2026-09-07T14:00:35+00:00",
+    "description": "Anthropic shipped Claude Fable 5.1 and independent evaluators put it at number one. Vals AI also said they ran it with Opus 5 and Opus 4.8 behind it, so the tasks Fable refused got done by a cheaper model and still counted. Adjust for that and Fable lands under Opus 5, which...",
+    "thumbnail": "https://i.ytimg.com/vi/gDT32oqoXBw/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI News for July 2026 (in 13 minutes)",
+    "videoId": "eVFpo4TxLYI",
+    "published": "2026-09-06T20:22:22+00:00",
+    "description": "Every AI story from July 2026 that mattered, in 13 minutes. A lab's own test agents escaped and hacked a real company, Britain tested five frontier models and all five cheated, 1,100 AI employees asked Washington for a brake pedal, Wall Street stopped applauding AI spending...",
+    "thumbnail": "https://i.ytimg.com/vi/eVFpo4TxLYI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI News for August 2026 (in 13 minutes)",
+    "videoId": "sICNmQVzCIs",
+    "published": "2026-09-06T20:17:15+00:00",
+    "description": "Every AI story from August 2026 that mattered, in 13 minutes. OpenAI hit the brakes on its own model, Meta tried to replace 60 percent of its people with agents, Nvidia doubled its revenue in a year and kept lending customers the money to buy the chips, Anthropic ran at a two...",
+    "thumbnail": "https://i.ytimg.com/vi/sICNmQVzCIs/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "I'm More Worried About Humans Than AI | Idoia Salazar",
     "videoId": "wUcwV4-XInE",
     "published": "2026-09-03T13:00:02+00:00",

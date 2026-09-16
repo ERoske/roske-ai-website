@@ -7,141 +7,216 @@ import WhatsNew from '../components/WhatsNew.astro';
 import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
-const SITE_NO = '26-0905';
+const ROOM_NO = 'ROOM 3';
 
 // ---------------------------------------------------------------------------
-// THE TIME CARD. Four numbers, punched. All real.
+// WHAT'S IN THE ROOM WITH YOU. Four numbers, all real.
 // ---------------------------------------------------------------------------
-const timecard = [
+const inventory = [
+  { v: '300+', k: 'Rooms escaped, each' },
   { v: '80+', k: 'Countries visited' },
-  { v: '50+', k: 'Countries spoken in' },
-  { v: '15', k: 'Books written' },
+  { v: '15', k: 'Books on the shelf' },
   { v: '25', k: 'Years running interRel' },
 ];
 
 // ---------------------------------------------------------------------------
-// MONDAY'S SCHEDULE. Labor Day, September 7, hour by hour, two columns: what
-// Edward is doing and what the 10 agents are doing at the same time. The
-// agents' column is the true one.
+// THE PUZZLE. Three stations. Four questions each, and exactly one of them
+// has an edge on it. VERBATIM answers all four with total confidence, which
+// is the joke and also the entire argument: the room never withholds the
+// answer, it withholds it from the question you asked.
+//
+// Every correct answer below is a real fact that is checkable elsewhere on
+// this site, which is the conversion mechanic wearing a game costume.
 // ---------------------------------------------------------------------------
-const schedule = [
+interface RoomQuestion {
+  q: string;
+  a: string;
+  ok?: boolean;
+  n?: string;
+}
+
+interface Station {
+  id: string;
+  no: string;
+  name: string;
+  prop: string;
+  img: string;
+  imgW: number;
+  imgH: number;
+  imgAlt: string;
+  questions: RoomQuestion[];
+  hint: string;
+  why: string;
+}
+
+const stations: Station[] = [
   {
-    t: '04:59',
-    e: `Punches in. There's one card in the rack and it's his, and he has already told 4 people he beat the clock by a minute.`,
-    a: `Nothing to punch. They started Saturday at 5AM with this page and haven't stopped since, which is going to matter at 17:00.`,
+    id: 'shelf',
+    no: 'I',
+    name: 'The shelf',
+    prop: '15 books with his name on the spine. Nobody has defended the ordering.',
+    img: '/images/escape-room/bookshelf.jpg',
+    imgW: 1195,
+    imgH: 1600,
+    imgAlt:
+      'Edward Roske in his signature blue fedora reaching up to pull a thick technical hardback from a tall library shelf under a brass reading lamp, a small brass key turned in the shelf lock beside his hand and a second key held in his other hand.',
+    questions: [
+      {
+        q: 'Tell me about the books.',
+        a: 'There are fifteen books on the shelf. They are arranged spine out. The tallest is 23.5 centimeters. I can keep going.',
+      },
+      {
+        q: 'Are the books any good?',
+        a: `I am not authorized to hold opinions about books. I can tell you that more than one of them describes software Oracle no longer sells, and that this was not the author's decision.`,
+      },
+      {
+        q: 'How many books did he write?',
+        a: 'Fifteen. You asked for a count, so I counted everything on the shelf. You did not say a count of what.',
+      },
+      {
+        q: 'How many of the fifteen can a stranger buy today?',
+        a: 'Thirteen. The other two were written for training classes and never listed for sale, so a stranger cannot buy them at any price. You put a boundary on the question, which is why it has an answer.',
+        ok: true,
+        n: '13',
+      },
+    ],
+    hint: 'Counting is the easy half. Two of the 15 have never been for sale, which is the half nobody asks about.',
+    why: `Four questions at the same shelf, and the only one that got a number out of it was the one that said who's asking and as of when. That's the whole trick, and I wish it were a more interesting trick.`,
   },
   {
-    t: '06:00',
-    e: `Down the manhole. Nobody assigned the sewer. The manhole was open, and he'd never been down one.`,
-    a: `The morning brief lands before 6: who he's seeing today and why. Nobody, it's a holiday, and it says so in one line instead of 3 pages, a lesson that took an audit to teach it.`,
+    id: 'timeline',
+    no: 'II',
+    name: 'The timeline',
+    prop: 'A career chalked along one wall. It starts at 1997 and it has been argued with.',
+    img: '/images/escape-room/terminal.jpg',
+    imgW: 1600,
+    imgH: 1195,
+    imgAlt:
+      'Edward Roske in his signature blue fedora sitting at a long polished boardroom table in a dim locked room, arms folded, regarding an old beige CRT terminal glowing amber, his expression patient and thoroughly unimpressed.',
+    questions: [
+      {
+        q: 'How long did he run interRel?',
+        a: 'A number of years. You did not say whether to stop counting at the merger, at the name change, or on the day he actually left, and those are three different numbers. So: a number of years.',
+      },
+      {
+        q: 'When did he start?',
+        a: '1997. He was 22. You asked when he started, so I have not told you when he stopped.',
+      },
+      {
+        q: 'What happened to the company?',
+        a: 'Merged with Keste in 2020 to help form Argano, now a billion-dollar consulting firm. He still owns a thirtieth of it. None of that is a number of years.',
+      },
+      {
+        q: 'How many years was he CEO of it, start to finish?',
+        a: '25. 1997 to 2022. He founded it at 22, merged it with Keste in 2020 to help form Argano, and stayed chief executive until 2022. You told me where to start counting and where to stop, which is the only reason this answer has a number in it.',
+        ok: true,
+        n: '25',
+      },
+    ],
+    hint: `The clock doesn't stop at the merger. Say where the counting starts and where it stops and there is exactly one number.`,
+    why: `If it won't say what it counted, you don't have a number yet, and you'd be amazed how many slides that thing gets onto before anybody checks.`,
   },
   {
-    t: '07:30',
-    e: `Espresso bar. Spells every name right, slowly, while the line in flip-flops grows.`,
-    a: `Inbox triage: about 200 messages, sorted into piles, 0 sent, because sending is his job and it stays his job.`,
-  },
-  {
-    t: '09:00',
-    e: `Excavator. Moves a pile from one side of the lot to the other, which is also a fair description of several ERP migrations he was paid for.`,
-    a: `The daily video ships. On a thin news day it runs 90 seconds and says so, a rule that took one confident 3-minute segment about nothing to write.`,
-  },
-  {
-    t: '11:00',
-    e: `Jackhammer. The city did not request the sidewalk. The sidewalk is getting done.`,
-    a: `The Monday pitch sweep runs, reads every call for speakers it can find, and pitches him for anything with a stage and a microphone. He picks 2 or 3. It never sends.`,
-  },
-  {
-    t: '12:30',
-    e: `Lunch on a beam, 40 stories up, alone. The sandwich is vegetarian. The laptop is open to the inbox they already triaged, so he's checking their work.`,
-    a: `Research fan-out comes back with 40 sources for a question that needed 6. It gets checked hardest, because 6 other agents eat whatever it finds.`,
-  },
-  {
-    t: '15:00',
-    e: `Back down the manhole. Something was dripping.`,
-    a: `The Summit recruiter runs the reply sweep for October 9-10 and files a polite no as a slow yes, again.`,
-  },
-  {
-    t: '17:00',
-    e: `Punches out. 12 hours. Submits the timesheet for approval, to them.`,
-    a: `Approve it. Then attach a note: the page he's standing on was built at 5AM Saturday by one of them while he was asleep, and they kept the log.`,
+    id: 'wall',
+    no: 'III',
+    name: 'The wall of locks',
+    prop: 'Several hundred padlocks on a board, brass and steel and iron, hung in rows.',
+    img: '/images/escape-room/keypad.jpg',
+    imgW: 1600,
+    imgH: 1195,
+    imgAlt:
+      `Close view of Edward Roske in his signature blue fedora leaning in with a jeweler's loupe to one eye, inspecting a brass three-dial combination lock mounted on a riveted steel plate on a heavy wooden door, a lit oil lantern behind him.`,
+    questions: [
+      {
+        q: 'How many locks are on that wall?',
+        a: 'A quantity. You did not say whether to include the ones still in the crate, the two on the floor, or the one on the door you are trying to open, and each of those gives a different total. So: a quantity.',
+      },
+      {
+        q: 'Who has the key?',
+        a: 'Nobody. None of these were opened with a key.',
+      },
+      {
+        q: 'Open the door.',
+        a: 'That is not a question. I can process it anyway, and the answer is no.',
+      },
+      {
+        q: 'How many did one person open, and over how long?',
+        a: 'Three hundred each, by two people, over about a decade. Edward and Dawn, separately, keeping separate counts, which has caused exactly the argument you are imagining. They also vote on the best rooms in the world every year and are paid nothing for it.',
+        ok: true,
+        n: '300',
+      },
+    ],
+    hint: 'Two people, one number each, and neither of them will round it.',
+    why: `You asked for a count without saying a count of what, so it said "a quantity," which is flawless and which I dare you to put in a board deck.`,
   },
 ];
 
 // ---------------------------------------------------------------------------
-// SITE PHOTOS. Five plates pinned to the bulletin board by the gate.
+// THE PRIZE. What is actually behind the door: the questions Edward uses on
+// vendors, each one paired with the lazy version that gets waved through.
 // ---------------------------------------------------------------------------
-const plates = [
+const sheet = [
   {
-    src: '/images/labor-day/timeclock.jpg',
-    w: 1200, h: 896,
-    tag: 'Site photo 02 | 04:59',
-    alt: 'Edward in an orange hi-vis vest and blue fedora, grinning, punching a paper time card into an old wall-mounted time clock in a grimy break room before dawn, a thermos and a dented lunch pail on the table.',
-    cap: `The rack is full because nobody else came in to pull their card. He has explained the 1-minute margin to the thermos.`,
-    tilt: -2.2,
+    lazy: 'How accurate is it?',
+    good: `What does it do when it doesn't know?`,
+    note: `Accuracy is a number on their slide and it's always a good number. What you live with is what it does at the edge of what it knows, which is the part that turns up in your close at 11pm (never at 2pm, and I've stopped trying to explain why).`,
   },
   {
-    src: '/images/labor-day/manhole.jpg',
-    w: 896, h: 1200,
-    tag: 'Site photo 03 | 06:00',
-    alt: 'Edward halfway down an open manhole in an empty city street at dawn, hi-vis vest, headlamp strapped around his blue fedora, gloved hands on the rim, orange cones and a striped barricade around him, steam rising.',
-    cap: `Nobody assigned the sewer. The manhole was open, and there's a 300-room escape-room habit in this family that explains most of what he does with an open hatch.`,
-    tilt: 1.6,
+    lazy: 'Is there a human in the loop?',
+    good: 'Which decisions does this make with no person involved, and whose name is on those?',
+    note: 'Everybody says yes to the first one, and the second one produces a list, which is usually longer than the room expected and which somebody in the back is already doing the math on.',
   },
   {
-    src: '/images/labor-day/starbucks.jpg',
-    w: 1200, h: 896,
-    tag: 'Site photo 04 | 07:30',
-    alt: 'Edward behind an espresso bar in a green barista apron over an orange hi-vis vest and his blue fedora, steaming a milk pitcher with one hand and holding a marker over a paper cup with the other, a long line of customers in swimsuits and flip-flops behind him.',
-    cap: `He's had "Ed" written on his cup by strangers for 30 years, and today he's on the other side of the marker. (Edward, you're the slowest barista in the building and the only one in a hi-vis vest. Nobody asked for the vest.)`,
-    tilt: -1.2,
+    lazy: 'Can I see a demo?',
+    good: 'Show me a run where it was wrong, and what you changed afterward.',
+    note: 'A demo is a rehearsed answer, so ask for the postmortem instead, and a vendor who hasn\'t got one has either never shipped or never looked very hard.',
   },
   {
-    src: '/images/labor-day/jackhammer.jpg',
-    w: 896, h: 1200,
-    tag: 'Site photo 05 | 11:00',
-    alt: 'Edward operating a jackhammer on a cracked street in harsh sun, dust around his boots, yellow ear defenders worn on top of his blue fedora, safety glasses over his glasses, an ecstatic grin, an ice cream truck and a porch flag behind him.',
-    cap: `Ear protection goes over the fedora, never instead of it, per the family rule. Somewhere behind him a barbecue is happening without him and he can smell it.`,
-    tilt: 2.4,
+    lazy: 'Is our data secure?',
+    good: 'If we leave in 18 months, what do we walk out with, in what format?',
+    note: `They'll pass the security question, everybody passes the security question. Whether you can walk your own data out in a format somebody else can read is the one that decides what you're worth at renewal, and nobody asks it until month 17.`,
   },
   {
-    src: '/images/labor-day/beam.jpg',
-    w: 1376, h: 768,
-    tag: 'Site photo 06 | 12:30',
-    alt: 'Homage to the 1932 ironworkers photograph: Edward alone on a riveted steel beam high above a hazy city, legs dangling, eating a sandwich from an open lunch pail, a thermos and an open laptop beside him, hi-vis vest and blue fedora.',
-    cap: `Lunch, 1932 style, except the other 10 ironworkers took the day off and the sandwich is vegetarian. The laptop is open to an inbox that was triaged 5 hours ago, so he's checking their work, which they'll note.`,
-    tilt: -1.4,
-    wide: true,
+    lazy: 'What is your SLA?',
+    good: 'Who at your company gets woken up when this is wrong at 2am on day 3 of close?',
+    note: `Ask who, by name, with a phone number, and watch them reach for the support tier instead. The SLA is what they owe you after it's already gone wrong, which is the wrong end of the problem to be negotiating from at 2am.`,
+  },
+  {
+    lazy: 'What does it cost?',
+    good: 'What did this cost your last customer my size, all in, counting our people?',
+    note: `The license is the small number. Integration, cleanup, the data nobody wanted to admit was a mess, the 2 people who now babysit it, the consultant you bring in at month 4, and a bunch more, and none of that is on the quote they hand you, which is why the number worth asking for is the one their last customer actually paid. Ask them, not the rep.`,
   },
 ];
 
 // ---------------------------------------------------------------------------
-// WORK ORDERS. The 6 real projects, on carbon-copy forms.
+// OBJECTS IN THE ROOM. The 6 real projects, catalogued the way a room's
+// props list is catalogued: what it is, whether it is in play.
 // ---------------------------------------------------------------------------
-const orders = [
+const objects = [
   {
-    no: 'WO-0001',
+    tag: 'OBJ-01',
     name: 'MCP Servers for Enterprise Finance',
-    status: 'In progress',
+    state: 'In play',
     tone: 'go',
-    note: `Plumbing so an AI reads the real number out of Essbase and Oracle EPM instead of remembering one that sounds right. Essbase and EPM Planning shipped, Financial Close and Consolidations in beta. This is the job that keeps me off the excavator most days.`,
+    note: `Plumbing so an AI reads the real number out of Essbase and Oracle EPM instead of remembering one that sounds about right. Essbase and EPM Planning have shipped, Financial Close and Consolidations is in beta (beta meaning it works and I'm not ready to say that out loud yet). It's the least glamorous thing on this list and the one most likely to matter.`,
     href: 'https://caprus.ai/agentcube/',
     external: true,
     cta: 'See how it works',
   },
   {
-    no: 'WO-1009',
+    tag: 'OBJ-02',
     name: 'Caribbean AI Summit',
-    status: 'Scheduled Oct 9 to 10',
+    state: 'October 9 to 10',
     tone: 'go',
-    note: `Co-chairing the biggest AI conference Puerto Rico has hosted, at the Convention Center in San Juan: 30-plus speakers, 3 tracks, every session translated live between English and Spanish, and the lineup is public now, with Kay Firth-Butterfield (formerly Head of AI at the World Economic Forum), MIT's Fabio Duarte, and Idoia Salazar, who advises the EU Parliament on AI. Come in early and I'll show you the island.`,
+    note: `Co-chairing the biggest AI conference we've put on down here, at the Convention Center in San Juan: 30-plus speakers, 3 tracks, every session translated live between English and Spanish. The lineup is public now, including Kay Firth-Butterfield (formerly Head of AI at the World Economic Forum), MIT's Fabio Duarte, and Idoia Salazar, who advises the EU Parliament on AI. Come in a day early and I'll show you the island (I'm told I'm a mediocre tour guide with strong opinions about which of the two forts is the good fort).`,
     href: 'https://www.caribbeansummit.ai/',
     external: true,
     cta: 'Get a seat',
   },
   {
-    no: 'WO-0042',
+    tag: 'OBJ-03',
     name: 'Caprus',
-    status: 'In progress',
+    state: 'In play',
     tone: 'go',
     note: `Investor in the AI software and services firm building faster operations for finance teams. Lillian Buziak runs it. I turn up, point at the roadmap, and they're gracious about it.`,
     href: 'https://caprus.ai',
@@ -149,29 +224,29 @@ const orders = [
     cta: 'Meet the team',
   },
   {
-    no: 'WO-1857',
+    tag: 'OBJ-04',
     name: 'Everest Base Camp',
-    status: 'Complete',
+    state: 'Solved',
     tone: 'done',
-    note: `2 weeks on foot to 18,571 feet with Dawn in April. The trail log is on the blog, including the parts that went badly and the part where I asked the guides too many questions.`,
+    note: `Two weeks on foot to 18,571 feet with Dawn in April. The trail log is on the blog, including the parts that went badly and the part where I asked the guides more questions than they had signed up for.`,
     href: '/blog/everest-base-camp-summit/',
     external: false,
     cta: 'Read the trail log',
   },
   {
-    no: 'WO-0020',
+    tag: 'OBJ-05',
     name: "AI Dungeon Master's Screen",
-    status: 'On hold',
+    state: 'Set aside',
     tone: 'hold',
-    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It has never earned a dollar, it isn't finished, and I'd keep it over half the paying ones.`,
+    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It's never earned a dollar, it isn't finished, and I would keep it over half the paying ones.`,
     href: null,
     external: false,
     cta: 'Quiet build',
   },
   {
-    no: 'WO-1000',
+    tag: 'OBJ-06',
     name: 'Puerto Rico AI Community',
-    status: 'In progress',
+    state: 'In play',
     tone: 'go',
     note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. Every other month, free, both languages, and we argue until something useful falls out. Come to one!`,
     href: 'https://praicommunity.org/',
@@ -181,283 +256,369 @@ const orders = [
 ];
 
 // ---------------------------------------------------------------------------
-// THE WEEKEND TIMESHEET. Audited.
+// SET DRESSING. Two plates that are not stations, used to break the grid.
 // ---------------------------------------------------------------------------
-const timesheet = [
-  { day: 'Saturday, Sept 5', e: '2 hrs', en: 'reading what they built', a: '24 hrs' },
-  { day: 'Sunday, Sept 6', e: '3 hrs', en: 'checking their work', a: '24 hrs' },
-  { day: 'Monday, Sept 7 (Labor Day)', e: '12 hrs', en: 'see site photos', a: '24 hrs' },
+interface Plate {
+  src: string;
+  w: number;
+  h: number;
+  alt: string;
+  cap: string;
+  tilt: number;
+  wide?: boolean;
+}
+
+const dressing: Plate[] = [
+  {
+    src: '/images/escape-room/vent.jpg',
+    w: 1195,
+    h: 1600,
+    alt: 'Edward Roske in his signature blue fedora lowering himself out of a square ceiling air vent onto a rolling office chair, holding the loose vent grille in one hand, entirely composed about it.',
+    cap: `I check the ceiling in every room, on a chair with wheels, which is the part the staff watch on the monitor and the reason one of them now greets me by name.`,
+    tilt: 1.8,
+  },
+  {
+    src: '/images/escape-room/timer.jpg',
+    w: 1600,
+    h: 893,
+    alt: 'Edward Roske in his signature blue fedora standing in a dim room with his hands behind his back, calmly watching a wall-mounted split-flap countdown clock that reads three minutes and thirty-three seconds, lit red.',
+    cap: `3:33. There's a kind of player who speeds up here and a kind who slows down, and the second kind gets out more often (I've watched Dawn do it for a decade and it's still annoying).`,
+    tilt: -1.2,
+    wide: true,
+  },
 ];
 ---
 
 <BaseLayout>
   <WeeklyAnimation />
 
-  <!-- ================= CAUTION TAPE / PUNCH STRIP ================= -->
-  <div class="ld-tape" role="presentation">
-    <div class="ld-tape-inner">
-      <span class="ld-tape-item ld-tape-mark">Labor Day Weekend</span>
-      <span class="ld-tape-item">Shift 1 of 3</span>
-      <span class="ld-tape-item">Site {SITE_NO}</span>
-      <span class="ld-tape-item">Days since last incident: 0</span>
-      <span class="ld-tape-item">Rebuilt Sat 05:00 AST by Agent VII</span>
-      <span class="ld-tape-item">Nobody else clocked in</span>
+  <!-- ================= DOOR STRIP ================= -->
+  <div class="er-strip" role="presentation">
+    <div class="er-strip-inner">
+      <span class="er-strip-item er-strip-mark">{ROOM_NO}</span>
+      <span class="er-strip-item">Occupancy: 1</span>
+      <span class="er-strip-item">Door: locked</span>
+      <span class="er-strip-item">Locks remaining: 3</span>
+      <span class="er-strip-item">Game master: off duty</span>
+      <span class="er-strip-item">Hints: unlimited, no penalty</span>
     </div>
   </div>
 
-  <!-- ================= HERO: THE SHIFT BOARD ================= -->
-  <section class="ld-hero">
-    <div class="ld-hero-grid">
-      <div class="ld-hero-copy">
-        <p class="ld-kicker">Roske.AI | Shift board | Week of September 5, 2026</p>
-        <h1 class="ld-h1">
-          <span class="ld-h1-line">Labor Day</span>
-          <span class="ld-h1-line">is <span class="ld-h1-hit">misnamed.</span></span>
+  <!-- ================= HERO: THE ROOM ================= -->
+  <section class="er-hero">
+    <div class="er-hero-grid">
+      <div class="er-hero-copy">
+        <p class="er-kicker">Roske.AI | {ROOM_NO} | Week of September 12, 2026</p>
+        <h1 class="er-h1">
+          <span class="er-h1-line">You're locked in</span>
+          <span class="er-h1-line">with an <span class="er-h1-hit">AI.</span></span>
         </h1>
-        <p class="ld-hero-sub">{theme.hero.subtitle}</p>
-        <p class="ld-hero-desc">{theme.hero.description}</p>
-        <div class="ld-hero-cta">
-          <a href="#schedule" class="ld-btn-solid">Read Monday's schedule</a>
-          <a href={theme.hero.ctaLink} class="ld-btn-line">{theme.hero.ctaText}</a>
+        <p class="er-hero-sub">{theme.hero.subtitle}</p>
+        <p class="er-hero-desc">{theme.hero.description}</p>
+        <div class="er-hero-cta">
+          <a href="#the-room" class="er-btn-solid">Start the room</a>
+          <a href={theme.hero.ctaLink} class="er-btn-line">{theme.hero.ctaText}</a>
         </div>
       </div>
 
-      <figure class="ld-hero-fig">
-        <div class="ld-plate ld-plate-hero">
-          <span class="ld-stencil-tag" aria-hidden="true">Site photo 01 | 09:00</span>
+      <figure class="er-hero-fig">
+        <div class="er-frame er-frame-hero">
+          <span class="er-plate-tag" aria-hidden="true">The wall</span>
           <img
             src={`/images/${theme.hero.heroImage}`}
             alt={theme.hero.imageAlt}
             width="1600"
-            height="900"
+            height="893"
             loading="eager"
             decoding="async"
-            class="ld-hero-img"
+            fetchpriority="high"
+            class="er-hero-img"
           />
         </div>
-        <figcaption class="ld-hero-cap">
-          Site photo 01, Monday, 09:00. The excavator. Every other machine on the lot is parked, because
-          it's a holiday, and he is moving a pile of dirt from the left side of the site to the right side,
-          where it will be moved back on Tuesday by someone with a license. The headlamp is strapped around
-          the fedora, not in place of it.
+        <figcaption class="er-hero-cap">
+          Every lock on that board came off a door that was supposed to stay shut, and almost none of them
+          came off because somebody was clever with a paperclip. Mostly somebody finally asked the right
+          thing out loud at minute 48, and it was usually the person who'd said nothing for the first 40.
         </figcaption>
       </figure>
     </div>
 
-    <!-- time card -->
-    <div class="ld-timecard" aria-label="Time card">
-      <p class="ld-timecard-label">Time card, punched</p>
-      <div class="ld-timecard-grid">
-        {timecard.map(s => (
-          <div class="ld-punch">
-            <span class="ld-punch-hole" aria-hidden="true"></span>
-            <span class="ld-punch-v">{s.v}</span>
-            <span class="ld-punch-k">{s.k}</span>
+    <!-- inventory -->
+    <div class="er-inv" aria-label="What is in the room">
+      <p class="er-inv-label">Contents of the room</p>
+      <div class="er-inv-grid">
+        {inventory.map((s) => (
+          <div class="er-inv-cell">
+            <span class="er-inv-v">{s.v}</span>
+            <span class="er-inv-k">{s.k}</span>
           </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ================= MONDAY'S SCHEDULE (the argument) ================= -->
-  <section class="ld-sched" id="schedule">
-    <div class="ld-sched-inner">
-      <div class="ld-sched-head">
-        <p class="ld-eyebrow ld-eyebrow-on-dark">Shift 3 of 3 | Monday, September 7</p>
-        <h2 class="ld-h2 ld-h2-on-dark">The Labor Day schedule.</h2>
-        <p class="ld-deck ld-deck-on-dark">
-          Two columns, the same 12 hours. The left one is what I'll be doing on the one day of the year
-          named for work, and the right one is what the 10 AI agents that run my week will be doing at
-          the exact same time, holiday or not, because a scheduled task has never heard of a barbecue. Read
-          both columns and decide for yourself who's laboring (I've read them, and I've asked for a recount).
-        </p>
-      </div>
-
-      <div class="ld-shift" role="table" aria-label="Monday, September 7 schedule">
-        <div class="ld-shift-row ld-shift-header" role="row">
-          <span role="columnheader" class="ld-shift-t">Time</span>
-          <span role="columnheader" class="ld-shift-e">Edward</span>
-          <span role="columnheader" class="ld-shift-a">The agents</span>
-        </div>
-        {schedule.map(r => (
-          <div class="ld-shift-row" role="row">
-            <span role="cell" class="ld-shift-t">{r.t}</span>
-            <span role="cell" class="ld-shift-e">{r.e}</span>
-            <span role="cell" class="ld-shift-a">{r.a}</span>
-          </div>
-        ))}
-      </div>
-
-      <p class="ld-sched-foot">
-        That right-hand column is the live demo of <a href="/speaking/">the talk I give most</a>, "Your Day,
-        Run by Ten Agents." The left one is just what I do with the time it gives back, and I'll admit
-        some choices were made.
-      </p>
-    </div>
-  </section>
-
-  <!-- ================= SITE PHOTOS: THE BULLETIN BOARD ================= -->
-  <section class="ld-board" id="photos">
-    <div class="ld-board-inner">
-      <div class="ld-board-head">
+  <!-- ================= THE ROOM (the puzzle) ================= -->
+  <section class="er-room" id="the-room">
+    <div class="er-room-inner">
+      <div class="er-room-head">
         <div>
-          <p class="ld-eyebrow">Bulletin board, by the gate</p>
-          <h2 class="ld-h2">Site photos, Monday.</h2>
-          <p class="ld-deck">
-            Posted for the safety record. Everyone else took the day, so every photo has one person in it,
-            and he's in a vest in all of them, including the coffee shop, where the vest was not required
-            and was, in fact, discussed.
+          <p class="er-eyebrow er-eyebrow-on-dark">The room | Three locks</p>
+          <h2 class="er-h2 er-h2-on-dark">Ask it something.</h2>
+          <p class="er-deck er-deck-on-dark">
+            The terminal in the corner runs a system called VERBATIM. It answers exactly what you asked,
+            with total confidence, and nothing else, which means it's never wrong and frequently useless.
+            Three of the questions at each station are the kind people actually ask. One has an edge on it
+            and produces a number. Three numbers open the door, and the whole thing takes about 90
+            seconds (Dawn hasn't tried it yet, and I've already made my peace with whatever her time turns out to be).
           </p>
         </div>
-        <div class="ld-incident" aria-label="Days since last incident: 0">
-          <span class="ld-incident-label">Days since last incident</span>
-          <span class="ld-incident-n">0</span>
-          <span class="ld-incident-note">(the manhole)</span>
+        <div class="er-clock" aria-label="Room timer">
+          <span class="er-clock-label">Time remaining</span>
+          <span class="er-clock-digits" id="er-clock" data-seconds="3600">60:00</span>
+          <span class="er-clock-note">Nothing happens at zero. It's a prop.</span>
         </div>
       </div>
 
-      <div class="ld-plates">
-        {plates.map((p, i) => (
-          <figure class:list={['ld-pin', { 'ld-pin-wide': p.wide }]} style={`--tilt:${p.tilt}deg`}>
-            <span class="ld-magnet" aria-hidden="true"></span>
-            <div class="ld-plate">
-              <span class="ld-stencil-tag" aria-hidden="true">{p.tag}</span>
+      <ol class="er-stations">
+        {stations.map((st) => (
+          <li class="er-station" data-station={st.id}>
+            <div class="er-station-body">
+              <header class="er-station-head">
+                <span class="er-station-no" aria-hidden="true">{st.no}</span>
+                <div>
+                  <h3 class="er-station-name">
+                    {st.name}
+                    <span class="er-station-state" data-state-for={st.id}>Locked</span>
+                  </h3>
+                  <p class="er-station-prop">{st.prop}</p>
+                </div>
+              </header>
+
+              <fieldset class="er-qset">
+                <legend class="er-qlegend">Say one of these out loud. Only one of them is a question worth asking.</legend>
+                <div class="er-qgrid">
+                  {st.questions.map((q, qi) => (
+                    <button
+                      type="button"
+                      class="er-q"
+                      data-ask={st.id}
+                      data-answer={q.a}
+                      data-ok={q.ok ? 'yes' : 'no'}
+                      data-number={q.n ?? ''}
+                      data-index={qi}
+                    >
+                      <span class="er-q-mark" aria-hidden="true">?</span>
+                      <span class="er-q-text">{q.q}</span>
+                    </button>
+                  ))}
+                </div>
+              </fieldset>
+
+              <div class="er-readout" data-readout-for={st.id}>
+                <p class="er-readout-name" aria-hidden="true">VERBATIM v1.0</p>
+                <p class="er-readout-text" role="status" aria-live="polite" data-text-for={st.id}
+                  >Awaiting input. I will answer precisely what you ask me.</p
+                >
+                <p class="er-readout-why" data-why-for={st.id} hidden>{st.why}</p>
+              </div>
+
+              <div class="er-station-foot">
+                <details class="er-hint">
+                  <summary>I'm stuck</summary>
+                  <p>{st.hint}</p>
+                </details>
+                <p class="er-got" data-got-for={st.id} hidden>
+                  <span class="er-got-label">Lock {st.no} open. Number:</span>
+                  <span class="er-got-n">{st.questions.find((q) => q.ok)?.n}</span>
+                </p>
+              </div>
+            </div>
+
+            <figure class="er-station-fig">
+              <div class="er-frame">
+                <img
+                  src={st.img}
+                  alt={st.imgAlt}
+                  width={st.imgW}
+                  height={st.imgH}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </figure>
+          </li>
+        ))}
+      </ol>
+
+      <!-- ---------------- THE DOOR ---------------- -->
+      <div class="er-door" id="er-door">
+        <div class="er-door-plate">
+          <p class="er-eyebrow er-eyebrow-on-dark">The door</p>
+          <h3 class="er-door-h">Three numbers, in order.</h3>
+          <p class="er-door-deck">
+            Type them in and turn the handle. Wrong combinations cost you nothing here, which is not true
+            of the version of this you do with a vendor.
+          </p>
+
+          <form class="er-dials" id="er-lock-form" novalidate>
+            <div class="er-dial">
+              <label for="er-d1">First</label>
+              <input id="er-d1" name="d1" type="text" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="--" />
+            </div>
+            <div class="er-dial">
+              <label for="er-d2">Second</label>
+              <input id="er-d2" name="d2" type="text" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="--" />
+            </div>
+            <div class="er-dial">
+              <label for="er-d3">Third</label>
+              <input id="er-d3" name="d3" type="text" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="---" />
+            </div>
+            <button type="submit" class="er-btn-solid er-dial-go">Turn the handle</button>
+          </form>
+
+          <p class="er-door-msg" role="status" aria-live="polite" id="er-door-msg"></p>
+
+          <button type="button" class="er-giveup" id="er-giveup">
+            Show me the answer
+          </button>
+        </div>
+
+        <!-- the reveal -->
+        <div class="er-reveal" id="er-reveal" hidden>
+          <p class="er-reveal-eyebrow">The door is open</p>
+          <h3 class="er-reveal-h">Take this with you.</h3>
+          <p class="er-reveal-deck">
+            6 questions I actually ask before I sign anything with the word AI in the contract, each one
+            next to the lazy version that gets waved through in the room. The lazy ones all have answers,
+            which is exactly why they get waved through.
+          </p>
+          <ol class="er-sheet">
+            {sheet.map((s, i) => (
+              <li class="er-sheet-row">
+                <span class="er-sheet-no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                <div class="er-sheet-body">
+                  <p class="er-sheet-lazy"><span>Usually asked:</span> {s.lazy}</p>
+                  <p class="er-sheet-good">{s.good}</p>
+                  <p class="er-sheet-note">{s.note}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <p class="er-reveal-foot">
+            I do a 45-minute version of this on a stage, with worse jokes and a live demo of the
+            agents that rebuilt this page at 5am while I was asleep.
+            <a href="/speaking/">That talk is for hire</a>. There's also a door in this building that has
+            been unlocked since 1997 and I've never had the heart to seal up:
+            <a href="/april-1-1997.html">try the handle</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LATEST DISPATCHES ================= -->
+  <LatestContent
+    eyebrow="Slid under the door"
+    heading="Newest <em>in the room.</em>"
+    deck="Writing and video, most recent first. None of it is part of the puzzle. It's just the work."
+  />
+
+  <!-- ================= BOOK EDWARD ================= -->
+  <SpeakerCTA eyebrow="The main event" />
+
+  <!-- ================= SET DRESSING ================= -->
+  <section class="er-dressing" id="dressing">
+    <div class="er-dressing-inner">
+      <div class="er-dressing-head">
+        <p class="er-eyebrow">Also in here</p>
+        <h2 class="er-h2">Things I check in every room.</h2>
+        <p class="er-deck">
+          300 rooms in, the habits are involuntary: I lift the rug, I count the chairs, I check behind the
+          framed thing, I pull on the bookcase to see if it's a bookcase, and I have been asked by an
+          actual game master to please stop doing that to his bookcase.
+        </p>
+      </div>
+      <div class="er-plates">
+        {dressing.map((p) => (
+          <figure class={`er-plate${p.wide ? ' er-plate-wide' : ''}`} style={`--tilt:${p.tilt}deg`}>
+            <div class="er-frame">
               <img src={p.src} alt={p.alt} width={p.w} height={p.h} loading="lazy" decoding="async" />
             </div>
-            <figcaption class="ld-pin-cap">{p.cap}</figcaption>
+            <figcaption>{p.cap}</figcaption>
           </figure>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ================= LATEST CONTENT (permanent) ================= -->
-  <LatestContent
-    eyebrow="Fresh off the line"
-    heading="Shipped <em>this shift.</em>"
-    deck="New writing and new video briefs, in the order they came off the line. The agents built them, I inspected them, and 1 in 10 goes back, which is the honest rate."
-  />
-
-  <!-- ================= BOOK EDWARD (permanent) ================= -->
-  <div class="ld-wo-frame">
-    <p class="ld-wo-plate">Work order, priority: the one that pays for the site</p>
-    <SpeakerCTA eyebrow="Put a keynote on the schedule" />
-  </div>
-
-  <!-- ================= WORK ORDERS ================= -->
-  <section class="ld-orders" id="orders">
-    <div class="ld-orders-inner">
-      <div class="ld-orders-head">
-        <p class="ld-eyebrow">Open work orders</p>
-        <h2 class="ld-h2">What's actually on the board.</h2>
-        <p class="ld-deck">
-          6 jobs, carbon copies, same as every week, because the work doesn't change when the site does.
-          Status stamps are honest, which is more than most steering committees can say (I've chaired
-          several, and I'm counting myself).
+  <!-- ================= OBJECTS IN THE ROOM (6 projects) ================= -->
+  <section class="er-objects" id="objects">
+    <div class="er-objects-inner">
+      <div class="er-objects-head">
+        <p class="er-eyebrow">Props list</p>
+        <h2 class="er-h2">What's actually on the table.</h2>
+        <p class="er-deck">
+          6 things I'm working on, catalogued the way a game master catalogues a room: what it is, and
+          whether it's in play. One of them hasn't moved since spring and I keep not admitting that.
         </p>
       </div>
 
-      <div class="ld-wo-grid">
-        {orders.map(o => (
-          <article class:list={['ld-wo', `ld-wo-${o.tone}`]}>
-            <header class="ld-wo-head">
-              <span class="ld-wo-no">{o.no}</span>
-              <span class:list={['ld-wo-stamp', `ld-wo-stamp-${o.tone}`]}>{o.status}</span>
+      <div class="er-obj-grid">
+        {objects.map((o) => (
+          <article class={`er-obj er-obj-${o.tone}`}>
+            <header class="er-obj-head">
+              <span class="er-obj-tag">{o.tag}</span>
+              <span class={`er-obj-state er-obj-state-${o.tone}`}>{o.state}</span>
             </header>
-            <h3 class="ld-wo-name">{o.name}</h3>
-            <p class="ld-wo-note">{o.note}</p>
-            <footer class="ld-wo-foot">
-              {o.href ? (
-                <a href={o.href} class="ld-wo-cta" target={o.external ? '_blank' : undefined} rel={o.external ? 'noopener noreferrer' : undefined}>
-                  {o.cta}{o.external ? ' ↗' : ' →'}
-                </a>
-              ) : (
-                <span class="ld-wo-cta ld-wo-cta-off">{o.cta}</span>
-              )}
-              <span class="ld-wo-sig">Signed: E. Roske</span>
-            </footer>
+            <h3 class="er-obj-name">{o.name}</h3>
+            <p class="er-obj-note">{o.note}</p>
+            {o.href ? (
+              <a
+                class="er-obj-cta"
+                href={o.href}
+                target={o.external ? '_blank' : undefined}
+                rel={o.external ? 'noopener noreferrer' : undefined}
+              >
+                {o.cta}
+                <span aria-hidden="true">&#8594;</span>
+              </a>
+            ) : (
+              <span class="er-obj-cta er-obj-cta-off">{o.cta}</span>
+            )}
           </article>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- ================= WHAT'S NEW (permanent) ================= -->
+  <!-- ================= WHAT'S NEW ================= -->
   <WhatsNew
-    eyebrow="Posted at the gate"
-    heading="Also on <em>the board.</em>"
-    deck="Interviews, press, and whatever went out on the channel this week. Pinned with the good magnets."
+    eyebrow="Taped to the mirror"
+    heading="Turned up <em>elsewhere.</em>"
+    deck="Press, interviews, and the odd post worth keeping. Proof I do leave the room."
   />
 
-  <!-- ================= THE TIMESHEET (verdict, and the buyer) ================= -->
-  <section class="ld-sheet" id="timesheet">
-    <div class="ld-sheet-inner">
-      <div class="ld-sheet-card">
-        <div class="ld-sheet-head">
-          <p class="ld-eyebrow">Weekend timesheet</p>
-          <h2 class="ld-h2">Hours, audited.</h2>
-        </div>
-        <table class="ld-sheet-table">
-          <thead>
-            <tr><th scope="col">Day</th><th scope="col">Edward</th><th scope="col">The agents</th></tr>
-          </thead>
-          <tbody>
-            {timesheet.map(r => (
-              <tr>
-                <th scope="row">{r.day}</th>
-                <td><span class="ld-sheet-n">{r.e}</span> <span class="ld-sheet-note">{r.en}</span></td>
-                <td><span class="ld-sheet-n">{r.a}</span></td>
-              </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr>
-              <th scope="row">Total</th>
-              <td><span class="ld-sheet-n">17 hrs</span></td>
-              <td><span class="ld-sheet-n">72 hrs</span></td>
-            </tr>
-          </tfoot>
-        </table>
-        <p class="ld-sheet-approve">
-          <span class="ld-sheet-stamp">Approved</span>
-          by Agent I, the chief of staff, which would like it noted that it drafted this approval and a
-          human clicked it, as with everything else in the stack. Nothing here has send authority. It
-          never will. That's the rule that lets him go down the manhole and not think about the inbox.
-        </p>
-      </div>
-
-      <div class="ld-sheet-pitch">
-        <p class="ld-eyebrow">If you run a finance team</p>
-        <h2 class="ld-h2">Your close doesn't take Labor Day off either.</h2>
-        <p class="ld-deck">
-          Finance teams do this weekend about 12 times a year, they call it the close, and nobody hands
-          them a hot dog at the end of it. The talk is how 10
-          agents took the weekend work off my plate without any of them ever getting send authority, with
-          the failures left in (72 hours lost to an invisible install prompt, a brief on the wrong human,
-          twice), and the workshop is where your team builds the first 2 themselves. Keynotes from
-          $15,000, fees published, inquiries answered within 1 business day.
-        </p>
-        <div class="ld-hero-cta">
-          <a href="/speaking/" class="ld-btn-solid">Book the talk</a>
-          <a href="/work/ai-art-of-the-possible/" class="ld-btn-line">Bring the workshop</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CTA: CLOCK IN ================= -->
-  <section class="ld-clock" id="clock-in">
-    <div class="ld-clock-inner">
-      <p class="ld-eyebrow ld-eyebrow-on-dark">Shift change</p>
-      <h2 class="ld-h2 ld-h2-on-dark">Clock in with me.</h2>
-      <p class="ld-deck ld-deck-on-dark">
-        13 minutes on my calendar, about whatever question you're carrying around: agents, the close, the
-        Summit, or why anyone would jackhammer a sidewalk on a holiday. Or write me at Edward@Roske.AI.
-        I answer from the beam.
+  <!-- ================= CTA ================= -->
+  <section class="er-cta">
+    <div class="er-cta-inner">
+      <p class="er-eyebrow er-eyebrow-on-dark">Ask for the key</p>
+      <h2 class="er-h2 er-h2-on-dark">Or just ask somebody.</h2>
+      <p class="er-deck er-deck-on-dark">
+        13 minutes on the calendar, no agenda required, and you can spend the whole thing on one
+        question. If you have a stage and a room full of finance people who have been sold something
+        confident, that's the other conversation, and it starts on the speaking page.
       </p>
-      <div class="ld-hero-cta ld-hero-cta-center">
-        <a href="https://calendar.app.google/udtTerQwcX9Z7QQt7" class="ld-btn-solid" target="_blank" rel="noopener noreferrer">Book 13 minutes</a>
-        <a href="/contact/" class="ld-btn-line ld-btn-line-on-dark">Send a message</a>
+      <div class="er-cta-row">
+        <a
+          class="er-btn-solid"
+          href="https://calendar.app.google/udtTerQwcX9Z7QQt7"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book 13 minutes
+        </a>
+        <a class="er-btn-line" href="/speaking/">Book the talk</a>
+        <a class="er-btn-line" href="/contact/">Write instead</a>
       </div>
     </div>
   </section>
@@ -465,345 +626,1157 @@ const timesheet = [
 
 <style is:global>
   /* =====================================================================
-     THE HARDEST-WORKING WEEKEND OF THE YEAR (Labor Day 2026)
-     Jobsite: asphalt, steel plate, safety orange, hi-vis yellow, caution
-     stripes, stencil wood type, rivets, concrete grain. All page classes
-     are prefixed ld- and this block is global on purpose (theme-aware
-     selectors on [data-theme] are unreliable inside Astro's scoped CSS).
+     THE ESCAPE ROOM (2026-09-12)
+     Set design, not page design: lantern amber, aged brass, deep teal
+     shadow, warning red on the clock, riveted plate, wood grain, chalk.
+     Dark mode is the room with the lights off and is the intended mood.
+     Light mode is "lights on, game over" and should read as the reveal.
+     All page classes are prefixed er- and this block is global on purpose
+     ([data-theme] selectors are unreliable inside Astro's scoped CSS).
      ===================================================================== */
   :root {
-    --ld-stencil: 'Big Shoulders Stencil Display', 'Big Shoulders Display', Impact, 'Arial Narrow', sans-serif;
-    --ld-cond: 'Barlow Condensed', 'Arial Narrow', sans-serif;
-    --ld-yellow: #f5c400;
-    --ld-ink: #121212;
-    --ld-steel: #1a1c20;
-    --ld-steel-2: #24272c;
-    --ld-steel-text: #ecebe6;
-    --ld-steel-muted: #b3b1a9;
-    --ld-orange-hi: #f0871f;
-    --ld-tape: repeating-linear-gradient(-45deg, #f5c400 0 18px, #121212 18px 36px);
-    --ld-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --er-brass: #a8833f;
+    --er-amber: #e2a648;
+    --er-red: #e2685a;
+    --er-teal: #14282b;
+    --er-teal-2: #1d3230;
+    --er-dark-text: #f2e8d5;
+    --er-dark-muted: #b0a58d;
+    --er-rivet: radial-gradient(circle at 50% 42%, #cbb68c 0 22%, #7e6a44 45%, rgba(0, 0, 0, 0) 62%);
+    --er-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --er-wood: repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.05) 0 2px,
+      rgba(255, 255, 255, 0.012) 2px 5px,
+      rgba(0, 0, 0, 0.03) 5px 9px
+    );
   }
 
   /* mode-aware page tokens */
   [data-theme="dark"] {
-    --ld-bg: var(--color-bg);
-    --ld-surface: var(--color-surface);
-    --ld-text: var(--color-text);
-    --ld-muted: var(--color-text-muted);
-    --ld-line: var(--color-border);
-    --ld-form: #202329;           /* carbon-copy form, night shift */
-    --ld-form-line: #3b3f47;
-    --ld-glow: rgba(240, 135, 31, 0.16);
+    --er-bg: var(--color-bg);
+    --er-surface: var(--color-surface);
+    --er-text: var(--color-text);
+    --er-muted: var(--color-text-muted);
+    --er-line: var(--color-border);
+    --er-panel: #101a1c;
+    --er-panel-line: #2f403f;
+    --er-glow: rgba(226, 166, 72, 0.16);
+    --er-lamp: radial-gradient(60% 48% at 14% 0%, rgba(226, 166, 72, 0.16), transparent 72%);
   }
   [data-theme="light"] {
-    --ld-bg: var(--color-bg-light);
-    --ld-surface: var(--color-surface-light);
-    --ld-text: var(--color-text-dark);
-    --ld-muted: var(--color-text-dark-muted);
-    --ld-line: var(--color-border-light);
-    --ld-form: #f3efe2;           /* the yellow carbon copy */
-    --ld-form-line: #c9c2ad;
-    --ld-glow: rgba(154, 52, 4, 0.10);
+    --er-bg: var(--color-bg-light);
+    --er-surface: var(--color-surface-light);
+    --er-text: var(--color-text-dark);
+    --er-muted: var(--color-text-dark-muted);
+    --er-line: var(--color-border-light);
+    --er-panel: #e3dbc7;
+    --er-panel-line: #c3b89c;
+    --er-glow: rgba(138, 84, 16, 0.1);
+    --er-lamp: radial-gradient(60% 48% at 14% 0%, rgba(138, 84, 16, 0.07), transparent 72%);
   }
 
   /* ---------- shared type ---------- */
-  .ld-eyebrow {
-    font-family: var(--ld-cond); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.22em;
-    text-transform: uppercase; color: var(--color-accent); margin: 0 0 0.7rem;
+  .er-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin: 0 0 0.9rem;
   }
-  .ld-eyebrow-on-dark { color: var(--ld-orange-hi); }
-  .ld-h2 {
-    font-family: var(--font-heading); font-weight: 800; line-height: 0.95; letter-spacing: 0.005em;
-    font-size: clamp(2.4rem, 5.2vw, 4.2rem); margin: 0 0 1rem; color: var(--ld-text); text-transform: uppercase;
+  .er-eyebrow-on-dark { color: var(--er-amber); }
+
+  .er-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--er-muted);
+    margin: 0 0 1.6rem;
   }
-  .ld-h2-on-dark { color: var(--ld-steel-text); }
-  .ld-deck { max-width: 62ch; font-size: 1.06rem; line-height: 1.62; color: var(--ld-muted); margin: 0; }
-  .ld-deck-on-dark { color: var(--ld-steel-muted); }
-  .ld-deck a, .ld-sched-foot a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+
+  .er-h2 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(2rem, 4.4vw, 3.4rem);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+    color: var(--er-text);
+    margin: 0 0 1rem;
+  }
+  .er-h2-on-dark { color: var(--er-dark-text); }
+
+  .er-deck {
+    font-size: clamp(1rem, 1.15vw, 1.1rem);
+    line-height: 1.72;
+    color: var(--er-muted);
+    max-width: 68ch;
+    margin: 0;
+  }
+  .er-deck-on-dark { color: var(--er-dark-muted); }
+  .er-deck a,
+  .er-reveal-foot a,
+  .er-hero-desc a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .er-deck a:hover,
+  .er-reveal-foot a:hover { color: var(--color-accent); }
 
   /* ---------- buttons ---------- */
-  .ld-btn-solid, .ld-btn-line {
-    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-    padding: 0.95rem 1.6rem; font-family: var(--ld-cond); font-weight: 700; font-size: 1.02rem;
-    letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
-    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
-    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  .er-btn-solid,
+  .er-btn-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.95rem 1.6rem;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease;
+    cursor: pointer;
   }
-  .ld-btn-solid { background: var(--color-accent); color: var(--color-on-accent); }
-  .ld-btn-solid:hover { background: var(--color-accent-hover); transform: translateY(-2px); }
-  .ld-btn-line { border: 2px solid var(--color-accent); color: var(--color-accent); background: transparent; }
-  .ld-btn-line:hover { background: var(--color-accent); color: var(--color-on-accent); transform: translateY(-2px); }
-  .ld-btn-line-on-dark { border-color: var(--ld-orange-hi); color: var(--ld-orange-hi); }
-  .ld-btn-line-on-dark:hover { background: var(--ld-orange-hi); color: var(--ld-ink); }
-  .ld-hero-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1.6rem; }
-  .ld-hero-cta-center { justify-content: center; }
+  .er-btn-solid {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    border: 1px solid var(--color-accent);
+    box-shadow: 0 0 0 0 var(--er-glow);
+  }
+  .er-btn-solid:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+    box-shadow: 0 0 26px 2px var(--er-glow);
+  }
+  .er-btn-line {
+    background: transparent;
+    color: var(--color-accent);
+    border: 1px solid var(--color-accent);
+  }
+  .er-btn-line:hover {
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+  }
 
-  /* ---------- caution tape strip ---------- */
-  .ld-tape {
-    margin-top: 64px; /* clear the fixed nav */
-    background: var(--ld-tape); padding: 6px 0;
+  /* ---------- frames (every image is a prop in a frame) ---------- */
+  .er-frame {
+    position: relative;
+    background: var(--er-panel);
+    border: 1px solid var(--er-panel-line);
+    padding: 10px;
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4);
   }
-  .ld-tape-inner {
-    background: var(--ld-ink); color: var(--ld-yellow);
-    font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
-    display: flex; flex-wrap: wrap; gap: 0.4rem 0; justify-content: center; padding: 0.5rem 1rem;
+  .er-frame::before,
+  .er-frame::after {
+    content: '';
+    position: absolute;
+    width: 9px;
+    height: 9px;
+    background: var(--er-rivet);
+    pointer-events: none;
   }
-  .ld-tape-item { padding: 0 0.9rem; border-right: 1px solid rgba(245, 196, 0, 0.35); white-space: nowrap; }
-  .ld-tape-item:last-child { border-right: 0; }
-  .ld-tape-mark { color: var(--ld-orange-hi); font-weight: 700; }
+  .er-frame::before { top: 5px; left: 5px; }
+  .er-frame::after { bottom: 5px; right: 5px; }
+  .er-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .er-plate-tag {
+    position: absolute;
+    z-index: 2;
+    top: 16px;
+    left: -9px;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    padding: 0.34rem 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  /* ---------- door strip ---------- */
+  .er-strip {
+    background: var(--er-teal);
+    border-bottom: 1px solid #3a5250;
+    overflow: hidden;
+  }
+  .er-strip-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 2.2rem;
+    justify-content: center;
+    max-width: 84rem;
+    margin: 0 auto;
+    padding: 0.7rem 1.5rem;
+  }
+  .er-strip-item {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #9fb3ad;
+    white-space: nowrap;
+    line-height: 2;
+  }
+  .er-strip-mark { color: var(--er-amber); }
 
   /* ---------- hero ---------- */
-  .ld-hero {
-    position: relative; overflow: hidden;
-    padding: clamp(2.5rem, 6vw, 5rem) 1.5rem 3rem;
-    background:
-      radial-gradient(70% 60% at 85% 10%, var(--ld-glow), transparent 70%),
-      var(--ld-bg);
+  .er-hero {
+    position: relative;
+    background: var(--er-bg);
+    padding: clamp(3rem, 7vw, 6rem) 1.5rem clamp(2.5rem, 5vw, 4rem);
+    overflow: hidden;
   }
-  .ld-hero::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none;
-    background-image: var(--ld-grain); opacity: 0.35; mix-blend-mode: overlay;
+  .er-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--er-lamp), var(--er-wood);
   }
-  [data-theme="light"] .ld-hero::before { opacity: 0.5; }
-  .ld-hero-grid {
-    position: relative; max-width: 80rem; margin: 0 auto;
-    display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(2rem, 4vw, 4rem); align-items: center;
+  .er-hero-grid {
+    position: relative;
+    max-width: 84rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
   }
-  @media (max-width: 960px) { .ld-hero-grid { grid-template-columns: 1fr; } }
-  .ld-kicker {
-    font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--ld-muted); margin: 0 0 1.4rem;
-  }
-  .ld-h1 {
-    font-family: var(--ld-stencil); font-weight: 900; text-transform: uppercase; line-height: 0.86;
-    font-size: clamp(3.6rem, 10vw, 8.2rem); margin: 0 0 1.4rem; color: var(--ld-text); letter-spacing: 0.01em;
-  }
-  .ld-h1-line { display: block; }
-  .ld-h1-hit { color: var(--color-accent); }
-  .ld-hero-sub {
-    font-family: var(--ld-cond); font-weight: 600; font-size: clamp(1.25rem, 2.2vw, 1.6rem); line-height: 1.25;
-    color: var(--ld-text); margin: 0 0 1rem; max-width: 30ch;
-  }
-  .ld-hero-desc { font-size: 1.04rem; line-height: 1.65; color: var(--ld-muted); margin: 0; max-width: 60ch; }
-
-  /* riveted steel plate frame, used by the hero and every site photo */
-  .ld-plate {
-    position: relative; background: var(--ld-steel); padding: 10px;
-    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-  }
-  .ld-plate::before, .ld-plate::after {
-    content: ''; position: absolute; width: 8px; height: 8px; border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #8f949c, #3a3e45 70%);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.7);
-  }
-  .ld-plate::before { top: 4px; left: 4px; box-shadow: calc(100% + 4px) 0 0 0 transparent; }
-  .ld-plate::after { bottom: 4px; right: 4px; }
-  .ld-plate img { display: block; width: 100%; height: auto; }
-  .ld-stencil-tag {
-    position: absolute; z-index: 2; top: 18px; left: -8px;
-    font-family: var(--ld-cond); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
-    background: var(--ld-orange-hi); color: var(--ld-ink); padding: 0.32rem 0.7rem;
-    clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-  }
-  .ld-hero-fig { margin: 0; }
-  .ld-plate-hero { transform: rotate(-1.2deg); }
-  .ld-hero-img { aspect-ratio: 16 / 9; object-fit: cover; }
-  .ld-hero-cap {
-    font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.6; color: var(--ld-muted);
-    margin: 1.2rem 0 0 0.4rem; padding-left: 0.9rem; border-left: 3px solid var(--color-accent); max-width: 60ch;
-  }
-
-  /* time card */
-  .ld-timecard {
-    position: relative; max-width: 80rem; margin: 3rem auto 0;
-    background: var(--ld-surface); border: 1px solid var(--ld-line); padding: 1.2rem 1.4rem 1.4rem;
-  }
-  .ld-timecard::before {
-    content: ''; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--ld-tape);
-  }
-  .ld-timecard-label {
-    font-family: var(--ld-cond); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-    color: var(--ld-muted); margin: 0.6rem 0 1rem;
-  }
-  .ld-timecard-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-  @media (max-width: 720px) { .ld-timecard-grid { grid-template-columns: 1fr 1fr; } }
-  .ld-punch { position: relative; padding-left: 1.4rem; }
-  .ld-punch-hole {
-    position: absolute; left: 0; top: 0.35rem; width: 12px; height: 12px; border-radius: 50%;
-    background: var(--ld-bg); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--ld-line);
-  }
-  .ld-punch-v {
-    display: block; font-family: var(--font-heading); font-weight: 900; font-size: clamp(2.2rem, 4vw, 3.2rem);
-    line-height: 1; color: var(--color-accent);
-  }
-  .ld-punch-k {
-    display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ld-muted); margin-top: 0.4rem;
-  }
-
-  /* ---------- schedule (always the night board, both modes) ---------- */
-  .ld-sched {
-    position: relative; background: var(--ld-steel); color: var(--ld-steel-text);
-    padding: clamp(3rem, 7vw, 5.5rem) 1.5rem; overflow: hidden;
-    border-top: 8px solid transparent; border-image: var(--ld-tape) 8;
-  }
-  .ld-sched::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none;
-    background:
-      radial-gradient(60% 50% at 10% 0%, rgba(240, 135, 31, 0.18), transparent 70%),
-      var(--ld-grain);
-    opacity: 0.6; mix-blend-mode: screen;
-  }
-  .ld-sched-inner { position: relative; max-width: 80rem; margin: 0 auto; }
-  .ld-sched-head { max-width: 70ch; margin-bottom: 2.4rem; }
-  .ld-shift { border: 1px solid #3a3e46; background: var(--ld-steel-2); }
-  .ld-shift-row {
-    display: grid; grid-template-columns: 6rem minmax(0, 1fr) minmax(0, 1fr); gap: 0 1.6rem;
-    padding: 1.05rem 1.3rem; border-top: 1px solid #3a3e46; align-items: start;
-  }
-  .ld-shift-row:first-child { border-top: 0; }
-  .ld-shift-header {
-    font-family: var(--ld-cond); font-weight: 700; font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--ld-orange-hi); background: #16181c; padding-top: 0.8rem; padding-bottom: 0.8rem;
-  }
-  .ld-shift-t { font-family: var(--font-mono); font-size: 1.05rem; color: var(--ld-yellow); letter-spacing: 0.06em; }
-  .ld-shift-header .ld-shift-t { font-family: var(--ld-cond); font-size: 0.74rem; color: var(--ld-orange-hi); }
-  .ld-shift-e, .ld-shift-a { font-size: 0.98rem; line-height: 1.55; color: var(--ld-steel-text); }
-  .ld-shift-a { color: #d8d6cf; }
-  @media (max-width: 760px) {
-    .ld-shift-row { grid-template-columns: 1fr; gap: 0.35rem; }
-    .ld-shift-header { display: none; }
-    .ld-shift-e::before, .ld-shift-a::before {
-      display: block; font-family: var(--ld-cond); font-weight: 700; font-size: 0.7rem; letter-spacing: 0.2em;
-      text-transform: uppercase; color: var(--ld-orange-hi); margin-bottom: 0.15rem;
-    }
-    .ld-shift-e::before { content: 'Edward'; }
-    .ld-shift-a::before { content: 'The agents'; margin-top: 0.5rem; }
-  }
-  .ld-sched-foot { max-width: 70ch; margin: 1.6rem 0 0; font-size: 0.98rem; line-height: 1.6; color: var(--ld-steel-muted); }
-  .ld-sched-foot a { color: var(--ld-orange-hi); }
-
-  /* ---------- bulletin board ---------- */
-  .ld-board { position: relative; background: var(--ld-bg); padding: clamp(3rem, 7vw, 5.5rem) 1.5rem; overflow: hidden; }
-  .ld-board::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none; background-image: var(--ld-grain); opacity: 0.3; mix-blend-mode: overlay;
-  }
-  .ld-board-inner { position: relative; max-width: 80rem; margin: 0 auto; }
-  .ld-board-head { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: flex-end; margin-bottom: 2.6rem; }
-  .ld-board-head > div:first-child { max-width: 64ch; }
-  .ld-incident {
-    display: grid; justify-items: center; gap: 0.2rem; padding: 1rem 1.6rem 1.1rem; min-width: 15rem;
-    background: var(--ld-yellow); color: var(--ld-ink); border: 4px solid var(--ld-ink);
-    box-shadow: 6px 6px 0 var(--ld-ink); transform: rotate(1.5deg);
-  }
-  .ld-incident-label { font-family: var(--ld-cond); font-weight: 800; font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; text-align: center; }
-  .ld-incident-n { font-family: var(--ld-stencil); font-weight: 900; font-size: 4.2rem; line-height: 0.9; }
-  .ld-incident-note { font-family: var(--font-mono); font-size: 0.72rem; }
-  .ld-plates {
-    display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(1.4rem, 3vw, 2.6rem) clamp(1rem, 2.5vw, 2rem); align-items: start;
-  }
-  .ld-pin { position: relative; margin: 0; grid-column: span 3; transform: rotate(var(--tilt)); transition: transform 0.25s ease; }
-  .ld-pin:nth-child(2), .ld-pin:nth-child(4) { grid-column: span 2; }
-  .ld-pin:nth-child(1), .ld-pin:nth-child(3) { grid-column: span 4; }
-  .ld-pin-wide { grid-column: 1 / -1 !important; max-width: 62rem; margin: 0 auto; }
-  .ld-pin:hover { transform: rotate(0deg) translateY(-4px); }
   @media (max-width: 900px) {
-    .ld-plates { grid-template-columns: 1fr 1fr; }
-    .ld-pin, .ld-pin:nth-child(n) { grid-column: span 1; }
-    .ld-pin-wide { grid-column: 1 / -1 !important; }
+    .er-hero-grid { grid-template-columns: 1fr; }
   }
-  @media (max-width: 560px) { .ld-plates { grid-template-columns: 1fr; } }
-  .ld-magnet {
-    position: absolute; z-index: 3; top: -12px; left: 50%; width: 26px; height: 26px; margin-left: -13px; border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #ff9f3a, #b0430b 70%); box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+  .er-h1 {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(2.6rem, 7.2vw, 5.6rem);
+    line-height: 0.96;
+    letter-spacing: -0.015em;
+    color: var(--er-text);
+    margin: 0 0 1.4rem;
   }
-  .ld-pin-cap { font-size: 0.92rem; line-height: 1.55; color: var(--ld-muted); margin: 0.9rem 0.2rem 0; }
+  .er-h1-line { display: block; }
+  .er-h1-hit {
+    color: var(--color-accent);
+    text-shadow: 0 0 34px var(--er-glow);
+  }
+  .er-hero-sub {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.1rem, 1.9vw, 1.5rem);
+    line-height: 1.34;
+    color: var(--er-text);
+    margin: 0 0 1.2rem;
+    max-width: 32ch;
+  }
+  .er-hero-desc {
+    font-size: 1rem;
+    line-height: 1.78;
+    color: var(--er-muted);
+    max-width: 60ch;
+    margin: 0 0 2rem;
+  }
+  .er-hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+  }
+  .er-hero-fig { margin: 0; }
+  .er-frame-hero { transform: rotate(-0.8deg); }
+  .er-hero-img {
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  .er-hero-cap {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.66;
+    color: var(--er-muted);
+    margin: 1.3rem 0 0 0.3rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--color-accent);
+    max-width: 58ch;
+  }
 
-  /* ---------- SpeakerCTA frame ---------- */
-  .ld-wo-frame { position: relative; margin: 0 auto; padding: 0 1.5rem 1rem; max-width: 80rem; }
-  .ld-wo-plate {
-    display: inline-block; font-family: var(--ld-cond); font-weight: 800; font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
-    background: var(--ld-orange-hi); color: var(--ld-ink); padding: 0.4rem 0.9rem; margin: 0 0 -0.4rem 0;
-    clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  /* inventory */
+  .er-inv {
+    position: relative;
+    max-width: 84rem;
+    margin: clamp(2.5rem, 5vw, 4rem) auto 0;
+    border-top: 1px solid var(--er-line);
+    border-bottom: 1px solid var(--er-line);
+    padding: 1.5rem 0;
+  }
+  .er-inv-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--er-muted);
+    margin: 0 0 1.1rem;
+  }
+  .er-inv-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.2rem;
+  }
+  @media (max-width: 720px) {
+    .er-inv-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .er-inv-v {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1;
+    color: var(--color-accent);
+  }
+  .er-inv-k {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--er-muted);
+    margin-top: 0.45rem;
   }
 
-  /* ---------- work orders ---------- */
-  .ld-orders { position: relative; background: var(--ld-surface); padding: clamp(3rem, 7vw, 5.5rem) 1.5rem; border-top: 1px solid var(--ld-line); }
-  .ld-orders-inner { max-width: 80rem; margin: 0 auto; }
-  .ld-orders-head { max-width: 66ch; margin-bottom: 2.4rem; }
-  .ld-wo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
-  @media (max-width: 1000px) { .ld-wo-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 640px) { .ld-wo-grid { grid-template-columns: 1fr; } }
-  .ld-wo {
-    position: relative; display: flex; flex-direction: column; gap: 0.7rem;
-    background: var(--ld-form); border: 1px solid var(--ld-form-line); padding: 1.2rem 1.3rem 1.1rem;
-    background-image: repeating-linear-gradient(to bottom, transparent 0 27px, var(--ld-form-line) 27px 28px);
-    background-position: 0 3.4rem; background-repeat: no-repeat; background-size: 100% calc(100% - 3.4rem);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  /* ---------- the room (always dark, both modes: it is a dark room) ---------- */
+  .er-room {
+    position: relative;
+    background: var(--er-teal);
+    color: var(--er-dark-text);
+    padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
+    overflow: hidden;
+    border-top: 1px solid #3a5250;
+    border-bottom: 1px solid #3a5250;
   }
-  .ld-wo:hover { transform: translateY(-3px); box-shadow: 0 18px 30px -20px rgba(0, 0, 0, 0.6); }
-  .ld-wo-head { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; }
-  .ld-wo-no { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.14em; color: var(--ld-muted); }
-  .ld-wo-stamp {
-    font-family: var(--ld-cond); font-weight: 800; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase;
-    padding: 0.22rem 0.55rem; border: 2px solid currentColor; transform: rotate(-3deg); white-space: nowrap;
+  .er-room::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(55% 42% at 82% 0%, rgba(226, 166, 72, 0.2), transparent 70%),
+      var(--er-grain);
+    opacity: 0.72;
   }
-  [data-theme="dark"] .ld-wo-stamp-go { color: var(--ld-orange-hi); }
-  [data-theme="light"] .ld-wo-stamp-go { color: #9a3404; }
-  [data-theme="dark"] .ld-wo-stamp-done { color: #8fd18f; }
-  [data-theme="light"] .ld-wo-stamp-done { color: #1f6b2a; }
-  .ld-wo-stamp-hold { color: var(--ld-muted); }
-  .ld-wo-name { font-family: var(--font-heading); font-weight: 800; font-size: 1.55rem; line-height: 1; margin: 0; color: var(--ld-text); text-transform: uppercase; }
-  .ld-wo-note { font-size: 0.95rem; line-height: 1.6; color: var(--ld-muted); margin: 0; flex: 1; }
-  .ld-wo-foot { display: flex; justify-content: space-between; align-items: baseline; gap: 0.8rem; margin-top: 0.4rem; padding-top: 0.7rem; border-top: 1px dashed var(--ld-form-line); }
-  .ld-wo-cta { font-family: var(--ld-cond); font-weight: 700; font-size: 0.92rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-accent); text-decoration: none; }
-  .ld-wo-cta:hover { text-decoration: underline; text-underline-offset: 3px; }
-  .ld-wo-cta-off { color: var(--ld-muted); }
-  .ld-wo-sig { font-family: 'Segoe Script', 'Brush Script MT', cursive; font-size: 0.85rem; color: var(--ld-muted); opacity: 0.85; }
+  .er-room-inner {
+    position: relative;
+    max-width: 84rem;
+    margin: 0 auto;
+  }
+  .er-room-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: clamp(2rem, 4vw, 3.2rem);
+  }
+  @media (max-width: 860px) {
+    .er-room-head { grid-template-columns: 1fr; }
+  }
 
-  /* ---------- timesheet ---------- */
-  .ld-sheet { position: relative; background: var(--ld-bg); padding: clamp(3rem, 7vw, 5.5rem) 1.5rem; overflow: hidden; }
-  .ld-sheet::before { content: ''; position: absolute; inset: 0; pointer-events: none; background-image: var(--ld-grain); opacity: 0.3; mix-blend-mode: overlay; }
-  .ld-sheet-inner { position: relative; max-width: 80rem; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
-  @media (max-width: 900px) { .ld-sheet-inner { grid-template-columns: 1fr; } }
-  .ld-sheet-card { position: relative; background: var(--ld-surface); border: 1px solid var(--ld-line); padding: 1.6rem 1.6rem 1.4rem; transform: rotate(-0.8deg); }
-  .ld-sheet-card::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 6px; background: var(--ld-tape); }
-  .ld-sheet-head { margin: 0.6rem 0 1.2rem; }
-  .ld-sheet-head .ld-h2 { font-size: clamp(2rem, 4vw, 3rem); }
-  .ld-sheet-table { width: 100%; border-collapse: collapse; font-size: 0.96rem; }
-  .ld-sheet-table th, .ld-sheet-table td { text-align: left; padding: 0.7rem 0.5rem; border-bottom: 1px solid var(--ld-line); vertical-align: top; color: var(--ld-text); }
-  .ld-sheet-table thead th { font-family: var(--ld-cond); font-weight: 700; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ld-muted); }
-  .ld-sheet-table tbody th { font-weight: 500; color: var(--ld-muted); }
-  .ld-sheet-table tfoot th, .ld-sheet-table tfoot td { border-bottom: 0; border-top: 2px solid var(--ld-text); font-weight: 700; }
-  .ld-sheet-n { font-family: var(--font-mono); font-size: 1.05rem; color: var(--color-accent); }
-  .ld-sheet-note { display: block; font-size: 0.8rem; color: var(--ld-muted); }
-  .ld-sheet-approve { position: relative; margin: 1.4rem 0 0; font-size: 0.92rem; line-height: 1.6; color: var(--ld-muted); }
-  .ld-sheet-stamp {
-    display: inline-block; font-family: var(--ld-cond); font-weight: 800; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--color-accent); border: 2px solid var(--color-accent); padding: 0.2rem 0.6rem; margin-right: 0.4rem; transform: rotate(-4deg);
+  /* the clock */
+  .er-clock {
+    border: 1px solid #4a2b28;
+    background: #170f0f;
+    padding: 1rem 1.4rem;
+    text-align: center;
+    min-width: 14rem;
+    box-shadow: inset 0 0 30px rgba(226, 104, 90, 0.16);
   }
-  .ld-sheet-pitch { padding-top: 0.5rem; }
-  .ld-sheet-pitch .ld-h2 { font-size: clamp(2.2rem, 4.4vw, 3.6rem); }
+  .er-clock-label,
+  .er-clock-note {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #b09089;
+  }
+  .er-clock-note {
+    text-transform: none;
+    letter-spacing: 0.06em;
+    margin-top: 0.5rem;
+  }
+  .er-clock-digits {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    line-height: 1.1;
+    color: var(--er-red);
+    margin: 0.4rem 0 0;
+    text-shadow: 0 0 22px rgba(226, 104, 90, 0.5);
+    font-variant-numeric: tabular-nums;
+  }
 
-  /* ---------- clock in ---------- */
-  .ld-clock {
-    position: relative; background: var(--ld-steel); color: var(--ld-steel-text); text-align: center;
-    padding: clamp(3.5rem, 8vw, 6rem) 1.5rem; overflow: hidden;
-    border-top: 8px solid transparent; border-image: var(--ld-tape) 8;
+  /* stations */
+  .er-stations {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: clamp(1.6rem, 3vw, 2.6rem);
   }
-  .ld-clock::before {
-    content: ''; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(50% 60% at 50% 100%, rgba(240, 135, 31, 0.22), transparent 70%);
+  .er-station {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.95fr);
+    gap: clamp(1.4rem, 3vw, 2.6rem);
+    align-items: start;
+    background: rgba(8, 16, 18, 0.62);
+    border: 1px solid #344a48;
+    padding: clamp(1.3rem, 2.6vw, 2.2rem);
   }
-  .ld-clock-inner { position: relative; max-width: 60rem; margin: 0 auto; display: grid; justify-items: center; }
-  .ld-clock .ld-deck { max-width: 60ch; text-align: center; }
-  .ld-clock .ld-h2 { font-family: var(--ld-stencil); font-size: clamp(3rem, 8vw, 6rem); }
+  @media (max-width: 980px) {
+    .er-station { grid-template-columns: 1fr; }
+    .er-station-fig { order: -1; max-width: 22rem; }
+  }
+  .er-station.is-solved {
+    border-color: var(--er-amber);
+    box-shadow: 0 0 0 1px rgba(226, 166, 72, 0.3), 0 0 40px rgba(226, 166, 72, 0.1);
+  }
+  .er-station-head {
+    display: flex;
+    gap: 1.1rem;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+  }
+  .er-station-no {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 2.4rem;
+    line-height: 0.9;
+    color: var(--er-brass);
+    flex: 0 0 auto;
+  }
+  .er-station-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+    line-height: 1.16;
+    color: var(--er-dark-text);
+    margin: 0 0 0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.8rem;
+  }
+  .er-station-state {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #93a8a3;
+    border: 1px solid #3f5754;
+    padding: 0.2rem 0.55rem;
+  }
+  .er-station-state.is-open {
+    color: #0f1718;
+    background: var(--er-amber);
+    border-color: var(--er-amber);
+  }
+  .er-station-prop {
+    font-size: 0.95rem;
+    line-height: 1.66;
+    color: var(--er-dark-muted);
+    margin: 0;
+    max-width: 56ch;
+  }
 
-  /* reduced motion */
+  .er-qset {
+    border: 0;
+    margin: 0 0 1.2rem;
+    padding: 0;
+  }
+  .er-qlegend {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #93a8a3;
+    padding: 0;
+    margin-bottom: 0.85rem;
+  }
+  .er-qgrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem;
+  }
+  @media (max-width: 640px) {
+    .er-qgrid { grid-template-columns: 1fr; }
+  }
+  .er-q {
+    display: flex;
+    gap: 0.7rem;
+    align-items: flex-start;
+    text-align: left;
+    background: rgba(226, 166, 72, 0.05);
+    border: 1px solid #3f5754;
+    color: var(--er-dark-text);
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    padding: 0.85rem 1rem;
+    cursor: pointer;
+    transition: border-color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
+  }
+  .er-q:hover {
+    border-color: var(--er-amber);
+    background: rgba(226, 166, 72, 0.1);
+  }
+  .er-q:focus-visible {
+    outline: 2px solid var(--er-amber);
+    outline-offset: 2px;
+  }
+  .er-q-mark {
+    font-family: var(--font-mono);
+    color: var(--er-brass);
+    flex: 0 0 auto;
+  }
+  .er-q.is-asked {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: #2f4340;
+    color: #9fb3ad;
+  }
+  .er-q.is-key {
+    border-color: var(--er-amber);
+    background: rgba(226, 166, 72, 0.16);
+    color: var(--er-dark-text);
+  }
+  .er-q.is-key .er-q-mark { color: var(--er-amber); }
+
+  /* the terminal readout */
+  .er-readout {
+    background: #080d0e;
+    border: 1px solid #2c3f3d;
+    border-left: 3px solid var(--er-amber);
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.1rem;
+  }
+  .er-readout-name {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--er-brass);
+    margin: 0 0 0.55rem;
+  }
+  .er-readout-text {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #d8cbb0;
+    margin: 0;
+  }
+  .er-readout-why {
+    font-size: 0.86rem;
+    line-height: 1.66;
+    color: var(--er-amber);
+    margin: 0.9rem 0 0;
+    padding-top: 0.85rem;
+    border-top: 1px dashed #3f5754;
+  }
+
+  .er-station-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.6rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .er-hint summary {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--er-amber);
+    cursor: pointer;
+    text-underline-offset: 4px;
+    text-decoration: underline;
+  }
+  .er-hint summary:focus-visible {
+    outline: 2px solid var(--er-amber);
+    outline-offset: 3px;
+  }
+  .er-hint p {
+    font-size: 0.88rem;
+    line-height: 1.66;
+    color: var(--er-dark-muted);
+    margin: 0.7rem 0 0;
+    max-width: 52ch;
+  }
+  .er-got {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    margin: 0;
+  }
+  .er-got-label {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--er-dark-muted);
+  }
+  .er-got-n {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--er-amber);
+  }
+  .er-station-fig { margin: 0; }
+
+  /* ---------- the door ---------- */
+  .er-door {
+    margin-top: clamp(2rem, 4vw, 3.2rem);
+    border: 1px solid #4a5f5c;
+    background: linear-gradient(180deg, rgba(29, 50, 48, 0.9), rgba(8, 16, 18, 0.9));
+  }
+  .er-door-plate {
+    padding: clamp(1.6rem, 3.4vw, 2.8rem);
+    position: relative;
+  }
+  .er-door-h {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    line-height: 1.1;
+    color: var(--er-dark-text);
+    margin: 0 0 0.8rem;
+  }
+  .er-door-deck {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--er-dark-muted);
+    max-width: 62ch;
+    margin: 0 0 1.8rem;
+  }
+  .er-dials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+  }
+  .er-dial {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+  .er-dial label {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #93a8a3;
+  }
+  .er-dial input {
+    width: 6.5rem;
+    background: #080d0e;
+    border: 1px solid #4a5f5c;
+    color: var(--er-amber);
+    font-family: var(--font-mono);
+    font-size: 1.7rem;
+    text-align: center;
+    padding: 0.55rem 0.5rem;
+    letter-spacing: 0.08em;
+  }
+  .er-dial input:focus-visible {
+    outline: 2px solid var(--er-amber);
+    outline-offset: 2px;
+  }
+  .er-dial-go { margin-left: 0.4rem; }
+  @media (max-width: 560px) {
+    .er-dial input { width: 4.6rem; font-size: 1.35rem; }
+    .er-dial-go { margin-left: 0; width: 100%; justify-content: center; }
+  }
+  .er-door-msg {
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    line-height: 1.66;
+    color: var(--er-dark-muted);
+    margin: 1.2rem 0 0;
+    min-height: 1.4rem;
+    max-width: 62ch;
+  }
+  .er-door-msg.is-bad { color: var(--er-red); }
+  .er-door-msg.is-good { color: var(--er-amber); }
+  .er-giveup {
+    display: inline-block;
+    margin-top: 1.4rem;
+    background: none;
+    border: 0;
+    padding: 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #93a8a3;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    cursor: pointer;
+  }
+  .er-giveup:hover { color: var(--er-amber); }
+  .er-giveup:focus-visible {
+    outline: 2px solid var(--er-amber);
+    outline-offset: 3px;
+  }
+
+  /* the reveal */
+  .er-reveal {
+    border-top: 1px solid var(--er-amber);
+    background: rgba(226, 166, 72, 0.06);
+    padding: clamp(1.6rem, 3.4vw, 2.8rem);
+  }
+  .er-reveal-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--er-amber);
+    margin: 0 0 0.9rem;
+  }
+  .er-reveal-h {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(1.8rem, 3.8vw, 2.8rem);
+    line-height: 1.06;
+    color: var(--er-dark-text);
+    margin: 0 0 0.9rem;
+  }
+  .er-reveal-deck {
+    font-size: 1rem;
+    line-height: 1.72;
+    color: var(--er-dark-muted);
+    max-width: 66ch;
+    margin: 0 0 2rem;
+  }
+  .er-sheet {
+    list-style: none;
+    margin: 0 0 2rem;
+    padding: 0;
+    display: grid;
+    gap: 1.2rem;
+  }
+  .er-sheet-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1.1rem;
+    align-items: start;
+    border-top: 1px solid #3f5754;
+    padding-top: 1.2rem;
+  }
+  .er-sheet-no {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--er-brass);
+    padding-top: 0.35rem;
+  }
+  .er-sheet-lazy {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: #8c9e99;
+    margin: 0 0 0.5rem;
+    text-decoration: line-through;
+    text-decoration-color: #5d7370;
+  }
+  .er-sheet-lazy span {
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #6f8481;
+    margin-right: 0.5rem;
+  }
+  .er-sheet-good {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(1.05rem, 1.9vw, 1.3rem);
+    line-height: 1.34;
+    color: var(--er-amber);
+    margin: 0 0 0.6rem;
+  }
+  .er-sheet-note {
+    font-size: 0.92rem;
+    line-height: 1.68;
+    color: var(--er-dark-muted);
+    margin: 0;
+    max-width: 66ch;
+  }
+  .er-reveal-foot {
+    font-size: 0.95rem;
+    line-height: 1.72;
+    color: var(--er-dark-muted);
+    max-width: 64ch;
+    margin: 0;
+    border-top: 1px dashed #3f5754;
+    padding-top: 1.4rem;
+  }
+  .er-reveal-foot a { color: var(--er-amber); }
+
+  /* ---------- set dressing ---------- */
+  .er-dressing {
+    background: var(--er-bg);
+    padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
+    position: relative;
+  }
+  .er-dressing::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: var(--er-wood);
+  }
+  .er-dressing-inner {
+    position: relative;
+    max-width: 84rem;
+    margin: 0 auto;
+  }
+  .er-dressing-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .er-plates {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(1.6rem, 4vw, 3rem);
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .er-plates { grid-template-columns: 1fr; }
+  }
+  .er-plate {
+    margin: 0;
+    transform: rotate(var(--tilt, 0deg));
+  }
+  .er-plate figcaption {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.68;
+    color: var(--er-muted);
+    margin: 1.1rem 0 0 0.2rem;
+    padding-left: 0.9rem;
+    border-left: 2px solid var(--color-accent);
+    max-width: 54ch;
+  }
+  .er-plate-wide { align-self: center; }
+
+  /* ---------- objects ---------- */
+  .er-objects {
+    background: var(--er-surface);
+    border-top: 1px solid var(--er-line);
+    padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
+  }
+  .er-objects-inner {
+    max-width: 84rem;
+    margin: 0 auto;
+  }
+  .er-objects-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .er-obj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    gap: 1.2rem;
+  }
+  .er-obj {
+    display: flex;
+    flex-direction: column;
+    background: var(--er-bg);
+    border: 1px solid var(--er-line);
+    padding: 1.5rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .er-obj:hover {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 30px var(--er-glow);
+    transform: translateY(-3px);
+  }
+  .er-obj-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .er-obj-tag,
+  .er-obj-state {
+    font-family: var(--font-mono);
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .er-obj-tag { color: var(--er-muted); }
+  .er-obj-state {
+    border: 1px solid currentColor;
+    padding: 0.2rem 0.55rem;
+  }
+  [data-theme="dark"] .er-obj-state-go { color: var(--er-amber); }
+  [data-theme="light"] .er-obj-state-go { color: #8a5410; }
+  [data-theme="dark"] .er-obj-state-done { color: #7fc6a4; }
+  [data-theme="light"] .er-obj-state-done { color: #1c6444; }
+  [data-theme="dark"] .er-obj-state-hold { color: #9fb3ad; }
+  [data-theme="light"] .er-obj-state-hold { color: #55635f; }
+  .er-obj-name {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: var(--er-text);
+    margin: 0 0 0.8rem;
+  }
+  .er-obj-note {
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--er-muted);
+    margin: 0 0 1.4rem;
+    flex: 1 1 auto;
+  }
+  .er-obj-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  .er-obj-cta:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .er-obj-cta-off {
+    color: var(--er-muted);
+    cursor: default;
+  }
+
+  /* ---------- closing CTA ---------- */
+  .er-cta {
+    position: relative;
+    background: var(--er-teal-2);
+    padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
+    overflow: hidden;
+    border-top: 1px solid #3a5250;
+  }
+  .er-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(50% 60% at 50% 0%, rgba(226, 166, 72, 0.16), transparent 72%), var(--er-grain);
+    opacity: 0.7;
+  }
+  .er-cta-inner {
+    position: relative;
+    max-width: 60rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .er-cta-inner .er-deck { margin: 0 auto; }
+  .er-cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    justify-content: center;
+    margin-top: 2.2rem;
+  }
+  /* the CTA band is dark in both modes, so its buttons stay on the amber pair */
+  [data-theme="light"] .er-cta .er-btn-solid {
+    background: var(--er-amber);
+    border-color: var(--er-amber);
+    color: #10191a;
+  }
+  [data-theme="light"] .er-cta .er-btn-line {
+    color: var(--er-amber);
+    border-color: var(--er-amber);
+  }
+  [data-theme="light"] .er-cta .er-btn-line:hover {
+    background: var(--er-amber);
+    color: #10191a;
+  }
+  [data-theme="light"] .er-room .er-btn-solid,
+  [data-theme="light"] .er-door .er-btn-solid {
+    background: var(--er-amber);
+    border-color: var(--er-amber);
+    color: #10191a;
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .ld-btn-solid, .ld-btn-line, .ld-wo, .ld-pin { transition: none; }
-    .ld-pin:hover { transform: rotate(var(--tilt)); }
+    .er-obj,
+    .er-btn-solid,
+    .er-btn-line,
+    .er-q { transition: none; }
+    .er-obj:hover { transform: none; }
   }
 </style>
+
+<script is:inline>
+  (function () {
+    let tick = null;
+
+    function stopClock() {
+      if (tick) {
+        clearInterval(tick);
+        tick = null;
+      }
+    }
+
+    function boot() {
+      stopClock();
+
+      const room = document.getElementById('the-room');
+      if (!room) return;
+
+      // --- the clock. Decorative, non-punitive, and it says so on the face.
+      const clock = document.getElementById('er-clock');
+      if (clock) {
+        let left = parseInt(clock.getAttribute('data-seconds') || '3600', 10);
+        const paint = function () {
+          const m = Math.floor(left / 60);
+          const s = left % 60;
+          clock.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+        };
+        paint();
+        tick = setInterval(function () {
+          left -= 1;
+          if (left <= 0) {
+            left = 0;
+            paint();
+            stopClock();
+            const note = clock.parentElement && clock.parentElement.querySelector('.er-clock-note');
+            if (note) note.textContent = 'Time. The door is exactly as locked as it was.';
+            return;
+          }
+          paint();
+        }, 1000);
+      }
+
+      // --- the stations
+      const solved = {};
+
+      function openStation(id) {
+        if (solved[id]) return;
+        solved[id] = true;
+        const station = room.querySelector('[data-station="' + id + '"]');
+        if (station) station.classList.add('is-solved');
+        const state = room.querySelector('[data-state-for="' + id + '"]');
+        if (state) {
+          state.textContent = 'Open';
+          state.classList.add('is-open');
+        }
+        const got = room.querySelector('[data-got-for="' + id + '"]');
+        if (got) got.hidden = false;
+        const why = room.querySelector('[data-why-for="' + id + '"]');
+        if (why) why.hidden = false;
+      }
+
+      const asks = room.querySelectorAll('[data-ask]');
+      Array.prototype.forEach.call(asks, function (btn) {
+        btn.addEventListener('click', function () {
+          const id = btn.getAttribute('data-ask');
+          const out = room.querySelector('[data-text-for="' + id + '"]');
+          if (out) out.textContent = btn.getAttribute('data-answer') || '';
+
+          // Mark every sibling asked, then flag this one.
+          const siblings = room.querySelectorAll('[data-ask="' + id + '"]');
+          Array.prototype.forEach.call(siblings, function (s) {
+            if (s === btn) return;
+            if (!s.classList.contains('is-key')) s.classList.add('is-asked');
+          });
+          btn.classList.remove('is-asked');
+
+          if (btn.getAttribute('data-ok') === 'yes') {
+            btn.classList.add('is-key');
+            openStation(id);
+          }
+        });
+      });
+
+      // --- the door
+      const form = document.getElementById('er-lock-form');
+      const msg = document.getElementById('er-door-msg');
+      const reveal = document.getElementById('er-reveal');
+      const d1 = document.getElementById('er-d1');
+      const d2 = document.getElementById('er-d2');
+      const d3 = document.getElementById('er-d3');
+      const KEY = ['13', '25', '300'];
+
+      function openDoor(gaveUp) {
+        if (reveal) reveal.hidden = false;
+        if (msg) {
+          msg.className = 'er-door-msg is-good';
+          msg.textContent = gaveUp
+            ? 'Opened with the answer key. That counts. Everybody uses the key eventually.'
+            : 'The handle turns. Three good questions, one door.';
+        }
+        stations();
+        if (reveal) {
+          reveal.setAttribute('tabindex', '-1');
+          reveal.focus({ preventScroll: true });
+          reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      function stations() {
+        ['shelf', 'timeline', 'wall'].forEach(openStation);
+      }
+
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const got = [d1, d2, d3].map(function (el) {
+            return (el && el.value ? el.value : '').replace(/\D/g, '').trim();
+          });
+          if (got.join('') === '') {
+            if (msg) {
+              msg.className = 'er-door-msg';
+              msg.textContent = 'The dials are empty. The door notices.';
+            }
+            return;
+          }
+          const right = got[0] === KEY[0] && got[1] === KEY[1] && got[2] === KEY[2];
+          if (right) {
+            openDoor(false);
+            return;
+          }
+          const hits = got.filter(function (g, i) { return g === KEY[i]; }).length;
+          if (msg) {
+            msg.className = 'er-door-msg is-bad';
+            msg.textContent =
+              hits === 0
+                ? 'Nothing moves. None of the three are right, which at least is a clean result.'
+                : hits + ' of 3 are right. The door will not tell you which, and neither will I.';
+          }
+        });
+      }
+
+      const giveup = document.getElementById('er-giveup');
+      if (giveup) {
+        giveup.addEventListener('click', function () {
+          if (d1) d1.value = KEY[0];
+          if (d2) d2.value = KEY[1];
+          if (d3) d3.value = KEY[2];
+          // Light up the winning question at each station too, so the answer
+          // key actually teaches instead of just opening the door.
+          const keys = room.querySelectorAll('[data-ok="yes"]');
+          Array.prototype.forEach.call(keys, function (k) {
+            k.classList.add('is-key');
+            const id = k.getAttribute('data-ask');
+            const out = room.querySelector('[data-text-for="' + id + '"]');
+            if (out) out.textContent = k.getAttribute('data-answer') || '';
+          });
+          openDoor(true);
+        });
+      }
+    }
+
+    document.addEventListener('astro:page-load', boot);
+    document.addEventListener('astro:before-swap', stopClock);
+    if (document.readyState !== 'loading') boot();
+    else document.addEventListener('DOMContentLoaded', boot);
+  })();
+</script>

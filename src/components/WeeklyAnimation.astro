@@ -1,13 +1,82 @@
 ---
 /**
- * WeeklyAnimation.astro - "The Hardest-Working Weekend of the Year"
- * (Labor Day, September 5, 2026): empty.
+ * WeeklyAnimation - 2026-09-12 - The Escape Room
  *
- * Default state is empty. Edward finds drifting particle loops dated and
- * distracting, and a jobsite at 5AM does not sparkle. The atmosphere this
- * week comes from the caution stripes, the sodium-vapor glow, the concrete
- * grain, the rivets and the punch-clock strip in index.astro, none of which
- * move, because on a real site the thing that moves is you. So this renders
- * nothing.
+ * The one carve-out the brief allows this week: a slow light flicker, as if the
+ * single work light in the room is unhappy about something. No drifting or
+ * falling particles. It is a fixed vignette whose opacity gutters on an
+ * irregular schedule, nothing more.
+ *
+ * The room's actual countdown clock is not here. It lives in the hero, where it
+ * is functional and readable, because a timer you cannot read is set dressing.
+ *
+ * Fully disabled under prefers-reduced-motion.
  */
 ---
+
+<div
+  id="er-flicker"
+  aria-hidden="true"
+  style="position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:5;overflow:hidden;opacity:0;transition:opacity 220ms ease;"
+>
+</div>
+
+<script is:inline>
+  (function () {
+    let timer = null;
+
+    function stop() {
+      if (timer) {
+        clearTimeout(timer);
+        timer = null;
+      }
+    }
+
+    function start() {
+      stop();
+
+      const el = document.getElementById('er-flicker');
+      if (!el) return;
+
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) {
+        el.style.background = 'none';
+        el.style.opacity = '0';
+        return;
+      }
+
+      function paint() {
+        const light = document.documentElement.getAttribute('data-theme') === 'light';
+        // Lights on means the game is over and the room is just a room.
+        el.style.background = light
+          ? 'radial-gradient(120% 90% at 50% 8%, rgba(255,255,255,0) 38%, rgba(19,32,31,0.14) 100%)'
+          : 'radial-gradient(110% 85% at 50% 6%, rgba(226,166,72,0.055) 0%, rgba(226,166,72,0) 42%, rgba(0,0,0,0.42) 100%)';
+        return light;
+      }
+
+      let light = paint();
+
+      function gutter() {
+        // Mostly steady, with an occasional dip. The dip is small on purpose:
+        // this is a lamp with a loose connection, not a haunted house.
+        const dip = Math.random() < 0.22;
+        const base = light ? 0.45 : 1;
+        el.style.opacity = String(dip ? base * 0.62 : base);
+        timer = setTimeout(gutter, dip ? 70 + Math.random() * 110 : 900 + Math.random() * 2600);
+      }
+
+      el.style.opacity = light ? '0.45' : '1';
+      gutter();
+
+      const obs = new MutationObserver(function () {
+        light = paint();
+      });
+      obs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    }
+
+    document.addEventListener('astro:page-load', start);
+    document.addEventListener('astro:before-swap', stop);
+    if (document.readyState !== 'loading') start();
+    else document.addEventListener('DOMContentLoaded', start);
+  })();
+</script>

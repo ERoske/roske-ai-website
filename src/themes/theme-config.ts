@@ -81,74 +81,73 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "The Hardest-Working Weekend of the Year",
-  week: "2026-09-05",
-  inspiration: "Labor Day is the most misnamed holiday on the calendar: a day named for work on which the entire country does none. Edward has held this position for years, so this weekend the site takes him at his word and treats Labor Day Weekend as 3 straight shifts culminating in the ultimate day of labor, Monday September 7, on which he personally operates an excavator, works the espresso bar, jackhammers a sidewalk nobody asked about, eats lunch alone on a steel beam 40 stories up, and goes down a manhole because it was open. The conceit is a jobsite: a punch clock, a shift board, a bulletin board of site photos with a DAYS SINCE LAST INCIDENT sign, carbon-copy work orders for the 6 real projects, and a weekend timesheet that gets audited. The argument underneath the hi-vis: the people who never take the holiday are his 10 AI agents, who triaged the inbox, shipped the daily video, ran the Monday pitch sweep, and rebuilt this very page at 5AM Saturday while he slept, which is the live demo of the talk he gets paid for. And the finance leader reading it has a close that never took Labor Day off either. Design is industrial and grimy on purpose (last week was courtroom manila, the State Fair is coming in 3 weeks, so no folksy Americana): asphalt black, steel plate, safety orange, hi-vis yellow, caution stripes, stencil wood type, rivets, concrete grain. Dark mode is the night shift under sodium lights. Light mode is poured concrete at 7AM. Animation OFF.",
-  tagline: "Labor Day is horribly misnamed, and I intend to fix that personally, this Monday, on the excavator.",
+  name: "The Escape Room",
+  week: "2026-09-12",
+  inspiration: "Edward and Dawn have each done more than 300 escape rooms and they're both TERPECA nominators and voters, so this is the most genuinely him of anything in the queue. The site becomes a room. You're locked in a boardroom, the door has three locks, and the only other thing in the room with you is a system called VERBATIM that answers exactly what you asked, with total confidence, and nothing more. Ask it something lazy and you get an answer that is technically correct and completely useless. Ask it something with a boundary in it and you get a number. Three good questions open the door, and behind the door is the sheet of questions Edward actually uses on AI vendors. That's the 'Asking Good Questions' thesis made playable instead of claimed: a visitor feels the difference between a bad question and a good one in about ninety seconds, which no amount of homepage copy can do. Design is set design rather than page design: lantern amber, aged brass, deep teal shadow, a warning-red countdown, riveted panels, chalkboard, wood grain. Dark mode is the room with the lights off, which is the default mood. Light mode is 'lights on, game over' and should feel like the reveal. Animation is narrowly justified this week: a working countdown and a slow light flicker, nothing drifting or falling.",
+  tagline: "You're locked in a room with an AI that answers exactly what you asked. I have sat in that meeting more times than I'd like to count.",
 
   colors: {
-    // Jobsite. One accent hue can't clear WCAG AA on both asphalt and concrete,
-    // so this week uses the light-mode overrides: hi-vis orange with black text
-    // on the night shift (6.7:1 on asphalt, 7.4:1 text-on-button), and a rust
-    // safety orange with white text on the day shift (5.0:1 on concrete, 6.2:1
-    // on the slab, 7.4:1 text-on-button). Muted text clears 8:1 dark, 5.7:1 light.
-    primary: "#1f2933",            // steel plate, blued
-    secondary: "#f5c400",          // hi-vis yellow (stripes, fills only, never text)
-    accent: "#f0871f",             // hi-vis safety orange, night shift
-    accentHover: "#ffa03a",
-    accentLight: "#9a3404",        // rust safety orange, day shift
-    accentHoverLight: "#7c2a03",
-    onAccent: "#121212",           // black stencil on orange, like every real sign
+    // The room. Lantern amber and aged brass against teal shadow, with the
+    // timer's warning red kept for the clock and nothing else. Every pair
+    // below clears WCAG AA in both modes (measured, not eyeballed): muted
+    // text runs 6.8:1 dark and 6.4:1 light, the amber accent 7.8:1 dark, and
+    // the light mode swaps to a dark brass so the accent doesn't wash out on
+    // plaster. Black sits on the amber button, white on the brass one.
+    primary: "#1d3230",            // deep teal shadow, the corners of the room
+    secondary: "#a8833f",          // aged brass, fittings and hardware
+    accent: "#e2a648",             // lantern amber, lights off
+    accentHover: "#f2bb63",
+    accentLight: "#8a5410",        // dark brass, lights on
+    accentHoverLight: "#6d4009",
+    onAccent: "#10191a",
     onAccentLight: "#ffffff",
-    background: "#131416",         // asphalt at 5AM
-    backgroundLight: "#d9d6ce",    // poured concrete, cured
-    surface: "#1d1f23",            // steel plate under sodium light
-    surfaceLight: "#ecebe6",       // the slab in daylight
-    text: "#ecebe6",
-    textMuted: "#b3b1a9",
-    textDark: "#17181a",
-    textDarkMuted: "#4c4d51",
-    border: "#34373d",
-    borderLight: "#b3b0a7",
-    gradient: "linear-gradient(135deg, #131416 0%, #1f2933 55%, #f0871f 100%)",
+    background: "#0d1416",         // the room, unlit
+    backgroundLight: "#ece5d6",    // the room, fluorescents on
+    surface: "#152021",            // panelling in the lamp's throw
+    surfaceLight: "#f7f2e6",
+    text: "#f2e8d5",
+    textMuted: "#b0a58d",
+    textDark: "#13201f",
+    textDarkMuted: "#4f5a57",
+    border: "#2b3a39",
+    borderLight: "#cfc5ae",
+    gradient: "linear-gradient(135deg, #0d1416 0%, #1d3230 58%, #e2a648 100%)",
   },
 
   fonts: {
-    // Big Shoulders Display: literally drawn for Chicago, the City of Big
-    //   Shoulders, hog butcher for the world. A labor font. Headings.
-    // Big Shoulders Stencil Display: the same face cut as a stencil, for the
-    //   crate-and-caution-sign display words on the home page.
-    // Barlow: grew out of California road signs and license plates. Body.
-    // Barlow Condensed: labels, form fields, the shift board.
-    // Share Tech Mono: the punch clock.
-    heading: "'Big Shoulders Display', 'Barlow Condensed', Impact, 'Arial Narrow', sans-serif",
-    body: "'Barlow', 'Helvetica Neue', Arial, sans-serif",
+    // Cinzel: cut from Roman inscriptional capitals, which is the exact
+    //   register of an engraved brass lock plate. Headings and lock faces.
+    // Spline Sans: a plain, slightly technical grotesque. Body copy, so the
+    //   room's furniture never competes with what the room is arguing.
+    // Share Tech Mono: VERBATIM speaks in this and nothing else does.
+    heading: "'Cinzel', 'Times New Roman', Georgia, serif",
+    body: "'Spline Sans', 'Helvetica Neue', Arial, sans-serif",
     mono: "'Share Tech Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Big+Shoulders+Stencil+Display:wght@700;900&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Barlow+Condensed:wght@500;600;700;800&family=Share+Tech+Mono&display=swap",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Share+Tech+Mono&family=Spline+Sans:wght@300;400;500;600;700&display=swap",
   },
 
   layout: {
     heroStyle: "asymmetric",
     navStyle: "sticky",
-    cardStyle: "solid",
+    cardStyle: "outlined",
     sectionStyle: "alternating",
     footerStyle: "detailed",
   },
 
   animations: {
     entrance: "fade-up",
-    hover: "lift",
+    hover: "glow",
     background: "none",
     pageTransition: "fade",
   },
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "The hardest-working weekend of the year, and somebody has to win it.",
-    description: "Labor Day is the most misnamed holiday on the calendar: a day named for work, on which the entire country does none, and I've decided to make up the difference personally. So this weekend I'm running 3 straight shifts, and on Monday I'm working the excavator, the espresso bar, a sidewalk nobody complained about, and the sewer under the street (the manhole was open, nobody was using it), while you're at a barbecue. (Edward, your 10 AI agents rebuilt this page at 5AM Saturday while you were asleep, and they triaged the inbox, shipped the video, and ran the pitch sweep before you'd found your gloves, so maybe dial back the hi-vis.) Which is, honestly, the whole point of the site, and of the talk that pays for it!",
-    heroImage: "hero-2026-09-05.jpg",
-    imageAlt: "Edward Roske in an orange hi-vis vest and his signature blue fedora with a headlamp strapped around it, sitting in the open cab of a mud-spattered yellow excavator at sunrise, one gloved hand on the joystick, a city skyline behind him and every other machine on the site parked and empty.",
-    ctaText: "Put me on the schedule",
+    subtitle: "Three locks, a machine that answers exactly what you asked, and a hint button I'd use if I were you.",
+    description: "Dawn and I have each done over 300 escape rooms, we vote on the best ones in the world every year, and I've learned exactly one thing that transfers, which is that the good rooms hand you everything you need in the first minute and then sit there while you fail to ask for it. So this week the home page is a room. The door has three locks. The only thing in here with you is a system that answers precisely what you said and not one syllable of what you meant, which is also a fair description of most enterprise AI I've been sold (and, on a bad afternoon, of me, though in my defense nobody has ever paid me a license fee to be pedantic at them, which is a sentence I should probably not have put on my own home page). Ask it something lazy and it'll be right and useless and you'll still be in here. Put an edge on the question and the lock opens. There's a hint button and an answer key, because nobody should be trapped on my home page.",
+    heroImage: "hero-2026-09-12.jpg",
+    imageAlt: "Edward Roske in his signature blue fedora standing calmly in a dim escape room, glancing at his wristwatch with plenty of time left, in front of a floor-to-ceiling wall of roughly three hundred padlocks, every one of them hanging open.",
+    ctaText: "Book the talk this is a demo of",
     ctaLink: "/speaking/",
   },
 };
