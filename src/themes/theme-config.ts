@@ -82,7 +82,7 @@ export interface ThemeConfig {
 
 export const currentTheme: ThemeConfig = {
   name: "The Escape Room",
-  week: "2026-09-12",
+  week: "2026-09-19",
   inspiration: "Edward and Dawn have each done more than 300 escape rooms and they're both TERPECA nominators and voters, so this is the most genuinely him of anything in the queue. The site becomes a room. You're locked in a boardroom, the door has three locks, and the only other thing in the room with you is a system called VERBATIM that answers exactly what you asked, with total confidence, and nothing more. Ask it something lazy and you get an answer that is technically correct and completely useless. Ask it something with a boundary in it and you get a number. Three good questions open the door, and behind the door is the sheet of questions Edward actually uses on AI vendors. That's the 'Asking Good Questions' thesis made playable instead of claimed: a visitor feels the difference between a bad question and a good one in about ninety seconds, which no amount of homepage copy can do. Design is set design rather than page design: lantern amber, aged brass, deep teal shadow, a warning-red countdown, riveted panels, chalkboard, wood grain. Dark mode is the room with the lights off, which is the default mood. Light mode is 'lights on, game over' and should feel like the reveal. Animation is narrowly justified this week: a working countdown and a slow light flicker, nothing drifting or falling.",
   tagline: "You're locked in a room with an AI that answers exactly what you asked. I have sat in that meeting more times than I'd like to count.",
 
