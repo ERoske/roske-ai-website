@@ -99,7 +99,16 @@ const stages = [
   'Toronto EPM User Group', 'World Finance Forums',
 ];
 
+// First entry renders as the full-width feature. Entries with `src` are
+// self-hosted mp4s (public/video/, under GitHub's 100MB file cap); the rest
+// are YouTube IDs.
 const videos = [
+  {
+    src: '/video/pace-profits-plus-2026.mp4',
+    poster: '/images/speaking/pace-profits-plus-2026-poster.jpg',
+    title: "What's New in AI (the full session)",
+    where: 'PACE Profits+ 2026 Virtual Conference, the featured AI session (34 minutes, opening with the CPE learning objectives he has to read aloud before everyone can talk like people)',
+  },
   {
     id: 'qrMbUUvmAls',
     title: 'Masterclass: Ask Edward Roske about Strategic EPM',
@@ -218,6 +227,17 @@ const serviceSchema = {
     author: { '@type': 'Person', name: t.name, jobTitle: t.role },
   })),
 };
+const featureVideoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: "What's New in AI | Edward Roske at PACE Profits+ 2026",
+  description:
+    'The featured AI session at the PACE Profits+ 2026 Virtual Conference: the five new AI engineering terms in plain words, what actually shipped in 2026, where AI still falls down, and three steps to start.',
+  thumbnailUrl: 'https://roske.ai/images/speaking/pace-profits-plus-2026-poster.jpg',
+  contentUrl: 'https://roske.ai/video/pace-profits-plus-2026.mp4',
+  uploadDate: '2026-09-16',
+  duration: 'PT34M27S',
+};
 ---
 
 <BaseLayout
@@ -230,6 +250,7 @@ const serviceSchema = {
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(featureVideoSchema)} />
   </Fragment>
 
   <div class="spk">
@@ -326,10 +347,11 @@ const serviceSchema = {
                 type="button"
                 class="spk-video-facade"
                 data-video-id={v.id}
+                data-video-src={v.src}
                 data-video-title={v.title}
                 aria-label={`Play video: ${v.title}`}>
                 <img
-                  src={`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
+                  src={v.poster ?? `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`}
                   alt={`Video thumbnail: ${v.title}`}
                   loading="lazy"
                   decoding="async" />
@@ -620,7 +642,7 @@ const serviceSchema = {
   </div>
 
   <script is:inline>
-    // Click-to-load YouTube facades (perf: no iframe until requested)
+    // Click-to-load facades (perf: no iframe or video download until requested)
     document.addEventListener('astro:page-load', () => {
       document.querySelectorAll('.spk-video-facade').forEach((btn) => {
         if (btn.dataset.bound) return;
@@ -628,6 +650,18 @@ const serviceSchema = {
         btn.addEventListener('click', () => {
           const id = btn.dataset.videoId;
           const title = btn.dataset.videoTitle || 'Video';
+          if (btn.dataset.videoSrc) {
+            const video = document.createElement('video');
+            video.src = btn.dataset.videoSrc;
+            video.controls = true;
+            video.autoplay = true;
+            video.playsInline = true;
+            video.preload = 'auto';
+            video.setAttribute('aria-label', title);
+            video.className = 'spk-video-player';
+            btn.replaceWith(video);
+            return;
+          }
           const iframe = document.createElement('iframe');
           iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
           iframe.title = title;

@@ -147,9 +147,9 @@
     .spk-section-alt { background: var(--spk-surface); border-top: 1px solid var(--spk-line); border-bottom: 1px solid var(--spk-line); }
 
     /* ---------- videos ---------- */
-    .spk-videos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+    .spk-videos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
     .spk-video-feature { grid-column: 1 / -1; }
-    @media (max-width: 720px) { .spk-videos { grid-template-columns: 1fr; } }
+    @media (max-width: 860px) { .spk-videos { grid-template-columns: 1fr; } }
     .spk-video { margin: 0; }
     .spk-video-facade {
       position: relative; display: block; width: 100%; aspect-ratio: 16 / 9;
