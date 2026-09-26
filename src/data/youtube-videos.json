@@ -1,5 +1,85 @@
 [
   {
+    "title": "Who's Really Buying China's Humanoid Robots?",
+    "videoId": "8nNzkaY2zig",
+    "published": "2026-09-25T14:00:27+00:00",
+    "description": "China makes most of the world's humanoid robots, and many of them may never reach a paying customer. They go to government-funded data centers that pay people to operate the robots and generate training data, which the robot makers then buy back. UBTECH won about 80 million...",
+    "thumbnail": "https://i.ytimg.com/vi/8nNzkaY2zig/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "It's Trying to Please You | David Bartolomei",
+    "videoId": "lAamlFdhtdQ",
+    "published": "2026-09-25T13:00:10+00:00",
+    "description": "David Bartolomei's company listens to Puerto Rico for a living. Every day Monitorea takes in over 500 hours of broadcast and podcast content (plus web and social now), and the brief it puts out at 7:30 AM has replaced the news for him. It started more than 10 years ago with a...",
+    "thumbnail": "https://i.ytimg.com/vi/lAamlFdhtdQ/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Am I Going to Be a Guinea Pig? | Dr. Wilfredo De Jesus-Monge",
+    "videoId": "xM5w9rnCbN8",
+    "published": "2026-09-24T13:00:09+00:00",
+    "description": "Dr. Wilfredo De Jesus-Monge's opening point is that pretty much everything in your medicine cabinet went through clinical research before it got to you. He's spent more than 20 years inside that process and held nearly every job it has, from clinical research coordinator up to...",
+    "thumbnail": "https://i.ytimg.com/vi/xM5w9rnCbN8/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "He Can Find Anything About Anybody | Andres Andreu",
+    "videoId": "O0l9MUH6fuU",
+    "published": "2026-09-23T17:26:45+00:00",
+    "description": "Andres Andreu runs Constella Intelligence, the company that goes and finds your data after somebody steals it. In a given week his team sees about 199 breaches, and you hear about one of them. \"Those other 198 are getting monetized silently in the background.\" So I offered...",
+    "thumbnail": "https://i.ytimg.com/vi/O0l9MUH6fuU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "My Co-Founder Is an AI Named Maia | Elsa Del Pino",
+    "videoId": "_D-4DXnhXOg",
+    "published": "2026-09-21T13:00:05+00:00",
+    "description": "Elsa Del Pino has a co-founder named Maia. Maia is an AI she built on Claude Code, who runs her mornings, writes her own memory files, and has since started spawning helper agents of her own. Elsa's next job for her is running the LinkedIn account, which I assume Maia already...",
+    "thumbnail": "https://i.ytimg.com/vi/_D-4DXnhXOg/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Amazon Named Its Fake AI After an 18th-Century Fraud",
+    "videoId": "128H8P9HckE",
+    "published": "2026-09-20T14:00:26+00:00",
+    "description": "Amazon is shutting down Mechanical Turk, the service Jeff Bezos once called \"artificial artificial intelligence\" - software on the outside, real people doing the work on the inside. It was named after an 18th-century chess \"robot\" that secretly had a human folded inside the...",
+    "thumbnail": "https://i.ytimg.com/vi/128H8P9HckE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Chatbots Don't Bring ROI | Luis Antonio Diaz",
+    "videoId": "ZuV-rbxi3BM",
+    "published": "2026-09-19T00:09:03+00:00",
+    "description": "Luis Antonio Diaz builds AI for governments, municipalities, school boards and utilities. His own phrase for that world is \"the boring industries that really shift worlds behind the scenes.\" None of them can afford an AI that makes something up.",
+    "thumbnail": "https://i.ytimg.com/vi/ZuV-rbxi3BM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Is Nvidia Buying Hugging Face?",
+    "videoId": "8bhoYh06bxc",
+    "published": "2026-09-18T14:00:21+00:00",
+    "description": "Nvidia reportedly agreed to buy Hugging Face, the hub where open-source AI models live, for about 12.9 billion dollars. The company that sells most of the world's AI chips now owns the one place open-source AI was supposed to stay neutral, and Hugging Face had turned that same...",
+    "thumbnail": "https://i.ytimg.com/vi/8bhoYh06bxc/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What Do Hackers Want With Your Claude Account?",
+    "videoId": "i3ORTER8bgE",
+    "published": "2026-09-15T14:00:35+00:00",
+    "description": "Anthropic warned that attackers are hijacking Claude accounts to spend your usage. They copy your logged-in browser session, skip your password and two-factor code, and run up your allowance while you're away. The tell was usage that refilled and drained overnight. One metered...",
+    "thumbnail": "https://i.ytimg.com/vi/i3ORTER8bgE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI Isn't Failing Because of the Model | Lillian Buziak",
+    "videoId": "UxXzkuPUsAc",
+    "published": "2026-09-14T13:00:33+00:00",
+    "description": "Lillian Buziak runs an AI company in Silicon Valley, so you'd expect the cheerleading. Instead she opened with her Gen Z kids overruling her at home, and halfway through she laid out the squeeze her whole company lives in: if you don't adopt it, you fall behind, and if you do...",
+    "thumbnail": "https://i.ytimg.com/vi/UxXzkuPUsAc/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "Who builds an AI data center?",
     "videoId": "2aYnJWep0Wo",
     "published": "2026-09-11T14:00:27+00:00",

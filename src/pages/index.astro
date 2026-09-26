@@ -7,248 +7,301 @@ import WhatsNew from '../components/WhatsNew.astro';
 import { currentTheme } from '../themes/theme-config';
 
 const theme = currentTheme;
-const ROOM_NO = 'ROOM 3';
 
 // ---------------------------------------------------------------------------
-// WHAT'S IN THE ROOM WITH YOU. Four numbers, all real.
+// RIBBONS. The colors a fair hands out. Placings on this page use these and
+// nothing else, so a rosette always means the same thing wherever it shows up.
 // ---------------------------------------------------------------------------
-const inventory = [
-  { v: '300+', k: 'Rooms escaped, each' },
+type Ribbon = 'blue' | 'red' | 'yellow' | 'white' | 'purple' | 'green' | 'gold';
+
+// ---------------------------------------------------------------------------
+// THE PREMIUM BOOK. The four stat stubs, all real.
+// ---------------------------------------------------------------------------
+const stubs = [
   { v: '80+', k: 'Countries visited' },
+  { v: '50+', k: 'Countries spoken in' },
   { v: '15', k: 'Books on the shelf' },
   { v: '25', k: 'Years running interRel' },
 ];
 
 // ---------------------------------------------------------------------------
-// THE PUZZLE. Three stations. Four questions each, and exactly one of them
-// has an edge on it. VERBATIM answers all four with total confidence, which
-// is the joke and also the entire argument: the room never withholds the
-// answer, it withholds it from the question you asked.
-//
-// Every correct answer below is a real fact that is checkable elsewhere on
-// this site, which is the conversion mechanic wearing a game costume.
+// THE JUDGING. Edward's real output, entered in fair divisions and scored
+// against a rubric that was posted before the entries came in. Scores are
+// the judge's opinion (she has many). Every fact on a card is real and
+// checkable elsewhere on this site.
 // ---------------------------------------------------------------------------
-interface RoomQuestion {
-  q: string;
-  a: string;
-  ok?: boolean;
-  n?: string;
+interface Criterion {
+  c: string;
+  pts: number;
 }
 
-interface Station {
-  id: string;
+interface Entry {
   no: string;
-  name: string;
-  prop: string;
-  img: string;
-  imgW: number;
-  imgH: number;
-  imgAlt: string;
-  questions: RoomQuestion[];
-  hint: string;
-  why: string;
+  division: string;
+  entry: string;
+  ribbon: Ribbon;
+  placing: string;
+  short: string;
+  criteria: Criterion[];
+  judge: string;
+  href?: string;
+  external?: boolean;
+  link?: string;
+  img?: { src: string; w: number; h: number; alt: string };
 }
 
-const stations: Station[] = [
+const entries: Entry[] = [
   {
-    id: 'shelf',
-    no: 'I',
-    name: 'The shelf',
-    prop: '15 books with his name on the spine. Nobody has defended the ordering.',
-    img: '/images/escape-room/bookshelf.jpg',
-    imgW: 1195,
-    imgH: 1600,
-    imgAlt:
-      'Edward Roske in his signature blue fedora reaching up to pull a thick technical hardback from a tall library shelf under a brass reading lamp, a small brass key turned in the shelf lock beside his hand and a second key held in his other hand.',
-    questions: [
-      {
-        q: 'Tell me about the books.',
-        a: 'There are fifteen books on the shelf. They are arranged spine out. The tallest is 23.5 centimeters. I can keep going.',
-      },
-      {
-        q: 'Are the books any good?',
-        a: `I am not authorized to hold opinions about books. I can tell you that more than one of them describes software Oracle no longer sells, and that this was not the author's decision.`,
-      },
-      {
-        q: 'How many books did he write?',
-        a: 'Fifteen. You asked for a count, so I counted everything on the shelf. You did not say a count of what.',
-      },
-      {
-        q: 'How many of the fifteen can a stranger buy today?',
-        a: 'Thirteen. The other two were written for training classes and never listed for sale, so a stranger cannot buy them at any price. You put a boundary on the question, which is why it has an answer.',
-        ok: true,
-        n: '13',
-      },
+    no: '0714',
+    division: 'Division 7 | Preserves & Canned Goods',
+    entry: 'Look Smarter Than You Are, 15 jars',
+    ribbon: 'red',
+    placing: 'Second Place',
+    short: '2nd',
+    criteria: [
+      { c: 'Clarity', pts: 9 },
+      { c: 'Consistency of the set', pts: 6 },
+      { c: 'Shelf life', pts: 4 },
+      { c: 'Label accuracy', pts: 7 },
     ],
-    hint: 'Counting is the easy half. Two of the 15 have never been for sale, which is the half nobody asks about.',
-    why: `Four questions at the same shelf, and the only one that got a number out of it was the one that said who's asking and as of when. That's the whole trick, and I wish it were a more interesting trick.`,
+    judge:
+      `Clear all the way through. Shelf life is poor: several jars describe software nobody sells anymore. 13 of 15 available to the public, the other 2 were only ever handed out in his classes. Label says "Look Smarter." I'll be the judge of that.`,
+    href: '/books/',
+    link: 'See all 15 jars',
   },
   {
-    id: 'timeline',
-    no: 'II',
-    name: 'The timeline',
-    prop: 'A career chalked along one wall. It starts at 1997 and it has been argued with.',
-    img: '/images/escape-room/terminal.jpg',
-    imgW: 1600,
-    imgH: 1195,
-    imgAlt:
-      'Edward Roske in his signature blue fedora sitting at a long polished boardroom table in a dim locked room, arms folded, regarding an old beige CRT terminal glowing amber, his expression patient and thoroughly unimpressed.',
-    questions: [
-      {
-        q: 'How long did he run interRel?',
-        a: 'A number of years. You did not say whether to stop counting at the merger, at the name change, or on the day he actually left, and those are three different numbers. So: a number of years.',
-      },
-      {
-        q: 'When did he start?',
-        a: '1997. He was 22. You asked when he started, so I have not told you when he stopped.',
-      },
-      {
-        q: 'What happened to the company?',
-        a: 'Merged with Keste in 2020 to help form Argano, now a billion-dollar consulting firm. He still owns a thirtieth of it. None of that is a number of years.',
-      },
-      {
-        q: 'How many years was he CEO of it, start to finish?',
-        a: '25. 1997 to 2022. He founded it at 22, merged it with Keste in 2020 to help form Argano, and stayed chief executive until 2022. You told me where to start counting and where to stop, which is the only reason this answer has a number in it.',
-        ok: true,
-        n: '25',
-      },
+    no: '0101',
+    division: 'Division 1 | Open Class, Best in Show',
+    entry: 'Asking Good Questions, the show',
+    ribbon: 'purple',
+    placing: 'Reserve Champion',
+    short: 'Res.',
+    criteria: [
+      { c: 'Asks the question on the label', pts: 10 },
+      { c: 'Lets the guest finish', pts: 7 },
+      { c: 'Growth since first entered', pts: 10 },
+      { c: 'Season 1 production', pts: 4 },
     ],
-    hint: `The clock doesn't stop at the merger. Say where the counting starts and where it stops and there is exactly one number.`,
-    why: `If it won't say what it counted, you don't have a number yet, and you'd be amazed how many slides that thing gets onto before anybody checks.`,
+    judge:
+      'Went from 38 subscribers to over half a million, which I would have called impossible for a man talking into a microphone. Season 1 was rough and he knows it. Asks good questions, as advertised, so no bonus points for doing what it says on the jar.',
+    href: 'https://www.youtube.com/@Roske-AI',
+    external: true,
+    link: 'Watch the entry',
   },
   {
-    id: 'wall',
-    no: 'III',
-    name: 'The wall of locks',
-    prop: 'Several hundred padlocks on a board, brass and steel and iron, hung in rows.',
-    img: '/images/escape-room/keypad.jpg',
-    imgW: 1600,
-    imgH: 1195,
-    imgAlt:
-      `Close view of Edward Roske in his signature blue fedora leaning in with a jeweler's loupe to one eye, inspecting a brass three-dial combination lock mounted on a riveted steel plate on a heavy wooden door, a lit oil lantern behind him.`,
-    questions: [
-      {
-        q: 'How many locks are on that wall?',
-        a: 'A quantity. You did not say whether to include the ones still in the crate, the two on the floor, or the one on the door you are trying to open, and each of those gives a different total. So: a quantity.',
-      },
-      {
-        q: 'Who has the key?',
-        a: 'Nobody. None of these were opened with a key.',
-      },
-      {
-        q: 'Open the door.',
-        a: 'That is not a question. I can process it anyway, and the answer is no.',
-      },
-      {
-        q: 'How many did one person open, and over how long?',
-        a: 'Three hundred each, by two people, over about a decade. Edward and Dawn, separately, keeping separate counts, which has caused exactly the argument you are imagining. They also vote on the best rooms in the world every year and are paid nothing for it.',
-        ok: true,
-        n: '300',
-      },
+    no: '4102',
+    division: 'Division 41 | Mechanical & Electrical Exhibits',
+    entry: 'MCP servers for Essbase and Oracle EPM',
+    ribbon: 'yellow',
+    placing: 'Third Place',
+    short: '3rd',
+    criteria: [
+      { c: 'Does what the card says', pts: 10 },
+      { c: 'Returns the real number', pts: 10 },
+      { c: 'Showmanship', pts: 2 },
+      { c: 'Explains itself to a farmer', pts: 3 },
     ],
-    hint: 'Two people, one number each, and neither of them will round it.',
-    why: `You asked for a count without saying a count of what, so it said "a quantity," which is flawless and which I dare you to put in a board deck.`,
+    judge:
+      `Only entry in the building that did exactly what its card said. Asked it for last quarter's number and got last quarter's number, not a nice guess. Lost everything on showmanship. It is a black box with lights on it and the exhibitor would not stop talking.`,
+    href: 'https://caprus.ai/agentcube/',
+    external: true,
+    link: 'See how it works',
+    img: {
+      src: '/images/blue-ribbon/mechanical-exhibit.jpg',
+      w: 1600,
+      h: 893,
+      alt: 'Edward Roske in his signature blue fedora in a fair barn, gesturing enthusiastically at a small black server with blinking lights, draped in red, white, and blue bunting with a yellow third-place rosette taped to it, while an elderly farmer in overalls and a straw hat looks on, unmoved, beside a row of antique tractors.',
+    },
+  },
+  {
+    no: '2305',
+    division: 'Division 23 | Crafts & Demonstrations',
+    entry: 'This website, rebuilt every Saturday at 5 AM',
+    ribbon: 'green',
+    placing: 'Honorable Mention',
+    short: 'H.M.',
+    criteria: [
+      { c: 'Originality', pts: 10 },
+      { c: 'Consistency', pts: 1 },
+      { c: 'Workmanship', pts: 8 },
+      { c: `Judge's patience`, pts: 3 },
+    ],
+    judge:
+      'I came back on Tuesday to check a detail and it was the same. I came back on Saturday and it was a different website. Built by his agents while he sleeps, which he says is the point. Pick one.',
+    href: '/speaking/',
+    link: 'The talk it demonstrates',
+  },
+  {
+    no: '3004',
+    division: 'Division 30 | Butter Sculpture, Adult',
+    entry: 'Self-portrait, life size, with hat',
+    ribbon: 'white',
+    placing: 'Fourth Place',
+    short: '4th',
+    criteria: [
+      { c: 'Likeness', pts: 9 },
+      { c: 'The hat', pts: 10 },
+      { c: 'Structural integrity', pts: 5 },
+      { c: 'Humility of subject', pts: 1 },
+    ],
+    judge:
+      'Good likeness. The hat is correct. Exhibitor stood next to it for 6 hours explaining the hat to anybody who slowed down. Left ear softening by 2 PM. Fourth of 4 entries.',
+  },
+];
+
+const total = (e: Entry) => e.criteria.reduce((s, c) => s + c.pts, 0);
+
+// ---------------------------------------------------------------------------
+// THE GRAND CHAMPION BOARD. The real record, pinned up as fair placings.
+// ---------------------------------------------------------------------------
+const board: { ribbon: Ribbon; award: string; cls: string; note: string }[] = [
+  {
+    ribbon: 'gold',
+    award: 'Grand Champion',
+    cls: 'Running a consulting firm, 1997 to 2022',
+    note: 'Founded interRel at 22 and ran it for 25 years, then merged it with Keste in 2020 to help found Argano.',
+  },
+  {
+    ribbon: 'blue',
+    award: 'Blue Ribbon',
+    cls: 'Essbase Certification Exam',
+    note: 'First perfect score anyone ever posted on it.',
+  },
+  {
+    ribbon: 'purple',
+    award: 'Lifetime Achievement',
+    cls: 'ODTUG, Kscope25',
+    note: 'Fewer than 5 people have been handed one.',
+  },
+  {
+    ribbon: 'blue',
+    award: '8 Speaker Awards',
+    cls: '6 Top Speaker, 2 Best Overall',
+    note: 'Including Essbase Speaker of the Year at Kscope18.',
+  },
+  {
+    ribbon: 'red',
+    award: 'Partner of the Year, 5 Times',
+    cls: 'Oracle, through interRel',
+    note: 'Also the longest-standing Oracle Platinum EPM partner.',
+  },
+  {
+    ribbon: 'blue',
+    award: 'Outstanding Graduate',
+    cls: 'MS Data Science, SMU',
+    note: 'A 4.0, earned in his forties, which he mentions more than he should.',
+  },
+  {
+    ribbon: 'yellow',
+    award: 'Endurance',
+    cls: 'Everest Base Camp, April 2026',
+    note: '2 weeks on foot to 18,571 feet with Dawn. Son Doong Cave the year before.',
+  },
+  {
+    ribbon: 'green',
+    award: 'Puzzles & Games',
+    cls: 'Escape rooms, 300+ each',
+    note: 'He and Dawn keep separate counts and vote in the TERPECA awards.',
   },
 ];
 
 // ---------------------------------------------------------------------------
-// THE PRIZE. What is actually behind the door: the questions Edward uses on
-// vendors, each one paired with the lazy version that gets waved through.
+// FOOD HE REVIEWED AND COULD NOT EAT. Edward is a lacto-ovo vegetarian, so
+// the eggs and the dairy are fine and everything with a face is not.
 // ---------------------------------------------------------------------------
-const sheet = [
+const fried: { item: string; can: boolean; score: number; review: string }[] = [
   {
-    lazy: 'How accurate is it?',
-    good: `What does it do when it doesn't know?`,
-    note: `Accuracy is a number on their slide and it's always a good number. What you live with is what it does at the edge of what it knows, which is the part that turns up in your close at 11pm (never at 2pm, and I've stopped trying to explain why).`,
+    item: 'Corny dog',
+    can: false,
+    score: 5,
+    review: `Could not eat. Stood downwind of it for 10 minutes, which I'm told is not how it works.`,
   },
   {
-    lazy: 'Is there a human in the loop?',
-    good: 'Which decisions does this make with no person involved, and whose name is on those?',
-    note: 'Everybody says yes to the first one, and the second one produces a list, which is usually longer than the room expected and which somebody in the back is already doing the math on.',
+    item: 'Turkey leg',
+    can: false,
+    score: 4,
+    review: `Could not eat. Held one for a photo and felt I'd let the turkey down, and also the man who sold it to me.`,
   },
   {
-    lazy: 'Can I see a demo?',
-    good: 'Show me a run where it was wrong, and what you changed afterward.',
-    note: 'A demo is a rehearsed answer, so ask for the postmortem instead, and a vendor who hasn\'t got one has either never shipped or never looked very hard.',
+    item: 'Chicken-fried bacon',
+    can: false,
+    score: 5,
+    review: 'Could not eat, on 2 separate counts. The name is a confession. Full marks, sight unseen.',
   },
   {
-    lazy: 'Is our data secure?',
-    good: 'If we leave in 18 months, what do we walk out with, in what format?',
-    note: `They'll pass the security question, everybody passes the security question. Whether you can walk your own data out in a format somebody else can read is the one that decides what you're worth at renewal, and nobody asks it until month 17.`,
+    item: 'Fried butter',
+    can: true,
+    score: 2,
+    review: `Could eat. Did. I had carved a whole person out of this material that morning and I'm still working through how I feel about it.`,
   },
   {
-    lazy: 'What is your SLA?',
-    good: 'Who at your company gets woken up when this is wrong at 2am on day 3 of close?',
-    note: `Ask who, by name, with a phone number, and watch them reach for the support tier instead. The SLA is what they owe you after it's already gone wrong, which is the wrong end of the problem to be negotiating from at 2am.`,
+    item: 'Funnel cake',
+    can: true,
+    score: 5,
+    review: `Could eat, ate all of it. Powdered sugar in places I won't find until Tuesday.`,
   },
   {
-    lazy: 'What does it cost?',
-    good: 'What did this cost your last customer my size, all in, counting our people?',
-    note: `The license is the small number. Integration, cleanup, the data nobody wanted to admit was a mess, the 2 people who now babysit it, the consultant you bring in at month 4, and a bunch more, and none of that is on the quote they hand you, which is why the number worth asking for is the one their last customer actually paid. Ask them, not the rep.`,
+    item: 'Lemonade',
+    can: true,
+    score: 3,
+    review: `What I'm holding in every photo this week. 4 refills.`,
   },
 ];
 
 // ---------------------------------------------------------------------------
-// OBJECTS IN THE ROOM. The 6 real projects, catalogued the way a room's
-// props list is catalogued: what it is, whether it is in play.
+// STILL IN THE BARN. The 6 real projects, entered but not yet judged.
 // ---------------------------------------------------------------------------
-const objects = [
+const barn = [
   {
-    tag: 'OBJ-01',
+    tag: 'Entry 01',
     name: 'MCP Servers for Enterprise Finance',
-    state: 'In play',
-    tone: 'go',
-    note: `Plumbing so an AI reads the real number out of Essbase and Oracle EPM instead of remembering one that sounds about right. Essbase and EPM Planning have shipped, Financial Close and Consolidations is in beta (beta meaning it works and I'm not ready to say that out loud yet). It's the least glamorous thing on this list and the one most likely to matter.`,
+    state: 'On the table',
+    note: `Plumbing so an AI reads the real number out of Essbase and Oracle EPM instead of remembering one that sounds about right. Essbase and EPM Planning have shipped, Financial Close and Consolidations is in beta (beta meaning it works and I'm not ready to say that out loud yet).`,
     href: 'https://caprus.ai/agentcube/',
     external: true,
     cta: 'See how it works',
   },
   {
-    tag: 'OBJ-02',
+    tag: 'Entry 02',
     name: 'Caribbean AI Summit',
     state: 'October 9 to 10',
-    tone: 'go',
-    note: `Co-chairing the biggest AI conference we've put on down here, at the Convention Center in San Juan: 30-plus speakers, 3 tracks, every session translated live between English and Spanish. The lineup is public now, including Kay Firth-Butterfield (formerly Head of AI at the World Economic Forum), MIT's Fabio Duarte, and Idoia Salazar, who advises the EU Parliament on AI. Come in a day early and I'll show you the island (I'm told I'm a mediocre tour guide with strong opinions about which of the two forts is the good fort).`,
+    note: `Co-chairing it at the Puerto Rico Convention Center in San Juan: 30-plus speakers, 3 tracks, every session translated live between English and Spanish. Kay Firth-Butterfield (formerly Head of AI at the World Economic Forum), MIT's Fabio Duarte, and Idoia Salazar, who advises the EU Parliament on AI, are on the program. Come in a day early and I'll show you the island!`,
     href: 'https://www.caribbeansummit.ai/',
     external: true,
     cta: 'Get a seat',
   },
   {
-    tag: 'OBJ-03',
+    tag: 'Entry 03',
     name: 'Caprus',
-    state: 'In play',
-    tone: 'go',
-    note: `Investor in the AI software and services firm building faster operations for finance teams. Lillian Buziak runs it. I turn up, point at the roadmap, and they're gracious about it.`,
+    state: 'On the table',
+    note: `I'm an investor, and that's the whole job. Lillian Buziak runs it, and they sell and support AgentCube (the MCP servers above), which spares everybody from having me do it.`,
     href: 'https://caprus.ai',
     external: true,
     cta: 'Meet the team',
   },
   {
-    tag: 'OBJ-04',
+    tag: 'Entry 04',
     name: 'Everest Base Camp',
-    state: 'Solved',
-    tone: 'done',
-    note: `Two weeks on foot to 18,571 feet with Dawn in April. The trail log is on the blog, including the parts that went badly and the part where I asked the guides more questions than they had signed up for.`,
+    state: 'Judged, placed',
+    note: `Two weeks on foot to 18,571 feet with Dawn in April. The trail log is on the blog, including the last 400 feet of Kala Patthar, which were the hardest 400 feet of the trip.`,
     href: '/blog/everest-base-camp-summit/',
     external: false,
     cta: 'Read the trail log',
   },
   {
-    tag: 'OBJ-05',
+    tag: 'Entry 05',
     name: "AI Dungeon Master's Screen",
-    state: 'Set aside',
-    tone: 'hold',
-    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It's never earned a dollar, it isn't finished, and I would keep it over half the paying ones.`,
+    state: 'Back of the barn',
+    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It's never earned a dollar, it isn't finished, and I'd keep it over half the paying ones.`,
     href: null,
     external: false,
     cta: 'Quiet build',
   },
   {
-    tag: 'OBJ-06',
+    tag: 'Entry 06',
     name: 'Puerto Rico AI Community',
-    state: 'In play',
-    tone: 'go',
-    note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. Every other month, free, both languages, and we argue until something useful falls out. Come to one!`,
+    state: 'On the table',
+    note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. Bi-monthly, free, both languages, and if you're on the island, come.`,
     href: 'https://praicommunity.org/',
     external: true,
     cta: 'Join the next one',
@@ -256,35 +309,45 @@ const objects = [
 ];
 
 // ---------------------------------------------------------------------------
-// SET DRESSING. Two plates that are not stations, used to break the grid.
+// THE JUDGING CARD. Score your own AI pilot. 4 criteria, 10 points each,
+// posted in advance, which is already more than most pilots get.
 // ---------------------------------------------------------------------------
-interface Plate {
-  src: string;
-  w: number;
-  h: number;
-  alt: string;
-  cap: string;
-  tilt: number;
-  wide?: boolean;
-}
-
-const dressing: Plate[] = [
+const pilotCriteria = [
   {
-    src: '/images/escape-room/vent.jpg',
-    w: 1195,
-    h: 1600,
-    alt: 'Edward Roske in his signature blue fedora lowering himself out of a square ceiling air vent onto a rolling office chair, holding the loose vent grille in one hand, entirely composed about it.',
-    cap: `I check the ceiling in every room, on a chair with wheels, which is the part the staff watch on the monitor and the reason one of them now greets me by name.`,
-    tilt: 1.8,
+    id: 'aim',
+    q: 'What was it supposed to do, in 1 sentence?',
+    opts: [
+      { t: 'Written down before we started', p: 10 },
+      { t: 'We could reconstruct it if pressed', p: 5 },
+      { t: 'It was a pilot', p: 0 },
+    ],
   },
   {
-    src: '/images/escape-room/timer.jpg',
-    w: 1600,
-    h: 893,
-    alt: 'Edward Roske in his signature blue fedora standing in a dim room with his hands behind his back, calmly watching a wall-mounted split-flap countdown clock that reads three minutes and thirty-three seconds, lit red.',
-    cap: `3:33. There's a kind of player who speeds up here and a kind who slows down, and the second kind gets out more often (I've watched Dawn do it for a decade and it's still annoying).`,
-    tilt: -1.2,
-    wide: true,
+    id: 'base',
+    q: 'What number did it have to beat?',
+    opts: [
+      { t: 'We measured a baseline first', p: 10 },
+      { t: 'We have a strong feeling', p: 5 },
+      { t: 'What baseline?', p: 0 },
+    ],
+  },
+  {
+    id: 'edge',
+    q: `What does it do when it doesn't know?`,
+    opts: [
+      { t: `Says so, and we've watched it happen`, p: 10 },
+      { t: 'We believe it says so', p: 5 },
+      { t: 'Answers anyway, beautifully', p: 0 },
+    ],
+  },
+  {
+    id: 'name',
+    q: 'Whose name is on the output?',
+    opts: [
+      { t: 'A person, who checks it', p: 10 },
+      { t: 'A team, collectively', p: 5 },
+      { t: `The vendor's`, p: 0 },
+    ],
   },
 ];
 ---
@@ -292,38 +355,39 @@ const dressing: Plate[] = [
 <BaseLayout>
   <WeeklyAnimation />
 
-  <!-- ================= DOOR STRIP ================= -->
-  <div class="er-strip" role="presentation">
-    <div class="er-strip-inner">
-      <span class="er-strip-item er-strip-mark">{ROOM_NO}</span>
-      <span class="er-strip-item">Occupancy: 1</span>
-      <span class="er-strip-item">Door: locked</span>
-      <span class="er-strip-item">Locks remaining: 3</span>
-      <span class="er-strip-item">Game master: off duty</span>
-      <span class="er-strip-item">Hints: unlimited, no penalty</span>
+  <!-- ================= ADMISSION STRIP ================= -->
+  <div class="br-strip" role="presentation">
+    <div class="br-strip-inner">
+      <span class="br-strip-item br-strip-mark">Admit one</span>
+      <span class="br-strip-item">Exhibition hall</span>
+      <span class="br-strip-item">Division: Enterprise AI</span>
+      <span class="br-strip-item">Judging: Saturday, 9 AM</span>
+      <span class="br-strip-item">Exhibitor: E. Roske, late of The Great State of Texas</span>
+      <span class="br-strip-item">No refunds</span>
     </div>
   </div>
 
-  <!-- ================= HERO: THE ROOM ================= -->
-  <section class="er-hero">
-    <div class="er-hero-grid">
-      <div class="er-hero-copy">
-        <p class="er-kicker">Roske.AI | {ROOM_NO} | Week of September 19, 2026</p>
-        <h1 class="er-h1">
-          <span class="er-h1-line">You're locked in</span>
-          <span class="er-h1-line">with an <span class="er-h1-hit">AI.</span></span>
+  <!-- ================= HERO: THE PLACING ================= -->
+  <section class="br-hero">
+    <div class="br-bunting" aria-hidden="true"></div>
+    <div class="br-hero-grid">
+      <div class="br-hero-copy">
+        <p class="br-kicker">Roske.AI | Exhibition Hall | Week of September 26, 2026</p>
+        <h1 class="br-h1">
+          <span class="br-h1-line">Fourth</span>
+          <span class="br-h1-line">Place.</span>
+          <span class="br-h1-script">and I've read the card</span>
         </h1>
-        <p class="er-hero-sub">{theme.hero.subtitle}</p>
-        <p class="er-hero-desc">{theme.hero.description}</p>
-        <div class="er-hero-cta">
-          <a href="#the-room" class="er-btn-solid">Start the room</a>
-          <a href={theme.hero.ctaLink} class="er-btn-line">{theme.hero.ctaText}</a>
+        <p class="br-hero-sub">{theme.hero.subtitle}</p>
+        <p class="br-hero-desc">{theme.hero.description}</p>
+        <div class="br-hero-cta">
+          <a href="#the-judging" class="br-btn-solid">Read the judging</a>
+          <a href={theme.hero.ctaLink} class="br-btn-line">{theme.hero.ctaText}</a>
         </div>
       </div>
 
-      <figure class="er-hero-fig">
-        <div class="er-frame er-frame-hero">
-          <span class="er-plate-tag" aria-hidden="true">The wall</span>
+      <figure class="br-hero-fig">
+        <div class="br-frame br-frame-hero">
           <img
             src={`/images/${theme.hero.heroImage}`}
             alt={theme.hero.imageAlt}
@@ -332,258 +396,355 @@ const dressing: Plate[] = [
             loading="eager"
             decoding="async"
             fetchpriority="high"
-            class="er-hero-img"
+            class="br-hero-img"
           />
+          <span class="br-rosette br-rosette-white br-hero-rosette" aria-hidden="true">
+            <span class="br-rosette-disc"><span class="br-rosette-face">4th</span></span>
+          </span>
         </div>
-        <figcaption class="er-hero-cap">
-          Every lock on that board came off a door that was supposed to stay shut, and almost none of them
-          came off because somebody was clever with a paperclip. Mostly somebody finally asked the right
-          thing out loud at minute 48, and it was usually the person who'd said nothing for the first 40.
+        <figcaption class="br-hero-cap">
+          Division 30, Butter Sculpture, Adult. The case is kept at 40 degrees, which I'm told is about
+          what the judge was running at too, and there were 4 entries, so I'd ask you not to do the math.
         </figcaption>
       </figure>
     </div>
 
-    <!-- inventory -->
-    <div class="er-inv" aria-label="What is in the room">
-      <p class="er-inv-label">Contents of the room</p>
-      <div class="er-inv-grid">
-        {inventory.map((s) => (
-          <div class="er-inv-cell">
-            <span class="er-inv-v">{s.v}</span>
-            <span class="er-inv-k">{s.k}</span>
-          </div>
-        ))}
-      </div>
-    </div>
+    <ul class="br-stubs" aria-label="The numbers">
+      {stubs.map((s) => (
+        <li class="br-stub">
+          <span class="br-stub-v">{s.v}</span>
+          <span class="br-stub-k">{s.k}</span>
+        </li>
+      ))}
+    </ul>
   </section>
 
-  <!-- ================= THE ROOM (the puzzle) ================= -->
-  <section class="er-room" id="the-room">
-    <div class="er-room-inner">
-      <div class="er-room-head">
+  <!-- ================= THE JUDGING ================= -->
+  <section class="br-judging" id="the-judging">
+    <div class="br-wrap">
+      <div class="br-judging-head">
         <div>
-          <p class="er-eyebrow er-eyebrow-on-dark">The room | Three locks</p>
-          <h2 class="er-h2 er-h2-on-dark">Ask it something.</h2>
-          <p class="er-deck er-deck-on-dark">
-            The terminal in the corner runs a system called VERBATIM. It answers exactly what you asked,
-            with total confidence, and nothing else, which means it's never wrong and frequently useless.
-            Three of the questions at each station are the kind people actually ask. One has an edge on it
-            and produces a number. Three numbers open the door, and the whole thing takes about 90
-            seconds (Dawn hasn't tried it yet, and I've already made my peace with whatever her time turns out to be).
+          <p class="br-eyebrow">The judging | 5 entries</p>
+          <h2 class="br-h2">Here's why I lost.</h2>
+          <p class="br-deck">
+            Every entry at a county fair goes in against a rubric that was posted before anybody showed up,
+            and afterward a judge writes down exactly where you lost the points, on a card, next to your jar,
+            where your neighbors can read it. I've spent 30 years around enterprise software (31 if you count 1995,
+            and I do) and I've never once been handed a card like that about an AI pilot (I've been handed a lot of slides that said
+            "success," which is a different document). So I entered my own work and asked for the card.
+            You'll notice I didn't win anything, and you'll also notice you know exactly why (mostly the
+            butter).
           </p>
         </div>
-        <div class="er-clock" aria-label="Room timer">
-          <span class="er-clock-label">Time remaining</span>
-          <span class="er-clock-digits" id="er-clock" data-seconds="3600">60:00</span>
-          <span class="er-clock-note">Nothing happens at zero. It's a prop.</span>
-        </div>
+
+        <aside class="br-rules" aria-label="Posted rules of judging">
+          <p class="br-rules-title">Posted rules of judging</p>
+          <ol class="br-rules-list">
+            <li>4 criteria per entry, 10 points each, posted before the entries come in.</li>
+            <li>The judge writes down why. On the card. Where everyone can read it.</li>
+            <li>Entries must be the exhibitor's own work (agents count, the judge asked).</li>
+            <li>Placings are final. Complaints may be directed to the butter.</li>
+          </ol>
+        </aside>
       </div>
 
-      <ol class="er-stations">
-        {stations.map((st) => (
-          <li class="er-station" data-station={st.id}>
-            <div class="er-station-body">
-              <header class="er-station-head">
-                <span class="er-station-no" aria-hidden="true">{st.no}</span>
+      <figure class="br-judge-fig">
+        <div class="br-frame br-frame-tilt-l">
+          <img
+            src="/images/blue-ribbon/judging-table.jpg"
+            alt="Edward Roske in his signature blue fedora and a brown cardigan standing at a fair judging table with his hands clasped hopefully, watching a stern older woman judge in reading glasses hold a jar of preserves up to the window, clipboard in her other hand, blue, red, and white rosettes laid out on the white tablecloth."
+            width="1600"
+            height="1195"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption class="br-cap">
+          The preserves division. She held every jar up to the window, one at a time, for a very long time,
+          and at no point did she ask me what I thought of it, which I've since decided was the correct call.
+        </figcaption>
+      </figure>
+
+      <ol class="br-cards">
+        {entries.map((e) => (
+          <li class={`br-card br-card-${e.ribbon}`}>
+            <article class="br-card-paper">
+              <span class="br-card-hole" aria-hidden="true"></span>
+              <header class="br-card-head">
                 <div>
-                  <h3 class="er-station-name">
-                    {st.name}
-                    <span class="er-station-state" data-state-for={st.id}>Locked</span>
-                  </h3>
-                  <p class="er-station-prop">{st.prop}</p>
+                  <p class="br-card-no">Entry No. {e.no}</p>
+                  <p class="br-card-div">{e.division}</p>
+                  <h3 class="br-card-entry">{e.entry}</h3>
                 </div>
+                <span class={`br-rosette br-rosette-${e.ribbon} br-rosette-sm`} aria-hidden="true">
+                  <span class="br-rosette-disc"><span class="br-rosette-face">{e.short}</span></span>
+                </span>
               </header>
 
-              <fieldset class="er-qset">
-                <legend class="er-qlegend">Say one of these out loud. Only one of them is a question worth asking.</legend>
-                <div class="er-qgrid">
-                  {st.questions.map((q, qi) => (
-                    <button
-                      type="button"
-                      class="er-q"
-                      data-ask={st.id}
-                      data-answer={q.a}
-                      data-ok={q.ok ? 'yes' : 'no'}
-                      data-number={q.n ?? ''}
-                      data-index={qi}
-                    >
-                      <span class="er-q-mark" aria-hidden="true">?</span>
-                      <span class="er-q-text">{q.q}</span>
-                    </button>
-                  ))}
+              {e.img && (
+                <div class="br-card-img">
+                  <img
+                    src={e.img.src}
+                    alt={e.img.alt}
+                    width={e.img.w}
+                    height={e.img.h}
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
-              </fieldset>
+              )}
 
-              <div class="er-readout" data-readout-for={st.id}>
-                <p class="er-readout-name" aria-hidden="true">VERBATIM v1.0</p>
-                <p class="er-readout-text" role="status" aria-live="polite" data-text-for={st.id}
-                  >Awaiting input. I will answer precisely what you ask me.</p
+              <table class="br-score">
+                <caption class="br-sr">Scores for {e.entry}</caption>
+                <tbody>
+                  {e.criteria.map((c) => (
+                    <tr>
+                      <th scope="row">{c.c}</th>
+                      <td><span class="br-pts">{c.pts}</span><span class="br-of">/10</span></td>
+                    </tr>
+                  ))}
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th scope="row">Total</th>
+                    <td><span class="br-pts">{total(e)}</span><span class="br-of">/40</span></td>
+                  </tr>
+                </tfoot>
+              </table>
+
+              <p class="br-placing">{e.placing}</p>
+              <p class="br-judge-note"><span class="br-sr">Judge's comment: </span>{e.judge}</p>
+              <p class="br-judge-sig" aria-hidden="true">Judge No. 4</p>
+
+              {e.href && (
+                <a
+                  class="br-card-link"
+                  href={e.href}
+                  target={e.external ? '_blank' : undefined}
+                  rel={e.external ? 'noopener noreferrer' : undefined}
                 >
-                <p class="er-readout-why" data-why-for={st.id} hidden>{st.why}</p>
-              </div>
-
-              <div class="er-station-foot">
-                <details class="er-hint">
-                  <summary>I'm stuck</summary>
-                  <p>{st.hint}</p>
-                </details>
-                <p class="er-got" data-got-for={st.id} hidden>
-                  <span class="er-got-label">Lock {st.no} open. Number:</span>
-                  <span class="er-got-n">{st.questions.find((q) => q.ok)?.n}</span>
-                </p>
-              </div>
-            </div>
-
-            <figure class="er-station-fig">
-              <div class="er-frame">
-                <img
-                  src={st.img}
-                  alt={st.imgAlt}
-                  width={st.imgW}
-                  height={st.imgH}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-            </figure>
+                  {e.link} <span aria-hidden="true">&#8594;</span>
+                </a>
+              )}
+            </article>
           </li>
         ))}
       </ol>
-
-      <!-- ---------------- THE DOOR ---------------- -->
-      <div class="er-door" id="er-door">
-        <div class="er-door-plate">
-          <p class="er-eyebrow er-eyebrow-on-dark">The door</p>
-          <h3 class="er-door-h">Three numbers, in order.</h3>
-          <p class="er-door-deck">
-            Type them in and turn the handle. Wrong combinations cost you nothing here, which is not true
-            of the version of this you do with a vendor.
-          </p>
-
-          <form class="er-dials" id="er-lock-form" novalidate>
-            <div class="er-dial">
-              <label for="er-d1">First</label>
-              <input id="er-d1" name="d1" type="text" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="--" />
-            </div>
-            <div class="er-dial">
-              <label for="er-d2">Second</label>
-              <input id="er-d2" name="d2" type="text" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="--" />
-            </div>
-            <div class="er-dial">
-              <label for="er-d3">Third</label>
-              <input id="er-d3" name="d3" type="text" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="---" />
-            </div>
-            <button type="submit" class="er-btn-solid er-dial-go">Turn the handle</button>
-          </form>
-
-          <p class="er-door-msg" role="status" aria-live="polite" id="er-door-msg"></p>
-
-          <button type="button" class="er-giveup" id="er-giveup">
-            Show me the answer
-          </button>
-        </div>
-
-        <!-- the reveal -->
-        <div class="er-reveal" id="er-reveal" hidden>
-          <p class="er-reveal-eyebrow">The door is open</p>
-          <h3 class="er-reveal-h">Take this with you.</h3>
-          <p class="er-reveal-deck">
-            6 questions I actually ask before I sign anything with the word AI in the contract, each one
-            next to the lazy version that gets waved through in the room. The lazy ones all have answers,
-            which is exactly why they get waved through.
-          </p>
-          <ol class="er-sheet">
-            {sheet.map((s, i) => (
-              <li class="er-sheet-row">
-                <span class="er-sheet-no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                <div class="er-sheet-body">
-                  <p class="er-sheet-lazy"><span>Usually asked:</span> {s.lazy}</p>
-                  <p class="er-sheet-good">{s.good}</p>
-                  <p class="er-sheet-note">{s.note}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-          <p class="er-reveal-foot">
-            I do a 45-minute version of this on a stage, with worse jokes and a live demo of the
-            agents that rebuilt this page at 5am while I was asleep.
-            <a href="/speaking/">That talk is for hire</a>. There's also a door in this building that has
-            been unlocked since 1997 and I've never had the heart to seal up:
-            <a href="/april-1-1997.html">try the handle</a>.
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 
   <!-- ================= LATEST DISPATCHES ================= -->
   <LatestContent
-    eyebrow="Slid under the door"
-    heading="Newest <em>in the room.</em>"
-    deck="Writing and video, most recent first. None of it is part of the puzzle. It's just the work."
+    eyebrow="Tacked to the barn door"
+    heading="Fresh <em>this week.</em>"
+    deck="Writing and video, newest first. None of it was entered in anything, so none of it has been scored, which I'm choosing to find restful."
   />
 
   <!-- ================= BOOK EDWARD ================= -->
-  <SpeakerCTA eyebrow="The main event" />
+  <SpeakerCTA eyebrow="Main stage, all week" />
 
-  <!-- ================= SET DRESSING ================= -->
-  <section class="er-dressing" id="dressing">
-    <div class="er-dressing-inner">
-      <div class="er-dressing-head">
-        <p class="er-eyebrow">Also in here</p>
-        <h2 class="er-h2">Things I check in every room.</h2>
-        <p class="er-deck">
-          300 rooms in, the habits are involuntary: I lift the rug, I count the chairs, I check behind the
-          framed thing, I pull on the bookcase to see if it's a bookcase, and I have been asked by an
-          actual game master to please stop doing that to his bookcase.
+  <!-- ================= SCORE YOUR PILOT ================= -->
+  <section class="br-pilot" id="score-your-pilot">
+    <div class="br-wrap br-pilot-grid">
+      <div class="br-pilot-copy">
+        <p class="br-eyebrow">Open class | Walk-in entries welcome</p>
+        <h2 class="br-h2">Bring your pilot to the table.</h2>
+        <p class="br-deck">
+          Same rules as mine: 4 criteria, 10 points each, posted before you enter. These are the 4 I'd
+          actually ask about any AI project a finance team tells me went well (and I do ask, usually before
+          anybody's asked me to). Nothing leaves this page, nothing gets submitted, and nobody finds out
+          how you scored unless you tell them.
         </p>
       </div>
-      <div class="er-plates">
-        {dressing.map((p) => (
-          <figure class={`er-plate${p.wide ? ' er-plate-wide' : ''}`} style={`--tilt:${p.tilt}deg`}>
-            <div class="er-frame">
-              <img src={p.src} alt={p.alt} width={p.w} height={p.h} loading="lazy" decoding="async" />
+
+      <form class="br-entry-form" id="br-entry-form" aria-describedby="br-entry-result">
+        <p class="br-form-title">Official judging card | Open class</p>
+        {pilotCriteria.map((c, i) => (
+          <fieldset class="br-crit">
+            <legend class="br-crit-q"><span class="br-crit-n">{i + 1}</span>{c.q}</legend>
+            <div class="br-crit-opts">
+              {c.opts.map((o) => (
+                <label class="br-opt">
+                  <input type="radio" name={c.id} value={o.p} />
+                  <span class="br-opt-t">{o.t}</span>
+                  <span class="br-opt-p">{o.p}</span>
+                </label>
+              ))}
             </div>
-            <figcaption>{p.cap}</figcaption>
-          </figure>
+          </fieldset>
         ))}
-      </div>
+        <div class="br-result" id="br-entry-result" role="status" aria-live="polite">
+          <span class="br-rosette br-rosette-blank br-rosette-sm" id="br-result-rosette" aria-hidden="true">
+            <span class="br-rosette-disc"><span class="br-rosette-face" id="br-result-short">?</span></span>
+          </span>
+          <div>
+            <p class="br-result-score"><span id="br-result-total">0</span>/40 <span id="br-result-count">(0 of 4 judged)</span></p>
+            <p class="br-result-place" id="br-result-place">Awaiting entry</p>
+            <p class="br-judge-note br-result-note" id="br-result-note">Pick one answer per line. Honest ones score better in the long run, though not on this card.</p>
+          </div>
+        </div>
+      </form>
     </div>
   </section>
 
-  <!-- ================= OBJECTS IN THE ROOM (6 projects) ================= -->
-  <section class="er-objects" id="objects">
-    <div class="er-objects-inner">
-      <div class="er-objects-head">
-        <p class="er-eyebrow">Props list</p>
-        <h2 class="er-h2">What's actually on the table.</h2>
-        <p class="er-deck">
-          6 things I'm working on, catalogued the way a game master catalogues a room: what it is, and
-          whether it's in play. One of them hasn't moved since spring and I keep not admitting that.
-        </p>
+  <!-- ================= GRAND CHAMPION BOARD ================= -->
+  <section class="br-board" id="the-board">
+    <div class="br-wrap">
+      <p class="br-eyebrow br-eyebrow-center">The Grand Champion board</p>
+      <h2 class="br-h2 br-h2-center">Previous years, for context.</h2>
+      <p class="br-deck br-deck-center">
+        In fairness to me (somebody has to be), I haven't always placed fourth. These are real, they're
+        pinned up in no particular order, and the judge would like it noted that none of them were in butter.
+      </p>
+
+      <ul class="br-board-grid">
+        {board.map((b, i) => (
+          <li class={`br-prize br-prize-${b.ribbon}`} style={`--tilt:${(i % 3 === 0 ? -1.4 : i % 3 === 1 ? 0.9 : -0.4)}deg`}>
+            <span class={`br-rosette br-rosette-${b.ribbon} br-rosette-xs`} aria-hidden="true">
+              <span class="br-rosette-disc"><span class="br-rosette-face"></span></span>
+            </span>
+            <p class="br-prize-award">{b.award}</p>
+            <p class="br-prize-cls">{b.cls}</p>
+            <p class="br-prize-note">{b.note}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= THE MIDWAY ================= -->
+  <section class="br-midway" id="the-midway">
+    <div class="br-lights" aria-hidden="true"></div>
+    <div class="br-wrap">
+      <p class="br-eyebrow br-eyebrow-neon">The midway | After the judging</p>
+      <h2 class="br-h2 br-h2-neon">Howdy, folks.</h2>
+
+      <div class="br-tex">
+        <figure class="br-tex-fig">
+          <div class="br-frame br-frame-tall">
+            <img
+              src="/images/blue-ribbon/big-tex.jpg"
+              alt="Edward Roske on hidden stilts dressed as a giant fairground cowboy, in a red-and-white checked western shirt, enormous jeans, a big silver belt buckle, and cowboy boots, waving to a crowd on a fair midway with a Ferris wheel behind him. On his head, where the cowboy hat should be, is a comically enormous blue fedora."
+              width="1195"
+              height="1600"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
+        <div class="br-tex-copy">
+          <p class="br-script">Cosplay division, unjudged</p>
+          <h3 class="br-h3">Big Tex, but correct.</h3>
+          <p class="br-body">
+            Big Tex is my favorite thing at the State Fair of Texas, and he's been standing over the midway
+            saying "Howdy, folks" to everybody who walks by since before I lived in The Great State of Texas,
+            which is roughly my approach to keynotes. So I built the costume. I got the shirt right, the belt
+            buckle right, the boots and the wave right, and then I got to the hat, and a Roske never removes
+            his fedora in the presence of others (Memorial Day excepted, and this is not Memorial Day), so the
+            hat is a fedora, 4 feet across and blue, and the children of the midway have mostly forgiven me.
+          </p>
+          <p class="br-body">
+            (Edward, you went to a state fair in a costume nobody asked for, on stilts nobody asked for, and
+            then spent the afternoon correcting strangers who called it a cowboy hat, which is the exact
+            behavior the butter judge wrote down about you 3 hours earlier. You're a slow learner for a man with
+            a 4.0.)
+          </p>
+          <p class="br-fine">
+            A costume, not the real thing. The real Big Tex is 55 feet tall, belongs to the State Fair of
+            Texas, and would never be caught in a fedora. I'm about 40 feet short of him even on the stilts.
+          </p>
+        </div>
       </div>
 
-      <div class="er-obj-grid">
-        {objects.map((o) => (
-          <article class={`er-obj er-obj-${o.tone}`}>
-            <header class="er-obj-head">
-              <span class="er-obj-tag">{o.tag}</span>
-              <span class={`er-obj-state er-obj-state-${o.tone}`}>{o.state}</span>
+      <div class="br-food">
+        <figure class="br-food-fig">
+          <div class="br-frame br-frame-tilt-r">
+            <img
+              src="/images/blue-ribbon/fried-food.jpg"
+              alt="Edward Roske in his signature blue fedora and a blue blazer gazing up at a hand-painted fried-food menu at a fair stand with enormous, slightly desperate enthusiasm, holding only a cup of lemonade, while teenagers beside him eat corn dogs."
+              width="1600"
+              height="1195"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </figure>
+        <div class="br-food-copy">
+          <p class="br-script">A vegetarian reviews the fair</p>
+          <h3 class="br-h3">Food I scored and mostly couldn't eat.</h3>
+          <p class="br-body">
+            I've been a vegetarian a long time, and a state fair in The Great State of Texas is an
+            engineering project whose stated goal is to find out what else can be dipped in batter and fried,
+            so I walked the whole midway, read every sign, and scored all of it anyway.
+          </p>
+          <ul class="br-menu">
+            {fried.map((f) => (
+              <li class="br-menu-row">
+                <span class="br-menu-item">{f.item}</span>
+                <span class={`br-menu-can ${f.can ? 'is-yes' : 'is-no'}`}>{f.can ? 'Could eat' : 'Could not'}</span>
+                <span class="br-menu-score" aria-label={`${f.score} out of 5 ribbons`}>
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <span class={i < f.score ? 'br-dot on' : 'br-dot'} aria-hidden="true"></span>
+                  ))}
+                </span>
+                <span class="br-menu-review">{f.review}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <figure class="br-night">
+        <div class="br-frame br-frame-wide">
+          <img
+            src="/images/blue-ribbon/midway-night.jpg"
+            alt="Edward Roske in his signature blue fedora and glasses sitting on a hay bale at night under string lights and glowing neon signs, writing carefully on a clipboard with a pencil, a lit Ferris wheel behind him."
+            width="1600"
+            height="893"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption class="br-cap br-cap-neon">
+          After the midway closed I sat on a hay bale and scored the fair itself. Ferris wheel, 8. Parking, 2.
+          Signage, 10 (it's all hand-painted, and the man who does the corny dog lettering could teach a
+          class). The rubric works on anything, which is the whole point, and I'll be scoring the Convention
+          Center coffee on October 9.
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= STILL IN THE BARN ================= -->
+  <section class="br-barn" id="the-barn">
+    <div class="br-wrap">
+      <p class="br-eyebrow">Still in the barn | Entered, not yet judged</p>
+      <h2 class="br-h2">What I'm working on.</h2>
+      <p class="br-deck">
+        6 things with entry tags on them. One has been sitting in the back of the barn for months and I
+        keep walking past it like I don't know whose it is.
+      </p>
+
+      <div class="br-barn-grid">
+        {barn.map((o) => (
+          <article class="br-tag">
+            <header class="br-tag-head">
+              <span class="br-tag-no">{o.tag}</span>
+              <span class="br-tag-state">{o.state}</span>
             </header>
-            <h3 class="er-obj-name">{o.name}</h3>
-            <p class="er-obj-note">{o.note}</p>
+            <h3 class="br-tag-name">{o.name}</h3>
+            <p class="br-tag-note">{o.note}</p>
             {o.href ? (
               <a
-                class="er-obj-cta"
+                class="br-tag-cta"
                 href={o.href}
                 target={o.external ? '_blank' : undefined}
                 rel={o.external ? 'noopener noreferrer' : undefined}
               >
-                {o.cta}
-                <span aria-hidden="true">&#8594;</span>
+                {o.cta} <span aria-hidden="true">&#8594;</span>
               </a>
             ) : (
-              <span class="er-obj-cta er-obj-cta-off">{o.cta}</span>
+              <span class="br-tag-cta br-tag-cta-off">{o.cta}</span>
             )}
           </article>
         ))}
@@ -593,1189 +754,999 @@ const dressing: Plate[] = [
 
   <!-- ================= WHAT'S NEW ================= -->
   <WhatsNew
-    eyebrow="Taped to the mirror"
+    eyebrow="Heard over the fence"
     heading="Turned up <em>elsewhere.</em>"
-    deck="Press, interviews, and the odd post worth keeping. Proof I do leave the room."
+    deck="Press, interviews, and the odd post worth keeping. Proof I do occasionally leave the exhibition hall."
   />
 
   <!-- ================= CTA ================= -->
-  <section class="er-cta">
-    <div class="er-cta-inner">
-      <p class="er-eyebrow er-eyebrow-on-dark">Ask for the key</p>
-      <h2 class="er-h2 er-h2-on-dark">Or just ask somebody.</h2>
-      <p class="er-deck er-deck-on-dark">
-        13 minutes on the calendar, no agenda required, and you can spend the whole thing on one
-        question. If you have a stage and a room full of finance people who have been sold something
-        confident, that's the other conversation, and it starts on the speaking page.
+  <section class="br-cta">
+    <div class="br-bunting" aria-hidden="true"></div>
+    <div class="br-cta-inner">
+      <p class="br-eyebrow br-eyebrow-neon">The judging table</p>
+      <h2 class="br-h2 br-h2-neon">Bring me your card.</h2>
+      <p class="br-deck br-deck-on-dark">
+        If you scored your pilot above and didn't love the placing, 13 minutes on my calendar is free and
+        you can spend the whole thing on one criterion (I'll bring the card!). If you've got a stage and a room full of finance
+        people who've been told their pilot went well, that's the other conversation, and it starts on the
+        speaking page.
       </p>
-      <div class="er-cta-row">
+      <div class="br-cta-row">
         <a
-          class="er-btn-solid"
+          class="br-btn-solid"
           href="https://calendar.app.google/udtTerQwcX9Z7QQt7"
           target="_blank"
           rel="noopener noreferrer"
         >
           Book 13 minutes
         </a>
-        <a class="er-btn-line" href="/speaking/">Book the talk</a>
-        <a class="er-btn-line" href="/contact/">Write instead</a>
+        <a class="br-btn-line br-btn-line-dark" href="/speaking/">Book the talk</a>
+        <a class="br-btn-line br-btn-line-dark" href="/contact/">Write instead</a>
       </div>
+      <p class="br-disclaimer">
+        Not affiliated with, sponsored by, or endorsed by the State Fair of Texas. Big Tex appears here as a
+        costume only, and the costume's hat is wrong on purpose. No livestock were entered.
+      </p>
     </div>
   </section>
 </BaseLayout>
 
 <style is:global>
   /* =====================================================================
-     THE ESCAPE ROOM (2026-09-12)
-     Set design, not page design: lantern amber, aged brass, deep teal
-     shadow, warning red on the clock, riveted plate, wood grain, chalk.
-     Dark mode is the room with the lights off and is the intended mood.
-     Light mode is "lights on, game over" and should read as the reveal.
-     All page classes are prefixed er- and this block is global on purpose
+     BLUE RIBBON (2026-09-26)
+     A fair judging. Hand-painted signage, rosettes, ticket stubs, pegboard,
+     bunting. Blue-ribbon blue, prize red, corn gold, canvas white by day.
+     Dark mode is the midway after sunset: neon and string lights on navy.
+     Judging cards are paper in both modes (pinned colors, measured AA).
+     All page classes are prefixed br- and this block is global on purpose
      ([data-theme] selectors are unreliable inside Astro's scoped CSS).
      ===================================================================== */
   :root {
-    --er-brass: #a8833f;
-    --er-amber: #e2a648;
-    --er-red: #e2685a;
-    --er-teal: #14282b;
-    --er-teal-2: #1d3230;
-    --er-dark-text: #f2e8d5;
-    --er-dark-muted: #b0a58d;
-    --er-rivet: radial-gradient(circle at 50% 42%, #cbb68c 0 22%, #7e6a44 45%, rgba(0, 0, 0, 0) 62%);
-    --er-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    --er-wood: repeating-linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.05) 0 2px,
-      rgba(255, 255, 255, 0.012) 2px 5px,
-      rgba(0, 0, 0, 0.03) 5px 9px
-    );
+    --br-blue: #1c4a96;
+    --br-red: #b52a24;
+    --br-gold: #f2c14e;
+    --br-canvas: #f4ecd9;
+    --br-paper: #fffaf0;
+    --br-ink: #23201c;
+    --br-pencil: #5a5248;
+    --br-judge-ink: #1d3f8a;
+    --br-navy: #0b1230;
+    --br-neon: #ff6f8a;
+    --br-script: 'Yellowtail', 'Brush Script MT', cursive;
+    --br-hand: 'Caveat', 'Comic Sans MS', cursive;
+    --br-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    --br-bunting-img: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='34'%3E%3Cpath d='M0 2 Q75 12 150 2' fill='none' stroke='%23d9c9a3' stroke-width='1.5'/%3E%3Cpolygon points='4,4 44,7 24,32' fill='%231c4a96'/%3E%3Cpolygon points='54,8 96,8 75,33' fill='%23fffaf0'/%3E%3Cpolygon points='106,7 146,4 126,32' fill='%23b52a24'/%3E%3C/svg%3E");
   }
 
-  /* mode-aware page tokens */
   [data-theme="dark"] {
-    --er-bg: var(--color-bg);
-    --er-surface: var(--color-surface);
-    --er-text: var(--color-text);
-    --er-muted: var(--color-text-muted);
-    --er-line: var(--color-border);
-    --er-panel: #101a1c;
-    --er-panel-line: #2f403f;
-    --er-glow: rgba(226, 166, 72, 0.16);
-    --er-lamp: radial-gradient(60% 48% at 14% 0%, rgba(226, 166, 72, 0.16), transparent 72%);
+    --br-bg: var(--color-bg);
+    --br-surface: var(--color-surface);
+    --br-text: var(--color-text);
+    --br-muted: var(--color-text-muted);
+    --br-line: var(--color-border);
+    --br-peg: #10183c;
+    --br-peg-dot: rgba(0, 0, 0, 0.45);
+    --br-sign: #f2c14e;
+    --br-sign-shadow: 0 0 18px rgba(242, 193, 78, 0.35), 3px 3px 0 #7a1d19;
+    --br-card-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
   }
   [data-theme="light"] {
-    --er-bg: var(--color-bg-light);
-    --er-surface: var(--color-surface-light);
-    --er-text: var(--color-text-dark);
-    --er-muted: var(--color-text-dark-muted);
-    --er-line: var(--color-border-light);
-    --er-panel: #e3dbc7;
-    --er-panel-line: #c3b89c;
-    --er-glow: rgba(138, 84, 16, 0.1);
-    --er-lamp: radial-gradient(60% 48% at 14% 0%, rgba(138, 84, 16, 0.07), transparent 72%);
+    --br-bg: var(--color-bg-light);
+    --br-surface: var(--color-surface-light);
+    --br-text: var(--color-text-dark);
+    --br-muted: var(--color-text-dark-muted);
+    --br-line: var(--color-border-light);
+    --br-peg: #e8d9b8;
+    --br-peg-dot: rgba(90, 64, 20, 0.28);
+    --br-sign: #1c4a96;
+    --br-sign-shadow: 3px 3px 0 #f2c14e, 5px 5px 0 rgba(181, 42, 36, 0.35);
+    --br-card-shadow: 0 16px 30px -16px rgba(60, 40, 10, 0.45);
   }
 
+  .br-sr {
+    position: absolute !important;
+    width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+  }
+
+  .br-wrap { max-width: 1240px; margin: 0 auto; padding: 0 1.5rem; }
+
   /* ---------- shared type ---------- */
-  .er-eyebrow {
+  .br-eyebrow {
     font-family: var(--font-mono);
-    font-size: 0.74rem;
-    letter-spacing: 0.24em;
+    font-size: 0.76rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     color: var(--color-accent);
     margin: 0 0 0.9rem;
   }
-  .er-eyebrow-on-dark { color: var(--er-amber); }
+  .br-eyebrow-center { text-align: center; }
+  .br-eyebrow-neon { color: var(--br-gold); }
 
-  .er-kicker {
+  .br-kicker {
     font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
+    font-size: 0.74rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--er-muted);
-    margin: 0 0 1.6rem;
+    color: var(--br-muted);
+    margin: 0 0 1.4rem;
   }
 
-  .er-h2 {
+  .br-h2 {
     font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: clamp(2rem, 4.4vw, 3.4rem);
-    line-height: 1.04;
-    letter-spacing: -0.01em;
-    color: var(--er-text);
+    font-weight: 400;
+    font-size: clamp(2.1rem, 4.6vw, 3.6rem);
+    line-height: 1.02;
+    color: var(--br-sign);
+    text-shadow: var(--br-sign-shadow);
+    margin: 0 0 1.1rem;
+  }
+  .br-h2-center { text-align: center; }
+  .br-h2-neon {
+    color: var(--br-gold);
+    text-shadow: 0 0 22px rgba(242, 193, 78, 0.45), 3px 3px 0 #7a1d19;
+  }
+
+  .br-h3 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+    line-height: 1.08;
+    color: #f6efdf;
     margin: 0 0 1rem;
   }
-  .er-h2-on-dark { color: var(--er-dark-text); }
 
-  .er-deck {
+  .br-deck {
     font-size: clamp(1rem, 1.15vw, 1.1rem);
     line-height: 1.72;
-    color: var(--er-muted);
-    max-width: 68ch;
+    color: var(--br-muted);
+    max-width: 70ch;
     margin: 0;
   }
-  .er-deck-on-dark { color: var(--er-dark-muted); }
-  .er-deck a,
-  .er-reveal-foot a,
-  .er-hero-desc a {
-    color: inherit;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    text-decoration-thickness: 1px;
+  .br-deck-center { text-align: center; margin: 0 auto; }
+  .br-deck-on-dark { color: #c9cde0; }
+
+  .br-script {
+    font-family: var(--br-script);
+    font-size: 1.7rem;
+    color: var(--br-neon);
+    margin: 0 0 0.2rem;
+    line-height: 1.1;
   }
-  .er-deck a:hover,
-  .er-reveal-foot a:hover { color: var(--color-accent); }
+
+  .br-body {
+    color: #d6d9e6;
+    line-height: 1.75;
+    margin: 0 0 1rem;
+    font-size: 1.02rem;
+  }
+  .br-fine {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: #b7bdd4;
+    border-top: 1px dashed rgba(242, 193, 78, 0.4);
+    padding-top: 0.9rem;
+    margin: 1.2rem 0 0;
+  }
+
+  .br-cap {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--br-muted);
+    margin: 0.9rem 0 0;
+    max-width: 62ch;
+  }
+  .br-cap-neon { color: #c9cde0; }
 
   /* ---------- buttons ---------- */
-  .er-btn-solid,
-  .er-btn-line {
+  .br-btn-solid,
+  .br-btn-line {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     font-family: var(--font-mono);
     font-size: 0.82rem;
-    letter-spacing: 0.14em;
+    font-weight: 500;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 0.95rem 1.6rem;
-    border-radius: 2px;
+    padding: 0.95rem 1.5rem;
+    border-radius: 999px;
     text-decoration: none;
-    transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease, color 0.18s ease;
-    cursor: pointer;
+    transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease;
   }
-  .er-btn-solid {
+  .br-btn-solid {
     background: var(--color-accent);
     color: var(--color-on-accent);
-    border: 1px solid var(--color-accent);
-    box-shadow: 0 0 0 0 var(--er-glow);
+    border: 2px solid var(--color-accent);
+    box-shadow: 3px 3px 0 var(--br-red);
   }
-  .er-btn-solid:hover {
-    background: var(--color-accent-hover);
-    border-color: var(--color-accent-hover);
-    box-shadow: 0 0 26px 2px var(--er-glow);
-  }
-  .er-btn-line {
+  .br-btn-solid:hover { background: var(--color-accent-hover); transform: translate(-1px, -1px); }
+  .br-btn-line {
     background: transparent;
     color: var(--color-accent);
-    border: 1px solid var(--color-accent);
+    border: 2px solid var(--color-accent);
   }
-  .er-btn-line:hover {
-    background: var(--color-accent);
-    color: var(--color-on-accent);
-  }
+  .br-btn-line:hover { transform: translate(-1px, -1px); }
+  .br-btn-line-dark { color: var(--br-gold); border-color: var(--br-gold); }
 
-  /* ---------- frames (every image is a prop in a frame) ---------- */
-  .er-frame {
-    position: relative;
-    background: var(--er-panel);
-    border: 1px solid var(--er-panel-line);
-    padding: 10px;
-    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.4);
-  }
-  .er-frame::before,
-  .er-frame::after {
-    content: '';
-    position: absolute;
-    width: 9px;
-    height: 9px;
-    background: var(--er-rivet);
-    pointer-events: none;
-  }
-  .er-frame::before { top: 5px; left: 5px; }
-  .er-frame::after { bottom: 5px; right: 5px; }
-  .er-frame img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-  .er-plate-tag {
-    position: absolute;
-    z-index: 2;
-    top: 16px;
-    left: -9px;
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    background: var(--color-accent);
-    color: var(--color-on-accent);
-    padding: 0.34rem 0.75rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-  }
-
-  /* ---------- door strip ---------- */
-  .er-strip {
-    background: var(--er-teal);
-    border-bottom: 1px solid #3a5250;
+  /* ---------- admission strip ---------- */
+  .br-strip {
+    background: var(--br-red);
+    color: #fffaf0;
+    border-bottom: 3px dashed rgba(255, 250, 240, 0.55);
     overflow: hidden;
   }
-  .er-strip-inner {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0 2.2rem;
-    justify-content: center;
-    max-width: 84rem;
+  .br-strip-inner {
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 0.7rem 1.5rem;
-  }
-  .er-strip-item {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #9fb3ad;
-    white-space: nowrap;
-    line-height: 2;
-  }
-  .er-strip-mark { color: var(--er-amber); }
-
-  /* ---------- hero ---------- */
-  .er-hero {
-    position: relative;
-    background: var(--er-bg);
-    padding: clamp(3rem, 7vw, 6rem) 1.5rem clamp(2.5rem, 5vw, 4rem);
-    overflow: hidden;
-  }
-  .er-hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: var(--er-lamp), var(--er-wood);
-  }
-  .er-hero-grid {
-    position: relative;
-    max-width: 84rem;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-    gap: clamp(2rem, 5vw, 4.5rem);
-    align-items: center;
-  }
-  @media (max-width: 900px) {
-    .er-hero-grid { grid-template-columns: 1fr; }
-  }
-  .er-h1 {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: clamp(2.6rem, 7.2vw, 5.6rem);
-    line-height: 0.96;
-    letter-spacing: -0.015em;
-    color: var(--er-text);
-    margin: 0 0 1.4rem;
-  }
-  .er-h1-line { display: block; }
-  .er-h1-hit {
-    color: var(--color-accent);
-    text-shadow: 0 0 34px var(--er-glow);
-  }
-  .er-hero-sub {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: clamp(1.1rem, 1.9vw, 1.5rem);
-    line-height: 1.34;
-    color: var(--er-text);
-    margin: 0 0 1.2rem;
-    max-width: 32ch;
-  }
-  .er-hero-desc {
-    font-size: 1rem;
-    line-height: 1.78;
-    color: var(--er-muted);
-    max-width: 60ch;
-    margin: 0 0 2rem;
-  }
-  .er-hero-cta {
+    padding: 0.55rem 1.5rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.9rem;
-  }
-  .er-hero-fig { margin: 0; }
-  .er-frame-hero { transform: rotate(-0.8deg); }
-  .er-hero-img {
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-  }
-  .er-hero-cap {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    line-height: 1.66;
-    color: var(--er-muted);
-    margin: 1.3rem 0 0 0.3rem;
-    padding-left: 0.9rem;
-    border-left: 2px solid var(--color-accent);
-    max-width: 58ch;
-  }
-
-  /* inventory */
-  .er-inv {
-    position: relative;
-    max-width: 84rem;
-    margin: clamp(2.5rem, 5vw, 4rem) auto 0;
-    border-top: 1px solid var(--er-line);
-    border-bottom: 1px solid var(--er-line);
-    padding: 1.5rem 0;
-  }
-  .er-inv-label {
-    font-family: var(--font-mono);
-    font-size: 0.68rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--er-muted);
-    margin: 0 0 1.1rem;
-  }
-  .er-inv-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
-  }
-  @media (max-width: 720px) {
-    .er-inv-grid { grid-template-columns: 1fr 1fr; }
-  }
-  .er-inv-v {
-    display: block;
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1;
-    color: var(--color-accent);
-  }
-  .er-inv-k {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--er-muted);
-    margin-top: 0.45rem;
-  }
-
-  /* ---------- the room (always dark, both modes: it is a dark room) ---------- */
-  .er-room {
-    position: relative;
-    background: var(--er-teal);
-    color: var(--er-dark-text);
-    padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
-    overflow: hidden;
-    border-top: 1px solid #3a5250;
-    border-bottom: 1px solid #3a5250;
-  }
-  .er-room::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(55% 42% at 82% 0%, rgba(226, 166, 72, 0.2), transparent 70%),
-      var(--er-grain);
-    opacity: 0.72;
-  }
-  .er-room-inner {
-    position: relative;
-    max-width: 84rem;
-    margin: 0 auto;
-  }
-  .er-room-head {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 2rem;
-    align-items: start;
-    margin-bottom: clamp(2rem, 4vw, 3.2rem);
-  }
-  @media (max-width: 860px) {
-    .er-room-head { grid-template-columns: 1fr; }
-  }
-
-  /* the clock */
-  .er-clock {
-    border: 1px solid #4a2b28;
-    background: #170f0f;
-    padding: 1rem 1.4rem;
-    text-align: center;
-    min-width: 14rem;
-    box-shadow: inset 0 0 30px rgba(226, 104, 90, 0.16);
-  }
-  .er-clock-label,
-  .er-clock-note {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #b09089;
-  }
-  .er-clock-note {
-    text-transform: none;
-    letter-spacing: 0.06em;
-    margin-top: 0.5rem;
-  }
-  .er-clock-digits {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: clamp(2.2rem, 4vw, 3rem);
-    line-height: 1.1;
-    color: var(--er-red);
-    margin: 0.4rem 0 0;
-    text-shadow: 0 0 22px rgba(226, 104, 90, 0.5);
-    font-variant-numeric: tabular-nums;
-  }
-
-  /* stations */
-  .er-stations {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    gap: clamp(1.6rem, 3vw, 2.6rem);
-  }
-  .er-station {
-    display: grid;
-    grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.95fr);
-    gap: clamp(1.4rem, 3vw, 2.6rem);
-    align-items: start;
-    background: rgba(8, 16, 18, 0.62);
-    border: 1px solid #344a48;
-    padding: clamp(1.3rem, 2.6vw, 2.2rem);
-  }
-  @media (max-width: 980px) {
-    .er-station { grid-template-columns: 1fr; }
-    .er-station-fig { order: -1; max-width: 22rem; }
-  }
-  .er-station.is-solved {
-    border-color: var(--er-amber);
-    box-shadow: 0 0 0 1px rgba(226, 166, 72, 0.3), 0 0 40px rgba(226, 166, 72, 0.1);
-  }
-  .er-station-head {
-    display: flex;
-    gap: 1.1rem;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
-  }
-  .er-station-no {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: 2.4rem;
-    line-height: 0.9;
-    color: var(--er-brass);
-    flex: 0 0 auto;
-  }
-  .er-station-name {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: clamp(1.35rem, 2.4vw, 1.9rem);
-    line-height: 1.16;
-    color: var(--er-dark-text);
-    margin: 0 0 0.5rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.8rem;
-  }
-  .er-station-state {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #93a8a3;
-    border: 1px solid #3f5754;
-    padding: 0.2rem 0.55rem;
-  }
-  .er-station-state.is-open {
-    color: #0f1718;
-    background: var(--er-amber);
-    border-color: var(--er-amber);
-  }
-  .er-station-prop {
-    font-size: 0.95rem;
-    line-height: 1.66;
-    color: var(--er-dark-muted);
-    margin: 0;
-    max-width: 56ch;
-  }
-
-  .er-qset {
-    border: 0;
-    margin: 0 0 1.2rem;
-    padding: 0;
-  }
-  .er-qlegend {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #93a8a3;
-    padding: 0;
-    margin-bottom: 0.85rem;
-  }
-  .er-qgrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.7rem;
-  }
-  @media (max-width: 640px) {
-    .er-qgrid { grid-template-columns: 1fr; }
-  }
-  .er-q {
-    display: flex;
-    gap: 0.7rem;
-    align-items: flex-start;
-    text-align: left;
-    background: rgba(226, 166, 72, 0.05);
-    border: 1px solid #3f5754;
-    color: var(--er-dark-text);
-    font-family: var(--font-body);
-    font-size: 0.92rem;
-    line-height: 1.5;
-    padding: 0.85rem 1rem;
-    cursor: pointer;
-    transition: border-color 0.18s ease, background-color 0.18s ease, transform 0.18s ease;
-  }
-  .er-q:hover {
-    border-color: var(--er-amber);
-    background: rgba(226, 166, 72, 0.1);
-  }
-  .er-q:focus-visible {
-    outline: 2px solid var(--er-amber);
-    outline-offset: 2px;
-  }
-  .er-q-mark {
-    font-family: var(--font-mono);
-    color: var(--er-brass);
-    flex: 0 0 auto;
-  }
-  .er-q.is-asked {
-    background: rgba(255, 255, 255, 0.03);
-    border-color: #2f4340;
-    color: #9fb3ad;
-  }
-  .er-q.is-key {
-    border-color: var(--er-amber);
-    background: rgba(226, 166, 72, 0.16);
-    color: var(--er-dark-text);
-  }
-  .er-q.is-key .er-q-mark { color: var(--er-amber); }
-
-  /* the terminal readout */
-  .er-readout {
-    background: #080d0e;
-    border: 1px solid #2c3f3d;
-    border-left: 3px solid var(--er-amber);
-    padding: 1rem 1.2rem;
-    margin-bottom: 1.1rem;
-  }
-  .er-readout-name {
-    font-family: var(--font-mono);
-    font-size: 0.62rem;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: var(--er-brass);
-    margin: 0 0 0.55rem;
-  }
-  .er-readout-text {
-    font-family: var(--font-mono);
-    font-size: 0.88rem;
-    line-height: 1.7;
-    color: #d8cbb0;
-    margin: 0;
-  }
-  .er-readout-why {
-    font-size: 0.86rem;
-    line-height: 1.66;
-    color: var(--er-amber);
-    margin: 0.9rem 0 0;
-    padding-top: 0.85rem;
-    border-top: 1px dashed #3f5754;
-  }
-
-  .er-station-foot {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem 1.6rem;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .er-hint summary {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--er-amber);
-    cursor: pointer;
-    text-underline-offset: 4px;
-    text-decoration: underline;
-  }
-  .er-hint summary:focus-visible {
-    outline: 2px solid var(--er-amber);
-    outline-offset: 3px;
-  }
-  .er-hint p {
-    font-size: 0.88rem;
-    line-height: 1.66;
-    color: var(--er-dark-muted);
-    margin: 0.7rem 0 0;
-    max-width: 52ch;
-  }
-  .er-got {
-    display: flex;
-    align-items: baseline;
-    gap: 0.7rem;
-    margin: 0;
-  }
-  .er-got-label {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--er-dark-muted);
-  }
-  .er-got-n {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: 2rem;
-    line-height: 1;
-    color: var(--er-amber);
-  }
-  .er-station-fig { margin: 0; }
-
-  /* ---------- the door ---------- */
-  .er-door {
-    margin-top: clamp(2rem, 4vw, 3.2rem);
-    border: 1px solid #4a5f5c;
-    background: linear-gradient(180deg, rgba(29, 50, 48, 0.9), rgba(8, 16, 18, 0.9));
-  }
-  .er-door-plate {
-    padding: clamp(1.6rem, 3.4vw, 2.8rem);
-    position: relative;
-  }
-  .er-door-h {
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-    line-height: 1.1;
-    color: var(--er-dark-text);
-    margin: 0 0 0.8rem;
-  }
-  .er-door-deck {
-    font-size: 0.98rem;
-    line-height: 1.7;
-    color: var(--er-dark-muted);
-    max-width: 62ch;
-    margin: 0 0 1.8rem;
-  }
-  .er-dials {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    align-items: flex-end;
-  }
-  .er-dial {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-  }
-  .er-dial label {
-    font-family: var(--font-mono);
-    font-size: 0.64rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #93a8a3;
-  }
-  .er-dial input {
-    width: 6.5rem;
-    background: #080d0e;
-    border: 1px solid #4a5f5c;
-    color: var(--er-amber);
-    font-family: var(--font-mono);
-    font-size: 1.7rem;
-    text-align: center;
-    padding: 0.55rem 0.5rem;
-    letter-spacing: 0.08em;
-  }
-  .er-dial input:focus-visible {
-    outline: 2px solid var(--er-amber);
-    outline-offset: 2px;
-  }
-  .er-dial-go { margin-left: 0.4rem; }
-  @media (max-width: 560px) {
-    .er-dial input { width: 4.6rem; font-size: 1.35rem; }
-    .er-dial-go { margin-left: 0; width: 100%; justify-content: center; }
-  }
-  .er-door-msg {
-    font-family: var(--font-mono);
-    font-size: 0.84rem;
-    line-height: 1.66;
-    color: var(--er-dark-muted);
-    margin: 1.2rem 0 0;
-    min-height: 1.4rem;
-    max-width: 62ch;
-  }
-  .er-door-msg.is-bad { color: var(--er-red); }
-  .er-door-msg.is-good { color: var(--er-amber); }
-  .er-giveup {
-    display: inline-block;
-    margin-top: 1.4rem;
-    background: none;
-    border: 0;
-    padding: 0;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: #93a8a3;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    cursor: pointer;
-  }
-  .er-giveup:hover { color: var(--er-amber); }
-  .er-giveup:focus-visible {
-    outline: 2px solid var(--er-amber);
-    outline-offset: 3px;
-  }
-
-  /* the reveal */
-  .er-reveal {
-    border-top: 1px solid var(--er-amber);
-    background: rgba(226, 166, 72, 0.06);
-    padding: clamp(1.6rem, 3.4vw, 2.8rem);
-  }
-  .er-reveal-eyebrow {
+    gap: 0.35rem 1.4rem;
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    letter-spacing: 0.26em;
-    text-transform: uppercase;
-    color: var(--er-amber);
-    margin: 0 0 0.9rem;
-  }
-  .er-reveal-h {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: clamp(1.8rem, 3.8vw, 2.8rem);
-    line-height: 1.06;
-    color: var(--er-dark-text);
-    margin: 0 0 0.9rem;
-  }
-  .er-reveal-deck {
-    font-size: 1rem;
-    line-height: 1.72;
-    color: var(--er-dark-muted);
-    max-width: 66ch;
-    margin: 0 0 2rem;
-  }
-  .er-sheet {
-    list-style: none;
-    margin: 0 0 2rem;
-    padding: 0;
-    display: grid;
-    gap: 1.2rem;
-  }
-  .er-sheet-row {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 1.1rem;
-    align-items: start;
-    border-top: 1px solid #3f5754;
-    padding-top: 1.2rem;
-  }
-  .er-sheet-no {
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    color: var(--er-brass);
-    padding-top: 0.35rem;
-  }
-  .er-sheet-lazy {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    line-height: 1.6;
-    color: #8c9e99;
-    margin: 0 0 0.5rem;
-    text-decoration: line-through;
-    text-decoration-color: #5d7370;
-  }
-  .er-sheet-lazy span {
-    text-decoration: none;
-    display: inline-block;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: #6f8481;
-    margin-right: 0.5rem;
   }
-  .er-sheet-good {
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: clamp(1.05rem, 1.9vw, 1.3rem);
-    line-height: 1.34;
-    color: var(--er-amber);
-    margin: 0 0 0.6rem;
-  }
-  .er-sheet-note {
-    font-size: 0.92rem;
-    line-height: 1.68;
-    color: var(--er-dark-muted);
-    margin: 0;
-    max-width: 66ch;
-  }
-  .er-reveal-foot {
-    font-size: 0.95rem;
-    line-height: 1.72;
-    color: var(--er-dark-muted);
-    max-width: 64ch;
-    margin: 0;
-    border-top: 1px dashed #3f5754;
-    padding-top: 1.4rem;
-  }
-  .er-reveal-foot a { color: var(--er-amber); }
+  .br-strip-item { white-space: nowrap; }
+  .br-strip-item + .br-strip-item::before { content: '\2605'; margin-right: 1.4rem; opacity: 0.7; }
+  .br-strip-mark { font-weight: 500; }
 
-  /* ---------- set dressing ---------- */
-  .er-dressing {
-    background: var(--er-bg);
-    padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
-    position: relative;
+  /* ---------- bunting ---------- */
+  .br-bunting {
+    height: 34px;
+    background-image: var(--br-bunting-img);
+    background-repeat: repeat-x;
+    background-size: 150px 34px;
   }
-  .er-dressing::before {
+
+  /* ---------- rosettes ---------- */
+  .br-rosette {
+    --c: #1c4a96;
+    --c2: #143a7a;
+    --face-ink: #23201c;
+    position: relative;
+    display: inline-block;
+    width: 92px;
+    height: 132px;
+    flex: none;
+  }
+  .br-rosette-disc {
+    position: absolute;
+    top: 0; left: 0;
+    width: 92px; height: 92px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg, var(--c) 0 7deg, var(--c2) 7deg 14deg);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.55);
+    z-index: 2;
+  }
+  .br-rosette-face {
+    width: 58%; height: 58%;
+    border-radius: 50%;
+    background: #fffaf0;
+    border: 3px solid var(--c);
+    display: grid;
+    place-items: center;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: var(--face-ink);
+    line-height: 1;
+  }
+  .br-rosette::before,
+  .br-rosette::after {
     content: '';
     position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: var(--er-wood);
+    top: 60px;
+    width: 28px;
+    height: 70px;
+    background: var(--c);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%);
+    z-index: 1;
   }
-  .er-dressing-inner {
-    position: relative;
-    max-width: 84rem;
-    margin: 0 auto;
-  }
-  .er-dressing-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
-  .er-plates {
-    display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-    gap: clamp(1.6rem, 4vw, 3rem);
-    align-items: start;
-  }
-  @media (max-width: 900px) {
-    .er-plates { grid-template-columns: 1fr; }
-  }
-  .er-plate {
-    margin: 0;
-    transform: rotate(var(--tilt, 0deg));
-  }
-  .er-plate figcaption {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    line-height: 1.68;
-    color: var(--er-muted);
-    margin: 1.1rem 0 0 0.2rem;
-    padding-left: 0.9rem;
-    border-left: 2px solid var(--color-accent);
-    max-width: 54ch;
-  }
-  .er-plate-wide { align-self: center; }
+  .br-rosette::before { left: 18px; transform: rotate(9deg); }
+  .br-rosette::after { right: 18px; transform: rotate(-9deg); background: var(--c2); }
 
-  /* ---------- objects ---------- */
-  .er-objects {
-    background: var(--er-surface);
-    border-top: 1px solid var(--er-line);
-    padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
+  .br-rosette-blue { --c: #1c4a96; --c2: #143a7a; }
+  .br-rosette-red { --c: #b52a24; --c2: #8c1f1a; }
+  .br-rosette-yellow { --c: #e8b830; --c2: #c9971a; }
+  .br-rosette-white { --c: #efe9dc; --c2: #d4ccbb; }
+  .br-rosette-purple { --c: #6b3fa0; --c2: #52307c; }
+  .br-rosette-green { --c: #2f7a3d; --c2: #225c2d; }
+  .br-rosette-gold { --c: #d9a520; --c2: #1c4a96; }
+  .br-rosette-blank { --c: #8d93ab; --c2: #6e748c; }
+
+  .br-rosette-sm { width: 70px; height: 100px; }
+  .br-rosette-sm .br-rosette-disc { width: 70px; height: 70px; }
+  .br-rosette-sm .br-rosette-face { font-size: 0.78rem; }
+  .br-rosette-sm::before, .br-rosette-sm::after { top: 46px; width: 22px; height: 54px; }
+  .br-rosette-sm::before { left: 13px; }
+  .br-rosette-sm::after { right: 13px; }
+
+  .br-rosette-xs { width: 52px; height: 74px; }
+  .br-rosette-xs .br-rosette-disc { width: 52px; height: 52px; }
+  .br-rosette-xs::before, .br-rosette-xs::after { top: 34px; width: 16px; height: 40px; }
+  .br-rosette-xs::before { left: 10px; }
+  .br-rosette-xs::after { right: 10px; }
+
+  /* ---------- frames ---------- */
+  .br-frame {
+    position: relative;
+    background: var(--br-paper);
+    padding: 10px 10px 12px;
+    box-shadow: var(--br-card-shadow);
+    border: 1px solid rgba(0, 0, 0, 0.12);
   }
-  .er-objects-inner {
-    max-width: 84rem;
+  .br-frame img { display: block; width: 100%; height: auto; }
+  .br-frame-tilt-l { transform: rotate(-1.2deg); }
+  .br-frame-tilt-r { transform: rotate(1.3deg); }
+
+  /* ---------- hero ---------- */
+  .br-hero {
+    position: relative;
+    background-color: var(--br-bg);
+    background-image: var(--br-grain);
+    padding-bottom: 3.5rem;
+  }
+  .br-hero-grid {
+    max-width: 1240px;
     margin: 0 auto;
-  }
-  .er-objects-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
-  .er-obj-grid {
+    padding: 3rem 1.5rem 2rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
-    gap: 1.2rem;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 3rem;
+    align-items: center;
   }
-  .er-obj {
+  .br-h1 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    margin: 0 0 1.4rem;
+    line-height: 0.9;
+    position: relative;
+  }
+  .br-h1-line {
+    display: block;
+    font-size: clamp(3.6rem, 9vw, 7.4rem);
+    color: var(--br-sign);
+    text-shadow: var(--br-sign-shadow);
+    letter-spacing: -0.01em;
+  }
+  .br-h1-script {
+    display: inline-block;
+    font-family: var(--br-script);
+    font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+    color: var(--br-red);
+    transform: rotate(-4deg);
+    margin: 0.4rem 0 0 0.3rem;
+    text-shadow: none;
+  }
+  [data-theme="dark"] .br-h1-script { color: var(--br-neon); text-shadow: 0 0 14px rgba(255, 111, 138, 0.5); }
+
+  .br-hero-sub {
+    font-size: clamp(1.15rem, 1.6vw, 1.35rem);
+    font-weight: 700;
+    color: var(--br-text);
+    margin: 0 0 1rem;
+    line-height: 1.4;
+  }
+  .br-hero-desc {
+    color: var(--br-muted);
+    line-height: 1.75;
+    font-size: 1.02rem;
+    margin: 0 0 1.8rem;
+    max-width: 62ch;
+  }
+  .br-hero-cta { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+
+  .br-hero-fig { margin: 0; }
+  .br-frame-hero { transform: rotate(1deg); }
+  .br-hero-rosette { position: absolute; top: -26px; right: -18px; transform: rotate(10deg); z-index: 3; }
+  .br-hero-cap {
+    font-family: var(--br-hand);
+    font-size: 1.25rem;
+    line-height: 1.35;
+    color: var(--br-muted);
+    margin: 1.2rem 0 0 0.4rem;
+    max-width: 52ch;
+  }
+
+  .br-stubs {
+    list-style: none;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .br-stub {
+    position: relative;
+    background: var(--br-gold);
+    color: #1b1a2e;
+    padding: 1rem 1.2rem 1rem 1.6rem;
+    border-radius: 6px;
     display: flex;
     flex-direction: column;
-    background: var(--er-bg);
-    border: 1px solid var(--er-line);
-    padding: 1.5rem;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    gap: 0.2rem;
+    /* ticket notches */
+    -webkit-mask: radial-gradient(circle 9px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 9px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
+            mask: radial-gradient(circle 9px at 0 50%, transparent 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle 9px at 100% 50%, transparent 98%, #000) right / 51% 100% no-repeat;
   }
-  .er-obj:hover {
-    border-color: var(--color-accent);
-    box-shadow: 0 0 30px var(--er-glow);
-    transform: translateY(-3px);
+  .br-stub::after {
+    content: '';
+    position: absolute;
+    top: 10px; bottom: 10px; right: 26%;
+    border-right: 2px dashed rgba(27, 26, 46, 0.35);
   }
-  .er-obj-head {
+  .br-stub-v { font-family: var(--font-heading); font-size: 2.1rem; line-height: 1; }
+  .br-stub-k { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; max-width: 70%; }
+
+  /* ---------- the judging ---------- */
+  .br-judging {
+    padding: 5rem 0 5.5rem;
+    background-color: var(--br-peg);
+    background-image: radial-gradient(var(--br-peg-dot) 2.2px, transparent 2.6px);
+    background-size: 26px 26px;
+    border-top: 6px solid var(--br-blue);
+  }
+  .br-judging-head {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 3rem;
+  }
+  .br-rules {
+    background: var(--br-paper);
+    color: var(--br-ink);
+    padding: 1.4rem 1.5rem 1.2rem;
+    border: 3px double var(--br-red);
+    box-shadow: var(--br-card-shadow);
+    transform: rotate(0.8deg);
+  }
+  .br-rules-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    color: var(--br-red);
+    margin: 0 0 0.8rem;
+    text-align: center;
+  }
+  .br-rules-list {
+    margin: 0;
+    padding-left: 1.2rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--br-ink);
+  }
+  .br-rules-list li { margin-bottom: 0.5rem; }
+  .br-rules-list li::marker { font-family: var(--font-mono); color: var(--br-red); }
+
+  .br-judge-fig {
+    margin: 0 0 3.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    gap: 2.5rem;
+    align-items: end;
+  }
+  .br-judge-fig .br-cap {
+    font-family: var(--br-hand);
+    font-size: 1.55rem;
+    line-height: 1.3;
+    color: var(--br-text);
+    border-left: 4px solid var(--br-red);
+    padding-left: 1.2rem;
+    margin: 0 0 1.5rem;
+  }
+
+  .br-cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 2.2rem 2rem;
+    align-items: start;
+  }
+  .br-card:nth-child(odd) .br-card-paper { transform: rotate(-0.7deg); }
+  .br-card:nth-child(even) .br-card-paper { transform: rotate(0.6deg); margin-top: 1.2rem; }
+  .br-card-paper {
+    position: relative;
+    background: var(--br-paper);
+    color: var(--br-ink);
+    padding: 1.8rem 1.5rem 1.4rem;
+    box-shadow: var(--br-card-shadow);
+    border-top: 8px solid var(--c, #1c4a96);
+  }
+  .br-card-blue { --c: #1c4a96; }
+  .br-card-red { --c: #b52a24; }
+  .br-card-yellow { --c: #e8b830; }
+  .br-card-white { --c: #cfc6b3; }
+  .br-card-purple { --c: #6b3fa0; }
+  .br-card-green { --c: #2f7a3d; }
+  .br-card-hole {
+    position: absolute;
+    top: 12px; left: 50%;
+    width: 12px; height: 12px;
+    margin-left: -6px;
+    border-radius: 50%;
+    background: var(--br-peg);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  .br-card-head {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     gap: 1rem;
+    align-items: flex-start;
     margin-bottom: 1rem;
   }
-  .er-obj-tag,
-  .er-obj-state {
+  .br-card-no {
     font-family: var(--font-mono);
-    font-size: 0.64rem;
-    letter-spacing: 0.18em;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
+    color: var(--br-red);
+    margin: 0 0 0.3rem;
   }
-  .er-obj-tag { color: var(--er-muted); }
-  .er-obj-state {
-    border: 1px solid currentColor;
-    padding: 0.2rem 0.55rem;
+  .br-card-div {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--br-pencil);
+    margin: 0 0 0.5rem;
   }
-  [data-theme="dark"] .er-obj-state-go { color: var(--er-amber); }
-  [data-theme="light"] .er-obj-state-go { color: #8a5410; }
-  [data-theme="dark"] .er-obj-state-done { color: #7fc6a4; }
-  [data-theme="light"] .er-obj-state-done { color: #1c6444; }
-  [data-theme="dark"] .er-obj-state-hold { color: #9fb3ad; }
-  [data-theme="light"] .er-obj-state-hold { color: #55635f; }
-  .er-obj-name {
+  .br-card-entry {
     font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.25rem;
-    line-height: 1.2;
-    color: var(--er-text);
-    margin: 0 0 0.8rem;
+    font-weight: 400;
+    font-size: 1.35rem;
+    line-height: 1.15;
+    color: var(--br-ink);
+    margin: 0;
   }
-  .er-obj-note {
-    font-size: 0.93rem;
-    line-height: 1.7;
-    color: var(--er-muted);
-    margin: 0 0 1.4rem;
-    flex: 1 1 auto;
+  .br-card-img { margin: 0 0 1rem; border: 1px solid rgba(0, 0, 0, 0.15); }
+  .br-card-img img { display: block; width: 100%; height: auto; }
+
+  .br-score { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  .br-score th {
+    text-align: left;
+    font-weight: 500;
+    color: var(--br-ink);
+    padding: 0.42rem 0;
+    border-bottom: 1px dotted rgba(35, 32, 28, 0.35);
   }
-  .er-obj-cta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
+  .br-score td {
+    text-align: right;
+    padding: 0.42rem 0;
+    border-bottom: 1px dotted rgba(35, 32, 28, 0.35);
+    white-space: nowrap;
+  }
+  .br-score tfoot th, .br-score tfoot td { border-bottom: 0; border-top: 2px solid var(--br-ink); font-weight: 800; }
+  .br-pts { font-family: var(--br-hand); font-size: 1.45rem; font-weight: 700; color: var(--br-judge-ink); line-height: 1; }
+  .br-of { font-family: var(--font-mono); font-size: 0.75rem; color: var(--br-pencil); margin-left: 0.15rem; }
+
+  .br-placing {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    color: var(--br-red);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 1.1rem 0 0.4rem;
+  }
+  .br-judge-note {
+    font-family: var(--br-hand);
+    font-size: 1.28rem;
+    line-height: 1.3;
+    color: var(--br-judge-ink);
+    margin: 0;
+  }
+  .br-judge-sig {
+    font-family: var(--br-hand);
+    font-size: 1.05rem;
+    color: var(--br-pencil);
+    text-align: right;
+    margin: 0.4rem 0 0;
+  }
+  .br-card-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--br-blue);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .br-card-link:hover { color: var(--br-red); }
+
+  /* ---------- score your pilot ---------- */
+  .br-pilot {
+    padding: 5rem 0;
+    background: var(--br-bg);
+    background-image: var(--br-grain);
+    border-top: 1px solid var(--br-line);
+  }
+  .br-pilot-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+    gap: 3rem;
+    align-items: start;
+  }
+  .br-entry-form {
+    background: var(--br-paper);
+    color: var(--br-ink);
+    padding: 1.6rem 1.6rem 1.4rem;
+    border-top: 8px solid var(--br-blue);
+    box-shadow: var(--br-card-shadow);
+    transform: rotate(-0.4deg);
+  }
+  .br-form-title {
     font-family: var(--font-mono);
     font-size: 0.72rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
+    color: var(--br-red);
+    margin: 0 0 1rem;
+  }
+  .br-crit { border: 0; margin: 0 0 1.1rem; padding: 0; }
+  .br-crit-q {
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--br-ink);
+    margin-bottom: 0.55rem;
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+  .br-crit-n {
+    font-family: var(--font-heading);
+    color: var(--br-red);
+    font-size: 1.1rem;
+  }
+  .br-crit-opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; }
+  .br-opt {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.6rem 0.7rem;
+    border: 1.5px solid #cfc6b3;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.86rem;
+    line-height: 1.3;
+    color: var(--br-ink);
+    background: #fffdf7;
+    transition: border-color 0.15s ease, background-color 0.15s ease;
+  }
+  .br-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .br-opt-p { font-family: var(--br-hand); font-weight: 700; font-size: 1.2rem; color: var(--br-judge-ink); }
+  .br-opt:hover { border-color: var(--br-blue); }
+  .br-opt:has(input:checked) { border-color: var(--br-blue); background: #e7eefb; box-shadow: inset 0 0 0 1px var(--br-blue); }
+  .br-opt:has(input:focus-visible) { outline: 3px solid var(--br-red); outline-offset: 2px; }
+
+  .br-result {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+    border-top: 2px solid var(--br-ink);
+    padding-top: 1.1rem;
+    margin-top: 0.4rem;
+  }
+  .br-result-score { font-family: var(--font-mono); font-size: 0.85rem; color: var(--br-pencil); margin: 0 0 0.2rem; }
+  .br-result-place {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    color: var(--br-red);
+    margin: 0 0 0.35rem;
+    line-height: 1.1;
+  }
+
+  /* ---------- grand champion board ---------- */
+  .br-board {
+    padding: 5rem 0 5.5rem;
+    background: var(--br-surface);
+    border-top: 6px solid var(--br-red);
+  }
+  .br-board .br-deck-center { margin-bottom: 3rem; }
+  .br-board-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.6rem;
+  }
+  .br-prize {
+    position: relative;
+    background: var(--br-paper);
+    color: var(--br-ink);
+    padding: 1.2rem 1.1rem 1.1rem 1.1rem;
+    box-shadow: var(--br-card-shadow);
+    transform: rotate(var(--tilt, 0deg));
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    column-gap: 0.9rem;
+    align-content: start;
+  }
+  .br-prize .br-rosette { grid-row: span 3; }
+  .br-prize-award {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    line-height: 1.1;
+    color: var(--br-blue);
+    margin: 0 0 0.25rem;
+  }
+  .br-prize-cls {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--br-red);
+    margin: 0 0 0.45rem;
+  }
+  .br-prize-note { font-size: 0.9rem; line-height: 1.45; margin: 0; color: var(--br-pencil); }
+
+  /* ---------- the midway (always night) ---------- */
+  .br-midway {
+    position: relative;
+    padding: 4.5rem 0 5.5rem;
+    background:
+      radial-gradient(60% 40% at 80% 0%, rgba(255, 111, 138, 0.14), transparent 70%),
+      radial-gradient(50% 40% at 10% 30%, rgba(242, 193, 78, 0.1), transparent 70%),
+      #0b1230;
+    color: #f6efdf;
+  }
+  .br-lights {
+    height: 26px;
+    margin-bottom: 2.5rem;
+    background-image: radial-gradient(circle at 50% 60%, #ffe6a8 0 4px, rgba(242, 193, 78, 0.55) 5px, transparent 11px);
+    background-size: 44px 26px;
+    background-repeat: repeat-x;
+    border-top: 1px solid rgba(255, 230, 168, 0.25);
+  }
+  .br-tex {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 3rem;
+    align-items: center;
+    margin: 2.5rem 0 5rem;
+  }
+  .br-tex-fig { margin: 0; }
+  .br-frame-tall { transform: rotate(-1.4deg); max-width: 520px; }
+  .br-midway .br-frame { background: #fffaf0; }
+
+  .br-food {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 4.5rem;
+  }
+  .br-food-fig { margin: 0; order: 2; }
+  .br-food-copy { order: 1; }
+  .br-menu {
+    list-style: none;
+    margin: 1.4rem 0 0;
+    padding: 1.2rem 1.3rem;
+    border: 2px solid rgba(242, 193, 78, 0.5);
+    border-radius: 10px;
+    background: rgba(20, 29, 69, 0.75);
+    box-shadow: 0 0 22px rgba(242, 193, 78, 0.12), inset 0 0 22px rgba(242, 193, 78, 0.06);
+  }
+  .br-menu-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    gap: 0.2rem 0.8rem;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed rgba(242, 193, 78, 0.3);
+  }
+  .br-menu-row:last-child { border-bottom: 0; }
+  .br-menu-item { font-weight: 800; color: #f6efdf; }
+  .br-menu-can {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.15rem 0.5rem;
+    border-radius: 999px;
+  }
+  .br-menu-can.is-yes { background: #2f7a3d; color: #ffffff; }
+  .br-menu-can.is-no { background: #b52a24; color: #ffffff; }
+  .br-menu-score { display: inline-flex; gap: 4px; }
+  .br-dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid #f2c14e; }
+  .br-dot.on { background: #f2c14e; box-shadow: 0 0 6px rgba(242, 193, 78, 0.7); }
+  .br-menu-review { grid-column: 1 / -1; color: #c9cde0; font-size: 0.93rem; line-height: 1.5; }
+
+  .br-night { margin: 0 auto; max-width: 980px; }
+  .br-frame-wide { transform: rotate(0.5deg); }
+
+  /* ---------- still in the barn ---------- */
+  .br-barn {
+    padding: 5rem 0;
+    background-color: var(--br-bg);
+    background-image:
+      repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.04) 0 2px, transparent 2px 7px, rgba(0, 0, 0, 0.025) 7px 11px),
+      var(--br-grain);
+  }
+  .br-barn .br-deck { margin-bottom: 2.6rem; }
+  .br-barn-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+  .br-tag {
+    position: relative;
+    background: var(--br-surface);
+    border: 1.5px solid var(--br-line);
+    border-radius: 4px 4px 4px 4px;
+    padding: 1.4rem 1.4rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(0 16px, 16px 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  }
+  .br-tag-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-bottom: 0.7rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .br-tag-no { color: var(--color-accent); }
+  .br-tag-state { color: var(--br-muted); }
+  .br-tag-name {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.12;
+    color: var(--br-text);
+    margin: 0 0 0.7rem;
+  }
+  .br-tag-note { color: var(--br-muted); line-height: 1.6; font-size: 0.95rem; margin: 0 0 1.1rem; flex: 1; }
+  .br-tag-cta {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--color-accent);
     text-decoration: none;
   }
-  .er-obj-cta:hover { text-decoration: underline; text-underline-offset: 4px; }
-  .er-obj-cta-off {
-    color: var(--er-muted);
-    cursor: default;
-  }
+  .br-tag-cta:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .br-tag-cta-off { color: var(--br-muted); }
 
-  /* ---------- closing CTA ---------- */
-  .er-cta {
-    position: relative;
-    background: var(--er-teal-2);
-    padding: clamp(3rem, 7vw, 5.5rem) 1.5rem;
-    overflow: hidden;
-    border-top: 1px solid #3a5250;
-  }
-  .er-cta::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: radial-gradient(50% 60% at 50% 0%, rgba(226, 166, 72, 0.16), transparent 72%), var(--er-grain);
-    opacity: 0.7;
-  }
-  .er-cta-inner {
-    position: relative;
-    max-width: 60rem;
-    margin: 0 auto;
+  /* ---------- CTA ---------- */
+  .br-cta {
+    background:
+      radial-gradient(70% 60% at 50% 0%, rgba(242, 193, 78, 0.16), transparent 70%),
+      #0b1230;
+    color: #f6efdf;
     text-align: center;
+    padding-bottom: 4.5rem;
   }
-  .er-cta-inner .er-deck { margin: 0 auto; }
-  .er-cta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.9rem;
-    justify-content: center;
-    margin-top: 2.2rem;
-  }
-  /* the CTA band is dark in both modes, so its buttons stay on the amber pair */
-  [data-theme="light"] .er-cta .er-btn-solid {
-    background: var(--er-amber);
-    border-color: var(--er-amber);
-    color: #10191a;
-  }
-  [data-theme="light"] .er-cta .er-btn-line {
-    color: var(--er-amber);
-    border-color: var(--er-amber);
-  }
-  [data-theme="light"] .er-cta .er-btn-line:hover {
-    background: var(--er-amber);
-    color: #10191a;
-  }
-  [data-theme="light"] .er-room .er-btn-solid,
-  [data-theme="light"] .er-door .er-btn-solid {
-    background: var(--er-amber);
-    border-color: var(--er-amber);
-    color: #10191a;
+  .br-cta-inner { max-width: 820px; margin: 0 auto; padding: 3.5rem 1.5rem 0; }
+  .br-cta .br-deck { margin: 0 auto 2rem; }
+  .br-cta-row { display: flex; flex-wrap: wrap; gap: 0.9rem; justify-content: center; }
+  .br-cta .br-btn-solid { background: var(--br-gold); border-color: var(--br-gold); color: #10163a; }
+  .br-cta .br-btn-solid:hover { background: #ffd46e; }
+  .br-disclaimer {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.6;
+    color: #aab1cb;
+    margin: 2.6rem auto 0;
+    max-width: 60ch;
   }
 
-  @media (prefers-reduced-motion: reduce) {
-    .er-obj,
-    .er-btn-solid,
-    .er-btn-line,
-    .er-q { transition: none; }
-    .er-obj:hover { transform: none; }
+  /* ---------- responsive ---------- */
+  @media (max-width: 1000px) {
+    .br-board-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .br-barn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 900px) {
+    .br-hero-grid,
+    .br-judging-head,
+    .br-pilot-grid,
+    .br-tex,
+    .br-food,
+    .br-judge-fig { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+    .br-food-fig { order: 1; }
+    .br-food-copy { order: 2; }
+    .br-stubs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .br-hero-rosette { right: 6px; top: -22px; }
+    .br-frame-tall { max-width: 420px; margin: 0 auto; }
+  }
+  @media (max-width: 640px) {
+    .br-board-grid,
+    .br-barn-grid { grid-template-columns: minmax(0, 1fr); }
+    .br-cards { grid-template-columns: minmax(0, 1fr); }
+    .br-card:nth-child(even) .br-card-paper { margin-top: 0; }
+    .br-crit-opts { grid-template-columns: minmax(0, 1fr); }
+    .br-stub-v { font-size: 1.7rem; }
+    .br-hero-rosette { transform: rotate(10deg) scale(0.8); }
+    .br-strip-inner { font-size: 0.64rem; }
+    .br-strip-item { white-space: normal; }
   }
 </style>
 
 <script is:inline>
   (function () {
-    let tick = null;
-
-    function stopClock() {
-      if (tick) {
-        clearInterval(tick);
-        tick = null;
-      }
-    }
+    // Placings for the open-class judging card. Totals out of 40.
+    var BANDS = [
+      { min: 36, cls: 'blue', short: '1st', place: 'Blue Ribbon, first place',
+        note: 'Everything was written down before it started and somebody is checking it. Frame this card. The exhibitor collects them.' },
+      { min: 28, cls: 'red', short: '2nd', place: 'Second place',
+        note: 'Sound entry. One criterion is resting on a feeling. Measure it before the auditor does.' },
+      { min: 20, cls: 'yellow', short: '3rd', place: 'Third place',
+        note: 'It may well work. You just cannot prove it to a stranger, which is who your auditor is.' },
+      { min: 10, cls: 'white', short: '4th', place: 'Fourth place',
+        note: "You are in good company. See the exhibitor's butter. The difference is that now you know which points you left on the table." },
+      { min: 0, cls: 'green', short: 'H.M.', place: 'Thank you for entering',
+        note: 'Honorable mention for honesty, which is the only criterion that was not on the card.' }
+    ];
+    var ALL = ['blue', 'red', 'yellow', 'white', 'green', 'blank'];
 
     function boot() {
-      stopClock();
+      var form = document.getElementById('br-entry-form');
+      if (!form || form.getAttribute('data-bound') === 'yes') return;
+      form.setAttribute('data-bound', 'yes');
 
-      const room = document.getElementById('the-room');
-      if (!room) return;
+      var total = document.getElementById('br-result-total');
+      var count = document.getElementById('br-result-count');
+      var place = document.getElementById('br-result-place');
+      var note = document.getElementById('br-result-note');
+      var rosette = document.getElementById('br-result-rosette');
+      var short = document.getElementById('br-result-short');
+      var names = ['aim', 'base', 'edge', 'name'];
 
-      // --- the clock. Decorative, non-punitive, and it says so on the face.
-      const clock = document.getElementById('er-clock');
-      if (clock) {
-        let left = parseInt(clock.getAttribute('data-seconds') || '3600', 10);
-        const paint = function () {
-          const m = Math.floor(left / 60);
-          const s = left % 60;
-          clock.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
-        };
-        paint();
-        tick = setInterval(function () {
-          left -= 1;
-          if (left <= 0) {
-            left = 0;
-            paint();
-            stopClock();
-            const note = clock.parentElement && clock.parentElement.querySelector('.er-clock-note');
-            if (note) note.textContent = 'Time. The door is exactly as locked as it was.';
-            return;
-          }
-          paint();
-        }, 1000);
-      }
-
-      // --- the stations
-      const solved = {};
-
-      function openStation(id) {
-        if (solved[id]) return;
-        solved[id] = true;
-        const station = room.querySelector('[data-station="' + id + '"]');
-        if (station) station.classList.add('is-solved');
-        const state = room.querySelector('[data-state-for="' + id + '"]');
-        if (state) {
-          state.textContent = 'Open';
-          state.classList.add('is-open');
-        }
-        const got = room.querySelector('[data-got-for="' + id + '"]');
-        if (got) got.hidden = false;
-        const why = room.querySelector('[data-why-for="' + id + '"]');
-        if (why) why.hidden = false;
-      }
-
-      const asks = room.querySelectorAll('[data-ask]');
-      Array.prototype.forEach.call(asks, function (btn) {
-        btn.addEventListener('click', function () {
-          const id = btn.getAttribute('data-ask');
-          const out = room.querySelector('[data-text-for="' + id + '"]');
-          if (out) out.textContent = btn.getAttribute('data-answer') || '';
-
-          // Mark every sibling asked, then flag this one.
-          const siblings = room.querySelectorAll('[data-ask="' + id + '"]');
-          Array.prototype.forEach.call(siblings, function (s) {
-            if (s === btn) return;
-            if (!s.classList.contains('is-key')) s.classList.add('is-asked');
-          });
-          btn.classList.remove('is-asked');
-
-          if (btn.getAttribute('data-ok') === 'yes') {
-            btn.classList.add('is-key');
-            openStation(id);
+      function score() {
+        var sum = 0;
+        var judged = 0;
+        names.forEach(function (n) {
+          var picked = form.querySelector('input[name="' + n + '"]:checked');
+          if (picked) {
+            judged += 1;
+            sum += parseInt(picked.value, 10) || 0;
           }
         });
-      });
-
-      // --- the door
-      const form = document.getElementById('er-lock-form');
-      const msg = document.getElementById('er-door-msg');
-      const reveal = document.getElementById('er-reveal');
-      const d1 = document.getElementById('er-d1');
-      const d2 = document.getElementById('er-d2');
-      const d3 = document.getElementById('er-d3');
-      const KEY = ['13', '25', '300'];
-
-      function openDoor(gaveUp) {
-        if (reveal) reveal.hidden = false;
-        if (msg) {
-          msg.className = 'er-door-msg is-good';
-          msg.textContent = gaveUp
-            ? 'Opened with the answer key. That counts. Everybody uses the key eventually.'
-            : 'The handle turns. Three good questions, one door.';
+        total.textContent = String(sum);
+        count.textContent = '(' + judged + ' of 4 judged)';
+        if (judged < 4) {
+          place.textContent = 'Judging in progress';
+          note.textContent = (4 - judged) + ' criteria to go. The judge does not award partial cards, and neither should you.';
+          setRibbon('blank', '?');
+          return;
         }
-        stations();
-        if (reveal) {
-          reveal.setAttribute('tabindex', '-1');
-          reveal.focus({ preventScroll: true });
-          reveal.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        for (var i = 0; i < BANDS.length; i++) {
+          if (sum >= BANDS[i].min) {
+            place.textContent = BANDS[i].place;
+            note.textContent = BANDS[i].note;
+            setRibbon(BANDS[i].cls, BANDS[i].short);
+            return;
+          }
         }
       }
 
-      function stations() {
-        ['shelf', 'timeline', 'wall'].forEach(openStation);
+      function setRibbon(cls, text) {
+        ALL.forEach(function (c) { rosette.classList.remove('br-rosette-' + c); });
+        rosette.classList.add('br-rosette-' + cls);
+        short.textContent = text;
       }
 
-      if (form) {
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-          const got = [d1, d2, d3].map(function (el) {
-            return (el && el.value ? el.value : '').replace(/\D/g, '').trim();
-          });
-          if (got.join('') === '') {
-            if (msg) {
-              msg.className = 'er-door-msg';
-              msg.textContent = 'The dials are empty. The door notices.';
-            }
-            return;
-          }
-          const right = got[0] === KEY[0] && got[1] === KEY[1] && got[2] === KEY[2];
-          if (right) {
-            openDoor(false);
-            return;
-          }
-          const hits = got.filter(function (g, i) { return g === KEY[i]; }).length;
-          if (msg) {
-            msg.className = 'er-door-msg is-bad';
-            msg.textContent =
-              hits === 0
-                ? 'Nothing moves. None of the three are right, which at least is a clean result.'
-                : hits + ' of 3 are right. The door will not tell you which, and neither will I.';
-          }
-        });
-      }
-
-      const giveup = document.getElementById('er-giveup');
-      if (giveup) {
-        giveup.addEventListener('click', function () {
-          if (d1) d1.value = KEY[0];
-          if (d2) d2.value = KEY[1];
-          if (d3) d3.value = KEY[2];
-          // Light up the winning question at each station too, so the answer
-          // key actually teaches instead of just opening the door.
-          const keys = room.querySelectorAll('[data-ok="yes"]');
-          Array.prototype.forEach.call(keys, function (k) {
-            k.classList.add('is-key');
-            const id = k.getAttribute('data-ask');
-            const out = room.querySelector('[data-text-for="' + id + '"]');
-            if (out) out.textContent = k.getAttribute('data-answer') || '';
-          });
-          openDoor(true);
-        });
-      }
+      form.addEventListener('change', score);
+      form.addEventListener('submit', function (e) { e.preventDefault(); });
     }
 
-    document.addEventListener('astro:page-load', boot);
-    document.addEventListener('astro:before-swap', stopClock);
+    if (!window.__brBound) {
+      window.__brBound = true;
+      document.addEventListener('astro:page-load', boot);
+    }
     if (document.readyState !== 'loading') boot();
     else document.addEventListener('DOMContentLoaded', boot);
   })();

@@ -81,73 +81,75 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "The Escape Room",
-  week: "2026-09-19",
-  inspiration: "Edward and Dawn have each done more than 300 escape rooms and they're both TERPECA nominators and voters, so this is the most genuinely him of anything in the queue. The site becomes a room. You're locked in a boardroom, the door has three locks, and the only other thing in the room with you is a system called VERBATIM that answers exactly what you asked, with total confidence, and nothing more. Ask it something lazy and you get an answer that is technically correct and completely useless. Ask it something with a boundary in it and you get a number. Three good questions open the door, and behind the door is the sheet of questions Edward actually uses on AI vendors. That's the 'Asking Good Questions' thesis made playable instead of claimed: a visitor feels the difference between a bad question and a good one in about ninety seconds, which no amount of homepage copy can do. Design is set design rather than page design: lantern amber, aged brass, deep teal shadow, a warning-red countdown, riveted panels, chalkboard, wood grain. Dark mode is the room with the lights off, which is the default mood. Light mode is 'lights on, game over' and should feel like the reveal. Animation is narrowly justified this week: a working countdown and a slow light flicker, nothing drifting or falling.",
-  tagline: "You're locked in a room with an AI that answers exactly what you asked. I have sat in that meeting more times than I'd like to count.",
+  name: "Blue Ribbon",
+  week: "2026-09-26",
+  inspiration: "The State Fair of Texas opens September 25 and runs through October 18, and Edward lived in The Great State of Texas for more than 25 years, so this is opening weekend and he has standing. The conceit is the judging, and the rubric is the point: a county fair publishes its categories, its criteria, and its points, and a stern judge writes exactly why you lost on a card taped next to your entry. Most enterprise AI pilots have none of that, and nobody can tell you why the pilot 'worked.' So the home page is a published scorecard. Edward's real output is entered in fair divisions (the books as preserves, the podcast for Best in Show, the MCP servers under mechanical exhibits, the website as a craft demonstration, and a life-size butter self-portrait), each scored against a rubric and placed, mostly badly, with the judge's comments. Then the Grand Champion board turns his real record into fair placings, the midway carries a Big Tex cosplay (Edward's request; a giant blue fedora where the cowboy hat goes) and a vegetarian's reviews of fried food he can't eat, and a working judging card lets a visitor score their own AI pilot. Design: hand-painted fairground signage, fat display type, sign-painter script, rosettes, ticket stubs, pegboard, bunting. Blue-ribbon blue, prize red, corn gold, canvas white. Dark mode is the midway after sunset: neon tubes and string lights on deep navy. Animation off.",
+  tagline: "A county fair will tell you exactly why you placed fourth, in writing, on a card taped next to your jam. I'd settle for that from an AI pilot.",
 
   colors: {
-    // The room. Lantern amber and aged brass against teal shadow, with the
-    // timer's warning red kept for the clock and nothing else. Every pair
-    // below clears WCAG AA in both modes (measured, not eyeballed): muted
-    // text runs 6.8:1 dark and 6.4:1 light, the amber accent 7.8:1 dark, and
-    // the light mode swaps to a dark brass so the accent doesn't wash out on
-    // plaster. Black sits on the amber button, white on the brass one.
-    primary: "#1d3230",            // deep teal shadow, the corners of the room
-    secondary: "#a8833f",          // aged brass, fittings and hardware
-    accent: "#e2a648",             // lantern amber, lights off
-    accentHover: "#f2bb63",
-    accentLight: "#8a5410",        // dark brass, lights on
-    accentHoverLight: "#6d4009",
-    onAccent: "#10191a",
+    // The fairground. Blue-ribbon blue and prize red on canvas by day; the
+    // midway after sunset by night, with corn gold doing the neon's job.
+    // Every pair measured, not eyeballed: body text 16:1 dark and 14.5:1
+    // light, muted text 8.7:1 and 8.2:1 on their surfaces, the gold accent
+    // 10.9:1 on navy, and the light-mode accent swaps to ribbon blue (7.2:1
+    // on canvas) because gold on canvas is a crime. Navy ink sits on the
+    // gold button, white on the blue one.
+    primary: "#1c4a96",            // blue-ribbon blue
+    secondary: "#b52a24",          // prize red
+    accent: "#f2c14e",             // corn gold, lit
+    accentHover: "#ffd46e",
+    accentLight: "#1c4a96",        // ribbon blue, daylight
+    accentHoverLight: "#143a7a",
+    onAccent: "#10163a",
     onAccentLight: "#ffffff",
-    background: "#0d1416",         // the room, unlit
-    backgroundLight: "#ece5d6",    // the room, fluorescents on
-    surface: "#152021",            // panelling in the lamp's throw
-    surfaceLight: "#f7f2e6",
-    text: "#f2e8d5",
-    textMuted: "#b0a58d",
-    textDark: "#13201f",
-    textDarkMuted: "#4f5a57",
-    border: "#2b3a39",
-    borderLight: "#cfc5ae",
-    gradient: "linear-gradient(135deg, #0d1416 0%, #1d3230 58%, #e2a648 100%)",
+    background: "#0b1230",         // the midway after sunset
+    backgroundLight: "#f4ecd9",    // canvas tent, noon
+    surface: "#141d45",
+    surfaceLight: "#fbf6ea",
+    text: "#f6efdf",
+    textMuted: "#b7bdd4",
+    textDark: "#1b1a2e",
+    textDarkMuted: "#4d4858",
+    border: "#2a3566",
+    borderLight: "#d8ccb0",
+    gradient: "linear-gradient(135deg, #0b1230 0%, #1c4a96 55%, #f2c14e 100%)",
   },
 
   fonts: {
-    // Cinzel: cut from Roman inscriptional capitals, which is the exact
-    //   register of an engraved brass lock plate. Headings and lock faces.
-    // Spline Sans: a plain, slightly technical grotesque. Body copy, so the
-    //   room's furniture never competes with what the room is arguing.
-    // Share Tech Mono: VERBATIM speaks in this and nothing else does.
-    heading: "'Cinzel', 'Times New Roman', Georgia, serif",
-    body: "'Spline Sans', 'Helvetica Neue', Arial, sans-serif",
-    mono: "'Share Tech Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Share+Tech+Mono&family=Spline+Sans:wght@300;400;500;600;700&display=swap",
+    // Ultra: a fat Clarendon, which is what every hand-painted fair sign
+    //   in America is trying to be. Headings and placings.
+    // Libre Franklin: plain, sturdy, American gothic. Body copy.
+    // DM Mono: ticket stubs, entry numbers, scores.
+    // Also loaded for page use: Yellowtail (the sign painter's script) and
+    //   Caveat (the judge's handwriting on the cards).
+    heading: "'Ultra', 'Rockwell', Georgia, serif",
+    body: "'Libre Franklin', 'Helvetica Neue', Arial, sans-serif",
+    mono: "'DM Mono', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Ultra&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Yellowtail&family=Caveat:wght@500;700&display=swap",
   },
 
   layout: {
-    heroStyle: "asymmetric",
+    heroStyle: "split",
     navStyle: "sticky",
-    cardStyle: "outlined",
+    cardStyle: "elevated",
     sectionStyle: "alternating",
     footerStyle: "detailed",
   },
 
   animations: {
     entrance: "fade-up",
-    hover: "glow",
+    hover: "lift",
     background: "none",
     pageTransition: "fade",
   },
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Three locks, a machine that answers exactly what you asked, and a hint button I'd use if I were you.",
-    description: "Dawn and I have each done over 300 escape rooms, we vote on the best ones in the world every year, and I've learned exactly one thing that transfers, which is that the good rooms hand you everything you need in the first minute and then sit there while you fail to ask for it. So this week the home page is a room. The door has three locks. The only thing in here with you is a system that answers precisely what you said and not one syllable of what you meant, which is also a fair description of most enterprise AI I've been sold (and, on a bad afternoon, of me, though in my defense nobody has ever paid me a license fee to be pedantic at them, which is a sentence I should probably not have put on my own home page). Ask it something lazy and it'll be right and useless and you'll still be in here. Put an edge on the question and the lock opens. There's a hint button and an answer key, because nobody should be trapped on my home page.",
-    heroImage: "hero-2026-09-12.jpg",
-    imageAlt: "Edward Roske in his signature blue fedora standing calmly in a dim escape room, glancing at his wristwatch with plenty of time left, in front of a floor-to-ceiling wall of roughly three hundred padlocks, every one of them hanging open.",
-    ctaText: "Book the talk this is a demo of",
+    subtitle: "I entered my life's work in the fair. The judge left notes.",
+    description: "The State Fair of Texas opened Friday, and I lived in The Great State of Texas for more than 25 years (interRel was headquartered there the entire run, and somewhere in there I also owned a ranch in North Texas that raised drum horses, which is a sentence I'll explain some other week). So this week I entered my work in the judging. The books went in as preserves, the podcast for Best in Show, the MCP servers under mechanical exhibits (out in the barn, with the tractors), the website as a craft demonstration, and then I carved myself out of butter, which in hindsight was a lot of butter for one man. Every entry came back with a card: a category, 4 criteria, points out of 10, and a comment from a judge who has plainly seen better. I placed fourth in butter. I've read the card, so I know exactly why, which is more than most companies can say about their AI pilot (and yes, I'm aware I wrote the rubric myself and still lost, which says something about either my integrity or my butter, and I'd rather not find out which).",
+    heroImage: "hero-2026-09-26.jpg",
+    imageAlt: "Edward Roske in his signature blue fedora standing beside a life-size butter sculpture of himself, butter fedora and all, inside a refrigerated glass case in a fair exhibition hall, holding up a white fourth-place ribbon with complete dignity.",
+    ctaText: "Book the workshop that ranks your pilots",
     ctaLink: "/speaking/",
   },
 };
