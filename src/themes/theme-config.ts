@@ -81,58 +81,56 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "Blue Ribbon",
-  week: "2026-09-26",
-  inspiration: "The State Fair of Texas opens September 25 and runs through October 18, and Edward lived in The Great State of Texas for more than 25 years, so this is opening weekend and he has standing. The conceit is the judging, and the rubric is the point: a county fair publishes its categories, its criteria, and its points, and a stern judge writes exactly why you lost on a card taped next to your entry. Most enterprise AI pilots have none of that, and nobody can tell you why the pilot 'worked.' So the home page is a published scorecard. Edward's real output is entered in fair divisions (the books as preserves, the podcast for Best in Show, the MCP servers under mechanical exhibits, the website as a craft demonstration, and a life-size butter self-portrait), each scored against a rubric and placed, mostly badly, with the judge's comments. Then the Grand Champion board turns his real record into fair placings, the midway carries a Big Tex cosplay (Edward's request; a giant blue fedora where the cowboy hat goes) and a vegetarian's reviews of fried food he can't eat, and a working judging card lets a visitor score their own AI pilot. Design: hand-painted fairground signage, fat display type, sign-painter script, rosettes, ticket stubs, pegboard, bunting. Blue-ribbon blue, prize red, corn gold, canvas white. Dark mode is the midway after sunset: neon tubes and string lights on deep navy. Animation off.",
-  tagline: "A county fair will tell you exactly why you placed fourth, in writing, on a card taped next to your jam. I'd settle for that from an AI pilot.",
+  name: "The Caribbean AI Summit",
+  week: "2026-10-03",
+  inspiration: "Booked theme, and the one week of the year that plays it straight. The Caribbean AI Summit runs October 9-10, 2026 at the Puerto Rico Convention Center in San Juan, Edward co-chairs it, and for 9 days roske.ai is the summit's front door. The job is filling seats and reassuring sponsors, so there's no costume and no generated Edward: the hero is the summit's own venue art, the speakers are their real headshots from caribbeansummit.ai, and the only picture of Edward is the official co-chair card. The argument is Puerto Rico as a real AI hub, and the lineup carries it (the World Economic Forum's former Head of AI, MIT's Senseable City Lab, the EU Parliament's AI advisor, the AAAI president) without the copy having to say so. Structure is a conference programme: lineup, the full 2-day agenda across 3 rooms with a marked route for finance leaders, venue and travel logistics, the hackathon, tickets, sponsors. Palette is the summit's own branding (navy #0B1220, teal #00D0C6, coral #FF6B5A), set in Bricolage Grotesque over Figtree (the summit's own text face) with JetBrains Mono for times and rooms. Dark mode is the convention center at night; light mode is the printed programme on sand. Forward-looking copy is tagged SUMMIT-FORWARD for the October 11 takedown. Animation off.",
+  tagline: "For 9 days this site is the front door to the Caribbean AI Summit, and I'm the one holding it open.",
 
   colors: {
-    // The fairground. Blue-ribbon blue and prize red on canvas by day; the
-    // midway after sunset by night, with corn gold doing the neon's job.
-    // Every pair measured, not eyeballed: body text 16:1 dark and 14.5:1
-    // light, muted text 8.7:1 and 8.2:1 on their surfaces, the gold accent
-    // 10.9:1 on navy, and the light-mode accent swaps to ribbon blue (7.2:1
-    // on canvas) because gold on canvas is a crime. Navy ink sits on the
-    // gold button, white on the blue one.
-    primary: "#1c4a96",            // blue-ribbon blue
-    secondary: "#b52a24",          // prize red
-    accent: "#f2c14e",             // corn gold, lit
-    accentHover: "#ffd46e",
-    accentLight: "#1c4a96",        // ribbon blue, daylight
-    accentHoverLight: "#143a7a",
-    onAccent: "#10163a",
-    onAccentLight: "#ffffff",
-    background: "#0b1230",         // the midway after sunset
-    backgroundLight: "#f4ecd9",    // canvas tent, noon
-    surface: "#141d45",
-    surfaceLight: "#fbf6ea",
-    text: "#f6efdf",
-    textMuted: "#b7bdd4",
-    textDark: "#1b1a2e",
-    textDarkMuted: "#4d4858",
-    border: "#2a3566",
-    borderLight: "#d8ccb0",
-    gradient: "linear-gradient(135deg, #0b1230 0%, #1c4a96 55%, #f2c14e 100%)",
+    // The summit's own palette, lifted from caribbeansummit.ai rather than
+    // invented: night navy, sea teal, sunset coral. Measured, not eyeballed:
+    // body text 16.6:1 dark and 16.8:1 light, muted 8.1:1 and 7.6:1 on their
+    // surfaces, teal 9.7:1 on navy. Teal on sand fails, so light mode swaps
+    // the accent to a deep reef teal (5.3:1 on sand, 6.0:1 on white) with
+    // white type on its buttons; dark mode puts navy type on bright teal.
+    primary: "#00D0C6",            // sea teal
+    secondary: "#FF6B5A",          // sunset coral
+    accent: "#00D0C6",
+    accentHover: "#4FE3DB",
+    accentLight: "#00706A",        // reef teal, daylight
+    accentHoverLight: "#005A55",
+    onAccent: "#0B1220",
+    onAccentLight: "#FFFFFF",
+    background: "#0B1220",         // the convention center at night
+    backgroundLight: "#F6F2EA",    // the printed programme, on sand
+    surface: "#121C30",
+    surfaceLight: "#FFFFFF",
+    text: "#F3F1EC",
+    textMuted: "#A9B4C8",
+    textDark: "#0B1220",
+    textDarkMuted: "#4A5468",
+    border: "#23304A",
+    borderLight: "#DCD5C8",
+    gradient: "linear-gradient(120deg, #0B1220 0%, #0d3a4a 55%, #00D0C6 100%)",
   },
 
   fonts: {
-    // Ultra: a fat Clarendon, which is what every hand-painted fair sign
-    //   in America is trying to be. Headings and placings.
-    // Libre Franklin: plain, sturdy, American gothic. Body copy.
-    // DM Mono: ticket stubs, entry numbers, scores.
-    // Also loaded for page use: Yellowtail (the sign painter's script) and
-    //   Caveat (the judge's handwriting on the cards).
-    heading: "'Ultra', 'Rockwell', Georgia, serif",
-    body: "'Libre Franklin', 'Helvetica Neue', Arial, sans-serif",
-    mono: "'DM Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Ultra&family=Libre+Franklin:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=DM+Mono:wght@400;500&family=Yellowtail&family=Caveat:wght@500;700&display=swap",
+    // Bricolage Grotesque: confident, editorial, a little warm. Headlines
+    //   and the big numbers. Reads like it cost money, which was the brief.
+    // Figtree: the summit's own text face, so the two sites feel related.
+    // JetBrains Mono: times, rooms, prices (JetBrains is a Silver sponsor,
+    //   which I noticed after picking it and have decided not to explain).
+    heading: "'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif",
+    body: "'Figtree', 'Helvetica Neue', Arial, sans-serif",
+    mono: "'JetBrains Mono', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap",
   },
 
   layout: {
-    heroStyle: "split",
+    heroStyle: "fullscreen",
     navStyle: "sticky",
-    cardStyle: "elevated",
-    sectionStyle: "alternating",
+    cardStyle: "outlined",
+    sectionStyle: "magazine",
     footerStyle: "detailed",
   },
 
@@ -145,12 +143,14 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "I entered my life's work in the fair. The judge left notes.",
-    description: "The State Fair of Texas opened Friday, and I lived in The Great State of Texas for more than 25 years (interRel was headquartered there the entire run, and somewhere in there I also owned a ranch in North Texas that raised drum horses, which is a sentence I'll explain some other week). So this week I entered my work in the judging. The books went in as preserves, the podcast for Best in Show, the MCP servers under mechanical exhibits (out in the barn, with the tractors), the website as a craft demonstration, and then I carved myself out of butter, which in hindsight was a lot of butter for one man. Every entry came back with a card: a category, 4 criteria, points out of 10, and a comment from a judge who has plainly seen better. I placed fourth in butter. I've read the card, so I know exactly why, which is more than most companies can say about their AI pilot (and yes, I'm aware I wrote the rubric myself and still lost, which says something about either my integrity or my butter, and I'd rather not find out which).",
-    heroImage: "hero-2026-09-26.jpg",
-    imageAlt: "Edward Roske in his signature blue fedora standing beside a life-size butter sculpture of himself, butter fedora and all, inside a refrigerated glass case in a fair exhibition hall, holding up a white fourth-place ribbon with complete dignity.",
-    ctaText: "Book the workshop that ranks your pilots",
-    ctaLink: "/speaking/",
+    // SUMMIT-FORWARD: subtitle, description, and ctaText all speak in the
+    // upcoming tense and need the October 11 sweep.
+    subtitle: "October 9-10, 2026 | Puerto Rico Convention Center | San Juan",
+    description: "On October 9 and 10, the Caribbean AI Summit takes over the Puerto Rico Convention Center, and I'm co-chairing it (which mostly means telling everyone I know to come, so consider yourself told). More than 30 speakers across 3 tracks, 2 days, and every session subtitled live in English and Spanish, so pick your favorite language and come.",
+    heroImage: "hero-2026-10-03.jpg",
+    imageAlt: "The Puerto Rico Convention Center in San Juan at night, its white lattice roof lit from below over teal glass, palm trees and still water in front, with the Caribbean AI Summit's teal and coral wave lines sweeping across the dark sky.",
+    ctaText: "Get a ticket, from $449",
+    ctaLink: "https://787tickets.com/carrito/boleteria/evento/caribbean-ai-summit-2026",
   },
 };
 
