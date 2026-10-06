@@ -15,7 +15,7 @@ const talks = [
     title: 'Your Day, Run by Ten Agents',
     audience: 'Executives and leadership teams',
     description:
-      "Edward's life runs on ten or more AI agents at all times: calendar, inbox, research, writing, code, decisions. This talk walks through the actual stack, what each agent does, and how executives assemble the same force multiplier without an engineering degree. The website you booked him from is part of the talk (his agents redesign it every Saturday while he sleeps).",
+      "Your executives were told to \"use AI\" and handed a chatbot, which is a bit like being told to get in shape and handed one dumbbell. Edward's own life runs on 10+ AI agents at all times: calendar, inbox, research, writing, code, decisions. This talk walks through the actual stack, what each agent does, and how executives assemble the same force multiplier without an engineering degree. The website you booked him from is part of the talk (his agents redesign it every Saturday while he sleeps).",
     walkaway: [
       'A map of a working executive agent stack, tool by tool',
       'Which of their own recurring tasks an agent should take first',
@@ -28,7 +28,7 @@ const talks = [
     title: "Answers to the Questions You've Been Quietly Asking Yourself About AI",
     audience: 'Senior leaders, cross-functional',
     description:
-      'Drawn from a hundred-plus episodes of Asking Good Questions and a portfolio of live AI deployments. Frameworks for the questions executives are already wrestling with privately, from "which vendor is lying to me" to "what happens to my team." Works as a keynote, a fireside chat, or the opening session of a multi-day offsite.',
+      'Most senior leaders have AI questions they won\'t ask in a meeting, mostly because everyone else in the meeting seems to know the answer already (they don\'t). This talk answers them, drawn from a hundred-plus episodes of Asking Good Questions and a portfolio of live AI deployments, from "which vendor is lying to me" to "what happens to my team." Works as a keynote, a fireside chat, or the opening session of a multi-day offsite.',
     walkaway: [
       'A working answer to the AI question they brought into the room',
       'A filter for separating deployed reality from vendor theater',
@@ -41,7 +41,7 @@ const talks = [
     title: 'The Computer-First Finance Department',
     audience: 'CFOs, finance and EPM leaders',
     description:
-      "Planning, consolidation, and reporting are shifting from human-first to computer-first, and Edward is one of the people shipping that shift: MCP servers that let AI agents read and write live Oracle EPM data. Twenty-five years in the Office of the CFO, translated into what finance automates first, what it should never automate, and why knowing when a number is wrong still beats producing it fast.",
+      "Finance teams keep hearing that AI will close the books by itself next quarter, and also that it can't be trusted anywhere near a ledger, sometimes in the same week. Planning, consolidation, and reporting are shifting from human-first to computer-first, and Edward is one of the people shipping that shift: MCP servers that let AI agents read and write live Oracle EPM data. Twenty-five years in the Office of the CFO, translated into what finance automates first, what it should never automate, and why knowing when a number is wrong still beats producing it fast.",
     walkaway: [
       'The finance processes AI takes first, in order, with evidence',
       'What a computer-first close actually looks like at companies doing it',
@@ -54,7 +54,7 @@ const talks = [
     title: 'Building a Company in the Era of AI',
     audience: 'Founders, operators, PE portfolios',
     description:
-      "Edward founded interRel at twenty-two, ran it for twenty-five years, and merged it with Keste to help found a billion-dollar firm. Now he's building AI companies while AI rewrites the business model underneath them. It's a talk for founders and operating partners on what changes when your product, your staffing plan, and your competition are all being re-priced by the same technology.",
+      "A 3-year plan written today sits on top of a business model AI keeps rewriting, and most of the advice portfolio companies get on it comes from people selling AI (Edward builds some of it himself, so bring your skepticism). He founded interRel at 22, ran it for 25 years, and merged it with Keste to help found Argano, a billion-dollar firm, and these days he's building AI companies and redoing his own plans right alongside the people in the room. It's a talk for founders and operating partners on what changes when your product, your staffing plan, and your competition are all being re-priced by the same technology.",
     walkaway: [
       'Which parts of the operating playbook AI actually re-prices',
       'How to evaluate AI claims inside a portfolio company in one meeting',
@@ -89,7 +89,29 @@ const formats = [
     name: 'Virtual Keynote',
     price: 'From $7,500',
     detail:
-      'Same talk, same customization, no airfare. Recording license and hybrid formats available.',
+      'Same talk, same customization, no airfare. Recording license and hybrid formats available (the NYSSCPA/FAE conference piped his session out to multiple locations, one of them a co-chair\'s office, and every attendee who responded scored it 5 out of 5).',
+  },
+];
+
+// Planner-risk promises, in Edward's first person. Only claims already
+// documented on this page, in edward_facts.md, or in the project CLAUDE.md
+// (Competition = his top StrengthsFinder result).
+const promises = [
+  {
+    title: 'Your attendees will be glad you booked me.',
+    body: "I've collected 8 speaker awards (6 Top Speaker, 2 Best Overall), and my biggest StrengthsFinder result is Competition, so if your conference scores its sessions, I'm trying to top the chart.",
+  },
+  {
+    title: "Booking me won't create work for you.",
+    body: 'My whole A/V list is a wireless mic, HDMI or USB-C to your screens, and a confidence monitor if the room is big. I show up early and do a tech check the day before when I can. Domestic travel is one flat number instead of a stack of receipts (I don\'t like expense reports either). The fedora stays on the entire time (a Roske never removes his fedora in the presence of others).',
+  },
+  {
+    title: 'The examples will be from this month.',
+    body: "I build AI products and run my own day on 10+ agents, so my stories come from whatever broke last Tuesday (and, Edward, it's usually something you built yourself, so maybe stop bragging about it).",
+  },
+  {
+    title: "You'll want me back.",
+    body: "I've been on the Kscope program since 2008 (I chaired it for 2 of those years, which is admittedly one way to guarantee a slot), and the NYSSCPA/FAE Business & Industry Conference brought me back. I'd like your event to be the next one.",
   },
 ];
 
@@ -128,7 +150,7 @@ const videos = [
 
 const history = [
   { event: 'Caribbean AI Summit', detail: 'Co-chair. October 9-10, 2026, Puerto Rico Convention Center. The largest AI conference Puerto Rico has ever seen.', year: '2026' },
-  { event: 'Puerto Rico AI Community', detail: 'President and regular presenter. 850+ executives across the meetup series. Bimonthly in San Juan.', year: '2024-Present' },
+  { event: 'Puerto Rico AI Community', detail: 'President and regular presenter. 1,000+ different attendees across the meetup series. Bimonthly in San Juan.', year: '2024-Present' },
   { event: 'Kscope (ODTUG)', detail: 'Speaker since 2008. Conference Chair 2011-2012. Essbase Speaker of the Year 2018. Lifetime Achievement Award 2025.', year: '2008-2025' },
   { event: 'Oracle International Speaking Tours', detail: 'Touring 50+ countries across all 7 continents. Training, keynotes, and workshops.', year: '2008-2023' },
   { event: 'Oracle OpenWorld / CloudWorld', detail: 'Regular speaker. San Francisco, Las Vegas, and international editions.', year: '2000s-2020s' },
@@ -467,7 +489,7 @@ const featureVideoSchema = {
           </article>
           <article>
             <h3>Thirty days of amplification</h3>
-            <p>If your event is public: a month of LinkedIn and X posts to a built-in audience of CFOs, CIOs, and AI operators, plus a month of mentions on Edward's YouTube channel and its half-million-plus subscribers.</p>
+            <p>If your event is public: a month of LinkedIn and X posts to a built-in audience of CFOs, CIOs, and AI operators, plus a month of mentions on Edward's YouTube channel and its over 700,000 subscribers.</p>
           </article>
         </div>
       </div>
@@ -487,6 +509,27 @@ const featureVideoSchema = {
           depending on the week's theme. It's the standing proof behind his most-booked talk,
           "Your Day, Run by Ten Agents."
         </p>
+      </div>
+    </section>
+
+    <!-- ============ PROMISES ============ -->
+    <section id="promises" class="spk-section spk-section-alt">
+      <div class="spk-wrap">
+        <p class="spk-eyebrow">For the person who books me</p>
+        <h2 class="spk-h2">What I promise.</h2>
+        <p class="spk-deck">
+          This part is in my own words (the rest of the page talks about me in the third person,
+          which I find a little weird too). Whoever picks the speaker is the one who hears about it if the speaker flops, so
+          here's what you can tell your committee.
+        </p>
+        <div class="spk-promises">
+          {promises.map((p) => (
+            <article>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 

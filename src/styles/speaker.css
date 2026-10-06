@@ -254,6 +254,16 @@
     .spk-bundle h3 { font-family: 'Fraunces', serif; font-weight: 560; font-size: 1.3rem; margin: 0 0 0.6rem; }
     .spk-bundle p { color: var(--spk-muted); font-size: 0.96rem; margin: 0; }
 
+    /* ---------- promises (2x2) ---------- */
+    .spk-promises { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+    @media (max-width: 860px) { .spk-promises { grid-template-columns: 1fr; } }
+    .spk-promises article {
+      background: var(--spk-surface); border: 1px solid var(--spk-line);
+      border-left: 3px solid var(--spk-accent); padding: 1.7rem 1.6rem;
+    }
+    .spk-promises h3 { font-family: 'Fraunces', serif; font-weight: 560; font-size: 1.3rem; margin: 0 0 0.6rem; }
+    .spk-promises p { color: var(--spk-muted); font-size: 0.96rem; margin: 0; }
+
     /* ---------- demo band ---------- */
     .spk-demo, .spk-closing {
       position: relative; background: var(--spk-invert-bg); color: var(--spk-invert-ink);
