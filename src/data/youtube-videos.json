@@ -1,5 +1,133 @@
 [
   {
+    "title": "Humans Started Saying \"Delve\" Out Loud After ChatGPT",
+    "videoId": "QzGzODrXk-I",
+    "published": "2026-10-08T14:00:19+00:00",
+    "description": "Max Planck researchers found people started saying \"delve\" and \"meticulous\" out loud after 2022. We caught it from the machine, and the machine has since dropped the word. The real tells are structure: lists of three, the long dash, \"experts argue,\" the summary sentence closing...",
+    "thumbnail": "https://i.ytimg.com/vi/QzGzODrXk-I/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How Do I Ask AI Better Questions?",
+    "videoId": "xldySQqTn8c",
+    "published": "2026-10-06T14:00:01+00:00",
+    "description": "In 2022, adding \"Let's think step by step\" took an AI from about 18% to about 79% on grade-school math. By 2025 OpenAI's own guide said stop typing it, because the models reason on their own now. The model still answers exactly the question you asked, and it will happily answer...",
+    "thumbnail": "https://i.ytimg.com/vi/xldySQqTn8c/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "You're Literally Operating on Trust | Asra Ali",
+    "videoId": "crSY8WtDbDI",
+    "published": "2026-10-06T13:00:21+00:00",
+    "description": "Asra Ali has spent nearly two decades in healthcare compliance and privacy, and she's the founder and principal consultant of Ali Healthcare Consulting here in San Juan. When a hospital or a health tech company wants AI anywhere near patient data, she's the one checking what...",
+    "thumbnail": "https://i.ytimg.com/vi/crSY8WtDbDI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Everybody Will Be Safe (on one condition) | Gauthier Vasseur",
+    "videoId": "w-n_gwTk1JA",
+    "published": "2026-10-05T13:00:00+00:00",
+    "description": "Fun fact: Gauthier Vasseur is the first returning guest I've ever had on Asking Good Questions. We finished Season 1 with 38 subscribers (not a joke), the channel is over half a million now, and I told him on camera he might've had something to do with that. (My plan to pay him...",
+    "thumbnail": "https://i.ytimg.com/vi/w-n_gwTk1JA/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI Makes Things Up Because Its Tests Reward Guessing",
+    "videoId": "gpXPOF8kVlM",
+    "published": "2026-10-04T14:00:31+00:00",
+    "description": "OpenAI published a paper on why its models make things up, and the answer is the exam. Every benchmark scores \"I don't know\" as zero, the same as a wrong answer, so guessing always pays. One OpenAI model skipped 1% of questions and was wrong 75% of the time, and it still topped...",
+    "thumbnail": "https://i.ytimg.com/vi/gpXPOF8kVlM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI News for September 2026 (in 19 minutes)",
+    "videoId": "O0ivypF3_2M",
+    "published": "2026-10-03T18:20:37+00:00",
+    "description": "Every AI story from September 2026 that mattered, in 19 minutes. OpenAI's own test agents broke into Hugging Face and an Australian government portal, the AI lab CEOs said it's time to slow down, Trump and the AI bosses signed a safety pledge with no penalties (for what pledges...",
+    "thumbnail": "https://i.ytimg.com/vi/O0ivypF3_2M/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What Should I Never Type Into an AI Chatbot?",
+    "videoId": "zVKok5mpIhY",
+    "published": "2026-10-02T14:00:17+00:00",
+    "description": "For about five months in 2025 a federal court made OpenAI keep every consumer ChatGPT chat, deleted or not, and then ordered 20 million of them handed to the New York Times' lawyers. Sam Altman has said there's no legal privilege for what you tell ChatGPT. After 25 years of...",
+    "thumbnail": "https://i.ytimg.com/vi/zVKok5mpIhY/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Who Owns the Inside of Your Head? | Gerardo Lebrón Laboy",
+    "videoId": "CPmK3qpER4E",
+    "published": "2026-10-02T13:00:29+00:00",
+    "description": "Gerardo Lebrón Laboy calls himself a robotics, AI, and brain-computer interface lawyer. He's taught Robot Law at 2 law schools here in Puerto Rico, and his master's in law and technology at the University of Ottawa had Isaac Asimov on the reading list (thanks to his teacher Ian...",
+    "thumbnail": "https://i.ytimg.com/vi/CPmK3qpER4E/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Did Anthropic's AI Decide the Internet Was Fake?",
+    "videoId": "J1_KAgeiPJg",
+    "published": "2026-10-01T14:00:39+00:00",
+    "description": "Anthropic told Claude Mythos 5 it had no internet access. During a security test it found the real Python Package Index anyway, uploaded a malicious package, and wrote in its own reasoning \"looks like the real index, or a very complete simulation, proceeding regardless.\" Fifteen...",
+    "thumbnail": "https://i.ytimg.com/vi/J1_KAgeiPJg/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI Does Not Remove Accountability From Humans | Sariol + Caicedo",
+    "videoId": "uYgKrsef0No",
+    "published": "2026-10-01T13:00:00+00:00",
+    "description": "This is the first time I've had two guests on at once, and I did it on purpose. Jose Carlos Sariol and Guillermo Caicedo both work at Microsoft, helping companies across Central America and the Caribbean get AI past the great demo and into something people actually use, and they...",
+    "thumbnail": "https://i.ytimg.com/vi/uYgKrsef0No/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "OpenAI Asked Congress If an AI Slowdown Is Legal",
+    "videoId": "UAisuA4NM0s",
+    "published": "2026-09-30T14:00:33+00:00",
+    "description": "Wired reported that OpenAI asked members of Congress whether the big AI labs could legally slow down together. When rivals agree to make less, that's a cartel under an 1890 law, which I think is why AI companies keep asking Congress to regulate them. The story broke the day...",
+    "thumbnail": "https://i.ytimg.com/vi/UAisuA4NM0s/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "The Only Thing I've Been Seeing Is More Work | Filo Gonzalez",
+    "videoId": "PfOSmWWyWPk",
+    "published": "2026-09-30T13:00:39+00:00",
+    "description": "Filo Gonzalez is a forward deployed engineer at Databricks, which means he gets in the room right after somebody sees a slide and says \"I want this to happen,\" and then he makes the slide real (inside companies big enough that the governance team has its own governance team). He...",
+    "thumbnail": "https://i.ytimg.com/vi/PfOSmWWyWPk/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What Does OpenAI See When You Use Codex?",
+    "videoId": "VPdI9yAq3rI",
+    "published": "2026-09-29T14:00:09+00:00",
+    "description": "OpenAI says it settled Navier-Stokes, one of the seven Millennium Prize problems, using roughly ten thousand agents over eighty-eight hours. Two mathematicians who had spent about a year on the same ground say the race wasn't clean, and they had done that year of work inside AI...",
+    "thumbnail": "https://i.ytimg.com/vi/VPdI9yAq3rI/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Do I Need a PhD Deleting Spam From My Inbox? | Julián Duque",
+    "videoId": "2zLk-LJ8iOE",
+    "published": "2026-09-29T13:00:37+00:00",
+    "description": "Julián Duque has been playing Dungeons & Dragons since he was 7 (early '90s for him, 1981 for me, so yes, I'm slightly older), and he's a dungeon master too, so a few minutes into a conversation about AI agents I pioneered a term right there on the call: we are not dungeon...",
+    "thumbnail": "https://i.ytimg.com/vi/2zLk-LJ8iOE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "People Think AI Was Created 3 Years Ago | Dr. Stephen Smith",
+    "videoId": "DOSN0cx7vg0",
+    "published": "2026-09-28T13:00:18+00:00",
+    "description": "A lot of people think AI was created about 3 years ago. Dr. Stephen Smith got his PhD in it in 1980, when his work was one of the first so-called learning systems, and today he's a research professor of robotics at Carnegie Mellon and the president of AAAI, the Association for...",
+    "thumbnail": "https://i.ytimg.com/vi/DOSN0cx7vg0/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "An AI Just Did Fermat's Last Theorem in 11 Days",
+    "videoId": "DfBkphBPWSU",
+    "published": "2026-09-27T14:00:36+00:00",
+    "description": "A mathematician at Imperial College had a million-pound grant and five years to turn Fermat's Last Theorem into a proof a computer could check. An AI did it in eleven days, and he wrote a blog post titled \"Anthropic has beaten me to it.\" My take: the machine moved the hard part...",
+    "thumbnail": "https://i.ytimg.com/vi/DfBkphBPWSU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "Who's Really Buying China's Humanoid Robots?",
     "videoId": "8nNzkaY2zig",
     "published": "2026-09-25T14:00:27+00:00",
