@@ -83,8 +83,8 @@ export interface ThemeConfig {
 export const currentTheme: ThemeConfig = {
   name: "The Caribbean AI Summit",
   week: "2026-10-03",
-  inspiration: "Booked theme, and the one week of the year that plays it straight. The Caribbean AI Summit runs October 9-10, 2026 at the Puerto Rico Convention Center in San Juan, Edward co-chairs it, and for 9 days roske.ai is the summit's front door. The job is filling seats and reassuring sponsors, so there's no costume and no generated Edward: the hero is the summit's own venue art, the speakers are their real headshots from caribbeansummit.ai, and the only picture of Edward is the official co-chair card. The argument is Puerto Rico as a real AI hub, and the lineup carries it (the World Economic Forum's former Head of AI, MIT's Senseable City Lab, the EU Parliament's AI advisor, the AAAI president) without the copy having to say so. Structure is a conference programme: lineup, the full 2-day agenda across 3 rooms with a marked route for finance leaders, venue and travel logistics, the hackathon, tickets, sponsors. Palette is the summit's own branding (navy #0B1220, teal #00D0C6, coral #FF6B5A), set in Bricolage Grotesque over Figtree (the summit's own text face) with JetBrains Mono for times and rooms. Dark mode is the convention center at night; light mode is the printed programme on sand. Forward-looking copy is tagged SUMMIT-FORWARD for the October 11 takedown. Animation off.",
-  tagline: "For 9 days this site is the front door to the Caribbean AI Summit, and I'm the one holding it open.",
+  inspiration: "Booked theme, and the one week of the year that plays it straight. The Caribbean AI Summit ran October 9-10, 2026 at the Puerto Rico Convention Center in San Juan, Edward co-chaired it, and for 9 days roske.ai was the summit's front door. The job was getting people to San Juan and reassuring sponsors, so there's no costume and no generated Edward: the hero is the summit's own venue art, the speakers are their real headshots from caribbeansummit.ai, and the only picture of Edward is the official co-chair card. The argument is Puerto Rico as a real AI hub, and the lineup carries it (the World Economic Forum's former Head of AI, MIT's Senseable City Lab, the EU Parliament's AI advisor, the AAAI president) without the copy having to say so. Structure is a conference programme: lineup, the full 2-day agenda across 3 rooms with a marked route for finance leaders, venue and travel logistics, the hackathon, a recap, sponsors. Palette is the summit's own branding (navy #0B1220, teal #00D0C6, coral #FF6B5A), set in Bricolage Grotesque over Figtree (the summit's own text face) with JetBrains Mono for times and rooms. Dark mode is the convention center at night; light mode is the printed programme on sand. The October 11 recap sweep moved the copy to past tense and took the ticket links down. Animation off.",
+  tagline: "For 9 days this site was the front door to the Caribbean AI Summit, and I was the one holding it open.",
 
   colors: {
     // The summit's own palette, lifted from caribbeansummit.ai rather than
@@ -143,14 +143,14 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    // SUMMIT-FORWARD: subtitle, description, and ctaText all speak in the
-    // upcoming tense and need the October 11 sweep.
+    // Swept to past tense on October 11: the summit is over, so the CTA is
+    // a recap link to the summit's own site, not a ticket link.
     subtitle: "October 9-10, 2026 | Puerto Rico Convention Center | San Juan",
-    description: "On October 9 and 10, the Caribbean AI Summit takes over the Puerto Rico Convention Center, and I'm co-chairing it (which mostly means telling everyone I know to come, so consider yourself told). More than 30 speakers across 3 tracks, 2 days, and every session subtitled live in English and Spanish, so pick your favorite language and come.",
+    description: "On October 9 and 10, the Caribbean AI Summit took over the Puerto Rico Convention Center, and I co-chaired it (I also told everyone I know to come, so thank you for putting up with that). More than 30 speakers across 3 tracks, 2 days, and every session subtitled live in English and Spanish, and the whole program's below if you'd like to see who was on it.",
     heroImage: "hero-2026-10-03.jpg",
     imageAlt: "The Puerto Rico Convention Center in San Juan at night, its white lattice roof lit from below over teal glass, palm trees and still water in front, with the Caribbean AI Summit's teal and coral wave lines sweeping across the dark sky.",
-    ctaText: "Get a ticket, from $449",
-    ctaLink: "https://787tickets.com/carrito/boleteria/evento/caribbean-ai-summit-2026",
+    ctaText: "See who spoke",
+    ctaLink: "https://www.caribbeansummit.ai/",
   },
 };
 

@@ -15,14 +15,13 @@ const theme = currentTheme;
 // 2026"). Nothing here is invented, and nothing here is generated: the photos
 // are the speakers' real headshots and the summit's own venue art.
 //
-// TENSE: the copy lives through 3 states (upcoming Oct 3-8, live Oct 9-10,
-// over Oct 11). Every forward-looking spot carries a SUMMIT-FORWARD marker
-// so the October 11 takedown can find it with one grep.
+// TENSE: the summit ran October 9-10 and is over. The October 11 recap sweep
+// moved every forward-looking spot to past tense and took the ticket links,
+// the countdown chip script, and the floating ticket button down. The agenda
+// below stays as the published program, kept as the record.
 // ---------------------------------------------------------------------------
 
 const SUMMIT = 'https://www.caribbeansummit.ai/';
-// SUMMIT-FORWARD: the ticket link. Swap every use for a recap link on Oct 11.
-const TICKETS = 'https://787tickets.com/carrito/boleteria/evento/caribbean-ai-summit-2026';
 
 // The numbers strip under the hero. Program facts only.
 const facts = [
@@ -42,7 +41,7 @@ const headliners = [
     role: 'Former Head of AI, World Economic Forum',
     slot: 'Day 2 | 4:45 PM | Closing keynote, Technical',
     talk: `The Global State of AI: Governance, Risk & What's Next`,
-    note: `CEO of Good Tech Advisory, and her latest book, Coexisting With AI, came out in January. If you've ever been asked who's accountable when the model gets it wrong, her talk is the one to catch.`,
+    note: `CEO of Good Tech Advisory, and her latest book, Coexisting With AI, came out in January. If you've ever been asked who's accountable when the model gets it wrong, her talk was the one to catch.`,
     img: '/images/caribbean-ai-summit/kay.jpg',
     alt: 'Kay Firth-Butterfield speaking at a podium in a red dress, a TIME100 Impact Awards AI sign beside her.',
   },
@@ -51,7 +50,7 @@ const headliners = [
     role: 'Principal Research Scientist, MIT Senseable City Lab',
     slot: 'Day 1 | 9:00 AM | Opening keynote, Business',
     talk: 'AI for Urban Biodiversity',
-    note: `His lab builds vision models that count insects in city gardens on low-power hardware, which is one of the most practical uses of AI I've seen on any program (and the only talk this year where the bugs are the point).`,
+    note: `His lab builds vision models that count insects in city gardens on low-power hardware, which is one of the most practical uses of AI I've seen on any program (and the only talk this year where the bugs were the point).`,
     img: '/images/caribbean-ai-summit/fabio-duarte.jpg',
     alt: 'Fabio Duarte in round glasses and an olive shirt, smiling, in front of a dark wall with white MIT lettering.',
   },
@@ -211,11 +210,11 @@ const days: { id: string; day: string; date: string; rows: Row[] }[] = [
 ];
 
 // ---------------------------------------------------------------------------
-// GETTING HERE. Venue logistics, straight from the summit.
+// THE VENUE. Logistics as the summit published them.
 // ---------------------------------------------------------------------------
 const logistics = [
   { k: 'Venue', v: 'Puerto Rico Convention Center, 100 Bulevar Saint John, Isla Grande, San Juan, PR 00907' },
-  { k: 'Hours', v: 'October 9 and 10, 9:00 AM to 6:00 PM (doors at 8:45)' },
+  { k: 'Ran', v: 'October 9 and 10, 9:00 AM to 6:00 PM' },
   { k: 'From SJU airport', v: 'About 10 minutes, roughly $20 by rideshare or taxi' },
   { k: 'From Condado', v: '5 minutes' },
   { k: 'From Old San Juan', v: '15 minutes' },
@@ -224,40 +223,6 @@ const logistics = [
   { k: 'Parking', v: 'Valet at the Convention Center, $18 a day' },
   { k: 'Language', v: 'Spanish and English, with live subtitles in both. No headsets.' },
   { k: 'Age', v: '18 and up' },
-];
-
-// ---------------------------------------------------------------------------
-// TICKETS. SUMMIT-FORWARD: this entire block comes down on October 11.
-// ---------------------------------------------------------------------------
-const passes = [
-  {
-    name: 'General Admission',
-    price: '$449',
-    tag: 'Most popular',
-    lines: [
-      'Both days, October 9 and 10',
-      'All 3 tracks and every keynote',
-      '20+ parallel sessions',
-      'Networking and the sponsor expo',
-      'Live bilingual subtitles',
-      'Coffee and networking breaks, both days',
-    ],
-    cta: 'Get General Admission',
-  },
-  {
-    name: 'Inner Circle',
-    price: '$999',
-    tag: 'Premium',
-    lines: [
-      'Everything in General Admission',
-      'Preferred keynote seating',
-      'The Inner Circle lounge',
-      'Curated networking with the C-suite and the speakers',
-      'Private lunch with the speakers, both days',
-      'Express check-in',
-    ],
-    cta: 'Get Inner Circle',
-  },
 ];
 
 // ---------------------------------------------------------------------------
@@ -287,9 +252,8 @@ const desk = [
   {
     no: '02',
     name: 'Caribbean AI Summit',
-    // SUMMIT-FORWARD: state + note + cta are upcoming-tense.
-    state: 'October 9 and 10',
-    note: `Co-chairing it, and you're standing in the lobby. Scroll up, the whole program's on this page, including a $10,000 hackathon running underneath it.`,
+    state: 'Done, October 2026',
+    note: `Co-chaired it on October 9 and 10, and you're standing in what's left of the lobby. Scroll up, the whole program's on this page, including the $10,000 hackathon that was scheduled underneath it.`,
     href: '#program',
     external: false,
     cta: 'Read the program',
@@ -358,19 +322,17 @@ const stats = [
     <div class="cs-hero-shade" aria-hidden="true"></div>
     <div class="cs-wrap cs-hero-inner">
       <p class="cs-kicker">
-        <span>Roske.AI | Program edition | Week of October 3, 2026</span>
-        {/* SUMMIT-FORWARD: status chip. The inline script below rewrites it to a countdown (Oct 3-8) or "happening now" (Oct 9-10). Remove the chip and script on Oct 11. */}
-        <span class="cs-status" data-cs-status>October 9-10, 2026</span>
+        <span>Roske.AI | Recap edition | October 11, 2026</span>
+        <span class="cs-status">Wrapped October 10</span>
       </p>
       <h1 class="cs-h1" id="cs-hero-title">
         <span class="cs-h1-small">The</span>
         Caribbean <span class="cs-h1-ai">AI</span> Summit
       </h1>
-      {/* SUMMIT-FORWARD: subtitle, description, and the ticket CTA come from theme-config hero */}
+      {/* subtitle, description, and the recap CTA come from theme-config hero */}
       <p class="cs-hero-sub">{theme.hero.subtitle}</p>
       <p class="cs-hero-desc">{theme.hero.description}</p>
       <div class="cs-hero-cta">
-        {/* SUMMIT-FORWARD: registration CTA */}
         <a class="cs-btn cs-btn-coral" href={theme.hero.ctaLink} target="_blank" rel="noopener noreferrer">
           {theme.hero.ctaText}
         </a>
@@ -397,14 +359,12 @@ const stats = [
     <div class="cs-wrap">
       <header class="cs-head">
         <p class="cs-num">01 | The lineup</p>
-        <h2 class="cs-h2" id="cs-lineup-title">Who's flying in.</h2>
-        {/* SUMMIT-FORWARD: "will be in San Juan" */}
+        <h2 class="cs-h2" id="cs-lineup-title">Who was on the bill.</h2>
         <p class="cs-deck">
-          The 3 people the summit led with are the World Economic Forum's former Head of AI, a principal
-          research scientist from MIT's Senseable City Lab, and an AI advisor to the European Parliament, and
-          all 3 will be in San Juan on October 9 and 10 along with more than 30 other speakers. I'm going to
-          let that list make the case for Puerto Rico instead of making it myself (Edward, you live here, so
-          nobody should take your word for it, and frankly you'd oversell it).
+          The 3 people the summit led with were the World Economic Forum's former Head of AI, a principal
+          research scientist from MIT's Senseable City Lab, and an AI advisor to the European Parliament, on
+          a program of more than 30 speakers in San Juan on October 9 and 10. I let that list make the case
+          for Puerto Rico instead of making it myself (I live here, so nobody should take my word for it).
         </p>
       </header>
 
@@ -430,7 +390,7 @@ const stats = [
           <h3 class="cs-h3 cs-h3-sm">Also on the program</h3>
           <p class="cs-program-deck">
             AI faculty from MIT, Carnegie Mellon, UC Berkeley, Penn, and SMU (where I got my data science
-            degree, so I'm biased and I'll be in the front row), plus people building this for a living at
+            degree, so I'm biased), plus people building this for a living at
             Microsoft, Salesforce, Snowflake, Databricks, AWS, HPE, and a bunch more. Full list at{' '}
             <a class="cs-inline" href={SUMMIT} target="_blank" rel="noopener noreferrer">caribbeansummit.ai</a>.
           </p>
@@ -463,11 +423,10 @@ const stats = [
   </section>
 
   <!-- ================= LATEST DISPATCHES ================= -->
-  {/* SUMMIT-FORWARD: LatestContent deck ("is actually going to disagree about") */}
   <LatestContent
     eyebrow="Between sessions"
     heading="Fresh <em>this week.</em>"
-    deck="Writing and video, newest first, including this week's post on what a WEF, MIT, and EU Parliament lineup is actually going to disagree about."
+    deck="Writing and video, newest first, including the post on what the WEF, MIT, and the EU Parliament actually disagree about on AI."
   />
 
   <!-- ================= 02 THE PROGRAMME ================= -->
@@ -477,10 +436,10 @@ const stats = [
         <p class="cs-num">02 | The program</p>
         <h2 class="cs-h2" id="cs-program-title">2 days, 3 rooms.</h2>
         <p class="cs-deck">
-          Business is in Ballroom B, Technical in Room 209, and Society in Room 208, all running at once, so
-          you'll have to choose. If you run finance and you only have the patience for about 10 sessions,
-          I've marked my route through both days (it isn't official, and I reserve the right to wander into
-          the healthcare panel instead).
+          Business was in Ballroom B, Technical in Room 209, and Society in Room 208, all running at once, so
+          nobody got to see all of it. If you run finance and you'd like to know which 10 or so sessions I
+          would've sent you to, my route through both days is marked below (it was never official, by the
+          way).
         </p>
       </header>
 
@@ -551,33 +510,30 @@ const stats = [
         </div>
       ))}
 
-      {/* SUMMIT-FORWARD: "you'll have to pick between Kay and Idoia" */}
       <p class="cs-fineprint">
-        As published at caribbeansummit.ai, last updated September 2026, and subject to change. Times are
-        Atlantic Standard Time, and Puerto Rico doesn't do daylight saving (one less thing to explain to your
-        calendar). Both closing keynotes run at 4:45 on Day 2 in different rooms, so you'll have to pick
-        between Kay and Idoia (the co-chair title, sadly, doesn't come with a clone).
+        This is the program as published at caribbeansummit.ai in September 2026, before any last-minute
+        changes. Times are Atlantic Standard Time, and Puerto Rico doesn't do daylight saving (one less
+        thing to explain to your calendar). Both closing keynotes were scheduled for 4:45 on Day 2 in
+        different rooms, which meant picking between Kay and Idoia.
       </p>
     </div>
   </section>
 
   <!-- ================= BOOK EDWARD ================= -->
-  {/* SUMMIT-FORWARD: SpeakerCTA eyebrow */}
-  <SpeakerCTA eyebrow="Can't make it to San Juan?" />
+  <SpeakerCTA eyebrow="Missed San Juan?" />
 
-  <!-- ================= 03 GETTING HERE ================= -->
+  <!-- ================= 03 THE VENUE ================= -->
   <section class="cs-section" id="venue" aria-labelledby="cs-venue-title">
     <div class="cs-wrap cs-venue">
       <header class="cs-head cs-head-tight">
-        <p class="cs-num">03 | Getting here</p>
+        <p class="cs-num">03 | The venue</p>
         <h2 class="cs-h2" id="cs-venue-title">Why San Juan.</h2>
-        {/* SUMMIT-FORWARD: venue invitation ("if you come in a day early") */}
         <p class="cs-deck">
-          The Puerto Rico Convention Center is the biggest in the Caribbean (580,000 square feet, which is a
-          lot of carpet to cover in 2 days, so wear the comfortable shoes), it's about 10 minutes from the
-          airport, and if you're flying from the mainland you won't need a passport or a currency exchange. I've lived here since early 2023, and if you come in a day early I'm
-          happy to show you the island (Old San Juan is 15 minutes away, and I have opinions about lunch, most
-          of them vegetarian).
+          The Puerto Rico Convention Center is the biggest in the Caribbean at 580,000 square feet, it's
+          about 10 minutes from the airport, and nobody flying in from the mainland needed a passport or a
+          currency exchange. I've lived here since early 2023, and all of that holds now that the
+          summit's over, so come visit anyway (Old San Juan is still 15 minutes away, and I still have
+          opinions about lunch, most of them vegetarian).
         </p>
         <a
           class="cs-btn cs-btn-line"
@@ -614,11 +570,11 @@ const stats = [
         <h2 class="cs-h2 cs-h2-on-dark" id="cs-hack-title">$10,000 for AI that fixes something on the island.</h2>
       </div>
       <div>
-        {/* SUMMIT-FORWARD: hackathon invitation */}
+        {/* RECAP-STATS: real numbers go here once Edward confirms them */}
         <p class="cs-hack-copy">
-          Teams of 2 to 4, 48 hours, and one theme: AI for Puerto Rico. Your summit ticket gets you in, teams
-          form on site on Day 1, mentorship starts at 6 that evening, and the finalists demo live in Ballroom B
-          on Saturday at 3:30, with the awards at the closing session (I'm not eligible, which is fair, since I
+          Teams of 2 to 4, 48 hours, and one theme: AI for Puerto Rico. The schedule had teams forming on site
+          on Day 1, mentorship starting at 6 that evening, and the finalists demoing live in Ballroom B on
+          Saturday at 3:30, with the awards at the closing session (I wasn't eligible, which is fair, since I
           already have a team of AI agents that rebuilds this website every Saturday at 5AM, and that feels like
           an unfair head start).
         </p>
@@ -632,41 +588,24 @@ const stats = [
     </div>
   </section>
 
-  <!-- ================= 05 TICKETS ================= -->
-  {/* SUMMIT-FORWARD: the whole tickets section. Replace with a recap on Oct 11. */}
-  <section class="cs-section" id="tickets" aria-labelledby="cs-tickets-title">
+  <!-- ================= 05 THE RECAP ================= -->
+  <section class="cs-section" id="recap" aria-labelledby="cs-recap-title">
     <div class="cs-wrap">
       <header class="cs-head">
-        <p class="cs-num">05 | Tickets</p>
-        <h2 class="cs-h2" id="cs-tickets-title">2 ways in, both days included.</h2>
+        <p class="cs-num">05 | The recap</p>
+        <h2 class="cs-h2" id="cs-recap-title">2 days in San Juan, done.</h2>
         <p class="cs-deck">
-          Sold by the summit through 787Tickets, not by me (I don't handle the money for this one, which
-          everyone involved agrees is for the best). Tickets are non-refundable but you can transfer one to
-          somebody else up to 48 hours before the doors open, and groups of 5 or more get a discount, as do
-          university students with a valid ID: write
-          <a class="cs-inline" href="mailto:caribbeanaisummit@gmail.com">caribbeanaisummit@gmail.com</a>.
+          The Caribbean AI Summit ran October 9 and 10 at the Puerto Rico Convention Center, and thank you
+          to Kay Firth-Butterfield, Fabio Duarte, Idoia Salazar, and the rest of a program of more than 30
+          speakers across 3 tracks, with every session subtitled live in English and Spanish. This page
+          spent the week telling you to come (I've stopped), so what's left is the program as the record
+          and a link to everybody who spoke.
         </p>
+        {/* RECAP-STATS: real numbers go here once Edward confirms them */}
+        <a class="cs-btn cs-btn-solid" href={SUMMIT} target="_blank" rel="noopener noreferrer">
+          See who spoke
+        </a>
       </header>
-      <div class="cs-passes">
-        {passes.map((p, i) => (
-          <article class={`cs-pass${i === 1 ? ' cs-pass-premium' : ''}`}>
-            <p class="cs-pass-tag">{p.tag}</p>
-            <h3 class="cs-pass-name">{p.name}</h3>
-            <p class="cs-pass-price">{p.price}</p>
-            <ul class="cs-pass-lines">
-              {p.lines.map((l) => <li>{l}</li>)}
-            </ul>
-            <a
-              class={`cs-btn ${i === 1 ? 'cs-btn-coral' : 'cs-btn-solid'}`}
-              href={TICKETS}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {p.cta}, {p.price}
-            </a>
-          </article>
-        ))}
-      </div>
     </div>
   </section>
 
@@ -678,10 +617,10 @@ const stats = [
         <h2 class="cs-h2" id="cs-sponsors-title">The companies that bought in first.</h2>
         <p class="cs-deck">
           A first-year conference asks sponsors to pay for something nobody can show them a photo of yet,
-          and these companies said yes anyway. The summit is organized by the Puerto Rico AI Community, built
-          by Enalca, and dressed by W@W. Sponsorships run from $3,000 to $50,000, and if you'd like your name
+          and these companies said yes anyway. The summit was organized by the Puerto Rico AI Community, built
+          by Enalca, and dressed by W@W. Sponsorships ran from $3,000 to $50,000, and if you'd like your name
           on this list next year, write
-          <a class="cs-inline" href="mailto:caribbeanaisummit@gmail.com?subject=Sponsorship%20Inquiry%20-%20CAIS%202026">caribbeanaisummit@gmail.com</a>.
+          <a class="cs-inline" href="mailto:caribbeanaisummit@gmail.com?subject=Sponsorship%20Inquiry%20-%20CAIS">caribbeanaisummit@gmail.com</a>.
         </p>
       </header>
       <dl class="cs-sponsors">
@@ -721,13 +660,12 @@ const stats = [
           enough calls from the mainland asking how we built this down here that it seemed easier to invite
           everybody down to see it.
         </p>
-        {/* SUMMIT-FORWARD: "you're giving the welcome at 9:00 on Day 1" */}
         <p>
           I'm usually the one on somebody else's stage, talking to finance leaders about what AI actually
-          does once it's past the demo, and it's a strange and very pleasant feeling to be on the other side
-          of the badge for once, worrying about room numbers and coffee instead of my slides (Edward, you're
-          giving the welcome at 9:00 on Day 1 with JD Torres, so don't pretend you're not worried about your
-          slides).
+          does once it's past the demo, and it was a strange and very pleasant feeling to be on the other
+          side of the badge for once, worrying about room numbers and coffee instead of my slides (the
+          program also had me giving the welcome at 9:00 on Day 1 with JD Torres, so I worried about the
+          slides anyway).
         </p>
         <ul class="cs-stats" aria-label="Edward in numbers">
           {stats.map((s) => (
@@ -748,7 +686,7 @@ const stats = [
         <p class="cs-num">08 | Also on my desk</p>
         <h2 class="cs-h2" id="cs-desk-title">The rest of the week.</h2>
         <p class="cs-deck">
-          The summit gets the front page, but the other projects didn't stop for it, and a couple of them
+          The summit got the front page, but the other projects didn't stop for it, and a couple of them
           would like you to know they're feeling neglected.
         </p>
       </header>
@@ -794,16 +732,15 @@ const stats = [
       <path d="M0 45 C 250 145, 450 -15, 700 75 S 1050 155, 1200 55" />
     </svg>
     <div class="cs-wrap cs-cta-inner">
-      {/* SUMMIT-FORWARD: "See you in San Juan" heading, copy, and ticket button */}
-      <h2 class="cs-h2 cs-h2-on-dark cs-cta-h" id="cs-cta-title">See you in San Juan.</h2>
+      <h2 class="cs-h2 cs-h2-on-dark cs-cta-h" id="cs-cta-title">Thank you, San Juan.</h2>
       <p class="cs-cta-copy">
-        If you're coming, grab a ticket and then write me (Edward@Roske.AI) so I can find you between
-        sessions. If you can't make it but you've got a stage of your own and a room full of finance people
+        If you were there, thank you, and write me (Edward@Roske.AI) if we didn't find each other between
+        sessions. If you missed it but you've got a stage of your own and a room full of finance people
         who'd like to hear how this works on real numbers, that's the speaking page, and if
         you'd rather just talk, 13 minutes on my calendar is free.
       </p>
       <div class="cs-cta-row">
-        <a class="cs-btn cs-btn-coral" href={TICKETS} target="_blank" rel="noopener noreferrer">Get a ticket</a>
+        <a class="cs-btn cs-btn-coral" href={SUMMIT} target="_blank" rel="noopener noreferrer">See who spoke</a>
         <a class="cs-btn cs-btn-ghost" href="/speaking/">Book the talk</a>
         <a
           class="cs-btn cs-btn-ghost"
@@ -816,33 +753,10 @@ const stats = [
       </div>
       <p class="cs-disclaimer">
         Roske.AI is Edward Roske's personal site. Speaker photos, the program, prices, and the venue art
-        come from the Caribbean AI Summit, which is organized by the Puerto Rico AI Community. Tickets are
-        sold by the summit through 787Tickets, not by this site.
+        come from the Caribbean AI Summit, which was organized by the Puerto Rico AI Community.
       </p>
     </div>
   </section>
-
-  {/* SUMMIT-FORWARD: the floating ticket button. Delete on Oct 11. */}
-  <a class="cs-ticket-pill" href={TICKETS} target="_blank" rel="noopener noreferrer">
-    <span class="cs-ticket-pill-k">Oct 9-10 | San Juan</span>
-    <span class="cs-ticket-pill-v">Get a ticket</span>
-  </a>
-
-  {/* SUMMIT-FORWARD: status chip script (countdown, then "happening now"). Delete on Oct 11. */}
-  <script is:inline>
-    (function () {
-      var el = document.querySelector('[data-cs-status]');
-      if (!el) return;
-      // San Juan is UTC-4 all year (no daylight saving).
-      var sj = new Date(Date.now() - 4 * 3600 * 1000);
-      var today = Date.UTC(sj.getUTCFullYear(), sj.getUTCMonth(), sj.getUTCDate());
-      var diff = Math.round((Date.UTC(2026, 9, 9) - today) / 86400000);
-      if (diff > 1) el.textContent = 'Opens in ' + diff + ' days';
-      else if (diff === 1) el.textContent = 'Opens tomorrow';
-      else if (diff === 0) el.textContent = 'Happening now | Day 1';
-      else if (diff === -1) el.textContent = 'Happening now | Day 2';
-    })();
-  </script>
 </BaseLayout>
 
 <style is:global>
