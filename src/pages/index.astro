@@ -21,15 +21,27 @@ const theme = currentTheme;
 // below stays as the published program, kept as the record.
 // ---------------------------------------------------------------------------
 
+const recapPhotos = [
+  { file: 'opening-batucada.jpg', w: 800, h: 533, lead: true, alt: 'A batucada band in red with a trombone and drums, plus two stilt walkers, greeting attendees as they walk into the Caribbean AI Summit', caption: 'Day 1: the opening batucada (stilt walkers included) greeting everybody on the way in.' },
+  { file: 'lobby.jpg', w: 800, h: 533, alt: 'A crowded convention center lobby full of attendees between sponsor booths', caption: 'The lobby, Day 1.' },
+  { file: 'edward-opening-keynote.jpg', w: 800, h: 533, alt: 'Edward in a blue fedora talking with two men in suits beside a screen that reads Opening Keynote 9:00', caption: 'Me (the fedora) right before the opening keynote.' },
+  { file: 'keynote-ballroom.jpg', w: 800, h: 533, alt: 'A speaker at a podium addressing a full ballroom of round tables', caption: 'The keynote ballroom.' },
+  { file: 'fireside-chat.jpg', w: 1280, h: 853, alt: 'Two men in armchairs on stage under a screen that reads Fireside Chat: AI in Puerto Rico and Beyond', caption: 'The fireside chat with Resident Commissioner Pablo José Hernández.' },
+  { file: 'breakout-panel.jpg', w: 800, h: 533, alt: 'Three panelists on stools in a breakout room, one holding a microphone, with the audience in the foreground', caption: 'One of the breakout panels (3 tracks ran at once).' },
+  { file: 'idoia-salazar.jpg', w: 800, h: 533, alt: 'Idoia Salazar speaking on stage in front of a slide titled Gobernar la IA', caption: 'Idoia Salazar, the first of the 2 closing keynotes.' },
+  { file: 'closing-batucada.jpg', w: 800, h: 533, alt: 'A batucada band in yellow shirts and white hats playing drums and trombone on the main stage', caption: 'The closing batucada, which got the whole room dancing.' },
+  { file: 'volunteers.jpg', w: 800, h: 533, alt: 'A large group of volunteers in teal Caribbean AI Summit shirts posing in front of the sponsor wall', caption: 'The volunteers in teal, who were everywhere at once.' },
+];
+
 const SUMMIT = 'https://www.caribbeansummit.ai/';
 
-// The numbers strip under the hero. Program facts only.
+// The numbers strip under the hero. Final numbers from Edward, 2026-10-12.
 const facts = [
-  { v: '2', k: 'Days, October 9 and 10' },
-  { v: '3', k: 'Tracks, running in parallel' },
-  { v: '30+', k: 'Speakers' },
-  { v: 'EN/ES', k: 'Live subtitles, every session' },
-  { v: '$10K', k: 'Hackathon prize pool' },
+  { v: '800+', k: 'People, October 9 and 10' },
+  { v: '44', k: 'Speakers, panelists included' },
+  { v: '17', k: 'Countries, plus 18 US states' },
+  { v: '5', k: 'Continents' },
+  { v: '29', k: 'Hackathon projects' },
 ];
 
 // ---------------------------------------------------------------------------
@@ -39,9 +51,9 @@ const headliners = [
   {
     name: 'Kay Firth-Butterfield',
     role: 'Former Head of AI, World Economic Forum',
-    slot: 'Day 2 | 4:45 PM | Closing keynote, Technical',
+    slot: 'Day 2 | Closing keynote, right after Idoia',
     talk: `The Global State of AI: Governance, Risk & What's Next`,
-    note: `CEO of Good Tech Advisory, and her latest book, Coexisting With AI, came out in January. If you've ever been asked who's accountable when the model gets it wrong, her talk was the one to catch.`,
+    note: `CEO of Good Tech Advisory, and her latest book, Coexisting With AI, came out in January. If you've ever been asked who's accountable when the model gets it wrong, hers was the talk to catch, and it was the last one of the summit.`,
     img: '/images/caribbean-ai-summit/kay.jpg',
     alt: 'Kay Firth-Butterfield speaking at a podium in a red dress, a TIME100 Impact Awards AI sign beside her.',
   },
@@ -57,7 +69,7 @@ const headliners = [
   {
     name: 'Idoia Salazar',
     role: 'President, OdiseIA | AI advisor to the EU Parliament',
-    slot: 'Day 2 | 4:45 PM | Closing keynote, Business',
+    slot: 'Day 2 | Closing keynote, main stage',
     talk: 'Ethics & EU Regulation: the Global Playbook',
     note: `She sits on the expert team for AI regulation at the European Parliament's AI Observatory and works on Spain's AI regulatory sandbox, so when she tells you what the AI Act will actually ask of you, she's describing her week.`,
     img: '/images/caribbean-ai-summit/idoia.jpg',
@@ -201,7 +213,7 @@ const days: { id: string; day: string; date: string; rows: Row[] }[] = [
       { time: '4:15 PM', label: 'Coffee and networking | Move to Ballroom B' },
       {
         time: '4:45 PM',
-        heading: 'Closing keynotes, plus the hackathon awards',
+        heading: 'Closing keynotes, plus the hackathon awards (on the day: Idoia, then Kay, then the awards)',
         b: { who: 'Idoia Salazar, OdiseIA | AI advisor to the EU Parliament', title: 'Ethics & EU Regulation: the Global Playbook', route: true },
         t: { who: 'Kay Firth-Butterfield, former Head of AI, World Economic Forum', title: `The Global State of AI: Governance, Risk & What's Next`, route: true },
       },
@@ -363,7 +375,7 @@ const stats = [
         <p class="cs-deck">
           The 3 people the summit led with were the World Economic Forum's former Head of AI, a principal
           research scientist from MIT's Senseable City Lab, and an AI advisor to the European Parliament, on
-          a program of more than 30 speakers in San Juan on October 9 and 10. I let that list make the case
+          a program of 44 speakers in San Juan on October 9 and 10. I let that list make the case
           for Puerto Rico instead of making it myself (I live here, so nobody should take my word for it).
         </p>
       </header>
@@ -513,8 +525,9 @@ const stats = [
       <p class="cs-fineprint">
         This is the program as published at caribbeansummit.ai in September 2026, before any last-minute
         changes. Times are Atlantic Standard Time, and Puerto Rico doesn't do daylight saving (one less
-        thing to explain to your calendar). Both closing keynotes were scheduled for 4:45 on Day 2 in
-        different rooms, which meant picking between Kay and Idoia.
+        thing to explain to your calendar). The published grid put both closing keynotes at 4:45 on Day 2
+        in different rooms, but on the day they ran back to back, Idoia and then Kay, with the hackathon
+        awards right after, so nobody had to pick.
       </p>
     </div>
   </section>
@@ -567,22 +580,27 @@ const stats = [
     <div class="cs-wrap cs-hack-inner">
       <div>
         <p class="cs-num cs-num-on-dark">04 | The hackathon</p>
-        <h2 class="cs-h2 cs-h2-on-dark" id="cs-hack-title">$10,000 for AI that fixes something on the island.</h2>
+        <h2 class="cs-h2 cs-h2-on-dark" id="cs-hack-title">$10,000 for AI that fixes healthcare on the island.</h2>
       </div>
       <div>
-        {/* RECAP-STATS: real numbers go here once Edward confirms them */}
         <p class="cs-hack-copy">
-          Teams of 2 to 4, 48 hours, and one theme: AI for Puerto Rico. The schedule had teams forming on site
-          on Day 1, mentorship starting at 6 that evening, and the finalists demoing live in Ballroom B on
-          Saturday at 3:30, with the awards at the closing session (I wasn't eligible, which is fair, since I
-          already have a team of AI agents that rebuilds this website every Saturday at 5AM, and that feels like
-          an unfair head start).
+          The theme was AI for Healthcare in Puerto Rico, the teams had 48 hours, and 29 projects made it onto
+          <a class="cs-inline cs-inline-on-dark" href="https://caribbean-ai-summit-hackathon.devpost.com/project-gallery" target="_blank" rel="noopener noreferrer">Devpost</a>
+          by the deadline, a bunch of them built around one very Puerto Rican problem: what happens to
+          patients who need electricity to stay alive when the power goes out. First place ($5,000) went to
+          Bryan Collazo for Atara, an AI agent that answers a clinic's phone in a Puerto Rican voice and works
+          the medical records system live, mid-call. Second ($3,000) went to AJ Rivera for RosterPlanner, which
+          builds nursing shifts that respect the union rules, and third ($2,000) went to James Dreben and Raquel
+          Maldonado for Aura Curativa, which helps people actually collect the insurance reimbursements they're
+          owed. Daniela Frias took Best of UWE Studio for Red de
+          Cuidado PR, the care network for those electricity-dependent patients. Pedro Cruz ran the whole
+          thing, with mentors from Holberton School and CUD.
         </p>
         <ul class="cs-hack-facts">
           <li><span>$10K</span> in prizes</li>
-          <li><span>2 to 4</span> per team</li>
+          <li><span>29</span> projects</li>
           <li><span>48</span> hours</li>
-          <li><span>1</span> theme: AI for PR</li>
+          <li><span>1</span> theme: healthcare</li>
         </ul>
       </div>
     </div>
@@ -591,21 +609,50 @@ const stats = [
   <!-- ================= 05 THE RECAP ================= -->
   <section class="cs-section" id="recap" aria-labelledby="cs-recap-title">
     <div class="cs-wrap">
-      <header class="cs-head">
+      <header class="cs-head cs-recap-head">
         <p class="cs-num">05 | The recap</p>
-        <h2 class="cs-h2" id="cs-recap-title">2 days in San Juan, done.</h2>
-        <p class="cs-deck">
-          The Caribbean AI Summit ran October 9 and 10 at the Puerto Rico Convention Center, and thank you
-          to Kay Firth-Butterfield, Fabio Duarte, Idoia Salazar, and the rest of a program of more than 30
-          speakers across 3 tracks, with every session subtitled live in English and Spanish. This page
-          spent the week telling you to come (I've stopped), so what's left is the program as the record
-          and a link to everybody who spoke.
-        </p>
-        {/* RECAP-STATS: real numbers go here once Edward confirms them */}
+        <h2 class="cs-h2" id="cs-recap-title">2 days in San Juan, and 6 emergency fire extinguishers.</h2>
+        <div class="cs-recap-copy">
+          <p>
+            The Caribbean AI Summit ran October 9 and 10 at the Puerto Rico Convention Center, and more than
+            800 people came from 17 countries, 18 US states, and 5 continents to hear 44 speakers (that count
+            includes the panelists) across 3 tracks, with live captions in English
+            and Spanish on every session. That makes it the largest AI conference the Caribbean has ever seen,
+            by a lot, and people were shocked.
+          </p>
+          <p>
+            It nearly went sideways at 7:30 on Friday morning, the day we opened, when we found out every booth
+            needed its own fire extinguisher (nobody had mentioned this until the morning of the conference, and
+            I'd still love to know why). So Dawn drove to Walmart, bought 6 fire
+            extinguishers, and got back in time for us to hand them out right before the fire marshals walked in
+            to inspect.
+          </p>
+          <p>
+            We opened with a batucada that marched everybody up the escalators to the keynote ballroom, and we
+            closed with a second one that had the whole room dancing, me included. Somewhere in between, the
+            Speaker of the Puerto Rico House of Representatives walked in and the press mobbed him from the
+            ballroom door all the way to the stage, so tightly that for a minute I thought they might be
+            kidnapping him. I got the last word on Saturday and spent it thanking the volunteers and the board and
+            pretty much everybody else in the building.
+          </p>
+          <p>
+            Will there be a 2nd annual Caribbean AI Summit (to make it actually, you know, annual)? You'll just
+            have to stay tuned to find out.
+          </p>
+        </div>
         <a class="cs-btn cs-btn-solid" href={SUMMIT} target="_blank" rel="noopener noreferrer">
           See who spoke
         </a>
       </header>
+      <div class="cs-recap-photos">
+        {recapPhotos.map((p) => (
+          <figure class:list={['cs-recap-photo', { 'cs-recap-photo-lead': p.lead }]}>
+            <img src={`/images/caribbean-ai-summit/recap/${p.file}`} alt={p.alt} width={p.w} height={p.h} loading="lazy" decoding="async" />
+            <figcaption>{p.caption}</figcaption>
+          </figure>
+        ))}
+      </div>
+      <p class="cs-recap-credit">Photos: the Caribbean AI Summit's own albums.</p>
     </div>
   </section>
 
@@ -618,8 +665,8 @@ const stats = [
         <p class="cs-deck">
           A first-year conference asks sponsors to pay for something nobody can show them a photo of yet,
           and these companies said yes anyway. The summit was organized by the Puerto Rico AI Community, built
-          by Enalca, and dressed by W@W. Sponsorships ran from $3,000 to $50,000, and if you'd like your name
-          on this list next year, write
+          by Enalca, and dressed by W@W. Sponsorships ran from $3,000 to $50,000, and if you'd like to talk
+          about what sponsoring something like this looks like, write
           <a class="cs-inline" href="mailto:caribbeanaisummit@gmail.com?subject=Sponsorship%20Inquiry%20-%20CAIS">caribbeanaisummit@gmail.com</a>.
         </p>
       </header>
@@ -662,10 +709,9 @@ const stats = [
         </p>
         <p>
           I'm usually the one on somebody else's stage, talking to finance leaders about what AI actually
-          does once it's past the demo, and it was a strange and very pleasant feeling to be on the other
-          side of the badge for once, worrying about room numbers and coffee instead of my slides (the
-          program also had me giving the welcome at 9:00 on Day 1 with JD Torres, so I worried about the
-          slides anyway).
+          does once it's past the demo, and this time I was on the other side of the badge, which turned out
+          to mean room numbers and fire extinguishers (I still gave the welcome at 9:00 on Day 1 with JD Torres
+          and emceed the closing keynotes, so I didn't entirely escape the microphone).
         </p>
         <ul class="cs-stats" aria-label="Edward in numbers">
           {stats.map((s) => (
@@ -855,6 +901,49 @@ const stats = [
   .cs-head .cs-num { grid-column: 1 / -1; }
   .cs-head .cs-deck { margin: 0; }
   .cs-head-tight { display: block; margin-bottom: 0; }
+  .cs-recap-head { align-items: start; }
+  .cs-recap-head .cs-h2 { position: sticky; top: 6rem; }
+  .cs-recap-head .cs-btn { grid-column: 2; justify-self: start; margin-top: 0.5rem; }
+  .cs-recap-copy p {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    color: var(--cs-text);
+    max-width: 62ch;
+    margin: 0 0 1.15rem;
+  }
+  .cs-recap-copy p:last-child { color: var(--cs-accent); font-weight: 600; }
+  .cs-recap-photos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+  .cs-recap-photo { margin: 0; display: flex; flex-direction: column; }
+  .cs-recap-photo-lead { grid-column: span 2; grid-row: span 2; }
+  .cs-recap-photo-lead img { flex: 1 1 auto; }
+  .cs-recap-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 12px;
+    background: var(--cs-band);
+    box-shadow: var(--cs-shadow);
+  }
+  .cs-recap-photo figcaption {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--cs-muted);
+    margin-top: 0.6rem;
+  }
+  .cs-recap-credit {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cs-muted);
+    margin: 1.75rem 0 0;
+  }
   .cs-head-tight .cs-deck { margin: 0 0 1.75rem; }
   .cs-num {
     font-family: var(--font-mono);
@@ -1280,6 +1369,7 @@ const stats = [
     align-items: end;
   }
   .cs-hack-copy { font-size: 1.08rem; line-height: 1.7; color: var(--cs-night-muted); margin: 0 0 2rem; }
+  .cs-inline-on-dark { color: var(--cs-teal); }
   .cs-hack-facts {
     list-style: none;
     margin: 0;
@@ -1470,6 +1560,10 @@ const stats = [
   @media (max-width: 900px) {
     .cs-section { padding: 4.5rem 0; }
     .cs-head, .cs-program-head, .cs-venue, .cs-hack-inner, .cs-chair { grid-template-columns: 1fr; gap: 1.5rem; }
+    .cs-recap-head .cs-btn { grid-column: 1; }
+    .cs-recap-head .cs-h2 { position: static; }
+    .cs-recap-photos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .cs-recap-photo-lead { grid-row: span 1; }
     .cs-head .cs-deck { margin-top: 0.5rem; }
     .cs-headliners { grid-template-columns: 1fr; max-width: 560px; }
     .cs-headliner-2 { transform: none; }

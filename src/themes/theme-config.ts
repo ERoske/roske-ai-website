@@ -146,7 +146,7 @@ export const currentTheme: ThemeConfig = {
     // Swept to past tense on October 11: the summit is over, so the CTA is
     // a recap link to the summit's own site, not a ticket link.
     subtitle: "October 9-10, 2026 | Puerto Rico Convention Center | San Juan",
-    description: "On October 9 and 10, the Caribbean AI Summit took over the Puerto Rico Convention Center, and I co-chaired it (I also told everyone I know to come, so thank you for putting up with that). More than 30 speakers across 3 tracks, 2 days, and every session subtitled live in English and Spanish, and the whole program's below if you'd like to see who was on it.",
+    description: "On October 9 and 10, the Caribbean AI Summit took over the Puerto Rico Convention Center, and I co-chaired it (I also told everyone I know to come, so thank you for putting up with that). More than 800 people from 17 countries, 44 speakers across 3 tracks, every session captioned live in English and Spanish, and 2 batucadas, one of which got me dancing. The recap and the whole program are below, if you'd like to see who was on it.",
     heroImage: "hero-2026-10-03.jpg",
     imageAlt: "The Puerto Rico Convention Center in San Juan at night, its white lattice roof lit from below over teal glass, palm trees and still water in front, with the Caribbean AI Summit's teal and coral wave lines sweeping across the dark sky.",
     ctaText: "See who spoke",
