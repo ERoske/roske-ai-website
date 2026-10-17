@@ -81,56 +81,56 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "The Caribbean AI Summit",
-  week: "2026-10-03",
-  inspiration: "Booked theme, and the one week of the year that plays it straight. The Caribbean AI Summit ran October 9-10, 2026 at the Puerto Rico Convention Center in San Juan, Edward co-chaired it, and for 9 days roske.ai was the summit's front door. The job was getting people to San Juan and reassuring sponsors, so there's no costume and no generated Edward: the hero is the summit's own venue art, the speakers are their real headshots from caribbeansummit.ai, and the only picture of Edward is the official co-chair card. The argument is Puerto Rico as a real AI hub, and the lineup carries it (the World Economic Forum's former Head of AI, MIT's Senseable City Lab, the EU Parliament's AI advisor, the AAAI president) without the copy having to say so. Structure is a conference programme: lineup, the full 2-day agenda across 3 rooms with a marked route for finance leaders, venue and travel logistics, the hackathon, a recap, sponsors. Palette is the summit's own branding (navy #0B1220, teal #00D0C6, coral #FF6B5A), set in Bricolage Grotesque over Figtree (the summit's own text face) with JetBrains Mono for times and rooms. Dark mode is the convention center at night; light mode is the printed programme on sand. The October 11 recap sweep moved the copy to past tense and took the ticket links down. Animation off.",
-  tagline: "For 9 days this site was the front door to the Caribbean AI Summit, and I was the one holding it open.",
+  name: "Training Mode",
+  week: "2026-10-17",
+  inspiration: "Street Fighter opened in theaters on October 16, 2026 (Legendary and Paramount, directed by Kitao Sakurai, set in 1993), so the site becomes a 1993 arcade fighting game. The argument: every fighting game has a Training Mode, where the dummy stands still, never blocks, and never hits back, and almost every enterprise AI pilot is fought there. Curated data, friendly users, no close deadline, a green checkmark. Production is Arcade Mode, where the opponent has a health bar and a final boss called Month-End Close. The conceit generates the structure on its own: a title screen, a fighter select card with Edward's stats, a training-mode-versus-arcade-mode comparison that's real deployment advice, a versus ladder of the opponents every finance team actually faces (each with a special move, a weakness, and the counter), a move list that is his talk catalog with joystick inputs, stage select with the scene images, and a Continue? countdown as the CTA. Edward is the one fighter on the select screen and he loses a lot (flat on his back under a tower of binders), which is the competence: he knows every opponent's moves because he's been hit by all of them. Images are deliberately NOT arcade cabinets or street fighters (Gemini kept drawing the real Capcom game), so it's Edward in a navy suit doing martial arts in finance places: a trading floor, a simulator room, a dojo with a binder, a boardroom KO, and a victory on the walls of El Morro. Palette is a cabinet at night: CRT black-navy, health-bar yellow, KO red, player-one blue. Bungee for the marquee, Archivo for the body, Press Start 2P for the HUD only, Share Tech Mono for data. Light mode is the arcade at 10 AM with the lights on and the cabinet art showing. Animation stays in the page: a hero HUD whose round timer counts down and whose opponent health bar drains as you scroll. No particles. Not affiliated with Capcom, Legendary, or Paramount.",
+  tagline: "Every AI pilot I've ever seen was fought in Training Mode, where the dummy doesn't hit back.",
 
   colors: {
-    // The summit's own palette, lifted from caribbeansummit.ai rather than
-    // invented: night navy, sea teal, sunset coral. Measured, not eyeballed:
-    // body text 16.6:1 dark and 16.8:1 light, muted 8.1:1 and 7.6:1 on their
-    // surfaces, teal 9.7:1 on navy. Teal on sand fails, so light mode swaps
-    // the accent to a deep reef teal (5.3:1 on sand, 6.0:1 on white) with
-    // white type on its buttons; dark mode puts navy type on bright teal.
-    primary: "#00D0C6",            // sea teal
-    secondary: "#FF6B5A",          // sunset coral
-    accent: "#00D0C6",
-    accentHover: "#4FE3DB",
-    accentLight: "#00706A",        // reef teal, daylight
-    accentHoverLight: "#005A55",
-    onAccent: "#0B1220",
+    // A cabinet at night. Measured, not eyeballed:
+    // text 16.8:1 on bg (dark) and 16.0:1 (light); muted 7.7:1 on dark
+    // surface and 7.2:1 on light bg. Health-bar yellow is 13.3:1 on the
+    // dark bg with near-black type on its buttons (13.2:1). Yellow on cream
+    // fails, so light mode swaps the accent to KO red (5.9:1 on cream) with
+    // white type (6.9:1).
+    primary: "#5B9BFF",            // player-one blue
+    secondary: "#FF4D55",          // KO red
+    accent: "#FFD23F",             // health-bar yellow
+    accentHover: "#FFE27A",
+    accentLight: "#B4141E",        // KO red, lights on
+    accentHoverLight: "#8E0F17",
+    onAccent: "#12100A",
     onAccentLight: "#FFFFFF",
-    background: "#0B1220",         // the convention center at night
-    backgroundLight: "#F6F2EA",    // the printed programme, on sand
-    surface: "#121C30",
+    background: "#0A0E1A",         // CRT black, with a little navy in it
+    backgroundLight: "#F3EEE2",    // cabinet side art, 10 AM
+    surface: "#121829",
     surfaceLight: "#FFFFFF",
-    text: "#F3F1EC",
-    textMuted: "#A9B4C8",
-    textDark: "#0B1220",
-    textDarkMuted: "#4A5468",
-    border: "#23304A",
-    borderLight: "#DCD5C8",
-    gradient: "linear-gradient(120deg, #0B1220 0%, #0d3a4a 55%, #00D0C6 100%)",
+    text: "#F2EFE6",
+    textMuted: "#A3ABBE",
+    textDark: "#12131C",
+    textDarkMuted: "#4A4D5C",
+    border: "#26304A",
+    borderLight: "#D9D1BF",
+    gradient: "linear-gradient(90deg, #FFD23F 0%, #FF8A3D 50%, #FF4D55 100%)",
   },
 
   fonts: {
-    // Bricolage Grotesque: confident, editorial, a little warm. Headlines
-    //   and the big numbers. Reads like it cost money, which was the brief.
-    // Figtree: the summit's own text face, so the two sites feel related.
-    // JetBrains Mono: times, rooms, prices (JetBrains is a Silver sponsor,
-    //   which I noticed after picking it and have decided not to explain).
-    heading: "'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif",
-    body: "'Figtree', 'Helvetica Neue', Arial, sans-serif",
-    mono: "'JetBrains Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap",
+    // Bungee: an arcade marquee, all caps, built for signage.
+    // Archivo: the instruction-card grotesque, readable at length.
+    // Share Tech Mono: frame data, scores, times.
+    // Press Start 2P is loaded for the homepage HUD only (it's 8 pixels
+    //   tall at heart and nobody should read a paragraph in it).
+    heading: "'Bungee', 'Arial Black', Impact, sans-serif",
+    body: "'Archivo', 'Helvetica Neue', Arial, sans-serif",
+    mono: "'Share Tech Mono', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Bungee&family=Press+Start+2P&family=Share+Tech+Mono&display=swap",
   },
 
   layout: {
     heroStyle: "fullscreen",
     navStyle: "sticky",
     cardStyle: "outlined",
-    sectionStyle: "magazine",
+    sectionStyle: "alternating",
     footerStyle: "detailed",
   },
 
@@ -143,14 +143,12 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    // Swept to past tense on October 11: the summit is over, so the CTA is
-    // a recap link to the summit's own site, not a ticket link.
-    subtitle: "October 9-10, 2026 | Puerto Rico Convention Center | San Juan",
-    description: "On October 9 and 10, the Caribbean AI Summit took over the Puerto Rico Convention Center, and I co-chaired it (I also told everyone I know to come, so thank you for putting up with that). More than 800 people from 17 countries, 44 speakers across 3 tracks, every session captioned live in English and Spanish, and 2 batucadas, one of which got me dancing. The recap and the whole program are below, if you'd like to see who was on it.",
-    heroImage: "hero-2026-10-03.jpg",
-    imageAlt: "The Puerto Rico Convention Center in San Juan at night, its white lattice roof lit from below over teal glass, palm trees and still water in front, with the Caribbean AI Summit's teal and coral wave lines sweeping across the dark sky.",
-    ctaText: "See who spoke",
-    ctaLink: "https://www.caribbeansummit.ai/",
+    subtitle: "Player 1: Edward | Stage: Your Finance Department | Mode: Training",
+    description: "Your AI pilot won. Of course it won: it was fought in Training Mode, where the dummy stands still, never blocks, and has infinite health. I've spent 25+ years watching finance teams win in Training Mode and then put a quarter in for the real thing (interRel, 1997 to 2022, which is a lot of quarters).",
+    heroImage: "hero-2026-10-17.jpg",
+    imageAlt: "Edward in a navy suit, tie, glasses, and his blue fedora, standing in a calm martial arts ready stance in the aisle of an empty trading floor at night, rows of monitors glowing red and blue on both sides.",
+    ctaText: "Switch to Arcade Mode",
+    ctaLink: "/speaking/",
   },
 };
 
