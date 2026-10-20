@@ -38,19 +38,6 @@ const talks = [
   },
   {
     num: '03',
-    title: 'The Computer-First Finance Department',
-    audience: 'CFOs, finance and EPM leaders',
-    description:
-      "Finance teams keep hearing that AI will close the books by itself next quarter, and also that it can't be trusted anywhere near a ledger, sometimes in the same week. Planning, consolidation, and reporting are shifting from human-first to computer-first, and Edward is one of the people shipping that shift: MCP servers that let AI agents read and write live Oracle EPM data. Twenty-five years in the Office of the CFO, translated into what finance automates first, what it should never automate, and why knowing when a number is wrong still beats producing it fast.",
-    walkaway: [
-      'The finance processes AI takes first, in order, with evidence',
-      'What a computer-first close actually looks like at companies doing it',
-      'The judgment calls that stay human (and how to staff for them)',
-    ],
-    tags: ['Keynote', 'Workshop pairing', 'Finance events'],
-  },
-  {
-    num: '04',
     title: 'Building a Company in the Era of AI',
     audience: 'Founders, operators, PE portfolios',
     description:
@@ -61,6 +48,19 @@ const talks = [
       'The hiring and org-design moves that age well',
     ],
     tags: ['Keynote', 'PE annual meetings', 'Board retreats'],
+  },
+  {
+    num: '04',
+    title: 'The Computer-First Finance Department',
+    audience: 'For finance rooms: CFOs, finance and EPM leaders',
+    description:
+      "Finance teams keep hearing that AI will close the books by itself next quarter, and also that it can't be trusted anywhere near a ledger, sometimes in the same week. Planning, consolidation, and reporting are shifting from human-first to computer-first, and Edward is one of the people shipping that shift: MCP servers that let AI agents read and write live Oracle EPM data. Twenty-five years in the Office of the CFO, translated into what finance automates first, what it should never automate, and why knowing when a number is wrong still beats producing it fast.",
+    walkaway: [
+      'The finance processes AI takes first, in order, with evidence',
+      'What a computer-first close actually looks like at companies doing it',
+      'The judgment calls that stay human (and how to staff for them)',
+    ],
+    tags: ['Keynote', 'Workshop pairing', 'Finance events'],
   },
 ];
 
@@ -172,7 +172,7 @@ const faqs = [
   },
   {
     q: 'Will the talk be customized for our audience?',
-    a: "Always. Edward gets on a working call with you (and your program chair, if you have one) before writing a single slide. Finance conference, PE annual meeting, sales kickoff, and board retreat versions of the same talk are genuinely different talks.",
+    a: "Always. Edward gets on a working call with you (and your program chair, if you have one) before writing a single slide. Industry conference, PE annual meeting, sales kickoff, and board retreat versions of the same talk are genuinely different talks.",
   },
   {
     q: 'What does Edward need on site?',
@@ -180,7 +180,7 @@ const faqs = [
   },
   {
     q: 'Is Edward an AI futurist?',
-    a: "Short answer: no. He ships AI products (MCP servers for Oracle EPM, in production), runs his own life on ten-plus AI agents, and spent twenty-five years in the Office of the CFO before AI was a keynote topic. If you want predictions about 2035, he'll politely decline (he's busy shipping 2026).",
+    a: "Short answer: no. He ships AI products (AgentCube, in production) and runs his own life on ten-plus AI agents, so he talks about what's working now. Ask him about 2035 and he'll politely decline (he has enough trouble predicting what his own agents will do next Tuesday).",
   },
 ];
 
@@ -285,7 +285,7 @@ const featureVideoSchema = {
 
 <BaseLayout
   title="AI Keynote Speaker | Book Edward Roske"
-  description="Book Edward Roske: the AI practitioner for finance leaders. Keynotes from $15,000. 15 books, 50+ countries, all 7 continents, 8 speaker awards. Ships MCP servers for enterprise finance. Inquiries answered within one business day."
+  description="Book Edward Roske: the AI practitioner for business leaders. Keynotes from $15,000. 15 books, 50+ countries, all 7 continents, 8 speaker awards. Builds AI products and runs his own day on 10+ AI agents. Inquiries answered within one business day."
   ogImage="/images/og-default.png">
 
   <Fragment slot="head">
@@ -305,12 +305,14 @@ const featureVideoSchema = {
         <p class="spk-kicker">Keynotes &middot; Executive Workshops &middot; Board Briefings</p>
         <h1 class="spk-h1">
           The AI practitioner<br />
-          <em>for finance leaders.</em>
+          <em>for business leaders.</em>
         </h1>
         <p class="spk-lede">
-          Edward builds MCP servers that put AI agents inside Oracle EPM, runs his own day on
-          ten-plus agents, and spent twenty-five years in the Office of the CFO before AI was a
-          keynote topic. He's also, by most accounts, funny (the dry kind). Fifteen books,
+          Edward builds AI products (including AgentCube, which lets ChatGPT, Claude, Gemini, and
+          Copilot talk to the enterprise systems companies run on), runs his own day on ten-plus
+          agents, hosts a show about the human side of AI, and is President of the Puerto Rico AI
+          Community, all after 25 years running interRel (the company he founded at 22, long
+          before AI was a keynote topic). He's also, by most accounts, funny (the dry kind). Fifteen books,
           fifty-plus countries on all seven continents, and an overabundance of speaker awards
           to show the combination works.
         </p>
@@ -355,7 +357,7 @@ const featureVideoSchema = {
         <p class="spk-eyebrow">From the room</p>
         <h2 class="spk-h2">The tough rooms, on the record.</h2>
         <p class="spk-deck">
-          Oracle community leaders, a Fortune 500 finance executive, and the organizers who
+          Oracle community leaders, a Fortune 500 executive, and the organizers who
           keep putting Edward on their stages (the kind of crowd that doesn't hand out
           compliments for fun).
         </p>
@@ -489,7 +491,7 @@ const featureVideoSchema = {
           </article>
           <article>
             <h3>Thirty days of amplification</h3>
-            <p>If your event is public: a month of LinkedIn and X posts to a built-in audience of CFOs, CIOs, and AI operators, plus a month of mentions on Edward's YouTube channel and its over 700,000 subscribers.</p>
+            <p>If your event is public: a month of LinkedIn and X posts to a built-in audience of executives, founders, and AI operators, plus a month of mentions on Edward's YouTube channel and its over 700,000 subscribers.</p>
           </article>
         </div>
       </div>
@@ -625,7 +627,7 @@ const featureVideoSchema = {
               </div>
 
               <label>The audience, and what you want them to walk away with
-                <textarea name="notes" rows="4" placeholder="CFOs? Founders? A sales team that just got an AI mandate? Tell Edward about the room."></textarea>
+                <textarea name="notes" rows="4" placeholder="Executives? Founders? A sales team that just got an AI mandate? Tell Edward about the room."></textarea>
               </label>
 
               <div class="spk-honeypot"><input type="text" name="botcheck" tabindex="-1" autocomplete="off" /></div>
