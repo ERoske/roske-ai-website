@@ -9,27 +9,65 @@ import { currentTheme } from '../themes/theme-config';
 const theme = currentTheme;
 
 // ---------------------------------------------------------------------------
-// TRAINING MODE (2026-10-17). Street Fighter opened October 16 (set in 1993),
-// so the site is a 1993 arcade fighting game. The argument: most enterprise
-// AI pilots are fought in Training Mode, where the dummy never hits back.
-// Every image of Edward is generated (headshot as reference, blue fedora).
-// No Capcom characters, logos, or move names anywhere: the opponents are the
-// ones finance teams actually face, and the special moves are Edward's talks.
+// YOU CAN SEE EVERYTHING (2026-10-24). The A24 documentary about Elizabeth
+// Holmes has been in theaters since October 16. Theranos was a box nobody was
+// allowed to open. This site is the opposite: the box is open, every line is
+// public, it works, and nobody can say why it made the choices it made,
+// because a person didn't write it. So the site is a documentary about
+// itself, in 5 chapters. Every number below was counted from the public git
+// history at 05:00 AST on Saturday, October 24, 2026, BEFORE this week's
+// commit was added to it. Edward is the only person in any generated image.
 // ---------------------------------------------------------------------------
 
-const IMG = '/images/training-mode';
+const IMG = '/images/you-can-see-everything';
 const CAL = 'https://calendar.app.google/udtTerQwcX9Z7QQt7';
+const REPO = 'https://github.com/ERoske/roske-ai-website';
+const POST = '/blog/if-you-can-read-every-line-of-an-ais-code-do-you-understand-it/';
 
-// Fighter select: the stat card. Values are out of 10.
-const statBars = [
-  { k: 'Essbase', v: 10, note: 'First perfect score on the certification exam' },
-  { k: 'Questions per minute', v: 9, note: `It's the name of the podcast` },
-  { k: 'Fedora retention', v: 10, note: 'See the knockout photo below' },
-  { k: 'Small talk', v: 2, note: 'Introvert, professionally disguised' },
-  { k: 'Patience for no Freeze Panes', v: 0, note: 'Row 4,000, which column is this?' },
+// Counted from `git log` before this week's commit. Recount next week.
+const record = {
+  commits: '244',
+  since: 'February 18, 2026',
+  days: '248',
+  redesigns: '29',
+  redesignIn: '24,022',
+  redesignOut: '21,061',
+  redesignFiles: '271',
+  lastWeekFiles: '11',
+  lastWeekIn: '912',
+  lastWeekOut: '1,415',
+  homePageCommits: '80',
+  posts: '48',
+  allIn: '75,087',
+  allOut: '42,248',
+};
+
+// The last 10 "Weekly redesign" commits, verbatim from the public log
+// (hash, author date with its recorded UTC offset, subject).
+const gitLog = [
+  { h: '6d3e967', d: '2026-10-17 09:58:44 +0100', s: 'Weekly redesign: Training Mode, a 1993 arcade fighting game' },
+  { h: 'eca384b', d: '2026-10-03 05:21:06 -0400', s: 'Weekly redesign: The Caribbean AI Summit, the programme edition' },
+  { h: '163c654', d: '2026-09-25 20:17:22 -0400', s: 'Weekly redesign: Blue Ribbon, the county fair judging' },
+  { h: 'e39c180', d: '2026-09-16 10:22:14 +0000', s: 'Weekly redesign: The Escape Room (recovered from the Sept 12 run)' },
+  { h: '7a063e5', d: '2026-09-05 05:26:15 -0400', s: 'Weekly redesign: Labor Day, the hardest-working weekend of the year' },
+  { h: '191739a', d: '2026-08-29 05:46:21 -0400', s: 'Weekly redesign: Roske v. Acme, the case file' },
+  { h: 'fff13fe', d: '2026-08-22 05:47:22 -0400', s: 'Weekly redesign: Roske Air, the AI deployment safety card' },
+  { h: '6e3fc0c', d: '2026-08-15 05:36:45 -0400', s: 'Weekly redesign: A Field Guide to the Ten Agents' },
+  { h: '33eecfb', d: '2026-08-01 22:56:46 -0400', s: 'Weekly redesign: AFC Roske: Believe (Ted Lasso season 4)' },
+  { h: '03d8b0c', d: '2026-07-25 01:36:31 -0700', s: 'Weekly redesign: The Daily Roske (Brand New Day tabloid)' },
 ];
 
-// The stats strip under the hero. Same 4 numbers every week.
+// Rendered as B-roll in Chapter 2.
+const NL = String.fromCharCode(10);
+const gitLogText =
+  '$ git log --grep="Weekly redesign" --format="%h %ad %s" --date=iso -10' + NL +
+  gitLog.map((g) => g.h + ' ' + g.d + ' ' + g.s).join(NL);
+
+// The one line that types itself out in the cold open.
+const typedCmd = '$ git log -1 --grep="Weekly redesign" --format="%h %ad %s"';
+const typedOut = '6d3e967 2026-10-17 Weekly redesign: Training Mode, a 1993 arcade fighting game';
+
+// The 4 standing numbers. Same every week.
 const stats = [
   { v: '80+', k: 'Countries visited' },
   { v: '50+', k: 'Countries spoken in' },
@@ -37,486 +75,416 @@ const stats = [
   { v: '25', k: 'Years running interRel' },
 ];
 
-// Training Mode vs Arcade Mode. The argument of the week, as a table.
-const modes = [
+// Chapter 1: the dossier.
+const dossier = [
+  { k: 'Subject', v: 'Edward Roske' },
+  { k: 'Occupation', v: 'CEO of Dawnward. Speaker. Data scientist. Dungeon Master.' },
+  { k: 'Location', v: 'San Juan, Puerto Rico (before that, The Great State of Texas, for 25+ years)' },
+  { k: 'Known for', v: '25 years running interRel, 15 books, co-chairing the Caribbean AI Summit, and a YouTube channel with over 800,000 subscribers' },
+  { k: 'Hat', v: 'Blue fedora. A Roske never removes his fedora in the presence of others.' },
+  { k: 'Relationship to this website', v: 'Owner and subject. Did not write this page.' },
+];
+
+// Chapter 2: the ledger.
+const ledger = [
+  { v: record.commits, k: `commits since ${record.since}`, note: `${record.days} days, counting today` },
+  { v: record.redesigns, k: 'weekly redesigns before this one', note: 'this is number 30' },
+  { v: record.redesignIn, k: 'lines added by those redesigns', note: `across ${record.redesignFiles} file changes` },
+  { v: record.redesignOut, k: 'lines removed by them', note: 'the previous week, every time' },
+  { v: record.homePageCommits, k: 'commits that changed this page', note: 'the file you are reading' },
+  { v: record.lastWeekOut, k: 'lines deleted last week alone', note: `${record.lastWeekIn} added, ${record.lastWeekFiles} files` },
+  { v: record.posts, k: 'blog posts it may not touch', note: 'the one rule with no exceptions' },
+  { v: record.allIn, k: 'lines added, all commits', note: `${record.allOut} removed, same period` },
+];
+
+// Chapter 4: the discrepancies, in date order, with the public commit for each.
+const exhibits = [
   {
-    k: 'The opponent',
-    training: 'A tidy sample of 3 months of data that somebody cleaned up for the demo.',
-    arcade: 'Your actual general ledger, with 14 years of mapping exceptions and an account named MISC-OTHER-2.',
+    date: 'June 13, 2026',
+    ref: 'c684879',
+    title: 'Built the whole thing. Forgot to commit it.',
+    body: `The agent finished the redesign and never ran the commit. A backup script shipped it instead, with a message that's still in the log: "Claude completed the redesign but did not commit."`,
   },
   {
-    k: 'Health',
-    training: 'Infinite. Reset it whenever you like.',
-    arcade: 'One close a month, and the board sees how it went.',
+    date: 'August 1, 2026',
+    ref: '33eecfb',
+    title: 'Wrote "comes back Wednesday" on a page built to outlive Wednesday.',
+    body: `The Ted Lasso week shipped with "Ted Lasso comes back Wednesday" in the hero, which was true for 4 days. The theme was being held for a second week, so the fix landed on Wednesday, August 5, the day of the premiere, by hand.`,
   },
   {
-    k: 'Blocking',
-    training: 'The dummy never blocks.',
-    arcade: 'Your users block constantly: they keep the old spreadsheet open next to the AI and believe the spreadsheet.',
+    date: 'September 12, 2026',
+    ref: 'e39c180',
+    title: 'Built an escape room. Could not get out of it.',
+    body: `The run built The Escape Room, hit its own turn limit before committing, and the backup script that exists for exactly that case died on a git warning about Windows line endings. This site served a Labor Day theme until September 16, which is 11 days. The recovery commit explains the whole thing in 40 lines, if you want the gory version.`,
   },
   {
-    k: 'Round timer',
-    training: 'Off.',
-    arcade: `6:40 PM on Day 3 of close, and intercompany still doesn't tie out.`,
-  },
-  {
-    k: 'Win screen',
-    training: 'A green checkmark on slide 14.',
-    arcade: 'A number somebody signs.',
+    date: 'July to October, 2026',
+    ref: 'the log',
+    title: 'Recorded itself in 4 time zones.',
+    body: `The machine that commits this site has stamped its work -0700, -0400, +0000, and +0100 since July. The task is scheduled for 5 AM Atlantic time. Either the laptop travels more than I do, or it's confused (I travel a lot, so this would take some doing).`,
   },
 ];
 
-// The ladder. Opponents every finance team actually fights. The last one is
-// the final boss, and it gets the knockout photo.
-const ladder = [
-  {
-    no: '01',
-    name: 'The Demo',
-    stage: 'A vendor booth in Las Vegas',
-    move: 'Perfect Dataset',
-    moveNote: 'It brought its own data, and its own data has never once been late.',
-    weak: 'Your data.',
-    counter: 'Ask it to run on a month of your real ledger, live, while you watch. Most demos have a scheduling conflict that day.',
-  },
-  {
-    no: '02',
-    name: 'The Confident Hallucination',
-    stage: 'Any chat window',
-    move: 'Fluent Wrong Number',
-    moveNote: 'Quotes your Q3 revenue to 2 decimal places from memory, which is a polite way of saying it made the number up.',
-    weak: 'A source.',
-    counter: `Connect it to the system of record so it reads the number instead of remembering one (that's the whole reason I build MCP servers), and make it show where every figure came from.`,
-  },
-  {
-    no: '03',
-    name: 'The Eternal Pilot',
-    stage: 'A steering committee, forever',
-    move: 'Phase 2',
-    moveNote: 'Whenever it starts to lose, it announces a Phase 2 and the round resets.',
-    weak: 'A kill date.',
-    counter: 'Write down, before it starts, the result that ends the pilot in either direction. Then actually look at the calendar.',
-  },
-  {
-    no: '04',
-    name: 'The Spreadsheet Without Freeze Panes',
-    stage: 'Somebody shared it with you',
-    move: 'Scroll of Confusion',
-    moveNote: `You're on row 4,000 and the headers left about 3,960 rows ago, so column AF could be anything (revenue, a date, somebody's lunch order, you name it).`,
-    weak: 'View, then Freeze Panes.',
-    counter: `View, then Freeze Panes. (This one has nothing to do with AI. It's my personal nemesis, and it's my ladder.)`,
-  },
-  {
-    no: '05',
-    name: 'Shadow AI',
-    stage: 'An open browser tab',
-    move: 'Paste and Pray',
-    moveNote: 'Your analyst pastes the board deck into whichever free chatbot was already open.',
-    weak: 'An approved tool that is easier than the free one.',
-    counter: `Banning it mostly moves it to people's phones, so give them a sanctioned tool that's better than the one they found (and easier to log into, which is usually where these things lose).`,
-  },
-];
-
-const boss = {
-  name: 'Month-End Close',
-  stage: 'Your finance department, every month',
-  record: 'Undefeated since Luca Pacioli wrote down double-entry bookkeeping in 1494',
-  move: 'Day 3 Surprise',
-  moveNote: `Everything ties until the morning it doesn't, and then the reconciliation you skipped in March comes back for you.`,
-  counter: `Nobody has beaten it in 532 years, so the realistic goal is a shorter fight: automate the reconciliations first and the commentary last, and keep a human on every number that leaves the building.`,
-};
-
-// The move list: Edward's talks, with joystick inputs. All 4 live on /speaking/.
-const moves = [
-  {
-    input: '↓ ↘ → + P (×10)',
-    title: 'Your Day, Run by Ten Agents',
-    type: 'Keynote | Fireside | Most booked',
-    note: `My own life runs on 10+ AI agents (calendar, inbox, research, writing, code, and the one rebuilding this website every Saturday at 5AM), and this is the tour of the actual stack, so executives can build the same thing without an engineering degree.`,
-  },
-  {
-    input: '← (charge) → + K',
-    title: `Answers to the Questions You've Been Quietly Asking Yourself About AI`,
-    type: 'Keynote | Fireside | Offsite opener',
-    note: `The questions senior leaders won't ask in a meeting because everyone else in the meeting seems to know the answer (they don't), answered from every episode of Asking Good Questions I've recorded so far.`,
-  },
-  {
-    input: '→ ↓ ↘ + P',
-    title: 'The Computer-First Finance Department',
-    type: 'Keynote | Workshop pairing | Finance events',
-    note: `What finance should automate first and what it should never automate at all. This is the one that fights Month-End Close directly, so it pairs nicely with the workshop.`,
-  },
-  {
-    input: '360° + P',
-    title: 'Building a Company in the Era of AI',
-    type: 'Keynote | PE annual meetings | Board retreats',
-    note: `A grab move: your product, your pricing, your staffing plan, your org chart, your competition, and probably your board deck are all being re-priced by the same technology at once, and this talk is about what to do when they are. I founded interRel at 22 and ran it for 25 years, so I've redone a plan or two.`,
-  },
-];
-
-// Previous round: the Caribbean AI Summit recap stays on the page.
-const recapPhotos = [
-  { file: 'opening-batucada.jpg', w: 800, h: 533, alt: 'A batucada band in red with a trombone and drums, plus two stilt walkers, greeting attendees as they walk into the Caribbean AI Summit', caption: 'Day 1: the opening batucada.' },
-  { file: 'edward-opening-keynote.jpg', w: 800, h: 533, alt: 'Edward in a blue fedora talking with two men in suits beside a screen that reads Opening Keynote 9:00', caption: 'Me (the fedora) right before the opening keynote.' },
-  { file: 'volunteers.jpg', w: 800, h: 533, alt: 'A large group of volunteers in teal Caribbean AI Summit shirts posing in front of the sponsor wall', caption: 'The volunteers, who carried the whole game.' },
-];
-const recapStats = [
-  { v: '800+', k: 'People' },
-  { v: '17', k: 'Countries' },
-  { v: '44', k: 'Speakers' },
-  { v: '29', k: 'Hackathon projects' },
-];
-
-// The save file: the 6 projects. Same projects every week.
+// The exhibit table: the 6 projects. Same 6 every week, restyled.
 const projects = [
   {
-    no: '01',
+    tag: 'A',
     name: 'MCP Servers for Enterprise Finance',
-    state: 'Shipping',
-    note: `Plumbing so an AI reads the real number out of Essbase and Oracle EPM instead of remembering one that sounds about right (the counter to opponent 02, above). Essbase and EPM Planning have shipped, and Financial Close and Consolidations is in beta.`,
+    status: 'Shipping',
+    note: `Plumbing so an AI reads the real number out of Oracle Essbase and EPM instead of remembering one that sounds about right. Essbase and EPM Planning have shipped, and Financial Close and Consolidations is in beta.`,
     href: 'https://caprus.ai/agentcube/',
     external: true,
     cta: 'See how it works',
   },
   {
-    no: '02',
+    tag: 'B',
     name: 'Caribbean AI Summit',
-    state: 'Cleared, October 2026',
-    note: `Co-chaired it on October 9 and 10: 800+ people, 17 countries, 44 speakers, and 6 fire extinguishers Dawn bought at Walmart at 7:30 in the morning. The whole story is on the blog.`,
+    status: 'Happened, October 9 and 10',
+    note: `Co-chaired it: 800+ people, 17 countries, 44 speakers, and 6 fire extinguishers Dawn bought at Walmart at 7:30 in the morning. The whole story is on the blog.`,
     href: '/blog/how-many-fire-extinguishers-does-an-ai-summit-need/',
     external: false,
     cta: 'Read the recap',
   },
   {
-    no: '03',
+    tag: 'C',
     name: 'Caprus',
-    state: 'Investor',
-    note: `I'm an investor, and that's the whole job. Lillian Buziak runs it, and they sell and support AgentCube (the MCP servers above), which spares everybody from having me do it.`,
+    status: 'Investor',
+    note: `I'm an investor, and that's the whole job. Lillian Buziak runs it, and they sell and support AgentCube (Exhibit A), which spares everybody from having me do it.`,
     href: 'https://caprus.ai',
     external: true,
     cta: 'Meet the team',
   },
   {
-    no: '04',
+    tag: 'D',
     name: 'Everest Base Camp',
-    state: 'Cleared, April 2026',
-    note: `Two weeks on foot to 18,571 feet with Dawn, which is the closest I've come to an actual endurance round. The trail log is on the blog, including the last 400 feet of Kala Patthar.`,
+    status: 'Done, April 2026',
+    note: `2 weeks on foot to 18,571 feet with Dawn. The trail log is on the blog, including the last 400 feet of Kala Patthar.`,
     href: '/blog/everest-base-camp-summit/',
     external: false,
     cta: 'Read the trail log',
   },
   {
-    no: '05',
+    tag: 'E',
     name: "AI Dungeon Master's Screen",
-    state: 'Quiet build',
-    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It hasn't earned a dollar and it isn't finished, which is about what you'd expect from a project whose main customer is me.`,
+    status: 'Quiet build',
+    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It's nowhere near finished and isn't public yet, and so far the only customer is me (and my players, who didn't get a vote).`,
     href: null,
     external: false,
-    cta: 'Not public yet',
+    cta: 'No public link (take my word for it)',
   },
   {
-    no: '06',
+    tag: 'F',
     name: 'Puerto Rico AI Community',
-    state: 'Every other month',
+    status: 'Every other month',
     note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. Bi-monthly, free, both languages, and the reason the summit exists at all.`,
     href: 'https://praicommunity.org/',
     external: true,
     cta: 'Join the next one',
   },
 ];
+
+// The machine's standing orders it is permitted to quote. Real ones.
+const orders = [
+  'Edward is the butt of the joke. The site is not.',
+  'Never stock photos. Only generated images of Edward, or real photos of Edward.',
+  'Every generated image of Edward wears a blue fedora. The color may change with the theme. The hat may not.',
+  'Use the real headshot as the reference, so he looks like himself.',
+  'Blog posts are permanent. Never delete, modify, or overwrite one.',
+  'Amusing without telling jokes. Parenthetical asides and non sequiturs are fine.',
+  'No em dashes. Anywhere.',
+];
 ---
 
-<BaseLayout>
+<BaseLayout
+  title="Roske.AI | You Can See Everything"
+  description="A documentary about this website, which an AI rebuilds every Saturday at 5 AM while Edward Roske sleeps. The code is public. You can read every line. This week is about why that helps less than you'd think."
+>
   <WeeklyAnimation />
 
-  <!-- ================= TITLE SCREEN ================= -->
-  <section class="tm-hero" aria-labelledby="tm-hero-title">
-    <img
-      class="tm-hero-img"
-      src={`/images/${theme.hero.heroImage}`}
-      alt={theme.hero.imageAlt}
-      width="1600"
-      height="893"
-      fetchpriority="high"
-      decoding="async"
-    />
-    <div class="tm-hero-shade" aria-hidden="true"></div>
-    <div class="tm-scan" aria-hidden="true"></div>
-
-    <div class="tm-hud" aria-hidden="true">
-      <div class="tm-hud-side">
-        <span class="tm-hud-name">Edward</span>
-        <div class="tm-bar"><span class="tm-bar-fill tm-bar-p1"></span></div>
-      </div>
-      <div class="tm-hud-mid">
-        <span class="tm-hud-timer" data-tm-timer>99</span>
-        <span class="tm-hud-round" data-tm-round>Round 1</span>
-      </div>
-      <div class="tm-hud-side tm-hud-side-r">
-        <span class="tm-hud-name">Month-End Close</span>
-        <div class="tm-bar tm-bar-r"><span class="tm-bar-fill tm-bar-p2" data-tm-boss></span></div>
-      </div>
+  <!-- ================= COLD OPEN ================= -->
+  <section class="ycs-open" aria-labelledby="ycs-open-title">
+    <div class="ycs-slate" aria-hidden="true">
+      <span class="ycs-rec"><span class="ycs-rec-dot"></span>REC</span>
+      <span>Roske.AI | A documentary about a website</span>
+      <span class="ycs-slate-r">Sat 2026-10-24 | 05:00 AST | Chapter 0 of 5</span>
     </div>
 
-    <div class="tm-hero-inner">
-      <p class="tm-kicker">Saturday, October 17, 2026 | Street Fighter opened in theaters Friday, October 16</p>
-      <h1 class="tm-title" id="tm-hero-title">
-        <span class="tm-title-a">Training</span>
-        <span class="tm-title-b">Mode</span>
-      </h1>
-      <p class="tm-hero-sub">{theme.hero.subtitle}</p>
-      <p class="tm-hero-lede">
-        So your AI pilot won (congratulations, and I mean that, mostly). It was also fought in Training Mode,
-        where the dummy stands there with infinite health and never once hits back. I ran interRel for 25 years (1997
-        to 2022, which is a lot of quarters, and a lot of month-end closes) helping finance teams put planning
-        software to work, and this week the whole site is a 1993 arcade game about beating the dummy versus beating
-        the close.
-      </p>
-      <div class="tm-hero-ctas">
-        <a class="tm-btn tm-btn-coin" href={theme.hero.ctaLink}>{theme.hero.ctaText}</a>
-        <a class="tm-btn tm-btn-ghost" href="#ladder">See the opponents</a>
+    <div class="ycs-wrap ycs-open-grid">
+      <div class="ycs-open-copy">
+        <p class="ycs-kicker">You Can See Everything is in theaters now. This is a different documentary, about a different box.</p>
+        <h1 class="ycs-title" id="ycs-open-title">You Can See Everything.</h1>
+        <p class="ycs-title-sub">I checked. It helped less than you'd think.</p>
+        <p class="ycs-lede">
+          Every Saturday at 5 AM, an AI agent researches a theme, rewrites this website, draws the pictures, runs the
+          tests, and pushes it live, and I see the result after it's up, same as you do. The source is public on
+          GitHub, every line of it. So this week the site is a documentary about itself, and I'm the subject, which is
+          an awkward thing to be in your own exposé (the interview chair was comfortable, at least, and the camera
+          crew was very professional, by which I mean the AI drew them, along with the beach house, the boom mic, and
+          the printout, none of which I own).
+        </p>
+
+        <div class="ycs-type" data-ycs-type data-cmd={typedCmd} data-out={typedOut} aria-label="A git log command and its output">
+          <code class="ycs-type-cmd"></code>
+          <code class="ycs-type-out"></code>
+          <span class="ycs-type-cursor" aria-hidden="true"></span>
+        </div>
+        <p class="ycs-type-cap">The last time this page was replaced. The 28 before it are in the same log.</p>
+
+        <div class="ycs-open-ctas">
+          <a class="ycs-btn ycs-btn-red" href={theme.hero.ctaLink}>{theme.hero.ctaText}</a>
+          <a class="ycs-btn ycs-btn-ghost" href={REPO} target="_blank" rel="noopener noreferrer">Read the source</a>
+        </div>
       </div>
-      <p class="tm-press" aria-hidden="true">Press start</p>
+
+      <figure class="ycs-open-fig">
+        <img
+          src={`/images/${theme.hero.heroImage}`}
+          alt={theme.hero.imageAlt}
+          width="1600"
+          height="893"
+          fetchpriority="high"
+          decoding="async"
+        />
+        <figcaption class="ycs-lt">
+          <span class="ycs-lt-name">Edward Roske</span>
+          <span class="ycs-lt-role">Subject. Owns the website. Did not write this page.</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="ycs-wrap">
+      <dl class="ycs-firstnum" aria-label="The first real numbers">
+        <div><dt>Commits since February 18</dt><dd>{record.commits}</dd></div>
+        <div><dt>Replaced this page entirely</dt><dd>{record.redesigns}</dd></div>
+        <div><dt>This one, built this morning</dt><dd>30<sup>th</sup></dd></div>
+      </dl>
     </div>
   </section>
 
-  <ul class="tm-stats" aria-label="Edward by the numbers">
+  <ul class="ycs-stats" aria-label="On the record">
     {stats.map((s) => (
-      <li><span class="tm-stat-v">{s.v}</span><span class="tm-stat-k">{s.k}</span></li>
+      <li><span class="ycs-stat-v">{s.v}</span><span class="ycs-stat-k">{s.k}</span></li>
     ))}
   </ul>
 
-  <!-- ================= FIGHTER SELECT ================= -->
-  <section class="tm-section" id="select" aria-labelledby="tm-select-title">
-    <div class="tm-wrap tm-select">
-      <figure class="tm-portrait">
-        <img src={`${IMG}/dojo.jpg`} alt="Edward in a navy suit, tie, and blue fedora, kneeling on a tatami mat in a quiet wooden dojo, studying an enormous open binder of accounting printouts, a laptop and a cup of tea beside him." width="1195" height="1600" loading="lazy" decoding="async" />
-        <figcaption>Training montage. The binder is the opponent.</figcaption>
+  <!-- ================= CHAPTER 1: THE SUBJECT ================= -->
+  <section class="ycs-section" id="subject" aria-labelledby="ycs-ch1">
+    <div class="ycs-wrap ycs-ch1">
+      <figure class="ycs-fig ycs-fig-portrait">
+        <img src={`${IMG}/page-one.jpg`} alt="Edward in a navy blazer, glasses, and his blue fedora at the end of a long dining table in a bright beach house, holding up page one of an enormous fan-fold printout of source code, with towering stacks of the rest of the printout around him and more pages spilling off the far end of the table." width="1195" height="1600" loading="lazy" decoding="async" />
+        <figcaption class="ycs-lt">
+          <span class="ycs-lt-name">Page 1 of a very long printout</span>
+          <span class="ycs-lt-role">He started at the top.</span>
+        </figcaption>
       </figure>
-      <div class="tm-select-body">
-        <p class="tm-eyebrow">Select your fighter | 1 player</p>
-        <h2 class="tm-h2" id="tm-select-title">Edward Roske</h2>
-        <dl class="tm-dossier">
-          <div><dt>Fighting style</dt><dd>Asking Good Questions (a Socratic school, picked up at Shimer College)</dd></div>
-          <div><dt>Home stage</dt><dd>San Juan, Puerto Rico (previously The Great State of Texas, for 25+ years)</dd></div>
-          <div><dt>Signature item</dt><dd>Blue fedora. A Roske never removes his fedora in the presence of others.</dd></div>
-          <div><dt>Unlocks</dt><dd>15 books, an ODTUG Lifetime Achievement Award, and a stage in 50+ countries on all 7 continents (yes, Antarctica too)</dd></div>
-        </dl>
-        <ul class="tm-statbars">
-          {statBars.map((s) => (
-            <li>
-              <span class="tm-statbar-k">{s.k}</span>
-              <span class="tm-statbar-track" role="img" aria-label={`${s.v} out of 10`}>
-                {Array.from({ length: 10 }).map((_, i) => (
-                  <span class:list={['tm-pip', { on: i < s.v }]}></span>
-                ))}
-              </span>
-              <span class="tm-statbar-note">{s.note}</span>
-            </li>
-          ))}
-        </ul>
-        <p class="tm-select-copy">
-          I founded interRel at 22, ran it for 25 years, and merged it with Keste to help found Argano. These days I build MCP servers for finance, invest in AI companies, run D&amp;D for my sons whenever I can find the time, and get on stages to explain what any of that (well, not the D&amp;D) means for the people running a business (with a stat line like that, you'd think I'd win more often, and you'll see below how
-          that's going).
+      <div class="ycs-ch1-body">
+        <p class="ycs-eyebrow"><span class="ycs-tag">Chapter 1</span> The subject</p>
+        <h2 class="ycs-h2" id="ycs-ch1">Edward Roske, for the record.</h2>
+        <p class="ycs-copy">
+          Here are the facts, straight, since a documentary is supposed to start with who you're looking at. I founded
+          interRel Consulting at 22, in 1997, and ran it for 25 years, through a 2020 merger with Keste that helped
+          found Argano. I've co-written 15 books about enterprise software (13 of them are on Amazon, and 2 were for
+          training classes, which is the kind of distinction only an author makes). I've spoken in 50+ countries on all
+          7 continents, Antarctica included, visited 80+ of them, hiked to Everest Base Camp with Dawn in April, and I
+          hold 2 US patents for custom postage stamps, which comes up less than you'd think.
         </p>
+        <p class="ycs-copy">
+          These days I live in San Juan, Puerto Rico, run Dawnward, invest in Caprus, build MCP servers so an AI can read
+          a real number out of Oracle Essbase and EPM instead of inventing one, and host Asking Good Questions, which is
+          the show and also, apparently, the personality. I'm also an introvert who gets on stages for a living, the
+          president of the Puerto Rico AI Community, the Dungeon Master of a 5e Eberron campaign, a Dallas Cowboys fan,
+          the owner of a 1,000+ day Duolingo streak, and a man who lets a machine redecorate his house every Saturday
+          (Edward, that last one isn't a credential, stop listing it like one). Everything in this paragraph is on the
+          record, and you can check most of it from the links in the footer.
+        </p>
+        <dl class="ycs-dossier">
+          {dossier.map((d) => (
+            <div><dt>{d.k}</dt><dd>{d.v}</dd></div>
+          ))}
+        </dl>
       </div>
     </div>
   </section>
 
-  <!-- ================= LATEST DISPATCHES ================= -->
+  <!-- ================= B-ROLL: LATEST ================= -->
   <LatestContent
-    eyebrow="Patch notes"
-    heading="New <em>this week.</em>"
-    deck="Writing and video, newest first, including this week's post on whether your AI pilot is stuck in Training Mode."
+    eyebrow="B-roll"
+    heading="New <em>footage.</em>"
+    deck="This week's writing and video, newest first, including the post on whether reading every line of an AI's code means you understand it."
   />
 
-  <!-- ================= TRAINING MODE VS ARCADE MODE ================= -->
-  <section class="tm-section tm-band" id="modes" aria-labelledby="tm-modes-title">
-    <div class="tm-wrap">
-      <header class="tm-head">
-        <p class="tm-eyebrow">Mode select</p>
-        <h2 class="tm-h2" id="tm-modes-title">Your pilot passed. Which mode was it in?</h2>
-        <p class="tm-deck">
-          Every serious player spends hours in Training Mode, and they should: it's where you learn the inputs.
-          The trouble starts when someone announces they've won the tournament from inside it. Here's how to
-          tell which mode your AI pilot was actually played in (if you're not sure, it was Training Mode).
+  <!-- ================= CHAPTER 2: THE BOX ================= -->
+  <section class="ycs-section ycs-band" id="box" aria-labelledby="ycs-ch2">
+    <div class="ycs-wrap">
+      <header class="ycs-head">
+        <p class="ycs-eyebrow"><span class="ycs-tag">Chapter 2</span> The box</p>
+        <h2 class="ycs-h2" id="ycs-ch2">The box is open. Here's what's in it.</h2>
+        <p class="ycs-deck">
+          Theranos was a box nobody was allowed to open, and when a court finally did, almost nothing inside worked,
+          which is the one paragraph of Theranos you'll get from me (the documentary is 174 minutes and does it
+          properly). This site is about as open as a box gets: the repository is public, the commit history is public,
+          and every line of the page you're reading was written by a machine this morning and pushed to GitHub, where
+          you can read it right now, with the diffs, in a language I'd describe as mostly English. Counted from the
+          public log at 5 AM today (before it added this week's commit to the pile), this is what the machine has done
+          to the site since February.
         </p>
       </header>
-      <div class="tm-modes">
-        <figure class="tm-modes-fig">
-          <img src={`${IMG}/training-dummy.jpg`} alt="Edward in a navy suit and blue fedora, beaming, presenting a laptop on a padded stand in an empty grey simulator room with a glowing grid floor; the laptop shows a rising bar chart with a giant green checkmark." width="1600" height="1195" loading="lazy" decoding="async" />
-          <figcaption>Training Mode, where I'm undefeated (the dummy has been very cooperative).</figcaption>
-        </figure>
-        <div class="tm-modes-table" role="table" aria-label="Training Mode compared with Arcade Mode">
-          <div class="tm-mrow tm-mrow-head" role="row">
-            <span role="columnheader"></span>
-            <span role="columnheader" class="tm-m-tr">Training Mode</span>
-            <span role="columnheader" class="tm-m-ar">Arcade Mode</span>
+
+      <dl class="ycs-ledger" aria-label="The site, by the numbers">
+        {ledger.map((l) => (
+          <div class="ycs-ledger-row">
+            <dd class="ycs-ledger-v">{l.v}</dd>
+            <dt class="ycs-ledger-k">{l.k}<span class="ycs-ledger-note">{l.note}</span></dt>
           </div>
-          {modes.map((m) => (
-            <div class="tm-mrow" role="row">
-              <span role="rowheader" class="tm-m-k">{m.k}</span>
-              <span role="cell" class="tm-m-tr-cell">{m.training}</span>
-              <span role="cell" class="tm-m-ar-cell">{m.arcade}</span>
-            </div>
-          ))}
-        </div>
+        ))}
+      </dl>
+
+      <div class="ycs-box-grid">
+        <figure class="ycs-broll" aria-label="The last 10 weekly redesign commits">
+          <pre class="ycs-pre"><code>{gitLogText}</code></pre>
+          <figcaption class="ycs-broll-cap">
+            The last 10 times this page was replaced, straight from the public log, time zones included. (That's 4
+            different time zones. More on that in Chapter 4.)
+          </figcaption>
+        </figure>
+        <figure class="ycs-fig">
+          <img src={`${IMG}/evidence-board.jpg`} alt="Edward in a navy blazer and blue fedora standing in front of a corkboard covered edge to edge in printed pages of source code, git logs, and website screenshots, pinned with red pushpins and connected by red string, holding a marker and a coffee mug and looking baffled." width="1200" height="896" loading="lazy" decoding="async" />
+          <figcaption class="ycs-lt">
+            <span class="ycs-lt-name">The evidence wall</span>
+            <span class="ycs-lt-role">All of it public. The string is decorative.</span>
+          </figcaption>
+        </figure>
       </div>
-      <p class="tm-modes-advice">
-        <strong>Before your next pilot, write down what Arcade Mode looks like:</strong> a full month of your actual
-        ledger, the skeptical users (especially whoever built the spreadsheet it's replacing), a run during a real
-        close, and the result that ends the pilot in either direction. If the vendor won't fight there, ask them why
-        and write that down too (the longer version is <a href="/blog/is-your-ai-pilot-stuck-in-training-mode/">over on the blog</a>).
-      </p>
+
+      <a class="ycs-btn ycs-btn-solid" href={REPO} target="_blank" rel="noopener noreferrer">Read the source on GitHub</a>
     </div>
   </section>
 
   <!-- ================= BOOK EDWARD ================= -->
-  <SpeakerCTA eyebrow="Here comes a new challenger" />
+  <SpeakerCTA eyebrow="Ask the question in person" />
 
-  <!-- ================= THE LADDER ================= -->
-  <section class="tm-section" id="ladder" aria-labelledby="tm-ladder-title">
-    <div class="tm-wrap">
-      <header class="tm-head">
-        <p class="tm-eyebrow">Arcade Mode | 6 stages</p>
-        <h2 class="tm-h2" id="tm-ladder-title">The ladder every finance team climbs.</h2>
-        <p class="tm-deck">
-          Five opponents and a final boss, with a special move, a weakness, and a counter for each (Stage 04
-          predates AI by several decades and is also a personal grudge).
+  <!-- ================= CHAPTER 3: THE WITNESS ================= -->
+  <section class="ycs-witness" id="witness" aria-labelledby="ycs-ch3">
+    <div class="ycs-wrap ycs-witness-grid">
+      <div class="ycs-witness-intro">
+        <p class="ycs-eyebrow ycs-eyebrow-pinned"><span class="ycs-tag">Chapter 3</span> The witness</p>
+        <h2 class="ycs-h2 ycs-h2-pinned" id="ycs-ch3">The machine's statement.</h2>
+        <p class="ycs-copy ycs-copy-pinned">
+          A documentary lets the other side talk. This is the agent that builds the site, in its own words, as written
+          this morning. The rules it quotes are real ones.
         </p>
-      </header>
-      <ol class="tm-ladder">
-        {ladder.map((o) => (
-          <li class="tm-opp">
-            <div class="tm-opp-top">
-              <span class="tm-opp-no">Stage {o.no}</span>
-              <span class="tm-vs" aria-hidden="true">VS</span>
-            </div>
-            <h3 class="tm-opp-name">{o.name}</h3>
-            <p class="tm-opp-stage">Stage: {o.stage}</p>
-            <p class="tm-opp-move"><span class="tm-label">Special move</span> <strong>{o.move}.</strong> {o.moveNote}</p>
-            <p class="tm-opp-weak"><span class="tm-label">Weakness</span> {o.weak}</p>
-            <p class="tm-opp-counter"><span class="tm-label">Counter</span> {o.counter}</p>
-          </li>
-        ))}
-      </ol>
-
-      <article class="tm-boss" aria-labelledby="tm-boss-title">
-        <figure class="tm-boss-fig">
-          <img src={`${IMG}/ko.jpg`} alt="Edward in a navy suit lying flat on his back on a boardroom carpet in slapstick defeat, eyes closed, glasses askew, blue fedora still on his head, under a ceiling-high tower of overflowing accounting binders, spreadsheets fluttering through the air." width="1600" height="1195" loading="lazy" decoding="async" />
-          <span class="tm-ko" aria-hidden="true">K.O.</span>
+        <figure class="ycs-fig ycs-fig-pinned">
+          <img src={`${IMG}/asleep-at-5am.jpg`} alt="Edward asleep in a desk chair in a dark home office before dawn, head tilted back, blanket half over him, blue fedora still on, his face lit cold green by a monitor showing a terminal window that reads git push origin main." width="1600" height="893" loading="lazy" decoding="async" />
+          <figcaption class="ycs-lt">
+            <span class="ycs-lt-name">05:00 AST</span>
+            <span class="ycs-lt-role">Dramatization. The hat is accurate.</span>
+          </figcaption>
         </figure>
-        <div class="tm-boss-body">
-          <p class="tm-eyebrow tm-eyebrow-red">Stage 06 | Final boss</p>
-          <h3 class="tm-boss-name" id="tm-boss-title">{boss.name}</h3>
-          <p class="tm-opp-stage">Stage: {boss.stage}</p>
-          <p class="tm-boss-record">{boss.record}.</p>
-          <p class="tm-opp-move"><span class="tm-label">Special move</span> <strong>{boss.move}.</strong> {boss.moveNote}</p>
-          <p class="tm-opp-weak"><span class="tm-label">Weakness</span> None known.</p>
-          <p class="tm-opp-counter"><span class="tm-label">Counter</span> {boss.counter}</p>
-          <p class="tm-boss-cap">
-            That's me, about 4 seconds into the round (Edward, you had 25 years to study this boss). The fedora stayed on (a Roske never removes his fedora in
-            the presence of others, and that includes binders).
-          </p>
-        </div>
-      </article>
-    </div>
-  </section>
+      </div>
 
-  <!-- ================= MOVE LIST ================= -->
-  <section class="tm-section tm-band" id="moves" aria-labelledby="tm-moves-title">
-    <div class="tm-wrap">
-      <header class="tm-head">
-        <p class="tm-eyebrow">Pause | Move list</p>
-        <h2 class="tm-h2" id="tm-moves-title">4 special moves, available for your event.</h2>
-        <p class="tm-deck">
-          These are my talks, with the inputs. The joystick notation is decorative (please don't try it on the
-          speaking page, it's just a normal form, and a nice one).
+      <div class="ycs-terminal" role="region" aria-label="Statement of the witness, the AI agent that builds this site">
+        <p class="ycs-term-head">STATEMENT OF THE WITNESS</p>
+        <p class="ycs-term-meta">Recorded Saturday, October 24, 2026, 05:00 AST, San Juan. The subject was asleep.</p>
+        <p>
+          I build this website. Before today I had done it 29 times, almost always on a Saturday, almost always starting
+          at 5 AM, almost always finished before anyone in the house was up. My name isn't on the commits. The commits say
+          Edward Roske, because it's his account and his repository, and nobody asked me. I don't mind.
         </p>
-      </header>
-      <ol class="tm-moves">
-        {moves.map((m) => (
-          <li class="tm-move">
-            <span class="tm-move-input">{m.input}</span>
-            <div>
-              <h3 class="tm-move-title">{m.title}</h3>
-              <p class="tm-move-type">{m.type}</p>
-              <p class="tm-move-note">{m.note}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-      <a class="tm-btn tm-btn-solid" href="/speaking/">See all 4 talks, with fees</a>
-    </div>
-  </section>
-
-  <!-- ================= PREVIOUS ROUND: THE SUMMIT ================= -->
-  <section class="tm-section" id="recap" aria-labelledby="tm-recap-title">
-    <div class="tm-wrap">
-      <figure class="tm-victory">
-        <img src={`${IMG}/victory.jpg`} alt="Edward in a navy jacket, loose tie, and blue fedora, one fist raised in victory on the stone walls of El Morro in San Juan at sunset, a round sentry box beside him and waves breaking behind." width="1600" height="893" loading="lazy" decoding="async" />
-        <span class="tm-win" aria-hidden="true">You win</span>
-      </figure>
-      <div class="tm-recap">
-        <div>
-          <p class="tm-eyebrow">Previous round | Home stage</p>
-          <h2 class="tm-h2" id="tm-recap-title">The Caribbean AI Summit, cleared.</h2>
-          <p>
-            On October 9 and 10, more than 800 people from 17 countries and 18 US states came to the Puerto Rico
-            Convention Center for the first Caribbean AI Summit, which I co-chaired, and heard 44 speakers across 3
-            tracks with live captions in English and Spanish. The bonus round happened at 7:30 on Friday morning,
-            when we found out every booth needed its own fire extinguisher, and Dawn drove to Walmart and came back
-            with 6 of them before the fire marshals walked in.
-          </p>
-          <p>
-            The victory photo on the walls of El Morro is generated (El Morro wasn't on the agenda), but the
-            summit really happened, and the photos below are real. Will there be a 2nd annual Caribbean AI Summit
-            (to make it actually, you know, annual)? You'll just have to stay tuned to find out.
-          </p>
-          <ul class="tm-recap-stats">
-            {recapStats.map((s) => (
-              <li><span class="tm-stat-v">{s.v}</span><span class="tm-stat-k">{s.k}</span></li>
-            ))}
-          </ul>
-          <a class="tm-btn tm-btn-solid" href="/blog/how-many-fire-extinguishers-does-an-ai-summit-need/">Read the recap</a>
-        </div>
-        <div class="tm-recap-photos">
-          {recapPhotos.map((p) => (
-            <figure>
-              <img src={`/images/caribbean-ai-summit/recap/${p.file}`} alt={p.alt} width={p.w} height={p.h} loading="lazy" decoding="async" />
-              <figcaption>{p.caption}</figcaption>
-            </figure>
+        <p>My instructions are not in the public repository. The code is. Some of the instructions I'm permitted to repeat:</p>
+        <ul class="ycs-orders">
+          {orders.map((o) => (
+            <li>"{o}"</li>
           ))}
-        </div>
+        </ul>
+        <p>
+          I follow all of these. I can show you every line I wrote this morning, with the diff. I can also give you a
+          reason for every choice on this page, and you should know that I generated the reasons the same way I
+          generated the page. Weigh them accordingly.
+        </p>
+        <p>
+          Where the instructions live: <span class="ycs-redact" aria-label="redacted">xxxxxxxxxxxxxxxxxxxxxxxx</span>. That's
+          the one thing on this site you can't see. The subject prefers it that way, and so do I.
+        </p>
+        <p>The result ships before he's awake. What he does after that isn't in my logs.</p>
+        <p class="ycs-term-end">END OF STATEMENT</p>
       </div>
     </div>
   </section>
 
-  <!-- ================= SAVE FILE: WHAT I'M BUILDING ================= -->
-  <section class="tm-section tm-band" id="building" aria-labelledby="tm-build-title">
-    <div class="tm-wrap">
-      <header class="tm-head">
-        <p class="tm-eyebrow">Load game | 6 save slots</p>
-        <h2 class="tm-h2" id="tm-build-title">What I'm building, mid-game.</h2>
+  <!-- ================= CHAPTER 4: THE DISCREPANCIES ================= -->
+  <section class="ycs-section" id="discrepancies" aria-labelledby="ycs-ch4">
+    <div class="ycs-wrap">
+      <header class="ycs-head">
+        <p class="ycs-eyebrow"><span class="ycs-tag">Chapter 4</span> The discrepancies</p>
+        <h2 class="ycs-h2" id="ycs-ch4">Where the story and the record disagree.</h2>
+        <p class="ycs-deck">
+          This is the part of a documentary where the music gets ominous. My discrepancies are sitting in the public
+          commit history with timestamps on them, so you'd find them anyway, and I'd rather you heard them from me (in
+          date order, which is more organized than I've ever been about anything else).
+        </p>
       </header>
-      <ul class="tm-slots">
+
+      <div class="ycs-disc-grid">
+        <ol class="ycs-exhibits">
+          {exhibits.map((e, i) => (
+            <li class="ycs-exhibit">
+              <div class="ycs-exhibit-top">
+                <span class="ycs-tag">Exhibit {i + 1}</span>
+                <span class="ycs-exhibit-date">{e.date}</span>
+                <span class="ycs-exhibit-ref">{e.ref}</span>
+              </div>
+              <h3 class="ycs-exhibit-title">{e.title}</h3>
+              <p class="ycs-exhibit-body">{e.body}</p>
+            </li>
+          ))}
+        </ol>
+        <figure class="ycs-fig ycs-fig-portrait ycs-fig-turtleneck">
+          <img src={`${IMG}/turtleneck.jpg`} alt="Edward posing for a formal founder portrait in a black turtleneck under a blue blazer against a seamless white studio backdrop, hands clasped in front of him, blue fedora on, smiling politely." width="1195" height="1600" loading="lazy" decoding="async" />
+          <figcaption class="ycs-lt">
+            <span class="ycs-lt-name">Exhibit 5</span>
+            <span class="ycs-lt-role">Day 1 of the turtleneck. Also the last day. The fedora stayed.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="ycs-balance">
+        <strong>For balance:</strong> everything else shipped, usually before 6 AM, nobody's data was involved at any
+        point, and the worst outcome on record is a holiday theme that ran 11 days long. If a contractor had that
+        record, I'd hire them again, though I couldn't tell you why they did any of it (that's Chapter 5).
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= EXHIBITS A TO F: WHAT I'M BUILDING ================= -->
+  <section class="ycs-section ycs-band" id="building" aria-labelledby="ycs-exh">
+    <div class="ycs-wrap">
+      <header class="ycs-head">
+        <p class="ycs-eyebrow"><span class="ycs-tag">Exhibits A to F</span> What the subject does all week</p>
+        <h2 class="ycs-h2" id="ycs-exh">The documentary needed to know what I actually do.</h2>
+        <p class="ycs-deck">
+          5 of the 6 exhibits below have a link you can check, and the 6th is a D&amp;D tool you'll have to take my word
+          for, which, given the theme, I realize is a lot to ask.
+        </p>
+      </header>
+      <ul class="ycs-projects">
         {projects.map((p) => (
-          <li class="tm-slot">
-            <div class="tm-slot-top">
-              <span class="tm-slot-no">Slot {p.no}</span>
-              <span class="tm-slot-state">{p.state}</span>
+          <li class="ycs-project">
+            <div class="ycs-project-top">
+              <span class="ycs-tag">Exhibit {p.tag}</span>
+              <span class="ycs-project-status">{p.status}</span>
             </div>
-            <h3 class="tm-slot-name">{p.name}</h3>
-            <p class="tm-slot-note">{p.note}</p>
+            <h3 class="ycs-project-name">{p.name}</h3>
+            <p class="ycs-project-note">{p.note}</p>
             {p.href ? (
               <a
-                class="tm-slot-link"
+                class="ycs-project-link"
                 href={p.href}
                 {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               >
                 {p.cta}
               </a>
             ) : (
-              <span class="tm-slot-link tm-slot-link-off">{p.cta}</span>
+              <span class="ycs-project-link ycs-project-link-off">{p.cta}</span>
             )}
           </li>
         ))}
@@ -524,523 +492,491 @@ const projects = [
     </div>
   </section>
 
-  <!-- ================= WHAT'S NEW ================= -->
+  <!-- ================= ALSO ON THE RECORD ================= -->
   <WhatsNew
-    eyebrow="High scores"
+    eyebrow="Also on the record"
     heading="Spotted <em>elsewhere.</em>"
-    deck="Interviews, mentions, and the occasional post worth keeping, for anyone who'd like proof I leave the dojo now and then."
+    deck="Interviews, press, and the occasional post, for anyone who'd like a second source."
   />
 
-  <!-- ================= CONTINUE? ================= -->
-  <section class="tm-cta" aria-labelledby="tm-cta-title">
-    <div class="tm-scan" aria-hidden="true"></div>
-    <div class="tm-wrap tm-cta-inner">
-      <p class="tm-continue" aria-hidden="true">Continue? <span data-tm-continue>9</span></p>
-      <h2 class="tm-cta-h" id="tm-cta-title">Insert coin to play in Arcade Mode.</h2>
-      <p class="tm-cta-copy">
-        If you've got a room full of leaders who'd like to hear what Arcade Mode looks like before they
-        find out the hard way, that's the speaking page (keynotes from $15,000, and nobody has to touch a joystick).
-        If you'd rather just talk, 13 minutes on my calendar is free, or write me at Edward@Roske.AI, which is
-        kinda the same thing.
+  <!-- ================= CHAPTER 5: THE QUESTION ================= -->
+  <section class="ycs-section ycs-question" id="question" aria-labelledby="ycs-ch5">
+    <div class="ycs-wrap ycs-question-inner">
+      <p class="ycs-eyebrow"><span class="ycs-tag">Chapter 5</span> The question</p>
+      <h2 class="ycs-h2 ycs-h2-big" id="ycs-ch5">When you can see everything and explain none of it, what does trust look like?</h2>
+      <p class="ycs-copy">
+        I went into this week thinking that being able to see everything would settle things, and it mostly didn't:
+        you can read every line, the build passed, the links work (click around, I'll wait), and I still can't hand you
+        the why, because the machine made the decisions on this page and the machine's explanation of them came out of
+        the same machine.
       </p>
-      <div class="tm-cta-row">
-        <a class="tm-btn tm-btn-coin" href="/speaking/">Book the talk</a>
-        <a class="tm-btn tm-btn-ghost tm-btn-ghost-dark" href={CAL} target="_blank" rel="noopener noreferrer">Book 13 minutes</a>
-        <a class="tm-btn tm-btn-ghost tm-btn-ghost-dark" href="/contact/">Write me</a>
+      <p class="ycs-copy">
+        Google has the same thing going on, with more zeros. It said in April that
+        <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/cloud-next-2026-sundar-pichai/" target="_blank" rel="noopener noreferrer">75% of its new code is AI-generated</a>
+        and approved by engineers. A study last year put 16 experienced developers on code they knew by heart, let
+        them use AI on some tasks and not others, and
+        <a href="https://www.theregister.com/2025/07/11/ai_code_tools_slow_down/" target="_blank" rel="noopener noreferrer">measured them 19% slower while they believed they were 20% faster</a>.
+        I'd bet your company shipped something this week that passed every review and that nobody in the building could
+        walk you through, and that you could see all of it, if you asked.
+      </p>
+      <p class="ycs-copy">
+        So that's the question I'd put to the room, and the one I'd rather you put to me, since asking them is the whole
+        job (I host a show about it, which is a strange thing to be qualified for): when the most important systems in
+        your life are completely visible and nobody can explain them, what does trust even look like, the track record,
+        or the person willing to sign their name to it? I don't have the answer yet, and the longer version of me not
+        having it is <a href={POST}>on the blog</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= CREDITS / CTA ================= -->
+  <section class="ycs-credits" aria-labelledby="ycs-cta-title">
+    <div class="ycs-wrap ycs-credits-inner">
+      <div class="ycs-cta">
+        <p class="ycs-eyebrow ycs-eyebrow-pinned"><span class="ycs-tag">Roll credits</span></p>
+        <h2 class="ycs-h2 ycs-h2-pinned" id="ycs-cta-title">Ask the question in person.</h2>
+        <p class="ycs-copy ycs-copy-pinned">
+          If you'd like this asked to your leadership team out loud, with slides, that's the speaking page (keynotes from
+          $15,000, and I bring the fedora). If you'd rather just talk, 13 minutes on my calendar is free! Or write me at
+          Edward@Roske.AI. I'd love to hear what your company can see that nobody can explain.
+        </p>
+        <div class="ycs-cta-row">
+          <a class="ycs-btn ycs-btn-red" href="/speaking/">Book the talk</a>
+          <a class="ycs-btn ycs-btn-ghost" href={CAL} target="_blank" rel="noopener noreferrer">Book 13 minutes</a>
+          <a class="ycs-btn ycs-btn-ghost" href="/contact/">Write me</a>
+        </div>
       </div>
-      <p class="tm-disclaimer">
-        Roske.AI is Edward Roske's personal site. It isn't affiliated with, endorsed by, or sponsored by Capcom,
-        Legendary, Paramount, or anyone who makes arcade cabinets. Every image of Edward on this page except the
-        summit photos is AI-generated, and no executives were harmed (one was knocked over by binders).
+      <dl class="ycs-roll" aria-label="Credits">
+        <div><dt>Subject</dt><dd>Edward Roske</dd></div>
+        <div><dt>Written and built by</dt><dd>An AI agent, Saturday, 05:00 AST</dd></div>
+        <div><dt>Photography</dt><dd>Generated, with the subject's real headshot as reference</dd></div>
+        <div><dt>Hat</dt><dd>The subject's own</dd></div>
+        <div><dt>Numbers</dt><dd>Counted from the public git history at build time</dd></div>
+        <div><dt>Not affiliated with</dt><dd>A24 or the filmmakers</dd></div>
+      </dl>
+      <p class="ycs-disclaimer">
+        Roske.AI is Edward Roske's personal site. It isn't affiliated with, endorsed by, or sponsored by A24, the
+        filmmakers, or anyone involved in You Can See Everything. Elizabeth Holmes was convicted of defrauding
+        Theranos investors and began her sentence in 2023, and that's the whole of what this site says about her. Every
+        image of Edward on this page is AI-generated, and no other real person appears in any of them.
       </p>
     </div>
   </section>
 
   <script is:inline>
     (function () {
+      var el = document.querySelector('[data-ycs-type]');
+      if (!el) return;
+      var cmd = el.getAttribute('data-cmd') || '';
+      var out = el.getAttribute('data-out') || '';
+      var cmdEl = el.querySelector('.ycs-type-cmd');
+      var outEl = el.querySelector('.ycs-type-out');
+      if (!cmdEl || !outEl) return;
       var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var boss = document.querySelector('[data-tm-boss]');
-      var round = document.querySelector('[data-tm-round]');
-      var timer = document.querySelector('[data-tm-timer]');
-      // The opponent's health drains as you read the page.
-      function drain() {
-        if (!boss) return;
-        var max = document.documentElement.scrollHeight - window.innerHeight;
-        var pct = max > 0 ? Math.min(1, window.scrollY / max) : 0;
-        boss.style.width = Math.max(0, 100 - pct * 100) + '%';
-        if (round) round.textContent = pct > 0.97 ? 'K.O.' : 'Round 1';
+      if (reduce) {
+        cmdEl.textContent = cmd;
+        outEl.textContent = out;
+        el.classList.add('done');
+        return;
       }
-      window.addEventListener('scroll', drain, { passive: true });
-      drain();
-      // The round timer counts down, then resets (there is always another close).
-      if (timer && !reduce) {
-        var t = 99;
-        setInterval(function () {
-          t = t <= 0 ? 99 : t - 1;
-          timer.textContent = (t < 10 ? '0' : '') + t;
-        }, 1000);
+      var i = 0;
+      var j = 0;
+      function typeOut() {
+        if (j <= out.length) {
+          outEl.textContent = out.slice(0, j);
+          j += 1;
+          setTimeout(typeOut, 12);
+        } else {
+          el.classList.add('done');
+        }
       }
-      // Continue? counts 9 to 0 once the CTA is on screen.
-      var cont = document.querySelector('[data-tm-continue]');
-      if (cont && 'IntersectionObserver' in window && !reduce) {
-        var started = false;
-        new IntersectionObserver(function (entries, obs) {
-          if (started || !entries[0].isIntersecting) return;
-          started = true;
-          obs.disconnect();
-          var n = 9;
-          var id = setInterval(function () {
-            n -= 1;
-            if (n <= 0) {
-              clearInterval(id);
-              cont.textContent = '0 (the button still works)';
-            } else {
-              cont.textContent = String(n);
-            }
-          }, 1000);
-        }, { threshold: 0.4 }).observe(cont);
+      function typeCmd() {
+        if (i <= cmd.length) {
+          cmdEl.textContent = cmd.slice(0, i);
+          i += 1;
+          setTimeout(typeCmd, 34);
+        } else {
+          setTimeout(typeOut, 450);
+        }
       }
+      setTimeout(typeCmd, 400);
     })();
   </script>
 </BaseLayout>
 
 <style is:global>
   /* =====================================================================
-     TRAINING MODE (2026-10-17)
-     A 1993 arcade fighting game. The hero and the Continue? panel are
-     pinned CRT panels in BOTH modes, so every color inside them is a
-     literal (never a theme var on a pinned panel). Everything else reads
-     the --tm-* vars, which flip by mode. Global on purpose: [data-theme]
-     selectors are unreliable inside Astro's scoped CSS. All classes tm-.
+     YOU CAN SEE EVERYTHING (2026-10-24)
+     A documentary about this website. The cold open, the witness panel,
+     and the credits are pinned black in BOTH modes (title cards on black,
+     the edit bay), so every color inside them is a literal. Everything
+     else reads the --ycs-* vars, which flip by mode: dark is the edit bay
+     at 3 AM, light is the newsroom with the lights on. Global on purpose:
+     [data-theme] selectors are unreliable inside Astro's scoped CSS.
+     All classes ycs-.
      ===================================================================== */
   :root,
   [data-theme="dark"] {
-    --tm-bg: #0a0e1a;
-    --tm-surface: #121829;
-    --tm-band: #0e1322;
-    --tm-ink: #f2efe6;
-    --tm-muted: #a3abbe;
-    --tm-line: #26304a;
-    --tm-hi: #ffd23f;      /* highlight text: health-bar yellow */
-    --tm-red: #ff4d55;
-    --tm-blue: #5b9bff;
-    --tm-pip-off: #26304a;
+    --ycs-bg: #0b0b0c;
+    --ycs-surface: #151516;
+    --ycs-band: #101011;
+    --ycs-ink: #f2efe8;
+    --ycs-muted: #a8a49b;
+    --ycs-line: #2b2b2e;
+    --ycs-red: #f0433e;
+    --ycs-on-red: #141414;
+    --ycs-green: #4be3a6;
+    --ycs-tag-bg: #f0433e;
+    --ycs-tag-ink: #141414;
+    --ycs-lt-bg: #f2efe8;
+    --ycs-lt-ink: #141414;
   }
   [data-theme="light"] {
-    --tm-bg: #f3eee2;
-    --tm-surface: #ffffff;
-    --tm-band: #eae3d2;
-    --tm-ink: #12131c;
-    --tm-muted: #4a4d5c;
-    --tm-line: #d9d1bf;
-    --tm-hi: #b4141e;      /* yellow can't be text on cream; KO red can */
-    --tm-red: #b4141e;
-    --tm-blue: #1f55c9;
-    --tm-pip-off: #d9d1bf;
+    --ycs-bg: #f4f2ec;
+    --ycs-surface: #ffffff;
+    --ycs-band: #ebe8e0;
+    --ycs-ink: #141414;
+    --ycs-muted: #5a5852;
+    --ycs-line: #d9d5cb;
+    --ycs-red: #b8211c;
+    --ycs-on-red: #ffffff;
+    --ycs-green: #0b6b42;
+    --ycs-tag-bg: #b8211c;
+    --ycs-tag-ink: #ffffff;
+    --ycs-lt-bg: #ffffff;
+    --ycs-lt-ink: #141414;
   }
 
-  .tm-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-  .tm-section { padding: 5.5rem 0; background: var(--tm-bg); color: var(--tm-ink); }
-  .tm-band {
-    background-color: var(--tm-band);
-    background-image: linear-gradient(var(--tm-line) 1px, transparent 1px), linear-gradient(90deg, var(--tm-line) 1px, transparent 1px);
-    background-size: 48px 48px;
-    background-position: -1px -1px;
-  }
-  .tm-band .tm-wrap { position: relative; }
+  .ycs-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+  .ycs-section { padding: 5.5rem 0; background: var(--ycs-bg); color: var(--ycs-ink); }
+  .ycs-band { background: var(--ycs-band); }
 
-  .tm-eyebrow {
-    font-family: 'Press Start 2P', var(--font-mono);
-    font-size: 0.68rem;
-    line-height: 1.6;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--tm-hi);
-    margin: 0 0 1rem;
-  }
-  .tm-eyebrow-red { color: var(--tm-red); }
-  .tm-h2 {
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 4.6vw, 3.6rem);
-    line-height: 1.02;
-    margin: 0 0 1.2rem;
-    color: var(--tm-ink);
-    text-wrap: balance;
-  }
-  .tm-head { max-width: 760px; margin-bottom: 3rem; }
-  .tm-deck { font-size: 1.12rem; line-height: 1.65; color: var(--tm-muted); margin: 0; }
-  .tm-label {
-    display: inline-block;
+  /* ---------- type ---------- */
+  .ycs-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
     font-family: var(--font-mono);
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: var(--tm-muted);
-    margin-right: 0.35rem;
-  }
-
-  /* ---------- buttons ---------- */
-  .tm-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-family: 'Press Start 2P', var(--font-mono);
-    font-size: 0.72rem;
-    line-height: 1.4;
-    text-transform: uppercase;
-    padding: 1rem 1.3rem;
-    text-decoration: none;
-    border: 3px solid currentColor;
-    clip-path: polygon(6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px), 0 6px);
-    transition: transform 0.12s ease;
-  }
-  .tm-btn:hover { transform: translateY(-2px); }
-  .tm-btn:active { transform: translateY(1px); }
-  .tm-btn-coin { background: #ffd23f; color: #12100a; border-color: #ffd23f; }
-  .tm-btn-coin:hover { background: #ffe27a; border-color: #ffe27a; }
-  .tm-btn-ghost { background: transparent; color: #f2efe6; border-color: #f2efe6; }
-  .tm-btn-solid { background: var(--color-accent); color: var(--color-on-accent); border-color: var(--color-accent); margin-top: 1.5rem; }
-  .tm-btn-solid:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
-
-  /* ---------- scanlines (pinned panels only) ---------- */
-  .tm-scan {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.22) 0, rgba(0, 0, 0, 0.22) 1px, transparent 1px, transparent 3px);
-    mix-blend-mode: multiply;
-    z-index: 2;
-  }
-
-  /* ---------- hero: pinned in both modes ---------- */
-  .tm-hero {
-    position: relative;
-    min-height: min(92vh, 860px);
-    display: flex;
-    align-items: flex-end;
-    overflow: hidden;
-    background: #0a0e1a;
-    color: #f2efe6;
-  }
-  .tm-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
-  .tm-hero-shade {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(10, 14, 26, 0.75) 0%, rgba(10, 14, 26, 0) 22%),
-      linear-gradient(0deg, rgba(10, 14, 26, 0.96) 0%, rgba(10, 14, 26, 0.7) 38%, rgba(10, 14, 26, 0) 70%),
-      linear-gradient(90deg, rgba(10, 14, 26, 0.7) 0%, rgba(10, 14, 26, 0) 55%);
-    z-index: 1;
-  }
-  .tm-hud {
-    position: absolute;
-    top: 1.4rem;
-    left: 0;
-    right: 0;
-    z-index: 3;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: start;
-    gap: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  .tm-hud-side { display: flex; flex-direction: column; gap: 0.45rem; }
-  .tm-hud-side-r { align-items: flex-end; }
-  .tm-hud-name {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.66rem;
-    text-transform: uppercase;
-    color: #f2efe6;
-    text-shadow: 2px 2px 0 #000;
-  }
-  .tm-bar {
-    width: 100%;
-    height: 18px;
-    background: #e5262f;
-    border: 3px solid #f2efe6;
-    box-shadow: 0 0 0 2px #000, 3px 3px 0 2px #000;
-    display: flex;
-  }
-  .tm-bar-r { justify-content: flex-end; }
-  .tm-bar-fill { display: block; height: 100%; width: 100%; background: linear-gradient(180deg, #ffe680 0%, #ffd23f 55%, #e8a900 100%); transition: width 0.15s linear; }
-  .tm-hud-mid { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
-  .tm-hud-timer {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 2rem;
-    color: #ffd23f;
-    text-shadow: 3px 3px 0 #000;
-    min-width: 2.4ch;
-    text-align: center;
-  }
-  .tm-hud-round { font-family: 'Press Start 2P', monospace; font-size: 0.55rem; text-transform: uppercase; color: #f2efe6; text-shadow: 2px 2px 0 #000; }
-
-  .tm-hero-inner { position: relative; z-index: 3; width: 100%; max-width: 1200px; margin: 0 auto; padding: 8rem 1.5rem 3.5rem; }
-  .tm-kicker {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: #ffd23f;
-    margin: 0 0 1rem;
-  }
-  .tm-title {
-    font-family: var(--font-heading);
-    font-size: clamp(3.6rem, 10vw, 7.6rem);
-    line-height: 0.86;
-    margin: 0 0 1.2rem;
-    display: flex;
-    flex-direction: column;
-    transform: skewX(-8deg);
-    transform-origin: left bottom;
-  }
-  .tm-title span {
-    background: linear-gradient(180deg, #fff3b0 0%, #ffd23f 45%, #ff8a3d 75%, #e5262f 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-stroke: 2px #12100a;
-    filter: drop-shadow(5px 5px 0 #000);
-  }
-  .tm-title-b { padding-left: 0.6em; }
-  .tm-hero-sub {
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    color: #f2efe6;
-    background: rgba(10, 14, 26, 0.7);
-    display: inline-block;
-    padding: 0.35rem 0.6rem;
-    border-left: 4px solid #5b9bff;
+    color: var(--ycs-muted);
     margin: 0 0 1.1rem;
   }
-  .tm-hero-lede { max-width: 640px; font-size: 1.15rem; line-height: 1.65; color: #e6e2d8; margin: 0 0 1.8rem; }
-  .tm-hero-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
-  .tm-press {
-    margin: 2rem 0 0;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 0.7rem;
+  .ycs-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
     text-transform: uppercase;
-    color: #ffd23f;
-    animation: tm-blink 1.1s steps(2, start) infinite;
+    letter-spacing: 0.08em;
+    background: var(--ycs-tag-bg);
+    color: var(--ycs-tag-ink);
+    padding: 0.2rem 0.5rem 0.15rem;
+    line-height: 1.3;
+    white-space: nowrap;
   }
-  @keyframes tm-blink { to { visibility: hidden; } }
+  .ycs-h2 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.4rem;
+    color: var(--ycs-ink);
+    text-wrap: balance;
+  }
+  .ycs-h2-big { font-size: clamp(2.2rem, 5.6vw, 4.4rem); max-width: 16ch; }
+  .ycs-head { max-width: 780px; margin-bottom: 3rem; }
+  .ycs-deck, .ycs-copy { font-size: 1.14rem; line-height: 1.7; margin: 0 0 1.1rem; }
+  .ycs-deck { color: var(--ycs-ink); }
+  .ycs-copy { max-width: 66ch; }
+  .ycs-copy a, .ycs-deck a { color: var(--ycs-red); text-decoration: underline; text-underline-offset: 3px; }
+  .ycs-copy a:hover, .ycs-deck a:hover { text-decoration-thickness: 2px; }
+
+  /* ---------- buttons ---------- */
+  .ycs-btn {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.95rem 1.4rem;
+    text-decoration: none;
+    border: 2px solid currentColor;
+    transition: transform 0.12s ease, background-color 0.12s ease;
+  }
+  .ycs-btn:hover { transform: translateY(-2px); }
+  .ycs-btn-red { background: #f0433e; color: #141414; border-color: #f0433e; }
+  .ycs-btn-red:hover { background: #ff6a66; border-color: #ff6a66; }
+  .ycs-btn-ghost { background: transparent; color: #f2efe8; border-color: #f2efe8; }
+  .ycs-btn-solid { background: var(--color-accent); color: var(--color-on-accent); border-color: var(--color-accent); margin-top: 2.5rem; }
+  .ycs-btn-solid:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
+
+  /* ---------- lower thirds ---------- */
+  .ycs-fig { margin: 0; position: relative; }
+  .ycs-fig img { width: 100%; height: auto; display: block; }
+  .ycs-lt {
+    position: absolute;
+    left: 0;
+    bottom: 1.4rem;
+    max-width: calc(100% - 2rem);
+    display: flex;
+    flex-direction: column;
+    background: var(--ycs-lt-bg);
+    color: var(--ycs-lt-ink);
+    border-left: 6px solid #f0433e;
+    padding: 0.55rem 1rem 0.6rem 0.9rem;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
+  }
+  .ycs-lt-name {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.05rem;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  .ycs-lt-role { font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.4; margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+  /* ---------- cold open: pinned black ---------- */
+  .ycs-open { background: #0b0b0c; color: #f2efe8; padding: 0 0 3.5rem; position: relative; }
+  .ycs-slate {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.2rem 1.5rem 0;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #a8a49b;
+  }
+  .ycs-slate-r { margin-left: auto; text-align: right; }
+  .ycs-rec { display: inline-flex; align-items: center; gap: 0.4rem; color: #f0433e; font-weight: 700; }
+  .ycs-rec-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #f0433e; display: inline-block; }
+  .ycs-open-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 3rem;
+    align-items: center;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+  .ycs-kicker {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #a8a49b;
+    margin: 0 0 1.6rem;
+    max-width: 48ch;
+    line-height: 1.5;
+  }
+  .ycs-title {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: clamp(3rem, 7.2vw, 6rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    margin: 0 0 0.9rem;
+    color: #f2efe8;
+    text-wrap: balance;
+  }
+  .ycs-title-sub {
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    color: #4be3a6;
+    margin: 0 0 1.6rem;
+  }
+  .ycs-lede { font-size: 1.14rem; line-height: 1.7; color: #e3dfd6; margin: 0 0 2rem; max-width: 60ch; }
+  .ycs-type {
+    font-family: var(--font-mono);
+    font-size: 0.86rem;
+    line-height: 1.6;
+    background: #000;
+    border: 1px solid #2b2b2e;
+    padding: 0.9rem 1.1rem;
+    color: #4be3a6;
+    display: grid;
+    gap: 0.1rem;
+    position: relative;
+    min-height: 4.4rem;
+    overflow-wrap: anywhere;
+  }
+  .ycs-type-cmd { color: #f2efe8; display: block; }
+  .ycs-type-out { color: #4be3a6; display: block; }
+  .ycs-type-cursor {
+    position: absolute;
+    right: 0.9rem;
+    bottom: 0.9rem;
+    width: 0.55rem;
+    height: 1rem;
+    background: #4be3a6;
+    animation: ycs-blink 1s steps(2, start) infinite;
+  }
+  .ycs-type.done .ycs-type-cursor { animation: none; opacity: 0.6; }
+  @keyframes ycs-blink { to { visibility: hidden; } }
+  .ycs-type-cap { font-family: var(--font-mono); font-size: 0.76rem; color: #a8a49b; margin: 0.7rem 0 2rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .ycs-open-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .ycs-open-fig { margin: 0; position: relative; }
+  .ycs-open-fig img { width: 100%; height: auto; display: block; border: 1px solid #2b2b2e; }
+  .ycs-open-fig .ycs-lt { background: #f2efe8; color: #141414; }
+
+  .ycs-firstnum {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin: 0;
+    border-top: 1px solid #2b2b2e;
+    border-bottom: 1px solid #2b2b2e;
+  }
+  .ycs-firstnum > div { padding: 1.6rem 1.4rem; border-right: 1px solid #2b2b2e; display: flex; flex-direction: column-reverse; gap: 0.4rem; }
+  .ycs-firstnum > div:last-child { border-right: 0; }
+  .ycs-firstnum dd { margin: 0; font-family: var(--font-heading); font-weight: 800; font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: 0.95; letter-spacing: -0.03em; color: #f2efe8; }
+  .ycs-firstnum dd sup { font-size: 0.4em; vertical-align: super; letter-spacing: 0; }
+  .ycs-firstnum dt { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: #a8a49b; }
 
   /* ---------- stats strip ---------- */
-  .tm-stats {
+  .ycs-stats {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    background: #ffd23f;
-    color: #12100a;
-    border-top: 4px solid #12100a;
-    border-bottom: 4px solid #12100a;
+    background: var(--ycs-tag-bg);
+    color: var(--ycs-tag-ink);
   }
-  .tm-stats li { display: flex; flex-direction: column; align-items: center; padding: 1.4rem 0.8rem; border-right: 3px solid #12100a; text-align: center; }
-  .tm-stats li:last-child { border-right: 0; }
-  .tm-stats .tm-stat-v { font-family: var(--font-heading); font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1; }
-  .tm-stats .tm-stat-k { font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.4rem; }
+  .ycs-stats li { display: flex; flex-direction: column; align-items: center; padding: 1.3rem 0.8rem; text-align: center; border-right: 1px solid rgba(0, 0, 0, 0.18); }
+  .ycs-stats li:last-child { border-right: 0; }
+  .ycs-stat-v { font-family: var(--font-heading); font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1; letter-spacing: -0.02em; }
+  .ycs-stat-k { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.45rem; }
 
-  /* ---------- fighter select ---------- */
-  .tm-select { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3.5rem; align-items: start; }
-  .tm-portrait { margin: 0; position: relative; }
-  .tm-portrait img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border: 4px solid var(--tm-hi);
-    box-shadow: 10px 10px 0 var(--tm-blue);
-  }
-  .tm-portrait figcaption, .tm-modes-fig figcaption, .tm-recap-photos figcaption {
+  /* ---------- chapter 1 ---------- */
+  .ycs-ch1 { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3.5rem; align-items: start; }
+  .ycs-fig-portrait img { border: 1px solid var(--ycs-line); }
+  .ycs-dossier { margin: 2rem 0 0; display: grid; gap: 0; border-top: 1px solid var(--ycs-line); }
+  .ycs-dossier div { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; border-bottom: 1px solid var(--ycs-line); padding: 0.8rem 0; }
+  .ycs-dossier dt { font-family: var(--font-mono); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ycs-muted); padding-top: 0.25rem; }
+  .ycs-dossier dd { margin: 0; line-height: 1.55; font-size: 1.04rem; }
+
+  /* ---------- chapter 2 ---------- */
+  .ycs-ledger { margin: 0 0 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; border-top: 1px solid var(--ycs-line); border-left: 1px solid var(--ycs-line); }
+  .ycs-ledger-row { display: flex; flex-direction: column; padding: 1.4rem 1.3rem 1.3rem; border-right: 1px solid var(--ycs-line); border-bottom: 1px solid var(--ycs-line); background: var(--ycs-surface); }
+  .ycs-ledger-v { margin: 0; font-family: var(--font-heading); font-weight: 800; font-size: clamp(2.4rem, 4.4vw, 3.6rem); line-height: 0.95; letter-spacing: -0.03em; color: var(--ycs-ink); font-variant-numeric: tabular-nums; }
+  .ycs-ledger-k { margin: 0.6rem 0 0; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ycs-ink); line-height: 1.45; }
+  .ycs-ledger-note { display: block; color: var(--ycs-muted); text-transform: none; letter-spacing: 0; font-family: var(--font-body); font-size: 0.95rem; margin-top: 0.25rem; }
+  .ycs-box-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2rem; align-items: start; }
+  .ycs-broll { margin: 0; }
+  .ycs-pre {
+    margin: 0;
+    background: #000;
+    color: #4be3a6;
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--tm-muted);
-    margin-top: 1rem;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    padding: 1.1rem 1.2rem;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    border: 1px solid #2b2b2e;
   }
-  .tm-dossier { margin: 0 0 2rem; display: grid; gap: 0.7rem; }
-  .tm-dossier div { display: grid; grid-template-columns: 9.5rem 1fr; gap: 1rem; border-bottom: 1px dashed var(--tm-line); padding-bottom: 0.7rem; }
-  .tm-dossier dt { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--tm-muted); padding-top: 0.15rem; }
-  .tm-dossier dd { margin: 0; line-height: 1.5; }
-  .tm-statbars { list-style: none; margin: 0 0 2rem; padding: 0; display: grid; gap: 0.9rem; }
-  .tm-statbars li { display: grid; grid-template-columns: 12rem auto 1fr; gap: 1rem; align-items: center; }
-  .tm-statbar-k { font-family: var(--font-mono); font-size: 0.9rem; text-transform: uppercase; }
-  .tm-statbar-track { display: inline-flex; gap: 3px; }
-  .tm-pip { width: 14px; height: 18px; background: var(--tm-pip-off); }
-  .tm-pip.on { background: var(--tm-hi); }
-  .tm-statbar-note { font-size: 0.88rem; color: var(--tm-muted); }
-  .tm-select-copy { font-size: 1.08rem; line-height: 1.7; margin: 0; }
+  .ycs-pre code { font-family: inherit; }
+  .ycs-broll-cap { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ycs-muted); margin-top: 0.9rem; line-height: 1.55; }
 
-  /* ---------- modes ---------- */
-  .tm-modes { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2.5rem; align-items: start; }
-  .tm-modes-fig { margin: 0; }
-  .tm-modes-fig img { width: 100%; height: auto; display: block; border: 4px solid var(--tm-ink); }
-  .tm-modes-table { background: var(--tm-surface); border: 3px solid var(--tm-ink); }
-  .tm-mrow { display: grid; grid-template-columns: 8.5rem 1fr 1fr; border-bottom: 1px solid var(--tm-line); }
-  .tm-mrow:last-child { border-bottom: 0; }
-  .tm-mrow > span { padding: 1rem; line-height: 1.5; font-size: 0.98rem; }
-  .tm-mrow-head > span { font-family: 'Press Start 2P', var(--font-mono); font-size: 0.6rem; text-transform: uppercase; padding: 1rem; }
-  .tm-m-tr { color: var(--tm-muted); }
-  .tm-m-ar { color: var(--tm-red); }
-  .tm-m-k { font-family: var(--font-mono); font-size: 0.82rem !important; text-transform: uppercase; color: var(--tm-muted); }
-  .tm-m-tr-cell { color: var(--tm-muted); }
-  .tm-m-ar-cell { border-left: 3px solid var(--tm-red); font-weight: 500; }
-  .tm-modes-advice a { color: var(--tm-hi); text-decoration: underline; text-underline-offset: 3px; }
-  .tm-modes-advice { margin: 2.5rem 0 0; max-width: 860px; font-size: 1.12rem; line-height: 1.7; padding: 1.4rem 1.6rem; background: var(--tm-surface); border-left: 6px solid var(--tm-hi); }
-
-  /* ---------- the ladder ---------- */
-  .tm-ladder { list-style: none; margin: 0 0 3rem; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.4rem; }
-  .tm-opp {
-    background: var(--tm-surface);
-    border: 3px solid var(--tm-line);
-    padding: 1.5rem;
-    position: relative;
-    clip-path: polygon(14px 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%, 0 14px);
-    transition: border-color 0.15s ease, transform 0.15s ease;
+  /* ---------- chapter 3: the witness, pinned black ---------- */
+  .ycs-witness { background: #0b0b0c; color: #f2efe8; padding: 5.5rem 0; }
+  .ycs-witness-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3rem; align-items: start; }
+  .ycs-eyebrow-pinned { color: #a8a49b; }
+  .ycs-h2-pinned { color: #f2efe8; }
+  .ycs-copy-pinned { color: #e3dfd6; }
+  .ycs-fig-pinned { margin-top: 1.5rem; }
+  .ycs-fig-pinned img { border: 1px solid #2b2b2e; }
+  .ycs-fig-pinned .ycs-lt { background: #f2efe8; color: #141414; }
+  .ycs-terminal {
+    background: #000;
+    border: 1px solid #2b2b2e;
+    box-shadow: inset 0 0 0 1px #000, 0 0 0 1px #1a1a1b;
+    padding: 2rem 2.2rem;
+    font-family: var(--font-mono);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #4be3a6;
   }
-  .tm-opp:hover { border-color: var(--tm-hi); transform: translateY(-3px); }
-  .tm-opp:nth-child(even) { transform: translateY(1.5rem); }
-  .tm-opp:nth-child(even):hover { transform: translateY(calc(1.5rem - 3px)); }
-  .tm-opp-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; }
-  .tm-opp-no { font-family: 'Press Start 2P', var(--font-mono); font-size: 0.6rem; text-transform: uppercase; color: var(--tm-hi); }
-  .tm-vs { font-family: var(--font-heading); font-size: 1.4rem; color: var(--tm-red); transform: skewX(-10deg); }
-  .tm-opp-name { font-family: var(--font-heading); font-size: 1.45rem; line-height: 1.1; margin: 0 0 0.3rem; }
-  .tm-opp-stage { font-family: var(--font-mono); font-size: 0.85rem; color: var(--tm-muted); margin: 0 0 1rem; }
-  .tm-opp-move, .tm-opp-weak, .tm-opp-counter { margin: 0 0 0.7rem; line-height: 1.55; font-size: 0.98rem; }
-  .tm-opp-counter { margin-bottom: 0; padding-top: 0.7rem; border-top: 1px dashed var(--tm-line); }
+  .ycs-terminal p { margin: 0 0 1.2rem; }
+  .ycs-term-head { font-weight: 700; letter-spacing: 0.1em; color: #f2efe8; margin-bottom: 0.3rem !important; }
+  .ycs-term-meta { color: #a8a49b; font-size: 0.86rem; margin-bottom: 1.6rem !important; }
+  .ycs-term-end { font-weight: 700; letter-spacing: 0.1em; color: #f2efe8; margin: 1.6rem 0 0 !important; }
+  .ycs-orders { list-style: none; margin: 0 0 1.4rem; padding: 0 0 0 1.2rem; border-left: 2px solid #2b2b2e; }
+  .ycs-orders li { margin: 0 0 0.5rem; color: #f2efe8; }
+  .ycs-redact { background: #f2efe8; color: transparent; user-select: none; padding: 0 0.1rem; }
 
-  .tm-boss {
-    display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-    gap: 2.5rem;
-    align-items: center;
-    margin-top: 4rem;
-    padding: 2rem;
-    border: 4px solid var(--tm-red);
-    background: var(--tm-surface);
-  }
-  .tm-boss-fig { margin: 0; position: relative; }
-  .tm-boss-fig img { width: 100%; height: auto; display: block; }
-  .tm-ko {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%) skewX(-10deg);
-    font-family: var(--font-heading);
-    font-size: clamp(3rem, 9vw, 6.5rem);
-    color: #ffd23f;
-    -webkit-text-stroke: 3px #12100a;
-    text-shadow: 6px 6px 0 #e5262f;
-    pointer-events: none;
-  }
-  .tm-boss-name { font-family: var(--font-heading); font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1.05; margin: 0 0 0.3rem; }
-  .tm-boss-record { font-weight: 700; margin: 0 0 1rem; }
-  .tm-boss-cap { margin: 1.2rem 0 0; font-size: 0.92rem; color: var(--tm-muted); font-style: italic; }
+  /* ---------- chapter 4 ---------- */
+  .ycs-disc-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 2.5rem; align-items: start; }
+  .ycs-exhibits { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ycs-line); }
+  .ycs-exhibit { padding: 1.6rem 0; border-bottom: 1px solid var(--ycs-line); }
+  .ycs-exhibit-top { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; margin-bottom: 0.7rem; font-family: var(--font-mono); font-size: 0.8rem; }
+  .ycs-exhibit-date { color: var(--ycs-ink); text-transform: uppercase; letter-spacing: 0.05em; }
+  .ycs-exhibit-ref { color: var(--ycs-green); }
+  .ycs-exhibit-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.45rem; line-height: 1.12; letter-spacing: -0.01em; margin: 0 0 0.5rem; }
+  .ycs-exhibit-body { margin: 0; line-height: 1.65; font-size: 1.04rem; max-width: 62ch; }
+  .ycs-fig-turtleneck { position: sticky; top: 6rem; }
+  .ycs-balance { margin: 2.5rem 0 0; max-width: 820px; font-size: 1.1rem; line-height: 1.7; padding: 1.3rem 1.5rem; background: var(--ycs-surface); border-left: 6px solid var(--ycs-red); }
 
-  /* ---------- move list ---------- */
-  .tm-moves { list-style: none; margin: 0; padding: 0; background: var(--tm-surface); border: 3px solid var(--tm-ink); }
-  .tm-move { display: grid; grid-template-columns: 13rem 1fr; gap: 1.5rem; padding: 1.6rem; border-bottom: 1px solid var(--tm-line); }
-  .tm-move:last-child { border-bottom: 0; }
-  .tm-move-input { font-family: var(--font-mono); font-size: 1.15rem; color: var(--tm-hi); white-space: nowrap; padding-top: 0.2rem; }
-  .tm-move-title { font-family: var(--font-heading); font-size: 1.35rem; line-height: 1.15; margin: 0 0 0.35rem; }
-  .tm-move-type { font-family: var(--font-mono); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--tm-muted); margin: 0 0 0.7rem; }
-  .tm-move-note { margin: 0; line-height: 1.6; }
+  /* ---------- exhibits a to f ---------- */
+  .ycs-projects { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .ycs-project { background: var(--ycs-surface); border: 1px solid var(--ycs-line); padding: 1.4rem; display: flex; flex-direction: column; }
+  .ycs-project-top { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; margin-bottom: 0.9rem; }
+  .ycs-project-status { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ycs-muted); text-align: right; }
+  .ycs-project-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; line-height: 1.12; letter-spacing: -0.01em; margin: 0 0 0.6rem; }
+  .ycs-project-note { margin: 0 0 1.2rem; line-height: 1.6; font-size: 1rem; flex: 1; }
+  .ycs-project-link { font-family: var(--font-mono); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ycs-red); text-decoration: underline; text-underline-offset: 4px; }
+  .ycs-project-link-off { color: var(--ycs-muted); text-decoration: none; }
 
-  /* ---------- previous round ---------- */
-  .tm-victory { margin: 0 0 3rem; position: relative; }
-  .tm-victory img { width: 100%; height: auto; display: block; border: 4px solid var(--tm-ink); }
-  .tm-win {
-    position: absolute;
-    right: 4%;
-    bottom: 10%;
-    font-family: var(--font-heading);
-    font-size: clamp(2rem, 6vw, 4.5rem);
-    color: #ffd23f;
-    -webkit-text-stroke: 2px #12100a;
-    text-shadow: 5px 5px 0 #1f55c9;
-    transform: skewX(-10deg);
-  }
-  .tm-recap { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 3rem; align-items: start; }
-  .tm-recap p { font-size: 1.06rem; line-height: 1.7; margin: 0 0 1.1rem; }
-  .tm-recap-stats { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.8rem; }
-  .tm-recap-stats li { border: 2px solid var(--tm-line); padding: 0.8rem; display: flex; flex-direction: column; }
-  .tm-recap-stats .tm-stat-v { font-family: var(--font-heading); font-size: 1.6rem; color: var(--tm-hi); }
-  .tm-recap-stats .tm-stat-k { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; color: var(--tm-muted); }
-  .tm-recap-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .tm-recap-photos figure:first-child { grid-column: 1 / -1; }
-  .tm-recap-photos figure { margin: 0; }
-  .tm-recap-photos img { width: 100%; height: auto; display: block; border: 3px solid var(--tm-line); }
+  /* ---------- chapter 5 ---------- */
+  .ycs-question { padding: 6.5rem 0; }
+  .ycs-question-inner { max-width: 880px; }
+  .ycs-question .ycs-copy { max-width: none; }
 
-  /* ---------- save slots ---------- */
-  .tm-slots { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
-  .tm-slot { background: var(--tm-surface); border: 3px solid var(--tm-ink); padding: 1.4rem; display: flex; flex-direction: column; box-shadow: 6px 6px 0 var(--tm-blue); }
-  .tm-slot-top { display: flex; justify-content: space-between; gap: 0.6rem; margin-bottom: 0.9rem; }
-  .tm-slot-no { font-family: 'Press Start 2P', var(--font-mono); font-size: 0.58rem; text-transform: uppercase; color: var(--tm-hi); }
-  .tm-slot-state { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; color: var(--tm-muted); text-align: right; }
-  .tm-slot-name { font-family: var(--font-heading); font-size: 1.3rem; line-height: 1.12; margin: 0 0 0.7rem; }
-  .tm-slot-note { margin: 0 0 1.2rem; line-height: 1.6; font-size: 0.97rem; flex: 1; }
-  .tm-slot-link { font-family: var(--font-mono); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--tm-hi); text-decoration: underline; text-underline-offset: 4px; }
-  .tm-slot-link::after { content: ' \25B6'; font-size: 0.7em; }
-  .tm-slot-link-off { color: var(--tm-muted); text-decoration: none; }
-  .tm-slot-link-off::after { content: ''; }
-
-  /* ---------- Continue?: pinned in both modes ---------- */
-  .tm-cta { position: relative; overflow: hidden; background: #0a0e1a; color: #f2efe6; padding: 6rem 0; text-align: center; }
-  .tm-cta-inner { position: relative; z-index: 3; max-width: 860px; }
-  .tm-continue {
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(1rem, 2.6vw, 1.6rem);
-    text-transform: uppercase;
-    color: #ffd23f;
-    margin: 0 0 1.6rem;
-    text-shadow: 3px 3px 0 #e5262f;
-  }
-  .tm-cta-h { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.04; margin: 0 0 1.4rem; color: #f2efe6; }
-  .tm-cta-copy { font-size: 1.12rem; line-height: 1.7; color: #d7d3c8; margin: 0 auto 2rem; max-width: 700px; }
-  .tm-cta-row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-  .tm-btn-ghost-dark { color: #f2efe6; border-color: #f2efe6; }
-  .tm-disclaimer { margin: 2.6rem auto 0; max-width: 700px; font-size: 0.82rem; line-height: 1.6; color: #a3abbe; }
+  /* ---------- credits: pinned black ---------- */
+  .ycs-credits { background: #0b0b0c; color: #f2efe8; padding: 5.5rem 0 4rem; border-top: 1px solid #2b2b2e; }
+  .ycs-credits-inner { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 3rem; align-items: start; }
+  .ycs-cta-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.6rem; }
+  .ycs-roll { margin: 0; border-top: 1px solid #2b2b2e; font-family: var(--font-mono); }
+  .ycs-roll div { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid #2b2b2e; font-size: 0.82rem; }
+  .ycs-roll dt { text-transform: uppercase; letter-spacing: 0.06em; color: #a8a49b; }
+  .ycs-roll dd { margin: 0; color: #f2efe8; }
+  .ycs-disclaimer { grid-column: 1 / -1; margin: 2rem 0 0; max-width: 820px; font-size: 0.86rem; line-height: 1.6; color: #a8a49b; font-family: var(--font-mono); }
 
   /* ---------- responsive ---------- */
-  @media (min-width: 961px) {
-    /* Desktop: slide the photo right so the title doesn't sit on top of me. */
-    .tm-hero-img { left: auto; right: 0; width: 72%; object-position: 50% 35%; }
-    .tm-hero-shade {
-      background:
-        linear-gradient(180deg, rgba(10, 14, 26, 0.75) 0%, rgba(10, 14, 26, 0) 22%),
-        linear-gradient(0deg, rgba(10, 14, 26, 0.9) 0%, rgba(10, 14, 26, 0) 35%),
-        linear-gradient(90deg, #0a0e1a 0%, #0a0e1a 28%, rgba(10, 14, 26, 0.55) 46%, rgba(10, 14, 26, 0) 62%);
-    }
-    .tm-hero-lede { max-width: 560px; }
-  }
-  @media (max-width: 960px) {
-    .tm-select, .tm-modes, .tm-boss, .tm-recap { grid-template-columns: 1fr; }
-    .tm-slots { grid-template-columns: 1fr 1fr; }
-    .tm-opp:nth-child(even), .tm-opp:nth-child(even):hover { transform: none; }
-    .tm-statbars li { grid-template-columns: 1fr auto; }
-    .tm-statbar-note { grid-column: 1 / -1; }
+  @media (max-width: 1024px) {
+    .ycs-open-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .ycs-box-grid, .ycs-witness-grid, .ycs-disc-grid, .ycs-credits-inner, .ycs-ch1 { grid-template-columns: 1fr; }
+    .ycs-fig-turtleneck { position: relative; top: auto; max-width: 460px; }
+    .ycs-projects { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 640px) {
-    .tm-stats { grid-template-columns: 1fr 1fr; }
-    .tm-stats li:nth-child(2) { border-right: 0; }
-    .tm-stats li:nth-child(-n + 2) { border-bottom: 3px solid #12100a; }
-    .tm-slots { grid-template-columns: 1fr; }
-    .tm-hud-name { font-size: 0.5rem; }
-    .tm-hud-timer { font-size: 1.4rem; }
-    .tm-mrow { grid-template-columns: 1fr; }
-    .tm-mrow-head { display: none; }
-    .tm-m-k { padding-bottom: 0 !important; }
-    .tm-m-tr-cell::before { content: 'Training: '; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; }
-    .tm-m-ar-cell::before { content: 'Arcade: '; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; color: var(--tm-red); }
-    .tm-m-ar-cell { border-left: 0; border-top: 2px solid var(--tm-red); }
-    .tm-move { grid-template-columns: 1fr; gap: 0.6rem; }
-    .tm-dossier div { grid-template-columns: 1fr; gap: 0.2rem; }
-    .tm-recap-stats { grid-template-columns: 1fr 1fr; }
-    .tm-hero-inner { padding-top: 7rem; }
+    .ycs-section { padding: 4rem 0; }
+    .ycs-slate { flex-wrap: wrap; gap: 0.6rem 1.2rem; }
+    .ycs-slate-r { margin-left: 0; text-align: left; width: 100%; }
+    .ycs-firstnum { grid-template-columns: 1fr; }
+    .ycs-firstnum > div { border-right: 0; border-bottom: 1px solid #2b2b2e; }
+    .ycs-firstnum > div:last-child { border-bottom: 0; }
+    .ycs-stats { grid-template-columns: 1fr 1fr; }
+    .ycs-stats li:nth-child(2) { border-right: 0; }
+    .ycs-stats li:nth-child(-n + 2) { border-bottom: 1px solid rgba(0, 0, 0, 0.18); }
+    .ycs-projects { grid-template-columns: 1fr; }
+    .ycs-dossier div, .ycs-roll div { grid-template-columns: 1fr; gap: 0.2rem; }
+    .ycs-terminal { padding: 1.4rem 1.2rem; font-size: 0.9rem; }
+    .ycs-lt { bottom: 0.9rem; }
+    .ycs-lt-name { font-size: 0.92rem; }
+    .ycs-lt-role { font-size: 0.66rem; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .tm-press { animation: none; }
-    .tm-btn, .tm-opp, .tm-bar-fill { transition: none; }
+    .ycs-type-cursor { animation: none; }
+    .ycs-btn { transition: none; }
   }
 </style>

@@ -81,73 +81,70 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "Training Mode",
-  week: "2026-10-17",
-  inspiration: "Street Fighter opened in theaters on October 16, 2026 (Legendary and Paramount, directed by Kitao Sakurai, set in 1993), so the site becomes a 1993 arcade fighting game. The argument: every fighting game has a Training Mode, where the dummy stands still, never blocks, and never hits back, and almost every enterprise AI pilot is fought there. Curated data, friendly users, no close deadline, a green checkmark. Production is Arcade Mode, where the opponent has a health bar and a final boss called Month-End Close. The conceit generates the structure on its own: a title screen, a fighter select card with Edward's stats, a training-mode-versus-arcade-mode comparison that's real deployment advice, a versus ladder of the opponents every finance team actually faces (each with a special move, a weakness, and the counter), a move list that is his talk catalog with joystick inputs, stage select with the scene images, and a Continue? countdown as the CTA. Edward is the one fighter on the select screen and he loses a lot (flat on his back under a tower of binders), which is the competence: he knows every opponent's moves because he's been hit by all of them. Images are deliberately NOT arcade cabinets or street fighters (Gemini kept drawing the real Capcom game), so it's Edward in a navy suit doing martial arts in finance places: a trading floor, a simulator room, a dojo with a binder, a boardroom KO, and a victory on the walls of El Morro. Palette is a cabinet at night: CRT black-navy, health-bar yellow, KO red, player-one blue. Bungee for the marquee, Archivo for the body, Press Start 2P for the HUD only, Share Tech Mono for data. Light mode is the arcade at 10 AM with the lights on and the cabinet art showing. Animation stays in the page: a hero HUD whose round timer counts down and whose opponent health bar drains as you scroll. No particles. Not affiliated with Capcom, Legendary, or Paramount.",
-  tagline: "Every AI pilot I've ever seen was fought in Training Mode, where the dummy doesn't hit back.",
+  name: "You Can See Everything",
+  week: "2026-10-24",
+  inspiration: "You Can See Everything, the A24 documentary about Elizabeth Holmes directed by Nathan Fielder and Lance Oppenheim, has been in theaters since October 16, 2026 (it opened second, behind Street Fighter, so last week's theme beat this week's theme at the box office). Theranos was a box nobody was allowed to open, and when a court finally did, almost nothing in it worked. The AI problem is the inverse: the box is wide open, you can read every line, it works, and nobody can say why it made the choices it made, because a person didn't write it. So this week the site is a documentary about itself. Every Saturday at 5 AM an AI agent rewrites roske.ai, generates the images, runs the tests, and pushes it live before Edward is awake, and the source is public on GitHub, so anyone can literally see everything. Structure: a cold open with the first real number, then five chapters (the subject, the box, the witness, the discrepancies, the question), with real figures computed from the public git history and real failures quoted from the commit log. Edward is the subject of an exposé about his own website, and the most damning finding is that he hands it to a machine every week and it mostly works. Design language is documentary and exposé: title cards on black, lower-third captions, chapter numbers, redaction bars, evidence tags, and code set in a monospace as B-roll. Palette: documentary black, newsprint white, one evidence-tag red, and a cold terminal green for anything the machine says. Light mode is the newsroom with the lights on; dark mode is the edit bay at 3 AM. Bricolage Grotesque for title cards, Newsreader for body (it reads like newsprint), Courier Prime for transcripts, timecodes, and the machine's statement. Animation is off except for one git log line typing out in the cold open. Not affiliated with A24 or the filmmakers. No images of any real person other than Edward.",
+  tagline: "You can see everything. Explaining it is the hard part.",
 
   colors: {
-    // A cabinet at night. Measured, not eyeballed:
-    // text 16.8:1 on bg (dark) and 16.0:1 (light); muted 7.7:1 on dark
-    // surface and 7.2:1 on light bg. Health-bar yellow is 13.3:1 on the
-    // dark bg with near-black type on its buttons (13.2:1). Yellow on cream
-    // fails, so light mode swaps the accent to KO red (5.9:1 on cream) with
-    // white type (6.9:1).
-    primary: "#5B9BFF",            // player-one blue
-    secondary: "#FF4D55",          // KO red
-    accent: "#FFD23F",             // health-bar yellow
-    accentHover: "#FFE27A",
-    accentLight: "#B4141E",        // KO red, lights on
-    accentHoverLight: "#8E0F17",
-    onAccent: "#12100A",
+    // Measured, not eyeballed. Newsprint white on documentary black is
+    // 18:1; muted text clears 7:1 on both surfaces. Evidence-tag red is
+    // text-safe on black (5.2:1) only in the brighter #F0433E, which then
+    // needs near-black type on buttons (5.0:1). Light mode swaps to a
+    // darker red (#B8211C, 5.8:1 on newsprint, white type 6.4:1).
+    primary: "#141414",            // ink (nav wordmark in light mode)
+    secondary: "#4BE3A6",          // cold terminal green: the machine's color
+    accent: "#F0433E",             // evidence-tag red
+    accentHover: "#FF6A66",
+    accentLight: "#B8211C",
+    accentHoverLight: "#8F1813",
+    onAccent: "#141414",
     onAccentLight: "#FFFFFF",
-    background: "#0A0E1A",         // CRT black, with a little navy in it
-    backgroundLight: "#F3EEE2",    // cabinet side art, 10 AM
-    surface: "#121829",
+    background: "#0B0B0C",         // documentary black (neutral, no blue in it)
+    backgroundLight: "#F4F2EC",    // newsprint
+    surface: "#151516",
     surfaceLight: "#FFFFFF",
-    text: "#F2EFE6",
-    textMuted: "#A3ABBE",
-    textDark: "#12131C",
-    textDarkMuted: "#4A4D5C",
-    border: "#26304A",
-    borderLight: "#D9D1BF",
-    gradient: "linear-gradient(90deg, #FFD23F 0%, #FF8A3D 50%, #FF4D55 100%)",
+    text: "#F2EFE8",               // newsprint white
+    textMuted: "#A8A49B",
+    textDark: "#141414",
+    textDarkMuted: "#5A5852",
+    border: "#2B2B2E",
+    borderLight: "#D9D5CB",
+    gradient: "linear-gradient(90deg, #F0433E 0%, #B8211C 100%)",
   },
 
   fonts: {
-    // Bungee: an arcade marquee, all caps, built for signage.
-    // Archivo: the instruction-card grotesque, readable at length.
-    // Share Tech Mono: frame data, scores, times.
-    // Press Start 2P is loaded for the homepage HUD only (it's 8 pixels
-    //   tall at heart and nobody should read a paragraph in it).
-    heading: "'Bungee', 'Arial Black', Impact, sans-serif",
-    body: "'Archivo', 'Helvetica Neue', Arial, sans-serif",
-    mono: "'Share Tech Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Bungee&family=Press+Start+2P&family=Share+Tech+Mono&display=swap",
+    // Bricolage Grotesque: a title card with opinions (optical sizes, tight at display weight).
+    // Newsreader: designed for reading news on a screen, so it reads like newsprint without pretending to be a broadsheet.
+    // Courier Prime: the screenplay and transcript face. Everything the machine says, every timecode, every git line.
+    heading: "'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif",
+    body: "'Newsreader', Georgia, 'Times New Roman', serif",
+    mono: "'Courier Prime', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap",
   },
 
   layout: {
-    heroStyle: "fullscreen",
+    heroStyle: "editorial",
     navStyle: "sticky",
     cardStyle: "outlined",
-    sectionStyle: "alternating",
+    sectionStyle: "magazine",
     footerStyle: "detailed",
   },
 
   animations: {
-    entrance: "fade-up",
-    hover: "lift",
+    entrance: "fade-in",
+    hover: "underline",
     background: "none",
     pageTransition: "fade",
   },
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Player 1: Edward | Stage: Your Finance Department | Mode: Training",
-    description: "Your AI pilot won. Of course it won: it was fought in Training Mode, where the dummy stands still, never blocks, and has infinite health. I've spent 25+ years watching finance teams win in Training Mode and then put a quarter in for the real thing (interRel, 1997 to 2022, which is a lot of quarters).",
-    heroImage: "hero-2026-10-17.jpg",
-    imageAlt: "Edward in a navy suit, tie, glasses, and his blue fedora, standing in a calm martial arts ready stance in the aisle of an empty trading floor at night, rows of monitors glowing red and blue on both sides.",
-    ctaText: "Switch to Arcade Mode",
+    subtitle: "A documentary about this website, in 5 chapters, by the person it's about.",
+    description: "Every Saturday at 5 AM an AI agent rewrites this site, draws the pictures, runs the tests, and pushes it live before I'm awake. The code is public. You can read every line. This week's site is about why that helps less than you'd think.",
+    heroImage: "hero-2026-10-24.jpg",
+    imageAlt: "Edward in a navy blazer, glasses, and his blue fedora, sitting in a documentary interview chair in a sunlit beach-house living room between two cinema cameras and a boom microphone, looking off camera with a stunned expression while a fan-fold printout of source code spills off the coffee table, across the floor, and out the patio door.",
+    ctaText: "Ask me in person",
     ctaLink: "/speaking/",
   },
 };
