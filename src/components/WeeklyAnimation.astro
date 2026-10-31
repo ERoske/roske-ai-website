@@ -1,9 +1,74 @@
 ---
 /**
- * WeeklyAnimation - 2026-10-24 - You Can See Everything
+ * WeeklyAnimation - 2026-10-31 - What's Under the Mask? (Halloween)
  *
- * Off. A documentary doesn't need confetti. The only motion this week is
- * one git log line typing itself out in the cold open, and that lives in
- * index.astro where it means something. No particles, no drifting anything.
+ * Halloween is one of the carve-outs, so something moves this week: low
+ * fog rolling along the bottom of the screen, the way it pours off a
+ * haunted-house porch. Five wide, blurred banks drift sideways at
+ * different speeds and never rise above the bottom third, so they never
+ * sit on top of a paragraph. Fainter in light mode (dusk instead of
+ * midnight). Off entirely for prefers-reduced-motion. No particles.
+ *
+ * Inline styles only: Astro scopes <style> to compiled elements, and
+ * these are created with document.createElement.
  */
 ---
+
+<div
+  id="hw-fog"
+  aria-hidden="true"
+  style="position:fixed;left:0;right:0;bottom:0;height:34vh;pointer-events:none;z-index:5;overflow:hidden;"
+></div>
+
+<script is:inline>
+  (function () {
+    var root = document.getElementById('hw-fog');
+    if (!root) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var banks = [
+      { w: 70, h: 22, b: -6, dur: 46, delay: 0, dir: 1 },
+      { w: 85, h: 26, b: -10, dur: 62, delay: -20, dir: -1 },
+      { w: 60, h: 18, b: -2, dur: 38, delay: -12, dir: 1 },
+      { w: 95, h: 30, b: -14, dur: 74, delay: -40, dir: -1 },
+      { w: 55, h: 16, b: 2, dur: 52, delay: -30, dir: 1 },
+    ];
+    var els = [];
+
+    function isLight() {
+      return document.documentElement.getAttribute('data-theme') === 'light';
+    }
+
+    function build() {
+      root.innerHTML = '';
+      els = [];
+      var light = isLight();
+      var color = light ? '120,86,140' : '196,180,214';
+      var alpha = light ? 0.1 : 0.13;
+      banks.forEach(function (k, i) {
+        var el = document.createElement('div');
+        var from = k.dir > 0 ? '-60vw' : '100vw';
+        var to = k.dir > 0 ? '100vw' : '-60vw';
+        var name = 'hwFog' + i;
+        el.style.cssText =
+          'position:absolute;left:0;bottom:' + k.b + 'vh;width:' + k.w + 'vw;height:' + k.h + 'vh;' +
+          'border-radius:50%;filter:blur(38px);' +
+          'background:radial-gradient(ellipse at center, rgba(' + color + ',' + alpha + ') 0%, rgba(' + color + ',0) 70%);' +
+          'animation:' + name + ' ' + k.dur + 's linear ' + k.delay + 's infinite;will-change:transform;';
+        var style = document.createElement('style');
+        style.textContent =
+          '@keyframes ' + name + '{from{transform:translateX(' + from + ')}to{transform:translateX(' + to + ')}}';
+        el.appendChild(style);
+        root.appendChild(el);
+        els.push(el);
+      });
+    }
+
+    build();
+    new MutationObserver(function (m) {
+      for (var i = 0; i < m.length; i++) {
+        if (m[i].attributeName === 'data-theme') { build(); break; }
+      }
+    }).observe(document.documentElement, { attributes: true });
+  })();
+</script>

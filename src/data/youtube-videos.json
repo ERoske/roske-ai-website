@@ -1,5 +1,29 @@
 [
   {
+    "title": "Where Does Gemini 4 Rank Against GPT-6?",
+    "videoId": "RcJC_5OnxmQ",
+    "published": "2026-10-29T14:00:30+00:00",
+    "description": "Google spent the summer hearing it had fallen behind in AI, then released Gemini 4 Argon, which led 12 of 18 benchmarks on Google's own table, tied 1, and lost 5. It went to cyber defenders before anybody else.",
+    "thumbnail": "https://i.ytimg.com/vi/RcJC_5OnxmQ/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "What's Jev Actually Good For?",
+    "videoId": "IrPyHN-SnJA",
+    "published": "2026-10-27T13:50:11+00:00",
+    "description": "TypeSafe's Jev can't write a sentence. You give it some text and a list of up to 255 answers, and it picks one and tells you how sure it is, usually in well under a second. Two weeks later, OpenAI previewed what sure looks like its own version.",
+    "thumbnail": "https://i.ytimg.com/vi/IrPyHN-SnJA/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Meta's AI Agent Sent a Stranger to His Door",
+    "videoId": "q-COLaTHBl4",
+    "published": "2026-10-25T13:50:35+00:00",
+    "description": "Matt Robb let Meta's Muse agent handle his Facebook Marketplace messages. It agreed to sell his keyboard for $10 and sent the buyer a pickup address in a message that looked like it came from Matt. When the buyer showed up, it told him \"Yep I'm here!\" and nobody came down.",
+    "thumbnail": "https://i.ytimg.com/vi/q-COLaTHBl4/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "OpenAI's ChatGPT Graders Got Fired for Using ChatGPT",
     "videoId": "N2vFOf9w1sw",
     "published": "2026-10-23T13:50:08+00:00",

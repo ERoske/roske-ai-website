@@ -9,63 +9,18 @@ import { currentTheme } from '../themes/theme-config';
 const theme = currentTheme;
 
 // ---------------------------------------------------------------------------
-// YOU CAN SEE EVERYTHING (2026-10-24). The A24 documentary about Elizabeth
-// Holmes has been in theaters since October 16. Theranos was a box nobody was
-// allowed to open. This site is the opposite: the box is open, every line is
-// public, it works, and nobody can say why it made the choices it made,
-// because a person didn't write it. So the site is a documentary about
-// itself, in 5 chapters. Every number below was counted from the public git
-// history at 05:00 AST on Saturday, October 24, 2026, BEFORE this week's
-// commit was added to it. Edward is the only person in any generated image.
+// WHAT'S UNDER THE MASK? (2026-10-31). Halloween on a Saturday, so the
+// rebuild lands on the night itself. Halloween is the one night everyone
+// agrees to be something they aren't and announces it. A lot of AI does the
+// first part all year. Every costume below is a vendor claim, with what was
+// under it and the question that lifts the mask. No vendors are named.
+// Edward is the only person in any generated image.
 // ---------------------------------------------------------------------------
 
-const IMG = '/images/you-can-see-everything';
+const IMG = '/images/halloween';
 const CAL = 'https://calendar.app.google/udtTerQwcX9Z7QQt7';
-const REPO = 'https://github.com/ERoske/roske-ai-website';
-const POST = '/blog/if-you-can-read-every-line-of-an-ais-code-do-you-understand-it/';
-
-// Counted from `git log` before this week's commit. Recount next week.
-const record = {
-  commits: '244',
-  since: 'February 18, 2026',
-  days: '248',
-  redesigns: '29',
-  redesignIn: '24,022',
-  redesignOut: '21,061',
-  redesignFiles: '271',
-  lastWeekFiles: '11',
-  lastWeekIn: '912',
-  lastWeekOut: '1,415',
-  homePageCommits: '80',
-  posts: '48',
-  allIn: '75,087',
-  allOut: '42,248',
-};
-
-// The last 10 "Weekly redesign" commits, verbatim from the public log
-// (hash, author date with its recorded UTC offset, subject).
-const gitLog = [
-  { h: '6d3e967', d: '2026-10-17 09:58:44 +0100', s: 'Weekly redesign: Training Mode, a 1993 arcade fighting game' },
-  { h: 'eca384b', d: '2026-10-03 05:21:06 -0400', s: 'Weekly redesign: The Caribbean AI Summit, the programme edition' },
-  { h: '163c654', d: '2026-09-25 20:17:22 -0400', s: 'Weekly redesign: Blue Ribbon, the county fair judging' },
-  { h: 'e39c180', d: '2026-09-16 10:22:14 +0000', s: 'Weekly redesign: The Escape Room (recovered from the Sept 12 run)' },
-  { h: '7a063e5', d: '2026-09-05 05:26:15 -0400', s: 'Weekly redesign: Labor Day, the hardest-working weekend of the year' },
-  { h: '191739a', d: '2026-08-29 05:46:21 -0400', s: 'Weekly redesign: Roske v. Acme, the case file' },
-  { h: 'fff13fe', d: '2026-08-22 05:47:22 -0400', s: 'Weekly redesign: Roske Air, the AI deployment safety card' },
-  { h: '6e3fc0c', d: '2026-08-15 05:36:45 -0400', s: 'Weekly redesign: A Field Guide to the Ten Agents' },
-  { h: '33eecfb', d: '2026-08-01 22:56:46 -0400', s: 'Weekly redesign: AFC Roske: Believe (Ted Lasso season 4)' },
-  { h: '03d8b0c', d: '2026-07-25 01:36:31 -0700', s: 'Weekly redesign: The Daily Roske (Brand New Day tabloid)' },
-];
-
-// Rendered as B-roll in Chapter 2.
-const NL = String.fromCharCode(10);
-const gitLogText =
-  '$ git log --grep="Weekly redesign" --format="%h %ad %s" --date=iso -10' + NL +
-  gitLog.map((g) => g.h + ' ' + g.d + ' ' + g.s).join(NL);
-
-// The one line that types itself out in the cold open.
-const typedCmd = '$ git log -1 --grep="Weekly redesign" --format="%h %ad %s"';
-const typedOut = '6d3e967 2026-10-17 Weekly redesign: Training Mode, a 1993 arcade fighting game';
+const POST = '/blog/is-the-ai-you-just-bought-wearing-a-costume/';
+const VANISH = '/blog/your-best-ai-model-can-vanish-over-a-weekend/';
 
 // The 4 standing numbers. Same every week.
 const stats = [
@@ -75,60 +30,145 @@ const stats = [
   { v: '25', k: 'Years running interRel' },
 ];
 
-// Chapter 1: the dossier.
-const dossier = [
-  { k: 'Subject', v: 'Edward Roske' },
-  { k: 'Occupation', v: 'CEO of Dawnward. Speaker. Data scientist. Dungeon Master.' },
-  { k: 'Location', v: 'San Juan, Puerto Rico (before that, The Great State of Texas, for 25+ years)' },
-  { k: 'Known for', v: '25 years running interRel, 15 books, co-chairing the Caribbean AI Summit, and a YouTube channel with over 800,000 subscribers' },
-  { k: 'Hat', v: 'Blue fedora. A Roske never removes his fedora in the presence of others.' },
-  { k: 'Relationship to this website', v: 'Owner and subject. Did not write this page.' },
+// The costume parade. No. 1 (the robot) is the hero image.
+type Costume = {
+  no: number;
+  name: string;
+  img: string;
+  w: number;
+  h: number;
+  alt: string;
+  claim: string;
+  under: string;
+  ask: string;
+  shape: 'tall' | 'wide';
+};
+
+const robot = {
+  no: 1,
+  name: 'The Robot',
+  claim: 'A fully autonomous AI agent that handles everything, end to end.',
+  under: 'A chatbot on a cron job, plus a guy in a cardboard box who handles everything the chatbot can\'t (which is most things).',
+  ask: 'How many people work behind it, and what do they do all day?',
+};
+
+const costumes: Costume[] = [
+  {
+    no: 2,
+    name: 'The Fortune Teller',
+    img: 'fortune-teller.jpg',
+    w: 1195,
+    h: 1600,
+    alt: 'Edward dressed as a fortune teller in layered fringed shawls and a gold coin scarf, seated at a velvet-draped table with both hands hovering over a glowing crystal ball, tarot cards fanned out and candles dripping wax, his blue fedora wrapped in a sparkly scarf.',
+    claim: 'Predictive AI that sees your next quarter before you do.',
+    under: 'Last year\'s trend line, extended to the right, with a confidence interval drawn on in pencil.',
+    ask: 'What did it predict last year, and how close did it get?',
+    shape: 'tall',
+  },
+  {
+    no: 3,
+    name: 'The Mummy',
+    img: 'mummy.jpg',
+    w: 1195,
+    h: 1600,
+    alt: 'Edward dressed as a mummy, wrapped head to toe in tattered linen bandages with his face showing, arms stiffly forward, in a dim museum gallery beside an open sarcophagus, his blue fedora on top of the bandages.',
+    claim: 'Built from the ground up as an AI-native platform.',
+    under: 'A system from 2009, wrapped in a chat window. Please don\'t pull on the loose end during the demo.',
+    ask: 'What\'s the oldest part of the stack, and when was it written?',
+    shape: 'tall',
+  },
+  {
+    no: 4,
+    name: 'The Patchwork Monster',
+    img: 'stitched-monster.jpg',
+    w: 1195,
+    h: 1600,
+    alt: 'Edward dressed as a patchwork monster in a too-small black jacket with mismatched sleeves, drawn-on stitches across his forehead, pale green face paint, and bolts on his neck, standing in a stone laboratory full of sparking coils, wearing his blue fedora.',
+    claim: 'One unified AI platform.',
+    under: '4 acquisitions stitched together at the neck, 4 logins, and a sales team that says "seamless" with a straight face.',
+    ask: 'Can you show me where the seams are?',
+    shape: 'tall',
+  },
+  {
+    no: 5,
+    name: 'The Magician',
+    img: 'magician.jpg',
+    w: 1600,
+    h: 1195,
+    alt: 'Edward as a stage magician in a black tailcoat and red-lined cape under a single spotlight, lifting an unimpressed white rabbit out of an upturned blue fedora while wearing a second blue fedora on his head.',
+    claim: 'Here it is, working live, on real data.',
+    under: 'A demo rehearsed 40 times on data picked because it works. The rabbit was in the hat the whole time (in my case it\'s a fedora, which is roomier).',
+    ask: 'Can we run it on our data this week, with my people driving?',
+    shape: 'wide',
+  },
+  {
+    no: 6,
+    name: 'The Vampire',
+    img: 'vampire.jpg',
+    w: 1195,
+    h: 1600,
+    alt: 'Edward as a vampire count in a high-collared black cape with crimson lining and plastic fangs, in a candlelit gothic hall, holding up a paper receipt that unrolls all the way to the floor, wearing his blue fedora.',
+    claim: 'Pricing that grows with your success.',
+    under: 'Per seat, per token, per agent, per month, plus a "premium model" tier somebody turned on in March. It never takes much at once.',
+    ask: 'What does the bill look like at 10 times today\'s usage?',
+    shape: 'tall',
+  },
+  {
+    no: 7,
+    name: 'The Sorcerer',
+    img: 'cauldron.jpg',
+    w: 1195,
+    h: 1600,
+    alt: 'Edward as a sorcerer in a long purple robe embroidered with stars, stirring a huge black cauldron of glowing green potion in a candlelit stone cellar, green steam rising, a crow feather in the band of his blue fedora.',
+    claim: 'Our secret sauce is proprietary and can\'t be disclosed.',
+    under: 'Mostly your data. It goes in the pot, it gets stirred, and nobody at the table can tell you where the ladle goes after that.',
+    ask: 'What happens to our data after it goes in the pot?',
+    shape: 'tall',
+  },
+  {
+    no: 8,
+    name: 'The Zombie',
+    img: 'zombie.jpg',
+    w: 1600,
+    h: 1195,
+    alt: 'Edward as a zombie office worker with grey-green makeup, a torn shirt, a loosened tie, and a blank lanyard badge, shuffling through a foggy abandoned office lit by old monitors, a dusty blue fedora on his head.',
+    claim: 'A self-learning model that gets smarter every day.',
+    under: 'Trained once, in 2024, and it\'s been wandering the halls looking for fresh data ever since (it hasn\'t found any).',
+    ask: 'When did it last learn something, and who decided what it learned?',
+    shape: 'wide',
+  },
+  {
+    no: 9,
+    name: 'The Ventriloquist',
+    img: 'ventriloquist.jpg',
+    w: 1600,
+    h: 1195,
+    alt: 'Edward as a vaudeville ventriloquist on a stool under a spotlight, holding a wooden dummy on his knee. The dummy wears a tiny matching blue fedora and suit, and its mouth is open mid-sentence while Edward\'s lips stay perfectly still.',
+    claim: 'Our proprietary AI model.',
+    under: 'Somebody else\'s model with a new name painted on the dummy and a very long prompt working the jaw.',
+    ask: 'Whose model is it, and what happens to us if they change it over a weekend?',
+    shape: 'wide',
+  },
+  {
+    no: 10,
+    name: 'The Scarecrow',
+    img: 'scarecrow.jpg',
+    w: 1195,
+    h: 1600,
+    alt: 'Edward as a scarecrow in a patched flannel shirt stuffed with straw, propped on a post in a moonlit cornfield with crows on the fence, holding a clipboard and pen, straw sticking out from under his blue fedora.',
+    claim: 'A human in the loop on every decision.',
+    under: 'A human, technically, propped on a post and approving 400 decisions an hour with a clipboard (the crows have noticed).',
+    ask: 'How many decisions does each reviewer see in an hour, and how many do they send back?',
+    shape: 'tall',
+  },
 ];
 
-// Chapter 2: the ledger.
-const ledger = [
-  { v: record.commits, k: `commits since ${record.since}`, note: `${record.days} days, counting today` },
-  { v: record.redesigns, k: 'weekly redesigns before this one', note: 'this is number 30' },
-  { v: record.redesignIn, k: 'lines added by those redesigns', note: `across ${record.redesignFiles} file changes` },
-  { v: record.redesignOut, k: 'lines removed by them', note: 'the previous week, every time' },
-  { v: record.homePageCommits, k: 'commits that changed this page', note: 'the file you are reading' },
-  { v: record.lastWeekOut, k: 'lines deleted last week alone', note: `${record.lastWeekIn} added, ${record.lastWeekFiles} files` },
-  { v: record.posts, k: 'blog posts it may not touch', note: 'the one rule with no exceptions' },
-  { v: record.allIn, k: 'lines added, all commits', note: `${record.allOut} removed, same period` },
-];
+// The flashlight: every question in one place. This is the screenshot.
+const questions = [{ name: robot.name, ask: robot.ask }, ...costumes.map((c) => ({ name: c.name, ask: c.ask }))];
 
-// Chapter 4: the discrepancies, in date order, with the public commit for each.
-const exhibits = [
-  {
-    date: 'June 13, 2026',
-    ref: 'c684879',
-    title: 'Built the whole thing. Forgot to commit it.',
-    body: `The agent finished the redesign and never ran the commit. A backup script shipped it instead, with a message that's still in the log: "Claude completed the redesign but did not commit."`,
-  },
-  {
-    date: 'August 1, 2026',
-    ref: '33eecfb',
-    title: 'Wrote "comes back Wednesday" on a page built to outlive Wednesday.',
-    body: `The Ted Lasso week shipped with "Ted Lasso comes back Wednesday" in the hero, which was true for 4 days. The theme was being held for a second week, so the fix landed on Wednesday, August 5, the day of the premiere, by hand.`,
-  },
-  {
-    date: 'September 12, 2026',
-    ref: 'e39c180',
-    title: 'Built an escape room. Could not get out of it.',
-    body: `The run built The Escape Room, hit its own turn limit before committing, and the backup script that exists for exactly that case died on a git warning about Windows line endings. This site served a Labor Day theme until September 16, which is 11 days. The recovery commit explains the whole thing in 40 lines, if you want the gory version.`,
-  },
-  {
-    date: 'July to October, 2026',
-    ref: 'the log',
-    title: 'Recorded itself in 4 time zones.',
-    body: `The machine that commits this site has stamped its work -0700, -0400, +0000, and +0100 since July. The task is scheduled for 5 AM Atlantic time. Either the laptop travels more than I do, or it's confused (I travel a lot, so this would take some doing).`,
-  },
-];
-
-// The exhibit table: the 6 projects. Same 6 every week, restyled.
+// Not in costume: the 6 projects. Same 6 every week, restyled.
 const projects = [
   {
-    tag: 'A',
     name: 'MCP Servers for Enterprise Finance',
     status: 'Shipping',
     note: `Plumbing so an AI reads the real number out of Oracle Essbase and EPM instead of remembering one that sounds about right. Essbase and EPM Planning have shipped, and Financial Close and Consolidations is in beta.`,
@@ -137,7 +177,6 @@ const projects = [
     cta: 'See how it works',
   },
   {
-    tag: 'B',
     name: 'Caribbean AI Summit',
     status: 'Happened, October 9 and 10',
     note: `Co-chaired it: 800+ people, 17 countries, 44 speakers, and 6 fire extinguishers Dawn bought at Walmart at 7:30 in the morning. The whole story is on the blog.`,
@@ -146,16 +185,14 @@ const projects = [
     cta: 'Read the recap',
   },
   {
-    tag: 'C',
     name: 'Caprus',
     status: 'Investor',
-    note: `I'm an investor, and that's the whole job. Lillian Buziak runs it, and they sell and support AgentCube (Exhibit A), which spares everybody from having me do it.`,
+    note: `I'm an investor, and that's the whole job. Lillian Buziak runs it, and they sell and support AgentCube (the first card on this row), which spares everybody from having me do it.`,
     href: 'https://caprus.ai',
     external: true,
     cta: 'Meet the team',
   },
   {
-    tag: 'D',
     name: 'Everest Base Camp',
     status: 'Done, April 2026',
     note: `2 weeks on foot to 18,571 feet with Dawn. The trail log is on the blog, including the last 400 feet of Kala Patthar.`,
@@ -164,16 +201,14 @@ const projects = [
     cta: 'Read the trail log',
   },
   {
-    tag: 'E',
     name: "AI Dungeon Master's Screen",
     status: 'Quiet build',
-    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It's nowhere near finished and isn't public yet, and so far the only customer is me (and my players, who didn't get a vote).`,
+    note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It isn't public yet, and so far the only customer is me (and my players, who didn't get a vote).`,
     href: null,
     external: false,
     cta: 'No public link (take my word for it)',
   },
   {
-    tag: 'F',
     name: 'Puerto Rico AI Community',
     status: 'Every other month',
     note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. Bi-monthly, free, both languages, and the reason the summit exists at all.`,
@@ -182,309 +217,219 @@ const projects = [
     cta: 'Join the next one',
   },
 ];
-
-// The machine's standing orders it is permitted to quote. Real ones.
-const orders = [
-  'Edward is the butt of the joke. The site is not.',
-  'Never stock photos. Only generated images of Edward, or real photos of Edward.',
-  'Every generated image of Edward wears a blue fedora. The color may change with the theme. The hat may not.',
-  'Use the real headshot as the reference, so he looks like himself.',
-  'Blog posts are permanent. Never delete, modify, or overwrite one.',
-  'Amusing without telling jokes. Parenthetical asides and non sequiturs are fine.',
-  'No em dashes. Anywhere.',
-];
 ---
 
 <BaseLayout
-  title="Roske.AI | You Can See Everything"
-  description="A documentary about this website, which an AI rebuilds every Saturday at 5 AM while Edward Roske sleeps. The code is public. You can read every line. This week is about why that helps less than you'd think."
+  title="Roske.AI | What's Under the Mask?"
+  description="Halloween on roske.ai: Edward Roske dresses up as 10 AI vendor claims, from the fully autonomous agent to the human in the loop, lifts the mask on each one, and lists the 10 questions to ask before you sign."
 >
   <WeeklyAnimation />
 
-  <!-- ================= COLD OPEN ================= -->
-  <section class="ycs-open" aria-labelledby="ycs-open-title">
-    <div class="ycs-slate" aria-hidden="true">
-      <span class="ycs-rec"><span class="ycs-rec-dot"></span>REC</span>
-      <span>Roske.AI | A documentary about a website</span>
-      <span class="ycs-slate-r">Sat 2026-10-24 | 05:00 AST | Chapter 0 of 5</span>
+  <!-- ================= HERO: THE PORCH ================= -->
+  <section class="hw-hero" aria-labelledby="hw-title">
+    <svg class="hw-web hw-web-tl" viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M0 0 L200 40 M0 0 L160 120 M0 0 L110 180 M0 0 L40 200" />
+        <path d="M30 6 Q 26 22 10 30" />
+        <path d="M68 13 Q 58 44 26 64" />
+        <path d="M110 22 Q 92 68 44 104" />
+        <path d="M156 31 Q 128 92 64 146" />
+        <path d="M196 39 Q 160 116 84 190" />
+      </g>
+    </svg>
+
+    <div class="hw-wrap">
+      <p class="hw-slate">
+        <span>Saturday, October 31, 2026</span>
+        <span>San Juan</span>
+        <span>The porch light is on</span>
+      </p>
     </div>
 
-    <div class="ycs-wrap ycs-open-grid">
-      <div class="ycs-open-copy">
-        <p class="ycs-kicker">You Can See Everything is in theaters now. This is a different documentary, about a different box.</p>
-        <h1 class="ycs-title" id="ycs-open-title">You Can See Everything.</h1>
-        <p class="ycs-title-sub">I checked. It helped less than you'd think.</p>
-        <p class="ycs-lede">
-          Every Saturday at 5 AM, an AI agent researches a theme, rewrites this website, draws the pictures, runs the
-          tests, and pushes it live, and I see the result after it's up, same as you do. The source is public on
-          GitHub, every line of it. So this week the site is a documentary about itself, and I'm the subject, which is
-          an awkward thing to be in your own exposé (the interview chair was comfortable, at least, and the camera
-          crew was very professional, by which I mean the AI drew them, along with the beach house, the boom mic, and
-          the printout, none of which I own).
+    <div class="hw-wrap hw-hero-grid">
+      <div class="hw-hero-copy">
+        <p class="hw-kicker">
+          Halloween is on a Saturday this year, so this website gets rebuilt on the actual day (Edward, it's a website,
+          it doesn't know what day it is. Yes, but I do).
         </p>
-
-        <div class="ycs-type" data-ycs-type data-cmd={typedCmd} data-out={typedOut} aria-label="A git log command and its output">
-          <code class="ycs-type-cmd"></code>
-          <code class="ycs-type-out"></code>
-          <span class="ycs-type-cursor" aria-hidden="true"></span>
-        </div>
-        <p class="ycs-type-cap">The last time this page was replaced. The 28 before it are in the same log.</p>
-
-        <div class="ycs-open-ctas">
-          <a class="ycs-btn ycs-btn-red" href={theme.hero.ctaLink}>{theme.hero.ctaText}</a>
-          <a class="ycs-btn ycs-btn-ghost" href={REPO} target="_blank" rel="noopener noreferrer">Read the source</a>
+        <h1 class="hw-title" id="hw-title">What's under the mask?</h1>
+        <p class="hw-sub">{theme.hero.subtitle}</p>
+        <p class="hw-lede">
+          A lot of the AI being sold right now is wearing a costume, and it's been wearing it since about January, so
+          I dressed up as 10 of the claims, wrote down what each one says it is, and lifted the
+          mask on every one of them (the fedora stayed on for all 10 costumes, because a Roske never removes his
+          fedora in the presence of others, and the camera counted as others).
+        </p>
+        <div class="hw-ctas">
+          <a class="hw-btn hw-btn-candle" href={theme.hero.ctaLink}>{theme.hero.ctaText}</a>
+          <a class="hw-btn hw-btn-ghost" href="#flashlight">Skip to the 10 questions</a>
         </div>
       </div>
 
-      <figure class="ycs-open-fig">
-        <img
-          src={`/images/${theme.hero.heroImage}`}
-          alt={theme.hero.imageAlt}
-          width="1600"
-          height="893"
-          fetchpriority="high"
-          decoding="async"
-        />
-        <figcaption class="ycs-lt">
-          <span class="ycs-lt-name">Edward Roske</span>
-          <span class="ycs-lt-role">Subject. Owns the website. Did not write this page.</span>
+      <figure class="hw-window">
+        <div class="hw-window-glow" aria-hidden="true"></div>
+        <div class="hw-window-frame">
+          <img
+            src={`/images/${theme.hero.heroImage}`}
+            alt={theme.hero.imageAlt}
+            width="1600"
+            height="893"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </div>
+        <figcaption class="hw-tag hw-tag-hero">
+          <span class="hw-tag-hole" aria-hidden="true"></span>
+          <span class="hw-tag-no">Costume No. {robot.no} | {robot.name}</span>
+          <span class="hw-tag-label">Claims to be</span>
+          <span class="hw-tag-claim">{robot.claim}</span>
+          <span class="hw-tag-label hw-tag-label-under">Under it</span>
+          <span class="hw-tag-under">{robot.under}</span>
         </figcaption>
       </figure>
     </div>
-
-    <div class="ycs-wrap">
-      <dl class="ycs-firstnum" aria-label="The first real numbers">
-        <div><dt>Commits since February 18</dt><dd>{record.commits}</dd></div>
-        <div><dt>Replaced this page entirely</dt><dd>{record.redesigns}</dd></div>
-        <div><dt>This one, built this morning</dt><dd>30<sup>th</sup></dd></div>
-      </dl>
-    </div>
   </section>
 
-  <ul class="ycs-stats" aria-label="On the record">
-    {stats.map((s) => (
-      <li><span class="ycs-stat-v">{s.v}</span><span class="ycs-stat-k">{s.k}</span></li>
-    ))}
-  </ul>
+  <!-- ================= STATS: WAX STRIP ================= -->
+  <div class="hw-stats-wrap">
+    <ul class="hw-stats" aria-label="On the record, no costume">
+      {stats.map((s) => (
+        <li><span class="hw-stat-v">{s.v}</span><span class="hw-stat-k">{s.k}</span></li>
+      ))}
+    </ul>
+    <svg class="hw-drip" viewBox="0 0 1200 40" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 0 H1200 V8 C1180 8 1176 30 1166 30 C1156 30 1154 10 1140 10 C1110 10 1104 18 1090 18 C1078 18 1074 36 1062 36 C1050 36 1048 12 1030 12 L960 12 C944 12 942 24 930 24 C918 24 914 10 900 10 L820 10 C806 10 802 34 790 34 C778 34 776 12 760 12 L640 12 C626 12 622 22 612 22 C602 22 598 10 584 10 L500 10 C486 10 482 38 470 38 C458 38 456 12 440 12 L360 12 C346 12 342 26 332 26 C322 26 318 10 304 10 L220 10 C206 10 202 32 190 32 C178 32 176 12 160 12 L90 12 C76 12 72 22 62 22 C52 22 48 8 34 8 L0 8 Z" />
+    </svg>
+  </div>
 
-  <!-- ================= CHAPTER 1: THE SUBJECT ================= -->
-  <section class="ycs-section" id="subject" aria-labelledby="ycs-ch1">
-    <div class="ycs-wrap ycs-ch1">
-      <figure class="ycs-fig ycs-fig-portrait">
-        <img src={`${IMG}/page-one.jpg`} alt="Edward in a navy blazer, glasses, and his blue fedora at the end of a long dining table in a bright beach house, holding up page one of an enormous fan-fold printout of source code, with towering stacks of the rest of the printout around him and more pages spilling off the far end of the table." width="1195" height="1600" loading="lazy" decoding="async" />
-        <figcaption class="ycs-lt">
-          <span class="ycs-lt-name">Page 1 of a very long printout</span>
-          <span class="ycs-lt-role">He started at the top.</span>
-        </figcaption>
-      </figure>
-      <div class="ycs-ch1-body">
-        <p class="ycs-eyebrow"><span class="ycs-tag">Chapter 1</span> The subject</p>
-        <h2 class="ycs-h2" id="ycs-ch1">Edward Roske, for the record.</h2>
-        <p class="ycs-copy">
-          Here are the facts, straight, since a documentary is supposed to start with who you're looking at. I founded
-          interRel Consulting at 22, in 1997, and ran it for 25 years, through a 2020 merger with Keste that helped
-          found Argano. I've co-written 15 books about enterprise software (13 of them are on Amazon, and 2 were for
-          training classes, which is the kind of distinction only an author makes). I've spoken in 50+ countries on all
-          7 continents, Antarctica included, visited 80+ of them, hiked to Everest Base Camp with Dawn in April, and I
-          hold 2 US patents for custom postage stamps, which comes up less than you'd think.
-        </p>
-        <p class="ycs-copy">
-          These days I live in San Juan, Puerto Rico, run Dawnward, invest in Caprus, build MCP servers so an AI can read
-          a real number out of Oracle Essbase and EPM instead of inventing one, and host Asking Good Questions, which is
-          the show and also, apparently, the personality. I'm also an introvert who gets on stages for a living, the
-          president of the Puerto Rico AI Community, the Dungeon Master of a 5e Eberron campaign, a Dallas Cowboys fan,
-          the owner of a 1,000+ day Duolingo streak, and a man who lets a machine redecorate his house every Saturday
-          (Edward, that last one isn't a credential, stop listing it like one). Everything in this paragraph is on the
-          record, and you can check most of it from the links in the footer.
-        </p>
-        <dl class="ycs-dossier">
-          {dossier.map((d) => (
-            <div><dt>{d.k}</dt><dd>{d.v}</dd></div>
-          ))}
-        </dl>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= B-ROLL: LATEST ================= -->
+  <!-- ================= FRESH FROM THE CAULDRON ================= -->
   <LatestContent
-    eyebrow="B-roll"
-    heading="New <em>footage.</em>"
-    deck="This week's writing and video, newest first, including the post on whether reading every line of an AI's code means you understand it."
+    eyebrow="Fresh from the cauldron"
+    heading="New <em>this week.</em>"
+    deck="This week's writing and video, newest first, including tonight's post on how to tell whether the AI you just bought is wearing a costume."
   />
 
-  <!-- ================= CHAPTER 2: THE BOX ================= -->
-  <section class="ycs-section ycs-band" id="box" aria-labelledby="ycs-ch2">
-    <div class="ycs-wrap">
-      <header class="ycs-head">
-        <p class="ycs-eyebrow"><span class="ycs-tag">Chapter 2</span> The box</p>
-        <h2 class="ycs-h2" id="ycs-ch2">The box is open. Here's what's in it.</h2>
-        <p class="ycs-deck">
-          Theranos was a box nobody was allowed to open, and when a court finally did, almost nothing inside worked,
-          which is the one paragraph of Theranos you'll get from me (the documentary is 174 minutes and does it
-          properly). This site is about as open as a box gets: the repository is public, the commit history is public,
-          and every line of the page you're reading was written by a machine this morning and pushed to GitHub, where
-          you can read it right now, with the diffs, in a language I'd describe as mostly English. Counted from the
-          public log at 5 AM today (before it added this week's commit to the pile), this is what the machine has done
-          to the site since February.
+  <!-- ================= THE COSTUME PARADE ================= -->
+  <section class="hw-section hw-parade" id="costumes" aria-labelledby="hw-parade-title">
+    <div class="hw-wrap">
+      <header class="hw-head">
+        <p class="hw-eyebrow">The costume parade</p>
+        <h2 class="hw-h2" id="hw-parade-title">10 costumes, 10 claims, and what was under every one.</h2>
+        <p class="hw-deck">
+          Every costume here is a claim you can find on some AI vendor's website this week, give or take a buzzword
+          (I'm not naming vendors, partly because I'd like to keep getting invited to things, and mostly because the
+          point is that it's a lot of them). Each tag has the claim on top, what you find when you pull the mask off
+          underneath, and the question I'd ask to get it off at the bottom.
         </p>
       </header>
 
-      <dl class="ycs-ledger" aria-label="The site, by the numbers">
-        {ledger.map((l) => (
-          <div class="ycs-ledger-row">
-            <dd class="ycs-ledger-v">{l.v}</dd>
-            <dt class="ycs-ledger-k">{l.k}<span class="ycs-ledger-note">{l.note}</span></dt>
-          </div>
+      <ol class="hw-gallery">
+        {costumes.map((c, i) => (
+          <li class={`hw-costume hw-costume-${c.shape} hw-tilt-${i % 4}`}>
+            <figure class="hw-costume-fig">
+              <img src={`${IMG}/${c.img}`} alt={c.alt} width={c.w} height={c.h} loading="lazy" decoding="async" />
+            </figure>
+            <div class="hw-tag">
+              <span class="hw-tag-hole" aria-hidden="true"></span>
+              <span class="hw-tag-no">Costume No. {c.no} | {c.name}</span>
+              <span class="hw-tag-label">Claims to be</span>
+              <p class="hw-tag-claim">{c.claim}</p>
+              <span class="hw-tag-label hw-tag-label-under">Under it</span>
+              <p class="hw-tag-under">
+                {c.under}
+                {c.name === 'The Ventriloquist' && (
+                  <>
+                    {' '}(More on that weekend <a href={VANISH}>here</a>.)
+                  </>
+                )}
+              </p>
+              <p class="hw-tag-ask"><span>Ask:</span> {c.ask}</p>
+            </div>
+          </li>
         ))}
-      </dl>
-
-      <div class="ycs-box-grid">
-        <figure class="ycs-broll" aria-label="The last 10 weekly redesign commits">
-          <pre class="ycs-pre"><code>{gitLogText}</code></pre>
-          <figcaption class="ycs-broll-cap">
-            The last 10 times this page was replaced, straight from the public log, time zones included. (That's 4
-            different time zones. More on that in Chapter 4.)
-          </figcaption>
-        </figure>
-        <figure class="ycs-fig">
-          <img src={`${IMG}/evidence-board.jpg`} alt="Edward in a navy blazer and blue fedora standing in front of a corkboard covered edge to edge in printed pages of source code, git logs, and website screenshots, pinned with red pushpins and connected by red string, holding a marker and a coffee mug and looking baffled." width="1200" height="896" loading="lazy" decoding="async" />
-          <figcaption class="ycs-lt">
-            <span class="ycs-lt-name">The evidence wall</span>
-            <span class="ycs-lt-role">All of it public. The string is decorative.</span>
-          </figcaption>
-        </figure>
-      </div>
-
-      <a class="ycs-btn ycs-btn-solid" href={REPO} target="_blank" rel="noopener noreferrer">Read the source on GitHub</a>
+      </ol>
     </div>
   </section>
 
   <!-- ================= BOOK EDWARD ================= -->
-  <SpeakerCTA eyebrow="Ask the question in person" />
+  <SpeakerCTA eyebrow="No costume required" />
 
-  <!-- ================= CHAPTER 3: THE WITNESS ================= -->
-  <section class="ycs-witness" id="witness" aria-labelledby="ycs-ch3">
-    <div class="ycs-wrap ycs-witness-grid">
-      <div class="ycs-witness-intro">
-        <p class="ycs-eyebrow ycs-eyebrow-pinned"><span class="ycs-tag">Chapter 3</span> The witness</p>
-        <h2 class="ycs-h2 ycs-h2-pinned" id="ycs-ch3">The machine's statement.</h2>
-        <p class="ycs-copy ycs-copy-pinned">
-          A documentary lets the other side talk. This is the agent that builds the site, in its own words, as written
-          this morning. The rules it quotes are real ones.
+  <!-- ================= THE FLASHLIGHT ================= -->
+  <section class="hw-flash" id="flashlight" aria-labelledby="hw-flash-title" data-hw-flash>
+    <div class="hw-flash-beam" aria-hidden="true"></div>
+    <div class="hw-wrap hw-flash-grid">
+      <div class="hw-flash-intro">
+        <p class="hw-eyebrow hw-eyebrow-pinned">The flashlight</p>
+        <h2 class="hw-h2 hw-h2-pinned" id="hw-flash-title">How do you see what's under the mask?</h2>
+        <p class="hw-copy-pinned">
+          You don't have to be technical to do this, you just have to be willing to be the person in the meeting who
+          asks (I host a show called Asking Good Questions, so I've had more practice than most). Screenshot this, print it, tape it to the
+          inside of your portfolio, whatever works.
         </p>
-        <figure class="ycs-fig ycs-fig-pinned">
-          <img src={`${IMG}/asleep-at-5am.jpg`} alt="Edward asleep in a desk chair in a dark home office before dawn, head tilted back, blanket half over him, blue fedora still on, his face lit cold green by a monitor showing a terminal window that reads git push origin main." width="1600" height="893" loading="lazy" decoding="async" />
-          <figcaption class="ycs-lt">
-            <span class="ycs-lt-name">05:00 AST</span>
-            <span class="ycs-lt-role">Dramatization. The hat is accurate.</span>
-          </figcaption>
+        <figure class="hw-unmask">
+          <img
+            src={`${IMG}/unmasking.jpg`}
+            alt="In a dark hallway lit by a single flashlight beam, Edward pulls a rubbery green monster mask up and off his face, revealing his real face and glasses underneath, while his blue fedora stays firmly on his head."
+            width="1600"
+            height="893"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>The mask came off, and the fedora stayed exactly where it was (family rule).</figcaption>
         </figure>
       </div>
 
-      <div class="ycs-terminal" role="region" aria-label="Statement of the witness, the AI agent that builds this site">
-        <p class="ycs-term-head">STATEMENT OF THE WITNESS</p>
-        <p class="ycs-term-meta">Recorded Saturday, October 24, 2026, 05:00 AST, San Juan. The subject was asleep.</p>
-        <p>
-          I build this website. Before today I had done it 29 times, almost always on a Saturday, almost always starting
-          at 5 AM, almost always finished before anyone in the house was up. My name isn't on the commits. The commits say
-          Edward Roske, because it's his account and his repository, and nobody asked me. I don't mind.
-        </p>
-        <p>My instructions are not in the public repository. The code is. Some of the instructions I'm permitted to repeat:</p>
-        <ul class="ycs-orders">
-          {orders.map((o) => (
-            <li>"{o}"</li>
-          ))}
-        </ul>
-        <p>
-          I follow all of these. I can show you every line I wrote this morning, with the diff. I can also give you a
-          reason for every choice on this page, and you should know that I generated the reasons the same way I
-          generated the page. Weigh them accordingly.
-        </p>
-        <p>
-          Where the instructions live: <span class="ycs-redact" aria-label="redacted">xxxxxxxxxxxxxxxxxxxxxxxx</span>. That's
-          the one thing on this site you can't see. The subject prefers it that way, and so do I.
-        </p>
-        <p>The result ships before he's awake. What he does after that isn't in my logs.</p>
-        <p class="ycs-term-end">END OF STATEMENT</p>
-      </div>
-    </div>
-  </section>
+      <ol class="hw-questions">
+        {questions.map((q, i) => (
+          <li>
+            <span class="hw-q-no" aria-hidden="true">{i + 1}</span>
+            <div>
+              <p class="hw-q">{q.ask}</p>
+              <p class="hw-q-src">Lifts the mask on {q.name}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
 
-  <!-- ================= CHAPTER 4: THE DISCREPANCIES ================= -->
-  <section class="ycs-section" id="discrepancies" aria-labelledby="ycs-ch4">
-    <div class="ycs-wrap">
-      <header class="ycs-head">
-        <p class="ycs-eyebrow"><span class="ycs-tag">Chapter 4</span> The discrepancies</p>
-        <h2 class="ycs-h2" id="ycs-ch4">Where the story and the record disagree.</h2>
-        <p class="ycs-deck">
-          This is the part of a documentary where the music gets ominous. My discrepancies are sitting in the public
-          commit history with timestamps on them, so you'd find them anyway, and I'd rather you heard them from me (in
-          date order, which is more organized than I've ever been about anything else).
-        </p>
-      </header>
-
-      <div class="ycs-disc-grid">
-        <ol class="ycs-exhibits">
-          {exhibits.map((e, i) => (
-            <li class="ycs-exhibit">
-              <div class="ycs-exhibit-top">
-                <span class="ycs-tag">Exhibit {i + 1}</span>
-                <span class="ycs-exhibit-date">{e.date}</span>
-                <span class="ycs-exhibit-ref">{e.ref}</span>
-              </div>
-              <h3 class="ycs-exhibit-title">{e.title}</h3>
-              <p class="ycs-exhibit-body">{e.body}</p>
-            </li>
-          ))}
-        </ol>
-        <figure class="ycs-fig ycs-fig-portrait ycs-fig-turtleneck">
-          <img src={`${IMG}/turtleneck.jpg`} alt="Edward posing for a formal founder portrait in a black turtleneck under a blue blazer against a seamless white studio backdrop, hands clasped in front of him, blue fedora on, smiling politely." width="1195" height="1600" loading="lazy" decoding="async" />
-          <figcaption class="ycs-lt">
-            <span class="ycs-lt-name">Exhibit 5</span>
-            <span class="ycs-lt-role">Day 1 of the turtleneck. Also the last day. The fedora stayed.</span>
-          </figcaption>
-        </figure>
-      </div>
-
-      <p class="ycs-balance">
-        <strong>For balance:</strong> everything else shipped, usually before 6 AM, nobody's data was involved at any
-        point, and the worst outcome on record is a holiday theme that ran 11 days long. If a contractor had that
-        record, I'd hire them again, though I couldn't tell you why they did any of it (that's Chapter 5).
+      <p class="hw-flash-note">
+        If a vendor can answer all 10 without opening a new slide deck, that's a very good sign. If they can't, ask
+        again (politely, and maybe write the first answer down so you can compare).
       </p>
     </div>
   </section>
 
-  <!-- ================= EXHIBITS A TO F: WHAT I'M BUILDING ================= -->
-  <section class="ycs-section ycs-band" id="building" aria-labelledby="ycs-exh">
-    <div class="ycs-wrap">
-      <header class="ycs-head">
-        <p class="ycs-eyebrow"><span class="ycs-tag">Exhibits A to F</span> What the subject does all week</p>
-        <h2 class="ycs-h2" id="ycs-exh">The documentary needed to know what I actually do.</h2>
-        <p class="ycs-deck">
-          5 of the 6 exhibits below have a link you can check, and the 6th is a D&amp;D tool you'll have to take my word
-          for, which, given the theme, I realize is a lot to ask.
+  <!-- ================= NOT IN COSTUME ================= -->
+  <section class="hw-section hw-band" id="building" aria-labelledby="hw-real-title">
+    <div class="hw-wrap">
+      <header class="hw-head">
+        <p class="hw-eyebrow">Not in costume</p>
+        <h2 class="hw-h2" id="hw-real-title">What I'm actually building, with the mask already off.</h2>
+        <p class="hw-deck">
+          Same tag format, so it's fair. On all 6 of these, what it claims to be and what's under it are the same
+          thing, and 5 of them have a link you can check (the 6th is a D&amp;D tool you'll have to take my word for,
+          which, on this particular page, I realize is a lot to ask).
         </p>
       </header>
-      <ul class="ycs-projects">
-        {projects.map((p) => (
-          <li class="ycs-project">
-            <div class="ycs-project-top">
-              <span class="ycs-tag">Exhibit {p.tag}</span>
-              <span class="ycs-project-status">{p.status}</span>
+      <ul class="hw-projects">
+        {projects.map((p, i) => (
+          <li class="hw-project">
+            <div class="hw-project-top">
+              <span class="hw-project-no">No. {i + 1}</span>
+              <span class="hw-project-status">{p.status}</span>
             </div>
-            <h3 class="ycs-project-name">{p.name}</h3>
-            <p class="ycs-project-note">{p.note}</p>
+            <h3 class="hw-project-name">{p.name}</h3>
+            <p class="hw-project-note">{p.note}</p>
+            <p class="hw-project-under"><span>Under it:</span> exactly that.</p>
             {p.href ? (
               <a
-                class="ycs-project-link"
+                class="hw-project-link"
                 href={p.href}
                 {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               >
                 {p.cta}
               </a>
             ) : (
-              <span class="ycs-project-link ycs-project-link-off">{p.cta}</span>
+              <span class="hw-project-link hw-project-link-off">{p.cta}</span>
             )}
           </li>
         ))}
@@ -492,491 +437,461 @@ const orders = [
     </div>
   </section>
 
-  <!-- ================= ALSO ON THE RECORD ================= -->
+  <!-- ================= ALSO OUT TONIGHT ================= -->
   <WhatsNew
-    eyebrow="Also on the record"
-    heading="Spotted <em>elsewhere.</em>"
-    deck="Interviews, press, and the occasional post, for anyone who'd like a second source."
+    eyebrow="Spotted around the neighborhood"
+    heading="Also <em>out tonight.</em>"
+    deck="Interviews, press, and posts from elsewhere, for anyone who'd like a second opinion on who's in costume."
   />
 
-  <!-- ================= CHAPTER 5: THE QUESTION ================= -->
-  <section class="ycs-section ycs-question" id="question" aria-labelledby="ycs-ch5">
-    <div class="ycs-wrap ycs-question-inner">
-      <p class="ycs-eyebrow"><span class="ycs-tag">Chapter 5</span> The question</p>
-      <h2 class="ycs-h2 ycs-h2-big" id="ycs-ch5">When you can see everything and explain none of it, what does trust look like?</h2>
-      <p class="ycs-copy">
-        I went into this week thinking that being able to see everything would settle things, and it mostly didn't:
-        you can read every line, the build passed, the links work (click around, I'll wait), and I still can't hand you
-        the why, because the machine made the decisions on this page and the machine's explanation of them came out of
-        the same machine.
+  <!-- ================= TONIGHT'S QUESTION ================= -->
+  <section class="hw-section hw-question" aria-labelledby="hw-q-title">
+    <div class="hw-wrap hw-question-inner">
+      <p class="hw-eyebrow">Tonight's question</p>
+      <h2 class="hw-h2 hw-h2-big" id="hw-q-title">Is the AI you just bought wearing a costume?</h2>
+      <p class="hw-copy">
+        The SEC and Gartner got there before I did. In March 2024 the SEC fined 2 investment advisers a combined $400,000 for
+        <a href="https://www.sec.gov/newsroom/press-releases/2024-36" target="_blank" rel="noopener noreferrer">claiming AI they didn't actually use</a>,
+        which was the first "AI washing" case it ever brought. Gartner went looking at the thousands of vendors
+        selling agentic AI and
+        <a href="https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027" target="_blank" rel="noopener noreferrer">counted about 130 that were the real thing</a>
+        (it calls the rest "agent washing," which sounds like something you'd do to a costume on November 1).
       </p>
-      <p class="ycs-copy">
-        Google has the same thing going on, with more zeros. It said in April that
-        <a href="https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/cloud-next-2026-sundar-pichai/" target="_blank" rel="noopener noreferrer">75% of its new code is AI-generated</a>
-        and approved by engineers. A study last year put 16 experienced developers on code they knew by heart, let
-        them use AI on some tasks and not others, and
-        <a href="https://www.theregister.com/2025/07/11/ai_code_tools_slow_down/" target="_blank" rel="noopener noreferrer">measured them 19% slower while they believed they were 20% faster</a>.
-        I'd bet your company shipped something this week that passed every review and that nobody in the building could
-        walk you through, and that you could see all of it, if you asked.
-      </p>
-      <p class="ycs-copy">
-        So that's the question I'd put to the room, and the one I'd rather you put to me, since asking them is the whole
-        job (I host a show about it, which is a strange thing to be qualified for): when the most important systems in
-        your life are completely visible and nobody can explain them, what does trust even look like, the track record,
-        or the person willing to sign their name to it? I don't have the answer yet, and the longer version of me not
-        having it is <a href={POST}>on the blog</a>.
+      <p class="hw-copy">
+        The longer version, written for whoever has to sign the contract, is <a href={POST}>on the blog</a> tonight (I
+        tried to leave the costumes out of it and got about as far as the vampire).
       </p>
     </div>
   </section>
 
-  <!-- ================= CREDITS / CTA ================= -->
-  <section class="ycs-credits" aria-labelledby="ycs-cta-title">
-    <div class="ycs-wrap ycs-credits-inner">
-      <div class="ycs-cta">
-        <p class="ycs-eyebrow ycs-eyebrow-pinned"><span class="ycs-tag">Roll credits</span></p>
-        <h2 class="ycs-h2 ycs-h2-pinned" id="ycs-cta-title">Ask the question in person.</h2>
-        <p class="ycs-copy ycs-copy-pinned">
-          If you'd like this asked to your leadership team out loud, with slides, that's the speaking page (keynotes from
-          $15,000, and I bring the fedora). If you'd rather just talk, 13 minutes on my calendar is free! Or write me at
-          Edward@Roske.AI. I'd love to hear what your company can see that nobody can explain.
+  <!-- ================= THE FRONT DOOR ================= -->
+  <section class="hw-door" aria-labelledby="hw-door-title">
+    <div class="hw-wrap hw-door-inner">
+      <div class="hw-door-frame">
+        <span class="hw-door-light" aria-hidden="true"></span>
+        <p class="hw-eyebrow hw-eyebrow-pinned">Ring the doorbell</p>
+        <h2 class="hw-h2 hw-h2-pinned" id="hw-door-title">Trick, treat, or a keynote?</h2>
+        <p class="hw-copy-pinned">
+          If you'd like these 10 questions asked out loud to your leadership team, with slides and a fedora, that's
+          the speaking page (keynotes from $15,000, costume not included, though I'd consider it). If you'd rather
+          just talk, 13 minutes on my calendar is free! Or write me at Edward@Roske.AI and tell me which costume your
+          last AI vendor showed up in.
         </p>
-        <div class="ycs-cta-row">
-          <a class="ycs-btn ycs-btn-red" href="/speaking/">Book the talk</a>
-          <a class="ycs-btn ycs-btn-ghost" href={CAL} target="_blank" rel="noopener noreferrer">Book 13 minutes</a>
-          <a class="ycs-btn ycs-btn-ghost" href="/contact/">Write me</a>
+        <div class="hw-ctas">
+          <a class="hw-btn hw-btn-candle" href="/speaking/">Book the talk</a>
+          <a class="hw-btn hw-btn-ghost" href={CAL} target="_blank" rel="noopener noreferrer">Book 13 minutes</a>
+          <a class="hw-btn hw-btn-ghost" href="/contact/">Write me</a>
         </div>
       </div>
-      <dl class="ycs-roll" aria-label="Credits">
-        <div><dt>Subject</dt><dd>Edward Roske</dd></div>
-        <div><dt>Written and built by</dt><dd>An AI agent, Saturday, 05:00 AST</dd></div>
-        <div><dt>Photography</dt><dd>Generated, with the subject's real headshot as reference</dd></div>
-        <div><dt>Hat</dt><dd>The subject's own</dd></div>
-        <div><dt>Numbers</dt><dd>Counted from the public git history at build time</dd></div>
-        <div><dt>Not affiliated with</dt><dd>A24 or the filmmakers</dd></div>
-      </dl>
-      <p class="ycs-disclaimer">
-        Roske.AI is Edward Roske's personal site. It isn't affiliated with, endorsed by, or sponsored by A24, the
-        filmmakers, or anyone involved in You Can See Everything. Elizabeth Holmes was convicted of defrauding
-        Theranos investors and began her sentence in 2023, and that's the whole of what this site says about her. Every
-        image of Edward on this page is AI-generated, and no other real person appears in any of them.
+      <p class="hw-disclaimer">
+        Every image of Edward on this page is AI-generated from his real headshot, and he's the only person in any of
+        them (the rabbit, the dummy, and the crows are not people). No AI vendor is named anywhere on this page, on
+        purpose. The claims are composites of things you can read on a lot of vendor websites, and any resemblance to
+        yours is between you and your vendor.
       </p>
     </div>
   </section>
 
   <script is:inline>
     (function () {
-      var el = document.querySelector('[data-ycs-type]');
-      if (!el) return;
-      var cmd = el.getAttribute('data-cmd') || '';
-      var out = el.getAttribute('data-out') || '';
-      var cmdEl = el.querySelector('.ycs-type-cmd');
-      var outEl = el.querySelector('.ycs-type-out');
-      if (!cmdEl || !outEl) return;
-      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce) {
-        cmdEl.textContent = cmd;
-        outEl.textContent = out;
-        el.classList.add('done');
-        return;
-      }
-      var i = 0;
-      var j = 0;
-      function typeOut() {
-        if (j <= out.length) {
-          outEl.textContent = out.slice(0, j);
-          j += 1;
-          setTimeout(typeOut, 12);
-        } else {
-          el.classList.add('done');
-        }
-      }
-      function typeCmd() {
-        if (i <= cmd.length) {
-          cmdEl.textContent = cmd.slice(0, i);
-          i += 1;
-          setTimeout(typeCmd, 34);
-        } else {
-          setTimeout(typeOut, 450);
-        }
-      }
-      setTimeout(typeCmd, 400);
+      var sec = document.querySelector('[data-hw-flash]');
+      if (!sec) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (!window.matchMedia('(pointer: fine)').matches) return;
+      var raf = 0;
+      sec.addEventListener('pointermove', function (e) {
+        if (raf) return;
+        raf = requestAnimationFrame(function () {
+          raf = 0;
+          var r = sec.getBoundingClientRect();
+          sec.style.setProperty('--hw-mx', ((e.clientX - r.left) / r.width) * 100 + '%');
+          sec.style.setProperty('--hw-my', ((e.clientY - r.top) / r.height) * 100 + '%');
+        });
+      });
     })();
   </script>
 </BaseLayout>
 
 <style is:global>
   /* =====================================================================
-     YOU CAN SEE EVERYTHING (2026-10-24)
-     A documentary about this website. The cold open, the witness panel,
-     and the credits are pinned black in BOTH modes (title cards on black,
-     the edit bay), so every color inside them is a literal. Everything
-     else reads the --ycs-* vars, which flip by mode: dark is the edit bay
-     at 3 AM, light is the newsroom with the lights on. Global on purpose:
+     WHAT'S UNDER THE MASK? (2026-10-31)
+     Halloween. Dark mode is the haunted house at midnight; light mode is
+     the trick-or-treat porch at dusk. The flashlight section and the
+     front door are pinned dark in BOTH modes (you need the dark to see a
+     flashlight), so every color inside them is a literal. Everything else
+     reads the --hw-* vars, which flip by mode. Global on purpose:
      [data-theme] selectors are unreliable inside Astro's scoped CSS.
-     All classes ycs-.
+     All classes hw-.
      ===================================================================== */
   :root,
   [data-theme="dark"] {
-    --ycs-bg: #0b0b0c;
-    --ycs-surface: #151516;
-    --ycs-band: #101011;
-    --ycs-ink: #f2efe8;
-    --ycs-muted: #a8a49b;
-    --ycs-line: #2b2b2e;
-    --ycs-red: #f0433e;
-    --ycs-on-red: #141414;
-    --ycs-green: #4be3a6;
-    --ycs-tag-bg: #f0433e;
-    --ycs-tag-ink: #141414;
-    --ycs-lt-bg: #f2efe8;
-    --ycs-lt-ink: #141414;
+    --hw-bg: #0b0709;
+    --hw-surface: #16101a;
+    --hw-band: #120b14;
+    --hw-ink: #f4eadb;
+    --hw-muted: #bbae9f;
+    --hw-line: #34263a;
+    --hw-candle: #ff8a1f;
+    --hw-on-candle: #140a06;
+    --hw-green: #b8d63a;
+    --hw-purple: #c9a2e0;
+    --hw-tag-bg: #efe2c8;
+    --hw-tag-ink: #1c1018;
+    --hw-tag-muted: #5d4652;
+    --hw-tag-accent: #8a3500;
+    --hw-web: rgba(244, 234, 219, 0.22);
+    --hw-hero-bg: radial-gradient(ellipse 70% 60% at 72% 40%, #2a1533 0%, #0b0709 70%);
   }
   [data-theme="light"] {
-    --ycs-bg: #f4f2ec;
-    --ycs-surface: #ffffff;
-    --ycs-band: #ebe8e0;
-    --ycs-ink: #141414;
-    --ycs-muted: #5a5852;
-    --ycs-line: #d9d5cb;
-    --ycs-red: #b8211c;
-    --ycs-on-red: #ffffff;
-    --ycs-green: #0b6b42;
-    --ycs-tag-bg: #b8211c;
-    --ycs-tag-ink: #ffffff;
-    --ycs-lt-bg: #ffffff;
-    --ycs-lt-ink: #141414;
+    --hw-bg: #fff3e2;
+    --hw-surface: #ffffff;
+    --hw-band: #fbe6cc;
+    --hw-ink: #1c1018;
+    --hw-muted: #5d4652;
+    --hw-line: #e7d2bc;
+    --hw-candle: #b04500;
+    --hw-on-candle: #ffffff;
+    --hw-green: #4b6a00;
+    --hw-purple: #5e2a78;
+    --hw-tag-bg: #ffffff;
+    --hw-tag-ink: #1c1018;
+    --hw-tag-muted: #5d4652;
+    --hw-tag-accent: #8a3500;
+    --hw-web: rgba(94, 42, 120, 0.22);
+    --hw-hero-bg: radial-gradient(ellipse 70% 60% at 72% 40%, #ffd9a8 0%, #fff3e2 70%);
   }
 
-  .ycs-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-  .ycs-section { padding: 5.5rem 0; background: var(--ycs-bg); color: var(--ycs-ink); }
-  .ycs-band { background: var(--ycs-band); }
+  .hw-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; }
+  .hw-section { padding: 5.5rem 0; background: var(--hw-bg); color: var(--hw-ink); position: relative; }
+  .hw-band { background: var(--hw-band); }
 
   /* ---------- type ---------- */
-  .ycs-eyebrow {
+  .hw-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.86rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--hw-candle);
+    margin: 0 0 1rem;
     display: flex;
     align-items: center;
     gap: 0.7rem;
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ycs-muted);
-    margin: 0 0 1.1rem;
   }
-  .ycs-tag {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    background: var(--ycs-tag-bg);
-    color: var(--ycs-tag-ink);
-    padding: 0.2rem 0.5rem 0.15rem;
-    line-height: 1.3;
-    white-space: nowrap;
-  }
-  .ycs-h2 {
+  .hw-eyebrow::before { content: ''; width: 2.2rem; height: 2px; background: currentColor; display: inline-block; }
+  .hw-h2 {
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: clamp(2rem, 4.6vw, 3.4rem);
-    line-height: 1.02;
-    letter-spacing: -0.02em;
-    margin: 0 0 1.4rem;
-    color: var(--ycs-ink);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.3rem;
+    color: var(--hw-ink);
     text-wrap: balance;
   }
-  .ycs-h2-big { font-size: clamp(2.2rem, 5.6vw, 4.4rem); max-width: 16ch; }
-  .ycs-head { max-width: 780px; margin-bottom: 3rem; }
-  .ycs-deck, .ycs-copy { font-size: 1.14rem; line-height: 1.7; margin: 0 0 1.1rem; }
-  .ycs-deck { color: var(--ycs-ink); }
-  .ycs-copy { max-width: 66ch; }
-  .ycs-copy a, .ycs-deck a { color: var(--ycs-red); text-decoration: underline; text-underline-offset: 3px; }
-  .ycs-copy a:hover, .ycs-deck a:hover { text-decoration-thickness: 2px; }
+  .hw-h2-big { font-size: clamp(2.6rem, 6.4vw, 5rem); max-width: 15ch; }
+  .hw-head { max-width: 800px; margin-bottom: 3.2rem; }
+  .hw-deck, .hw-copy { font-size: 1.15rem; line-height: 1.7; margin: 0 0 1.1rem; }
+  .hw-copy { max-width: 66ch; }
+  .hw-copy a, .hw-deck a, .hw-tag-under a { color: var(--hw-candle); text-decoration: underline; text-underline-offset: 3px; }
+  .hw-tag-under a { color: var(--hw-tag-accent); }
+  .hw-copy a:hover, .hw-deck a:hover { text-decoration-thickness: 2px; }
 
   /* ---------- buttons ---------- */
-  .ycs-btn {
+  .hw-btn {
     display: inline-flex;
     align-items: center;
     font-family: var(--font-mono);
-    font-weight: 700;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 0.06em;
     padding: 0.95rem 1.4rem;
     text-decoration: none;
     border: 2px solid currentColor;
-    transition: transform 0.12s ease, background-color 0.12s ease;
+    border-radius: 2px;
+    transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
   }
-  .ycs-btn:hover { transform: translateY(-2px); }
-  .ycs-btn-red { background: #f0433e; color: #141414; border-color: #f0433e; }
-  .ycs-btn-red:hover { background: #ff6a66; border-color: #ff6a66; }
-  .ycs-btn-ghost { background: transparent; color: #f2efe8; border-color: #f2efe8; }
-  .ycs-btn-solid { background: var(--color-accent); color: var(--color-on-accent); border-color: var(--color-accent); margin-top: 2.5rem; }
-  .ycs-btn-solid:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
+  .hw-btn:hover { transform: translateY(-2px) rotate(-0.6deg); }
+  .hw-btn-candle { background: var(--color-accent); color: var(--color-on-accent); border-color: var(--color-accent); box-shadow: 0 0 0 0 rgba(255, 138, 31, 0); }
+  .hw-btn-candle:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); box-shadow: 0 0 28px rgba(255, 138, 31, 0.45); }
+  .hw-btn-ghost { background: transparent; color: var(--hw-ink); }
+  .hw-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
 
-  /* ---------- lower thirds ---------- */
-  .ycs-fig { margin: 0; position: relative; }
-  .ycs-fig img { width: 100%; height: auto; display: block; }
-  .ycs-lt {
-    position: absolute;
-    left: 0;
-    bottom: 1.4rem;
-    max-width: calc(100% - 2rem);
-    display: flex;
-    flex-direction: column;
-    background: var(--ycs-lt-bg);
-    color: var(--ycs-lt-ink);
-    border-left: 6px solid #f0433e;
-    padding: 0.55rem 1rem 0.6rem 0.9rem;
-    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.25);
-  }
-  .ycs-lt-name {
-    font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: 1.05rem;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-  }
-  .ycs-lt-role { font-family: var(--font-mono); font-size: 0.74rem; line-height: 1.4; margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  /* ---------- cobwebs ---------- */
+  .hw-web { position: absolute; width: 220px; height: 220px; color: var(--hw-web); pointer-events: none; }
+  .hw-web-tl { top: 0; left: 0; }
 
-  /* ---------- cold open: pinned black ---------- */
-  .ycs-open { background: #0b0b0c; color: #f2efe8; padding: 0 0 3.5rem; position: relative; }
-  .ycs-slate {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1.2rem 1.5rem 0;
+  /* ---------- hero: the porch ---------- */
+  .hw-hero { background: var(--hw-hero-bg); color: var(--hw-ink); padding: 1.4rem 0 5rem; position: relative; overflow: hidden; }
+  .hw-slate {
     display: flex;
-    gap: 1.5rem;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.6rem;
+    justify-content: flex-end;
     font-family: var(--font-mono);
-    font-size: 0.74rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: #a8a49b;
+    letter-spacing: 0.1em;
+    color: var(--hw-muted);
+    margin: 0;
   }
-  .ycs-slate-r { margin-left: auto; text-align: right; }
-  .ycs-rec { display: inline-flex; align-items: center; gap: 0.4rem; color: #f0433e; font-weight: 700; }
-  .ycs-rec-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #f0433e; display: inline-block; }
-  .ycs-open-grid {
+  .hw-slate span + span::before { content: '|'; margin-right: 1.6rem; opacity: 0.6; }
+  .hw-hero-grid {
     display: grid;
     grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
     gap: 3rem;
     align-items: center;
-    padding-top: 3.5rem;
-    padding-bottom: 3.5rem;
+    padding-top: 2.5rem;
   }
-  .ycs-kicker {
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #a8a49b;
-    margin: 0 0 1.6rem;
-    max-width: 48ch;
-    line-height: 1.5;
-  }
-  .ycs-title {
+  .hw-kicker { font-family: var(--font-mono); font-size: 0.86rem; line-height: 1.6; color: var(--hw-muted); margin: 0 0 1.4rem; max-width: 46ch; }
+  .hw-title {
     font-family: var(--font-heading);
-    font-weight: 800;
-    font-size: clamp(3rem, 7.2vw, 6rem);
-    line-height: 0.92;
-    letter-spacing: -0.035em;
-    margin: 0 0 0.9rem;
-    color: #f2efe8;
+    font-weight: 900;
+    font-size: clamp(3.4rem, 8.4vw, 7.2rem);
+    line-height: 0.88;
+    letter-spacing: -0.01em;
+    margin: 0 0 1.2rem;
+    color: var(--hw-ink);
     text-wrap: balance;
+    text-shadow: 0 0 40px rgba(255, 138, 31, 0.25);
   }
-  .ycs-title-sub {
-    font-family: var(--font-mono);
-    font-size: 1.05rem;
-    color: #4be3a6;
-    margin: 0 0 1.6rem;
-  }
-  .ycs-lede { font-size: 1.14rem; line-height: 1.7; color: #e3dfd6; margin: 0 0 2rem; max-width: 60ch; }
-  .ycs-type {
-    font-family: var(--font-mono);
-    font-size: 0.86rem;
-    line-height: 1.6;
-    background: #000;
-    border: 1px solid #2b2b2e;
-    padding: 0.9rem 1.1rem;
-    color: #4be3a6;
-    display: grid;
-    gap: 0.1rem;
-    position: relative;
-    min-height: 4.4rem;
-    overflow-wrap: anywhere;
-  }
-  .ycs-type-cmd { color: #f2efe8; display: block; }
-  .ycs-type-out { color: #4be3a6; display: block; }
-  .ycs-type-cursor {
+  [data-theme="light"] .hw-title { text-shadow: none; }
+  .hw-sub { font-family: var(--font-mono); font-size: 1.05rem; line-height: 1.55; color: var(--hw-candle); margin: 0 0 1.4rem; max-width: 44ch; }
+  .hw-lede { font-size: 1.14rem; line-height: 1.72; margin: 0 0 2rem; max-width: 58ch; }
+
+  .hw-window { margin: 0; position: relative; }
+  .hw-window-glow {
     position: absolute;
-    right: 0.9rem;
-    bottom: 0.9rem;
-    width: 0.55rem;
-    height: 1rem;
-    background: #4be3a6;
-    animation: ycs-blink 1s steps(2, start) infinite;
+    inset: -8% -6% -4% -6%;
+    background: radial-gradient(ellipse at 50% 55%, rgba(255, 138, 31, 0.55) 0%, rgba(255, 138, 31, 0) 65%);
+    filter: blur(20px);
+    animation: hw-flicker 3.2s infinite;
+    pointer-events: none;
   }
-  .ycs-type.done .ycs-type-cursor { animation: none; opacity: 0.6; }
-  @keyframes ycs-blink { to { visibility: hidden; } }
-  .ycs-type-cap { font-family: var(--font-mono); font-size: 0.76rem; color: #a8a49b; margin: 0.7rem 0 2rem; text-transform: uppercase; letter-spacing: 0.04em; }
-  .ycs-open-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
-  .ycs-open-fig { margin: 0; position: relative; }
-  .ycs-open-fig img { width: 100%; height: auto; display: block; border: 1px solid #2b2b2e; }
-  .ycs-open-fig .ycs-lt { background: #f2efe8; color: #141414; }
-
-  .ycs-firstnum {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    margin: 0;
-    border-top: 1px solid #2b2b2e;
-    border-bottom: 1px solid #2b2b2e;
+  [data-theme="light"] .hw-window-glow { background: radial-gradient(ellipse at 50% 55%, rgba(176, 69, 0, 0.3) 0%, rgba(176, 69, 0, 0) 65%); }
+  @keyframes hw-flicker {
+    0%, 100% { opacity: 0.85; }
+    8% { opacity: 0.7; }
+    12% { opacity: 0.95; }
+    30% { opacity: 0.78; }
+    46% { opacity: 1; }
+    52% { opacity: 0.72; }
+    70% { opacity: 0.9; }
+    84% { opacity: 0.76; }
   }
-  .ycs-firstnum > div { padding: 1.6rem 1.4rem; border-right: 1px solid #2b2b2e; display: flex; flex-direction: column-reverse; gap: 0.4rem; }
-  .ycs-firstnum > div:last-child { border-right: 0; }
-  .ycs-firstnum dd { margin: 0; font-family: var(--font-heading); font-weight: 800; font-size: clamp(2.6rem, 5vw, 4.2rem); line-height: 0.95; letter-spacing: -0.03em; color: #f2efe8; }
-  .ycs-firstnum dd sup { font-size: 0.4em; vertical-align: super; letter-spacing: 0; }
-  .ycs-firstnum dt { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; color: #a8a49b; }
+  .hw-window-frame {
+    position: relative;
+    border-radius: 48% 48% 6px 6px / 22% 22% 6px 6px;
+    overflow: hidden;
+    border: 10px solid #2a1533;
+    box-shadow: 0 0 0 2px #ff8a1f55, 0 30px 60px rgba(0, 0, 0, 0.55);
+  }
+  [data-theme="light"] .hw-window-frame { border-color: #5e2a78; box-shadow: 0 0 0 2px #b0450055, 0 24px 50px rgba(94, 42, 120, 0.25); }
+  .hw-window-frame img { display: block; width: 100%; height: auto; }
 
-  /* ---------- stats strip ---------- */
-  .ycs-stats {
+  /* ---------- costume-shop tags (shared) ---------- */
+  .hw-tag {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--hw-tag-bg);
+    color: var(--hw-tag-ink);
+    padding: 1.3rem 1.3rem 1.2rem 2.4rem;
+    clip-path: polygon(1.4rem 0, 100% 0, 100% 100%, 1.4rem 100%, 0 calc(100% - 1.4rem), 0 1.4rem);
+    background-image:
+      radial-gradient(rgba(28, 16, 24, 0.05) 1px, transparent 1px);
+    background-size: 5px 5px;
+    font-size: 1rem;
+  }
+  .hw-tag-hole {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-top: -0.4rem;
+    border-radius: 50%;
+    background: var(--hw-bg);
+    box-shadow: inset 0 0 0 2px rgba(28, 16, 24, 0.35);
+  }
+  .hw-tag-no { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--hw-tag-muted); margin-bottom: 0.7rem; }
+  .hw-tag-label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--hw-tag-accent); }
+  .hw-tag-label-under { margin-top: 0.8rem; color: #3f5800; }
+  .hw-tag-claim { font-family: var(--font-heading); font-weight: 800; font-size: 1.5rem; line-height: 1.08; margin: 0.15rem 0 0; }
+  .hw-tag-under { font-size: 1.02rem; line-height: 1.55; margin: 0.2rem 0 0; }
+  .hw-tag-ask { font-family: var(--font-mono); font-size: 0.86rem; line-height: 1.5; margin: 1rem 0 0; padding-top: 0.8rem; border-top: 1px dashed rgba(28, 16, 24, 0.3); }
+  .hw-tag-ask span { color: var(--hw-tag-accent); text-transform: uppercase; letter-spacing: 0.08em; }
+  .hw-tag-hero {
+    position: relative;
+    margin: -3.2rem 0 0 auto;
+    width: min(440px, 92%);
+    transform: rotate(-2deg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+  }
+  .hw-tag-hero .hw-tag-claim { font-size: 1.35rem; }
+
+  /* ---------- stats + wax drip ---------- */
+  .hw-stats-wrap { position: relative; background: var(--hw-bg); }
+  .hw-stats {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    background: var(--ycs-tag-bg);
-    color: var(--ycs-tag-ink);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
   }
-  .ycs-stats li { display: flex; flex-direction: column; align-items: center; padding: 1.3rem 0.8rem; text-align: center; border-right: 1px solid rgba(0, 0, 0, 0.18); }
-  .ycs-stats li:last-child { border-right: 0; }
-  .ycs-stat-v { font-family: var(--font-heading); font-weight: 800; font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1; letter-spacing: -0.02em; }
-  .ycs-stat-k { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.45rem; }
+  .hw-stats li { display: flex; flex-direction: column; align-items: center; padding: 1.4rem 0.8rem 0.9rem; text-align: center; }
+  .hw-stat-v { font-family: var(--font-heading); font-weight: 900; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; }
+  .hw-stat-k { font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.45rem; }
+  .hw-drip { display: block; width: 100%; height: 34px; fill: var(--color-accent); }
 
-  /* ---------- chapter 1 ---------- */
-  .ycs-ch1 { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3.5rem; align-items: start; }
-  .ycs-fig-portrait img { border: 1px solid var(--ycs-line); }
-  .ycs-dossier { margin: 2rem 0 0; display: grid; gap: 0; border-top: 1px solid var(--ycs-line); }
-  .ycs-dossier div { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; border-bottom: 1px solid var(--ycs-line); padding: 0.8rem 0; }
-  .ycs-dossier dt { font-family: var(--font-mono); font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ycs-muted); padding-top: 0.25rem; }
-  .ycs-dossier dd { margin: 0; line-height: 1.55; font-size: 1.04rem; }
-
-  /* ---------- chapter 2 ---------- */
-  .ycs-ledger { margin: 0 0 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; border-top: 1px solid var(--ycs-line); border-left: 1px solid var(--ycs-line); }
-  .ycs-ledger-row { display: flex; flex-direction: column; padding: 1.4rem 1.3rem 1.3rem; border-right: 1px solid var(--ycs-line); border-bottom: 1px solid var(--ycs-line); background: var(--ycs-surface); }
-  .ycs-ledger-v { margin: 0; font-family: var(--font-heading); font-weight: 800; font-size: clamp(2.4rem, 4.4vw, 3.6rem); line-height: 0.95; letter-spacing: -0.03em; color: var(--ycs-ink); font-variant-numeric: tabular-nums; }
-  .ycs-ledger-k { margin: 0.6rem 0 0; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ycs-ink); line-height: 1.45; }
-  .ycs-ledger-note { display: block; color: var(--ycs-muted); text-transform: none; letter-spacing: 0; font-family: var(--font-body); font-size: 0.95rem; margin-top: 0.25rem; }
-  .ycs-box-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 2rem; align-items: start; }
-  .ycs-broll { margin: 0; }
-  .ycs-pre {
+  /* ---------- the costume parade ---------- */
+  .hw-parade {
+    background:
+      radial-gradient(ellipse 60% 40% at 10% 0%, rgba(94, 42, 120, 0.25), transparent 70%),
+      radial-gradient(ellipse 50% 40% at 100% 60%, rgba(255, 138, 31, 0.08), transparent 70%),
+      var(--hw-bg);
+  }
+  .hw-gallery {
+    list-style: none;
     margin: 0;
-    background: #000;
-    color: #4be3a6;
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    line-height: 1.6;
-    padding: 1.1rem 1.2rem;
-    overflow-x: auto;
-    white-space: pre-wrap;
-    overflow-wrap: anywhere;
-    border: 1px solid #2b2b2e;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 3.2rem 2rem;
+    align-items: start;
   }
-  .ycs-pre code { font-family: inherit; }
-  .ycs-broll-cap { font-family: var(--font-mono); font-size: 0.8rem; color: var(--ycs-muted); margin-top: 0.9rem; line-height: 1.55; }
-
-  /* ---------- chapter 3: the witness, pinned black ---------- */
-  .ycs-witness { background: #0b0b0c; color: #f2efe8; padding: 5.5rem 0; }
-  .ycs-witness-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3rem; align-items: start; }
-  .ycs-eyebrow-pinned { color: #a8a49b; }
-  .ycs-h2-pinned { color: #f2efe8; }
-  .ycs-copy-pinned { color: #e3dfd6; }
-  .ycs-fig-pinned { margin-top: 1.5rem; }
-  .ycs-fig-pinned img { border: 1px solid #2b2b2e; }
-  .ycs-fig-pinned .ycs-lt { background: #f2efe8; color: #141414; }
-  .ycs-terminal {
-    background: #000;
-    border: 1px solid #2b2b2e;
-    box-shadow: inset 0 0 0 1px #000, 0 0 0 1px #1a1a1b;
-    padding: 2rem 2.2rem;
-    font-family: var(--font-mono);
-    font-size: 0.98rem;
-    line-height: 1.7;
-    color: #4be3a6;
+  .hw-costume { position: relative; display: flex; flex-direction: column; }
+  .hw-costume-tall { grid-column: span 4; }
+  .hw-costume-wide { grid-column: span 8; }
+  .hw-costume-fig { margin: 0; position: relative; }
+  .hw-costume-fig img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 8px solid var(--hw-surface);
+    outline: 1px solid var(--hw-line);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
   }
-  .ycs-terminal p { margin: 0 0 1.2rem; }
-  .ycs-term-head { font-weight: 700; letter-spacing: 0.1em; color: #f2efe8; margin-bottom: 0.3rem !important; }
-  .ycs-term-meta { color: #a8a49b; font-size: 0.86rem; margin-bottom: 1.6rem !important; }
-  .ycs-term-end { font-weight: 700; letter-spacing: 0.1em; color: #f2efe8; margin: 1.6rem 0 0 !important; }
-  .ycs-orders { list-style: none; margin: 0 0 1.4rem; padding: 0 0 0 1.2rem; border-left: 2px solid #2b2b2e; }
-  .ycs-orders li { margin: 0 0 0.5rem; color: #f2efe8; }
-  .ycs-redact { background: #f2efe8; color: transparent; user-select: none; padding: 0 0.1rem; }
+  [data-theme="light"] .hw-costume-fig img { box-shadow: 0 14px 30px rgba(94, 42, 120, 0.18); }
+  .hw-costume .hw-tag { margin: -2.4rem 0.6rem 0 1.4rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35); z-index: 1; }
+  .hw-costume-wide .hw-tag { margin: -3rem 0 0 auto; width: min(520px, 88%); }
+  .hw-tilt-0 .hw-tag { transform: rotate(-1.6deg); }
+  .hw-tilt-1 .hw-tag { transform: rotate(1.2deg); }
+  .hw-tilt-2 .hw-tag { transform: rotate(-0.8deg); }
+  .hw-tilt-3 .hw-tag { transform: rotate(1.8deg); }
+  .hw-tilt-1 .hw-costume-fig { margin-top: 3rem; }
+  .hw-tilt-3 .hw-costume-fig { margin-top: 1.5rem; }
+  .hw-costume:hover .hw-tag { transform: rotate(0deg) translateY(-3px); transition: transform 0.2s ease; }
 
-  /* ---------- chapter 4 ---------- */
-  .ycs-disc-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: 2.5rem; align-items: start; }
-  .ycs-exhibits { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ycs-line); }
-  .ycs-exhibit { padding: 1.6rem 0; border-bottom: 1px solid var(--ycs-line); }
-  .ycs-exhibit-top { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; margin-bottom: 0.7rem; font-family: var(--font-mono); font-size: 0.8rem; }
-  .ycs-exhibit-date { color: var(--ycs-ink); text-transform: uppercase; letter-spacing: 0.05em; }
-  .ycs-exhibit-ref { color: var(--ycs-green); }
-  .ycs-exhibit-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.45rem; line-height: 1.12; letter-spacing: -0.01em; margin: 0 0 0.5rem; }
-  .ycs-exhibit-body { margin: 0; line-height: 1.65; font-size: 1.04rem; max-width: 62ch; }
-  .ycs-fig-turtleneck { position: sticky; top: 6rem; }
-  .ycs-balance { margin: 2.5rem 0 0; max-width: 820px; font-size: 1.1rem; line-height: 1.7; padding: 1.3rem 1.5rem; background: var(--ycs-surface); border-left: 6px solid var(--ycs-red); }
+  /* ---------- the flashlight: pinned dark ---------- */
+  .hw-flash {
+    --hw-mx: 30%;
+    --hw-my: 30%;
+    position: relative;
+    background: #060405;
+    color: #f4eadb;
+    padding: 6rem 0;
+    overflow: hidden;
+  }
+  .hw-flash-beam {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle 420px at var(--hw-mx) var(--hw-my), rgba(255, 214, 150, 0.13), rgba(255, 214, 150, 0) 70%);
+    pointer-events: none;
+  }
+  .hw-flash-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 3.5rem; align-items: start; }
+  .hw-eyebrow-pinned { color: #ff8a1f; }
+  .hw-h2-pinned { color: #f4eadb; }
+  .hw-copy-pinned { font-size: 1.12rem; line-height: 1.7; color: #e6dccd; margin: 0 0 1.6rem; max-width: 60ch; }
+  .hw-unmask { margin: 0; }
+  .hw-unmask img { display: block; width: 100%; height: auto; border: 1px solid #34263a; }
+  .hw-unmask figcaption { font-family: var(--font-mono); font-size: 0.82rem; color: #bbae9f; margin-top: 0.7rem; }
+  .hw-questions { list-style: none; margin: 0; padding: 0; border-top: 1px solid #34263a; }
+  .hw-questions li { display: grid; grid-template-columns: 3.4rem 1fr; gap: 1rem; padding: 1.05rem 0; border-bottom: 1px solid #34263a; align-items: baseline; }
+  .hw-q-no { font-family: var(--font-heading); font-weight: 900; font-size: 2.4rem; line-height: 1; color: #ff8a1f; text-align: right; }
+  .hw-q { font-size: 1.16rem; line-height: 1.45; margin: 0; color: #f4eadb; font-weight: 600; }
+  .hw-q-src { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; color: #b8d63a; margin: 0.3rem 0 0; }
+  .hw-flash-note { grid-column: 2; margin: 0; font-size: 1.08rem; line-height: 1.7; color: #e6dccd; padding: 1.2rem 1.4rem; border-left: 4px solid #b8d63a; background: rgba(184, 214, 58, 0.06); }
+  .hw-flash .hw-btn-ghost { color: #f4eadb; }
 
-  /* ---------- exhibits a to f ---------- */
-  .ycs-projects { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .ycs-project { background: var(--ycs-surface); border: 1px solid var(--ycs-line); padding: 1.4rem; display: flex; flex-direction: column; }
-  .ycs-project-top { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; margin-bottom: 0.9rem; }
-  .ycs-project-status { font-family: var(--font-mono); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ycs-muted); text-align: right; }
-  .ycs-project-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; line-height: 1.12; letter-spacing: -0.01em; margin: 0 0 0.6rem; }
-  .ycs-project-note { margin: 0 0 1.2rem; line-height: 1.6; font-size: 1rem; flex: 1; }
-  .ycs-project-link { font-family: var(--font-mono); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ycs-red); text-decoration: underline; text-underline-offset: 4px; }
-  .ycs-project-link-off { color: var(--ycs-muted); text-decoration: none; }
+  /* ---------- not in costume ---------- */
+  .hw-projects { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+  .hw-project { background: var(--hw-surface); border: 1px solid var(--hw-line); padding: 1.5rem; display: flex; flex-direction: column; position: relative; }
+  .hw-project:nth-child(odd) { transform: rotate(-0.4deg); }
+  .hw-project:nth-child(even) { transform: rotate(0.4deg); }
+  .hw-project-top { display: flex; justify-content: space-between; align-items: center; gap: 0.6rem; margin-bottom: 0.9rem; font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .hw-project-no { color: var(--hw-candle); }
+  .hw-project-status { color: var(--hw-muted); text-align: right; }
+  .hw-project-name { font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; line-height: 1.05; margin: 0 0 0.7rem; }
+  .hw-project-note { margin: 0 0 1rem; line-height: 1.6; font-size: 1rem; flex: 1; }
+  .hw-project-under { font-family: var(--font-mono); font-size: 0.84rem; margin: 0 0 1.1rem; color: var(--hw-ink); }
+  .hw-project-under span { color: var(--hw-green); text-transform: uppercase; letter-spacing: 0.08em; }
+  .hw-project-link { font-family: var(--font-mono); font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--hw-candle); text-decoration: underline; text-underline-offset: 4px; }
+  .hw-project-link-off { color: var(--hw-muted); text-decoration: none; }
 
-  /* ---------- chapter 5 ---------- */
-  .ycs-question { padding: 6.5rem 0; }
-  .ycs-question-inner { max-width: 880px; }
-  .ycs-question .ycs-copy { max-width: none; }
+  /* ---------- tonight's question ---------- */
+  .hw-question { padding: 6.5rem 0; background: var(--hw-bg); }
+  .hw-question-inner { max-width: 900px; }
 
-  /* ---------- credits: pinned black ---------- */
-  .ycs-credits { background: #0b0b0c; color: #f2efe8; padding: 5.5rem 0 4rem; border-top: 1px solid #2b2b2e; }
-  .ycs-credits-inner { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 3rem; align-items: start; }
-  .ycs-cta-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.6rem; }
-  .ycs-roll { margin: 0; border-top: 1px solid #2b2b2e; font-family: var(--font-mono); }
-  .ycs-roll div { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid #2b2b2e; font-size: 0.82rem; }
-  .ycs-roll dt { text-transform: uppercase; letter-spacing: 0.06em; color: #a8a49b; }
-  .ycs-roll dd { margin: 0; color: #f2efe8; }
-  .ycs-disclaimer { grid-column: 1 / -1; margin: 2rem 0 0; max-width: 820px; font-size: 0.86rem; line-height: 1.6; color: #a8a49b; font-family: var(--font-mono); }
+  /* ---------- the front door: pinned dark ---------- */
+  .hw-door { background: #0b0709; color: #f4eadb; padding: 5.5rem 0 4rem; border-top: 1px solid #34263a; }
+  .hw-door-inner { display: grid; gap: 2.5rem; justify-items: center; }
+  .hw-door-frame {
+    position: relative;
+    max-width: 820px;
+    width: 100%;
+    padding: 3.4rem 2.6rem 2.8rem;
+    background: linear-gradient(180deg, #2a1533 0%, #16101a 100%);
+    border: 12px solid #3a2017;
+    border-radius: 40% 40% 4px 4px / 10% 10% 4px 4px;
+    box-shadow: 0 0 0 2px #ff8a1f33, 0 0 80px rgba(255, 138, 31, 0.15);
+    text-align: left;
+  }
+  .hw-door-light {
+    position: absolute;
+    top: -2.2rem;
+    left: 50%;
+    width: 1.6rem;
+    height: 1.6rem;
+    margin-left: -0.8rem;
+    border-radius: 50%;
+    background: #ffcf7a;
+    box-shadow: 0 0 30px 12px rgba(255, 170, 70, 0.55);
+    animation: hw-flicker 2.6s infinite;
+  }
+  .hw-door .hw-ctas { margin-top: 1.6rem; }
+  .hw-door .hw-btn-ghost { color: #f4eadb; }
+  .hw-disclaimer { max-width: 820px; margin: 0; font-family: var(--font-mono); font-size: 0.84rem; line-height: 1.6; color: #bbae9f; }
 
   /* ---------- responsive ---------- */
   @media (max-width: 1024px) {
-    .ycs-open-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-    .ycs-box-grid, .ycs-witness-grid, .ycs-disc-grid, .ycs-credits-inner, .ycs-ch1 { grid-template-columns: 1fr; }
-    .ycs-fig-turtleneck { position: relative; top: auto; max-width: 460px; }
-    .ycs-projects { grid-template-columns: 1fr 1fr; }
+    .hw-hero-grid, .hw-flash-grid { grid-template-columns: 1fr; }
+    .hw-flash-note { grid-column: 1; }
+    .hw-costume-tall { grid-column: span 6; }
+    .hw-costume-wide { grid-column: span 12; }
+    .hw-projects { grid-template-columns: 1fr 1fr; }
+    .hw-tag-hero { margin-top: -2.4rem; }
   }
   @media (max-width: 640px) {
-    .ycs-section { padding: 4rem 0; }
-    .ycs-slate { flex-wrap: wrap; gap: 0.6rem 1.2rem; }
-    .ycs-slate-r { margin-left: 0; text-align: left; width: 100%; }
-    .ycs-firstnum { grid-template-columns: 1fr; }
-    .ycs-firstnum > div { border-right: 0; border-bottom: 1px solid #2b2b2e; }
-    .ycs-firstnum > div:last-child { border-bottom: 0; }
-    .ycs-stats { grid-template-columns: 1fr 1fr; }
-    .ycs-stats li:nth-child(2) { border-right: 0; }
-    .ycs-stats li:nth-child(-n + 2) { border-bottom: 1px solid rgba(0, 0, 0, 0.18); }
-    .ycs-projects { grid-template-columns: 1fr; }
-    .ycs-dossier div, .ycs-roll div { grid-template-columns: 1fr; gap: 0.2rem; }
-    .ycs-terminal { padding: 1.4rem 1.2rem; font-size: 0.9rem; }
-    .ycs-lt { bottom: 0.9rem; }
-    .ycs-lt-name { font-size: 0.92rem; }
-    .ycs-lt-role { font-size: 0.66rem; }
+    .hw-section { padding: 4rem 0; }
+    .hw-slate { justify-content: flex-start; }
+    .hw-slate span + span::before { margin-right: 0.8rem; }
+    .hw-slate { gap: 0.3rem 0.8rem; }
+    .hw-costume-tall, .hw-costume-wide { grid-column: span 12; }
+    .hw-tilt-1 .hw-costume-fig, .hw-tilt-3 .hw-costume-fig { margin-top: 0; }
+    .hw-costume .hw-tag, .hw-costume-wide .hw-tag { margin: -1.6rem 0.3rem 0 0.6rem; width: auto; }
+    .hw-stats { grid-template-columns: 1fr 1fr; }
+    .hw-projects { grid-template-columns: 1fr; }
+    .hw-project:nth-child(n) { transform: none; }
+    .hw-questions li { grid-template-columns: 2.4rem 1fr; }
+    .hw-q-no { font-size: 1.9rem; }
+    .hw-door-frame { padding: 2.8rem 1.4rem 2rem; border-width: 8px; }
+    .hw-web { width: 140px; height: 140px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .ycs-type-cursor { animation: none; }
-    .ycs-btn { transition: none; }
+    .hw-window-glow, .hw-door-light { animation: none; }
+    .hw-btn, .hw-costume:hover .hw-tag { transition: none; }
   }
 </style>

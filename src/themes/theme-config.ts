@@ -81,50 +81,49 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "You Can See Everything",
-  week: "2026-10-24",
-  inspiration: "You Can See Everything, the A24 documentary about Elizabeth Holmes directed by Nathan Fielder and Lance Oppenheim, has been in theaters since October 16, 2026 (it opened second, behind Street Fighter, so last week's theme beat this week's theme at the box office). Theranos was a box nobody was allowed to open, and when a court finally did, almost nothing in it worked. The AI problem is the inverse: the box is wide open, you can read every line, it works, and nobody can say why it made the choices it made, because a person didn't write it. So this week the site is a documentary about itself. Every Saturday at 5 AM an AI agent rewrites roske.ai, generates the images, runs the tests, and pushes it live before Edward is awake, and the source is public on GitHub, so anyone can literally see everything. Structure: a cold open with the first real number, then five chapters (the subject, the box, the witness, the discrepancies, the question), with real figures computed from the public git history and real failures quoted from the commit log. Edward is the subject of an exposé about his own website, and the most damning finding is that he hands it to a machine every week and it mostly works. Design language is documentary and exposé: title cards on black, lower-third captions, chapter numbers, redaction bars, evidence tags, and code set in a monospace as B-roll. Palette: documentary black, newsprint white, one evidence-tag red, and a cold terminal green for anything the machine says. Light mode is the newsroom with the lights on; dark mode is the edit bay at 3 AM. Bricolage Grotesque for title cards, Newsreader for body (it reads like newsprint), Courier Prime for transcripts, timecodes, and the machine's statement. Animation is off except for one git log line typing out in the cold open. Not affiliated with A24 or the filmmakers. No images of any real person other than Edward.",
-  tagline: "You can see everything. Explaining it is the hard part.",
+  name: "What's Under the Mask?",
+  week: "2026-10-31",
+  inspiration: "Halloween falls on a Saturday in 2026, so the weekly rebuild lands on the night itself, and it is Edward's favorite holiday by a wide margin. The argument: Halloween is the one night everyone agrees to be something they aren't and announces it at the door. A lot of enterprise AI does the first part all year and skips the announcing (software wearing an 'AI-powered' label that is a lookup table, agents that are a chatbot on a cron job, demos in costume). So every costume Edward wears is a vendor claim, captioned with what it says it is and what was actually under it, and the page's spine is how a buyer checks: 10 questions to ask at the door before signing. Costumes: a cardboard-box robot (fully autonomous agent), fortune teller (predictive AI), mummy (AI-native platform), patchwork monster (one unified platform), stage magician (the live demo), vampire (pricing that grows with you), zombie (self-learning model), ventriloquist (our proprietary model), sorcerer at a cauldron (the secret sauce), scarecrow (human in the loop), plus one unmasking. Design: deep blacks, candlelight orange, bruised purple, one sickly green; fog, cobweb, candle wax, aged costume-shop tags. Dark mode is the haunted house; light mode is the trick-or-treat porch at dusk. Grenze Gotisch for display, Spectral for reading, Special Elite for the typed costume-shop tags. Animation on (Halloween is a carve-out): low fog drifting along the bottom of the screen, plus a candle flicker behind the hero window. No vendors are named.",
+  tagline: "Everyone's in costume tonight. Some AI is in costume all year.",
 
   colors: {
-    // Measured, not eyeballed. Newsprint white on documentary black is
-    // 18:1; muted text clears 7:1 on both surfaces. Evidence-tag red is
-    // text-safe on black (5.2:1) only in the brighter #F0433E, which then
-    // needs near-black type on buttons (5.0:1). Light mode swaps to a
-    // darker red (#B8211C, 5.8:1 on newsprint, white type 6.4:1).
-    primary: "#141414",            // ink (nav wordmark in light mode)
-    secondary: "#4BE3A6",          // cold terminal green: the machine's color
-    accent: "#F0433E",             // evidence-tag red
-    accentHover: "#FF6A66",
-    accentLight: "#B8211C",
-    accentHoverLight: "#8F1813",
-    onAccent: "#141414",
+    // Measured, not eyeballed. Bone on haunted black is 16.8:1; muted
+    // clears 8.6:1 on the dark surface. Candle orange is 8.5:1 on black
+    // and carries near-black type on buttons (8.3:1). Light mode swaps to
+    // a burnt pumpkin (#B04500, 5.2:1 on the cream, white type 5.7:1).
+    primary: "#1C1018",            // ink (nav wordmark in light mode)
+    secondary: "#B8D63A",          // the one sickly green
+    accent: "#FF8A1F",             // candlelight orange
+    accentHover: "#FFA54F",
+    accentLight: "#B04500",        // burnt pumpkin
+    accentHoverLight: "#8A3500",
+    onAccent: "#140A06",
     onAccentLight: "#FFFFFF",
-    background: "#0B0B0C",         // documentary black (neutral, no blue in it)
-    backgroundLight: "#F4F2EC",    // newsprint
-    surface: "#151516",
+    background: "#0B0709",         // haunted-house black, warm
+    backgroundLight: "#FFF3E2",    // candy-corn cream
+    surface: "#16101A",            // a little bruised purple in the black
     surfaceLight: "#FFFFFF",
-    text: "#F2EFE8",               // newsprint white
-    textMuted: "#A8A49B",
-    textDark: "#141414",
-    textDarkMuted: "#5A5852",
-    border: "#2B2B2E",
-    borderLight: "#D9D5CB",
-    gradient: "linear-gradient(90deg, #F0433E 0%, #B8211C 100%)",
+    text: "#F4EADB",               // bone
+    textMuted: "#BBAE9F",
+    textDark: "#1C1018",
+    textDarkMuted: "#5D4652",
+    border: "#34263A",
+    borderLight: "#E7D2BC",
+    gradient: "linear-gradient(90deg, #FF8A1F 0%, #B04500 100%)",
   },
 
   fonts: {
-    // Bricolage Grotesque: a title card with opinions (optical sizes, tight at display weight).
-    // Newsreader: designed for reading news on a screen, so it reads like newsprint without pretending to be a broadsheet.
-    // Courier Prime: the screenplay and transcript face. Everything the machine says, every timecode, every git line.
-    heading: "'Bricolage Grotesque', 'Helvetica Neue', Arial, sans-serif",
-    body: "'Newsreader', Georgia, 'Times New Roman', serif",
-    mono: "'Courier Prime', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap",
+    // Grenze Gotisch: blackletter you can actually read, with a 900 weight heavy enough for a haunted-house sign.
+    // Spectral: a screen serif for the long paragraphs, so the spooky stops at the headlines.
+    // Special Elite: a worn typewriter, for costume-shop tags, claims, and everything typed on a label.
+    heading: "'Grenze Gotisch', 'Times New Roman', serif",
+    body: "'Spectral', Georgia, 'Times New Roman', serif",
+    mono: "'Special Elite', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400..900&family=Special+Elite&family=Spectral:ital,wght@0,400;0,600;0,700;1,400&display=swap",
   },
 
   layout: {
-    heroStyle: "editorial",
+    heroStyle: "asymmetric",
     navStyle: "sticky",
     cardStyle: "outlined",
     sectionStyle: "magazine",
@@ -133,19 +132,19 @@ export const currentTheme: ThemeConfig = {
 
   animations: {
     entrance: "fade-in",
-    hover: "underline",
-    background: "none",
+    hover: "tilt",
+    background: "noise",
     pageTransition: "fade",
   },
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "A documentary about this website, in 5 chapters, by the person it's about.",
-    description: "Every Saturday at 5 AM an AI agent rewrites this site, draws the pictures, runs the tests, and pushes it live before I'm awake. The code is public. You can read every line. This week's site is about why that helps less than you'd think.",
-    heroImage: "hero-2026-10-24.jpg",
-    imageAlt: "Edward in a navy blazer, glasses, and his blue fedora, sitting in a documentary interview chair in a sunlit beach-house living room between two cinema cameras and a boom microphone, looking off camera with a stunned expression while a fan-fold printout of source code spills off the coffee table, across the floor, and out the patio door.",
-    ctaText: "Ask me in person",
-    ctaLink: "/speaking/",
+    subtitle: "Tonight everybody's in costume and tells you so at the door. A lot of AI skips that last part, all year long.",
+    description: "Halloween is on a Saturday, so I dressed up as 10 AI vendor claims, wrote down what each one says it is, and lifted the mask on every one. Then I wrote down the 10 questions that do the lifting for you.",
+    heroImage: "hero-2026-10-31.jpg",
+    imageAlt: "Edward on a front porch at night in a homemade robot costume built from silver-painted cardboard boxes, with dryer-duct arms, silver oven-mitt hands, and a chest panel of blinking Christmas lights and bottle-cap dials. His face shows through a cutout in the box head, glasses on, deadpan, and his blue fedora sits on top of the robot head. Carved jack-o'-lanterns and candles line the porch steps, cobwebs hang from the porch light, and a bowl of candy sits at his feet.",
+    ctaText: "See all 10 costumes",
+    ctaLink: "#costumes",
   },
 };
 
