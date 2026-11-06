@@ -81,70 +81,70 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "What's Under the Mask?",
-  week: "2026-10-31",
-  inspiration: "Halloween falls on a Saturday in 2026, so the weekly rebuild lands on the night itself, and it is Edward's favorite holiday by a wide margin. The argument: Halloween is the one night everyone agrees to be something they aren't and announces it at the door. A lot of enterprise AI does the first part all year and skips the announcing (software wearing an 'AI-powered' label that is a lookup table, agents that are a chatbot on a cron job, demos in costume). So every costume Edward wears is a vendor claim, captioned with what it says it is and what was actually under it, and the page's spine is how a buyer checks: 10 questions to ask at the door before signing. Costumes: a cardboard-box robot (fully autonomous agent), fortune teller (predictive AI), mummy (AI-native platform), patchwork monster (one unified platform), stage magician (the live demo), vampire (pricing that grows with you), zombie (self-learning model), ventriloquist (our proprietary model), sorcerer at a cauldron (the secret sauce), scarecrow (human in the loop), plus one unmasking. Design: deep blacks, candlelight orange, bruised purple, one sickly green; fog, cobweb, candle wax, aged costume-shop tags. Dark mode is the haunted house; light mode is the trick-or-treat porch at dusk. Grenze Gotisch for display, Spectral for reading, Special Elite for the typed costume-shop tags. Animation on (Halloween is a carve-out): low fog drifting along the bottom of the screen, plus a candle flicker behind the hero window. No vendors are named.",
-  tagline: "Everyone's in costume tonight. Some AI is in costume all year.",
+  name: "T-Minus Zero",
+  week: "2026-11-07",
+  inspiration: "Godzilla Minus Zero opened in North America on Friday, November 6, 2026, with a record $6.7M in Thursday previews. The argument: every giant-monster movie has a committee meeting in it, held while the monster is already in the harbor, and the people who save the city are never the committee, they're ordinary people with relevant skills and a plan. That's AI at most companies right now: the countdown everyone is still planning around ran out around November 30, 2022, and the thing they're forming a task force to study is already in their employees' browsers (75% of knowledge workers used AI at work by 2024, and 78% of them brought their own tools). Edward spends the week trying 5 ways companies deal with AI (form a task force, ban it, wait for version 2, commission a study, issue a statement), each one documented as a failed field report, then pivots to the civilian plan: the 6 things the companies that came through every landfall of his career (client-server, the web, the cloud, now this) actually did, plus a readiness check that gives you a verdict. The monster is an original creature, never the film's. Design: dark mode is the night harbor during an emergency broadcast (teal-black, searchlights, rain, signal red); light mode is the printed civil-defense pamphlet (paper, halftone, red bands). Dela Gothic One for display, Zen Kaku Gothic New for reading, DotGothic16 for the broadcast ticker. Animation off; one tremor on the hero photo at load.",
+  tagline: "The countdown ended a while ago. It's already in the harbor.",
 
   colors: {
-    // Measured, not eyeballed. Bone on haunted black is 16.8:1; muted
-    // clears 8.6:1 on the dark surface. Candle orange is 8.5:1 on black
-    // and carries near-black type on buttons (8.3:1). Light mode swaps to
-    // a burnt pumpkin (#B04500, 5.2:1 on the cream, white type 5.7:1).
-    primary: "#1C1018",            // ink (nav wordmark in light mode)
-    secondary: "#B8D63A",          // the one sickly green
-    accent: "#FF8A1F",             // candlelight orange
-    accentHover: "#FFA54F",
-    accentLight: "#B04500",        // burnt pumpkin
-    accentHoverLight: "#8A3500",
-    onAccent: "#140A06",
+    // Measured, not eyeballed. Bone on harbor black is 16.4:1; muted is
+    // 8.1:1 on the dark surface. Signal red #FF5A3C is 6.3:1 on the black
+    // and carries near-black type on buttons (6.4:1). Light mode swaps to
+    // pamphlet red #B3261E (5.5:1 on the paper, white type 6.5:1).
+    primary: "#111518",            // ink (nav wordmark in light mode)
+    secondary: "#6FD3FF",          // the glowing eye
+    accent: "#FF5A3C",             // signal red
+    accentHover: "#FF7A61",
+    accentLight: "#B3261E",        // pamphlet red
+    accentHoverLight: "#8E1C16",
+    onAccent: "#120806",
     onAccentLight: "#FFFFFF",
-    background: "#0B0709",         // haunted-house black, warm
-    backgroundLight: "#FFF3E2",    // candy-corn cream
-    surface: "#16101A",            // a little bruised purple in the black
+    background: "#090C0E",         // harbor at night
+    backgroundLight: "#F1ECE0",    // civil-defense pamphlet paper
+    surface: "#121719",
     surfaceLight: "#FFFFFF",
-    text: "#F4EADB",               // bone
-    textMuted: "#BBAE9F",
-    textDark: "#1C1018",
-    textDarkMuted: "#5D4652",
-    border: "#34263A",
-    borderLight: "#E7D2BC",
-    gradient: "linear-gradient(90deg, #FF8A1F 0%, #B04500 100%)",
+    text: "#ECE6D8",               // bone
+    textMuted: "#A8AFAD",
+    textDark: "#111518",
+    textDarkMuted: "#4A5254",
+    border: "#26302F",
+    borderLight: "#D6CEBD",
+    gradient: "linear-gradient(90deg, #FF5A3C 0%, #B3261E 100%)",
   },
 
   fonts: {
-    // Grenze Gotisch: blackletter you can actually read, with a 900 weight heavy enough for a haunted-house sign.
-    // Spectral: a screen serif for the long paragraphs, so the spooky stops at the headlines.
-    // Special Elite: a worn typewriter, for costume-shop tags, claims, and everything typed on a label.
-    heading: "'Grenze Gotisch', 'Times New Roman', serif",
-    body: "'Spectral', Georgia, 'Times New Roman', serif",
-    mono: "'Special Elite', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@400..900&family=Special+Elite&family=Spectral:ital,wght@0,400;0,600;0,700;1,400&display=swap",
+    // Dela Gothic One: a heavy Japanese poster gothic, the kind of type that goes on a monster-movie one-sheet.
+    // Zen Kaku Gothic New: a calm Japanese sans for the long paragraphs, so the panic stays in the headlines.
+    // DotGothic16: a dot-matrix face for the emergency ticker, the stamps, and every label.
+    heading: "'Dela Gothic One', 'Arial Black', sans-serif",
+    body: "'Zen Kaku Gothic New', 'Helvetica Neue', Arial, sans-serif",
+    mono: "'DotGothic16', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap",
   },
 
   layout: {
-    heroStyle: "asymmetric",
+    heroStyle: "fullscreen",
     navStyle: "sticky",
     cardStyle: "outlined",
-    sectionStyle: "magazine",
+    sectionStyle: "alternating",
     footerStyle: "detailed",
   },
 
   animations: {
     entrance: "fade-in",
-    hover: "tilt",
+    hover: "lift",
     background: "noise",
     pageTransition: "fade",
   },
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Tonight everybody's in costume and tells you so at the door. A lot of AI skips that last part, all year long.",
-    description: "Halloween is on a Saturday, so I dressed up as 10 AI vendor claims, wrote down what each one says it is, and lifted the mask on every one. Then I wrote down the 10 questions that do the lifting for you.",
-    heroImage: "hero-2026-10-31.jpg",
-    imageAlt: "Edward on a front porch at night in a homemade robot costume built from silver-painted cardboard boxes, with dryer-duct arms, silver oven-mitt hands, and a chest panel of blinking Christmas lights and bottle-cap dials. His face shows through a cutout in the box head, glasses on, deadpan, and his blue fedora sits on top of the robot head. Carved jack-o'-lanterns and candles line the porch steps, cobwebs hang from the porch light, and a bowl of candy sits at his feet.",
-    ctaText: "See all 10 costumes",
-    ctaLink: "#costumes",
+    subtitle: "Pretty much every monster movie has a committee meeting in it, held while the monster is already in the harbor. A lot of companies are holding that meeting about AI right now.",
+    description: "Godzilla Minus Zero opened Friday, so I spent the week trying the 5 ways companies keep trying to deal with AI, from forming a task force to banning it with a sign (the monster was unimpressed by all 5), and then I wrote down the 6 things that actually work.",
+    heroImage: "hero-2026-11-07.jpg",
+    imageAlt: "Edward stands in a small wooden fishing boat in a stormy harbor at night, holding an open laptop up like a lantern and looking back at the camera, deadpan, in his blue fedora, while an enormous scaled sea monster rises out of the water behind him, its head lost in the fog and one glowing eye level with the city skyline.",
+    ctaText: "See the 5 attempts",
+    ctaLink: "#attempts",
   },
 };
 
