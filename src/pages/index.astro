@@ -238,6 +238,7 @@ const pad = (n: number) => String(n).padStart(2, '0');
       <div class="tm-hero-shade" aria-hidden="true"></div>
       <div class="tm-wrap tm-hero-over">
         <p class="tm-hero-label">Sighting No. 1 | The harbor, 11:52 PM</p>
+        <p class="tm-hero-quote">&ldquo;Have a safe trip!&rdquo;</p>
         <h1 class="tm-title" id="tm-title">T-minus <span>zero</span></h1>
       </div>
     </figure>
@@ -668,6 +669,19 @@ const pad = (n: number) => String(n).padStart(2, '0');
     text-transform: uppercase;
     color: #d9e7e3;
     margin: 0 0 0.6rem;
+  }
+  .tm-hero-quote {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3.6vw, 2.8rem);
+    line-height: 1.1;
+    color: #6fd3ff;
+    margin: 0 0 0.9rem;
+    padding: 0.35rem 0.9rem 0.45rem;
+    border: 2px solid #6fd3ff;
+    background: rgba(5, 8, 10, 0.7);
+    text-shadow: 0 0 22px rgba(111, 211, 255, 0.55);
+    transform: rotate(-1.5deg);
   }
   .tm-title {
     font-family: var(--font-heading);
