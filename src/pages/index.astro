@@ -9,20 +9,22 @@ import { currentTheme } from '../themes/theme-config';
 const theme = currentTheme;
 
 // ---------------------------------------------------------------------------
-// T-MINUS ZERO (2026-11-07). Godzilla Minus Zero opened Friday, November 6.
-// Every monster movie has a committee meeting in it, held while the monster
-// is already in the harbor. Edward tries the 5 ways companies keep dealing
-// with AI, fails at all 5, then lays out the civilian plan and a readiness
-// check that hands you a verdict. No companies are named. The monster is
-// generic and AI-drawn, never the film's.
+// AN A.I. CAROL (2026-11-14). Ebenezer: A Christmas Carol opened Friday,
+// November 13. The page is the book's 5 staves. Edward is Marley and only
+// Marley: the dead partner who worked the same ledgers and shows up in a
+// chain he forged himself. The argument: Scrooge had all the information in
+// Stave One and said Humbug to it; what changed him was being shown. Every
+// Dickens quotation is checked against the Project Gutenberg text (ebook 46).
+// Nobody from the film is depicted.
 // ---------------------------------------------------------------------------
 
-const IMG = '/images/t-minus-zero';
+const IMG = '/images/ai-carol';
 const CAL = 'https://calendar.app.google/udtTerQwcX9Z7QQt7';
-const POST = '/blog/is-your-ai-task-force-still-meeting/';
+const POST = '/blog/what-actually-changed-scrooges-mind/';
+const BOOK = 'https://www.gutenberg.org/ebooks/46';
+const REVIEWS = 'https://www.hollywoodreporter.com/movies/movie-news/ebenezer-reviews-johnny-depp-1236754299/';
 const WTI = 'https://blogs.microsoft.com/blog/2024/05/08/microsoft-and-linkedin-release-the-2024-work-trend-index-on-the-state-of-ai-at-work/';
-const SHADOW = 'https://fortune.com/2025/08/19/shadow-ai-economy-mit-study-genai-divide-llm-chatbots/';
-const BOXOFFICE = 'https://deadline.com/2026/11/box-office-godzilla-minus-zero-cat-in-the-hat-1237215161/';
+const RAILWAY = 'https://en.wikipedia.org/wiki/Railway_Mania';
 
 // The 4 standing numbers. Same every week.
 const stats = [
@@ -32,126 +34,130 @@ const stats = [
   { v: '25', k: 'Years running interRel' },
 ];
 
-// The 5 attempts. Each one failed. The third line is the real point.
-type Attempt = {
+// The chain, itemized. Every link is a real line from the career.
+const chain = [
+  {
+    when: '1995',
+    what: 'Essbase consulting',
+    note: `The first link. My title was Senior Analytics Consultant, and this was 2 years before I founded a company at 22, so you can work out for yourself how senior.`,
+  },
+  {
+    when: '1997',
+    what: 'interRel Consulting',
+    note: `Founded May 21, 1997, the day before my birthday, because I thought it'd be cool to start a company at 22. It's the longest link on the chain: 25 years of running it.`,
+  },
+  {
+    when: '15 books',
+    what: 'Look Smarter Than You Are',
+    note: `13 on Amazon and 2 more for training classes, and they're the reason I clank. (Edward, you wrote 15 books about software with the version numbers right there in the titles. What did you think was going to happen to them?)`,
+  },
+  {
+    when: '1 exam',
+    what: 'A perfect score on the Essbase certification',
+    note: `First person to do it. It's a small link (and yes, I'm aware that bringing it up on my own website, on a chain, is more or less what Marley was being punished for).`,
+  },
+  {
+    when: '2020',
+    what: 'The merger',
+    note: `Merged interRel with Keste to help found Argano, and stayed on as CEO through 2022.`,
+  },
+  {
+    when: '2023 to now',
+    what: 'Still forging',
+    note: `AgentCube, a YouTube channel with over 800,000 subscribers, the Caribbean AI Summit, and this website, which a machine rebuilds every Saturday. Marley's chain stopped growing 7 years before the book starts, and I'm still adding to mine (Dickens doesn't say what happens in that case).`,
+  },
+];
+
+// The three Spirits. What each showed Scrooge, and what it'd show yours.
+type Spirit = {
+  stave: string;
+  bell: string;
   name: string;
   img: string;
   w: number;
   h: number;
-  shape: 'wide' | 'tall';
+  shape: 'wide' | 'tall' | 'full';
   alt: string;
-  did: string;
-  happened: string;
-  really: string;
+  caption: string;
+  showed: string;
+  yours: string;
   link?: { href: string; text: string };
 };
 
-const attempts: Attempt[] = [
+const spirits: Spirit[] = [
   {
-    name: 'Form a task force',
-    img: 'committee.jpg',
+    stave: 'Stave Two',
+    bell: 'The bell tolls One',
+    name: 'The Ghost of Technology Past',
+    img: 'past.jpg',
     w: 1600,
     h: 1195,
     shape: 'wide',
-    alt: 'Edward in his blue fedora stands at the head of a long boardroom table with a laser pointer, presenting a projected slide that reads "AI Task Force: Phase 1 Scoping" to a room of empty leather chairs and coffee cups, while an enormous glowing monster eye fills the rain-streaked window behind him. He hasn\'t noticed.',
-    did: 'Formed an AI task force, booked the big conference room, and opened with Phase 1 Scoping.',
-    happened: 'Phase 1 Scoping ran 6 weeks. The eye in the window attended every session and never once took a note (it didn\'t need to, it\'s seen this movie before, several times, going back to 1954).',
-    really: 'Microsoft and LinkedIn found that by 2024, 75% of knowledge workers were already using AI at work, and 78% of those people were bringing their own tools. The task force is scoping something that started 2 years ago.',
+    alt: 'Edward as Marley\'s Ghost, translucent and glowing green in a frock coat and his blue fedora with a chain over his shoulder, stands in the aisle of an empty 1990s cubicle farm and gestures like a tour guide at a beige CRT monitor showing a green spreadsheet. A wall calendar reads 1998, and a stack of books, a beige keyboard, and some floppy disks sit chained at his feet.',
+    caption: `Me, giving the tour of 1998 (it's on the wall calendar). interRel was 1 year old, and yes, that's a CRT (ask your parents).`,
+    showed: `His old school, his sister, and a Christmas party thrown by his first boss, Fezziwig, who by the Ghost's own math spent "but a few pounds" on it. Scrooge jumps in to defend him ("The happiness he gives, is quite as great as if it cost a fortune") and then goes quiet, because he's just thought of his own clerk.`,
+    yours: `The last few things they called humbug. I've been doing this since 1995, and every big shift since then had smart people explaining why it was a fad. What I said about "AI's a fad" on my show is that it'll end up like personal computers, which are all going to go away someday so we can put everything back on 1 big central computer (that one sort of did happen, it just took about 50 years longer than anybody thought).`,
+  },
+  {
+    stave: 'Stave Three',
+    bell: 'The bell tolls One, again',
+    name: 'The Ghost of Technology Present',
+    img: 'present.jpg',
+    w: 1195,
+    h: 1600,
+    shape: 'tall',
+    alt: 'On a snowy city sidewalk at night, Edward as Marley\'s Ghost in his blue fedora, chain hung with books, padlocks, floppy disks, and a beige keyboard, rests one hand on the frosted window of a modern office building and looks back at the camera. Inside the dark office, one man sits alone at a desk, typing by the glow of a laptop.',
+    caption: `That's Bob. The office is dark, everybody else went home, and whatever he's typing into isn't on the approved list (I'm not going to tell on him).`,
+    showed: `Rooms he'd never have walked into on his own. His clerk's house, where Bob Cratchit toasts him as "the Founder of the Feast" over Mrs. Cratchit's objections, and his nephew's party, where the guests play a guessing game called Yes and No and the answer ("a disagreeable animal, a savage animal") turns out to be Scrooge.`,
+    yours: `What their own people are doing tonight. Microsoft and LinkedIn found 75% of knowledge workers already using AI at work back in 2024, with 78% of those people bringing their own tools. Bob Cratchit has a personal chatbot account, he's had it for 2 years, and he isn't going to bring it up in the meeting.`,
     link: { href: WTI, text: 'Microsoft and LinkedIn found' },
   },
   {
-    name: 'Ban it',
-    img: 'policy.jpg',
-    w: 1195,
-    h: 1600,
-    shape: 'tall',
-    alt: 'On a rain-soaked pier at night, Edward in his blue fedora hammers a hand-painted wooden sign onto a post that reads "No monsters beyond this point, per Policy 4.2," looking pleased with himself, while a giant scaled monster rises out of the churning water right behind him.',
-    did: 'Wrote Policy 4.2, painted it on a sign, and nailed it to the pier myself.',
-    happened: 'The sign went up at 9:14 PM. The monster came by at 9:15 (for the record, the sign is still standing, which is more than I can say for the pier).',
-    really: 'An MIT study in 2025 found workers at more than 90% of companies using personal chatbot accounts for daily tasks, while only 40% of companies had official subscriptions. A ban mostly moves the AI onto people\'s phones, where nobody can see what goes into it.',
-    link: { href: SHADOW, text: 'An MIT study in 2025' },
-  },
-  {
-    name: 'Wait for version 2',
-    img: 'wait.jpg',
-    w: 1600,
-    h: 1195,
-    shape: 'wide',
-    alt: 'Edward in his blue fedora relaxes in a striped beach chair on an empty beach with binoculars and a thermos, a paperback titled "Wait for Version 2" on his lap, while a towering wave curls in and a giant monster wades ashore under searchlights behind him.',
-    did: 'Set up a beach chair, a thermos, and a good book, and waited for the technology to mature.',
-    happened: 'Version 2 came out while I was on chapter 1. So did 2.5, and then something that made 2.5 look quaint, all before the thermos got cold (it\'s a very good thermos, and it was the only part of this plan that worked).',
-    really: 'Something better ships every few months, so if you\'re waiting for the good one, bring a bigger thermos. The people getting value started with whatever was on the shelf and swapped in the newer model when it showed up.',
-  },
-  {
-    name: 'Commission a study',
-    img: 'study.jpg',
-    w: 1195,
-    h: 1600,
-    shape: 'tall',
-    alt: 'On a wrecked, rainy city street at night, Edward in a white lab coat and his blue fedora kneels at the edge of a gigantic three-toed footprint pressed into the asphalt, holding out a small tape measure and a clipboard, next to a crumpled yellow taxi.',
-    did: 'Put on a lab coat and commissioned a 90-page readiness assessment, starting with the footprint.',
-    happened: 'My tape measure is 25 feet long. The footprint is not (I measured it 31 times and got 31 different numbers, which the final report rounds to "large").',
-    really: 'One small real project teaches you more in 30 days than a readiness assessment does in 90, and you can still write the binder afterward if anybody asks for one.',
-  },
-  {
-    name: 'Issue a statement',
-    img: 'broadcast.jpg',
+    stave: 'Stave Four',
+    bell: 'The bell tolls Twelve',
+    name: 'The Ghost of Technology Yet to Come',
+    img: 'yet-to-come.jpg',
     w: 1600,
     h: 893,
-    shape: 'wide',
-    alt: 'In a cramped broadcast studio under a glowing red On Air sign, Edward in his blue fedora reads a sheet titled "Statement" into a vintage chrome microphone, a hand-drawn harbor map with a red X behind him, while a giant scaled monster strides past the rain-streaked studio window.',
-    did: 'Went on air with a prepared statement announcing our AI strategy.',
-    happened: 'The statement said we were closely monitoring the situation. The situation walked past the studio window during paragraph 2 and didn\'t stop to listen.',
-    really: 'A press release about your AI strategy is fine to have. It just helps to also have somebody in the building whose actual workday changed because of it.',
+    shape: 'full',
+    alt: 'In a snowy churchyard at night, a tall figure in a black hooded robe, its face hidden, points down at a gray headstone carved with the words WAIT AND SEE. Edward as Marley\'s Ghost, in his blue fedora with a chain of books, padlocks, floppy disks, and a beige keyboard, crouches beside the stone brushing snow off the top with a small brush and looks up at the camera, mildly concerned.',
+    caption: `The stone says WAIT AND SEE. I brought a brush, because I'm a professional.`,
+    showed: `It never says a word. It points: first at some businessmen discussing a man who died last night (one of them will go to the funeral "if a lunch is provided"), and then at a headstone with Scrooge's name on it. Scrooge asks the best question in the book ("Are these the shadows of the things that Will be, or are they shadows of things that May be, only?") and doesn't get an answer.`,
+    yours: `Nobody can tell your skeptic what AI does to their industry by 2030, and I'd be a little careful around anybody who says they can. A good look at the future does what the headstone does, which is get you asking Scrooge's question. This Spirit is the most persuasive speaker in the book and it has no lines, which I'm trying not to take personally (my keynotes run up to 90 minutes, plus Q&A).`,
   },
 ];
 
-// The civilian plan. This is the part people screenshot.
-const plan = [
+// The Humbug Ledger. 5 humbugs, entered honestly. Only 1 of them is humbug.
+const ledger = [
   {
-    step: 'Find out who\'s already using it.',
-    note: 'Ask, and don\'t punish anybody for the answer. The people with personal ChatGPT accounts are your scouts, and they already know which jobs it\'s good at.',
+    humbug: 'It makes things up.',
+    verdict: 'Fair',
+    entry: `It does, when it's answering from memory. Give it something to read (your documents and the real numbers out of your real systems) and it mostly stops guessing, though not always, so you still check the ones that matter, the same way you'd check a new hire's.`,
   },
   {
-    step: 'Give everyone a safe tool this month.',
-    note: 'An approved tool with sensible rules about what data goes in beats a ban that sends everything to personal phones.',
+    humbug: `It's a bubble.`,
+    verdict: 'Could be',
+    entry: `Dickens published this book in 1843, and Britain's Railway Mania peaked 3 years later, when Parliament approved 263 new railway companies in a single year. About a third of that track never got built, and a lot of families lost their savings. The lines that did get built are still on the map, so it was a bubble and the trains ran anyway.`,
+    link: { href: RAILWAY, text: 'Railway Mania' },
   },
   {
-    step: 'Pick 1 real problem with a number on it.',
-    note: 'Something you already measure (hours, errors, turnaround time, tickets per week), so in 30 days you\'ll know whether it worked.',
+    humbug: `We tried it, and it wasn't any good.`,
+    verdict: 'Fair, that month',
+    entry: `Ask which month that was. Something better ships every few months, so a verdict from 2023 is about a product that's been replaced several times since (I'd tell you how many times, but it'll be out of date by the time you read this).`,
   },
   {
-    step: 'Put the people who do the work in charge.',
-    note: 'The person who does the job every day knows which part of it is worth automating (it\'s usually the part they complain about at lunch).',
+    humbug: `Our data isn't ready.`,
+    verdict: 'True, forever',
+    entry: `I spent 25 years working in other people's data, and "ready" isn't a word I'd have used for much of it. It got used anyway. Pick 1 problem where the data's good enough and start there.`,
   },
   {
-    step: 'Connect it to your real data.',
-    note: 'An AI working from memory will give you a number that sounds about right. One that can read your actual systems can give you the actual number.',
-  },
-  {
-    step: 'Set a date and a verdict.',
-    note: 'Keep it or kill it based on the number from step 3, and roll it out wider if the number\'s good (whoever liked the demo most gets exactly 1 vote, same as everybody else).',
+    humbug: `My people aren't asking for it.`,
+    verdict: 'Humbug',
+    entry: `They're not asking because they already have it. See Stave Three: 75% were using it by 2024, and 78% of those brought their own, so the request you're waiting for isn't coming.`,
   },
 ];
 
-// The readiness check. One box per step of the plan.
-const checks = [
-  'We know who\'s already using AI, and nobody got in trouble for saying so.',
-  'There\'s an approved AI tool, and people actually use it.',
-  'We have at least 1 AI project with a number attached to it.',
-  'The people who do the work every day are the ones running it.',
-  'It can read our real systems, so it answers with our actual numbers.',
-  'There\'s a date on the calendar to look at the number and keep it or kill it.',
-];
-
-const levels = [
-  { min: 0, max: 1, name: 'Still in the committee meeting', note: 'The eye is in the window. Turn around (slowly).' },
-  { min: 2, max: 3, name: 'Boats in the water', note: 'You\'ve started. Give it a number and a date and you\'re most of the way there.' },
-  { min: 4, max: 5, name: 'Organized civilians', note: 'This is what the people who save the city look like in every one of these movies.' },
-  { min: 6, max: 6, name: 'Monster heading back out to sea', note: 'You should be the one giving this talk. Write me and tell me how you did it.' },
-];
-
-// Still standing: the 6 projects. Same 6 every week, restyled.
+// On the books: the 6 projects. Same 6 every week, restyled.
 const projects = [
   {
     name: 'MCP Servers for Enterprise Finance',
@@ -172,7 +178,7 @@ const projects = [
   {
     name: 'Caprus',
     status: 'Investor',
-    note: `I'm an investor, and that's the whole job. Lillian Buziak runs it, and they sell and support AgentCube (the first card on this row), which spares everybody from having me do it.`,
+    note: `I'm an investor, and that's the whole job. Lillian Buziak runs it, and they sell and support AgentCube (that's Folio 01), which spares everybody from having me do it.`,
     href: 'https://caprus.ai',
     external: true,
     cta: 'Meet the team',
@@ -204,258 +210,333 @@ const projects = [
 ];
 
 const pad = (n: number) => String(n).padStart(2, '0');
+const split = (text: string, linkText: string) => {
+  const i = text.indexOf(linkText);
+  return { before: text.slice(0, i), after: text.slice(i + linkText.length) };
+};
 ---
 
 <BaseLayout
-  title="Roske.AI | T-Minus Zero"
-  description="Godzilla Minus Zero week on roske.ai: Edward Roske tries the 5 ways companies keep dealing with AI (task force, ban, wait, study, statement), fails at all 5, then lays out the 6-step civilian plan that actually works, plus a readiness check."
+  title="Roske.AI | An A.I. Carol"
+  description="Ebenezer: A Christmas Carol week on roske.ai. Edward Roske is Marley's Ghost, dragging a chain he forged over 25 years of enterprise software, with 5 staves on what actually changed Scrooge's mind and an honest ledger of 5 of the usual humbugs about AI."
 >
   <WeeklyAnimation />
 
-  <!-- ================= EMERGENCY TICKER ================= -->
-  <div class="tm-ticker" role="note" aria-label="Emergency broadcast">
-    <div class="tm-wrap tm-ticker-inner">
-      <span class="tm-ticker-dot" aria-hidden="true"></span>
-      <span>Emergency broadcast</span>
-      <span>Saturday, November 7, 2026</span>
-      <span>San Juan</span>
-      <span>This is not a drill (it's a website)</span>
+  <!-- ================= RUNNING HEAD ================= -->
+  <div class="ac-runhead" role="note" aria-label="Running head">
+    <div class="ac-wrap ac-runhead-inner">
+      <span>An A.I. Carol</span>
+      <span>Saturday, November 14, 2026 | San Juan</span>
+      <span>41 days before Christmas (the movie couldn't wait either)</span>
     </div>
   </div>
 
-  <!-- ================= HERO: THE HARBOR ================= -->
-  <section class="tm-hero" aria-labelledby="tm-title">
-    <figure class="tm-hero-fig">
+  <!-- ================= HERO: FRONTISPIECE + TITLE PAGE ================= -->
+  <section class="ac-hero" aria-labelledby="ac-title">
+    <figure class="ac-plate">
       <img
-        class="tm-hero-img"
+        class="ac-plate-img"
         src={`/images/${theme.hero.heroImage}`}
         alt={theme.hero.imageAlt}
         width="1600"
-        height="893"
+        height="878"
         fetchpriority="high"
         decoding="async"
       />
-      <div class="tm-hero-shade" aria-hidden="true"></div>
-      <div class="tm-wrap tm-hero-over">
-        <p class="tm-hero-label">Sighting No. 1 | The harbor, 11:52 PM</p>
-        <p class="tm-hero-quote">&ldquo;Have a safe trip!&rdquo;</p>
-        <h1 class="tm-title" id="tm-title">T-minus <span>zero</span></h1>
-      </div>
+      <figcaption class="ac-plate-cap">
+        <span class="ac-wrap">Marley's Ghost. <em>Frontispiece, drawn by a machine.</em></span>
+      </figcaption>
     </figure>
 
-    <div class="tm-wrap tm-hero-grid">
-      <div class="tm-hero-copy">
-        <p class="tm-kicker">
-          Godzilla Minus Zero opened Friday (Edward, the movie is called Minus Zero, not T-minus zero, and you know
-          that. Yes, and I'm choosing to hear it my way, because it's my website).
-        </p>
-        <p class="tm-sub">{theme.hero.subtitle}</p>
-        <p class="tm-lede">
-          So I spent the week trying the 5 ways companies keep trying to deal with AI, from forming a task force to
-          nailing a policy to a pier, and I wrote up every attempt so you don't have to repeat any of them (the
-          monster was unimpressed by all 5, and in fairness, so was I). Then I wrote down what actually saves the city
-          in every one of these movies, which is ordinary people with a plan.
-        </p>
-        <div class="tm-ctas">
-          <a class="tm-btn tm-btn-red" href={theme.hero.ctaLink}>{theme.hero.ctaText}</a>
-          <a class="tm-btn tm-btn-ghost" href="#plan">Skip to what works</a>
+    <div class="ac-wrap">
+      <div class="ac-book">
+        <div class="ac-page ac-tp">
+          <h1 class="ac-tp-title" id="ac-title">
+            <span class="ac-tp-an">An</span>
+            <span class="ac-tp-main">A.I. Carol.</span>
+          </h1>
+          <p class="ac-tp-prose">In Prose.</p>
+          <p class="ac-tp-small">Being</p>
+          <p class="ac-tp-ghost">A Ghost Story of Quarter Four.</p>
+          <span class="ac-tp-rule" aria-hidden="true"></span>
+          <p class="ac-tp-small">By</p>
+          <p class="ac-tp-author">Edward Roske.</p>
+          <p class="ac-tp-small">With illustrations by a machine.</p>
+          <span class="ac-tp-rule" aria-hidden="true"></span>
+          <p class="ac-tp-imprint">San Juan: Roske.AI, every Saturday at 5AM.<br />MMXXVI.</p>
+        </div>
+
+        <div class="ac-page ac-preface">
+          <p class="ac-preface-head">Preface.</p>
+          <p class="ac-preface-pull">{theme.hero.subtitle}</p>
+          <p>
+            Ebenezer: A Christmas Carol opened Friday, with Johnny Depp as Scrooge and Ian McKellen as Marley's Ghost
+            (<a href={REVIEWS} target="_blank" rel="noopener noreferrer">the reviews are split</a>, and I'm staying out
+            of it). I'm also Marley this week. Sir Ian has been Gandalf and Magneto, and I've been a Dungeon Master
+            for a long time, which I've decided is comparable experience.
+          </p>
+          <p>
+            Marley's the dead business partner who shows up 7 years late, in a chain he made himself, to tell Scrooge
+            that 3 more visitors are coming. I'm unreasonably qualified for the part, since I ran a consulting firm for
+            25 years and wrote 15 books about software, and I can show you every link (they're itemized in Stave One&hellip;
+            Edward, nobody asked for an itemized chain. I know, and it's in there anyway).
+          </p>
+          <p>
+            If you go back and read <a href={BOOK} target="_blank" rel="noopener noreferrer">the book</a> (it's free,
+            and it takes an evening), Scrooge isn't short on information. In Stave One his nephew gives him a good
+            speech and 2 gentlemen show up with statistics, and he says &ldquo;Humbug&rdquo; to the nephew and asks
+            the 2 gentlemen whether there are no prisons. Then his dead partner turns up in person, and it's still
+            humbug for a while.
+          </p>
+          <p>
+            A lot of smart people are saying &ldquo;Humbug&rdquo; about AI right now, and some of them have earned it
+            (the Halloween page was about what they were sold, so I won't start again). If that's somebody at your
+            company, or it's you, here are 5 staves on how the book handles it, plus an honest ledger of which humbugs
+            are actually humbug.
+          </p>
+          <div class="ac-ctas">
+            <a class="ac-btn ac-btn-paper" href={theme.hero.ctaLink}>{theme.hero.ctaText}</a>
+            <a class="ac-btn ac-btn-paper-ghost" href="#ledger">Skip to the Humbug Ledger</a>
+          </div>
+          <p class="ac-preface-sign">
+            Your faithful Friend and Servant,<br />
+            <span>E. R.</span><br />
+            November, 2026.
+          </p>
         </div>
       </div>
-
-      <aside class="tm-clock" aria-label="Countdown">
-        <p class="tm-clock-label">Time left to prepare</p>
-        <p class="tm-clock-digits" aria-hidden="true">00:00:00</p>
-        <p class="tm-clock-note">
-          It ran out on November 30, 2022, the day ChatGPT launched (give or take a press release), and it's been
-          sitting at 00:00:00 ever since, which I realize makes it less of a countdown and more of a very dramatic broken
-          clock.
-        </p>
-      </aside>
     </div>
   </section>
 
-  <!-- ================= STATS: DAMAGE REPORT ================= -->
-  <div class="tm-stats-wrap">
-    <ul class="tm-wrap tm-stats" aria-label="On the record">
+  <!-- ================= STATS ================= -->
+  <div class="ac-stats-wrap">
+    <ul class="ac-wrap ac-stats" aria-label="On the record">
       {stats.map((s) => (
-        <li><span class="tm-stat-v">{s.v}</span><span class="tm-stat-k">{s.k}</span></li>
+        <li><span class="ac-stat-v">{s.v}</span><span class="ac-stat-k">{s.k}</span></li>
       ))}
     </ul>
   </div>
 
-  <!-- ================= DISPATCHES ================= -->
+  <!-- ================= ALSO IN THIS VOLUME ================= -->
   <LatestContent
-    eyebrow="Dispatches from the shoreline"
+    eyebrow="Also in this volume"
     heading="New <em>this week.</em>"
-    deck="This week's writing and video, newest first, including today's post on what to do if your AI task force is still meeting (it probably is)."
+    deck="This week's writing and video, newest first, including today's post on what actually changed Scrooge's mind (his nephew's speech didn't do it, and it was a good speech)."
   />
 
-  <!-- ================= THE 5 ATTEMPTS ================= -->
-  <section class="tm-section tm-attempts" id="attempts" aria-labelledby="tm-attempts-title">
-    <div class="tm-wrap">
-      <header class="tm-head">
-        <p class="tm-eyebrow">Field reports</p>
-        <h2 class="tm-h2" id="tm-attempts-title">5 attempts and 1 very patient monster.</h2>
-        <p class="tm-deck">
-          Every one of these is something companies are really doing about AI right now, and you can probably name one
-          that's done at least 2 of them before lunch (I'm not naming any, partly because I'd like to keep getting
-          invited to things, and mostly because it's a lot of them).
-        </p>
-      </header>
+  <!-- ================= STAVE ONE: MARLEY'S GHOST ================= -->
+  <section class="ac-section ac-stave1" id="stave-one" aria-labelledby="ac-s1-title">
+    <div class="ac-wrap">
+      <div class="ac-s1-top">
+        <header class="ac-head">
+          <p class="ac-eyebrow">Stave One | Marley's Ghost</p>
+          <h2 class="ac-h2 ac-h2-quote" id="ac-s1-title">&ldquo;I wear the chain I forged in life.&rdquo;</h2>
+          <p class="ac-copy">
+            That's Marley, and he goes on: &ldquo;I made it link by link, and yard by yard; I girded it on of my own
+            free will, and of my own free will I wore it.&rdquo; Dickens even lists what's on it (cash-boxes, keys,
+            padlocks, ledgers, deeds, and heavy purses wrought in steel). Mine has different hardware, and I made it
+            the same way he did (it's itemized further down this page, for anyone who likes an audit trail).
+          </p>
+          <p class="ac-copy">
+            The reason Marley gets sent first is that he's the 1 visitor Scrooge can't wave off as somebody who
+            doesn't understand the business, because they ran the business together. That's most of what I've got
+            going for me on a stage, too: I did it the old way starting in 1995, with cubes and consolidations and
+            other people's spreadsheets (the ones that didn't have Freeze Panes turned on, you know who you are).
+          </p>
+          <p class="ac-copy">
+            And it works, a little. Scrooge says &ldquo;Humbug&rdquo; 6 times in the whole book (the machine that
+            builds this site counted), and all 6 are in Stave One. Right after Marley leaves, he tries for a 7th, and
+            Dickens says he &ldquo;stopped at the first syllable,&rdquo; and that's the last time he says it (the
+            book's free on Project Gutenberg if you'd like to check the machine's math).
+          </p>
+        </header>
 
-      <ol class="tm-reports">
-        {attempts.map((a, i) => (
-          <li class={`tm-report tm-report-${a.shape} ${i % 2 ? 'tm-report-flip' : ''}`}>
-            <figure class="tm-report-fig">
-              <img src={`${IMG}/${a.img}`} alt={a.alt} width={a.w} height={a.h} loading="lazy" decoding="async" />
-              <span class="tm-stamp" aria-hidden="true">Failed</span>
-            </figure>
-            <div class="tm-report-body">
-              <p class="tm-report-no">Attempt {pad(i + 1)}</p>
-              <h3 class="tm-report-name">{a.name}</h3>
-              <dl class="tm-report-dl">
-                <div>
-                  <dt>What I did</dt>
-                  <dd>{a.did}</dd>
-                </div>
-                <div>
-                  <dt>What happened</dt>
-                  <dd>{a.happened}</dd>
-                </div>
-                <div class="tm-report-real">
-                  <dt>What's really going on out there</dt>
-                  <dd>
-                    {a.link ? (
-                      <>
-                        {a.really.slice(0, a.really.indexOf(a.link.text))}
-                        <a href={a.link.href} target="_blank" rel="noopener noreferrer">{a.link.text}</a>
-                        {a.really.slice(a.really.indexOf(a.link.text) + a.link.text.length)}
-                      </>
-                    ) : (
-                      a.really
-                    )}
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </li>
-        ))}
-      </ol>
+        <figure class="ac-fig ac-fig-knocker">
+          <img
+            src={`${IMG}/knocker.jpg`}
+            alt="A brass door knocker on a black Victorian front door in the snow, cast in the shape of Edward's face, bearded and deadpan and glowing faintly green, with a navy blue fedora on its head and the knocker ring hanging under its chin."
+            width="1195"
+            height="1600"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            In the book, Marley's face shows up in the door knocker first, as a sort of courtesy. Mine came with the
+            fedora on (a Roske never removes his fedora in the presence of others, and the family creed doesn't make
+            an exception for brass).
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="ac-s1-bottom">
+        <figure class="ac-fig ac-fig-inventory">
+          <img
+            src={`${IMG}/inventory.jpg`}
+            alt="Edward as Marley's Ghost sits on a clerk's stool in a candlelit Victorian counting-house, in his blue fedora, writing in a huge ledger with a quill and looking up at the camera. His chain trails across the desks and the floor, hung with old books, padlocks, and floppy disks, and a beige 1990s computer monitor and keyboard sit on the desk beside him."
+            width="1600"
+            height="1195"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            Taking inventory by quill and candlelight, in a counting-house, with a perfectly good beige keyboard
+            sitting right there on the desk the whole time (the machine that drew this has opinions about my workflow,
+            and I've chosen not to ask).
+          </figcaption>
+        </figure>
+
+        <div class="ac-chain-box">
+          <h3 class="ac-h3">The chain, itemized</h3>
+          <ol class="ac-chain">
+            {chain.map((c) => (
+              <li class="ac-link">
+                <span class="ac-link-oval" aria-hidden="true"></span>
+                <p class="ac-link-when">{c.when}</p>
+                <p class="ac-link-what">{c.what}</p>
+                <p class="ac-link-note">{c.note}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ================= BOOK EDWARD ================= -->
-  <SpeakerCTA eyebrow="Bring in somebody who's been stepped on before" />
+  <SpeakerCTA eyebrow="Marley takes bookings (the Spirits don't)" />
 
-  <!-- ================= THE CIVILIAN PLAN ================= -->
-  <section class="tm-plan" id="plan" aria-labelledby="tm-plan-title">
-    <figure class="tm-plan-fig">
-      <img
-        src={`${IMG}/civilians.jpg`}
-        alt="On a rainy harbor dock at first light, Edward in his blue fedora stands on a concrete ledge with a megaphone, directing a crew of ordinary people below (fishermen in overalls, an office worker in a dress shirt) who are hauling ropes and steering small boats, while the giant monster looms in the mist just offshore."
-        width="1600"
-        height="893"
-        loading="lazy"
-        decoding="async"
-      />
-      <figcaption>It hadn't left yet, but for the first time all week there was a plan (and a megaphone, which helps more than you'd think).</figcaption>
-    </figure>
-
-    <div class="tm-wrap">
-      <header class="tm-head tm-plan-head">
-        <p class="tm-eyebrow tm-eyebrow-dawn">The civilian plan</p>
-        <h2 class="tm-h2 tm-h2-dawn" id="tm-plan-title">So what actually saves the city?</h2>
-        <p class="tm-deck tm-deck-dawn">
-          In the good monster movies, it's a handful of ordinary people with the right skills (somebody who knows boats,
-          and somebody stubborn enough to keep asking questions in the meeting) who get organized around 1 specific job
-          and go do it, usually while the committee is still in the conference room. I've been around for 4 of these
-          landfalls in my career, client-server, the web, the cloud, and now this one, which is the biggest by a mile,
-          and every time, the people who came out fine were the ones who got organized around a real problem.
+  <!-- ================= STAVES TWO TO FOUR: THE THREE SPIRITS ================= -->
+  <section class="ac-night" id="spirits" aria-labelledby="ac-sp-title">
+    <div class="ac-wrap">
+      <header class="ac-head ac-night-head">
+        <p class="ac-eyebrow ac-eyebrow-night">Staves Two, Three, and Four</p>
+        <h2 class="ac-h2 ac-h2-night ac-h2-quote" id="ac-sp-title">&ldquo;You will be haunted by Three Spirits.&rdquo;</h2>
+        <p class="ac-copy ac-copy-night">
+          Scrooge's answer to that, for the record, is &ldquo;I think I'd rather not.&rdquo; He gets them anyway. None
+          of the 3 argues with him, and 1 doesn't talk at all. Each one takes him somewhere and stands there while he
+          looks, so here's where each one took him, and where I'd take the Scrooge at your company.
         </p>
       </header>
 
-      <ol class="tm-steps">
-        {plan.map((p, i) => (
-          <li class="tm-step">
-            <span class="tm-step-no" aria-hidden="true">{pad(i + 1)}</span>
-            <h3 class="tm-step-name">{p.step}</h3>
-            <p class="tm-step-note">{p.note}</p>
-          </li>
-        ))}
+      <ol class="ac-spirits">
+        {spirits.map((s) => {
+          const parts = s.link ? split(s.yours, s.link.text) : null;
+          return (
+            <li class={`ac-spirit ac-spirit-${s.shape}`}>
+              <figure class="ac-spirit-fig">
+                <img src={`${IMG}/${s.img}`} alt={s.alt} width={s.w} height={s.h} loading="lazy" decoding="async" />
+                <figcaption>{s.caption}</figcaption>
+              </figure>
+              <div class="ac-spirit-body">
+                <p class="ac-spirit-stave">{s.stave} <span>{s.bell}</span></p>
+                <h3 class="ac-spirit-name">{s.name}</h3>
+                <dl class="ac-spirit-dl">
+                  <div>
+                    <dt>What it showed Scrooge</dt>
+                    <dd>{s.showed}</dd>
+                  </div>
+                  <div class="ac-spirit-yours">
+                    <dt>What it'd show yours</dt>
+                    <dd>
+                      {parts && s.link ? (
+                        <>
+                          {parts.before}
+                          <a href={s.link.href} target="_blank" rel="noopener noreferrer">{s.link.text}</a>
+                          {parts.after}
+                        </>
+                      ) : (
+                        s.yours
+                      )}
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </li>
+          );
+        })}
       </ol>
     </div>
   </section>
 
-  <!-- ================= THREAT ASSESSMENT ================= -->
-  <section class="tm-check" id="check" aria-labelledby="tm-check-title" data-tm-check>
-    <div class="tm-wrap tm-check-grid">
-      <div class="tm-check-main">
-        <p class="tm-eyebrow tm-eyebrow-pinned">Threat assessment</p>
-        <h2 class="tm-h2 tm-h2-pinned" id="tm-check-title">What's your T-minus?</h2>
-        <p class="tm-check-intro">
-          Check the ones that are true at your company today. Be honest (the checkboxes don't send anything anywhere,
-          I made sure of it, so the only person who'll know is you).
-        </p>
-        <ul class="tm-boxes">
-          {checks.map((c, i) => (
-            <li>
-              <label class="tm-box">
-                <input type="checkbox" data-tm-box />
-                <span class="tm-box-mark" aria-hidden="true"></span>
-                <span class="tm-box-text"><span class="tm-box-no">{pad(i + 1)}</span> {c}</span>
-              </label>
-            </li>
-          ))}
-        </ul>
-      </div>
+  <!-- ================= THE HUMBUG LEDGER ================= -->
+  <section class="ac-ledger-sec" id="ledger" aria-labelledby="ac-ledger-title">
+    <div class="ac-wrap">
+      <div class="ac-ledger">
+        <header class="ac-ledger-head">
+          <p class="ac-ledger-firm">Scrooge &amp; Marley | Humbugs received</p>
+          <h2 class="ac-ledger-title" id="ac-ledger-title">The Humbug Ledger</h2>
+          <p class="ac-ledger-intro">
+            In fairness to Scrooge, his first theory about the ghost is indigestion (&ldquo;There's more of gravy
+            than of grave about you&rdquo;), and as hypotheses go, that's a decent one, and plenty of what you've
+            been told about AI deserves the same treatment. So here are 5 of the usual humbugs, entered honestly,
+            including the ones where the skeptic's right.
+          </p>
+        </header>
 
-      <div class="tm-board">
-        <p class="tm-board-score"><span data-tm-score>0</span> of 6</p>
-        <ol class="tm-levels">
-          {levels.map((l, i) => (
-            <li class={`tm-level ${i === 0 ? 'is-on' : ''}`} data-min={l.min} data-max={l.max}>
-              <span class="tm-level-range">{l.min === l.max ? l.min : `${l.min} to ${l.max}`}</span>
-              <span class="tm-level-name">{l.name}</span>
-              <span class="tm-level-note">{l.note}</span>
-            </li>
-          ))}
+        <ol class="ac-rows">
+          {ledger.map((r, i) => {
+            const parts = r.link ? split(r.entry, r.link.text) : null;
+            return (
+              <li class={`ac-row ${r.verdict === 'Humbug' ? 'ac-row-humbug' : ''}`}>
+                <span class="ac-row-no">No. {i + 1}</span>
+                <p class="ac-row-humbug-text">&ldquo;{r.humbug}&rdquo;</p>
+                <p class="ac-row-verdict"><span class="ac-sr">Verdict: </span>{r.verdict}</p>
+                <p class="ac-row-entry">
+                  {parts && r.link ? (
+                    <>
+                      {parts.before}
+                      <a href={r.link.href} target="_blank" rel="noopener noreferrer">{r.link.text}</a>
+                      {parts.after}
+                    </>
+                  ) : (
+                    r.entry
+                  )}
+                </p>
+              </li>
+            );
+          })}
         </ol>
-        <p class="tm-board-live" aria-live="polite" data-tm-live></p>
+
+        <p class="ac-ledger-total">
+          <span class="ac-ledger-total-k">Carried forward</span>
+          <span class="ac-ledger-total-v">1 humbug in 5.</span>
+          <span class="ac-ledger-total-note">
+            Scrooge went 0 for 6, so today's skeptic is doing a lot better than he did. The skeptic still gets the 3
+            visitors, though (sorry, I don't make the rules, Dickens does).
+          </span>
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ================= STILL STANDING ================= -->
-  <section class="tm-section tm-band" id="building" aria-labelledby="tm-real-title">
-    <div class="tm-wrap">
-      <header class="tm-head">
-        <p class="tm-eyebrow">Still standing</p>
-        <h2 class="tm-h2" id="tm-real-title">What I'm building (all 6 survived the landfall).</h2>
-        <p class="tm-deck">
-          Same 6 projects as every week. The footprint missed every one of them, which I'll take as a compliment, and 5 of the 6 have a link you can check (the 6th is a D&amp;D tool you'll have to take my word
-          for).
+  <!-- ================= ON THE BOOKS ================= -->
+  <section class="ac-section ac-band" id="building" aria-labelledby="ac-books-title">
+    <div class="ac-wrap">
+      <header class="ac-head">
+        <p class="ac-eyebrow">On the books</p>
+        <h2 class="ac-h2" id="ac-books-title">What I'm building (6 open accounts).</h2>
+        <p class="ac-copy">
+          Same 6 projects as every week, entered as folios this time. 5 of the 6 have a link you can check,
+          and the 6th is a D&amp;D tool you'll have to take my word for.
         </p>
       </header>
-      <ul class="tm-projects">
+      <ul class="ac-projects">
         {projects.map((p, i) => (
-          <li class="tm-project">
-            <div class="tm-project-top">
-              <span class="tm-project-no">Structure {pad(i + 1)}</span>
-              <span class="tm-project-dmg">Damage: none</span>
-            </div>
-            <h3 class="tm-project-name">{p.name}</h3>
-            <p class="tm-project-status">{p.status}</p>
-            <p class="tm-project-note">{p.note}</p>
+          <li class="ac-project">
+            <p class="ac-project-folio">Folio {pad(i + 1)}</p>
+            <h3 class="ac-project-name">{p.name}</h3>
+            <p class="ac-project-status">{p.status}</p>
+            <p class="ac-project-note">{p.note}</p>
             {p.href ? (
               <a
-                class="tm-project-link"
+                class="ac-project-link"
                 href={p.href}
                 {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               >
                 {p.cta}
               </a>
             ) : (
-              <span class="tm-project-link tm-project-link-off">{p.cta}</span>
+              <span class="ac-project-link ac-project-link-off">{p.cta}</span>
             )}
           </li>
         ))}
@@ -463,445 +544,533 @@ const pad = (n: number) => String(n).padStart(2, '0');
     </div>
   </section>
 
-  <!-- ================= OTHER SIGHTINGS ================= -->
+  <!-- ================= NOTICES ================= -->
   <WhatsNew
     eyebrow="Other sightings"
-    heading="Reported <em>elsewhere.</em>"
-    deck="Interviews, press, and posts from around the web, for anyone who'd like a second eyewitness."
+    heading="Seen <em>elsewhere.</em>"
+    deck="Interviews, press, and posts from around the web, for anyone who'd like a second witness (Scrooge didn't trust his own eyes either)."
   />
 
-  <!-- ================= THIS WEEK'S QUESTION ================= -->
-  <section class="tm-section tm-question" aria-labelledby="tm-q-title">
-    <div class="tm-wrap tm-question-inner">
-      <p class="tm-eyebrow">This week's question</p>
-      <h2 class="tm-h2 tm-h2-big" id="tm-q-title">Is your AI task force still meeting?</h2>
-      <p class="tm-copy">
-        Godzilla Minus Zero opened in North America on Friday after
-        <a href={BOXOFFICE} target="_blank" rel="noopener noreferrer">$6.7 million in Thursday previews</a>,
-        which tells me a lot of people still want to watch a city deal with something enormous, even when (especially
-        when) the city's handling it badly for the first hour. I saw it in London at the BFI IMAX, the biggest screen
-        in the United Kingdom, and it's quite good: amazing battle scenes, and it really captures a Japanese perspective
-        on the disaster-horror movie that you don't get to see very often (I'd recommend it, whether or not you currently
-        run a task force).
-      </p>
-      <p class="tm-copy">
-        The longer version, for whoever has to sit in that conference room on Monday, is <a href={POST}>on the blog</a>
-        today (I tried to keep the monster out of it and lasted about 1 sentence).
-      </p>
-    </div>
-  </section>
+  <!-- ================= STAVE FIVE: THE END OF IT ================= -->
+  <section class="ac-morning" id="stave-five" aria-labelledby="ac-s5-title">
+    <div class="ac-wrap ac-morning-grid">
+      <figure class="ac-fig ac-fig-morning">
+        <img
+          src={`${IMG}/morning.jpg`}
+          alt="On a bright, snowy Victorian morning, Edward as Marley's Ghost leans out of an upstairs window of a brick townhouse in his blue fedora, grinning and waving. His chain hangs over the windowsill and down the wall with floppy disks, padlocks, and a beige keyboard dangling from it, and a boy in a flat cap looks up at him from the street."
+          width="1600"
+          height="1195"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption>The boy has questions. Most of them are about the keyboard.</figcaption>
+      </figure>
 
-  <!-- ================= CALL IT IN ================= -->
-  <section class="tm-door" aria-labelledby="tm-door-title">
-    <div class="tm-wrap tm-door-inner">
-      <p class="tm-eyebrow tm-eyebrow-pinned">Call it in</p>
-      <h2 class="tm-h2 tm-h2-pinned" id="tm-door-title">Need somebody who's been stepped on before?</h2>
-      <p class="tm-copy-pinned">
-        If you'd like the civilian plan explained out loud to your leadership team, by a man in a fedora who's been
-        flattened by 4 of these and got up every time (slightly flatter, but upright, and the fedora never came off),
-        that's the speaking page, with keynotes from $15,000. If you'd rather just talk, 13 minutes on my calendar is
-        free! Or write me at Edward@Roske.AI and tell me what your task force is scoping this week.
-      </p>
-      <div class="tm-ctas">
-        <a class="tm-btn tm-btn-red" href="/speaking/">Book the talk</a>
-        <a class="tm-btn tm-btn-ghost-pinned" href={CAL} target="_blank" rel="noopener noreferrer">Book 13 minutes</a>
-        <a class="tm-btn tm-btn-ghost-pinned" href="/contact/">Write me</a>
+      <div class="ac-morning-body">
+        <p class="ac-eyebrow ac-eyebrow-morning">Stave Five | The End of It</p>
+        <h2 class="ac-h2 ac-h2-morning ac-h2-quote" id="ac-s5-title">&ldquo;What's to<span class="ac-hy">-</span>day?&rdquo;</h2>
+        <p class="ac-copy ac-copy-morning">
+          Scrooge wakes up, throws open the window, and asks a boy in the street what day it is, because he's lost
+          track. It's Christmas Day, and &ldquo;the Spirits have done it all in one night.&rdquo; (Marley, technically,
+          doesn't get a Stave Five. He's back out wandering by the end of Stave One. I gave myself a window anyway,
+          because it's my website.)
+        </p>
+        <p class="ac-copy ac-copy-morning">
+          This website did its own version of that today. A machine looked up what opened this weekend, picked
+          Dickens, rewrote the page you're reading, drew me as a dead Victorian 7 times (fedora on every one, per
+          standing orders), ran the tests, and shipped it. It's the part of my &ldquo;Your Day, Run
+          by Ten Agents&rdquo; talk that I don't have to bring slides for!
+        </p>
+        <p class="ac-copy ac-copy-morning">
+          Dickens gives Scrooge's follow-through about 1 paragraph (&ldquo;He became as good a friend, as good a
+          master, and as good a man, as the good old city knew&rdquo;), and that's all we hear about what must have
+          been a pretty awkward January at the office. The real version takes a budget and most of a year, and people
+          laughed at Scrooge at first (Dickens says he let them). A talk can do roughly what Marley did, which is get
+          the &ldquo;Humbug&rdquo; to stop at the first syllable, and I'd be overselling it if I promised you the
+          other 4 staves from a stage.
+        </p>
+        <p class="ac-copy ac-copy-morning">
+          The longer version, including the deal I once lost to a set of courtside Lakers tickets, is on the blog
+          today: <a href={POST}>What Actually Changed Scrooge's Mind?</a>
+        </p>
       </div>
-      <p class="tm-disclaimer">
-        Every image of Edward on this page is AI-generated from his real headshot (without glasses this week, since he
-        doesn't wear them and the AI had been adding them anyway). The monster was drawn by an AI that has obviously
-        seen a few movies, and nothing here is affiliated with Godzilla Minus Zero, Toho, or anybody's actual harbor.
-        No companies are named on this page, on purpose, and no task forces were harmed (they're still meeting).
-      </p>
     </div>
   </section>
 
-  <script is:inline>
-    (function () {
-      var root = document.querySelector('[data-tm-check]');
-      if (!root) return;
-      var boxes = root.querySelectorAll('[data-tm-box]');
-      var levels = root.querySelectorAll('.tm-level');
-      var score = root.querySelector('[data-tm-score]');
-      var live = root.querySelector('[data-tm-live]');
-      function update(announce) {
-        var n = 0;
-        boxes.forEach(function (b) { if (b.checked) n++; });
-        score.textContent = n;
-        var name = '';
-        levels.forEach(function (l) {
-          var on = n >= +l.dataset.min && n <= +l.dataset.max;
-          l.classList.toggle('is-on', on);
-          if (on) name = l.querySelector('.tm-level-name').textContent;
-        });
-        if (announce) live.textContent = n + ' of 6: ' + name + '.';
-      }
-      boxes.forEach(function (b) { b.addEventListener('change', function () { update(true); }); });
-      update(false);
-    })();
-  </script>
+  <!-- ================= THE DOOR ================= -->
+  <section class="ac-section ac-door" aria-labelledby="ac-door-title">
+    <div class="ac-wrap ac-door-inner">
+      <p class="ac-eyebrow">Expect the first when the bell tolls One</p>
+      <h2 class="ac-h2" id="ac-door-title">Is there a Scrooge at your company?</h2>
+      <p class="ac-copy">
+        If there is (or you're it, which is fine, he's the hero of the book), I'd be glad to be the first visitor.
+        Keynotes start at $15,000, and the details are on the speaking page. If you'd rather just talk, 13 minutes on
+        my calendar is free! Or write me at Edward@Roske.AI and tell me which humbug you hear the most (if it's not
+        on the ledger, I clearly need to get out more).
+      </p>
+      <div class="ac-ctas">
+        <a class="ac-btn ac-btn-main" href="/speaking/">Book the visit</a>
+        <a class="ac-btn ac-btn-ghost" href={CAL} target="_blank" rel="noopener noreferrer">Book 13 minutes</a>
+        <a class="ac-btn ac-btn-ghost" href="/contact/">Write me</a>
+      </div>
+      <p class="ac-disclaimer">
+        Every image of Edward on this page is AI-generated from his real headshot (he isn't dead, and the frock coat
+        isn't his). The quotations are from Charles Dickens's A Christmas Carol (1843), which is in the public domain,
+        checked against the Project Gutenberg text. Nothing here is affiliated with Ebenezer: A Christmas Carol,
+        Paramount Pictures, or anybody in the film, and nobody from the film appears on this page. The hooded figure
+        declined to comment.
+      </p>
+    </div>
+  </section>
 </BaseLayout>
 
 <style is:global>
   /* =====================================================================
-     T-MINUS ZERO (2026-11-07)
-     Godzilla Minus Zero week. Dark mode is the night harbor during an
-     emergency broadcast; light mode is the printed civil-defense
-     pamphlet. The hero photo, the threat assessment, and the call-it-in
-     block are pinned dark in BOTH modes (a control room has one lighting
-     setting), so every color inside them is a literal. Everything else
-     reads the --tm-* vars, which flip by mode. Global on purpose:
-     [data-theme] selectors are unreliable inside Astro's scoped CSS.
-     All classes tm-.
+     AN A.I. CAROL (2026-11-14)
+     Ebenezer: A Christmas Carol week. Light mode is the 1843 first
+     edition (cream paper, title-page red and blue ink); dark mode is the
+     bedchamber at 1 AM (soot, candle amber, spectral green).
+
+     FOUR blocks are pinned and look the same in both modes, so every
+     color inside them is a literal: the title-page book (paper), the
+     Humbug Ledger (paper), the three Spirits (night), and Stave Five
+     (bright morning). Everything else reads the --ac-* vars, which flip.
+     Global on purpose: [data-theme] selectors are unreliable inside
+     Astro's scoped CSS. All classes ac-.
      ===================================================================== */
   :root,
   [data-theme="dark"] {
-    --tm-bg: #090c0e;
-    --tm-surface: #121719;
-    --tm-band: #0d1214;
-    --tm-ink: #ece6d8;
-    --tm-muted: #a8afad;
-    --tm-line: #26302f;
-    --tm-red: #ff5a3c;
-    --tm-eye: #6fd3ff;
-    --tm-texture: repeating-linear-gradient(105deg, rgba(236, 230, 216, 0.035) 0 1px, transparent 1px 9px);
-    --tm-dawn-bg: linear-gradient(180deg, #15120d 0%, #1d1810 100%);
-    --tm-dawn-ink: #f3e9d2;
-    --tm-dawn-muted: #c9bc9f;
-    --tm-amber: #ffb347;
-    --tm-dawn-line: #3a3020;
+    --ac-bg: #100e0c;
+    --ac-surface: #1b1713;
+    --ac-band: #171310;
+    --ac-ink: #efe6d2;
+    --ac-muted: #b8ac93;
+    --ac-line: #3a3128;
+    --ac-accent: #f0a63a;
+    --ac-second: #86e0cb;
+    --ac-texture: radial-gradient(ellipse at 20% 0%, rgba(240, 166, 58, 0.07) 0%, rgba(240, 166, 58, 0) 55%);
   }
   [data-theme="light"] {
-    --tm-bg: #f1ece0;
-    --tm-surface: #ffffff;
-    --tm-band: #e8e1d0;
-    --tm-ink: #111518;
-    --tm-muted: #4a5254;
-    --tm-line: #d6cebd;
-    --tm-red: #b3261e;
-    --tm-eye: #0b5e86;
-    --tm-texture: radial-gradient(rgba(17, 21, 24, 0.07) 1px, transparent 1.4px) 0 0 / 7px 7px;
-    --tm-dawn-bg: linear-gradient(180deg, #f6e3bf 0%, #f1d9ad 100%);
-    --tm-dawn-ink: #1b1408;
-    --tm-dawn-muted: #4d3f22;
-    --tm-amber: #8a4b00;
-    --tm-dawn-line: #d9bf8c;
+    --ac-bg: #f2e9d5;
+    --ac-surface: #fbf6ea;
+    --ac-band: #e8dcc2;
+    --ac-ink: #1d1711;
+    --ac-muted: #584c3b;
+    --ac-line: #d3c4a3;
+    --ac-accent: #9b1c1c;
+    --ac-second: #1f3864;
+    --ac-texture: repeating-linear-gradient(0deg, rgba(29, 23, 17, 0.022) 0 1px, transparent 1px 4px);
   }
 
-  .tm-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; }
-  .tm-section { padding: 5.5rem 0; background: var(--tm-bg); color: var(--tm-ink); position: relative; }
-  .tm-section::before { content: ''; position: absolute; inset: 0; background: var(--tm-texture); pointer-events: none; }
-  .tm-band { background: var(--tm-band); }
+  .ac-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; }
+  .ac-section { padding: 5.5rem 0; background: var(--ac-bg); color: var(--ac-ink); position: relative; }
+  .ac-section::before { content: ''; position: absolute; inset: 0; background: var(--ac-texture); pointer-events: none; }
+  .ac-band { background: var(--ac-band); }
+  .ac-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
   /* ---------- type ---------- */
-  .tm-eyebrow {
+  .ac-eyebrow {
     font-family: var(--font-mono);
     font-size: 0.95rem;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--tm-red);
+    letter-spacing: 0.14em;
+    color: var(--ac-accent);
     margin: 0 0 1rem;
     display: flex;
     align-items: center;
-    gap: 0.7rem;
+    gap: 0.8rem;
   }
-  .tm-eyebrow::before { content: ''; width: 0.7rem; height: 0.7rem; background: currentColor; display: inline-block; border-radius: 50%; }
-  .tm-h2 {
+  .ac-eyebrow::before { content: ''; width: 2.4rem; height: 1px; background: currentColor; display: inline-block; }
+  .ac-h2 {
     font-family: var(--font-heading);
-    font-weight: 400;
-    font-size: clamp(2rem, 4.6vw, 3.5rem);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin: 0 0 1.3rem;
-    color: var(--tm-ink);
+    font-weight: 700;
+    font-size: clamp(2.1rem, 4.8vw, 3.7rem);
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    margin: 0 0 1.5rem;
+    color: var(--ac-ink);
     text-wrap: balance;
   }
-  .tm-h2-big { font-size: clamp(2.4rem, 6vw, 4.6rem); max-width: 16ch; }
-  .tm-head { max-width: 820px; margin-bottom: 3.4rem; position: relative; }
-  .tm-deck, .tm-copy { font-size: 1.12rem; line-height: 1.75; margin: 0 0 1.1rem; }
-  .tm-copy { max-width: 66ch; }
-  .tm-copy a, .tm-deck a, .tm-report-real a { color: var(--tm-red); text-decoration: underline; text-underline-offset: 3px; }
-  .tm-copy a:hover, .tm-deck a:hover, .tm-report-real a:hover { text-decoration-thickness: 2px; }
+  .ac-h2-quote { font-style: italic; font-weight: 500; }
+  .ac-h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1.15;
+    margin: 0 0 1.4rem;
+    color: var(--ac-ink);
+  }
+  .ac-head { max-width: 760px; position: relative; }
+  .ac-copy { font-size: 1.1rem; line-height: 1.78; margin: 0 0 1.15rem; max-width: 66ch; }
+  .ac-copy a,
+  .ac-spirit-dl a,
+  .ac-row-entry a,
+  .ac-preface p a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .ac-copy a { color: var(--ac-accent); }
+  .ac-copy a:hover,
+  .ac-spirit-dl a:hover,
+  .ac-row-entry a:hover,
+  .ac-preface p a:hover { text-decoration-thickness: 2px; }
 
   /* ---------- buttons ---------- */
-  .tm-btn {
+  .ac-btn {
     display: inline-flex;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 1rem;
+    font-size: 0.98rem;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 0.95rem 1.4rem;
+    letter-spacing: 0.1em;
+    padding: 0.9rem 1.35rem;
     text-decoration: none;
-    border: 2px solid currentColor;
+    border: 1.5px solid currentColor;
     transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
   }
-  .tm-btn:hover { transform: translateY(-2px); }
-  .tm-btn-red { background: var(--color-accent); color: var(--color-on-accent); border-color: var(--color-accent); }
-  .tm-btn-red:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); box-shadow: 6px 6px 0 var(--tm-ink); }
-  .tm-btn-ghost { background: transparent; color: var(--tm-ink); }
-  .tm-btn-ghost:hover { box-shadow: 6px 6px 0 var(--tm-red); }
-  .tm-ctas { display: flex; flex-wrap: wrap; gap: 1rem; }
+  .ac-btn:hover { transform: translateY(-2px); }
+  .ac-btn-main { background: var(--color-accent); color: var(--color-on-accent); border-color: var(--color-accent); }
+  .ac-btn-main:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); box-shadow: 5px 5px 0 var(--ac-ink); }
+  .ac-btn-ghost { background: transparent; color: var(--ac-ink); }
+  .ac-btn-ghost:hover { box-shadow: 5px 5px 0 var(--ac-accent); }
+  .ac-ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; }
 
-  /* ---------- ticker ---------- */
-  .tm-ticker { background: #c4291a; color: #fff6ee; font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; }
-  .tm-ticker-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 1.4rem; padding-top: 0.55rem; padding-bottom: 0.55rem; }
-  .tm-ticker-inner span + span + span::before { content: '|'; margin-right: 1.4rem; opacity: 0.7; }
-  .tm-ticker-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #fff6ee; box-shadow: 0 0 0 3px rgba(255, 246, 238, 0.3); }
-
-  /* ---------- hero ---------- */
-  .tm-hero { background: var(--tm-bg); color: var(--tm-ink); padding-bottom: 4.5rem; position: relative; overflow: hidden; }
-  .tm-hero::after { content: ''; position: absolute; inset: 0; background: var(--tm-texture); pointer-events: none; }
-  .tm-hero-fig { margin: 0; position: relative; background: #05080a; overflow: hidden; }
-  .tm-hero-img { display: block; width: 100%; height: auto; max-height: 78vh; object-fit: cover; object-position: 50% 40%; }
-  .tm-hero-shade {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg, rgba(5, 8, 10, 0) 45%, rgba(5, 8, 10, 0.88) 100%),
-      linear-gradient(90deg, rgba(5, 8, 10, 0.55) 0%, rgba(5, 8, 10, 0) 45%);
-  }
-  .tm-hero-over { position: absolute; left: 0; right: 0; bottom: 0; padding-bottom: 2rem; color: #f4efe4; }
-  .tm-hero-label {
+  /* ---------- running head ---------- */
+  .ac-runhead {
+    background: var(--ac-bg);
+    color: var(--ac-muted);
+    border-bottom: 1px solid var(--ac-line);
     font-family: var(--font-mono);
     font-size: 0.85rem;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #d9e7e3;
-    margin: 0 0 0.6rem;
   }
-  .tm-hero-quote {
-    display: inline-block;
-    font-family: var(--font-heading);
-    font-size: clamp(1.5rem, 3.6vw, 2.8rem);
-    line-height: 1.1;
-    color: #6fd3ff;
-    margin: 0 0 0.9rem;
-    padding: 0.35rem 0.9rem 0.45rem;
-    border: 2px solid #6fd3ff;
-    background: rgba(5, 8, 10, 0.7);
-    text-shadow: 0 0 22px rgba(111, 211, 255, 0.55);
-    transform: rotate(-1.5deg);
-  }
-  .tm-title {
-    font-family: var(--font-heading);
-    font-weight: 400;
-    font-size: clamp(3rem, 10.5vw, 9rem);
-    line-height: 0.9;
-    letter-spacing: -0.02em;
-    text-transform: uppercase;
-    margin: 0;
-    color: #f4efe4;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
-  }
-  .tm-title span { color: #ff5a3c; }
+  .ac-runhead-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.3rem 1.5rem; padding-top: 0.6rem; padding-bottom: 0.6rem; }
 
-  @keyframes tm-quake {
-    0%, 100% { transform: translate(0, 0); }
-    15% { transform: translate(-6px, 3px); }
-    30% { transform: translate(5px, -4px); }
-    45% { transform: translate(-4px, 2px); }
-    60% { transform: translate(3px, -2px); }
-    80% { transform: translate(-1px, 1px); }
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .tm-hero-img { animation: tm-quake 0.75s ease-in-out 1s 1; }
-  }
-
-  .tm-hero-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 3rem; margin-top: 2.6rem; position: relative; z-index: 1; }
-  .tm-kicker { font-family: var(--font-mono); font-size: 0.98rem; line-height: 1.6; color: var(--tm-muted); margin: 0 0 1.2rem; max-width: 60ch; }
-  .tm-sub { font-family: var(--font-heading); font-size: clamp(1.3rem, 2.4vw, 1.75rem); line-height: 1.3; margin: 0 0 1.2rem; color: var(--tm-ink); }
-  .tm-lede { font-size: 1.12rem; line-height: 1.75; margin: 0 0 1.8rem; max-width: 64ch; }
-
-  .tm-clock {
-    align-self: start;
-    background: #05080a;
-    color: #e6f1ee;
-    border: 2px solid #ff5a3c;
-    padding: 1.6rem 1.6rem 1.4rem;
-    position: relative;
-    box-shadow: 10px 10px 0 rgba(255, 90, 60, 0.25);
-  }
-  .tm-clock-label { font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.14em; color: #9fb3af; margin: 0 0 0.4rem; }
-  .tm-clock-digits {
-    font-family: var(--font-mono);
-    font-size: clamp(2.6rem, 6vw, 4rem);
-    line-height: 1;
-    color: #ff5a3c;
-    margin: 0 0 1rem;
-    text-shadow: 0 0 18px rgba(255, 90, 60, 0.55);
-    letter-spacing: 0.04em;
-  }
-  .tm-clock-note { font-size: 0.98rem; line-height: 1.6; margin: 0; color: #cfdcd8; }
-
-  /* ---------- stats ---------- */
-  .tm-stats-wrap { background: var(--tm-ink); color: var(--tm-bg); }
-  .tm-stats { list-style: none; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); padding-top: 1.6rem; padding-bottom: 1.6rem; }
-  .tm-stats li { display: flex; flex-direction: column; gap: 0.3rem; padding: 0 1rem; border-left: 2px solid var(--tm-red); }
-  .tm-stat-v { font-family: var(--font-heading); font-size: clamp(1.8rem, 3.6vw, 2.6rem); line-height: 1; }
-  .tm-stat-k { font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
-
-  /* ---------- attempts ---------- */
-  .tm-reports { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5rem; position: relative; }
-  .tm-report { display: grid; grid-template-columns: 7fr 5fr; gap: 2.6rem; align-items: center; }
-  .tm-report-tall { grid-template-columns: 5fr 7fr; }
-  .tm-report-tall.tm-report-flip { grid-template-columns: 7fr 5fr; }
-  .tm-report-flip .tm-report-fig { order: 2; }
-  .tm-report-fig { margin: 0; position: relative; border: 2px solid var(--tm-ink); box-shadow: 12px 12px 0 var(--tm-line); }
-  .tm-report-flip .tm-report-fig { box-shadow: -12px 12px 0 var(--tm-line); }
-  .tm-report-fig img { display: block; width: 100%; height: auto; }
-  .tm-stamp {
-    position: absolute;
-    top: 1.2rem;
-    right: 1.2rem;
-    font-family: var(--font-mono);
-    font-size: clamp(1.1rem, 2.2vw, 1.6rem);
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: #ff6a4d;
-    border: 3px solid #ff6a4d;
-    padding: 0.3rem 0.8rem 0.25rem;
-    background: rgba(5, 8, 10, 0.72);
-    transform: rotate(-9deg);
-  }
-  .tm-report-flip .tm-stamp { right: auto; left: 1.2rem; transform: rotate(7deg); }
-  .tm-report-no { font-family: var(--font-mono); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--tm-red); margin: 0 0 0.4rem; }
-  .tm-report-name { font-family: var(--font-heading); font-weight: 400; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.05; margin: 0 0 1.4rem; }
-  .tm-report-dl { margin: 0; display: flex; flex-direction: column; gap: 1.1rem; }
-  .tm-report-dl dt { font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--tm-muted); margin-bottom: 0.25rem; }
-  .tm-report-dl dd { margin: 0; font-size: 1.05rem; line-height: 1.7; }
-  .tm-report-real { border-left: 3px solid var(--tm-red); padding-left: 1rem; }
-  .tm-report-real dt { color: var(--tm-red); }
-
-  /* ---------- the civilian plan ---------- */
-  .tm-plan { background: var(--tm-dawn-bg); color: var(--tm-dawn-ink); padding-bottom: 5.5rem; position: relative; }
-  .tm-plan-fig { margin: 0 0 3.6rem; position: relative; }
-  .tm-plan-fig img { display: block; width: 100%; height: auto; max-height: 72vh; object-fit: cover; }
-  .tm-plan-fig figcaption {
-    position: absolute;
-    left: 1.5rem;
-    bottom: 1.5rem;
-    max-width: 34rem;
-    background: rgba(5, 8, 10, 0.78);
-    color: #f3e9d2;
-    font-family: var(--font-mono);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    padding: 0.8rem 1rem;
-    border-left: 4px solid #ffb347;
-  }
-  .tm-eyebrow-dawn { color: var(--tm-amber); }
-  .tm-h2-dawn { color: var(--tm-dawn-ink); }
-  .tm-deck-dawn { color: var(--tm-dawn-ink); }
-  .tm-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--tm-dawn-ink); border-left: 2px solid var(--tm-dawn-ink); }
-  .tm-step { padding: 1.8rem 1.6rem 2rem; border-right: 2px solid var(--tm-dawn-ink); border-bottom: 2px solid var(--tm-dawn-ink); position: relative; }
-  .tm-step-no { font-family: var(--font-heading); font-size: 3.2rem; line-height: 1; color: var(--tm-amber); display: block; margin-bottom: 0.9rem; }
-  .tm-step-name { font-family: var(--font-heading); font-weight: 400; font-size: 1.35rem; line-height: 1.2; margin: 0 0 0.7rem; color: var(--tm-dawn-ink); }
-  .tm-step-note { margin: 0; font-size: 1.02rem; line-height: 1.65; color: var(--tm-dawn-muted); }
-
-  /* ---------- threat assessment (pinned dark) ---------- */
-  .tm-check {
-    background:
-      radial-gradient(circle at 85% 30%, rgba(111, 211, 255, 0.10) 0%, rgba(111, 211, 255, 0) 45%),
-      repeating-linear-gradient(0deg, rgba(230, 241, 238, 0.03) 0 1px, transparent 1px 4px),
-      #0a1012;
-    color: #e6f1ee;
-    padding: 5.5rem 0;
-  }
-  .tm-eyebrow-pinned { color: #ff5a3c; }
-  .tm-h2-pinned { color: #f4efe4; }
-  .tm-check-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 3.4rem; align-items: start; }
-  .tm-check-intro { font-size: 1.1rem; line-height: 1.7; color: #cfdcd8; margin: 0 0 1.8rem; max-width: 60ch; }
-  .tm-boxes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
-  .tm-box {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1rem;
-    align-items: start;
-    padding: 1rem 1.1rem;
-    border: 1px solid #2b3a3c;
-    background: rgba(18, 26, 28, 0.85);
-    cursor: pointer;
-    position: relative;
-    transition: border-color 0.15s ease, background-color 0.15s ease;
-  }
-  .tm-box:hover { border-color: #6fd3ff; }
-  .tm-box input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-  .tm-box-mark { width: 1.4rem; height: 1.4rem; border: 2px solid #9fb3af; margin-top: 0.15rem; position: relative; }
-  .tm-box input:checked + .tm-box-mark { background: #6fd3ff; border-color: #6fd3ff; }
-  .tm-box input:checked + .tm-box-mark::after {
+  /* ---------- hero: plate ---------- */
+  .ac-hero { background: var(--ac-bg); color: var(--ac-ink); padding-bottom: 4.5rem; position: relative; }
+  .ac-plate { margin: 0; position: relative; background: #0b0a09; }
+  .ac-plate-img { display: block; width: 100%; height: auto; max-height: 82vh; object-fit: cover; object-position: 30% 30%; }
+  .ac-plate::after {
     content: '';
     position: absolute;
-    left: 0.38rem;
-    top: 0.1rem;
-    width: 0.4rem;
-    height: 0.75rem;
-    border: solid #0a1012;
-    border-width: 0 3px 3px 0;
-    transform: rotate(45deg);
+    inset: 0;
+    background: linear-gradient(180deg, rgba(11, 10, 9, 0) 55%, rgba(11, 10, 9, 0.78) 100%);
+    pointer-events: none;
   }
-  .tm-box input:focus-visible + .tm-box-mark { outline: 3px solid #ff5a3c; outline-offset: 3px; }
-  .tm-box:has(input:checked) { border-color: #6fd3ff; background: rgba(111, 211, 255, 0.08); }
-  .tm-box-text { font-size: 1.04rem; line-height: 1.55; color: #e6f1ee; }
-  .tm-box-no { font-family: var(--font-mono); color: #9fb3af; margin-right: 0.4rem; }
+  .ac-plate-cap {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 1.1rem;
+    z-index: 1;
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    color: #f4ecd8;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.85);
+  }
+  .ac-plate-cap .ac-wrap { display: block; text-align: right; }
+  .ac-plate-cap em { font-style: italic; opacity: 0.92; }
 
-  .tm-board { border: 2px solid #2b3a3c; padding: 1.8rem; background: #05080a; position: sticky; top: 6rem; }
-  .tm-board-score { font-family: var(--font-mono); font-size: clamp(2.4rem, 5vw, 3.4rem); line-height: 1; color: #6fd3ff; margin: 0 0 1.4rem; text-shadow: 0 0 16px rgba(111, 211, 255, 0.45); }
-  .tm-levels { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.6rem; }
-  .tm-level { padding: 0.8rem 1rem; border: 1px solid #23302f; display: grid; gap: 0.2rem; color: #9fb3af; transition: all 0.2s ease; }
-  .tm-level-range { font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
-  .tm-level-name { font-family: var(--font-heading); font-size: 1.1rem; line-height: 1.2; color: #cfdcd8; }
-  .tm-level-note { font-size: 0.95rem; line-height: 1.5; display: none; }
-  .tm-level.is-on { border-color: #ff5a3c; background: rgba(255, 90, 60, 0.1); color: #f4efe4; }
-  .tm-level.is-on .tm-level-name { color: #ff7a61; }
-  .tm-level.is-on .tm-level-note { display: block; }
-  .tm-board-live { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  /* ---------- hero: the open book (PINNED PAPER, literals only) ---------- */
+  .ac-book {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    margin-top: -9rem;
+    position: relative;
+    z-index: 2;
+    background: #f4ecd8;
+    color: #1d1711;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 0 2px 0 #d9caa6, 0 4px 0 #e9dcbc, 0 6px 0 #d9caa6;
+  }
+  .ac-page { padding: 3rem 2.8rem 2.8rem; position: relative; }
+  .ac-tp {
+    text-align: center;
+    border-right: 1px solid #cdbd9a;
+    background: linear-gradient(90deg, rgba(29, 23, 17, 0) 82%, rgba(29, 23, 17, 0.09) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .ac-preface { background: linear-gradient(90deg, rgba(29, 23, 17, 0.1) 0%, rgba(29, 23, 17, 0) 12%); }
+  .ac-tp-title { margin: 0; font-family: var(--font-heading); line-height: 0.95; color: #9b1c1c; }
+  .ac-tp-an {
+    display: block;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: #1d1711;
+    margin-bottom: 0.8rem;
+    padding-left: 0.4em;
+  }
+  .ac-tp-main {
+    display: block;
+    font-size: clamp(3rem, 6.2vw, 5.4rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  .ac-tp-prose {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: #1f3864;
+    margin: 1.1rem 0 1.3rem;
+    padding-left: 0.34em;
+  }
+  .ac-tp-small {
+    font-family: var(--font-heading);
+    font-size: 0.92rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #584c3b;
+    margin: 0 0 0.45rem;
+    padding-left: 0.3em;
+  }
+  .ac-tp-ghost {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 2.7vw, 2.1rem);
+    line-height: 1.15;
+    color: #9b1c1c;
+    margin: 0 0 0.3rem;
+  }
+  .ac-tp-rule { display: block; width: 5.5rem; height: 3px; border-top: 1px solid #1d1711; border-bottom: 1px solid #1d1711; margin: 1.4rem auto; }
+  .ac-tp-author {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #1f3864;
+    margin: 0 0 0.9rem;
+    padding-left: 0.14em;
+  }
+  .ac-tp-imprint { font-family: var(--font-heading); font-size: 0.98rem; line-height: 1.6; color: #1d1711; margin: 0; letter-spacing: 0.04em; }
+
+  .ac-preface-head {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: #584c3b;
+    margin: 0 0 1.1rem;
+  }
+  .ac-preface-pull {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1.35rem, 2.3vw, 1.8rem);
+    line-height: 1.28;
+    color: #1d1711;
+    margin: 0 0 1.4rem;
+    padding-left: 1.1rem;
+    border-left: 3px solid #9b1c1c;
+  }
+  .ac-preface p { font-size: 1.06rem; line-height: 1.74; margin: 0 0 1.05rem; }
+  .ac-preface p a { color: #9b1c1c; }
+  .ac-preface .ac-ctas { margin: 1.7rem 0 1.6rem; }
+  .ac-btn-paper { background: #9b1c1c; color: #ffffff; border-color: #9b1c1c; }
+  .ac-btn-paper:hover { background: #7a1414; border-color: #7a1414; box-shadow: 5px 5px 0 #1d1711; }
+  .ac-btn-paper-ghost { background: transparent; color: #1d1711; }
+  .ac-btn-paper-ghost:hover { box-shadow: 5px 5px 0 #1f3864; }
+  .ac-preface .ac-preface-sign { font-family: var(--font-heading); font-style: italic; font-size: 1.02rem; line-height: 1.5; color: #584c3b; margin: 0; text-align: right; }
+  .ac-preface-sign span { font-style: normal; font-weight: 700; letter-spacing: 0.2em; color: #1d1711; }
+
+  /* ---------- stats ---------- */
+  .ac-stats-wrap { background: var(--ac-ink); color: var(--ac-bg); }
+  .ac-stats { list-style: none; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); padding-top: 1.7rem; padding-bottom: 1.7rem; }
+  .ac-stats li { display: flex; flex-direction: column; gap: 0.3rem; padding: 0 1.1rem; border-left: 1px solid currentColor; }
+  .ac-stat-v { font-family: var(--font-heading); font-weight: 800; font-size: clamp(1.9rem, 3.6vw, 2.7rem); line-height: 1; }
+  .ac-stat-k { font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* ---------- figures (flipping sections) ---------- */
+  .ac-fig { margin: 0; position: relative; }
+  .ac-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--ac-ink); }
+  .ac-fig figcaption {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: var(--ac-muted);
+    margin-top: 0.9rem;
+    padding-left: 1rem;
+    border-left: 2px solid var(--ac-accent);
+  }
+
+  /* ---------- stave one ---------- */
+  .ac-s1-top { display: grid; grid-template-columns: 7fr 5fr; gap: 3.6rem; align-items: start; position: relative; }
+  .ac-fig-knocker { transform: rotate(1.4deg); margin-top: 1rem; }
+  .ac-fig-knocker img { box-shadow: 14px 14px 0 var(--ac-line); }
+  .ac-s1-bottom { display: grid; grid-template-columns: 6fr 6fr; gap: 3.6rem; align-items: start; margin-top: 4.5rem; position: relative; }
+  .ac-fig-inventory { transform: rotate(-1deg); position: sticky; top: 6rem; }
+  .ac-fig-inventory img { box-shadow: -14px 14px 0 var(--ac-line); }
+  .ac-chain { list-style: none; margin: 0; padding: 0; }
+  .ac-link { position: relative; padding: 0 0 1.5rem 3.4rem; }
+  .ac-link-oval {
+    position: absolute;
+    left: 0.35rem;
+    top: -0.35rem;
+    bottom: -0.35rem;
+    width: 1.3rem;
+    border: 3px solid var(--ac-muted);
+    border-radius: 999px;
+  }
+  .ac-link:nth-child(even) .ac-link-oval { left: 0.55rem; width: 0.9rem; border-color: var(--ac-ink); }
+  .ac-link:last-child .ac-link-oval { border-style: dashed; border-color: var(--ac-accent); }
+  .ac-link-when { font-family: var(--font-mono); font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ac-accent); margin: 0 0 0.15rem; }
+  .ac-link-what { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; line-height: 1.2; margin: 0 0 0.35rem; }
+  .ac-link-note { font-size: 1.02rem; line-height: 1.68; color: var(--ac-muted); margin: 0; }
+
+  /* ---------- the three spirits (PINNED NIGHT, literals only) ---------- */
+  .ac-night {
+    background:
+      radial-gradient(ellipse at 80% 0%, rgba(134, 224, 203, 0.1) 0%, rgba(134, 224, 203, 0) 50%),
+      radial-gradient(ellipse at 10% 100%, rgba(240, 166, 58, 0.06) 0%, rgba(240, 166, 58, 0) 45%),
+      #0b0f12;
+    color: #e9e2d0;
+    padding: 6rem 0;
+    position: relative;
+  }
+  .ac-night-head { margin-bottom: 4rem; }
+  .ac-eyebrow-night { color: #86e0cb; }
+  .ac-h2-night { color: #f4ecd8; }
+  .ac-copy-night { color: #cfd6d1; }
+  .ac-spirits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5.5rem; }
+  .ac-spirit { display: grid; grid-template-columns: 7fr 5fr; gap: 3rem; align-items: center; }
+  .ac-spirit-tall { grid-template-columns: 7fr 5fr; }
+  .ac-spirit-tall .ac-spirit-fig { order: 2; }
+  .ac-spirit-full { grid-template-columns: 1fr; gap: 2.2rem; }
+  .ac-spirit-fig { margin: 0; position: relative; }
+  .ac-spirit-fig img { display: block; width: 100%; height: auto; border: 1px solid #36474d; box-shadow: 0 0 60px rgba(134, 224, 203, 0.12); }
+  .ac-spirit-fig figcaption {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: #a9b4b0;
+    margin-top: 0.9rem;
+    padding-left: 1rem;
+    border-left: 2px solid #86e0cb;
+  }
+  .ac-spirit-stave { font-family: var(--font-mono); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.14em; color: #f0a63a; margin: 0 0 0.5rem; }
+  .ac-spirit-stave span { color: #a9b4b0; margin-left: 0.7rem; padding-left: 0.8rem; border-left: 1px solid #36474d; }
+  .ac-spirit-name { font-family: var(--font-heading); font-weight: 700; font-size: clamp(1.8rem, 3.2vw, 2.5rem); line-height: 1.08; margin: 0 0 1.5rem; color: #f4ecd8; }
+  .ac-spirit-dl { margin: 0; display: flex; flex-direction: column; gap: 1.3rem; }
+  .ac-spirit-full .ac-spirit-dl { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem; }
+  .ac-spirit-dl dt { font-family: var(--font-mono); font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.12em; color: #a9b4b0; margin-bottom: 0.35rem; }
+  .ac-spirit-dl dd { margin: 0; font-size: 1.05rem; line-height: 1.74; color: #e9e2d0; }
+  .ac-spirit-yours { background: #131a1d; border: 1px solid #26333a; border-left: 3px solid #86e0cb; padding: 1.1rem 1.2rem 1.2rem; }
+  .ac-spirit-yours dt { color: #86e0cb; }
+  .ac-spirit-dl a { color: #86e0cb; }
+
+  /* ---------- the humbug ledger (PINNED PAPER, literals only) ---------- */
+  .ac-ledger-sec { background: var(--ac-band); padding: 5.5rem 0; }
+  .ac-ledger {
+    background:
+      linear-gradient(90deg, transparent 4.2rem, rgba(155, 28, 28, 0.45) 4.2rem, rgba(155, 28, 28, 0.45) calc(4.2rem + 1px), transparent calc(4.2rem + 1px)),
+      repeating-linear-gradient(0deg, transparent 0 2.35rem, rgba(31, 56, 100, 0.16) 2.35rem calc(2.35rem + 1px)),
+      #f4ecd8;
+    color: #1d1711;
+    padding: 3.2rem 3rem 2.6rem 5.6rem;
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3), 0 2px 0 #d9caa6, 0 4px 0 #e9dcbc, 0 6px 0 #d9caa6;
+    position: relative;
+  }
+  .ac-ledger-firm { font-family: var(--font-mono); font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.14em; color: #584c3b; margin: 0 0 0.6rem; }
+  .ac-ledger-title { font-family: var(--font-heading); font-weight: 900; font-size: clamp(2.4rem, 5.4vw, 4.2rem); line-height: 1; letter-spacing: -0.02em; color: #1d1711; margin: 0 0 1.3rem; }
+  .ac-ledger-intro { font-size: 1.08rem; line-height: 1.76; max-width: 68ch; margin: 0 0 2.4rem; }
+  .ac-rows { list-style: none; margin: 0; padding: 0; border-top: 2px solid #1d1711; }
+  .ac-row {
+    display: grid;
+    grid-template-columns: 4.2rem minmax(0, 4fr) minmax(0, 3fr) minmax(0, 7fr);
+    gap: 1.4rem;
+    align-items: start;
+    padding: 1.5rem 0 1.6rem;
+    border-bottom: 1px solid #1d1711;
+  }
+  .ac-row-no { font-family: var(--font-mono); font-size: 0.9rem; color: #584c3b; padding-top: 0.35rem; }
+  .ac-row-humbug-text { font-family: var(--font-heading); font-style: italic; font-weight: 600; font-size: 1.45rem; line-height: 1.22; margin: 0; }
+  .ac-row-verdict { font-family: 'Pinyon Script', 'Snell Roundhand', cursive; font-size: 2.3rem; line-height: 1; color: #1f3864; margin: 0; transform: rotate(-3deg); transform-origin: left center; }
+  .ac-row-humbug .ac-row-verdict { color: #9b1c1c; font-size: 3rem; }
+  .ac-row-entry { font-size: 1.03rem; line-height: 1.7; margin: 0; }
+  .ac-row-entry a { color: #9b1c1c; }
+  .ac-ledger-total { display: grid; grid-template-columns: 4.2rem minmax(0, 4fr) minmax(0, 10fr); gap: 1.4rem; align-items: baseline; margin: 0; padding-top: 1.6rem; }
+  .ac-ledger-total-k { grid-column: 2; font-family: var(--font-mono); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.12em; color: #584c3b; }
+  .ac-ledger-total-v { grid-column: 3; font-family: var(--font-heading); font-weight: 900; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.1; color: #9b1c1c; }
+  .ac-ledger-total-note { grid-column: 3; font-size: 1.03rem; line-height: 1.7; }
 
   /* ---------- projects ---------- */
-  .tm-projects { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; position: relative; }
-  .tm-project { background: var(--tm-surface); border: 2px solid var(--tm-ink); padding: 1.5rem 1.4rem 1.4rem; display: flex; flex-direction: column; }
-  .tm-project-top { display: flex; justify-content: space-between; gap: 0.6rem; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
-  .tm-project-no { color: var(--tm-muted); }
-  .tm-project-dmg { color: var(--tm-red); border: 1px solid currentColor; padding: 0.05rem 0.45rem; }
-  .tm-project-name { font-family: var(--font-heading); font-weight: 400; font-size: 1.3rem; line-height: 1.2; margin: 0 0 0.4rem; }
-  .tm-project-status { font-family: var(--font-mono); font-size: 0.88rem; color: var(--tm-eye); margin: 0 0 0.8rem; }
-  .tm-project-note { font-size: 1rem; line-height: 1.65; margin: 0 0 1.2rem; flex: 1; }
-  .tm-project-link { font-family: var(--font-mono); font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--tm-red); text-decoration: underline; text-underline-offset: 4px; }
-  .tm-project-link-off { color: var(--tm-muted); text-decoration: none; }
+  .ac-head + .ac-projects { margin-top: 2.6rem; }
+  .ac-projects { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--ac-ink); border-left: 1px solid var(--ac-line); position: relative; }
+  .ac-project { padding: 1.6rem 1.5rem 1.6rem; border-right: 1px solid var(--ac-line); border-bottom: 1px solid var(--ac-line); display: flex; flex-direction: column; background: var(--ac-surface); }
+  .ac-project-folio { font-family: var(--font-mono); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ac-muted); margin: 0 0 0.9rem; }
+  .ac-project-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; line-height: 1.18; margin: 0 0 0.35rem; }
+  .ac-project-status { font-family: var(--font-heading); font-style: italic; font-size: 1.05rem; color: var(--ac-second); margin: 0 0 0.8rem; }
+  .ac-project-note { font-size: 1rem; line-height: 1.68; margin: 0 0 1.2rem; flex: 1; }
+  .ac-project-link { font-family: var(--font-mono); font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ac-accent); text-decoration: underline; text-underline-offset: 4px; }
+  .ac-project-link-off { color: var(--ac-muted); text-decoration: none; }
 
-  /* ---------- question ---------- */
-  .tm-question-inner { position: relative; }
-
-  /* ---------- call it in (pinned dark) ---------- */
-  .tm-door {
-    background: linear-gradient(180deg, #0a1012 0%, #05080a 100%);
-    color: #e6f1ee;
-    padding: 5.5rem 0 4rem;
-    border-top: 6px solid #c4291a;
+  /* ---------- stave five (PINNED MORNING, literals only) ---------- */
+  .ac-morning {
+    background: linear-gradient(180deg, #dcebf3 0%, #eef3f1 45%, #f6efe0 100%);
+    color: #1b2430;
+    padding: 6rem 0;
+    position: relative;
   }
-  .tm-door-inner { max-width: 900px; }
-  .tm-copy-pinned { font-size: 1.12rem; line-height: 1.75; color: #cfdcd8; margin: 0 0 1.8rem; max-width: 66ch; }
-  .tm-btn-ghost-pinned { background: transparent; color: #f4efe4; }
-  .tm-btn-ghost-pinned:hover { box-shadow: 6px 6px 0 #ff5a3c; }
-  .tm-door .tm-btn-red { background: #ff5a3c; color: #120806; border-color: #ff5a3c; }
-  .tm-door .tm-btn-red:hover { background: #ff7a61; border-color: #ff7a61; box-shadow: 6px 6px 0 #f4efe4; }
-  .tm-disclaimer { margin: 3rem 0 0; font-size: 0.9rem; line-height: 1.65; color: #9fb3af; border-top: 1px solid #23302f; padding-top: 1.4rem; }
+  .ac-morning-grid { display: grid; grid-template-columns: 6fr 6fr; gap: 3.6rem; align-items: center; }
+  .ac-fig-morning { transform: rotate(-1.2deg); }
+  .ac-fig-morning img { border: 10px solid #ffffff; box-shadow: 0 22px 44px rgba(27, 36, 48, 0.28); }
+  .ac-fig-morning figcaption { color: #465463; border-left-color: #9b1c1c; }
+  .ac-eyebrow-morning { color: #9b1c1c; }
+  .ac-h2-morning { color: #1b2430; font-size: clamp(2.6rem, 6vw, 4.8rem); font-weight: 800; }
+  /* Bodoni's italic hyphen is a hairline at display size; borrow the body face's. */
+  .ac-hy { font-family: var(--font-body); font-style: normal; font-weight: 700; padding: 0 0.04em; }
+  .ac-copy-morning { color: #1b2430; }
+  .ac-copy-morning a { color: #9b1c1c; }
+
+  /* ---------- the door ---------- */
+  .ac-door-inner { max-width: 900px; }
+  .ac-door .ac-ctas { margin-top: 1.8rem; }
+  .ac-disclaimer { margin: 3rem 0 0; font-size: 0.92rem; line-height: 1.68; color: var(--ac-muted); border-top: 1px solid var(--ac-line); padding-top: 1.4rem; max-width: 80ch; }
 
   /* ---------- responsive ---------- */
-  @media (max-width: 960px) {
-    .tm-hero-grid, .tm-check-grid { grid-template-columns: 1fr; }
-    .tm-report, .tm-report-tall { grid-template-columns: 1fr; gap: 1.6rem; }
-    .tm-report-flip .tm-report-fig { order: 0; }
-    .tm-report-tall .tm-report-fig { max-width: 460px; }
-    .tm-steps, .tm-projects { grid-template-columns: 1fr 1fr; }
-    .tm-board { position: static; }
+  @media (max-width: 1020px) {
+    .ac-book { grid-template-columns: 1fr; margin-top: -4rem; }
+    .ac-tp { border-right: 0; border-bottom: 1px solid #cdbd9a; background: none; padding-bottom: 2.4rem; }
+    .ac-preface { background: none; }
+    .ac-s1-top, .ac-s1-bottom, .ac-morning-grid { grid-template-columns: 1fr; gap: 2.4rem; }
+    .ac-fig-knocker, .ac-fig-inventory, .ac-fig-morning { transform: none; }
+    .ac-fig-knocker { max-width: 440px; }
+    .ac-fig-inventory { position: static; }
+    .ac-spirit, .ac-spirit-tall { grid-template-columns: 1fr; gap: 1.8rem; }
+    .ac-spirit-tall .ac-spirit-fig { order: 0; max-width: 460px; }
+    .ac-projects { grid-template-columns: 1fr 1fr; }
+    .ac-row { grid-template-columns: 3.4rem minmax(0, 1fr); gap: 0.5rem 1rem; }
+    .ac-row-humbug-text, .ac-row-verdict, .ac-row-entry { grid-column: 2; }
+    .ac-row-verdict { margin: 0.2rem 0 0.4rem; }
+    .ac-ledger-total { grid-template-columns: 3.4rem minmax(0, 1fr); gap: 0.4rem 1rem; }
+    .ac-ledger-total-k, .ac-ledger-total-v, .ac-ledger-total-note { grid-column: 2; }
   }
-  @media (max-width: 620px) {
-    .tm-stats { grid-template-columns: 1fr 1fr; gap: 1.2rem 0; }
-    .tm-steps, .tm-projects { grid-template-columns: 1fr; }
-    .tm-report-fig, .tm-report-flip .tm-report-fig { box-shadow: 6px 6px 0 var(--tm-line); }
-    .tm-hero-img { max-height: none; min-height: 52vh; }
-    .tm-plan-fig figcaption { position: static; max-width: none; }
-    .tm-ticker-inner span:nth-child(n + 4) { display: none; }
+  @media (max-width: 640px) {
+    .ac-stats { grid-template-columns: 1fr 1fr; gap: 1.2rem 0; }
+    .ac-projects { grid-template-columns: 1fr; }
+    .ac-spirit-full .ac-spirit-dl { grid-template-columns: 1fr; gap: 1.3rem; }
+    .ac-page { padding: 2.2rem 1.4rem 2rem; }
+    .ac-book { margin-top: -2rem; }
+    .ac-plate-img { max-height: none; min-height: 320px; }
+    .ac-plate-cap { font-size: 0.9rem; top: 0.7rem; }
+    .ac-ledger {
+      padding: 2.2rem 1.2rem 2rem 1.2rem;
+      background:
+        repeating-linear-gradient(0deg, transparent 0 2.35rem, rgba(31, 56, 100, 0.16) 2.35rem calc(2.35rem + 1px)),
+        #f4ecd8;
+    }
+    .ac-row, .ac-ledger-total { grid-template-columns: 1fr; }
+    .ac-row-no, .ac-row-humbug-text, .ac-row-verdict, .ac-row-entry,
+    .ac-ledger-total-k, .ac-ledger-total-v, .ac-ledger-total-note { grid-column: 1; }
+    .ac-runhead-inner span:nth-child(3) { display: none; }
+    .ac-fig-knocker img, .ac-fig-inventory img { box-shadow: 6px 6px 0 var(--ac-line); }
   }
 </style>

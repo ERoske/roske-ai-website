@@ -81,70 +81,71 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "T-Minus Zero",
-  week: "2026-11-07",
-  inspiration: "Godzilla Minus Zero opened in North America on Friday, November 6, 2026, with a record $6.7M in Thursday previews. The argument: every giant-monster movie has a committee meeting in it, held while the monster is already in the harbor, and the people who save the city are never the committee, they're ordinary people with relevant skills and a plan. That's AI at most companies right now: the countdown everyone is still planning around ran out around November 30, 2022, and the thing they're forming a task force to study is already in their employees' browsers (75% of knowledge workers used AI at work by 2024, and 78% of them brought their own tools). Edward spends the week trying 5 ways companies deal with AI (form a task force, ban it, wait for version 2, commission a study, issue a statement), each one documented as a failed field report, then pivots to the civilian plan: the 6 things the companies that came through every landfall of his career (client-server, the web, the cloud, now this) actually did, plus a readiness check that gives you a verdict. The monster is an original creature, never the film's. Design: dark mode is the night harbor during an emergency broadcast (teal-black, searchlights, rain, signal red); light mode is the printed civil-defense pamphlet (paper, halftone, red bands). Dela Gothic One for display, Zen Kaku Gothic New for reading, DotGothic16 for the broadcast ticker. Animation off; one tremor on the hero photo at load.",
-  tagline: "The countdown ended a while ago. It's already in the harbor.",
+  name: "An A.I. Carol",
+  week: "2026-11-14",
+  inspiration: "Ebenezer: A Christmas Carol (Ti West directing, Johnny Depp as Scrooge, Ian McKellen as Marley's Ghost) opened in U.S. theaters on Friday, November 13, 2026. The source is Dickens's 1843 book, which is public domain, so the page quotes it directly. The argument: Scrooge is not short on information. In Stave One his nephew gives him a speech, 2 gentlemen give him statistics, and his dead partner gives him an eyewitness warning, and none of it lands (he says Humbug 6 times, all in Stave One). Nobody argues him out of anything; the Spirits take him places and make him look. That's the AI skeptic at most companies, and a lot of their humbugs are fair, so the page keeps an honest ledger of 5 of them (only 1 turns out to be humbug). Edward is Marley and only Marley: the dead business partner who worked the same ledgers for 25 years and shows up dragging a chain he forged himself (Essbase, 15 software books, interRel) to say 3 more visitors are coming. The conceit generates the structure: the page is the book's 5 staves. Design: light mode is the 1843 first edition (cream paper, title-page red and blue ink); dark mode is the bedchamber at 1 AM (soot, candle amber, spectral green). The title page and the ledger are pinned paper in both modes, the three Spirits are pinned night, and Stave Five is pinned bright morning. Bodoni Moda for display (a Didone, the kind of Modern face Victorian title pages were set in), Libre Caslon Text for reading, Cutive Mono for labels, and Pinyon Script for the clerk's hand in the ledger. Animation off.",
+  tagline: "I wear the chain I forged in life. 3 more visitors are coming.",
 
   colors: {
-    // Measured, not eyeballed. Bone on harbor black is 16.4:1; muted is
-    // 8.1:1 on the dark surface. Signal red #FF5A3C is 6.3:1 on the black
-    // and carries near-black type on buttons (6.4:1). Light mode swaps to
-    // pamphlet red #B3261E (5.5:1 on the paper, white type 6.5:1).
-    primary: "#111518",            // ink (nav wordmark in light mode)
-    secondary: "#6FD3FF",          // the glowing eye
-    accent: "#FF5A3C",             // signal red
-    accentHover: "#FF7A61",
-    accentLight: "#B3261E",        // pamphlet red
-    accentHoverLight: "#8E1C16",
-    onAccent: "#120806",
+    // Measured, not eyeballed. Dark: candle-lit paper on soot is 15.5:1,
+    // muted 8.6:1 (7.9:1 on the surface), candle amber 9.4:1 with near-black
+    // type on buttons (9.1:1). Light: ink on first-edition paper 14.7:1,
+    // muted 6.9:1, title-page red #9B1C1C 6.8:1 with white type on it 8.2:1.
+    primary: "#1F3864",            // title-page blue ink (9.6:1 on the paper)
+    secondary: "#86E0CB",          // Marley's spectral green
+    accent: "#F0A63A",             // candle amber
+    accentHover: "#FFC062",
+    accentLight: "#9B1C1C",        // title-page red
+    accentHoverLight: "#7A1414",
+    onAccent: "#1A1005",
     onAccentLight: "#FFFFFF",
-    background: "#090C0E",         // harbor at night
-    backgroundLight: "#F1ECE0",    // civil-defense pamphlet paper
-    surface: "#121719",
-    surfaceLight: "#FFFFFF",
-    text: "#ECE6D8",               // bone
-    textMuted: "#A8AFAD",
-    textDark: "#111518",
-    textDarkMuted: "#4A5254",
-    border: "#26302F",
-    borderLight: "#D6CEBD",
-    gradient: "linear-gradient(90deg, #FF5A3C 0%, #B3261E 100%)",
+    background: "#100E0C",         // the bedchamber at 1 AM
+    backgroundLight: "#F2E9D5",    // first-edition paper
+    surface: "#1B1713",
+    surfaceLight: "#FBF6EA",
+    text: "#EFE6D2",
+    textMuted: "#B8AC93",
+    textDark: "#1D1711",
+    textDarkMuted: "#584C3B",
+    border: "#3A3128",
+    borderLight: "#D3C4A3",
+    gradient: "linear-gradient(90deg, #9B1C1C 0%, #1F3864 100%)",
   },
 
   fonts: {
-    // Dela Gothic One: a heavy Japanese poster gothic, the kind of type that goes on a monster-movie one-sheet.
-    // Zen Kaku Gothic New: a calm Japanese sans for the long paragraphs, so the panic stays in the headlines.
-    // DotGothic16: a dot-matrix face for the emergency ticker, the stamps, and every label.
-    heading: "'Dela Gothic One', 'Arial Black', sans-serif",
-    body: "'Zen Kaku Gothic New', 'Helvetica Neue', Arial, sans-serif",
-    mono: "'DotGothic16', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=DotGothic16&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap",
+    // Bodoni Moda: a high-contrast Didone, the family of "Modern" faces that 1840s title pages were set in.
+    // Libre Caslon Text: a sturdy book face for the long paragraphs (Caslon was being revived in London in the 1840s).
+    // Cutive Mono: a typewriter-era mono for labels, dates, and ledger columns.
+    // Pinyon Script (page-level only): the clerk's roundhand for verdicts in the Humbug Ledger.
+    heading: "'Bodoni Moda', 'Bodoni 72', Didot, Georgia, serif",
+    body: "'Libre Caslon Text', 'Iowan Old Style', Georgia, serif",
+    mono: "'Cutive Mono', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cutive+Mono&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&display=swap",
   },
 
   layout: {
-    heroStyle: "fullscreen",
+    heroStyle: "editorial",
     navStyle: "sticky",
     cardStyle: "outlined",
-    sectionStyle: "alternating",
+    sectionStyle: "magazine",
     footerStyle: "detailed",
   },
 
   animations: {
     entrance: "fade-in",
-    hover: "lift",
-    background: "noise",
+    hover: "underline",
+    background: "none",
     pageTransition: "fade",
   },
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Pretty much every monster movie has a committee meeting in it, held while the monster is already in the harbor. A lot of companies are holding that meeting about AI right now.",
-    description: "Godzilla Minus Zero opened Friday, so I spent the week trying the 5 ways companies keep trying to deal with AI, from forming a task force to banning it with a sign (the monster was unimpressed by all 5), and then I wrote down the 6 things that actually work.",
-    heroImage: "hero-2026-11-07.jpg",
-    imageAlt: "Edward stands in a small wooden fishing boat in a stormy harbor at night, holding an open laptop up like a lantern and looking back at the camera, deadpan, in his blue fedora, while an enormous scaled sea monster rises out of the water behind him, its head lost in the fog and one glowing eye level with the city skyline.",
-    ctaText: "See the 5 attempts",
-    ctaLink: "#attempts",
+    subtitle: "Scrooge had everything he needed to change his mind before the first Spirit ever showed up, and he said Humbug to it 6 times (a machine counted).",
+    description: "Ebenezer: A Christmas Carol opened Friday, so this week I'm Marley's Ghost, dragging a chain I forged myself over 25 years of enterprise software (15 books are on it, and they're heavier than they look), here to tell you 3 more visitors are coming and to go through 5 of the usual humbugs about AI with an honest ledger.",
+    heroImage: "hero-2026-11-14.jpg",
+    imageAlt: "Edward as Marley's Ghost in a dark Victorian bedchamber: translucent and glowing pale green, in a frock coat, white cravat, and his blue fedora, wrapped in a heavy iron chain hung with old books, padlocks, floppy disks, and a beige computer keyboard. He holds up a length of the chain, deadpan, while someone in a white nightcap hides under the blankets of a four-poster bed with only their fingers showing.",
+    ctaText: "Begin at Stave One",
+    ctaLink: "#stave-one",
   },
 };
 

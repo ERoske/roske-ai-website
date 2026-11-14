@@ -1,5 +1,117 @@
 [
   {
+    "title": "Mark Rober Wants AI Chips Tracked Like Uranium",
+    "videoId": "LaKQzsE4Jvo",
+    "published": "2026-11-13T13:50:15+00:00",
+    "description": "62 YouTube channels, with more than 300 million combined subscribers, signed a petition asking Washington and Brussels to slow down AI and to track frontier AI chips like the ingredients for nuclear weapons. My take: the demands deserve a real argument, and nobody's having it...",
+    "thumbnail": "https://i.ytimg.com/vi/LaKQzsE4Jvo/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How Many Places Did OpenAI's Agents Go Poking Around?",
+    "videoId": "D7JfAnvKIEg",
+    "published": "2026-11-11T13:50:33+00:00",
+    "description": "One of OpenAI's AI agents went around a block on Australia's Medicare portal, and hundreds more spent most of a week trying to reach Australian health data. By the end of September, OpenAI had notified more than 100 organizations and paused training and tool use on its most...",
+    "thumbnail": "https://i.ytimg.com/vi/D7JfAnvKIEg/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "The AI Said 98%. The Real Answer Was 52%.",
+    "videoId": "lqhUgsExYcM",
+    "published": "2026-11-10T14:00:38+00:00",
+    "description": "Pew Research built an AI version of every member of its survey panel, fed it their demographics and politics, and had it answer nearly 300 real questions. The estimates missed the real people by an average of 12 percentage points. On one First Amendment question the AI said 98%...",
+    "thumbnail": "https://i.ytimg.com/vi/lqhUgsExYcM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Why Did New York Pause AI for Most Students?",
+    "videoId": "GI4Kho6LYaA",
+    "published": "2026-11-09T14:00:28+00:00",
+    "description": "New York City paused AI for students from 2-K, its program for 2-year-olds, through 8th grade for the 2026-27 school year. That's nearly 600,000 kids. It also banned AI companion chatbots in every grade and capped high school pilots at minutes a week. Los Angeles paused AI for...",
+    "thumbnail": "https://i.ytimg.com/vi/GI4Kho6LYaA/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Microsoft Says Handing Out Copilot Doesn't Change the Work",
+    "videoId": "2Zo68lLa7yQ",
+    "published": "2026-11-08T13:50:23+00:00",
+    "description": "In September 2026 Microsoft published a playbook on rolling out AI inside Microsoft, and it says \"A tool licensed and rolled out to 100,000 employees does not change how the work gets done.\" Its supply chain team redesigned the process first, then added 111 agents, and cut a...",
+    "thumbnail": "https://i.ytimg.com/vi/2Zo68lLa7yQ/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How Many Layoffs Is AI Actually Causing?",
+    "videoId": "SZNe0TevNP4",
+    "published": "2026-11-07T14:00:18+00:00",
+    "description": "Through September 2026, companies tied about 120,000 announced job cuts to AI, roughly 1 in 5 and about 7 times the same stretch of 2025. Total announced cuts fell 39%, and unemployment held between 4.1% and 4.3% from March through September. I think a lot of these cuts would...",
+    "thumbnail": "https://i.ytimg.com/vi/SZNe0TevNP4/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Democrats Won Congress, but Trump Still Has the Veto",
+    "videoId": "O2PdYff2JMY",
+    "published": "2026-11-05T16:30:18+00:00",
+    "description": "Democrats won the House and flipped the Senate in the 2026 midterms, and data centers were on the ballot from Piqua, Ohio to the governor's race in The Great State of Texas. I worked through what that means for US AI policy (committee gavels, hearings, state AI laws, kids'...",
+    "thumbnail": "https://i.ytimg.com/vi/O2PdYff2JMY/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Who Won the First AI Copyright Appeal?",
+    "videoId": "tQgL7jUoRHs",
+    "published": "2026-11-05T14:00:08+00:00",
+    "description": "In September 2026 the Third Circuit became the first federal appeals court to rule on fair use in AI training, and it ruled against ROSS Intelligence, which trained its legal AI on 2,243 Westlaw headnotes. About 10 million court opinions were free to use instead. Anyone building...",
+    "thumbnail": "https://i.ytimg.com/vi/tQgL7jUoRHs/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI Found More Security Bugs Than IT Can Patch",
+    "videoId": "_zb2Z-G5OjU",
+    "published": "2026-11-04T13:50:13+00:00",
+    "description": "Microsoft's September 2026 update fixed 974 vulnerabilities, more than it fixed in all of 2023, because AI bug-finding tools got good. Google found only about 1 in 431 disclosed flaws had been seen exploited, and advised triage over patching everything. Anywhere IT means 2...",
+    "thumbnail": "https://i.ytimg.com/vi/_zb2Z-G5OjU/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "The Physics Record That Cost About $100",
+    "videoId": "avGGOFkhKT4",
+    "published": "2026-11-03T14:00:19+00:00",
+    "description": "Two physicists at Anthropic typed one sentence into Claude, one of them told it he was going to sleep, and about a week later it had computed a nine-loop scattering amplitude, one past the record Lance Dixon's group set in 2023. The key step cost about $100 of compute.",
+    "thumbnail": "https://i.ytimg.com/vi/avGGOFkhKT4/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Where Do Democrats and Republicans Stand on AI?",
+    "videoId": "ysUytw4qNpE",
+    "published": "2026-11-02T16:30:39+00:00",
+    "description": "AI made it onto the 2026 midterm ballot mostly through data centers: Gallup found 71% of Americans don't want one near them, and voters in 10 states decide 41 local data-center measures on November 3. Here's where Democrats and Republicans stand on AI, how each party splits, the...",
+    "thumbnail": "https://i.ytimg.com/vi/ysUytw4qNpE/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "How Did Meta Cut Its Taxes by $3.9 Billion?",
+    "videoId": "Lf-8qMWhaC8",
+    "published": "2026-11-02T14:00:09+00:00",
+    "description": "On Meta's tax return, its AI data centers are \"pilot models,\" the IRS term for a test version built to settle an open question. The New York Times found the research credit cut Meta's taxes by $3.9 billion in 2025, more than Apple and Google combined.",
+    "thumbnail": "https://i.ytimg.com/vi/Lf-8qMWhaC8/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "AI News for October 2026 (in 12 minutes)",
+    "videoId": "ikAr4KegMeM",
+    "published": "2026-11-01T18:20:07+00:00",
+    "description": "The AI news from October 2026 worth your time, in 12 minutes. Google's own AI ate into its search ads, and Alphabet had its worst day ever. Four tech giants spent nearly $209 billion in one quarter. AI found critical flaws in PHP, and governments pulled their own websites...",
+    "thumbnail": "https://i.ytimg.com/vi/ikAr4KegMeM/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Blue Cross Says AI Added $942 Million to Hospital Bills",
+    "videoId": "kT_enBdJT1Y",
+    "published": "2026-10-31T14:00:37+00:00",
+    "description": "Blue Cross Blue Shield ran the claims from plans covering 1 in 3 Americans and found \"medically complex\" stays went from 37 to 40 percent of admissions between 2023 and 2025, adding an estimated $942 million. It blames AI coding tools, which more than 60 percent of hospital...",
+    "thumbnail": "https://i.ytimg.com/vi/kT_enBdJT1Y/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "Where Does Gemini 4 Rank Against GPT-6?",
     "videoId": "RcJC_5OnxmQ",
     "published": "2026-10-29T14:00:30+00:00",
