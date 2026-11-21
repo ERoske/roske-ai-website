@@ -1,0 +1,33 @@
+{
+  "_readme": "Unlisted holiday cards, one entry per person. Only APPROVED cards belong here (this repo is public). Drafts live in content-input/holiday-cards-2026/cards-staged.json and move here via scripts/holiday-cards.py publish. Rendered by src/pages/cards/2026/[slug].astro.",
+  "cards": [
+    {
+      "slug": "edward-hpi0u3",
+      "name": "Edward",
+      "theme": "dungeon",
+      "preview": true,
+      "eyebrow": "A holiday card for Edward",
+      "greeting": "You rolled a natural 20 on 2026.",
+      "aside": "(You're the Dungeon Master, so nobody at this table is going to make you show the die.)",
+      "lines": [
+        "This is the test card, so you're both the sender and the recipient (Edward, you're writing yourself a holiday card in November, which in an escape room would be the clue that the door was unlocked the whole time, and in real life is just a little sad).",
+        "In April we hiked 2 weeks to Everest Base Camp and up Kala Patthar to 18,571 feet (the blog post covers the part where Dawn sat down on a rock 400 feet from the top and then finished anyway). The escape room count passed 300 a while ago, and the Eberron campaign for Mycroft and Eliot survived another year of my calendar.",
+        "Here's hoping 2027 brings you spreadsheets with Freeze Panes turned on and a sci-fi show that actually gets its second season (Firefly got cancelled in 2002, which makes it 24 years and counting)."
+      ],
+      "photos": [
+        {
+          "src": "/images/blog/everest-base-camp-summit/hero-photo-rock.jpg",
+          "alt": "Edward and Dawn with their trekking group at the Everest Base Camp photo rock, prayer flags behind them",
+          "caption": "Everest Base Camp, April 2026 (5,364 meters, per the rock)"
+        },
+        {
+          "src": "/images/blog/everest-base-camp-summit/kala-pattar.jpg",
+          "alt": "Edward and Dawn in down jackets on top of Kala Patthar, Everest behind them",
+          "caption": "Kala Patthar, 18,571 feet (yes, we were cold)"
+        }
+      ],
+      "closing": "Happy holidays from San Juan!",
+      "from": "Edward and Dawn"
+    }
+  ]
+}

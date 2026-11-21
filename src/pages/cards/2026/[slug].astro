@@ -1,0 +1,266 @@
+---
+// UNLISTED holiday cards, 2026. One page per entry in src/data/holiday-cards-2026.json.
+// Never linked from nav, footer, or any page. Excluded from the sitemap (astro.config.mjs),
+// disallowed in public/robots.txt, and every page carries noindex,nofollow.
+// Theme-independent: the weekly rebuild must never touch this page or its CSS.
+// How to add cards: see content-input/holiday-cards-2026/README.md (local only).
+import fs from 'node:fs';
+import path from 'node:path';
+import '../../../styles/holiday-cards.css';
+import data from '../../../data/holiday-cards-2026.json';
+
+type Photo = { src: string; alt: string; caption?: string; position?: string };
+type Stop = { place: string; when?: string; line?: string; photo?: Photo };
+type Card = {
+  slug: string;
+  name: string;
+  theme: string;
+  preview?: boolean;
+  eyebrow?: string;
+  greeting: string;
+  aside?: string;
+  lines: string[];
+  photos?: Photo[];
+  review?: Stop[];
+  closing?: string;
+  from?: string;
+};
+
+const THEMES = ['dungeon', 'starfield', 'escape', 'lights', 'postcard'] as const;
+
+// Build-time gate: typography and structure. (The content gate for surprises lives in the
+// local publish script, deliberately not in this public file.)
+function checkCard(card: Card) {
+  const problems: string[] = [];
+  if (!/^[a-z0-9]+(-[a-z0-9]+)*-[a-z0-9]{6}$/.test(card.slug)) problems.push('slug must be <name>-<6 random chars>');
+  if (!(THEMES as readonly string[]).includes(card.theme)) problems.push(`unknown theme "${card.theme}"`);
+  if (!card.greeting || !Array.isArray(card.lines) || card.lines.length < 1 || card.lines.length > 4) problems.push('needs a greeting and 1 to 4 lines');
+  const text = JSON.stringify(card);
+  if (/[–—]/.test(text)) problems.push('contains an em or en dash');
+  if (/\p{Extended_Pictographic}/u.test(text)) problems.push('contains an emoji');
+  if (problems.length) throw new Error(`Holiday card ${card.slug}: ${problems.join('; ')}`);
+}
+
+export function getStaticPaths() {
+  const cards = (data.cards as Card[]);
+  const seen = new Set<string>();
+  for (const c of cards) {
+    if (seen.has(c.slug)) throw new Error(`Duplicate holiday card slug ${c.slug}`);
+    seen.add(c.slug);
+  }
+  return cards.map((card) => ({ params: { slug: card.slug }, props: { card } }));
+}
+
+const { card } = Astro.props as { card: Card };
+checkCard(card);
+
+// Photos degrade gracefully: a missing file is dropped at build time (and a broken one
+// removes itself in the browser), so empty slots never render.
+const exists = (src?: string) =>
+  !!src && (/^https?:\/\//.test(src) || fs.existsSync(path.join(process.cwd(), 'public', src)));
+const photos = (card.photos ?? []).filter((p) => exists(p.src)).slice(0, 3);
+const review = (card.review ?? []).map((s) => ({ ...s, photo: s.photo && exists(s.photo.src) ? s.photo : undefined }));
+
+const preview = !!card.preview;
+const show = (t: string) => preview || card.theme === t;
+
+const FONTS: Record<string, string> = {
+  dungeon: 'family=Cinzel:wght@600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400',
+  starfield: 'family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;500',
+  escape: 'family=Special+Elite&family=Libre+Baskerville:ital,wght@0,400;1,400',
+  lights: 'family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Inter:wght@400;500',
+  postcard: 'family=Playfair+Display:ital,wght@0,700;1,400&family=Lora:ital,wght@0,400;1,400',
+};
+const fontThemes = preview ? [...THEMES] : [card.theme];
+const fontHref = `https://fonts.googleapis.com/css2?${fontThemes.map((t) => FONTS[t]).join('&')}&family=Caveat:wght@600&display=swap`;
+
+// Deterministic starfield (seeded from the slug so it never shifts between builds).
+function seeded(seed: string) {
+  let h = 2166136261;
+  for (const ch of seed) h = Math.imul(h ^ ch.charCodeAt(0), 16777619);
+  return () => {
+    h = Math.imul(h ^ (h >>> 15), 2246822507);
+    h = Math.imul(h ^ (h >>> 13), 3266489909);
+    return ((h ^= h >>> 16) >>> 0) / 4294967296;
+  };
+}
+const rand = seeded(card.slug);
+const stars = show('starfield')
+  ? Array.from({ length: 70 }, () => ({
+      x: (rand() * 100).toFixed(2),
+      y: (rand() * 100).toFixed(2),
+      s: (rand() * 2 + 1).toFixed(1),
+      o: (rand() * 0.6 + 0.35).toFixed(2),
+    }))
+  : [];
+const BULBS = ['#e8453c', '#f2b33d', '#3fa66b', '#3f7fd9', '#e8453c', '#f2b33d', '#3fa66b', '#3f7fd9', '#e8453c'];
+
+const from = card.from ?? 'Edward and Dawn';
+const closing = card.closing ?? 'Happy holidays,';
+const eyebrow = card.eyebrow ?? `A holiday card for ${card.name}`;
+let i = 0; // stagger counter for the reveal
+const d = () => `--i:${i++}`;
+---
+
+<html lang="en" data-theme={card.theme}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow,noarchive,nosnippet" />
+    <meta name="googlebot" content="noindex,nofollow" />
+    <meta name="referrer" content="no-referrer" />
+    <title>{`A holiday card for ${card.name}`}</title>
+    <meta name="description" content={`From ${from}, 2026.`} />
+    <meta property="og:title" content={`A holiday card for ${card.name}`} />
+    <meta property="og:description" content={`From ${from}, 2026.`} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href={fontHref} />
+    {preview && (
+      <script is:inline define:vars={{ themes: THEMES }}>
+        var t = new URLSearchParams(location.search).get('theme');
+        if (t && themes.indexOf(t) !== -1) document.documentElement.setAttribute('data-theme', t);
+      </script>
+    )}
+  </head>
+  <body class="hc-body">
+    <main class="hc" id="hc">
+      {stars.length > 0 && (
+        <div class="hc-stars" aria-hidden="true">
+          {stars.map((s) => (
+            <span style={`left:${s.x}%;top:${s.y}%;width:${s.s}px;height:${s.s}px;opacity:${s.o}`}></span>
+          ))}
+        </div>
+      )}
+
+      <div class="hc-motifs" aria-hidden="true">
+        {show('dungeon') && (
+          <svg class="hc-motif hc-motif-dungeon" viewBox="0 0 100 100" width="120" height="120">
+            <g class="hc-d20">
+              <polygon points="50,2 92,26 92,74 50,98 8,74 8,26" class="hc-d20-face" />
+              <polygon points="50,24 78,70 22,70" class="hc-d20-tri" />
+              <path d="M50,24 L50,2 M50,24 L8,26 M50,24 L92,26 M22,70 L8,26 M22,70 L8,74 M22,70 L50,98 M78,70 L92,26 M78,70 L92,74 M78,70 L50,98" class="hc-d20-edge" />
+              <text x="50" y="60" text-anchor="middle" class="hc-d20-num">20</text>
+            </g>
+          </svg>
+        )}
+        {show('starfield') && (
+          <svg class="hc-motif hc-motif-starfield" viewBox="0 0 140 100" width="160" height="114">
+            <circle cx="70" cy="50" r="24" class="hc-planet" />
+            <ellipse cx="70" cy="52" rx="46" ry="10" class="hc-ring" />
+            <path d="M24,52 A46,10 0 0 0 116,52" class="hc-ring-front" />
+            <g class="hc-orbit"><circle cx="122" cy="30" r="4.5" class="hc-moon" /></g>
+          </svg>
+        )}
+        {show('escape') && (
+          <svg class="hc-motif hc-motif-escape" viewBox="0 0 100 120" width="104" height="125">
+            <path d="M28,58 V38 A22,22 0 0 1 72,38 V58" class="hc-shackle" />
+            <rect x="14" y="54" width="72" height="60" rx="10" class="hc-lock" />
+            <g class="hc-dial">
+              <circle cx="50" cy="84" r="20" class="hc-dial-face" />
+              <path d="M50,66 V71 M50,97 V102 M32,84 H37 M63,84 H68 M37,71 L40,74 M63,71 L60,74 M37,97 L40,94 M63,97 L60,94" class="hc-dial-tick" />
+              <circle cx="50" cy="84" r="4" class="hc-dial-hub" />
+            </g>
+          </svg>
+        )}
+        {show('lights') && (
+          <svg class="hc-motif hc-motif-lights" viewBox="0 0 320 70" preserveAspectRatio="xMidYMin meet">
+            <path d="M0,6 Q40,34 80,6 Q120,34 160,6 Q200,34 240,6 Q280,34 320,6" class="hc-wire" />
+            {BULBS.map((c, n) => {
+              const x = 20 + n * 35;
+              const t = (x % 80) / 80;
+              const y = 6 + 56 * t * (1 - t) + 7;
+              return (
+                <g class="hc-bulb" style={`--n:${n};--c:${c}`} transform={`translate(${x},${y})`}>
+                  <rect x="-3" y="-8" width="6" height="6" rx="1" class="hc-bulb-cap" />
+                  <ellipse cx="0" cy="6" rx="6" ry="9" class="hc-bulb-glass" />
+                </g>
+              );
+            })}
+          </svg>
+        )}
+        {show('postcard') && (
+          <div class="hc-motif hc-motif-postcard">
+            <svg class="hc-stamp" viewBox="0 0 80 96" width="80" height="96">
+              <rect x="4" y="4" width="72" height="88" class="hc-stamp-paper" />
+              <rect x="11" y="11" width="58" height="60" class="hc-stamp-art" />
+              <path d="M11,71 L28,46 L38,58 L50,38 L69,71 Z" class="hc-stamp-mtn" />
+              <circle cx="56" cy="24" r="6" class="hc-stamp-sun" />
+              <text x="40" y="85" text-anchor="middle" class="hc-stamp-text">2026</text>
+            </svg>
+            <svg class="hc-postmark" viewBox="0 0 110 110" width="104" height="104">
+              <circle cx="55" cy="55" r="48" />
+              <circle cx="55" cy="55" r="36" />
+              <path id="hc-pm-arc" d="M19,55 A36,36 0 0 1 91,55" fill="none" stroke="none" />
+              <text class="hc-pm-text"><textPath href="#hc-pm-arc" startOffset="50%" text-anchor="middle">SAN JUAN . PR</textPath></text>
+              <text x="55" y="62" text-anchor="middle" class="hc-pm-date">DEC 2026</text>
+            </svg>
+          </div>
+        )}
+      </div>
+
+      <article class="hc-card">
+        <p class="hc-eyebrow hc-rise" style={d()}>{eyebrow}</p>
+        <h1 class="hc-greet hc-rise" style={d()}>{card.greeting}</h1>
+        {card.aside && <p class="hc-aside hc-rise" style={d()}>{card.aside}</p>}
+        <div class="hc-lines">
+          {card.lines.map((line) => <p class="hc-rise" style={d()}>{line}</p>)}
+        </div>
+
+        {photos.length > 0 && (
+          <div class={`hc-photos hc-photos-${photos.length}`}>
+            {photos.map((p) => (
+              <figure class="hc-photo hc-rise" style={d()}>
+                <img src={p.src} alt={p.alt} loading="lazy" decoding="async" style={p.position ? `object-position:${p.position}` : undefined} onerror="this.closest('figure').remove()" />
+                {p.caption && <figcaption>{p.caption}</figcaption>}
+              </figure>
+            ))}
+          </div>
+        )}
+
+        {review.length > 0 && (
+          <ol class="hc-review">
+            {review.map((s) => (
+              <li class="hc-stop hc-rise" style={d()}>
+                {s.photo && (
+                  <img src={s.photo.src} alt={s.photo.alt} loading="lazy" decoding="async" style={s.photo.position ? `object-position:${s.photo.position}` : undefined} onerror="this.remove()" />
+                )}
+                <div class="hc-stop-body">
+                  {s.when && <span class="hc-stop-when">{s.when}</span>}
+                  <span class="hc-stop-place">{s.place}</span>
+                  {s.line && <span class="hc-stop-line">{s.line}</span>}
+                </div>
+              </li>
+            ))}
+          </ol>
+        )}
+
+        <p class="hc-closing hc-rise" style={d()}>{closing}</p>
+        <p class="hc-sig" style={d()}><span>{from}</span></p>
+      </article>
+
+      <footer class="hc-foot">
+        <button type="button" class="hc-replay">Play it again</button>
+        <p>This card lives on an unlisted page that only you have the link to. Want to forward it? I'll allow it. <a href="https://roske.ai/">roske.ai</a></p>
+        {preview && (
+          <nav class="hc-preview" aria-label="Preview other card themes">
+            <span>Test card. Other looks:</span>
+            {THEMES.map((t) => <a href={`?theme=${t}`}>{t}</a>)}
+          </nav>
+        )}
+      </footer>
+    </main>
+
+    <script is:inline>
+      document.addEventListener('click', function (e) {
+        if (!e.target.closest || !e.target.closest('.hc-replay')) return;
+        var m = document.getElementById('hc');
+        var c = m.cloneNode(true);
+        m.replaceWith(c);
+        window.scrollTo({ top: 0 });
+      });
+    </script>
+  </body>
+</html>

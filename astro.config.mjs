@@ -20,6 +20,7 @@ export default defineConfig({
     // AgentCube's old static subsite (public/agentcube*.html) stays reachable by
     // direct URL but is no longer promoted: its canonical home is now
     // https://caprus.ai/agentcube/. Pages removed from the sitemap accordingly.
-    sitemap(),
+    // Unlisted holiday cards (src/pages/cards/) never go in the sitemap.
+    sitemap({ filter: (page) => !page.includes('/cards/') }),
   ]
 });

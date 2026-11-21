@@ -1,61 +1,78 @@
 User-agent: *
 Allow: /
+Disallow: /cards/
 
 # OpenAI crawlers
 User-agent: GPTBot
 Allow: /
+Disallow: /cards/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /cards/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /cards/
 
 # Anthropic crawlers
 User-agent: ClaudeBot
 Allow: /
+Disallow: /cards/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /cards/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /cards/
 
 # Google AI
 User-agent: Google-Extended
 Allow: /
+Disallow: /cards/
 
 # Perplexity
 User-agent: PerplexityBot
 Allow: /
+Disallow: /cards/
 
 # Apple AI (Siri, Apple Intelligence)
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /cards/
 
 # Amazon AI
 User-agent: Amazonbot
 Allow: /
+Disallow: /cards/
 
 # Meta AI
 User-agent: meta-externalagent
 Allow: /
+Disallow: /cards/
 
 # Other AI crawlers
 User-agent: cohere-ai
 Allow: /
+Disallow: /cards/
 
 User-agent: YouBot
 Allow: /
+Disallow: /cards/
 
 User-agent: PhindBot
 Allow: /
+Disallow: /cards/
 
 User-agent: CCBot
 Allow: /
+Disallow: /cards/
 
 User-agent: Bytespider
 Allow: /
+Disallow: /cards/
 
 Sitemap: https://roske.ai/sitemap-index.xml
 Sitemap: https://roske.ai/news-sitemap.xml
