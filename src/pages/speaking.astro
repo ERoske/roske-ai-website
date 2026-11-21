@@ -9,9 +9,38 @@ import '../styles/speaker.css';
 // One-pager PDF lives at public/downloads/edward-roske-speaker-onepager.pdf.
 // Regenerate via: python scripts/build-speaker-onepager.py
 
+// 2027 LEAD TALKS (Edward, direct, 2026-11-21): the human side of AI, vibe coding
+// and building with AI, AI agents. Finance and CFO talks no longer lead; they live
+// in `byRequest` below. The weekly pitch engine proposes from `talks` first.
 const talks = [
   {
     num: '01',
+    title: 'The Human Side of AI',
+    audience: 'Leaders, HR and L&D, kickoffs and all-hands',
+    description:
+      "Season 3 of Asking Good Questions is about the human side of AI, which is also the side no vendor demo ever covers (they're too busy showing you the dashboard). Most of the AI questions people actually carry around have nothing to do with models and everything to do with their own job, and whether the new tool is secretly grading them (it might be, so read the terms of service). Edward has put those questions to guests from around the world (business, academia, non-profits) and to the 10+ AI agents that run his own day, and this talk brings back the answers: which parts of the job are about to change (more than the memo says, fewer than the headlines say) and how a leader talks about AI without every all-hands sounding like a layoff rehearsal.",
+    walkaway: [
+      'Honest language for talking to a team about AI (that HR will also sign off on)',
+      'Which judgment calls stay human, and how to staff for them',
+      'A plan for the people side of adoption, beyond the license count',
+    ],
+    tags: ['Keynote', 'Fireside', 'Kickoffs'],
+  },
+  {
+    num: '02',
+    title: 'Hello, Computer: Vibe Coding and Building With AI',
+    audience: 'Executives, operators, and people who "don\'t code"',
+    description:
+      "In 1986 Scotty picked up a mouse, said \"Hello, computer,\" got nothing, and had to type the formula for transparent aluminum by hand (how quaint). 40 years later, saying hello to the computer is roughly how software gets built (and now it answers). Vibe coding means describing what you want in plain English and letting AI write the code, and it's how Edward ships real products now: he coded AgentCube, which lets any AI (ChatGPT, Claude, Gemini, Copilot, you name it) talk to the enterprise systems companies run on, and every line of this website's weekly redesign is written by AI. This talk shows a room of non-programmers what they could build this month, and the guardrails that keep a weekend prototype from becoming next year's incident report (because vibe-coded software does break, usually at 4:55 on a Friday).",
+    walkaway: [
+      'What it looks like to go from a plain-English idea to working software',
+      'The first 3 internal tools their own team could build this quarter',
+      'The guardrails (security, review, ownership) that keep homemade tools from turning into liabilities',
+    ],
+    tags: ['Keynote', 'Live demo', 'Workshop pairing'],
+  },
+  {
+    num: '03',
     title: 'Your Day, Run by Ten Agents',
     audience: 'Executives and leadership teams',
     description:
@@ -23,44 +52,24 @@ const talks = [
     ],
     tags: ['Keynote', 'Fireside', 'Most booked'],
   },
+];
+
+// Still on the menu for the right room, but no longer the lead.
+const byRequest = [
   {
-    num: '02',
     title: "Answers to the Questions You've Been Quietly Asking Yourself About AI",
-    audience: 'Senior leaders, cross-functional',
-    description:
-      'Most senior leaders have AI questions they won\'t ask in a meeting, mostly because everyone else in the meeting seems to know the answer already (they don\'t). This talk answers them, drawn from a hundred-plus episodes of Asking Good Questions and a portfolio of live AI deployments, from "which vendor is lying to me" to "what happens to my team." Works as a keynote, a fireside chat, or the opening session of a multi-day offsite.',
-    walkaway: [
-      'A working answer to the AI question they brought into the room',
-      'A filter for separating deployed reality from vendor theater',
-      'The three decisions worth making this quarter (and the ones that can wait)',
-    ],
-    tags: ['Keynote', 'Fireside', 'Offsite opener'],
+    audience: 'Senior leaders, offsite openers',
+    line: 'The AI questions leaders won\'t ask in a meeting (everyone else seems to know already, and they don\'t), answered from 100+ episodes of Asking Good Questions.',
   },
   {
-    num: '03',
     title: 'Building a Company in the Era of AI',
     audience: 'Founders, operators, PE portfolios',
-    description:
-      "A 3-year plan written today sits on top of a business model AI keeps rewriting, and most of the advice portfolio companies get on it comes from people selling AI (Edward builds some of it himself, so bring your skepticism). He founded interRel at 22, ran it for 25 years, and merged it with Keste to help found Argano, a billion-dollar firm, and these days he's building AI companies and redoing his own plans right alongside the people in the room. It's a talk for founders and operating partners on what changes when your product, your staffing plan, and your competition are all being re-priced by the same technology.",
-    walkaway: [
-      'Which parts of the operating playbook AI actually re-prices',
-      'How to evaluate AI claims inside a portfolio company in one meeting',
-      'The hiring and org-design moves that age well',
-    ],
-    tags: ['Keynote', 'PE annual meetings', 'Board retreats'],
+    line: 'Edward founded interRel at 22, ran it for 25 years, and merged it with Keste to help found Argano. The talk is about what changes when your product, your staffing plan, your pricing, and your competition all get re-priced by the same technology at the same time.',
   },
   {
-    num: '04',
     title: 'The Computer-First Finance Department',
-    audience: 'For finance rooms: CFOs, finance and EPM leaders',
-    description:
-      "Finance teams keep hearing that AI will close the books by itself next quarter, and also that it can't be trusted anywhere near a ledger, sometimes in the same week. Planning, consolidation, and reporting are shifting from human-first to computer-first, and Edward is one of the people shipping that shift: MCP servers that let AI agents read and write live Oracle EPM data. Twenty-five years in the Office of the CFO, translated into what finance automates first, what it should never automate, and why knowing when a number is wrong still beats producing it fast.",
-    walkaway: [
-      'The finance processes AI takes first, in order, with evidence',
-      'What a computer-first close actually looks like at companies doing it',
-      'The judgment calls that stay human (and how to staff for them)',
-    ],
-    tags: ['Keynote', 'Workshop pairing', 'Finance events'],
+    audience: 'Finance rooms only: CFOs, finance and EPM leaders',
+    line: '25 years in the Office of the CFO, translated into the order finance should automate things in, starting with whatever the team complains about most and ending well before anything that signs the 10-K.',
   },
 ];
 
@@ -285,7 +294,7 @@ const featureVideoSchema = {
 
 <BaseLayout
   title="AI Keynote Speaker | Book Edward Roske"
-  description="Book Edward Roske: the AI practitioner for business leaders. Keynotes from $15,000. 15 books, 50+ countries, all 7 continents, 8 speaker awards. Builds AI products and runs his own day on 10+ AI agents. Inquiries answered within one business day."
+  description="Book Edward Roske: the AI practitioner for business leaders. Keynotes on the human side of AI, vibe coding and building with AI, and AI agents, from $15,000. 15 books, 50+ countries, 8 speaker awards. Inquiries answered within one business day."
   ogImage="/images/og-default.png">
 
   <Fragment slot="head">
@@ -419,8 +428,8 @@ const featureVideoSchema = {
     <!-- ============ TALKS ============ -->
     <section class="spk-section spk-section-alt">
       <div class="spk-wrap">
-        <p class="spk-eyebrow">Signature talks</p>
-        <h2 class="spk-h2">Four talks. Zero recycled decks.</h2>
+        <p class="spk-eyebrow">Signature talks for 2027</p>
+        <h2 class="spk-h2">Three talks. Zero recycled decks.</h2>
         <p class="spk-deck">
           Edward rebuilds every talk for your audience after a working call with you. Identical talks
           for different rooms is how speakers end up on the "never again" list, and Edward would
@@ -446,6 +455,18 @@ const featureVideoSchema = {
               </div>
             </article>
           ))}
+        </div>
+        <div class="spk-more">
+          <p class="spk-more-label">Also by request</p>
+          <div class="spk-more-grid">
+            {byRequest.map((t) => (
+              <div class="spk-more-item">
+                <h3 class="spk-more-title">{t.title}</h3>
+                <p class="spk-talk-aud">{t.audience}</p>
+                <p class="spk-more-line">{t.line}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

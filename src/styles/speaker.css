@@ -171,8 +171,8 @@
     .spk-video figcaption span { font-size: 0.85rem; color: var(--spk-muted); }
 
     /* ---------- talks ---------- */
-    .spk-talks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
-    @media (max-width: 860px) { .spk-talks { grid-template-columns: 1fr; } }
+    .spk-talks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+    @media (max-width: 1000px) { .spk-talks { grid-template-columns: 1fr; } }
     .spk-talk {
       background: var(--spk-bg); border: 1px solid var(--spk-line);
       padding: 2rem 1.9rem 1.9rem; display: flex; flex-direction: column;
@@ -204,6 +204,20 @@
     }
     .spk-talk-outcomes ul { margin: 0; padding: 0 0 0 1.1rem; }
     .spk-talk-outcomes li { font-size: 0.92rem; color: var(--spk-ink); margin-bottom: 0.35rem; }
+
+    /* 2027: the talks that no longer lead, kept for the right room */
+    .spk-more { margin-top: 2.6rem; border-top: 1px solid var(--spk-line); padding-top: 1.6rem; }
+    .spk-more-label {
+      font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--spk-brass); margin: 0 0 1.1rem;
+    }
+    .spk-more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+    @media (max-width: 860px) { .spk-more-grid { grid-template-columns: 1fr; } }
+    .spk-more-title {
+      font-family: 'Fraunces', serif; font-weight: 560;
+      font-size: 1.12rem; line-height: 1.2; margin: 0 0 0.35rem; text-wrap: balance;
+    }
+    .spk-more-line { color: var(--spk-muted); font-size: 0.9rem; margin: 0; }
 
     /* ---------- testimonials ---------- */
     .spk-quotes-section { border-bottom: 1px solid var(--spk-line); }
