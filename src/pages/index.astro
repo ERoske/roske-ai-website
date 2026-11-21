@@ -9,22 +9,20 @@ import { currentTheme } from '../themes/theme-config';
 const theme = currentTheme;
 
 // ---------------------------------------------------------------------------
-// AN A.I. CAROL (2026-11-14). Ebenezer: A Christmas Carol opened Friday,
-// November 13. The page is the book's 5 staves. Edward is Marley and only
-// Marley: the dead partner who worked the same ledgers and shows up in a
-// chain he forged himself. The argument: Scrooge had all the information in
-// Stave One and said Humbug to it; what changed him was being shown. Every
-// Dickens quotation is checked against the Project Gutenberg text (ebook 46).
-// Nobody from the film is depicted.
+// READ THE ARENA (2026-11-21). The Hunger Games: Sunrise on the Reaping
+// opened Friday, November 20: the 50th Games, a Quarter Quell, twice the
+// usual tributes. The argument: AI gets sold as a race against everybody
+// else in your industry, but the other tributes are rarely what gets you;
+// the arena does. So the page maps the arena, and its centerpiece is the
+// edge (the line where a system stops knowing and starts guessing).
+// Edward is the only person depicted. No franchise logos, no mockingjays,
+// nobody from the film.
 // ---------------------------------------------------------------------------
 
-const IMG = '/images/ai-carol';
+const IMG = '/images/read-the-arena';
 const CAL = 'https://calendar.app.google/udtTerQwcX9Z7QQt7';
-const POST = '/blog/what-actually-changed-scrooges-mind/';
-const BOOK = 'https://www.gutenberg.org/ebooks/46';
-const REVIEWS = 'https://www.hollywoodreporter.com/movies/movie-news/ebenezer-reviews-johnny-depp-1236754299/';
-const WTI = 'https://blogs.microsoft.com/blog/2024/05/08/microsoft-and-linkedin-release-the-2024-work-trend-index-on-the-state-of-ai-at-work/';
-const RAILWAY = 'https://en.wikipedia.org/wiki/Railway_Mania';
+const POST = '/blog/whos-actually-trying-to-kill-you-in-the-ai-race/';
+const REVIEWS = 'https://www.cinemablend.com/movies/sunrise-on-the-reaping-review-roundup-brutal-i-watched-completely-different-movie-joseph-zada';
 
 // The 4 standing numbers. Same every week.
 const stats = [
@@ -34,130 +32,114 @@ const stats = [
   { v: '25', k: 'Years running interRel' },
 ];
 
-// The chain, itemized. Every link is a real line from the career.
-const chain = [
+// Reaping Day. Names drawn so far.
+const slips = [
+  'Banks',
+  'Hospitals',
+  'Law firms',
+  'Universities',
+  'Airlines',
+  'Restaurants',
+  'Consultants (twice, obviously)',
+  'Your vendors',
+  'Your competitors',
+  "Your kid's school",
+];
+
+// The tribute profile.
+const profile = [
+  { k: 'Tribute', v: 'Edward Roske' },
+  { k: 'District', v: 'San Juan, Puerto Rico (since March 2023)' },
+  { k: 'First reaped', v: `1995, as a Senior Analytics Consultant (a title I'd describe as optimistic)` },
+  { k: 'Games survived', v: '25 years running interRel, 15 books, and 1 perfect score on the Essbase certification exam' },
+  { k: 'Weapon of choice', v: `A question. The bow's still on the rack (see photo).` },
+];
+
+// What's actually in the Cornucopia.
+const horn = [
   {
-    when: '1995',
-    what: 'Essbase consulting',
-    note: `The first link. My title was Senior Analytics Consultant, and this was 2 years before I founded a company at 22, so you can work out for yourself how senior.`,
+    item: 'An enterprise AI platform, 3-year term',
+    fine: `The price on page 1 is for year 1. Pages 2 through 40 are about years 2 and 3.`,
   },
   {
-    when: '1997',
-    what: 'interRel Consulting',
-    note: `Founded May 21, 1997, the day before my birthday, because I thought it'd be cool to start a company at 22. It's the longest link on the chain: 25 years of running it.`,
+    item: 'A pilot',
+    fine: `Success criteria to be defined later, and somehow the pilot turns into a line item without anybody deciding it should.`,
   },
   {
-    when: '15 books',
-    what: 'Look Smarter Than You Are',
-    note: `13 on Amazon and 2 more for training classes, and they're the reason I clank. (Edward, you wrote 15 books about software with the version numbers right there in the titles. What did you think was going to happen to them?)`,
+    item: 'A license for everybody',
+    fine: `Seats get counted at signing, and after the first week nobody checks how many of them actually got opened.`,
   },
   {
-    when: '1 exam',
-    what: 'A perfect score on the Essbase certification',
-    note: `First person to do it. It's a small link (and yes, I'm aware that bringing it up on my own website, on a chain, is more or less what Marley was being punished for).`,
-  },
-  {
-    when: '2020',
-    what: 'The merger',
-    note: `Merged interRel with Keste to help found Argano, and stayed on as CEO through 2022.`,
-  },
-  {
-    when: '2023 to now',
-    what: 'Still forging',
-    note: `AgentCube, a YouTube channel with over 800,000 subscribers, the Caribbean AI Summit, and this website, which a machine rebuilds every Saturday. Marley's chain stopped growing 7 years before the book starts, and I'm still adding to mine (Dickens doesn't say what happens in that case).`,
+    item: 'A roadmap slide with your logo already on it',
+    fine: `It had somebody else's logo on it last week (it's a very good slide).`,
   },
 ];
 
-// The three Spirits. What each showed Scrooge, and what it'd show yours.
-type Spirit = {
-  stave: string;
-  bell: string;
-  name: string;
-  img: string;
-  w: number;
-  h: number;
-  shape: 'wide' | 'tall' | 'full';
-  alt: string;
-  caption: string;
-  showed: string;
-  yours: string;
-  link?: { href: string; text: string };
-};
-
-const spirits: Spirit[] = [
+// The arena map. 6 sectors, the horn in the middle, 2 cells that aren't hazards.
+const sectors = [
   {
-    stave: 'Stave Two',
-    bell: 'The bell tolls One',
-    name: 'The Ghost of Technology Past',
-    img: 'past.jpg',
-    w: 1600,
-    h: 1195,
-    shape: 'wide',
-    alt: 'Edward as Marley\'s Ghost, translucent and glowing green in a frock coat and his blue fedora with a chain over his shoulder, stands in the aisle of an empty 1990s cubicle farm and gestures like a tour guide at a beige CRT monitor showing a green spreadsheet. A wall calendar reads 1998, and a stack of books, a beige keyboard, and some floppy disks sit chained at his feet.',
-    caption: `Me, giving the tour of 1998 (it's on the wall calendar). interRel was 1 year old, and yes, that's a CRT (ask your parents).`,
-    showed: `His old school, his sister, and a Christmas party thrown by his first boss, Fezziwig, who by the Ghost's own math spent "but a few pounds" on it. Scrooge jumps in to defend him ("The happiness he gives, is quite as great as if it cost a fortune") and then goes quiet, because he's just thought of his own clerk.`,
-    yours: `The last few things they called humbug. I've been doing this since 1995, and every big shift since then had smart people explaining why it was a fad. What I said about "AI's a fad" on my show is that it'll end up like personal computers, which are all going to go away someday so we can put everything back on 1 big central computer (that one sort of did happen, it just took about 50 years longer than anybody thought).`,
+    n: '01',
+    name: 'The Meadow',
+    looks: 'A flawless demo.',
+    bites: `It works perfectly for the 1 question it was built for, and your people are going to ask it about 4,000 others.`,
   },
   {
-    stave: 'Stave Three',
-    bell: 'The bell tolls One, again',
-    name: 'The Ghost of Technology Present',
-    img: 'present.jpg',
-    w: 1195,
-    h: 1600,
-    shape: 'tall',
-    alt: 'On a snowy city sidewalk at night, Edward as Marley\'s Ghost in his blue fedora, chain hung with books, padlocks, floppy disks, and a beige keyboard, rests one hand on the frosted window of a modern office building and looks back at the camera. Inside the dark office, one man sits alone at a desk, typing by the glow of a laptop.',
-    caption: `That's Bob. The office is dark, everybody else went home, and whatever he's typing into isn't on the approved list (I'm not going to tell on him).`,
-    showed: `Rooms he'd never have walked into on his own. His clerk's house, where Bob Cratchit toasts him as "the Founder of the Feast" over Mrs. Cratchit's objections, and his nephew's party, where the guests play a guessing game called Yes and No and the answer ("a disagreeable animal, a savage animal") turns out to be Scrooge.`,
-    yours: `What their own people are doing tonight. Microsoft and LinkedIn found 75% of knowledge workers already using AI at work back in 2024, with 78% of those people bringing their own tools. Bob Cratchit has a personal chatbot account, he's had it for 2 years, and he isn't going to bring it up in the meeting.`,
-    link: { href: WTI, text: 'Microsoft and LinkedIn found' },
+    n: '02',
+    name: 'The Clear Spring',
+    looks: 'A fluent, confident, nicely formatted answer.',
+    bites: `When it's made up, it reads exactly the same.`,
   },
   {
-    stave: 'Stave Four',
-    bell: 'The bell tolls Twelve',
-    name: 'The Ghost of Technology Yet to Come',
-    img: 'yet-to-come.jpg',
-    w: 1600,
-    h: 893,
-    shape: 'full',
-    alt: 'In a snowy churchyard at night, a tall figure in a black hooded robe, its face hidden, points down at a gray headstone carved with the words WAIT AND SEE. Edward as Marley\'s Ghost, in his blue fedora with a chain of books, padlocks, floppy disks, and a beige keyboard, crouches beside the stone brushing snow off the top with a small brush and looks up at the camera, mildly concerned.',
-    caption: `The stone says WAIT AND SEE. I brought a brush, because I'm a professional.`,
-    showed: `It never says a word. It points: first at some businessmen discussing a man who died last night (one of them will go to the funeral "if a lunch is provided"), and then at a headstone with Scrooge's name on it. Scrooge asks the best question in the book ("Are these the shadows of the things that Will be, or are they shadows of things that May be, only?") and doesn't get an answer.`,
-    yours: `Nobody can tell your skeptic what AI does to their industry by 2030, and I'd be a little careful around anybody who says they can. A good look at the future does what the headstone does, which is get you asking Scrooge's question. This Spirit is the most persuasive speaker in the book and it has no lines, which I'm trying not to take personally (my keynotes run up to 90 minutes, plus Q&A).`,
+    n: '03',
+    name: 'The Songbirds',
+    looks: 'An assistant that loves every idea you have.',
+    bites: `It'll agree with a bad idea just as warmly as a good one, and then it'll write the business case for both.`,
+  },
+  {
+    n: '04',
+    name: 'The Orchard',
+    looks: 'Free credits, free pilots, free trials, fruit everywhere.',
+    bites: `It's free right up until it's in production, and then somebody sends a price list.`,
+  },
+  {
+    n: '05',
+    name: 'The Fog',
+    looks: 'An agent that runs overnight while you sleep.',
+    bites: `You can't see what it did until morning. The one that rebuilds this website at 5AM every Saturday once built an entire theme and never committed it, so the site wore an expired Labor Day theme for 11 days.`,
+  },
+  {
+    n: '06',
+    name: 'The Moving Walls',
+    looks: 'The new model that shipped on Tuesday.',
+    bites: `It rearranges the arena, so the map you drew last quarter is at least partly wrong now (eventually including this one).`,
   },
 ];
 
-// The Humbug Ledger. 5 humbugs, entered honestly. Only 1 of them is humbug.
-const ledger = [
+// How to find the edge.
+const survey = [
+  `Ask it 20 questions you already know the answers to, from your real work (not from the demo).`,
+  `Write down every one it got wrong, and how sure of itself it sounded when it did.`,
+  `Ask the same question 3 different ways, and watch for where the answers stop agreeing, because that's usually the edge.`,
+  `Do it all again when the model changes, since the walls move (see Sector 06).`,
+];
+
+// Sponsor gifts.
+const parachutes = [
   {
-    humbug: 'It makes things up.',
-    verdict: 'Fair',
-    entry: `It does, when it's answering from memory. Give it something to read (your documents and the real numbers out of your real systems) and it mostly stops guessing, though not always, so you still check the ones that matter, the same way you'd check a new hire's.`,
+    tag: 'FREE TRIAL',
+    note: `30 days. Note attached: "Stay alive!" Second note, day 31: an invoice.`,
   },
   {
-    humbug: `It's a bubble.`,
-    verdict: 'Could be',
-    entry: `Dickens published this book in 1843, and Britain's Railway Mania peaked 3 years later, when Parliament approved 263 new railway companies in a single year. About a third of that track never got built, and a lot of families lost their savings. The lines that did get built are still on the map, so it was a bubble and the trains ran anyway.`,
-    link: { href: RAILWAY, text: 'Railway Mania' },
+    tag: 'A webinar invitation',
+    note: `Thursday at 2PM. Note attached: "Seats are limited." Seats are not limited.`,
   },
   {
-    humbug: `We tried it, and it wasn't any good.`,
-    verdict: 'Fair, that month',
-    entry: `Ask which month that was. Something better ships every few months, so a verdict from 2023 is about a product that's been replaced several times since (I'd tell you how many times, but it'll be out of date by the time you read this).`,
-  },
-  {
-    humbug: `Our data isn't ready.`,
-    verdict: 'True, forever',
-    entry: `I spent 25 years working in other people's data, and "ready" isn't a word I'd have used for much of it. It got used anyway. Pick 1 problem where the data's good enough and start there.`,
-  },
-  {
-    humbug: `My people aren't asking for it.`,
-    verdict: 'Humbug',
-    entry: `They're not asking because they already have it. See Stave Three: 75% were using it by 2024, and 78% of those brought their own, so the request you're waiting for isn't coming.`,
+    tag: 'A 40-page AI strategy deck',
+    note: `Note attached: "Executive summary on page 2." The price is on page 31 (yes, I flipped straight to it, and no, I didn't read pages 3 through 30).`,
   },
 ];
 
-// On the books: the 6 projects. Same 6 every week, restyled.
+// The pack: the 6 projects. Same 6 every week, restyled.
 const projects = [
   {
     name: 'MCP Servers for Enterprise Finance',
@@ -178,7 +160,7 @@ const projects = [
   {
     name: 'Caprus',
     status: 'Investor',
-    note: `I'm an investor, and that's the whole job. Lillian Buziak runs it, and they sell and support AgentCube (that's Folio 01), which spares everybody from having me do it.`,
+    note: `I'm an investor, and that's the whole job. Lillian Buziak runs it, and they sell and support AgentCube (that's item 01 in this pack), which spares everybody from having me do it.`,
     href: 'https://caprus.ai',
     external: true,
     cta: 'Meet the team',
@@ -186,7 +168,7 @@ const projects = [
   {
     name: 'Everest Base Camp',
     status: 'Done, April 2026',
-    note: `2 weeks on foot to 18,571 feet with Dawn. The trail log is on the blog, including the last 400 feet of Kala Patthar.`,
+    note: `2 weeks on foot to 18,571 feet with Dawn. The trail log is on the blog, including the last 400 feet of Kala Patthar (no parachutes were sent).`,
     href: '/blog/everest-base-camp-summit/',
     external: false,
     cta: 'Read the trail log',
@@ -210,415 +192,405 @@ const projects = [
 ];
 
 const pad = (n: number) => String(n).padStart(2, '0');
-const split = (text: string, linkText: string) => {
-  const i = text.indexOf(linkText);
-  return { before: text.slice(0, i), after: text.slice(i + linkText.length) };
-};
 ---
 
 <BaseLayout
-  title="Roske.AI | An A.I. Carol"
-  description="Ebenezer: A Christmas Carol week on roske.ai. Edward Roske is Marley's Ghost, dragging a chain he forged over 25 years of enterprise software, with 5 staves on what actually changed Scrooge's mind and an honest ledger of 5 of the usual humbugs about AI."
+  title="Roske.AI | Read the Arena"
+  description="Sunrise on the Reaping week on roske.ai. Edward Roske is a tribute in the 50th Games who scored a 7 in training for asking where the arena ends, with a sector-by-sector map of the AI arena and the case for finding its edge on purpose."
 >
   <WeeklyAnimation />
 
-  <!-- ================= RUNNING HEAD ================= -->
-  <div class="ac-runhead" role="note" aria-label="Running head">
-    <div class="ac-wrap ac-runhead-inner">
-      <span>An A.I. Carol</span>
-      <span>Saturday, November 14, 2026 | San Juan</span>
-      <span>41 days before Christmas (the movie couldn't wait either)</span>
+  <!-- ================= CHYRON ================= -->
+  <div class="ra-chyron" role="note" aria-label="Broadcast banner">
+    <div class="ra-wrap ra-chyron-inner">
+      <span class="ra-live">Live</span>
+      <span>The 50th Games, a Quarter Quell</span>
+      <span>Day 1 | Saturday, November 21, 2026 | San Juan</span>
+      <span class="ra-chyron-hide">Sunrise on the Reaping opened yesterday</span>
     </div>
   </div>
 
-  <!-- ================= HERO: FRONTISPIECE + TITLE PAGE ================= -->
-  <section class="ac-hero" aria-labelledby="ac-title">
-    <figure class="ac-plate">
+  <!-- ================= HERO ================= -->
+  <section class="ra-hero" aria-labelledby="ra-title">
+    <figure class="ra-cam">
       <img
-        class="ac-plate-img"
+        class="ra-cam-img"
         src={`/images/${theme.hero.heroImage}`}
         alt={theme.hero.imageAlt}
         width="1600"
-        height="878"
+        height="893"
         fetchpriority="high"
         decoding="async"
       />
-      <figcaption class="ac-plate-cap">
-        <span class="ac-wrap">Marley's Ghost. <em>Frontispiece, drawn by a machine.</em></span>
+      <div class="ra-cam-chrome" aria-hidden="true">
+        <span class="ra-cam-tag">Arena cam 12</span>
+        <span class="ra-cam-rec">Rec</span>
+      </div>
+      <figcaption class="ra-lower">
+        <span class="ra-lower-name">Tribute, District San Juan</span>
+        <span class="ra-lower-note">Has not moved in 40 seconds. Appears to be reading.</span>
       </figcaption>
     </figure>
 
-    <div class="ac-wrap">
-      <div class="ac-book">
-        <div class="ac-page ac-tp">
-          <h1 class="ac-tp-title" id="ac-title">
-            <span class="ac-tp-an">An</span>
-            <span class="ac-tp-main">A.I. Carol.</span>
-          </h1>
-          <p class="ac-tp-prose">In Prose.</p>
-          <p class="ac-tp-small">Being</p>
-          <p class="ac-tp-ghost">A Ghost Story of Quarter Four.</p>
-          <span class="ac-tp-rule" aria-hidden="true"></span>
-          <p class="ac-tp-small">By</p>
-          <p class="ac-tp-author">Edward Roske.</p>
-          <p class="ac-tp-small">With illustrations by a machine.</p>
-          <span class="ac-tp-rule" aria-hidden="true"></span>
-          <p class="ac-tp-imprint">San Juan: Roske.AI, every Saturday at 5AM.<br />MMXXVI.</p>
+    <div class="ra-wrap">
+      <div class="ra-hero-card">
+        <p class="ra-kicker">Day 1 in the arena</p>
+        <h1 class="ra-title" id="ra-title">Read the <span>arena.</span></h1>
+        <p class="ra-pull">{theme.hero.subtitle}</p>
+        <div class="ra-hero-copy">
+          <p>
+            I'm a tribute in the 50th Games this week (a Quarter Quell, which means the Capitol reaps twice the usual number of names, 48 instead of 24), because The Hunger Games: Sunrise on the Reaping opened Friday with Joseph Zada as a teenage Haymitch Abernathy and Ralph Fiennes as President Snow (<a href={REVIEWS} target="_blank" rel="noopener noreferrer">the critics are still arguing about it</a>).
+          </p>
+          <p>
+            I'm the one on the launch platform who isn't running. 47 other tributes are sprinting at a giant golden horn
+            full of laptops, and I'm standing there with a notebook trying to work out where the arena ends (Edward,
+            there are 47 people running at free equipment and you're taking notes on the scenery. This is exactly why
+            the Gamemakers gave you a 7, and they were being generous).
+          </p>
+          <p>
+            Pretty much every leader I've talked to this year has been told the same story: AI is a race, everybody in
+            your industry is already in it, the vendors and the analysts and the keynote speakers (hi) are all up on the
+            balcony with drinks, and anybody who doesn't sprint for the Cornucopia on day one gets left behind. I've been
+            in some version of this arena since 1995, and in my experience the thing that gets you is usually the arena
+            itself: the perfect demo, the confident wrong answer, the free trial, the agent nobody's watching, and a bunch more. So this
+            page is a map of the arena (the competition can get its own website).
+          </p>
         </div>
-
-        <div class="ac-page ac-preface">
-          <p class="ac-preface-head">Preface.</p>
-          <p class="ac-preface-pull">{theme.hero.subtitle}</p>
-          <p>
-            Ebenezer: A Christmas Carol opened Friday, with Johnny Depp as Scrooge and Ian McKellen as Marley's Ghost
-            (<a href={REVIEWS} target="_blank" rel="noopener noreferrer">the reviews are split</a>, and I'm staying out
-            of it). I'm also Marley this week. Sir Ian has been Gandalf and Magneto, and I've been a Dungeon Master
-            for a long time, which I've decided is comparable experience.
-          </p>
-          <p>
-            Marley's the dead business partner who shows up 7 years late, in a chain he made himself, to tell Scrooge
-            that 3 more visitors are coming. I'm unreasonably qualified for the part, since I ran a consulting firm for
-            25 years and wrote 15 books about software, and I can show you every link (they're itemized in Stave One&hellip;
-            Edward, nobody asked for an itemized chain. I know, and it's in there anyway).
-          </p>
-          <p>
-            If you go back and read <a href={BOOK} target="_blank" rel="noopener noreferrer">the book</a> (it's free,
-            and it takes an evening), Scrooge isn't short on information. In Stave One his nephew gives him a good
-            speech and 2 gentlemen show up with statistics, and he says &ldquo;Humbug&rdquo; to the nephew and asks
-            the 2 gentlemen whether there are no prisons. Then his dead partner turns up in person, and it's still
-            humbug for a while.
-          </p>
-          <p>
-            A lot of smart people are saying &ldquo;Humbug&rdquo; about AI right now, and some of them have earned it
-            (the Halloween page was about what they were sold, so I won't start again). If that's somebody at your
-            company, or it's you, here are 5 staves on how the book handles it, plus an honest ledger of which humbugs
-            are actually humbug.
-          </p>
-          <div class="ac-ctas">
-            <a class="ac-btn ac-btn-paper" href={theme.hero.ctaLink}>{theme.hero.ctaText}</a>
-            <a class="ac-btn ac-btn-paper-ghost" href="#ledger">Skip to the Humbug Ledger</a>
-          </div>
-          <p class="ac-preface-sign">
-            Your faithful Friend and Servant,<br />
-            <span>E. R.</span><br />
-            November, 2026.
-          </p>
+        <div class="ra-ctas">
+          <a class="ra-btn ra-btn-main" href={theme.hero.ctaLink}>{theme.hero.ctaText}</a>
+          <a class="ra-btn ra-btn-ghost" href="#edge">Skip to the edge</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ================= STATS ================= -->
-  <div class="ac-stats-wrap">
-    <ul class="ac-wrap ac-stats" aria-label="On the record">
-      {stats.map((s) => (
-        <li><span class="ac-stat-v">{s.v}</span><span class="ac-stat-k">{s.k}</span></li>
-      ))}
-    </ul>
+  <div class="ra-stats-wrap">
+    <div class="ra-wrap">
+      <p class="ra-stats-label">Tribute statistics, as posted by the Capitol</p>
+      <ul class="ra-stats" aria-label="On the record">
+        {stats.map((s) => (
+          <li><span class="ra-stat-v">{s.v}</span><span class="ra-stat-k">{s.k}</span></li>
+        ))}
+      </ul>
+    </div>
   </div>
 
-  <!-- ================= ALSO IN THIS VOLUME ================= -->
+  <!-- ================= LATEST ================= -->
   <LatestContent
-    eyebrow="Also in this volume"
+    eyebrow="From the Capitol feed"
     heading="New <em>this week.</em>"
-    deck="This week's writing and video, newest first, including today's post on what actually changed Scrooge's mind (his nephew's speech didn't do it, and it was a good speech)."
+    deck="This week's writing and video, newest first, including today's post on who's actually trying to kill you in the AI race (it's usually not who the broadcast says)."
   />
 
-  <!-- ================= STAVE ONE: MARLEY'S GHOST ================= -->
-  <section class="ac-section ac-stave1" id="stave-one" aria-labelledby="ac-s1-title">
-    <div class="ac-wrap">
-      <div class="ac-s1-top">
-        <header class="ac-head">
-          <p class="ac-eyebrow">Stave One | Marley's Ghost</p>
-          <h2 class="ac-h2 ac-h2-quote" id="ac-s1-title">&ldquo;I wear the chain I forged in life.&rdquo;</h2>
-          <p class="ac-copy">
-            That's Marley, and he goes on: &ldquo;I made it link by link, and yard by yard; I girded it on of my own
-            free will, and of my own free will I wore it.&rdquo; Dickens even lists what's on it (cash-boxes, keys,
-            padlocks, ledgers, deeds, and heavy purses wrought in steel). Mine has different hardware, and I made it
-            the same way he did (it's itemized further down this page, for anyone who likes an audit trail).
-          </p>
-          <p class="ac-copy">
-            The reason Marley gets sent first is that he's the 1 visitor Scrooge can't wave off as somebody who
-            doesn't understand the business, because they ran the business together. That's most of what I've got
-            going for me on a stage, too: I did it the old way starting in 1995, with cubes and consolidations and
-            other people's spreadsheets (the ones that didn't have Freeze Panes turned on, you know who you are).
-          </p>
-          <p class="ac-copy">
-            And it works, a little. Scrooge says &ldquo;Humbug&rdquo; 6 times in the whole book (the machine that
-            builds this site counted), and all 6 are in Stave One. Right after Marley leaves, he tries for a 7th, and
-            Dickens says he &ldquo;stopped at the first syllable,&rdquo; and that's the last time he says it (the
-            book's free on Project Gutenberg if you'd like to check the machine's math).
-          </p>
-        </header>
+  <!-- ================= BOOK EDWARD ================= -->
+  <SpeakerCTA eyebrow="Every district needs a mentor" />
 
-        <figure class="ac-fig ac-fig-knocker">
-          <img
-            src={`${IMG}/knocker.jpg`}
-            alt="A brass door knocker on a black Victorian front door in the snow, cast in the shape of Edward's face, bearded and deadpan and glowing faintly green, with a navy blue fedora on its head and the knocker ring hanging under its chin."
-            width="1195"
-            height="1600"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption>
-            In the book, Marley's face shows up in the door knocker first, as a sort of courtesy. Mine came with the
-            fedora on (a Roske never removes his fedora in the presence of others, and the family creed doesn't make
-            an exception for brass).
-          </figcaption>
-        </figure>
-      </div>
-
-      <div class="ac-s1-bottom">
-        <figure class="ac-fig ac-fig-inventory">
-          <img
-            src={`${IMG}/inventory.jpg`}
-            alt="Edward as Marley's Ghost sits on a clerk's stool in a candlelit Victorian counting-house, in his blue fedora, writing in a huge ledger with a quill and looking up at the camera. His chain trails across the desks and the floor, hung with old books, padlocks, and floppy disks, and a beige 1990s computer monitor and keyboard sit on the desk beside him."
-            width="1600"
-            height="1195"
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption>
-            Taking inventory by quill and candlelight, in a counting-house, with a perfectly good beige keyboard
-            sitting right there on the desk the whole time (the machine that drew this has opinions about my workflow,
-            and I've chosen not to ask).
-          </figcaption>
-        </figure>
-
-        <div class="ac-chain-box">
-          <h3 class="ac-h3">The chain, itemized</h3>
-          <ol class="ac-chain">
-            {chain.map((c) => (
-              <li class="ac-link">
-                <span class="ac-link-oval" aria-hidden="true"></span>
-                <p class="ac-link-when">{c.when}</p>
-                <p class="ac-link-what">{c.what}</p>
-                <p class="ac-link-note">{c.note}</p>
-              </li>
-            ))}
-          </ol>
+  <!-- ================= THE REAPING ================= -->
+  <section class="ra-section ra-reaping" aria-labelledby="ra-reap-title">
+    <div class="ra-wrap ra-reap-grid">
+      <figure class="ra-photo ra-photo-tilt-l">
+        <img src={`${IMG}/reaping.jpg`} width="1600" height="1195" loading="lazy" decoding="async"
+          alt="A grey industrial town square on ceremony day: brick row houses, smokestacks, and a crowd in plain clothes behind a rope facing a wooden stage with a glass bowl of paper slips on a podium. In the front row, Edward in a navy suit and his blue fedora politely raises one hand high, as if he has a question, while the men next to him stare at him in disbelief." />
+        <figcaption>Front row, hand up. I had a question about the selection methodology.</figcaption>
+      </figure>
+      <div class="ra-reap-copy">
+        <p class="ra-eyebrow">Reaping Day</p>
+        <h2 class="ra-h2" id="ra-reap-title">Whose name is in the bowl this year?</h2>
+        <p class="ra-copy">
+          In a Quarter Quell the Capitol changes the rules, and for the 50th Games the change was twice as many names
+          pulled from every district. The AI version is simpler, since nobody pulls anything: your name went in the bowl
+          the first time your board saw a demo, and nobody asked whether you'd like to volunteer.
+        </p>
+        <p class="ra-copy">
+          That's me in the front row with my hand up. Judging by the faces around me, a reaping is not the time for
+          questions about methodology (it's possible I've been asking questions at the wrong moment my whole career, and it's a little late to stop now, since I named a show after it).
+        </p>
+        <div class="ra-bowl" aria-label="Names drawn so far">
+          <p class="ra-bowl-label">Names drawn so far</p>
+          <ul class="ra-slips">
+            {slips.map((s, i) => <li class="ra-slip" style={`--r:${(i % 2 ? 1 : -1) * ((i % 3) + 1)}deg`}>{s}</li>)}
+            <li class="ra-slip ra-slip-you" style="--r:2deg">Your company <span>(3 slips)</span></li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= BOOK EDWARD ================= -->
-  <SpeakerCTA eyebrow="Marley takes bookings (the Spirits don't)" />
-
-  <!-- ================= STAVES TWO TO FOUR: THE THREE SPIRITS ================= -->
-  <section class="ac-night" id="spirits" aria-labelledby="ac-sp-title">
-    <div class="ac-wrap">
-      <header class="ac-head ac-night-head">
-        <p class="ac-eyebrow ac-eyebrow-night">Staves Two, Three, and Four</p>
-        <h2 class="ac-h2 ac-h2-night ac-h2-quote" id="ac-sp-title">&ldquo;You will be haunted by Three Spirits.&rdquo;</h2>
-        <p class="ac-copy ac-copy-night">
-          Scrooge's answer to that, for the record, is &ldquo;I think I'd rather not.&rdquo; He gets them anyway. None
-          of the 3 argues with him, and 1 doesn't talk at all. Each one takes him somewhere and stands there while he
-          looks, so here's where each one took him, and where I'd take the Scrooge at your company.
+  <!-- ================= TRIBUTE PROFILE ================= -->
+  <section class="ra-section ra-band" aria-labelledby="ra-prof-title">
+    <div class="ra-wrap ra-prof-grid">
+      <div class="ra-prof-main">
+        <p class="ra-eyebrow">Training scores are in</p>
+        <h2 class="ra-h2" id="ra-prof-title">Tribute profile: District San Juan</h2>
+        <div class="ra-card ra-dossier">
+          <dl>
+            {profile.map((p) => (
+              <div class="ra-dl-row"><dt>{p.k}</dt><dd>{p.v}</dd></div>
+            ))}
+            <div class="ra-dl-row">
+              <dt>Training score</dt>
+              <dd>
+                <span class="ra-score" aria-label="7 out of 12">
+                  {Array.from({ length: 12 }, (_, i) => <span class={i < 7 ? 'on' : ''} aria-hidden="true"></span>)}
+                </span>
+                <span class="ra-score-num">7 of 12</span>
+              </dd>
+            </div>
+            <div class="ra-dl-row">
+              <dt>Gamemakers' note</dt>
+              <dd class="ra-hand">
+                Spent his entire private session asking where the arena ends, what's in the water, who pays for the parachutes, whether the mutts are unionized, and a bunch more. Did not pick up the bow. Brought his own clipboard.
+              </dd>
+            </div>
+            <div class="ra-dl-row"><dt>Odds, per the Capitol</dt><dd>Long</dd></div>
+          </dl>
+        </div>
+        <p class="ra-copy">
+          The training score is the Capitol's guess at how you'll do in the arena, and it's mostly a score for how good
+          you look throwing things. I got a 7 for asking questions, and I'm told that's the highest score anybody's ever gotten without touching a weapon, by which I mean nobody told me that and I'm choosing to believe it.
         </p>
-      </header>
+      </div>
+      <figure class="ra-photo ra-photo-tilt-r ra-prof-photo">
+        <img src={`${IMG}/training.jpg`} width="1195" height="1600" loading="lazy" decoding="async"
+          alt="A concrete and steel training gym with archery targets and weapon racks. On a high balcony, five judges in pastel brocade coats and powdered wigs lounge with drinks. On the floor, Edward in a grey jumpsuit and his blue fedora holds a clipboard and pen and looks up at them mid-question, while a bow leans untouched on a rack and the target behind him has no arrows in it." />
+        <figcaption>My private session. The bow is over there on the rack, where I left it.</figcaption>
+      </figure>
+    </div>
+  </section>
 
-      <ol class="ac-spirits">
-        {spirits.map((s) => {
-          const parts = s.link ? split(s.yours, s.link.text) : null;
-          return (
-            <li class={`ac-spirit ac-spirit-${s.shape}`}>
-              <figure class="ac-spirit-fig">
-                <img src={`${IMG}/${s.img}`} alt={s.alt} width={s.w} height={s.h} loading="lazy" decoding="async" />
-                <figcaption>{s.caption}</figcaption>
-              </figure>
-              <div class="ac-spirit-body">
-                <p class="ac-spirit-stave">{s.stave} <span>{s.bell}</span></p>
-                <h3 class="ac-spirit-name">{s.name}</h3>
-                <dl class="ac-spirit-dl">
-                  <div>
-                    <dt>What it showed Scrooge</dt>
-                    <dd>{s.showed}</dd>
-                  </div>
-                  <div class="ac-spirit-yours">
-                    <dt>What it'd show yours</dt>
-                    <dd>
-                      {parts && s.link ? (
-                        <>
-                          {parts.before}
-                          <a href={s.link.href} target="_blank" rel="noopener noreferrer">{s.link.text}</a>
-                          {parts.after}
-                        </>
-                      ) : (
-                        s.yours
-                      )}
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-            </li>
-          );
-        })}
+  <!-- ================= THE CORNUCOPIA ================= -->
+  <section class="ra-section" aria-labelledby="ra-horn-title">
+    <div class="ra-wrap">
+      <div class="ra-horn-top">
+        <div>
+          <p class="ra-eyebrow">The sprint for the horn</p>
+          <h2 class="ra-h2" id="ra-horn-title">What's actually in the Cornucopia?</h2>
+          <p class="ra-copy">
+            Every Games starts the same way: the gong sounds and everybody sprints for the horn in the middle, because
+            that's where the good stuff is. In AI the horn is the big day-one platform deal, and the sprint is real
+            (nobody wants to be the company that announced its AI strategy in Q3). I'm the one kneeling next to it
+            reading the contract, which, as the 4 people running off with armfuls of boxes in the background would tell
+            you, is a terrible way to win the first 60 seconds (I'm on page 9, if anybody's asking).
+          </p>
+        </div>
+        <figure class="ra-photo ra-photo-tilt-r">
+          <img src={`${IMG}/cornucopia.jpg`} width="1600" height="1195" loading="lazy" decoding="async"
+            alt="Edward in a grey jumpsuit and his blue fedora kneels in a sunlit meadow beside a golden horn-shaped cornucopia overflowing with software boxes, binders, and a laptop, reading a long paper contract with one finger. Behind him, other competitors run off across the grass carrying cardboard boxes." />
+          <figcaption>Reading the contract. Everybody else is already on Day 2.</figcaption>
+        </figure>
+      </div>
+      <ol class="ra-horn">
+        {horn.map((h, i) => (
+          <li class="ra-card">
+            <span class="ra-tag">Item {pad(i + 1)}</span>
+            <h3 class="ra-h3">{h.item}</h3>
+            <p><span class="ra-fine">Fine print:</span> {h.fine}</p>
+          </li>
+        ))}
       </ol>
     </div>
   </section>
 
-  <!-- ================= THE HUMBUG LEDGER ================= -->
-  <section class="ac-ledger-sec" id="ledger" aria-labelledby="ac-ledger-title">
-    <div class="ac-wrap">
-      <div class="ac-ledger">
-        <header class="ac-ledger-head">
-          <p class="ac-ledger-firm">Scrooge &amp; Marley | Humbugs received</p>
-          <h2 class="ac-ledger-title" id="ac-ledger-title">The Humbug Ledger</h2>
-          <p class="ac-ledger-intro">
-            In fairness to Scrooge, his first theory about the ghost is indigestion (&ldquo;There's more of gravy
-            than of grave about you&rdquo;), and as hypotheses go, that's a decent one, and plenty of what you've
-            been told about AI deserves the same treatment. So here are 5 of the usual humbugs, entered honestly,
-            including the ones where the skeptic's right.
-          </p>
-        </header>
+  <!-- ================= THE ARENA MAP (pinned night) ================= -->
+  <section class="ra-map" id="arena" aria-labelledby="ra-map-title">
+    <div class="ra-wrap">
+      <p class="ra-eyebrow ra-map-eyebrow">The Gamemakers' map, leaked</p>
+      <h2 class="ra-h2 ra-map-h2" id="ra-map-title">The arena, sector by sector</h2>
+      <p class="ra-map-deck">
+        It's a gorgeous arena, and most of it bites. Every sector below is real (I've watched
+        smart people walk into all 6, and I'm not saying which ones I've walked into myself), and the one in the middle
+        is where everybody runs first.
+      </p>
 
-        <ol class="ac-rows">
-          {ledger.map((r, i) => {
-            const parts = r.link ? split(r.entry, r.link.text) : null;
-            return (
-              <li class={`ac-row ${r.verdict === 'Humbug' ? 'ac-row-humbug' : ''}`}>
-                <span class="ac-row-no">No. {i + 1}</span>
-                <p class="ac-row-humbug-text">&ldquo;{r.humbug}&rdquo;</p>
-                <p class="ac-row-verdict"><span class="ac-sr">Verdict: </span>{r.verdict}</p>
-                <p class="ac-row-entry">
-                  {parts && r.link ? (
-                    <>
-                      {parts.before}
-                      <a href={r.link.href} target="_blank" rel="noopener noreferrer">{r.link.text}</a>
-                      {parts.after}
-                    </>
-                  ) : (
-                    r.entry
-                  )}
-                </p>
-              </li>
-            );
-          })}
+      <div class="ra-field">
+        <span class="ra-field-label" aria-hidden="true">The edge</span>
+        <ol class="ra-grid">
+          {sectors.map((s, i) => (
+            <li class={`ra-sector ra-s${i + 1}`}>
+              <span class="ra-sector-n">Sector {s.n}</span>
+              <h3 class="ra-sector-name">{s.name}</h3>
+              <p class="ra-sector-row"><span>Looks like</span> {s.looks}</p>
+              <p class="ra-sector-row ra-bites"><span>Bites</span> {s.bites}</p>
+            </li>
+          ))}
+          <li class="ra-sector ra-center">
+            <span class="ra-sector-n">Center</span>
+            <h3 class="ra-sector-name">The Cornucopia</h3>
+            <p class="ra-sector-row">Everybody runs here first (see above).</p>
+          </li>
+          <li class="ra-sector ra-here">
+            <span class="ra-sector-n">You are here</span>
+            <h3 class="ra-sector-name">Launch platform 12</h3>
+            <p class="ra-sector-row">Mine's the one nearest the trees.</p>
+          </li>
+          <li class="ra-sector ra-unmapped">
+            <span class="ra-sector-n">Unmapped</span>
+            <h3 class="ra-sector-name">Your own arena</h3>
+            <p class="ra-sector-row">
+              Your data and your processes. Nobody can map this sector for you, including me (I'd be glad to help you
+              draw it, though, and <a href="/speaking/">the speaking page</a> is right there).
+            </p>
+          </li>
         </ol>
-
-        <p class="ac-ledger-total">
-          <span class="ac-ledger-total-k">Carried forward</span>
-          <span class="ac-ledger-total-v">1 humbug in 5.</span>
-          <span class="ac-ledger-total-note">
-            Scrooge went 0 for 6, so today's skeptic is doing a lot better than he did. The skeptic still gets the 3
-            visitors, though (sorry, I don't make the rules, Dickens does).
-          </span>
-        </p>
       </div>
     </div>
   </section>
 
-  <!-- ================= ON THE BOOKS ================= -->
-  <section class="ac-section ac-band" id="building" aria-labelledby="ac-books-title">
-    <div class="ac-wrap">
-      <header class="ac-head">
-        <p class="ac-eyebrow">On the books</p>
-        <h2 class="ac-h2" id="ac-books-title">What I'm building (6 open accounts).</h2>
-        <p class="ac-copy">
-          Same 6 projects as every week, entered as folios this time. 5 of the 6 have a link you can check,
-          and the 6th is a D&amp;D tool you'll have to take my word for.
+  <!-- ================= THE EDGE ================= -->
+  <section class="ra-section ra-edge" id="edge" aria-labelledby="ra-edge-title">
+    <figure class="ra-wide">
+      <img src={`${IMG}/edge.jpg`} width="1600" height="893" loading="lazy" decoding="async"
+        alt="At the far side of a wildflower meadow by a pine forest, Edward in a grey jumpsuit and his blue fedora, with a pencil tucked behind his ear and a notebook in his other hand, touches a nearly invisible wall in the air with one fingertip. His reflection shows faintly in it, and the trees and hills beyond it repeat like a rendering glitch." />
+      <figcaption class="ra-wrap">Found it. It's about 40 feet past the last wildflower, and it feels like cold glass (I wrote that down).</figcaption>
+    </figure>
+    <div class="ra-wrap ra-edge-grid">
+      <div>
+        <p class="ra-eyebrow">The force field</p>
+        <h2 class="ra-h2" id="ra-edge-title">Where does your arena end?</h2>
+        <p class="ra-copy">
+          Every arena has an edge, and in a well-built one you can't see it, so most tributes only find it by running
+          into it at full speed. AI has one too: there's a line past which it stops knowing and starts guessing, it
+          doesn't put up a sign, and the answer on the far side of the line looks exactly like the answer on the near
+          side (see Sector 02).
         </p>
-      </header>
-      <ul class="ac-projects">
+        <p class="ra-copy">
+          Back in 2008 I gave a presentation called Hacking Essbase, and I opened it by showing the audience just how weak
+          Essbase's native password authentication was. People were shocked and I was amused. Somebody asked if they
+          could have copies of my slides and I said, "Hell no" (if there's anything I know, it's how to minimize my
+          chances of being sued). I'd been working with Essbase for over a decade by then, I'd co-written books about it with Tracy McMullen, and a couple of years later I was teaching a class on what I called the undocumented, unsupported, void-your-warranty things, which I couldn't put in writing for fear of being sued (a recurring theme, apparently).
+        </p>
+        <p class="ra-copy">
+          The teams that seem to do well with AI find their edge on purpose, before they bet anything on it, and it's a
+          cheap afternoon. Roughly, it goes like the survey notes on the right.
+        </p>
+      </div>
+      <div class="ra-notes" aria-labelledby="ra-notes-title">
+        <p class="ra-notes-head" id="ra-notes-title">Survey notes: finding the edge</p>
+        <ol>
+          {survey.map((s) => <li>{s}</li>)}
+        </ol>
+        <p class="ra-notes-foot">Then build the process around whatever you wrote down in step 2.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE PACK ================= -->
+  <section class="ra-section ra-band" aria-labelledby="ra-pack-title">
+    <div class="ra-wrap">
+      <p class="ra-eyebrow">Supplies, packed</p>
+      <h2 class="ra-h2" id="ra-pack-title">What's in my pack</h2>
+      <p class="ra-copy">
+        The 6 things I'm actually carrying into the arena this year, packed in the order I'd grab them (the fedora
+        isn't on the list, because it doesn't come off).
+      </p>
+      <ol class="ra-pack">
         {projects.map((p, i) => (
-          <li class="ac-project">
-            <p class="ac-project-folio">Folio {pad(i + 1)}</p>
-            <h3 class="ac-project-name">{p.name}</h3>
-            <p class="ac-project-status">{p.status}</p>
-            <p class="ac-project-note">{p.note}</p>
+          <li class="ra-card ra-pack-item">
+            <div class="ra-pack-top">
+              <span class="ra-tag">Item {pad(i + 1)}</span>
+              <span class="ra-status">{p.status}</span>
+            </div>
+            <h3 class="ra-h3">{p.name}</h3>
+            <p>{p.note}</p>
             {p.href ? (
-              <a
-                class="ac-project-link"
-                href={p.href}
-                {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              >
-                {p.cta}
+              <a class="ra-pack-link" href={p.href} {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+                {p.cta}<span aria-hidden="true"> &rarr;</span>
               </a>
             ) : (
-              <span class="ac-project-link ac-project-link-off">{p.cta}</span>
+              <span class="ra-pack-nolink">{p.cta}</span>
             )}
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   </section>
 
-  <!-- ================= NOTICES ================= -->
+  <!-- ================= SPONSOR GIFTS (pinned Capitol) ================= -->
+  <section class="ra-capitol" aria-labelledby="ra-spon-title">
+    <div class="ra-wrap ra-spon-grid">
+      <figure class="ra-photo ra-photo-tilt-l ra-spon-photo">
+        <img src={`${IMG}/parachute.jpg`} width="1195" height="1600" loading="lazy" decoding="async"
+          alt="In a dark pine forest at dusk, Edward in a muddy grey jumpsuit and his blue fedora stands with his arms folded, looking up with deep suspicion at a small silver parachute drifting down through a shaft of light. It carries a metal canister with a paper tag that reads FREE TRIAL." />
+        <figcaption>Arms folded until I know what's in the can.</figcaption>
+      </figure>
+      <div>
+        <p class="ra-eyebrow ra-cap-eyebrow">Sponsor gifts</p>
+        <h2 class="ra-h2 ra-cap-h2" id="ra-spon-title">Something's falling out of the sky</h2>
+        <p class="ra-cap-copy">
+          In the arena, sponsors send gifts by silver parachute, and they always arrive at the most dramatic possible
+          moment with a note attached. In AI the parachutes never stop coming, and I'd open every one of them carefully
+          (I'm the one in the picture with his arms folded, waiting to see what's in the can before I touch it).
+        </p>
+        <ul class="ra-chutes">
+          {parachutes.map((c) => (
+            <li class="ra-chute">
+              <span class="ra-chute-tag">{c.tag}</span>
+              <p>{c.note}</p>
+            </li>
+          ))}
+          <li class="ra-chute ra-chute-me">
+            <span class="ra-chute-tag">A keynote from a man in a fedora</span>
+            <p>
+              From $15,000, and it comes with a note too: <a href="/speaking/">the speaking page</a>. Of everything
+              falling out of the sky on this page, it's the only one I'd vouch for, which, to be fair, is exactly what
+              every sponsor says.
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE INTERVIEW (blog teaser) ================= -->
+  <section class="ra-section ra-interview" aria-labelledby="ra-int-title">
+    <div class="ra-wrap ra-int-grid">
+      <div class="ra-int-copy">
+        <p class="ra-eyebrow">Tonight's interview</p>
+        <h2 class="ra-h2" id="ra-int-title">Who's actually trying to kill you in the AI race?</h2>
+        <p class="ra-copy">
+          Before the Games, every tribute sits on a velvet couch in front of the whole Capitol and gets asked about their
+          strategy. My stylist said "more," and the host never showed up, so I wrote my answer down instead. It's about
+          the time I opened every interRel webcast to my competitors, which plenty of people told me meant I was giving the whole company away (a fair number of my competitors' consultants called us for jobs later, so I've stopped minding).
+        </p>
+        <div class="ra-ctas">
+          <a class="ra-btn ra-btn-main" href={POST}>Read the interview</a>
+        </div>
+      </div>
+      <figure class="ra-photo ra-photo-tilt-r">
+        <img src={`${IMG}/interview.jpg`} width="1600" height="1195" loading="lazy" decoding="async"
+          alt="On a gaudy television stage with gold columns, crystal chandeliers, and magenta and green curtains, Edward sits on a velvet sofa in an ornate gold brocade suit with enormous shoulders and a high collar, his blue fedora topped with a huge white ostrich feather. The gilded host's chair next to him is empty, and a studio audience in pastel gowns and towering wigs watches from behind." />
+        <figcaption>The host's chair has been empty since the 2nd commercial break.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= ELSEWHERE ================= -->
   <WhatsNew
-    eyebrow="Other sightings"
+    eyebrow="Elsewhere in the districts"
     heading="Seen <em>elsewhere.</em>"
-    deck="Interviews, press, and posts from around the web, for anyone who'd like a second witness (Scrooge didn't trust his own eyes either)."
+    deck="Interviews, press, and posts from around the web (the Capitol broadcasts everything, so I figured I'd broadcast this)."
   />
 
-  <!-- ================= STAVE FIVE: THE END OF IT ================= -->
-  <section class="ac-morning" id="stave-five" aria-labelledby="ac-s5-title">
-    <div class="ac-wrap ac-morning-grid">
-      <figure class="ac-fig ac-fig-morning">
-        <img
-          src={`${IMG}/morning.jpg`}
-          alt="On a bright, snowy Victorian morning, Edward as Marley's Ghost leans out of an upstairs window of a brick townhouse in his blue fedora, grinning and waving. His chain hangs over the windowsill and down the wall with floppy disks, padlocks, and a beige keyboard dangling from it, and a boy in a flat cap looks up at him from the street."
-          width="1600"
-          height="1195"
-          loading="lazy"
-          decoding="async"
-        />
-        <figcaption>The boy has questions. Most of them are about the keyboard.</figcaption>
-      </figure>
-
-      <div class="ac-morning-body">
-        <p class="ac-eyebrow ac-eyebrow-morning">Stave Five | The End of It</p>
-        <h2 class="ac-h2 ac-h2-morning ac-h2-quote" id="ac-s5-title">&ldquo;What's to<span class="ac-hy">-</span>day?&rdquo;</h2>
-        <p class="ac-copy ac-copy-morning">
-          Scrooge wakes up, throws open the window, and asks a boy in the street what day it is, because he's lost
-          track. It's Christmas Day, and &ldquo;the Spirits have done it all in one night.&rdquo; (Marley, technically,
-          doesn't get a Stave Five. He's back out wandering by the end of Stave One. I gave myself a window anyway,
-          because it's my website.)
-        </p>
-        <p class="ac-copy ac-copy-morning">
-          This website did its own version of that today. A machine looked up what opened this weekend, picked
-          Dickens, rewrote the page you're reading, drew me as a dead Victorian 7 times (fedora on every one, per
-          standing orders), ran the tests, and shipped it. It's the part of my &ldquo;Your Day, Run
-          by Ten Agents&rdquo; talk that I don't have to bring slides for!
-        </p>
-        <p class="ac-copy ac-copy-morning">
-          Dickens gives Scrooge's follow-through about 1 paragraph (&ldquo;He became as good a friend, as good a
-          master, and as good a man, as the good old city knew&rdquo;), and that's all we hear about what must have
-          been a pretty awkward January at the office. The real version takes a budget and most of a year, and people
-          laughed at Scrooge at first (Dickens says he let them). A talk can do roughly what Marley did, which is get
-          the &ldquo;Humbug&rdquo; to stop at the first syllable, and I'd be overselling it if I promised you the
-          other 4 staves from a stage.
-        </p>
-        <p class="ac-copy ac-copy-morning">
-          The longer version, including the deal I once lost to a set of courtside Lakers tickets, is on the blog
-          today: <a href={POST}>What Actually Changed Scrooge's Mind?</a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= THE DOOR ================= -->
-  <section class="ac-section ac-door" aria-labelledby="ac-door-title">
-    <div class="ac-wrap ac-door-inner">
-      <p class="ac-eyebrow">Expect the first when the bell tolls One</p>
-      <h2 class="ac-h2" id="ac-door-title">Is there a Scrooge at your company?</h2>
-      <p class="ac-copy">
-        If there is (or you're it, which is fine, he's the hero of the book), I'd be glad to be the first visitor.
-        Keynotes start at $15,000, and the details are on the speaking page. If you'd rather just talk, 13 minutes on
-        my calendar is free! Or write me at Edward@Roske.AI and tell me which humbug you hear the most (if it's not
-        on the ledger, I clearly need to get out more).
+  <!-- ================= VOLUNTEER ================= -->
+  <section class="ra-section ra-volunteer" aria-labelledby="ra-vol-title">
+    <div class="ra-wrap ra-vol-inner">
+      <p class="ra-eyebrow">No reaping required</p>
+      <h2 class="ra-h2 ra-vol-h2" id="ra-vol-title">I volunteer <span>(for 13 minutes)</span></h2>
+      <p class="ra-copy">
+        If you'd like a second pair of eyes on your arena before you run, I'd be glad to help you map it. Keynotes start
+        at $15,000, and the details are on the speaking page. If you'd rather just talk, I keep 13 minutes on my calendar for exactly that, and they're free! Or write me at Edward@Roske.AI, and I'm happy to look at your map, even if it's drawn on a napkin.
       </p>
-      <div class="ac-ctas">
-        <a class="ac-btn ac-btn-main" href="/speaking/">Book the visit</a>
-        <a class="ac-btn ac-btn-ghost" href={CAL} target="_blank" rel="noopener noreferrer">Book 13 minutes</a>
-        <a class="ac-btn ac-btn-ghost" href="/contact/">Write me</a>
+      <div class="ra-ctas">
+        <a class="ra-btn ra-btn-main" href="/speaking/">Book Edward</a>
+        <a class="ra-btn ra-btn-ghost" href={CAL} target="_blank" rel="noopener noreferrer">Volunteer for 13 minutes</a>
+        <a class="ra-btn ra-btn-ghost" href="/contact/">Write me</a>
       </div>
-      <p class="ac-disclaimer">
-        Every image of Edward on this page is AI-generated from his real headshot (he isn't dead, and the frock coat
-        isn't his). The quotations are from Charles Dickens's A Christmas Carol (1843), which is in the public domain,
-        checked against the Project Gutenberg text. Nothing here is affiliated with Ebenezer: A Christmas Carol,
-        Paramount Pictures, or anybody in the film, and nobody from the film appears on this page. The hooded figure
-        declined to comment.
+      <p class="ra-disclaimer">
+        Every image of Edward on this page is AI-generated from his real headshot (he has never worn a gold brocade suit
+        in public, and the feather was the stylist's idea). Nothing here is affiliated with The Hunger Games, Lionsgate,
+        Suzanne Collins, Scholastic, or anybody in the film, and nobody from the film appears on this page. No tributes
+        were harmed, and 1 clipboard was confiscated.
       </p>
     </div>
   </section>
@@ -626,451 +598,360 @@ const split = (text: string, linkText: string) => {
 
 <style is:global>
   /* =====================================================================
-     AN A.I. CAROL (2026-11-14)
-     Ebenezer: A Christmas Carol week. Light mode is the 1843 first
-     edition (cream paper, title-page red and blue ink); dark mode is the
-     bedchamber at 1 AM (soot, candle amber, spectral green).
+     READ THE ARENA (2026-11-21)
+     Sunrise on the Reaping week. Light mode is the Capitol broadcast
+     (marble ivory, crimson, gold); dark mode is the arena at night (coal,
+     ember, force-field cyan).
 
-     FOUR blocks are pinned and look the same in both modes, so every
-     color inside them is a literal: the title-page book (paper), the
-     Humbug Ledger (paper), the three Spirits (night), and Stave Five
-     (bright morning). Everything else reads the --ac-* vars, which flip.
+     THREE blocks are pinned and look the same in both modes, so every
+     color inside them is a literal: the Reaping (overcast district
+     stone), the arena map (night), and the sponsor gifts (gaudy Capitol
+     cream). Everything else reads the --ra-* vars, which flip.
      Global on purpose: [data-theme] selectors are unreliable inside
-     Astro's scoped CSS. All classes ac-.
+     Astro's scoped CSS. All classes ra-.
      ===================================================================== */
   :root,
   [data-theme="dark"] {
-    --ac-bg: #100e0c;
-    --ac-surface: #1b1713;
-    --ac-band: #171310;
-    --ac-ink: #efe6d2;
-    --ac-muted: #b8ac93;
-    --ac-line: #3a3128;
-    --ac-accent: #f0a63a;
-    --ac-second: #86e0cb;
-    --ac-texture: radial-gradient(ellipse at 20% 0%, rgba(240, 166, 58, 0.07) 0%, rgba(240, 166, 58, 0) 55%);
+    --ra-bg: #0d0f0c;
+    --ra-surface: #171a15;
+    --ra-band: #12150f;
+    --ra-ink: #ece6d6;
+    --ra-muted: #b3ad9c;
+    --ra-line: #2e3429;
+    --ra-accent: #f08a3c;
+    --ra-on-accent: #170c04;
+    --ra-second: #7fd3c4;
+    --ra-chyron: #8e1b2c;
+    --ra-texture: radial-gradient(ellipse at 80% 0%, rgba(240, 138, 60, 0.08) 0%, rgba(240, 138, 60, 0) 55%);
   }
   [data-theme="light"] {
-    --ac-bg: #f2e9d5;
-    --ac-surface: #fbf6ea;
-    --ac-band: #e8dcc2;
-    --ac-ink: #1d1711;
-    --ac-muted: #584c3b;
-    --ac-line: #d3c4a3;
-    --ac-accent: #9b1c1c;
-    --ac-second: #1f3864;
-    --ac-texture: repeating-linear-gradient(0deg, rgba(29, 23, 17, 0.022) 0 1px, transparent 1px 4px);
+    --ra-bg: #f3efe4;
+    --ra-surface: #fcfaf4;
+    --ra-band: #e9e2d0;
+    --ra-ink: #1a1814;
+    --ra-muted: #5a5446;
+    --ra-line: #d5ccb5;
+    --ra-accent: #8e1b2c;
+    --ra-on-accent: #ffffff;
+    --ra-second: #7a5b0e;
+    --ra-chyron: #8e1b2c;
+    --ra-texture: repeating-linear-gradient(90deg, rgba(122, 91, 14, 0.035) 0 1px, transparent 1px 120px);
   }
 
-  .ac-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; }
-  .ac-section { padding: 5.5rem 0; background: var(--ac-bg); color: var(--ac-ink); position: relative; }
-  .ac-section::before { content: ''; position: absolute; inset: 0; background: var(--ac-texture); pointer-events: none; }
-  .ac-band { background: var(--ac-band); }
-  .ac-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .ra-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; }
+  .ra-section { padding: 5.5rem 0; background: var(--ra-bg); color: var(--ra-ink); position: relative; }
+  .ra-section::before { content: ''; position: absolute; inset: 0; background: var(--ra-texture); pointer-events: none; }
+  .ra-band { background: var(--ra-band); }
 
   /* ---------- type ---------- */
-  .ac-eyebrow {
+  .ra-eyebrow {
     font-family: var(--font-mono);
-    font-size: 0.95rem;
+    font-size: 0.82rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--ac-accent);
+    letter-spacing: 0.16em;
+    color: var(--ra-accent);
     margin: 0 0 1rem;
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 0.75rem;
   }
-  .ac-eyebrow::before { content: ''; width: 2.4rem; height: 1px; background: currentColor; display: inline-block; }
-  .ac-h2 {
+  .ra-eyebrow::before { content: ''; width: 0.7rem; height: 0.7rem; background: currentColor; transform: rotate(45deg); display: inline-block; flex: none; }
+  .ra-h2 {
     font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: clamp(2.1rem, 4.8vw, 3.7rem);
-    line-height: 1.04;
-    letter-spacing: -0.015em;
+    font-weight: 900;
+    font-size: clamp(2.4rem, 5.6vw, 4.4rem);
+    line-height: 0.95;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
     margin: 0 0 1.5rem;
-    color: var(--ac-ink);
+    color: var(--ra-ink);
     text-wrap: balance;
   }
-  .ac-h2-quote { font-style: italic; font-weight: 500; }
-  .ac-h3 {
+  .ra-h3 {
     font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 1.5rem;
-    line-height: 1.15;
-    margin: 0 0 1.4rem;
-    color: var(--ac-ink);
+    font-weight: 800;
+    font-size: 1.55rem;
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin: 0.4rem 0 0.7rem;
+    color: var(--ra-ink);
   }
-  .ac-head { max-width: 760px; position: relative; }
-  .ac-copy { font-size: 1.1rem; line-height: 1.78; margin: 0 0 1.15rem; max-width: 66ch; }
-  .ac-copy a,
-  .ac-spirit-dl a,
-  .ac-row-entry a,
-  .ac-preface p a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  .ac-copy a { color: var(--ac-accent); }
-  .ac-copy a:hover,
-  .ac-spirit-dl a:hover,
-  .ac-row-entry a:hover,
-  .ac-preface p a:hover { text-decoration-thickness: 2px; }
+  .ra-copy { font-size: 1.08rem; line-height: 1.78; margin: 0 0 1.15rem; max-width: 66ch; }
+  .ra-copy a,
+  .ra-hero-copy a,
+  .ra-sector a,
+  .ra-chute a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .ra-copy a:hover,
+  .ra-hero-copy a:hover,
+  .ra-sector a:hover,
+  .ra-chute a:hover { text-decoration-thickness: 2px; }
+  .ra-tag {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ra-accent);
+  }
 
   /* ---------- buttons ---------- */
-  .ac-btn {
+  .ra-ctas { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.8rem; }
+  .ra-btn {
     display: inline-flex;
     align-items: center;
     font-family: var(--font-mono);
-    font-size: 0.98rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 0.9rem 1.35rem;
-    text-decoration: none;
-    border: 1.5px solid currentColor;
-    transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
-  }
-  .ac-btn:hover { transform: translateY(-2px); }
-  .ac-btn-main { background: var(--color-accent); color: var(--color-on-accent); border-color: var(--color-accent); }
-  .ac-btn-main:hover { background: var(--color-accent-hover); border-color: var(--color-accent-hover); box-shadow: 5px 5px 0 var(--ac-ink); }
-  .ac-btn-ghost { background: transparent; color: var(--ac-ink); }
-  .ac-btn-ghost:hover { box-shadow: 5px 5px 0 var(--ac-accent); }
-  .ac-ctas { display: flex; flex-wrap: wrap; gap: 0.9rem; }
-
-  /* ---------- running head ---------- */
-  .ac-runhead {
-    background: var(--ac-bg);
-    color: var(--ac-muted);
-    border-bottom: 1px solid var(--ac-line);
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
+    font-size: 0.86rem;
+    font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    padding: 0.95rem 1.4rem;
+    text-decoration: none;
+    border: 2px solid var(--ra-accent);
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
   }
-  .ac-runhead-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.3rem 1.5rem; padding-top: 0.6rem; padding-bottom: 0.6rem; }
+  .ra-btn:hover { transform: translateY(-2px); }
+  .ra-btn-main { background: var(--ra-accent); color: var(--ra-on-accent); }
+  .ra-btn-ghost { background: transparent; color: var(--ra-ink); border-color: var(--ra-ink); }
+  .ra-btn-ghost:hover { border-color: var(--ra-accent); color: var(--ra-accent); }
+  .ra-btn:focus-visible,
+  .ra-pack-link:focus-visible { outline: 3px solid var(--ra-second); outline-offset: 3px; }
 
-  /* ---------- hero: plate ---------- */
-  .ac-hero { background: var(--ac-bg); color: var(--ac-ink); padding-bottom: 4.5rem; position: relative; }
-  .ac-plate { margin: 0; position: relative; background: #0b0a09; }
-  .ac-plate-img { display: block; width: 100%; height: auto; max-height: 82vh; object-fit: cover; object-position: 30% 30%; }
-  .ac-plate::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, rgba(11, 10, 9, 0) 55%, rgba(11, 10, 9, 0.78) 100%);
-    pointer-events: none;
-  }
-  .ac-plate-cap {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 1.1rem;
-    z-index: 1;
-    font-family: var(--font-heading);
-    font-size: 1.05rem;
-    color: #f4ecd8;
-    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.85);
-  }
-  .ac-plate-cap .ac-wrap { display: block; text-align: right; }
-  .ac-plate-cap em { font-style: italic; opacity: 0.92; }
+  /* ---------- chyron ---------- */
+  .ra-chyron { background: var(--ra-chyron); color: #fff; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .ra-chyron-inner { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; align-items: center; padding-top: 0.55rem; padding-bottom: 0.55rem; }
+  .ra-live { background: #fff; color: #8e1b2c; font-weight: 600; padding: 0.1rem 0.5rem; }
+  @media (max-width: 760px) { .ra-chyron-hide { display: none; } }
 
-  /* ---------- hero: the open book (PINNED PAPER, literals only) ---------- */
-  .ac-book {
-    display: grid;
-    grid-template-columns: 5fr 7fr;
-    margin-top: -9rem;
-    position: relative;
-    z-index: 2;
-    background: #f4ecd8;
-    color: #1d1711;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45), 0 2px 0 #d9caa6, 0 4px 0 #e9dcbc, 0 6px 0 #d9caa6;
-  }
-  .ac-page { padding: 3rem 2.8rem 2.8rem; position: relative; }
-  .ac-tp {
-    text-align: center;
-    border-right: 1px solid #cdbd9a;
-    background: linear-gradient(90deg, rgba(29, 23, 17, 0) 82%, rgba(29, 23, 17, 0.09) 100%);
+  /* ---------- hero ---------- */
+  .ra-hero { background: var(--ra-bg); color: var(--ra-ink); padding-bottom: 4.5rem; position: relative; }
+  .ra-cam { position: relative; margin: 0; background: #0d0f0c; }
+  .ra-cam-img { display: block; width: 100%; height: min(78vh, 56vw); min-height: 320px; object-fit: cover; object-position: 60% 40%; }
+  .ra-cam-chrome { position: absolute; top: 1.1rem; left: 1.2rem; right: 1.2rem; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); pointer-events: none; }
+  .ra-cam-chrome span { background: rgba(13, 15, 12, 0.55); padding: 0.25rem 0.55rem; }
+  .ra-cam-rec::before { content: ''; display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #e0352b; margin-right: 0.45rem; vertical-align: 0.05rem; }
+  .ra-lower {
+    position: absolute;
+    left: clamp(1rem, 4vw, 3rem);
+    bottom: clamp(5.5rem, 12vw, 9rem);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .ac-preface { background: linear-gradient(90deg, rgba(29, 23, 17, 0.1) 0%, rgba(29, 23, 17, 0) 12%); }
-  .ac-tp-title { margin: 0; font-family: var(--font-heading); line-height: 0.95; color: #9b1c1c; }
-  .ac-tp-an {
-    display: block;
-    font-size: 1.15rem;
-    font-weight: 500;
-    letter-spacing: 0.4em;
+    max-width: 30rem;
+    font-family: var(--font-mono);
     text-transform: uppercase;
-    color: #1d1711;
-    margin-bottom: 0.8rem;
-    padding-left: 0.4em;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
   }
-  .ac-tp-main {
-    display: block;
-    font-size: clamp(3rem, 6.2vw, 5.4rem);
+  .ra-lower-name { background: #8e1b2c; color: #fff; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.12em; padding: 0.55rem 0.9rem; }
+  .ra-lower-note { background: rgba(13, 15, 12, 0.88); color: #ece6d6; font-size: 0.72rem; letter-spacing: 0.08em; padding: 0.5rem 0.9rem; }
+  .ra-hero-card {
+    position: relative;
+    margin-top: clamp(-5rem, -8vw, -3rem);
+    background: var(--ra-surface);
+    border: 1px solid var(--ra-line);
+    border-top: 6px solid var(--ra-accent);
+    padding: clamp(1.6rem, 4vw, 3.2rem);
+    max-width: 920px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  }
+  .ra-kicker { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ra-accent); margin: 0 0 0.6rem; }
+  .ra-title {
+    font-family: var(--font-heading);
     font-weight: 900;
-    letter-spacing: -0.02em;
+    font-size: clamp(3.6rem, 11vw, 8.6rem);
+    line-height: 0.86;
     text-transform: uppercase;
-  }
-  .ac-tp-prose {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
-    color: #1f3864;
-    margin: 1.1rem 0 1.3rem;
-    padding-left: 0.34em;
-  }
-  .ac-tp-small {
-    font-family: var(--font-heading);
-    font-size: 0.92rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: #584c3b;
-    margin: 0 0 0.45rem;
-    padding-left: 0.3em;
-  }
-  .ac-tp-ghost {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-weight: 600;
-    font-size: clamp(1.5rem, 2.7vw, 2.1rem);
-    line-height: 1.15;
-    color: #9b1c1c;
-    margin: 0 0 0.3rem;
-  }
-  .ac-tp-rule { display: block; width: 5.5rem; height: 3px; border-top: 1px solid #1d1711; border-bottom: 1px solid #1d1711; margin: 1.4rem auto; }
-  .ac-tp-author {
-    font-family: var(--font-heading);
-    font-size: 1.75rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #1f3864;
-    margin: 0 0 0.9rem;
-    padding-left: 0.14em;
-  }
-  .ac-tp-imprint { font-family: var(--font-heading); font-size: 0.98rem; line-height: 1.6; color: #1d1711; margin: 0; letter-spacing: 0.04em; }
-
-  .ac-preface-head {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
-    color: #584c3b;
-    margin: 0 0 1.1rem;
-  }
-  .ac-preface-pull {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(1.35rem, 2.3vw, 1.8rem);
-    line-height: 1.28;
-    color: #1d1711;
     margin: 0 0 1.4rem;
-    padding-left: 1.1rem;
-    border-left: 3px solid #9b1c1c;
+    color: var(--ra-ink);
   }
-  .ac-preface p { font-size: 1.06rem; line-height: 1.74; margin: 0 0 1.05rem; }
-  .ac-preface p a { color: #9b1c1c; }
-  .ac-preface .ac-ctas { margin: 1.7rem 0 1.6rem; }
-  .ac-btn-paper { background: #9b1c1c; color: #ffffff; border-color: #9b1c1c; }
-  .ac-btn-paper:hover { background: #7a1414; border-color: #7a1414; box-shadow: 5px 5px 0 #1d1711; }
-  .ac-btn-paper-ghost { background: transparent; color: #1d1711; }
-  .ac-btn-paper-ghost:hover { box-shadow: 5px 5px 0 #1f3864; }
-  .ac-preface .ac-preface-sign { font-family: var(--font-heading); font-style: italic; font-size: 1.02rem; line-height: 1.5; color: #584c3b; margin: 0; text-align: right; }
-  .ac-preface-sign span { font-style: normal; font-weight: 700; letter-spacing: 0.2em; color: #1d1711; }
+  .ra-title span { color: var(--ra-accent); display: block; }
+  .ra-pull { font-family: 'Cinzel', var(--font-body); font-weight: 600; font-size: clamp(1.15rem, 2.2vw, 1.45rem); line-height: 1.45; margin: 0 0 1.6rem; color: var(--ra-ink); border-left: 3px solid var(--ra-second); padding-left: 1rem; }
+  .ra-hero-copy p { font-size: 1.08rem; line-height: 1.78; margin: 0 0 1.1rem; max-width: 68ch; }
 
   /* ---------- stats ---------- */
-  .ac-stats-wrap { background: var(--ac-ink); color: var(--ac-bg); }
-  .ac-stats { list-style: none; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); padding-top: 1.7rem; padding-bottom: 1.7rem; }
-  .ac-stats li { display: flex; flex-direction: column; gap: 0.3rem; padding: 0 1.1rem; border-left: 1px solid currentColor; }
-  .ac-stat-v { font-family: var(--font-heading); font-weight: 800; font-size: clamp(1.9rem, 3.6vw, 2.7rem); line-height: 1; }
-  .ac-stat-k { font-family: var(--font-mono); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .ra-stats-wrap { background: var(--ra-band); border-top: 1px solid var(--ra-line); border-bottom: 1px solid var(--ra-line); padding: 2.2rem 0; color: var(--ra-ink); }
+  .ra-stats-label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ra-muted); margin: 0 0 1rem; }
+  .ra-stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .ra-stats li { display: flex; flex-direction: column; border-left: 3px solid var(--ra-accent); padding-left: 0.9rem; }
+  .ra-stat-v { font-family: var(--font-heading); font-weight: 900; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1; }
+  .ra-stat-k { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ra-muted); margin-top: 0.35rem; }
+  @media (max-width: 700px) { .ra-stats { grid-template-columns: repeat(2, 1fr); } }
 
-  /* ---------- figures (flipping sections) ---------- */
-  .ac-fig { margin: 0; position: relative; }
-  .ac-fig img { display: block; width: 100%; height: auto; border: 1px solid var(--ac-ink); }
-  .ac-fig figcaption {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.02rem;
-    line-height: 1.5;
-    color: var(--ac-muted);
-    margin-top: 0.9rem;
-    padding-left: 1rem;
-    border-left: 2px solid var(--ac-accent);
+  /* ---------- photos ---------- */
+  .ra-photo { margin: 0; background: #fcfaf4; padding: 0.7rem 0.7rem 0; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28); border: 1px solid rgba(0, 0, 0, 0.12); }
+  .ra-photo img { display: block; width: 100%; height: auto; }
+  .ra-photo figcaption { font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.55; color: #3c372d; padding: 0.75rem 0.2rem 0.9rem; }
+  .ra-photo-tilt-l { transform: rotate(-1.2deg); }
+  .ra-photo-tilt-r { transform: rotate(1.2deg); }
+
+  /* ---------- the reaping (pinned district stone) ---------- */
+  .ra-reaping { background: #dcdad3; color: #1c1d1e; }
+  .ra-reaping::before { background: repeating-linear-gradient(0deg, rgba(28, 29, 30, 0.03) 0 2px, transparent 2px 6px); }
+  .ra-reaping .ra-eyebrow { color: #8e1b2c; }
+  .ra-reaping .ra-h2 { color: #1c1d1e; }
+  .ra-reap-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .ra-bowl { margin-top: 2rem; border: 2px solid #1c1d1e; padding: 1.3rem; background: #e8e6df; }
+  .ra-bowl-label { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 1rem; color: #45474a; }
+  .ra-slips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .ra-slip { font-family: 'Cinzel', serif; font-weight: 600; font-size: 0.92rem; background: #f7f3e8; color: #1c1d1e; padding: 0.45rem 0.8rem; border: 1px solid #b9b3a2; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12); transform: rotate(var(--r, 0deg)); }
+  .ra-slip-you { background: #8e1b2c; color: #fff; border-color: #8e1b2c; font-size: 1.05rem; }
+  .ra-slip-you span { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 400; }
+  @media (max-width: 900px) { .ra-reap-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- tribute profile ---------- */
+  .ra-prof-grid { display: grid; grid-template-columns: 1.3fr 0.9fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .ra-card { background: var(--ra-surface); border: 1px solid var(--ra-line); padding: 1.5rem; color: var(--ra-ink); }
+  .ra-dossier { border-left: 6px solid var(--ra-accent); margin-bottom: 1.8rem; }
+  .ra-dossier dl { margin: 0; }
+  .ra-dl-row { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px dashed var(--ra-line); }
+  .ra-dl-row:last-child { border-bottom: 0; }
+  .ra-dl-row dt { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ra-muted); padding-top: 0.2rem; }
+  .ra-dl-row dd { margin: 0; line-height: 1.6; }
+  .ra-score { display: inline-flex; gap: 4px; vertical-align: middle; margin-right: 0.8rem; }
+  .ra-score span { width: 14px; height: 22px; border: 2px solid var(--ra-muted); }
+  .ra-score span.on { background: var(--ra-accent); border-color: var(--ra-accent); }
+  .ra-score-num { font-family: var(--font-heading); font-weight: 900; font-size: 1.6rem; vertical-align: middle; }
+  .ra-hand { font-style: italic; }
+  .ra-prof-photo { max-width: 440px; justify-self: center; }
+  @media (max-width: 900px) {
+    .ra-prof-grid { grid-template-columns: 1fr; }
+    .ra-dl-row { grid-template-columns: 1fr; gap: 0.2rem; }
   }
 
-  /* ---------- stave one ---------- */
-  .ac-s1-top { display: grid; grid-template-columns: 7fr 5fr; gap: 3.6rem; align-items: start; position: relative; }
-  .ac-fig-knocker { transform: rotate(1.4deg); margin-top: 1rem; }
-  .ac-fig-knocker img { box-shadow: 14px 14px 0 var(--ac-line); }
-  .ac-s1-bottom { display: grid; grid-template-columns: 6fr 6fr; gap: 3.6rem; align-items: start; margin-top: 4.5rem; position: relative; }
-  .ac-fig-inventory { transform: rotate(-1deg); position: sticky; top: 6rem; }
-  .ac-fig-inventory img { box-shadow: -14px 14px 0 var(--ac-line); }
-  .ac-chain { list-style: none; margin: 0; padding: 0; }
-  .ac-link { position: relative; padding: 0 0 1.5rem 3.4rem; }
-  .ac-link-oval {
-    position: absolute;
-    left: 0.35rem;
-    top: -0.35rem;
-    bottom: -0.35rem;
-    width: 1.3rem;
-    border: 3px solid var(--ac-muted);
-    border-radius: 999px;
-  }
-  .ac-link:nth-child(even) .ac-link-oval { left: 0.55rem; width: 0.9rem; border-color: var(--ac-ink); }
-  .ac-link:last-child .ac-link-oval { border-style: dashed; border-color: var(--ac-accent); }
-  .ac-link-when { font-family: var(--font-mono); font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ac-accent); margin: 0 0 0.15rem; }
-  .ac-link-what { font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; line-height: 1.2; margin: 0 0 0.35rem; }
-  .ac-link-note { font-size: 1.02rem; line-height: 1.68; color: var(--ac-muted); margin: 0; }
+  /* ---------- cornucopia ---------- */
+  .ra-horn-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; margin-bottom: 3rem; }
+  .ra-horn { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .ra-horn .ra-card { border-top: 4px solid var(--ra-second); }
+  .ra-horn p { margin: 0; line-height: 1.65; font-size: 0.98rem; }
+  .ra-fine { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ra-muted); }
+  @media (max-width: 1000px) { .ra-horn { grid-template-columns: repeat(2, 1fr); } .ra-horn-top { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .ra-horn { grid-template-columns: 1fr; } }
 
-  /* ---------- the three spirits (PINNED NIGHT, literals only) ---------- */
-  .ac-night {
+  /* ---------- arena map (pinned night) ---------- */
+  .ra-map {
     background:
-      radial-gradient(ellipse at 80% 0%, rgba(134, 224, 203, 0.1) 0%, rgba(134, 224, 203, 0) 50%),
-      radial-gradient(ellipse at 10% 100%, rgba(240, 166, 58, 0.06) 0%, rgba(240, 166, 58, 0) 45%),
-      #0b0f12;
-    color: #e9e2d0;
+      radial-gradient(ellipse at 50% 50%, rgba(127, 211, 196, 0.07) 0%, rgba(127, 211, 196, 0) 60%),
+      repeating-radial-gradient(circle at 50% 55%, rgba(230, 239, 230, 0.035) 0 1px, transparent 1px 38px),
+      #0a110d;
+    color: #e6efe6;
     padding: 6rem 0;
     position: relative;
   }
-  .ac-night-head { margin-bottom: 4rem; }
-  .ac-eyebrow-night { color: #86e0cb; }
-  .ac-h2-night { color: #f4ecd8; }
-  .ac-copy-night { color: #cfd6d1; }
-  .ac-spirits { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5.5rem; }
-  .ac-spirit { display: grid; grid-template-columns: 7fr 5fr; gap: 3rem; align-items: center; }
-  .ac-spirit-tall { grid-template-columns: 7fr 5fr; }
-  .ac-spirit-tall .ac-spirit-fig { order: 2; }
-  .ac-spirit-full { grid-template-columns: 1fr; gap: 2.2rem; }
-  .ac-spirit-fig { margin: 0; position: relative; }
-  .ac-spirit-fig img { display: block; width: 100%; height: auto; border: 1px solid #36474d; box-shadow: 0 0 60px rgba(134, 224, 203, 0.12); }
-  .ac-spirit-fig figcaption {
-    font-family: var(--font-heading);
-    font-style: italic;
-    font-size: 1.02rem;
-    line-height: 1.5;
-    color: #a9b4b0;
-    margin-top: 0.9rem;
-    padding-left: 1rem;
-    border-left: 2px solid #86e0cb;
+  .ra-map-eyebrow { color: #f08a3c; }
+  .ra-map-h2 { color: #e6efe6; }
+  .ra-map-deck { color: #a9b8ab; font-size: 1.08rem; line-height: 1.75; max-width: 66ch; margin: 0 0 3rem; }
+  .ra-field { position: relative; padding: clamp(1rem, 3vw, 2.2rem); border: 2px dashed rgba(127, 211, 196, 0.75); box-shadow: 0 0 0 6px rgba(127, 211, 196, 0.06), inset 0 0 40px rgba(127, 211, 196, 0.08); animation: ra-shimmer 4.5s ease-in-out infinite; }
+  .ra-field-label { position: absolute; top: -0.75rem; right: 1.5rem; background: #0a110d; color: #7fd3c4; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 0 0.6rem; }
+  @keyframes ra-shimmer {
+    0%, 100% { border-color: rgba(127, 211, 196, 0.75); box-shadow: 0 0 0 6px rgba(127, 211, 196, 0.06), inset 0 0 40px rgba(127, 211, 196, 0.08); }
+    50% { border-color: rgba(127, 211, 196, 0.35); box-shadow: 0 0 0 10px rgba(127, 211, 196, 0.1), inset 0 0 60px rgba(127, 211, 196, 0.14); }
   }
-  .ac-spirit-stave { font-family: var(--font-mono); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.14em; color: #f0a63a; margin: 0 0 0.5rem; }
-  .ac-spirit-stave span { color: #a9b4b0; margin-left: 0.7rem; padding-left: 0.8rem; border-left: 1px solid #36474d; }
-  .ac-spirit-name { font-family: var(--font-heading); font-weight: 700; font-size: clamp(1.8rem, 3.2vw, 2.5rem); line-height: 1.08; margin: 0 0 1.5rem; color: #f4ecd8; }
-  .ac-spirit-dl { margin: 0; display: flex; flex-direction: column; gap: 1.3rem; }
-  .ac-spirit-full .ac-spirit-dl { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem; }
-  .ac-spirit-dl dt { font-family: var(--font-mono); font-size: 0.86rem; text-transform: uppercase; letter-spacing: 0.12em; color: #a9b4b0; margin-bottom: 0.35rem; }
-  .ac-spirit-dl dd { margin: 0; font-size: 1.05rem; line-height: 1.74; color: #e9e2d0; }
-  .ac-spirit-yours { background: #131a1d; border: 1px solid #26333a; border-left: 3px solid #86e0cb; padding: 1.1rem 1.2rem 1.2rem; }
-  .ac-spirit-yours dt { color: #86e0cb; }
-  .ac-spirit-dl a { color: #86e0cb; }
-
-  /* ---------- the humbug ledger (PINNED PAPER, literals only) ---------- */
-  .ac-ledger-sec { background: var(--ac-band); padding: 5.5rem 0; }
-  .ac-ledger {
-    background:
-      linear-gradient(90deg, transparent 4.2rem, rgba(155, 28, 28, 0.45) 4.2rem, rgba(155, 28, 28, 0.45) calc(4.2rem + 1px), transparent calc(4.2rem + 1px)),
-      repeating-linear-gradient(0deg, transparent 0 2.35rem, rgba(31, 56, 100, 0.16) 2.35rem calc(2.35rem + 1px)),
-      #f4ecd8;
-    color: #1d1711;
-    padding: 3.2rem 3rem 2.6rem 5.6rem;
-    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.3), 0 2px 0 #d9caa6, 0 4px 0 #e9dcbc, 0 6px 0 #d9caa6;
-    position: relative;
-  }
-  .ac-ledger-firm { font-family: var(--font-mono); font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.14em; color: #584c3b; margin: 0 0 0.6rem; }
-  .ac-ledger-title { font-family: var(--font-heading); font-weight: 900; font-size: clamp(2.4rem, 5.4vw, 4.2rem); line-height: 1; letter-spacing: -0.02em; color: #1d1711; margin: 0 0 1.3rem; }
-  .ac-ledger-intro { font-size: 1.08rem; line-height: 1.76; max-width: 68ch; margin: 0 0 2.4rem; }
-  .ac-rows { list-style: none; margin: 0; padding: 0; border-top: 2px solid #1d1711; }
-  .ac-row {
+  @media (prefers-reduced-motion: reduce) { .ra-field { animation: none; } }
+  .ra-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: grid;
-    grid-template-columns: 4.2rem minmax(0, 4fr) minmax(0, 3fr) minmax(0, 7fr);
-    gap: 1.4rem;
-    align-items: start;
-    padding: 1.5rem 0 1.6rem;
-    border-bottom: 1px solid #1d1711;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "s1 s2 s3"
+      "s4 c  s5"
+      "s6 h  u";
+    gap: 1rem;
   }
-  .ac-row-no { font-family: var(--font-mono); font-size: 0.9rem; color: #584c3b; padding-top: 0.35rem; }
-  .ac-row-humbug-text { font-family: var(--font-heading); font-style: italic; font-weight: 600; font-size: 1.45rem; line-height: 1.22; margin: 0; }
-  .ac-row-verdict { font-family: 'Pinyon Script', 'Snell Roundhand', cursive; font-size: 2.3rem; line-height: 1; color: #1f3864; margin: 0; transform: rotate(-3deg); transform-origin: left center; }
-  .ac-row-humbug .ac-row-verdict { color: #9b1c1c; font-size: 3rem; }
-  .ac-row-entry { font-size: 1.03rem; line-height: 1.7; margin: 0; }
-  .ac-row-entry a { color: #9b1c1c; }
-  .ac-ledger-total { display: grid; grid-template-columns: 4.2rem minmax(0, 4fr) minmax(0, 10fr); gap: 1.4rem; align-items: baseline; margin: 0; padding-top: 1.6rem; }
-  .ac-ledger-total-k { grid-column: 2; font-family: var(--font-mono); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.12em; color: #584c3b; }
-  .ac-ledger-total-v { grid-column: 3; font-family: var(--font-heading); font-weight: 900; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.1; color: #9b1c1c; }
-  .ac-ledger-total-note { grid-column: 3; font-size: 1.03rem; line-height: 1.7; }
+  .ra-s1 { grid-area: s1; } .ra-s2 { grid-area: s2; } .ra-s3 { grid-area: s3; }
+  .ra-s4 { grid-area: s4; } .ra-s5 { grid-area: s5; } .ra-s6 { grid-area: s6; }
+  .ra-center { grid-area: c; } .ra-here { grid-area: h; } .ra-unmapped { grid-area: u; }
+  .ra-sector { background: #121c16; border: 1px solid #2a3a2f; padding: 1.3rem; color: #e6efe6; }
+  .ra-sector-n { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7fd3c4; }
+  .ra-sector-name { font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; text-transform: uppercase; line-height: 1; margin: 0.45rem 0 0.8rem; color: #e6efe6; }
+  .ra-sector-row { margin: 0 0 0.6rem; line-height: 1.6; font-size: 0.96rem; color: #c9d6cb; }
+  .ra-sector-row span { display: block; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #a9b8ab; }
+  .ra-bites span { color: #f08a3c; }
+  .ra-center { background: radial-gradient(circle at 50% 40%, rgba(212, 175, 55, 0.22), rgba(212, 175, 55, 0.04) 70%), #121c16; border-color: #b8952f; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+  .ra-center .ra-sector-n { color: #e3c35a; }
+  .ra-center .ra-sector-name { font-size: 2.1rem; color: #f2dc8e; }
+  .ra-here { border-style: dashed; border-color: #f08a3c; }
+  .ra-here .ra-sector-n { color: #f08a3c; }
+  .ra-unmapped { background: transparent; border-style: dashed; border-color: #556b5c; }
+  .ra-unmapped a { color: #7fd3c4; }
+  @media (max-width: 900px) {
+    .ra-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "c c" "s1 s2" "s3 s4" "s5 s6" "h u"; }
+  }
+  @media (max-width: 560px) {
+    .ra-grid { grid-template-columns: 1fr; grid-template-areas: "c" "s1" "s2" "s3" "s4" "s5" "s6" "h" "u"; }
+  }
 
-  /* ---------- projects ---------- */
-  .ac-head + .ac-projects { margin-top: 2.6rem; }
-  .ac-projects { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 2px solid var(--ac-ink); border-left: 1px solid var(--ac-line); position: relative; }
-  .ac-project { padding: 1.6rem 1.5rem 1.6rem; border-right: 1px solid var(--ac-line); border-bottom: 1px solid var(--ac-line); display: flex; flex-direction: column; background: var(--ac-surface); }
-  .ac-project-folio { font-family: var(--font-mono); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ac-muted); margin: 0 0 0.9rem; }
-  .ac-project-name { font-family: var(--font-heading); font-weight: 700; font-size: 1.4rem; line-height: 1.18; margin: 0 0 0.35rem; }
-  .ac-project-status { font-family: var(--font-heading); font-style: italic; font-size: 1.05rem; color: var(--ac-second); margin: 0 0 0.8rem; }
-  .ac-project-note { font-size: 1rem; line-height: 1.68; margin: 0 0 1.2rem; flex: 1; }
-  .ac-project-link { font-family: var(--font-mono); font-size: 0.92rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ac-accent); text-decoration: underline; text-underline-offset: 4px; }
-  .ac-project-link-off { color: var(--ac-muted); text-decoration: none; }
+  /* ---------- the edge ---------- */
+  .ra-edge { padding-top: 0; }
+  .ra-wide { margin: 0 0 4rem; position: relative; }
+  .ra-wide img { display: block; width: 100%; height: min(62vh, 50vw); min-height: 260px; object-fit: cover; object-position: 70% 40%; }
+  .ra-wide figcaption { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ra-muted); padding-top: 0.9rem; padding-bottom: 0.2rem; }
+  .ra-edge-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .ra-notes {
+    background: #f7f3e8;
+    color: #22201b;
+    padding: 1.8rem 1.8rem 1.4rem;
+    border: 1px solid #cfc6af;
+    background-image: repeating-linear-gradient(0deg, transparent 0 31px, rgba(31, 56, 100, 0.16) 31px 32px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
+    transform: rotate(0.8deg);
+    position: sticky;
+    top: 6rem;
+  }
+  .ra-notes-head { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8e1b2c; margin: 0 0 1rem; }
+  .ra-notes ol { margin: 0; padding-left: 1.4rem; }
+  .ra-notes li { line-height: 1.7; margin: 0 0 0.85rem; font-size: 1.02rem; }
+  .ra-notes li::marker { font-family: var(--font-heading); font-weight: 900; color: #8e1b2c; }
+  .ra-notes-foot { font-style: italic; margin: 0.6rem 0 0; color: #4a4538; }
+  @media (max-width: 900px) { .ra-edge-grid { grid-template-columns: 1fr; } .ra-notes { position: static; } }
 
-  /* ---------- stave five (PINNED MORNING, literals only) ---------- */
-  .ac-morning {
-    background: linear-gradient(180deg, #dcebf3 0%, #eef3f1 45%, #f6efe0 100%);
-    color: #1b2430;
+  /* ---------- the pack ---------- */
+  .ra-pack { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .ra-pack-item { display: flex; flex-direction: column; position: relative; }
+  .ra-pack-item::after { content: ''; position: absolute; top: -1px; right: -1px; width: 26px; height: 26px; background: linear-gradient(225deg, var(--ra-band) 50%, var(--ra-line) 50%); }
+  .ra-pack-top { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding-right: 1.4rem; }
+  .ra-pack-top .ra-tag { white-space: nowrap; }
+  .ra-status { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ra-muted); text-align: right; }
+  .ra-pack-item p { margin: 0 0 1.2rem; line-height: 1.65; font-size: 0.98rem; flex: 1; }
+  .ra-pack-link { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ra-accent); text-decoration: underline; text-underline-offset: 3px; }
+  .ra-pack-nolink { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.04em; color: var(--ra-muted); }
+  @media (max-width: 1000px) { .ra-pack { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .ra-pack { grid-template-columns: 1fr; } }
+
+  /* ---------- sponsor gifts (pinned Capitol) ---------- */
+  .ra-capitol {
+    background:
+      repeating-linear-gradient(90deg, rgba(122, 91, 14, 0.06) 0 2px, transparent 2px 140px),
+      linear-gradient(180deg, #f6ebd2 0%, #f1e2c2 100%);
+    color: #2a1a0e;
     padding: 6rem 0;
-    position: relative;
+    border-top: 6px double #b8952f;
+    border-bottom: 6px double #b8952f;
   }
-  .ac-morning-grid { display: grid; grid-template-columns: 6fr 6fr; gap: 3.6rem; align-items: center; }
-  .ac-fig-morning { transform: rotate(-1.2deg); }
-  .ac-fig-morning img { border: 10px solid #ffffff; box-shadow: 0 22px 44px rgba(27, 36, 48, 0.28); }
-  .ac-fig-morning figcaption { color: #465463; border-left-color: #9b1c1c; }
-  .ac-eyebrow-morning { color: #9b1c1c; }
-  .ac-h2-morning { color: #1b2430; font-size: clamp(2.6rem, 6vw, 4.8rem); font-weight: 800; }
-  /* Bodoni's italic hyphen is a hairline at display size; borrow the body face's. */
-  .ac-hy { font-family: var(--font-body); font-style: normal; font-weight: 700; padding: 0 0.04em; }
-  .ac-copy-morning { color: #1b2430; }
-  .ac-copy-morning a { color: #9b1c1c; }
+  .ra-spon-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .ra-spon-photo { max-width: 420px; }
+  .ra-cap-eyebrow { color: #8e1b2c; }
+  .ra-cap-h2 { color: #2a1a0e; font-family: 'Cinzel', serif; font-weight: 700; text-transform: none; font-size: clamp(2.1rem, 4.6vw, 3.6rem); line-height: 1.08; }
+  .ra-cap-copy { font-size: 1.08rem; line-height: 1.78; max-width: 62ch; margin: 0 0 2rem; }
+  .ra-chutes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .ra-chute { background: #fffaf0; border: 1px solid #d8c393; padding: 1.2rem 1.2rem 1.2rem 1.2rem; position: relative; box-shadow: 0 6px 16px rgba(122, 91, 14, 0.12); }
+  .ra-chute::before { content: ''; position: absolute; top: -12px; left: 1.2rem; width: 46px; height: 23px; border-radius: 46px 46px 0 0; background: linear-gradient(180deg, #e7e9ec, #a9afb7); border: 1px solid #8d939b; }
+  .ra-chute-tag { display: block; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #7a5b0e; margin: 0.3rem 0 0.5rem; }
+  .ra-chute p { margin: 0; line-height: 1.65; font-size: 0.98rem; color: #2a1a0e; }
+  .ra-chute-me { background: #8e1b2c; border-color: #8e1b2c; }
+  .ra-chute-me .ra-chute-tag { color: #f6dc9a; }
+  .ra-chute-me p, .ra-chute-me a { color: #fff; }
+  @media (max-width: 900px) { .ra-spon-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .ra-chutes { grid-template-columns: 1fr; } }
 
-  /* ---------- the door ---------- */
-  .ac-door-inner { max-width: 900px; }
-  .ac-door .ac-ctas { margin-top: 1.8rem; }
-  .ac-disclaimer { margin: 3rem 0 0; font-size: 0.92rem; line-height: 1.68; color: var(--ac-muted); border-top: 1px solid var(--ac-line); padding-top: 1.4rem; max-width: 80ch; }
+  /* ---------- interview ---------- */
+  .ra-int-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  @media (max-width: 900px) { .ra-int-grid { grid-template-columns: 1fr; } }
 
-  /* ---------- responsive ---------- */
-  @media (max-width: 1020px) {
-    .ac-book { grid-template-columns: 1fr; margin-top: -4rem; }
-    .ac-tp { border-right: 0; border-bottom: 1px solid #cdbd9a; background: none; padding-bottom: 2.4rem; }
-    .ac-preface { background: none; }
-    .ac-s1-top, .ac-s1-bottom, .ac-morning-grid { grid-template-columns: 1fr; gap: 2.4rem; }
-    .ac-fig-knocker, .ac-fig-inventory, .ac-fig-morning { transform: none; }
-    .ac-fig-knocker { max-width: 440px; }
-    .ac-fig-inventory { position: static; }
-    .ac-spirit, .ac-spirit-tall { grid-template-columns: 1fr; gap: 1.8rem; }
-    .ac-spirit-tall .ac-spirit-fig { order: 0; max-width: 460px; }
-    .ac-projects { grid-template-columns: 1fr 1fr; }
-    .ac-row { grid-template-columns: 3.4rem minmax(0, 1fr); gap: 0.5rem 1rem; }
-    .ac-row-humbug-text, .ac-row-verdict, .ac-row-entry { grid-column: 2; }
-    .ac-row-verdict { margin: 0.2rem 0 0.4rem; }
-    .ac-ledger-total { grid-template-columns: 3.4rem minmax(0, 1fr); gap: 0.4rem 1rem; }
-    .ac-ledger-total-k, .ac-ledger-total-v, .ac-ledger-total-note { grid-column: 2; }
-  }
-  @media (max-width: 640px) {
-    .ac-stats { grid-template-columns: 1fr 1fr; gap: 1.2rem 0; }
-    .ac-projects { grid-template-columns: 1fr; }
-    .ac-spirit-full .ac-spirit-dl { grid-template-columns: 1fr; gap: 1.3rem; }
-    .ac-page { padding: 2.2rem 1.4rem 2rem; }
-    .ac-book { margin-top: -2rem; }
-    .ac-plate-img { max-height: none; min-height: 320px; }
-    .ac-plate-cap { font-size: 0.9rem; top: 0.7rem; }
-    .ac-ledger {
-      padding: 2.2rem 1.2rem 2rem 1.2rem;
-      background:
-        repeating-linear-gradient(0deg, transparent 0 2.35rem, rgba(31, 56, 100, 0.16) 2.35rem calc(2.35rem + 1px)),
-        #f4ecd8;
-    }
-    .ac-row, .ac-ledger-total { grid-template-columns: 1fr; }
-    .ac-row-no, .ac-row-humbug-text, .ac-row-verdict, .ac-row-entry,
-    .ac-ledger-total-k, .ac-ledger-total-v, .ac-ledger-total-note { grid-column: 1; }
-    .ac-runhead-inner span:nth-child(3) { display: none; }
-    .ac-fig-knocker img, .ac-fig-inventory img { box-shadow: 6px 6px 0 var(--ac-line); }
-  }
+  /* ---------- volunteer ---------- */
+  .ra-volunteer { background: var(--ra-band); border-top: 6px solid var(--ra-accent); }
+  .ra-vol-inner { max-width: 880px; }
+  .ra-vol-h2 span { color: var(--ra-accent); display: block; font-size: 0.55em; }
+  .ra-disclaimer { margin: 3rem 0 0; font-size: 0.9rem; line-height: 1.68; color: var(--ra-muted); border-top: 1px solid var(--ra-line); padding-top: 1.4rem; max-width: 80ch; }
 </style>

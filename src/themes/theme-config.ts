@@ -81,53 +81,53 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "An A.I. Carol",
-  week: "2026-11-14",
-  inspiration: "Ebenezer: A Christmas Carol (Ti West directing, Johnny Depp as Scrooge, Ian McKellen as Marley's Ghost) opened in U.S. theaters on Friday, November 13, 2026. The source is Dickens's 1843 book, which is public domain, so the page quotes it directly. The argument: Scrooge is not short on information. In Stave One his nephew gives him a speech, 2 gentlemen give him statistics, and his dead partner gives him an eyewitness warning, and none of it lands (he says Humbug 6 times, all in Stave One). Nobody argues him out of anything; the Spirits take him places and make him look. That's the AI skeptic at most companies, and a lot of their humbugs are fair, so the page keeps an honest ledger of 5 of them (only 1 turns out to be humbug). Edward is Marley and only Marley: the dead business partner who worked the same ledgers for 25 years and shows up dragging a chain he forged himself (Essbase, 15 software books, interRel) to say 3 more visitors are coming. The conceit generates the structure: the page is the book's 5 staves. Design: light mode is the 1843 first edition (cream paper, title-page red and blue ink); dark mode is the bedchamber at 1 AM (soot, candle amber, spectral green). The title page and the ledger are pinned paper in both modes, the three Spirits are pinned night, and Stave Five is pinned bright morning. Bodoni Moda for display (a Didone, the kind of Modern face Victorian title pages were set in), Libre Caslon Text for reading, Cutive Mono for labels, and Pinyon Script for the clerk's hand in the ledger. Animation off.",
-  tagline: "I wear the chain I forged in life. 3 more visitors are coming.",
+  name: "Read the Arena",
+  week: "2026-11-21",
+  inspiration: "The Hunger Games: Sunrise on the Reaping (Lionsgate, from Suzanne Collins's 2025 book) opened in U.S. theaters on Friday, November 20, 2026, with Joseph Zada as a young Haymitch Abernathy and Ralph Fiennes as President Snow. It's the 50th Games, a Quarter Quell, so twice the usual number of tributes get reaped. The argument: every leader right now is being told AI is a race against everybody else in their industry, staged by people who profit from the spectacle, and the pitch is to sprint for the Cornucopia on day one. In practice the other tributes are rarely what gets you; the arena does (the perfect demo, the confident wrong answer, the free trial, the agent nobody watches). So the page is a map of the arena, not of the competition, and its centerpiece is the edge: every system has a line past which it stops knowing and starts guessing, and the people who do well find it on purpose. Edward is a tribute who scored a 7 in training because he spent his private session asking where the arena ends. Structure the conceit generates: the Reaping, the tribute profile, the Cornucopia, the arena map, the edge, sponsor parachutes, the interview, and a volunteer CTA. Design: light mode is the Capitol broadcast (marble ivory, crimson, gold), dark mode is the arena at night (coal, ember, force-field cyan). The Reaping is pinned to overcast district stone, the arena map is pinned to night, and the sponsor section is pinned to gaudy Capitol cream in both modes. Big Shoulders Display for broadcast headlines, Literata for reading, Martian Mono for chyrons and tags, Cinzel for ceremonial Capitol lettering. No mockingjays, no franchise logos, nobody from the film depicted. Animation off; the only motion is a slow shimmer on the arena edge, and it stops for reduced motion.",
+  tagline: "Everybody's been reaped. Read the arena before you run.",
 
   colors: {
-    // Measured, not eyeballed. Dark: candle-lit paper on soot is 15.5:1,
-    // muted 8.6:1 (7.9:1 on the surface), candle amber 9.4:1 with near-black
-    // type on buttons (9.1:1). Light: ink on first-edition paper 14.7:1,
-    // muted 6.9:1, title-page red #9B1C1C 6.8:1 with white type on it 8.2:1.
-    primary: "#1F3864",            // title-page blue ink (9.6:1 on the paper)
-    secondary: "#86E0CB",          // Marley's spectral green
-    accent: "#F0A63A",             // candle amber
-    accentHover: "#FFC062",
-    accentLight: "#9B1C1C",        // title-page red
-    accentHoverLight: "#7A1414",
-    onAccent: "#1A1005",
+    // Measured. Dark: bone on coal 15.5:1, muted 8.6:1 (7.8:1 on the
+    // surface), ember 7.7:1 with near-black type on buttons 7.7:1.
+    // Light: ink on Capitol marble 15.4:1, muted 6.6:1, crimson 7.8:1 with
+    // white type on it 9.0:1, gold-ink 5.5:1.
+    primary: "#7A5B0E",            // Capitol gold, inked dark enough to read
+    secondary: "#7FD3C4",          // the force field at the arena's edge
+    accent: "#F08A3C",             // ember
+    accentHover: "#FFA45E",
+    accentLight: "#8E1B2C",        // Capitol crimson
+    accentHoverLight: "#6E1220",
+    onAccent: "#170C04",
     onAccentLight: "#FFFFFF",
-    background: "#100E0C",         // the bedchamber at 1 AM
-    backgroundLight: "#F2E9D5",    // first-edition paper
-    surface: "#1B1713",
-    surfaceLight: "#FBF6EA",
-    text: "#EFE6D2",
-    textMuted: "#B8AC93",
-    textDark: "#1D1711",
-    textDarkMuted: "#584C3B",
-    border: "#3A3128",
-    borderLight: "#D3C4A3",
-    gradient: "linear-gradient(90deg, #9B1C1C 0%, #1F3864 100%)",
+    background: "#0D0F0C",         // the arena at night
+    backgroundLight: "#F3EFE4",    // Capitol marble
+    surface: "#171A15",
+    surfaceLight: "#FCFAF4",
+    text: "#ECE6D6",
+    textMuted: "#B3AD9C",
+    textDark: "#1A1814",
+    textDarkMuted: "#5A5446",
+    border: "#2E3429",
+    borderLight: "#D5CCB5",
+    gradient: "linear-gradient(90deg, #8E1B2C 0%, #F08A3C 100%)",
   },
 
   fonts: {
-    // Bodoni Moda: a high-contrast Didone, the family of "Modern" faces that 1840s title pages were set in.
-    // Libre Caslon Text: a sturdy book face for the long paragraphs (Caslon was being revived in London in the 1840s).
-    // Cutive Mono: a typewriter-era mono for labels, dates, and ledger columns.
-    // Pinyon Script (page-level only): the clerk's roundhand for verdicts in the Humbug Ledger.
-    heading: "'Bodoni Moda', 'Bodoni 72', Didot, Georgia, serif",
-    body: "'Libre Caslon Text', 'Iowan Old Style', Georgia, serif",
-    mono: "'Cutive Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Cutive+Mono&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Pinyon+Script&display=swap",
+    // Big Shoulders Display: condensed and loud, a broadcast/propaganda headline face.
+    // Literata: a warm reading serif for the long paragraphs.
+    // Martian Mono: chyrons, tribute data, hazard tags.
+    // Cinzel (page-level only): carved Roman capitals for the Capitol's ceremonial lettering.
+    heading: "'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif",
+    body: "'Literata', 'Iowan Old Style', Georgia, serif",
+    mono: "'Martian Mono', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Cinzel:wght@600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Martian+Mono:wght@400;600&display=swap",
   },
 
   layout: {
-    heroStyle: "editorial",
+    heroStyle: "fullscreen",
     navStyle: "sticky",
     cardStyle: "outlined",
-    sectionStyle: "magazine",
+    sectionStyle: "alternating",
     footerStyle: "detailed",
   },
 
@@ -140,12 +140,12 @@ export const currentTheme: ThemeConfig = {
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Scrooge had everything he needed to change his mind before the first Spirit ever showed up, and he said Humbug to it 6 times (a machine counted).",
-    description: "Ebenezer: A Christmas Carol opened Friday, so this week I'm Marley's Ghost, dragging a chain I forged myself over 25 years of enterprise software (15 books are on it, and they're heavier than they look), here to tell you 3 more visitors are coming and to go through 5 of the usual humbugs about AI with an honest ledger.",
-    heroImage: "hero-2026-11-14.jpg",
-    imageAlt: "Edward as Marley's Ghost in a dark Victorian bedchamber: translucent and glowing pale green, in a frock coat, white cravat, and his blue fedora, wrapped in a heavy iron chain hung with old books, padlocks, floppy disks, and a beige computer keyboard. He holds up a length of the chain, deadpan, while someone in a white nightcap hides under the blankets of a four-poster bed with only their fingers showing.",
-    ctaText: "Begin at Stave One",
-    ctaLink: "#stave-one",
+    subtitle: "Everybody in your industry has been reaped, and this year the bowl's twice as full (yes, mine too, and I didn't volunteer).",
+    description: "The Hunger Games: Sunrise on the Reaping opened Friday, so this week I'm a tribute in the 50th Games, the one on the launch platform who isn't running, because I'm trying to work out where the arena ends.",
+    heroImage: "hero-2026-11-21.jpg",
+    imageAlt: "Edward in a plain grey competition jumpsuit and his blue fedora stands on a round metal launch platform in a sunlit wildflower meadow ringed by pine forest. Around him, other competitors on identical platforms crouch to sprint toward a giant golden horn spilling laptops, servers, and binders onto the grass. Edward stands upright and calm, holding a small spiral notebook and looking off toward the tree line.",
+    ctaText: "Map the arena",
+    ctaLink: "#arena",
   },
 };
 

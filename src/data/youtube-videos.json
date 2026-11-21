@@ -1,5 +1,29 @@
 [
   {
+    "title": "How Did AI Rebuild a Game's Source Code?",
+    "videoId": "iFMn5X9wrPQ",
+    "published": "2026-11-20T14:00:10+00:00",
+    "description": "Maurice Heumann pointed AI coding agents at a commercial video game's compiled binary and let them run for 3 months, roughly 600 to 700 billion tokens. He ran 14 Luna agents and 2 Opus 5.5 agents, coordinated them over a Discord channel, and opened one GitHub issue per file. He...",
+    "thumbnail": "https://i.ytimg.com/vi/iFMn5X9wrPQ/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "Utah Let an AI Write the First Prescription",
+    "videoId": "NudWNZ7JYIk",
+    "published": "2026-11-17T14:00:34+00:00",
+    "description": "Utah's Office of Artificial Intelligence Policy authorized Nolla Health's app to write initial prescriptions for acne, the first state to let an AI write somebody's first prescription instead of just renewing one. You verify who you are, click a consent form, answer questions...",
+    "thumbnail": "https://i.ytimg.com/vi/NudWNZ7JYIk/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
+    "title": "OpenAI's 722 Math Papers Came Out of a Benchmark Run",
+    "videoId": "JbK6ju9IIsQ",
+    "published": "2026-11-15T13:50:32+00:00",
+    "description": "OpenAI published 722 math manuscripts on GitHub, written by an unreleased internal model and sorted into 372 families. One of them resolves Barnette's conjecture, open since 1969, and a mathematician who spent 24 years on that problem found out when he read the catalog, where...",
+    "thumbnail": "https://i.ytimg.com/vi/JbK6ju9IIsQ/hqdefault.jpg",
+    "category": "youtube"
+  },
+  {
     "title": "Mark Rober Wants AI Chips Tracked Like Uranium",
     "videoId": "LaKQzsE4Jvo",
     "published": "2026-11-13T13:50:15+00:00",
