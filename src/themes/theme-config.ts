@@ -81,71 +81,71 @@ export interface ThemeConfig {
 // ============================================
 
 export const currentTheme: ThemeConfig = {
-  name: "Read the Arena",
-  week: "2026-11-21",
-  inspiration: "The Hunger Games: Sunrise on the Reaping (Lionsgate, from Suzanne Collins's 2025 book) opened in U.S. theaters on Friday, November 20, 2026, with Joseph Zada as a young Haymitch Abernathy and Ralph Fiennes as President Snow. It's the 50th Games, a Quarter Quell, so twice the usual number of tributes get reaped. The argument: every leader right now is being told AI is a race against everybody else in their industry, staged by people who profit from the spectacle, and the pitch is to sprint for the Cornucopia on day one. In practice the other tributes are rarely what gets you; the arena does (the perfect demo, the confident wrong answer, the free trial, the agent nobody watches). So the page is a map of the arena, not of the competition, and its centerpiece is the edge: every system has a line past which it stops knowing and starts guessing, and the people who do well find it on purpose. Edward is a tribute who scored a 7 in training because he spent his private session asking where the arena ends. Structure the conceit generates: the Reaping, the tribute profile, the Cornucopia, the arena map, the edge, sponsor parachutes, the interview, and a volunteer CTA. Design: light mode is the Capitol broadcast (marble ivory, crimson, gold), dark mode is the arena at night (coal, ember, force-field cyan). The Reaping is pinned to overcast district stone, the arena map is pinned to night, and the sponsor section is pinned to gaudy Capitol cream in both modes. Big Shoulders Display for broadcast headlines, Literata for reading, Martian Mono for chyrons and tags, Cinzel for ceremonial Capitol lettering. No mockingjays, no franchise logos, nobody from the film depicted. Animation off; the only motion is a slow shimmer on the arena edge, and it stops for reduced motion.",
-  tagline: "Everybody's been reaped. Read the arena before you run.",
+  name: "Doorbuster",
+  week: "2026-11-27",
+  inspiration: "Black Friday, Friday 2026-11-27, the day after Thanksgiving (Thursday 11-26), through Cyber Monday (11-30), with Small Business Saturday (11-28) in between. Booked by Edward on 2026-11-22 and launched at 12:00 AM AST on Black Friday instead of the usual Saturday, because doorbusters open at midnight. The argument: every AI deal this season comes with a doorbuster number (a slashed compare-at price, a free pilot, a discount that expires at quarter end), and the sticker is real, but it's the smallest number in the deal. The cost lives in the fine print: metering that switches from per seat to per token to per agent, unlimited plans that run out on Thursday afternoon, pilots that convert, renewals, models that get retired, and the line nobody quotes (connecting it to your data, cleaning the data, and the people who have to change how they work). Distinct from Halloween, which asked whether the AI is real; this week assumes it works and asks whether the deal is real. Structure the conceit generates: the circular masthead, the line (9 PM to midnight), the doorbusters with fine print, the fine-print checklist, the receipt where the sticker is the smallest line, the return policy, and a Cyber Monday aside. Design: light mode is the Sunday ad insert on the kitchen table Thursday night (newsprint, price-tag red, sale-sticker yellow); dark mode is the parking lot at 11:58 PM (asphalt, sodium orange, the glowing storefront). Bricolage Grotesque for circular headlines, Bowlby One for prices and starbursts, Newsreader for reading, Courier Prime for receipts and fine print. No real retailer or AI vendor names, logos, colors, or prices. Animation off; the only motion is one price getting slashed on the hero tag, once, on load.",
+  tagline: "The sticker is the smallest number in the deal.",
 
   colors: {
-    // Measured. Dark: bone on coal 15.5:1, muted 8.6:1 (7.8:1 on the
-    // surface), ember 7.7:1 with near-black type on buttons 7.7:1.
-    // Light: ink on Capitol marble 15.4:1, muted 6.6:1, crimson 7.8:1 with
-    // white type on it 9.0:1, gold-ink 5.5:1.
-    primary: "#7A5B0E",            // Capitol gold, inked dark enough to read
-    secondary: "#7FD3C4",          // the force field at the arena's edge
-    accent: "#F08A3C",             // ember
-    accentHover: "#FFA45E",
-    accentLight: "#8E1B2C",        // Capitol crimson
-    accentHoverLight: "#6E1220",
-    onAccent: "#170C04",
+    // Measured. Dark: cream on asphalt 16.2:1, muted 8.7:1 (8.0:1 on the
+    // surface), sodium orange 10.6:1 with near-black type on buttons 10.5:1.
+    // Light: ink on newsprint 15.7:1, muted 6.9:1, price-tag red 5.5:1 with
+    // white type on it 6.2:1.
+    primary: "#7A1220",            // inked price-tag red
+    secondary: "#FFD23F",          // sale-sticker yellow
+    accent: "#FFB238",             // sodium parking-lot light
+    accentHover: "#FFC766",
+    accentLight: "#C1121F",        // price-tag red
+    accentHoverLight: "#960E18",
+    onAccent: "#15110B",
     onAccentLight: "#FFFFFF",
-    background: "#0D0F0C",         // the arena at night
-    backgroundLight: "#F3EFE4",    // Capitol marble
-    surface: "#171A15",
-    surfaceLight: "#FCFAF4",
-    text: "#ECE6D6",
-    textMuted: "#B3AD9C",
-    textDark: "#1A1814",
-    textDarkMuted: "#5A5446",
-    border: "#2E3429",
-    borderLight: "#D5CCB5",
-    gradient: "linear-gradient(90deg, #8E1B2C 0%, #F08A3C 100%)",
+    background: "#0E1013",         // the parking lot at 11:58 PM
+    backgroundLight: "#F6F0E1",    // the Thursday-night ad insert
+    surface: "#171A1F",
+    surfaceLight: "#FFFCF3",
+    text: "#F1ECDF",
+    textMuted: "#B6AFA2",
+    textDark: "#1B1713",
+    textDarkMuted: "#5A5045",
+    border: "#2C3038",
+    borderLight: "#D9CDB3",
+    gradient: "linear-gradient(90deg, #C1121F 0%, #FFB238 100%)",
   },
 
   fonts: {
-    // Big Shoulders Display: condensed and loud, a broadcast/propaganda headline face.
-    // Literata: a warm reading serif for the long paragraphs.
-    // Martian Mono: chyrons, tribute data, hazard tags.
-    // Cinzel (page-level only): carved Roman capitals for the Capitol's ceremonial lettering.
-    heading: "'Big Shoulders Display', 'Arial Narrow', Impact, sans-serif",
-    body: "'Literata', 'Iowan Old Style', Georgia, serif",
-    mono: "'Martian Mono', 'Courier New', monospace",
-    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Cinzel:wght@600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Martian+Mono:wght@400;600&display=swap",
+    // Bricolage Grotesque: loud, slightly squashed circular headlines.
+    // Newsreader: a newsprint serif for the reading.
+    // Courier Prime: thermal receipts and fine print.
+    // Bowlby One (page-level only): fat price numerals and starbursts.
+    heading: "'Bricolage Grotesque', 'Arial Black', Impact, sans-serif",
+    body: "'Newsreader', 'Iowan Old Style', Georgia, serif",
+    mono: "'Courier Prime', 'Courier New', monospace",
+    googleFontsUrl: "https://fonts.googleapis.com/css2?family=Bowlby+One&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Courier+Prime:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap",
   },
 
   layout: {
-    heroStyle: "fullscreen",
+    heroStyle: "editorial",
     navStyle: "sticky",
-    cardStyle: "outlined",
-    sectionStyle: "alternating",
+    cardStyle: "solid",
+    sectionStyle: "magazine",
     footerStyle: "detailed",
   },
 
   animations: {
     entrance: "fade-in",
-    hover: "underline",
+    hover: "lift",
     background: "none",
     pageTransition: "fade",
   },
 
   hero: {
     title: "ROSKE.AI",
-    subtitle: "Everybody in your industry has been reaped, and this year the bowl's twice as full (yes, mine too, and I didn't volunteer).",
-    description: "The Hunger Games: Sunrise on the Reaping opened Friday, so this week I'm a tribute in the 50th Games, the one on the launch platform who isn't running, because I'm trying to work out where the arena ends.",
-    heroImage: "hero-2026-11-21.jpg",
-    imageAlt: "Edward in a plain grey competition jumpsuit and his blue fedora stands on a round metal launch platform in a sunlit wildflower meadow ringed by pine forest. Around him, other competitors on identical platforms crouch to sprint toward a giant golden horn spilling laptops, servers, and binders onto the grass. Edward stands upright and calm, holding a small spiral notebook and looking off toward the tree line.",
-    ctaText: "Map the arena",
-    ctaLink: "#arena",
+    subtitle: "I've been in line since 9 PM on Thanksgiving for an AI deal, and I brought a thermos (and a magnifying glass, for reasons that'll become clear further down).",
+    description: "Black Friday on roske.ai: Edward camped out overnight in a store parking lot for an AI doorbuster, and the page is a sale circular about why the sticker is the smallest number in the deal.",
+    heroImage: "hero-2026-11-27.jpg",
+    imageAlt: "At night in an empty store parking lot, Edward in his blue fedora and a puffy navy winter jacket sits in a folding camping chair with a plaid blanket over his knees, holding a steel thermos. Behind him a big-box store glows behind locked glass doors under a giant red and yellow banner that reads AI DOORBUSTER, and the rope line behind him is empty except for orange traffic cones.",
+    ctaText: "See the doorbusters",
+    ctaLink: "#doorbusters",
   },
 };
 
