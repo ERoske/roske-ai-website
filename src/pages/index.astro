@@ -9,20 +9,17 @@ import { currentTheme } from '../themes/theme-config';
 const theme = currentTheme;
 
 // ---------------------------------------------------------------------------
-// READ THE ARENA (2026-11-21). The Hunger Games: Sunrise on the Reaping
-// opened Friday, November 20: the 50th Games, a Quarter Quell, twice the
-// usual tributes. The argument: AI gets sold as a race against everybody
-// else in your industry, but the other tributes are rarely what gets you;
-// the arena does. So the page maps the arena, and its centerpiece is the
-// edge (the line where a system stops knowing and starts guessing).
-// Edward is the only person depicted. No franchise logos, no mockingjays,
-// nobody from the film.
+// DOORBUSTER (launched 12:00 AM AST, Black Friday, 2026-11-27). The page is
+// a sale circular for AI deals. The argument: the sticker is real, and it's
+// the smallest number in the deal; the cost lives in the fine print. Halloween
+// asked whether the AI is real; this week assumes it works and asks whether
+// the deal is. No real retailers, AI vendors, logos, or real prices. Edward
+// is the only person depicted.
 // ---------------------------------------------------------------------------
 
-const IMG = '/images/read-the-arena';
+const IMG = '/images/doorbuster';
 const CAL = 'https://calendar.app.google/udtTerQwcX9Z7QQt7';
-const POST = '/blog/whos-actually-trying-to-kill-you-in-the-ai-race/';
-const REVIEWS = 'https://www.cinemablend.com/movies/sunrise-on-the-reaping-review-roundup-brutal-i-watched-completely-different-movie-joseph-zada';
+const POST = '/blog/is-that-ai-deal-actually-a-deal/';
 
 // The 4 standing numbers. Same every week.
 const stats = [
@@ -32,118 +29,79 @@ const stats = [
   { v: '25', k: 'Years running interRel' },
 ];
 
-// Reaping Day. Names drawn so far.
-const slips = [
-  'Banks',
-  'Hospitals',
-  'Law firms',
-  'Universities',
-  'Airlines',
-  'Restaurants',
-  'Consultants (twice, obviously)',
-  'Your vendors',
-  'Your competitors',
-  "Your kid's school",
-];
-
-// The tribute profile.
-const profile = [
-  { k: 'Tribute', v: 'Edward Roske' },
-  { k: 'District', v: 'San Juan, Puerto Rico (since March 2023)' },
-  { k: 'First reaped', v: `1995, as a Senior Analytics Consultant (a title I'd describe as optimistic)` },
-  { k: 'Games survived', v: '25 years running interRel, 15 books, and 1 perfect score on the Essbase certification exam' },
-  { k: 'Weapon of choice', v: `A question. The bow's still on the rack (see photo).` },
-];
-
-// What's actually in the Cornucopia.
-const horn = [
+// The doorbusters. Generic composites, no real vendor, no real price.
+const busters = [
   {
-    item: 'An enterprise AI platform, 3-year term',
-    fine: `The price on page 1 is for year 1. Pages 2 through 40 are about years 2 and 3.`,
+    name: 'The Free Pilot',
+    was: 'Was: a budget meeting',
+    now: 'FREE',
+    unit: '',
+    fine: `For 90 days. On day 91 it turns into a 3-year commitment, unless somebody remembers to cancel it, and the person who signed it got promoted in September (Admiral Ackbar would like a word).`,
   },
   {
-    item: 'A pilot',
-    fine: `Success criteria to be defined later, and somehow the pilot turns into a line item without anybody deciding it should.`,
+    name: 'Unlimited AI for Everyone',
+    was: 'Was $24.97',
+    now: '$19.97',
+    unit: 'per seat, per month',
+    fine: `Unlimited, subject to fair use, and fair use is a number they tell you about after you hit it (my own plan is the first paragraph of today's post, and it isn't flattering).`,
   },
   {
-    item: 'A license for everybody',
-    fine: `Seats get counted at signing, and after the first week nobody checks how many of them actually got opened.`,
+    name: 'Pay Only for What You Use',
+    was: 'Was: a fixed price',
+    now: '$0.00',
+    unit: 'to start',
+    fine: `Metered by the token, and nobody, including the vendor, can tell you in advance how many tokens you'll use. I've seen recordings of 2 AIs negotiating with each other until they devolved into their own shorthand that nobody was reading anymore (I assume somebody was paying for every word).`,
   },
   {
-    item: 'A roadmap slide with your logo already on it',
-    fine: `It had somebody else's logo on it last week (it's a very good slide).`,
-  },
-];
-
-// The arena map. 6 sectors, the horn in the middle, 2 cells that aren't hazards.
-const sectors = [
-  {
-    n: '01',
-    name: 'The Meadow',
-    looks: 'A flawless demo.',
-    bites: `It works perfectly for the 1 question it was built for, and your people are going to ask it about 4,000 others.`,
+    name: 'Priced Per Agent',
+    was: 'Was: priced per seat',
+    now: '$1',
+    unit: 'per agent, per day',
+    fine: `Ask 100 AI people what an agent is and you'll get no fewer than 297 definitions (I've said that on my show and I stand by the math), so find out whose definition the invoice uses.`,
   },
   {
-    n: '02',
-    name: 'The Clear Spring',
-    looks: 'A fluent, confident, nicely formatted answer.',
-    bites: `When it's made up, it reads exactly the same.`,
+    name: 'AI Included, Free',
+    was: 'With your renewal',
+    now: '$0',
+    unit: 'add-on',
+    fine: `The AI line on the invoice really does say $0. The line right above it, the renewal, went up, and it didn't explain why.`,
   },
   {
-    n: '03',
-    name: 'The Songbirds',
-    looks: 'An assistant that loves every idea you have.',
-    bites: `It'll agree with a bad idea just as warmly as a good one, and then it'll write the business case for both.`,
-  },
-  {
-    n: '04',
-    name: 'The Orchard',
-    looks: 'Free credits, free pilots, free trials, fruit everywhere.',
-    bites: `It's free right up until it's in production, and then somebody sends a price list.`,
-  },
-  {
-    n: '05',
-    name: 'The Fog',
-    looks: 'An agent that runs overnight while you sleep.',
-    bites: `You can't see what it did until morning. The one that rebuilds this website at 5AM every Saturday once built an entire theme and never committed it, so the site wore an expired Labor Day theme for 11 days.`,
-  },
-  {
-    n: '06',
-    name: 'The Moving Walls',
-    looks: 'The new model that shipped on Tuesday.',
-    bites: `It rearranges the arena, so the map you drew last quarter is at least partly wrong now (eventually including this one).`,
+    name: 'Lifetime Access',
+    was: 'Was: a subscription',
+    now: '1',
+    unit: 'payment',
+    fine: `Lifetime of the product, which isn't the same thing as your lifetime, and the model underneath it can get retired over a weekend (there's a whole post about that on the blog).`,
+    link: { href: '/blog/your-best-ai-model-can-vanish-over-a-weekend/', text: 'Read it' },
   },
 ];
 
-// How to find the edge.
-const survey = [
-  `Ask it 20 questions you already know the answers to, from your real work (not from the demo).`,
-  `Write down every one it got wrong, and how sure of itself it sounded when it did.`,
-  `Ask the same question 3 different ways, and watch for where the answers stop agreeing, because that's usually the edge.`,
-  `Do it all again when the model changes, since the walls move (see Sector 06).`,
+// The questions to ask before signing. The screenshot part.
+const questions = [
+  `How is it metered, and what did a heavy month cost a real customer about your size? Ask for an actual invoice, since the calculator on the website has never had a heavy month in its life.`,
+  `What does the pilot turn into on day 91, and whose job is it to say no?`,
+  `What happens to the price at renewal? Get the cap in writing, because "we don't usually raise prices much" isn't a cap.`,
+  `When the model underneath gets updated or retired, what do you get, and does the work you built on it still work?`,
+  `Who owns your data and everything you type into it, and can they train on any of it? (If you're on the free version, the model you're training is the one your competitor is paying for.)`,
+  `How do you leave, and what do you get to take with you when you go?`,
+  `What's it going to cost to get it working on your real data and get your people actually using it? Nobody quotes that line, and it's usually the biggest one on the receipt.`,
 ];
 
-// Sponsor gifts.
-const parachutes = [
-  {
-    tag: 'FREE TRIAL',
-    note: `30 days. Note attached: "Stay alive!" Second note, day 31: an invoice.`,
-  },
-  {
-    tag: 'A webinar invitation',
-    note: `Thursday at 2PM. Note attached: "Seats are limited." Seats are not limited.`,
-  },
-  {
-    tag: 'A 40-page AI strategy deck',
-    note: `Note attached: "Executive summary on page 2." The price is on page 31 (yes, I flipped straight to it, and no, I didn't read pages 3 through 30).`,
-  },
+// The receipt. Dollar signs are relative size, not real prices.
+const receipt = [
+  { item: 'AI PLATFORM (DOORBUSTER)', amt: '$' },
+  { item: 'USAGE PAST "UNLIMITED"', amt: '$$' },
+  { item: 'CONNECTING IT TO YOUR DATA', amt: '$$$$' },
+  { item: 'CLEANING THE DATA FIRST', amt: '$$$$$' },
+  { item: 'PEOPLE CHANGING HOW THEY WORK', amt: '$$$$$$' },
+  { item: 'RENEWAL, YEAR 2', amt: 'SEE STORE' },
 ];
 
-// The pack: the 6 projects. Same 6 every week, restyled.
+// Year-round stock: the 6 projects. Same 6 every week, restyled.
 const projects = [
   {
     name: 'MCP Servers for Enterprise Finance',
-    status: 'Shipping',
+    status: 'In stock',
     note: `Plumbing so an AI reads the real number out of Oracle Essbase and EPM instead of remembering one that sounds about right. Essbase and EPM Planning have shipped, and Financial Close and Consolidations is in beta.`,
     href: 'https://caprus.ai/agentcube/',
     external: true,
@@ -151,8 +109,8 @@ const projects = [
   },
   {
     name: 'Caribbean AI Summit',
-    status: 'Happened, October 9 and 10',
-    note: `Co-chaired it: 800+ people, 17 countries, 44 speakers, and 6 fire extinguishers Dawn bought at Walmart at 7:30 in the morning. The whole story is on the blog.`,
+    status: 'Sold out, October 9 and 10',
+    note: `Co-chaired it: 800+ people, 17 countries, 44 speakers, and 6 fire extinguishers Dawn bought at Walmart at 7:30 in the morning (the only retail purchase on this page that was worth every penny).`,
     href: '/blog/how-many-fire-extinguishers-does-an-ai-summit-need/',
     external: false,
     cta: 'Read the recap',
@@ -160,7 +118,7 @@ const projects = [
   {
     name: 'Caprus',
     status: 'Investor',
-    note: `I'm an investor, and that's the whole job. Lillian Buziak runs it, and they sell and support AgentCube (that's item 01 in this pack), which spares everybody from having me do it.`,
+    note: `I'm an investor, and that's the whole job. Lillian Buziak runs it, and they sell and support AgentCube (the first item in this aisle), which spares everybody from having me do it.`,
     href: 'https://caprus.ai',
     external: true,
     cta: 'Meet the team',
@@ -168,14 +126,14 @@ const projects = [
   {
     name: 'Everest Base Camp',
     status: 'Done, April 2026',
-    note: `2 weeks on foot to 18,571 feet with Dawn. The trail log is on the blog, including the last 400 feet of Kala Patthar (no parachutes were sent).`,
+    note: `2 weeks on foot to 18,571 feet with Dawn. The trail log is on the blog, and it makes 3 hours in a parking lot look a lot less impressive.`,
     href: '/blog/everest-base-camp-summit/',
     external: false,
     cta: 'Read the trail log',
   },
   {
     name: "AI Dungeon Master's Screen",
-    status: 'Quiet build',
+    status: 'Not on shelves yet',
     note: `A prototype screen for running 5e: lore lookups and improvisation help for the person behind the cardboard. It isn't public yet, and so far the only customer is me (and my players, who didn't get a vote).`,
     href: null,
     external: false,
@@ -183,8 +141,8 @@ const projects = [
   },
   {
     name: 'Puerto Rico AI Community',
-    status: 'Every other month',
-    note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. Bi-monthly, free, both languages, and the reason the summit exists at all.`,
+    status: 'Free, every other month',
+    note: `President of the island's AI community (unpaid, obviously), now past 1,000 different people through the door. Bi-monthly, both languages, and the reason the summit exists at all.`,
     href: 'https://praicommunity.org/',
     external: true,
     cta: 'Join the next one',
@@ -195,310 +153,259 @@ const pad = (n: number) => String(n).padStart(2, '0');
 ---
 
 <BaseLayout
-  title="Roske.AI | Read the Arena"
-  description="Sunrise on the Reaping week on roske.ai. Edward Roske is a tribute in the 50th Games who scored a 7 in training for asking where the arena ends, with a sector-by-sector map of the AI arena and the case for finding its edge on purpose."
+  title="Roske.AI | Doorbuster"
+  description="Black Friday on roske.ai: Edward Roske camped out overnight for an AI doorbuster, and the page is a sale circular about why the sticker is the smallest number in an AI deal, with the fine-print questions to ask before you sign."
 >
   <WeeklyAnimation />
 
-  <!-- ================= CHYRON ================= -->
-  <div class="ra-chyron" role="note" aria-label="Broadcast banner">
-    <div class="ra-wrap ra-chyron-inner">
-      <span class="ra-live">Live</span>
-      <span>The 50th Games, a Quarter Quell</span>
-      <span>Day 1 | Saturday, November 21, 2026 | San Juan</span>
-      <span class="ra-chyron-hide">Sunrise on the Reaping opened yesterday</span>
+  <!-- ================= MASTHEAD STRIP ================= -->
+  <div class="db-strip" role="note" aria-label="Circular banner">
+    <div class="db-wrap db-strip-inner">
+      <span class="db-strip-tag">Doors open</span>
+      <span>12:00 AM, Black Friday, November 27, 2026</span>
+      <span class="db-strip-hide">Prices good through Cyber Monday</span>
+      <span class="db-strip-hide">San Juan (while supplies last)</span>
     </div>
   </div>
 
   <!-- ================= HERO ================= -->
-  <section class="ra-hero" aria-labelledby="ra-title">
-    <figure class="ra-cam">
-      <img
-        class="ra-cam-img"
-        src={`/images/${theme.hero.heroImage}`}
-        alt={theme.hero.imageAlt}
-        width="1600"
-        height="893"
-        fetchpriority="high"
-        decoding="async"
-      />
-      <div class="ra-cam-chrome" aria-hidden="true">
-        <span class="ra-cam-tag">Arena cam 12</span>
-        <span class="ra-cam-rec">Rec</span>
-      </div>
-      <figcaption class="ra-lower">
-        <span class="ra-lower-name">Tribute, District San Juan</span>
-        <span class="ra-lower-note">Has not moved in 40 seconds. Appears to be reading.</span>
-      </figcaption>
-    </figure>
-
-    <div class="ra-wrap">
-      <div class="ra-hero-card">
-        <p class="ra-kicker">Day 1 in the arena</p>
-        <h1 class="ra-title" id="ra-title">Read the <span>arena.</span></h1>
-        <p class="ra-pull">{theme.hero.subtitle}</p>
-        <div class="ra-hero-copy">
+  <section class="db-hero" aria-labelledby="db-title">
+    <div class="db-wrap db-hero-grid">
+      <div class="db-hero-copy">
+        <p class="db-kicker">The Roske.AI circular | Black Friday edition</p>
+        <h1 class="db-title" id="db-title">Door<span>buster</span></h1>
+        <p class="db-pull">{theme.hero.subtitle}</p>
+        <div class="db-prose">
           <p>
-            I'm a tribute in the 50th Games this week (a Quarter Quell, which means the Capitol reaps twice the usual number of names, 48 instead of 24), because The Hunger Games: Sunrise on the Reaping opened Friday with Joseph Zada as a teenage Haymitch Abernathy and Ralph Fiennes as President Snow (<a href={REVIEWS} target="_blank" rel="noopener noreferrer">the critics are still arguing about it</a>).
+            Every Saturday at 5AM this website rebuilds itself, but this week I told it to show up at midnight on Friday
+            instead, because that's when the doors open, and I got here before it did. I've been sitting in this chair
+            since 9 PM Thursday with a thermos and a plate of leftovers, waiting for the AI doorbuster on the banner
+            (Edward, you have a master's in data science with a 4.0, and you've spent 3 hours in a parking lot for a
+            discount you could have calculated in your head before the pie came out, and you didn't even check whether
+            the store sells anything you need, which, now that I'm saying it out loud, is a thing you should probably
+            not tell your clients).
           </p>
           <p>
-            I'm the one on the launch platform who isn't running. 47 other tributes are sprinting at a giant golden horn
-            full of laptops, and I'm standing there with a notebook trying to work out where the arena ends (Edward,
-            there are 47 people running at free equipment and you're taking notes on the scenery. This is exactly why
-            the Gamemakers gave you a 7, and they were being generous).
-          </p>
-          <p>
-            Pretty much every leader I've talked to this year has been told the same story: AI is a race, everybody in
-            your industry is already in it, the vendors and the analysts and the keynote speakers (hi) are all up on the
-            balcony with drinks, and anybody who doesn't sprint for the Cornucopia on day one gets left behind. I've been
-            in some version of this arena since 1995, and in my experience the thing that gets you is usually the arena
-            itself: the perfect demo, the confident wrong answer, the free trial, the agent nobody's watching, and a bunch more. So this
-            page is a map of the arena (the competition can get its own website).
+            Every AI deal this season comes with a doorbuster number: a slashed compare-at price, a free pilot, a
+            "lifetime" deal, a per-agent price nobody can define, a discount that expires at the end of the quarter
+            (it's always the end of some quarter), and a bunch more. The sticker's real.
+            It's also, in my experience, the smallest number in the deal, and I've watched enterprise software get sold
+            for 30-some years. So this week's page is a sale circular, and every item in it comes with the fine
+            print printed right there next to it, at a size you can actually read.
           </p>
         </div>
-        <div class="ra-ctas">
-          <a class="ra-btn ra-btn-main" href={theme.hero.ctaLink}>{theme.hero.ctaText}</a>
-          <a class="ra-btn ra-btn-ghost" href="#edge">Skip to the edge</a>
+        <div class="db-ctas">
+          <a class="db-btn db-btn-main" href={theme.hero.ctaLink}>{theme.hero.ctaText}</a>
+          <a class="db-btn db-btn-ghost" href="#fine-print">Skip to the fine print</a>
+        </div>
+      </div>
+
+      <div class="db-hero-art">
+        <figure class="db-hero-photo">
+          <img
+            src={`/images/${theme.hero.heroImage}`}
+            alt={theme.hero.imageAlt}
+            width="1600"
+            height="893"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <figcaption>11:58 PM, and I'm first in line, mostly because I'm the only one in it.</figcaption>
+        </figure>
+        <div class="db-tag" aria-label="Price tag: compare at $1,000,000, now $999,999 with an asterisk">
+          <span class="db-tag-hole" aria-hidden="true"></span>
+          <span class="db-tag-label">AI, the whole thing</span>
+          <span class="db-tag-was">Compare at <s>$1,000,000</s></span>
+          <span class="db-tag-now">$999,999<sup>*</sup></span>
+          <span class="db-tag-fine">*Per seat, per month, billed annually, 500-seat minimum, price good until the end of the quarter, which is always 2 weeks from now.</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ================= STATS ================= -->
-  <div class="ra-stats-wrap">
-    <div class="ra-wrap">
-      <p class="ra-stats-label">Tribute statistics, as posted by the Capitol</p>
-      <ul class="ra-stats" aria-label="On the record">
+  <div class="db-stats-wrap">
+    <div class="db-wrap">
+      <ul class="db-stats" aria-label="On the record">
         {stats.map((s) => (
-          <li><span class="ra-stat-v">{s.v}</span><span class="ra-stat-k">{s.k}</span></li>
+          <li><span class="db-stat-v">{s.v}</span><span class="db-stat-k">{s.k}</span></li>
         ))}
       </ul>
+      <p class="db-stats-note">None of these are on sale (I asked), they're just here for comparison purposes.</p>
     </div>
   </div>
 
   <!-- ================= LATEST ================= -->
   <LatestContent
-    eyebrow="From the Capitol feed"
+    eyebrow="Fresh off the truck"
     heading="New <em>this week.</em>"
-    deck="This week's writing and video, newest first, including today's post on who's actually trying to kill you in the AI race (it's usually not who the broadcast says)."
+    deck="This week's writing and video, newest first, including today's post on whether that AI deal is actually a deal (it starts with my own AI bill, which seemed only fair)."
   />
 
   <!-- ================= BOOK EDWARD ================= -->
-  <SpeakerCTA eyebrow="Every district needs a mentor" />
+  <SpeakerCTA eyebrow="The one price in this circular with no asterisk" />
 
-  <!-- ================= THE REAPING ================= -->
-  <section class="ra-section ra-reaping" aria-labelledby="ra-reap-title">
-    <div class="ra-wrap ra-reap-grid">
-      <figure class="ra-photo ra-photo-tilt-l">
-        <img src={`${IMG}/reaping.jpg`} width="1600" height="1195" loading="lazy" decoding="async"
-          alt="A grey industrial town square on ceremony day: brick row houses, smokestacks, and a crowd in plain clothes behind a rope facing a wooden stage with a glass bowl of paper slips on a podium. In the front row, Edward in a navy suit and his blue fedora politely raises one hand high, as if he has a question, while the men next to him stare at him in disbelief." />
-        <figcaption>Front row, hand up. I had a question about the selection methodology.</figcaption>
-      </figure>
-      <div class="ra-reap-copy">
-        <p class="ra-eyebrow">Reaping Day</p>
-        <h2 class="ra-h2" id="ra-reap-title">Whose name is in the bowl this year?</h2>
-        <p class="ra-copy">
-          In a Quarter Quell the Capitol changes the rules, and for the 50th Games the change was twice as many names
-          pulled from every district. The AI version is simpler, since nobody pulls anything: your name went in the bowl
-          the first time your board saw a demo, and nobody asked whether you'd like to volunteer.
-        </p>
-        <p class="ra-copy">
-          That's me in the front row with my hand up. Judging by the faces around me, a reaping is not the time for
-          questions about methodology (it's possible I've been asking questions at the wrong moment my whole career, and it's a little late to stop now, since I named a show after it).
-        </p>
-        <div class="ra-bowl" aria-label="Names drawn so far">
-          <p class="ra-bowl-label">Names drawn so far</p>
-          <ul class="ra-slips">
-            {slips.map((s, i) => <li class="ra-slip" style={`--r:${(i % 2 ? 1 : -1) * ((i % 3) + 1)}deg`}>{s}</li>)}
-            <li class="ra-slip ra-slip-you" style="--r:2deg">Your company <span>(3 slips)</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= TRIBUTE PROFILE ================= -->
-  <section class="ra-section ra-band" aria-labelledby="ra-prof-title">
-    <div class="ra-wrap ra-prof-grid">
-      <div class="ra-prof-main">
-        <p class="ra-eyebrow">Training scores are in</p>
-        <h2 class="ra-h2" id="ra-prof-title">Tribute profile: District San Juan</h2>
-        <div class="ra-card ra-dossier">
-          <dl>
-            {profile.map((p) => (
-              <div class="ra-dl-row"><dt>{p.k}</dt><dd>{p.v}</dd></div>
-            ))}
-            <div class="ra-dl-row">
-              <dt>Training score</dt>
-              <dd>
-                <span class="ra-score" aria-label="7 out of 12">
-                  {Array.from({ length: 12 }, (_, i) => <span class={i < 7 ? 'on' : ''} aria-hidden="true"></span>)}
-                </span>
-                <span class="ra-score-num">7 of 12</span>
-              </dd>
-            </div>
-            <div class="ra-dl-row">
-              <dt>Gamemakers' note</dt>
-              <dd class="ra-hand">
-                Spent his entire private session asking where the arena ends, what's in the water, who pays for the parachutes, whether the mutts are unionized, and a bunch more. Did not pick up the bow. Brought his own clipboard.
-              </dd>
-            </div>
-            <div class="ra-dl-row"><dt>Odds, per the Capitol</dt><dd>Long</dd></div>
-          </dl>
-        </div>
-        <p class="ra-copy">
-          The training score is the Capitol's guess at how you'll do in the arena, and it's mostly a score for how good
-          you look throwing things. I got a 7 for asking questions, and I'm told that's the highest score anybody's ever gotten without touching a weapon, by which I mean nobody told me that and I'm choosing to believe it.
-        </p>
-      </div>
-      <figure class="ra-photo ra-photo-tilt-r ra-prof-photo">
-        <img src={`${IMG}/training.jpg`} width="1195" height="1600" loading="lazy" decoding="async"
-          alt="A concrete and steel training gym with archery targets and weapon racks. On a high balcony, five judges in pastel brocade coats and powdered wigs lounge with drinks. On the floor, Edward in a grey jumpsuit and his blue fedora holds a clipboard and pen and looks up at them mid-question, while a bow leans untouched on a rack and the target behind him has no arrows in it." />
-        <figcaption>My private session. The bow is over there on the rack, where I left it.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ================= THE CORNUCOPIA ================= -->
-  <section class="ra-section" aria-labelledby="ra-horn-title">
-    <div class="ra-wrap">
-      <div class="ra-horn-top">
-        <div>
-          <p class="ra-eyebrow">The sprint for the horn</p>
-          <h2 class="ra-h2" id="ra-horn-title">What's actually in the Cornucopia?</h2>
-          <p class="ra-copy">
-            Every Games starts the same way: the gong sounds and everybody sprints for the horn in the middle, because
-            that's where the good stuff is. In AI the horn is the big day-one platform deal, and the sprint is real
-            (nobody wants to be the company that announced its AI strategy in Q3). I'm the one kneeling next to it
-            reading the contract, which, as the 4 people running off with armfuls of boxes in the background would tell
-            you, is a terrible way to win the first 60 seconds (I'm on page 9, if anybody's asking).
-          </p>
-        </div>
-        <figure class="ra-photo ra-photo-tilt-r">
-          <img src={`${IMG}/cornucopia.jpg`} width="1600" height="1195" loading="lazy" decoding="async"
-            alt="Edward in a grey jumpsuit and his blue fedora kneels in a sunlit meadow beside a golden horn-shaped cornucopia overflowing with software boxes, binders, and a laptop, reading a long paper contract with one finger. Behind him, other competitors run off across the grass carrying cardboard boxes." />
-          <figcaption>Reading the contract. Everybody else is already on Day 2.</figcaption>
-        </figure>
-      </div>
-      <ol class="ra-horn">
-        {horn.map((h, i) => (
-          <li class="ra-card">
-            <span class="ra-tag">Item {pad(i + 1)}</span>
-            <h3 class="ra-h3">{h.item}</h3>
-            <p><span class="ra-fine">Fine print:</span> {h.fine}</p>
-          </li>
-        ))}
+  <!-- ================= THE LINE (pinned parking lot) ================= -->
+  <section class="db-lot" aria-labelledby="db-line-title">
+    <div class="db-wrap">
+      <p class="db-eyebrow db-lot-eyebrow">The line</p>
+      <h2 class="db-h2 db-lot-h2" id="db-line-title">9:00 PM to 12:00 AM, a timeline</h2>
+      <p class="db-lot-deck">
+        For the record, the line was me and a rope tied between 4 traffic cones. Back in 2007 somebody handed me a free
+        iPod Touch at Oracle OpenWorld, and I wrote on my blog that it was "a blatant bribe which I shamelessly
+        accepted," so I'm in no position to lecture anybody about free stuff (I'm going to anyway… further down the
+        page).
+      </p>
+      <ol class="db-timeline">
+        <li class="db-shot db-shot-tall">
+          <span class="db-time">9:00 PM</span>
+          <figure>
+            <img src={`${IMG}/leftovers.jpg`} width="1195" height="1600" loading="lazy" decoding="async"
+              alt="Edward in his blue fedora and blue blazer sits in a folding camping chair outside a dark store at night, eating a paper plate of mashed potatoes, stuffing, green beans, and cranberry sauce with a plastic fork, foil peeled back. A sign on the glass door behind him reads OPENS 12:00 AM." />
+            <figcaption>First in line, with leftovers and a plastic fork. The sign says 12:00 AM, and I've checked it 9 times.</figcaption>
+          </figure>
+        </li>
+        <li class="db-shot">
+          <span class="db-time">11:40 PM</span>
+          <figure>
+            <img src={`${IMG}/frost.jpg`} width="1600" height="1195" loading="lazy" decoding="async"
+              alt="Edward wrapped in a red plaid blanket in a camping chair outside a glowing storefront, checking his wristwatch, with a thin layer of white frost on the brim of his blue fedora and his breath visible in the cold air." />
+            <figcaption>Frost on the brim. It doesn't frost in San Juan, which makes this the least believable picture on the page (and there's one of me in pajamas further down).</figcaption>
+          </figure>
+        </li>
+        <li class="db-shot db-shot-wide">
+          <span class="db-time">12:00:04 AM</span>
+          <figure>
+            <img src={`${IMG}/doors.jpg`} width="1600" height="893" loading="lazy" decoding="async"
+              alt="Edward mid-sprint in front of a store's open automatic glass doors, one hand holding his blue fedora on his head and the other holding a steel thermos, a red plaid blanket flying behind him like a cape. Red and yellow SALE and 50% OFF signs fill the store behind him." />
+            <figcaption>Mid-sprint with the thermos, and the blanket has become a cape. The fedora stays on, obviously.</figcaption>
+          </figure>
+        </li>
       </ol>
     </div>
   </section>
 
-  <!-- ================= THE ARENA MAP (pinned night) ================= -->
-  <section class="ra-map" id="arena" aria-labelledby="ra-map-title">
-    <div class="ra-wrap">
-      <p class="ra-eyebrow ra-map-eyebrow">The Gamemakers' map, leaked</p>
-      <h2 class="ra-h2 ra-map-h2" id="ra-map-title">The arena, sector by sector</h2>
-      <p class="ra-map-deck">
-        It's a gorgeous arena, and most of it bites. Every sector below is real (I've watched
-        smart people walk into all 6, and I'm not saying which ones I've walked into myself), and the one in the middle
-        is where everybody runs first.
-      </p>
-
-      <div class="ra-field">
-        <span class="ra-field-label" aria-hidden="true">The edge</span>
-        <ol class="ra-grid">
-          {sectors.map((s, i) => (
-            <li class={`ra-sector ra-s${i + 1}`}>
-              <span class="ra-sector-n">Sector {s.n}</span>
-              <h3 class="ra-sector-name">{s.name}</h3>
-              <p class="ra-sector-row"><span>Looks like</span> {s.looks}</p>
-              <p class="ra-sector-row ra-bites"><span>Bites</span> {s.bites}</p>
-            </li>
-          ))}
-          <li class="ra-sector ra-center">
-            <span class="ra-sector-n">Center</span>
-            <h3 class="ra-sector-name">The Cornucopia</h3>
-            <p class="ra-sector-row">Everybody runs here first (see above).</p>
-          </li>
-          <li class="ra-sector ra-here">
-            <span class="ra-sector-n">You are here</span>
-            <h3 class="ra-sector-name">Launch platform 12</h3>
-            <p class="ra-sector-row">Mine's the one nearest the trees.</p>
-          </li>
-          <li class="ra-sector ra-unmapped">
-            <span class="ra-sector-n">Unmapped</span>
-            <h3 class="ra-sector-name">Your own arena</h3>
-            <p class="ra-sector-row">
-              Your data and your processes. Nobody can map this sector for you, including me (I'd be glad to help you
-              draw it, though, and <a href="/speaking/">the speaking page</a> is right there).
+  <!-- ================= THE DOORBUSTERS (pinned newsprint) ================= -->
+  <section class="db-circular" id="doorbusters" aria-labelledby="db-bust-title">
+    <div class="db-wrap">
+      <div class="db-circ-head">
+        <p class="db-eyebrow db-circ-eyebrow">This week's doorbusters</p>
+        <h2 class="db-h2 db-circ-h2" id="db-bust-title">6 AI deals, with the fine print enlarged</h2>
+        <p class="db-circ-deck">
+          None of these are real vendors or real prices, and every one of them will look familiar if you've opened your
+          inbox since September (if one of them looks exactly like an email you got last Tuesday, that's a coincidence,
+          and I'd still read the asterisk).
+        </p>
+      </div>
+      <ol class="db-busters">
+        {busters.map((b, i) => (
+          <li class="db-buster">
+            <span class="db-burst" aria-hidden="true">{pad(i + 1)}</span>
+            <h3 class="db-buster-name">{b.name}</h3>
+            <p class="db-buster-was">{b.was}</p>
+            <p class="db-buster-now">{b.now}<sup>*</sup> {b.unit && <span>{b.unit}</span>}</p>
+            <p class="db-buster-fine">
+              <span class="db-ast">*</span>{b.fine}
+              {b.link && <> <a href={b.link.href}>{b.link.text}</a>.</>}
             </p>
           </li>
-        </ol>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= THE EDGE ================= -->
-  <section class="ra-section ra-edge" id="edge" aria-labelledby="ra-edge-title">
-    <figure class="ra-wide">
-      <img src={`${IMG}/edge.jpg`} width="1600" height="893" loading="lazy" decoding="async"
-        alt="At the far side of a wildflower meadow by a pine forest, Edward in a grey jumpsuit and his blue fedora, with a pencil tucked behind his ear and a notebook in his other hand, touches a nearly invisible wall in the air with one fingertip. His reflection shows faintly in it, and the trees and hills beyond it repeat like a rendering glitch." />
-      <figcaption class="ra-wrap">Found it. It's about 40 feet past the last wildflower, and it feels like cold glass (I wrote that down).</figcaption>
-    </figure>
-    <div class="ra-wrap ra-edge-grid">
-      <div>
-        <p class="ra-eyebrow">The force field</p>
-        <h2 class="ra-h2" id="ra-edge-title">Where does your arena end?</h2>
-        <p class="ra-copy">
-          Every arena has an edge, and in a well-built one you can't see it, so most tributes only find it by running
-          into it at full speed. AI has one too: there's a line past which it stops knowing and starts guessing, it
-          doesn't put up a sign, and the answer on the far side of the line looks exactly like the answer on the near
-          side (see Sector 02).
-        </p>
-        <p class="ra-copy">
-          Back in 2008 I gave a presentation called Hacking Essbase, and I opened it by showing the audience just how weak
-          Essbase's native password authentication was. People were shocked and I was amused. Somebody asked if they
-          could have copies of my slides and I said, "Hell no" (if there's anything I know, it's how to minimize my
-          chances of being sued). I'd been working with Essbase for over a decade by then, I'd co-written books about it with Tracy McMullen, and a couple of years later I was teaching a class on what I called the undocumented, unsupported, void-your-warranty things, which I couldn't put in writing for fear of being sued (a recurring theme, apparently).
-        </p>
-        <p class="ra-copy">
-          The teams that seem to do well with AI find their edge on purpose, before they bet anything on it, and it's a
-          cheap afternoon. Roughly, it goes like the survey notes on the right.
-        </p>
-      </div>
-      <div class="ra-notes" aria-labelledby="ra-notes-title">
-        <p class="ra-notes-head" id="ra-notes-title">Survey notes: finding the edge</p>
-        <ol>
-          {survey.map((s) => <li>{s}</li>)}
-        </ol>
-        <p class="ra-notes-foot">Then build the process around whatever you wrote down in step 2.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= THE PACK ================= -->
-  <section class="ra-section ra-band" aria-labelledby="ra-pack-title">
-    <div class="ra-wrap">
-      <p class="ra-eyebrow">Supplies, packed</p>
-      <h2 class="ra-h2" id="ra-pack-title">What's in my pack</h2>
-      <p class="ra-copy">
-        The 6 things I'm actually carrying into the arena this year, packed in the order I'd grab them (the fedora
-        isn't on the list, because it doesn't come off).
+        ))}
+      </ol>
+      <p class="db-circ-foot">
+        Halloween was about AI that's secretly plain software (that page is <a href="/blog/is-the-ai-you-just-bought-wearing-a-costume/">over here</a>).
+        Everything in this aisle works, so this week I'm only asking what it costs.
       </p>
-      <ol class="ra-pack">
-        {projects.map((p, i) => (
-          <li class="ra-card ra-pack-item">
-            <div class="ra-pack-top">
-              <span class="ra-tag">Item {pad(i + 1)}</span>
-              <span class="ra-status">{p.status}</span>
+    </div>
+  </section>
+
+  <!-- ================= THE FINE PRINT ================= -->
+  <section class="db-section" id="fine-print" aria-labelledby="db-fine-title">
+    <div class="db-wrap db-fine-grid">
+      <figure class="db-photo db-tilt-l db-fine-photo">
+        <img src={`${IMG}/fine-print.jpg`} width="1600" height="1195" loading="lazy" decoding="async"
+          alt="Close up in a store aisle, Edward in his blue fedora holds a magnifying glass to one eye, which looks huge through the lens. Beside him hangs a long red price tag from a white box labeled AI: SOLD OUT crossed out, $9.99, SALE, and below that a long column of tiny fine print." />
+        <figcaption>The tag says SOLD OUT, crossed out, so it's either back in stock or it was never sold out. The fine print underneath is in Latin, as far as I can tell.</figcaption>
+      </figure>
+      <div>
+        <p class="db-eyebrow">Bring a magnifying glass</p>
+        <h2 class="db-h2" id="db-fine-title">What does it say under the asterisk?</h2>
+        <p class="db-copy">
+          These are the questions I'd ask before I signed anything this weekend, and none of them require a lawyer
+          (the lawyer comes later, and the lawyer is not on sale either).
+        </p>
+        <ol class="db-questions">
+          {questions.map((q) => <li>{q}</li>)}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE RECEIPT ================= -->
+  <section class="db-section db-band" aria-labelledby="db-rec-title">
+    <div class="db-wrap db-rec-grid">
+      <div class="db-rec-copy">
+        <p class="db-eyebrow">At the register</p>
+        <h2 class="db-h2" id="db-rec-title">Where's the sticker price on this receipt?</h2>
+        <p class="db-copy">
+          It's at the top, and it's the smallest line on it. In my 25 years running interRel, I had the best seat in the
+          house for this, long before anybody put AI on a banner: the software is the cheap part, and the expensive
+          part is getting it hooked up to your real data (after you clean that data up, because everybody's data needs
+          it, and everybody's surprised), and then the months it takes people to change how they work.
+        </p>
+        <p class="db-copy">
+          The dollar signs on the receipt are relative, by the way. I didn't want to make up numbers on a page about
+          made-up numbers (it seemed like a bad look, and I have exactly 1 magnifying glass).
+        </p>
+      </div>
+      <div class="db-rec-stack">
+        <div class="db-receipt" role="group" aria-label="Itemized receipt for an AI deal, in relative cost">
+          <p class="db-rec-store">ROSKE.AI GENERAL STORE<br />SAN JUAN, PR<br />11/27/2026 12:07 AM</p>
+          <p class="db-rec-rule" aria-hidden="true">--------------------------------</p>
+          {receipt.map((r) => (
+            <div class="db-rec-row">
+              <span>{r.item}</span>
+              <span>{r.amt}</span>
             </div>
-            <h3 class="ra-h3">{p.name}</h3>
+          ))}
+          <p class="db-rec-rule" aria-hidden="true">--------------------------------</p>
+          <div class="db-rec-row db-rec-total"><span>YOU SAVED</span><span>$0.00</span></div>
+          <p class="db-rec-rule" aria-hidden="true">--------------------------------</p>
+          <p class="db-rec-foot">ITEMS: 1 | CASHIER: AGENT 07<br />THANK YOU FOR SHOPPING<br />RETURNS: SEE BELOW</p>
+          <p class="db-rec-barcode" aria-hidden="true"></p>
+        </div>
+        <figure class="db-photo db-tilt-r db-rec-photo">
+          <img src={`${IMG}/receipt.jpg`} width="1195" height="1600" loading="lazy" decoding="async"
+            alt="Edward in his blue fedora and blue blazer stands at a store checkout reading a receipt that unrolls off the counter, across the floor, and out through the open front doors into the night. A small white box labeled AI sits on the counter." />
+          <figcaption>1 item. The receipt goes out the door and into the parking lot.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= YEAR-ROUND STOCK ================= -->
+  <section class="db-section" aria-labelledby="db-stock-title">
+    <div class="db-wrap">
+      <p class="db-eyebrow">Aisle 6</p>
+      <h2 class="db-h2" id="db-stock-title">Never on sale</h2>
+      <p class="db-copy">
+        The 6 things I'm actually working on this year, at regular price, which in most of these cases is free (the
+        fedora isn't for sale either, so please don't ask).
+      </p>
+      <ol class="db-stock">
+        {projects.map((p, i) => (
+          <li class="db-card db-stock-item">
+            <div class="db-stock-top">
+              <span class="db-sku">SKU {pad(i + 1)}</span>
+              <span class="db-status">{p.status}</span>
+            </div>
+            <h3 class="db-h3">{p.name}</h3>
             <p>{p.note}</p>
             {p.href ? (
-              <a class="ra-pack-link" href={p.href} {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
+              <a class="db-stock-link" href={p.href} {...(p.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                 {p.cta}<span aria-hidden="true"> &rarr;</span>
               </a>
             ) : (
-              <span class="ra-pack-nolink">{p.cta}</span>
+              <span class="db-stock-nolink">{p.cta}</span>
             )}
           </li>
         ))}
@@ -506,91 +413,85 @@ const pad = (n: number) => String(n).padStart(2, '0');
     </div>
   </section>
 
-  <!-- ================= SPONSOR GIFTS (pinned Capitol) ================= -->
-  <section class="ra-capitol" aria-labelledby="ra-spon-title">
-    <div class="ra-wrap ra-spon-grid">
-      <figure class="ra-photo ra-photo-tilt-l ra-spon-photo">
-        <img src={`${IMG}/parachute.jpg`} width="1195" height="1600" loading="lazy" decoding="async"
-          alt="In a dark pine forest at dusk, Edward in a muddy grey jumpsuit and his blue fedora stands with his arms folded, looking up with deep suspicion at a small silver parachute drifting down through a shaft of light. It carries a metal canister with a paper tag that reads FREE TRIAL." />
-        <figcaption>Arms folded until I know what's in the can.</figcaption>
+  <!-- ================= THE LAST BOX (blog teaser) ================= -->
+  <section class="db-section db-band" aria-labelledby="db-post-title">
+    <div class="db-wrap db-post-grid">
+      <figure class="db-photo db-tilt-r">
+        <img src={`${IMG}/last-box.jpg`} width="1600" height="1195" loading="lazy" decoding="async"
+          alt="In a store aisle with empty shelves and a yellow DOORBUSTER shelf tag, Edward in his blue fedora smiles politely while holding one end of a big white box printed AI. A pair of hands in grey winter gloves grips the other end from off-frame." />
+        <figcaption>The last box on the shelf. I'm being very polite about it, and I'm not letting go.</figcaption>
       </figure>
       <div>
-        <p class="ra-eyebrow ra-cap-eyebrow">Sponsor gifts</p>
-        <h2 class="ra-h2 ra-cap-h2" id="ra-spon-title">Something's falling out of the sky</h2>
-        <p class="ra-cap-copy">
-          In the arena, sponsors send gifts by silver parachute, and they always arrive at the most dramatic possible
-          moment with a note attached. In AI the parachutes never stop coming, and I'd open every one of them carefully
-          (I'm the one in the picture with his arms folded, waiting to see what's in the can before I touch it).
+        <p class="db-eyebrow">Today on the blog</p>
+        <h2 class="db-h2" id="db-post-title">Is that AI deal actually a deal?</h2>
+        <p class="db-copy">
+          I wrote the long version for anybody who has to sign an order form before the quarter ends, and it starts with
+          my own AI bill, which is a little embarrassing for a man who's spent this whole page lecturing you about fine
+          print.
         </p>
-        <ul class="ra-chutes">
-          {parachutes.map((c) => (
-            <li class="ra-chute">
-              <span class="ra-chute-tag">{c.tag}</span>
-              <p>{c.note}</p>
-            </li>
-          ))}
-          <li class="ra-chute ra-chute-me">
-            <span class="ra-chute-tag">A keynote from a man in a fedora</span>
-            <p>
-              From $15,000, and it comes with a note too: <a href="/speaking/">the speaking page</a>. Of everything
-              falling out of the sky on this page, it's the only one I'd vouch for, which, to be fair, is exactly what
-              every sponsor says.
-            </p>
-          </li>
-        </ul>
+        <div class="db-ctas">
+          <a class="db-btn db-btn-main" href={POST}>Read the post</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= THE INTERVIEW (blog teaser) ================= -->
-  <section class="ra-section ra-interview" aria-labelledby="ra-int-title">
-    <div class="ra-wrap ra-int-grid">
-      <div class="ra-int-copy">
-        <p class="ra-eyebrow">Tonight's interview</p>
-        <h2 class="ra-h2" id="ra-int-title">Who's actually trying to kill you in the AI race?</h2>
-        <p class="ra-copy">
-          Before the Games, every tribute sits on a velvet couch in front of the whole Capitol and gets asked about their
-          strategy. My stylist said "more," and the host never showed up, so I wrote my answer down instead. It's about
-          the time I opened every interRel webcast to my competitors, which plenty of people told me meant I was giving the whole company away (a fair number of my competitors' consultants called us for jobs later, so I've stopped minding).
+  <!-- ================= CYBER MONDAY ================= -->
+  <section class="db-section db-cyber" aria-labelledby="db-cyber-title">
+    <div class="db-wrap db-cyber-grid">
+      <div>
+        <p class="db-eyebrow">Coming Monday</p>
+        <h2 class="db-h2" id="db-cyber-title">Cyber Monday, 12:01 AM</h2>
+        <p class="db-copy">
+          Saturday is Small Business Saturday, and my business is 1 man and 10+ AI agents, so I'm counting it
+          (the agents haven't asked for the weekend off, which I'm told is unusual in retail). Then Monday it all moves
+          online, and the doorbusters come back as pop-ups with countdown timers, which is the same deal with a clock on
+          it. A countdown timer is mostly there to keep you from reading the fine print, so I'd read it anyway,
+          even if the clock runs out.
         </p>
-        <div class="ra-ctas">
-          <a class="ra-btn ra-btn-main" href={POST}>Read the interview</a>
-        </div>
       </div>
-      <figure class="ra-photo ra-photo-tilt-r">
-        <img src={`${IMG}/interview.jpg`} width="1600" height="1195" loading="lazy" decoding="async"
-          alt="On a gaudy television stage with gold columns, crystal chandeliers, and magenta and green curtains, Edward sits on a velvet sofa in an ornate gold brocade suit with enormous shoulders and a high collar, his blue fedora topped with a huge white ostrich feather. The gilded host's chair next to him is empty, and a studio audience in pastel gowns and towering wigs watches from behind." />
-        <figcaption>The host's chair has been empty since the 2nd commercial break.</figcaption>
+      <figure class="db-photo db-tilt-l">
+        <img src={`${IMG}/cyber-monday.jpg`} width="1600" height="1195" loading="lazy" decoding="async"
+          alt="At a dark kitchen table, Edward in red plaid pajamas and his blue fedora leans toward a laptop, one finger on the trackpad. The screen shows a countdown at 00:00:00 and the word REFRESHING. A mug of coffee and a slice of pumpkin pie with whipped cream sit beside the laptop." />
+        <figcaption>Pajamas, fedora, pie, and a refresh button. I'm aware this undercuts the paragraph next to it.</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- ================= ELSEWHERE ================= -->
   <WhatsNew
-    eyebrow="Elsewhere in the districts"
+    eyebrow="Also in this week's circular"
     heading="Seen <em>elsewhere.</em>"
-    deck="Interviews, press, and posts from around the web (the Capitol broadcasts everything, so I figured I'd broadcast this)."
+    deck="Interviews, press, and posts from around the web, at regular price."
   />
 
-  <!-- ================= VOLUNTEER ================= -->
-  <section class="ra-section ra-volunteer" aria-labelledby="ra-vol-title">
-    <div class="ra-wrap ra-vol-inner">
-      <p class="ra-eyebrow">No reaping required</p>
-      <h2 class="ra-h2 ra-vol-h2" id="ra-vol-title">I volunteer <span>(for 13 minutes)</span></h2>
-      <p class="ra-copy">
-        If you'd like a second pair of eyes on your arena before you run, I'd be glad to help you map it. Keynotes start
-        at $15,000, and the details are on the speaking page. If you'd rather just talk, I keep 13 minutes on my calendar for exactly that, and they're free! Or write me at Edward@Roske.AI, and I'm happy to look at your map, even if it's drawn on a napkin.
+  <!-- ================= RETURN POLICY + CTA ================= -->
+  <section class="db-section db-returns" aria-labelledby="db-ret-title">
+    <div class="db-wrap db-ret-inner">
+      <p class="db-eyebrow">Customer service desk</p>
+      <h2 class="db-h2 db-ret-h2" id="db-ret-title">Return policy <span>(please read before buying)</span></h2>
+      <p class="db-copy">
+        AI deals don't come with a gift receipt, and there's no line at Customer Service on Saturday morning where you
+        can hand the box back. Here's the good news, though: the expensive lines on that receipt (your data cleaned up
+        and your people actually working differently, plus whatever else the receipt said) are the ones you keep, even
+        if you switch vendors next year.
       </p>
-      <div class="ra-ctas">
-        <a class="ra-btn ra-btn-main" href="/speaking/">Book Edward</a>
-        <a class="ra-btn ra-btn-ghost" href={CAL} target="_blank" rel="noopener noreferrer">Volunteer for 13 minutes</a>
-        <a class="ra-btn ra-btn-ghost" href="/contact/">Write me</a>
+      <p class="db-copy">
+        If you'd like me to say all this to your whole leadership team at once (with slides, and fewer pictures of me
+        in a parking lot), keynotes start at $15,000 and the details are on the speaking page. If you'd rather just
+        talk it through, I keep 13 minutes on my calendar for exactly that, and they're free (I checked the fine print
+        myself)! Or write me (Edward@Roske.AI), Latin fine print welcome.
+      </p>
+      <div class="db-ctas">
+        <a class="db-btn db-btn-main" href="/speaking/">Book Edward</a>
+        <a class="db-btn db-btn-ghost" href={CAL} target="_blank" rel="noopener noreferrer">Take 13 free minutes</a>
+        <a class="db-btn db-btn-ghost" href="/contact/">Write me</a>
       </div>
-      <p class="ra-disclaimer">
-        Every image of Edward on this page is AI-generated from his real headshot (he has never worn a gold brocade suit
-        in public, and the feather was the stylist's idea). Nothing here is affiliated with The Hunger Games, Lionsgate,
-        Suzanne Collins, Scholastic, or anybody in the film, and nobody from the film appears on this page. No tributes
-        were harmed, and 1 clipboard was confiscated.
+      <p class="db-disclaimer">
+        Every image of Edward on this page is AI-generated from his real headshot (the frost and the pajamas were the
+        AI's idea, and he's still deciding how he feels about the pajamas). The stores, products, deals, and prices in this circular are made up,
+        and none of them belong to any real retailer or AI company. Prices good through Cyber Monday, and since this is
+        a website, until the whole store gets remodeled next Saturday.
       </p>
     </div>
   </section>
@@ -598,360 +499,366 @@ const pad = (n: number) => String(n).padStart(2, '0');
 
 <style is:global>
   /* =====================================================================
-     READ THE ARENA (2026-11-21)
-     Sunrise on the Reaping week. Light mode is the Capitol broadcast
-     (marble ivory, crimson, gold); dark mode is the arena at night (coal,
-     ember, force-field cyan).
+     DOORBUSTER (2026-11-27)
+     Black Friday. Light mode is the Thursday-night ad insert (newsprint,
+     price-tag red, sale-sticker yellow); dark mode is the parking lot at
+     11:58 PM (asphalt, sodium orange, the glowing storefront).
 
      THREE blocks are pinned and look the same in both modes, so every
-     color inside them is a literal: the Reaping (overcast district
-     stone), the arena map (night), and the sponsor gifts (gaudy Capitol
-     cream). Everything else reads the --ra-* vars, which flip.
+     color inside them is a literal: the line (parking lot at night), the
+     doorbusters (the paper circular), and the receipt (thermal paper).
+     Everything else reads the --db-* vars, which flip.
      Global on purpose: [data-theme] selectors are unreliable inside
-     Astro's scoped CSS. All classes ra-.
+     Astro's scoped CSS. All classes db-.
      ===================================================================== */
   :root,
   [data-theme="dark"] {
-    --ra-bg: #0d0f0c;
-    --ra-surface: #171a15;
-    --ra-band: #12150f;
-    --ra-ink: #ece6d6;
-    --ra-muted: #b3ad9c;
-    --ra-line: #2e3429;
-    --ra-accent: #f08a3c;
-    --ra-on-accent: #170c04;
-    --ra-second: #7fd3c4;
-    --ra-chyron: #8e1b2c;
-    --ra-texture: radial-gradient(ellipse at 80% 0%, rgba(240, 138, 60, 0.08) 0%, rgba(240, 138, 60, 0) 55%);
+    --db-bg: #0e1013;
+    --db-surface: #171a1f;
+    --db-band: #12151a;
+    --db-ink: #f1ecdf;
+    --db-muted: #b6afa2;
+    --db-line: #2c3038;
+    --db-accent: #ffb238;
+    --db-on-accent: #15110b;
+    --db-second: #ffd23f;
+    --db-red: #e5383b;
+    --db-texture: radial-gradient(ellipse at 85% 0%, rgba(255, 178, 56, 0.09) 0%, rgba(255, 178, 56, 0) 55%);
   }
   [data-theme="light"] {
-    --ra-bg: #f3efe4;
-    --ra-surface: #fcfaf4;
-    --ra-band: #e9e2d0;
-    --ra-ink: #1a1814;
-    --ra-muted: #5a5446;
-    --ra-line: #d5ccb5;
-    --ra-accent: #8e1b2c;
-    --ra-on-accent: #ffffff;
-    --ra-second: #7a5b0e;
-    --ra-chyron: #8e1b2c;
-    --ra-texture: repeating-linear-gradient(90deg, rgba(122, 91, 14, 0.035) 0 1px, transparent 1px 120px);
+    --db-bg: #f6f0e1;
+    --db-surface: #fffcf3;
+    --db-band: #ede4cf;
+    --db-ink: #1b1713;
+    --db-muted: #5a5045;
+    --db-line: #d9cdb3;
+    --db-accent: #c1121f;
+    --db-on-accent: #ffffff;
+    --db-second: #7a1220;
+    --db-red: #c1121f;
+    --db-texture: repeating-linear-gradient(0deg, rgba(27, 23, 19, 0.025) 0 1px, transparent 1px 4px);
   }
 
-  .ra-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; }
-  .ra-section { padding: 5.5rem 0; background: var(--ra-bg); color: var(--ra-ink); position: relative; }
-  .ra-section::before { content: ''; position: absolute; inset: 0; background: var(--ra-texture); pointer-events: none; }
-  .ra-band { background: var(--ra-band); }
+  .db-wrap { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; }
+  .db-section { padding: 5.5rem 0; background: var(--db-bg); color: var(--db-ink); position: relative; }
+  .db-section::before { content: ''; position: absolute; inset: 0; background: var(--db-texture); pointer-events: none; }
+  .db-band { background: var(--db-band); }
 
   /* ---------- type ---------- */
-  .ra-eyebrow {
+  .db-eyebrow {
     font-family: var(--font-mono);
-    font-size: 0.82rem;
-    font-weight: 600;
+    font-size: 0.86rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--ra-accent);
+    letter-spacing: 0.14em;
+    color: var(--db-accent);
     margin: 0 0 1rem;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 0.6rem;
   }
-  .ra-eyebrow::before { content: ''; width: 0.7rem; height: 0.7rem; background: currentColor; transform: rotate(45deg); display: inline-block; flex: none; }
-  .ra-h2 {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: clamp(2.4rem, 5.6vw, 4.4rem);
-    line-height: 0.95;
-    letter-spacing: 0.005em;
-    text-transform: uppercase;
-    margin: 0 0 1.5rem;
-    color: var(--ra-ink);
-    text-wrap: balance;
-  }
-  .ra-h3 {
+  .db-eyebrow::before { content: '*'; font-family: 'Bowlby One', var(--font-heading); font-size: 1.3rem; line-height: 1; }
+  .db-h2 {
     font-family: var(--font-heading);
     font-weight: 800;
-    font-size: 1.55rem;
-    line-height: 1.05;
-    text-transform: uppercase;
-    letter-spacing: 0.01em;
+    font-size: clamp(2.3rem, 5.4vw, 4.2rem);
+    line-height: 0.98;
+    letter-spacing: -0.02em;
+    margin: 0 0 1.5rem;
+    color: var(--db-ink);
+    text-wrap: balance;
+  }
+  .db-h3 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.45rem;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
     margin: 0.4rem 0 0.7rem;
-    color: var(--ra-ink);
+    color: var(--db-ink);
   }
-  .ra-copy { font-size: 1.08rem; line-height: 1.78; margin: 0 0 1.15rem; max-width: 66ch; }
-  .ra-copy a,
-  .ra-hero-copy a,
-  .ra-sector a,
-  .ra-chute a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-  .ra-copy a:hover,
-  .ra-hero-copy a:hover,
-  .ra-sector a:hover,
-  .ra-chute a:hover { text-decoration-thickness: 2px; }
-  .ra-tag {
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ra-accent);
-  }
+  .db-copy { font-size: 1.12rem; line-height: 1.75; margin: 0 0 1.15rem; max-width: 66ch; }
+  .db-copy a,
+  .db-prose a,
+  .db-buster-fine a,
+  .db-circ-foot a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .db-copy a:hover,
+  .db-prose a:hover,
+  .db-buster-fine a:hover,
+  .db-circ-foot a:hover { text-decoration-thickness: 2px; }
 
   /* ---------- buttons ---------- */
-  .ra-ctas { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.8rem; }
-  .ra-btn {
+  .db-ctas { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.8rem; }
+  .db-btn {
     display: inline-flex;
     align-items: center;
-    font-family: var(--font-mono);
-    font-size: 0.86rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.95rem 1.4rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    padding: 0.9rem 1.4rem;
     text-decoration: none;
-    border: 2px solid var(--ra-accent);
+    border: 3px solid var(--db-accent);
+    border-radius: 999px;
     transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
   }
-  .ra-btn:hover { transform: translateY(-2px); }
-  .ra-btn-main { background: var(--ra-accent); color: var(--ra-on-accent); }
-  .ra-btn-ghost { background: transparent; color: var(--ra-ink); border-color: var(--ra-ink); }
-  .ra-btn-ghost:hover { border-color: var(--ra-accent); color: var(--ra-accent); }
-  .ra-btn:focus-visible,
-  .ra-pack-link:focus-visible { outline: 3px solid var(--ra-second); outline-offset: 3px; }
+  .db-btn:hover { transform: translateY(-2px) rotate(-1deg); }
+  .db-btn-main { background: var(--db-accent); color: var(--db-on-accent); }
+  .db-btn-ghost { background: transparent; color: var(--db-ink); border-color: var(--db-ink); }
+  .db-btn-ghost:hover { border-color: var(--db-accent); color: var(--db-accent); }
+  .db-btn:focus-visible,
+  .db-stock-link:focus-visible,
+  .db-circular a:focus-visible { outline: 3px solid var(--db-second); outline-offset: 3px; }
 
-  /* ---------- chyron ---------- */
-  .ra-chyron { background: var(--ra-chyron); color: #fff; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; }
-  .ra-chyron-inner { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; align-items: center; padding-top: 0.55rem; padding-bottom: 0.55rem; }
-  .ra-live { background: #fff; color: #8e1b2c; font-weight: 600; padding: 0.1rem 0.5rem; }
-  @media (max-width: 760px) { .ra-chyron-hide { display: none; } }
+  /* ---------- masthead strip ---------- */
+  .db-strip { background: #c1121f; color: #fff; font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .db-strip-inner { display: flex; flex-wrap: wrap; gap: 0.4rem 1.6rem; align-items: center; padding-top: 0.55rem; padding-bottom: 0.55rem; }
+  .db-strip-tag { background: #ffd23f; color: #15110b; padding: 0.1rem 0.55rem; }
+  @media (max-width: 760px) { .db-strip-hide { display: none; } }
 
   /* ---------- hero ---------- */
-  .ra-hero { background: var(--ra-bg); color: var(--ra-ink); padding-bottom: 4.5rem; position: relative; }
-  .ra-cam { position: relative; margin: 0; background: #0d0f0c; }
-  .ra-cam-img { display: block; width: 100%; height: min(78vh, 56vw); min-height: 320px; object-fit: cover; object-position: 60% 40%; }
-  .ra-cam-chrome { position: absolute; top: 1.1rem; left: 1.2rem; right: 1.2rem; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #fff; text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); pointer-events: none; }
-  .ra-cam-chrome span { background: rgba(13, 15, 12, 0.55); padding: 0.25rem 0.55rem; }
-  .ra-cam-rec::before { content: ''; display: inline-block; width: 0.6rem; height: 0.6rem; border-radius: 50%; background: #e0352b; margin-right: 0.45rem; vertical-align: 0.05rem; }
-  .ra-lower {
-    position: absolute;
-    left: clamp(1rem, 4vw, 3rem);
-    bottom: clamp(5.5rem, 12vw, 9rem);
-    display: flex;
-    flex-direction: column;
-    max-width: 30rem;
-    font-family: var(--font-mono);
-    text-transform: uppercase;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  }
-  .ra-lower-name { background: #8e1b2c; color: #fff; font-weight: 600; font-size: 0.82rem; letter-spacing: 0.12em; padding: 0.55rem 0.9rem; }
-  .ra-lower-note { background: rgba(13, 15, 12, 0.88); color: #ece6d6; font-size: 0.72rem; letter-spacing: 0.08em; padding: 0.5rem 0.9rem; }
-  .ra-hero-card {
-    position: relative;
-    margin-top: clamp(-5rem, -8vw, -3rem);
-    background: var(--ra-surface);
-    border: 1px solid var(--ra-line);
-    border-top: 6px solid var(--ra-accent);
-    padding: clamp(1.6rem, 4vw, 3.2rem);
-    max-width: 920px;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
-  }
-  .ra-kicker { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ra-accent); margin: 0 0 0.6rem; }
-  .ra-title {
-    font-family: var(--font-heading);
-    font-weight: 900;
-    font-size: clamp(3.6rem, 11vw, 8.6rem);
+  .db-hero { background: var(--db-bg); color: var(--db-ink); padding: 4rem 0 5rem; position: relative; overflow: hidden; }
+  .db-hero::before { content: ''; position: absolute; inset: 0; background: var(--db-texture); pointer-events: none; }
+  .db-hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  .db-kicker { font-family: var(--font-mono); font-size: 0.84rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--db-accent); margin: 0 0 0.7rem; }
+  .db-title {
+    font-family: 'Bowlby One', var(--font-heading);
+    font-weight: 400;
+    font-size: clamp(3.8rem, 10.5vw, 8.4rem);
     line-height: 0.86;
+    letter-spacing: -0.01em;
     text-transform: uppercase;
     margin: 0 0 1.4rem;
-    color: var(--ra-ink);
+    color: var(--db-ink);
   }
-  .ra-title span { color: var(--ra-accent); display: block; }
-  .ra-pull { font-family: 'Cinzel', var(--font-body); font-weight: 600; font-size: clamp(1.15rem, 2.2vw, 1.45rem); line-height: 1.45; margin: 0 0 1.6rem; color: var(--ra-ink); border-left: 3px solid var(--ra-second); padding-left: 1rem; }
-  .ra-hero-copy p { font-size: 1.08rem; line-height: 1.78; margin: 0 0 1.1rem; max-width: 68ch; }
+  .db-title span { display: block; color: var(--db-accent); transform: rotate(-2deg); transform-origin: left; }
+  .db-pull { font-family: var(--font-body); font-style: italic; font-size: clamp(1.2rem, 2.2vw, 1.5rem); line-height: 1.45; margin: 0 0 1.6rem; color: var(--db-ink); border-left: 5px solid var(--db-second); padding-left: 1rem; }
+  .db-prose p { font-size: 1.1rem; line-height: 1.75; margin: 0 0 1.1rem; max-width: 66ch; }
+  .db-hero-art { position: relative; padding-bottom: 13.5rem; }
+  .db-hero-photo { margin: 0; background: #fffcf3; padding: 0.7rem 0.7rem 0; box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35); transform: rotate(1.4deg); border: 1px solid rgba(0, 0, 0, 0.12); }
+  .db-hero-photo img { display: block; width: 100%; height: auto; }
+  .db-hero-photo figcaption { font-family: var(--font-mono); font-size: 0.8rem; color: #3a332b; padding: 0.7rem 0.2rem 0.85rem; }
+  .db-tag {
+    position: absolute;
+    right: clamp(0rem, 2vw, 1.5rem);
+    bottom: 0;
+    width: min(19rem, 82%);
+    background: #c1121f;
+    color: #fff;
+    padding: 2.2rem 1.4rem 1.3rem;
+    clip-path: polygon(14% 0, 86% 0, 100% 9%, 100% 100%, 0 100%, 0 9%);
+    transform: rotate(-4deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.3));
+  }
+  .db-tag-hole { position: absolute; top: 0.7rem; left: 50%; width: 0.9rem; height: 0.9rem; margin-left: -0.45rem; border-radius: 50%; background: var(--db-bg); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.5); }
+  .db-tag-label { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #fff1a8; }
+  .db-tag-was { font-family: var(--font-mono); font-size: 0.95rem; }
+  .db-tag-was s { text-decoration: none; position: relative; }
+  .db-tag-was s::after {
+    content: '';
+    position: absolute;
+    left: -4%;
+    top: 52%;
+    width: 108%;
+    height: 3px;
+    background: #ffd23f;
+    transform: rotate(-8deg) scaleX(0);
+    transform-origin: left center;
+    animation: db-slash 0.45s cubic-bezier(0.6, 0, 0.3, 1) 0.9s forwards;
+  }
+  @keyframes db-slash { to { transform: rotate(-8deg) scaleX(1); } }
+  @media (prefers-reduced-motion: reduce) { .db-tag-was s::after { animation: none; transform: rotate(-8deg) scaleX(1); } }
+  .db-tag-now { font-family: 'Bowlby One', var(--font-heading); font-size: clamp(2.3rem, 4.4vw, 3rem); line-height: 1; }
+  .db-tag-now sup { font-size: 0.5em; color: #ffd23f; }
+  .db-tag-fine { font-family: var(--font-mono); font-size: 0.7rem; line-height: 1.45; color: #ffe7e8; margin-top: 0.4rem; }
+  @media (max-width: 960px) {
+    .db-hero-grid { grid-template-columns: 1fr; }
+    .db-hero-art { order: -1; padding-bottom: 0; }
+    .db-tag { position: relative; right: auto; bottom: auto; margin: 1.2rem 0 0 auto; }
+  }
 
   /* ---------- stats ---------- */
-  .ra-stats-wrap { background: var(--ra-band); border-top: 1px solid var(--ra-line); border-bottom: 1px solid var(--ra-line); padding: 2.2rem 0; color: var(--ra-ink); }
-  .ra-stats-label { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ra-muted); margin: 0 0 1rem; }
-  .ra-stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-  .ra-stats li { display: flex; flex-direction: column; border-left: 3px solid var(--ra-accent); padding-left: 0.9rem; }
-  .ra-stat-v { font-family: var(--font-heading); font-weight: 900; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1; }
-  .ra-stat-k { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ra-muted); margin-top: 0.35rem; }
-  @media (max-width: 700px) { .ra-stats { grid-template-columns: repeat(2, 1fr); } }
+  .db-stats-wrap { background: var(--db-band); border-top: 3px dashed var(--db-line); border-bottom: 3px dashed var(--db-line); padding: 2.2rem 0 1.4rem; color: var(--db-ink); }
+  .db-stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .db-stats li { display: flex; flex-direction: column; }
+  .db-stat-v { font-family: 'Bowlby One', var(--font-heading); font-size: clamp(2.3rem, 4.8vw, 3.4rem); line-height: 1; color: var(--db-accent); }
+  .db-stat-k { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--db-muted); margin-top: 0.35rem; }
+  .db-stats-note { font-family: var(--font-mono); font-size: 0.76rem; color: var(--db-muted); margin: 1.2rem 0 0; }
+  @media (max-width: 700px) { .db-stats { grid-template-columns: repeat(2, 1fr); } }
 
   /* ---------- photos ---------- */
-  .ra-photo { margin: 0; background: #fcfaf4; padding: 0.7rem 0.7rem 0; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28); border: 1px solid rgba(0, 0, 0, 0.12); }
-  .ra-photo img { display: block; width: 100%; height: auto; }
-  .ra-photo figcaption { font-family: var(--font-mono); font-size: 0.76rem; line-height: 1.55; color: #3c372d; padding: 0.75rem 0.2rem 0.9rem; }
-  .ra-photo-tilt-l { transform: rotate(-1.2deg); }
-  .ra-photo-tilt-r { transform: rotate(1.2deg); }
+  .db-photo { margin: 0; background: #fffcf3; padding: 0.7rem 0.7rem 0; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28); border: 1px solid rgba(0, 0, 0, 0.12); }
+  .db-photo img { display: block; width: 100%; height: auto; }
+  .db-photo figcaption { font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.55; color: #3a332b; padding: 0.75rem 0.2rem 0.9rem; }
+  .db-tilt-l { transform: rotate(-1.2deg); }
+  .db-tilt-r { transform: rotate(1.2deg); }
 
-  /* ---------- the reaping (pinned district stone) ---------- */
-  .ra-reaping { background: #dcdad3; color: #1c1d1e; }
-  .ra-reaping::before { background: repeating-linear-gradient(0deg, rgba(28, 29, 30, 0.03) 0 2px, transparent 2px 6px); }
-  .ra-reaping .ra-eyebrow { color: #8e1b2c; }
-  .ra-reaping .ra-h2 { color: #1c1d1e; }
-  .ra-reap-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
-  .ra-bowl { margin-top: 2rem; border: 2px solid #1c1d1e; padding: 1.3rem; background: #e8e6df; }
-  .ra-bowl-label { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 1rem; color: #45474a; }
-  .ra-slips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
-  .ra-slip { font-family: 'Cinzel', serif; font-weight: 600; font-size: 0.92rem; background: #f7f3e8; color: #1c1d1e; padding: 0.45rem 0.8rem; border: 1px solid #b9b3a2; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12); transform: rotate(var(--r, 0deg)); }
-  .ra-slip-you { background: #8e1b2c; color: #fff; border-color: #8e1b2c; font-size: 1.05rem; }
-  .ra-slip-you span { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 400; }
-  @media (max-width: 900px) { .ra-reap-grid { grid-template-columns: 1fr; } }
-
-  /* ---------- tribute profile ---------- */
-  .ra-prof-grid { display: grid; grid-template-columns: 1.3fr 0.9fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
-  .ra-card { background: var(--ra-surface); border: 1px solid var(--ra-line); padding: 1.5rem; color: var(--ra-ink); }
-  .ra-dossier { border-left: 6px solid var(--ra-accent); margin-bottom: 1.8rem; }
-  .ra-dossier dl { margin: 0; }
-  .ra-dl-row { display: grid; grid-template-columns: 11rem 1fr; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px dashed var(--ra-line); }
-  .ra-dl-row:last-child { border-bottom: 0; }
-  .ra-dl-row dt { font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ra-muted); padding-top: 0.2rem; }
-  .ra-dl-row dd { margin: 0; line-height: 1.6; }
-  .ra-score { display: inline-flex; gap: 4px; vertical-align: middle; margin-right: 0.8rem; }
-  .ra-score span { width: 14px; height: 22px; border: 2px solid var(--ra-muted); }
-  .ra-score span.on { background: var(--ra-accent); border-color: var(--ra-accent); }
-  .ra-score-num { font-family: var(--font-heading); font-weight: 900; font-size: 1.6rem; vertical-align: middle; }
-  .ra-hand { font-style: italic; }
-  .ra-prof-photo { max-width: 440px; justify-self: center; }
-  @media (max-width: 900px) {
-    .ra-prof-grid { grid-template-columns: 1fr; }
-    .ra-dl-row { grid-template-columns: 1fr; gap: 0.2rem; }
-  }
-
-  /* ---------- cornucopia ---------- */
-  .ra-horn-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; margin-bottom: 3rem; }
-  .ra-horn { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-  .ra-horn .ra-card { border-top: 4px solid var(--ra-second); }
-  .ra-horn p { margin: 0; line-height: 1.65; font-size: 0.98rem; }
-  .ra-fine { font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ra-muted); }
-  @media (max-width: 1000px) { .ra-horn { grid-template-columns: repeat(2, 1fr); } .ra-horn-top { grid-template-columns: 1fr; } }
-  @media (max-width: 560px) { .ra-horn { grid-template-columns: 1fr; } }
-
-  /* ---------- arena map (pinned night) ---------- */
-  .ra-map {
+  /* ---------- the line (pinned parking lot) ---------- */
+  .db-lot {
     background:
-      radial-gradient(ellipse at 50% 50%, rgba(127, 211, 196, 0.07) 0%, rgba(127, 211, 196, 0) 60%),
-      repeating-radial-gradient(circle at 50% 55%, rgba(230, 239, 230, 0.035) 0 1px, transparent 1px 38px),
-      #0a110d;
-    color: #e6efe6;
+      radial-gradient(ellipse at 50% -10%, rgba(255, 178, 56, 0.22) 0%, rgba(255, 178, 56, 0) 55%),
+      repeating-linear-gradient(90deg, transparent 0 220px, rgba(255, 255, 255, 0.06) 220px 226px, transparent 226px 440px),
+      #0c0e11;
+    color: #f1ecdf;
     padding: 6rem 0;
     position: relative;
   }
-  .ra-map-eyebrow { color: #f08a3c; }
-  .ra-map-h2 { color: #e6efe6; }
-  .ra-map-deck { color: #a9b8ab; font-size: 1.08rem; line-height: 1.75; max-width: 66ch; margin: 0 0 3rem; }
-  .ra-field { position: relative; padding: clamp(1rem, 3vw, 2.2rem); border: 2px dashed rgba(127, 211, 196, 0.75); box-shadow: 0 0 0 6px rgba(127, 211, 196, 0.06), inset 0 0 40px rgba(127, 211, 196, 0.08); animation: ra-shimmer 4.5s ease-in-out infinite; }
-  .ra-field-label { position: absolute; top: -0.75rem; right: 1.5rem; background: #0a110d; color: #7fd3c4; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; padding: 0 0.6rem; }
-  @keyframes ra-shimmer {
-    0%, 100% { border-color: rgba(127, 211, 196, 0.75); box-shadow: 0 0 0 6px rgba(127, 211, 196, 0.06), inset 0 0 40px rgba(127, 211, 196, 0.08); }
-    50% { border-color: rgba(127, 211, 196, 0.35); box-shadow: 0 0 0 10px rgba(127, 211, 196, 0.1), inset 0 0 60px rgba(127, 211, 196, 0.14); }
+  .db-lot-eyebrow { color: #ffb238; }
+  .db-lot-h2 { color: #f1ecdf; }
+  .db-lot-deck { color: #c9c2b4; font-size: 1.1rem; line-height: 1.75; max-width: 70ch; margin: 0 0 3rem; }
+  .db-timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 0.8fr 1fr; grid-template-areas: "a b" "a c"; gap: 1.6rem 2rem; }
+  .db-shot:nth-child(1) { grid-area: a; }
+  .db-shot:nth-child(2) { grid-area: b; }
+  .db-shot:nth-child(3) { grid-area: c; }
+  .db-shot { position: relative; }
+  .db-shot figure { margin: 0; background: #fffcf3; padding: 0.6rem 0.6rem 0; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.55); }
+  .db-shot img { display: block; width: 100%; height: auto; }
+  .db-shot figcaption { font-family: var(--font-mono); font-size: 0.8rem; line-height: 1.55; color: #3a332b; padding: 0.7rem 0.2rem 0.85rem; }
+  .db-shot:nth-child(1) figure { transform: rotate(-1.5deg); }
+  .db-shot:nth-child(2) figure { transform: rotate(1deg); }
+  .db-shot:nth-child(3) figure { transform: rotate(-0.6deg); }
+  .db-time {
+    position: absolute;
+    top: -0.9rem;
+    left: 1rem;
+    z-index: 2;
+    background: #ffd23f;
+    color: #15110b;
+    font-family: 'Bowlby One', var(--font-heading);
+    font-size: 1.1rem;
+    padding: 0.25rem 0.7rem;
+    transform: rotate(-3deg);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
   }
-  @media (prefers-reduced-motion: reduce) { .ra-field { animation: none; } }
-  .ra-grid {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-      "s1 s2 s3"
-      "s4 c  s5"
-      "s6 h  u";
-    gap: 1rem;
-  }
-  .ra-s1 { grid-area: s1; } .ra-s2 { grid-area: s2; } .ra-s3 { grid-area: s3; }
-  .ra-s4 { grid-area: s4; } .ra-s5 { grid-area: s5; } .ra-s6 { grid-area: s6; }
-  .ra-center { grid-area: c; } .ra-here { grid-area: h; } .ra-unmapped { grid-area: u; }
-  .ra-sector { background: #121c16; border: 1px solid #2a3a2f; padding: 1.3rem; color: #e6efe6; }
-  .ra-sector-n { font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #7fd3c4; }
-  .ra-sector-name { font-family: var(--font-heading); font-weight: 800; font-size: 1.6rem; text-transform: uppercase; line-height: 1; margin: 0.45rem 0 0.8rem; color: #e6efe6; }
-  .ra-sector-row { margin: 0 0 0.6rem; line-height: 1.6; font-size: 0.96rem; color: #c9d6cb; }
-  .ra-sector-row span { display: block; font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #a9b8ab; }
-  .ra-bites span { color: #f08a3c; }
-  .ra-center { background: radial-gradient(circle at 50% 40%, rgba(212, 175, 55, 0.22), rgba(212, 175, 55, 0.04) 70%), #121c16; border-color: #b8952f; text-align: center; display: flex; flex-direction: column; justify-content: center; }
-  .ra-center .ra-sector-n { color: #e3c35a; }
-  .ra-center .ra-sector-name { font-size: 2.1rem; color: #f2dc8e; }
-  .ra-here { border-style: dashed; border-color: #f08a3c; }
-  .ra-here .ra-sector-n { color: #f08a3c; }
-  .ra-unmapped { background: transparent; border-style: dashed; border-color: #556b5c; }
-  .ra-unmapped a { color: #7fd3c4; }
-  @media (max-width: 900px) {
-    .ra-grid { grid-template-columns: 1fr 1fr; grid-template-areas: "c c" "s1 s2" "s3 s4" "s5 s6" "h u"; }
-  }
-  @media (max-width: 560px) {
-    .ra-grid { grid-template-columns: 1fr; grid-template-areas: "c" "s1" "s2" "s3" "s4" "s5" "s6" "h" "u"; }
-  }
+  @media (max-width: 860px) { .db-timeline { grid-template-columns: 1fr; grid-template-areas: "a" "b" "c"; } }
 
-  /* ---------- the edge ---------- */
-  .ra-edge { padding-top: 0; }
-  .ra-wide { margin: 0 0 4rem; position: relative; }
-  .ra-wide img { display: block; width: 100%; height: min(62vh, 50vw); min-height: 260px; object-fit: cover; object-position: 70% 40%; }
-  .ra-wide figcaption { font-family: var(--font-mono); font-size: 0.78rem; color: var(--ra-muted); padding-top: 0.9rem; padding-bottom: 0.2rem; }
-  .ra-edge-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
-  .ra-notes {
-    background: #f7f3e8;
-    color: #22201b;
-    padding: 1.8rem 1.8rem 1.4rem;
-    border: 1px solid #cfc6af;
-    background-image: repeating-linear-gradient(0deg, transparent 0 31px, rgba(31, 56, 100, 0.16) 31px 32px);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22);
-    transform: rotate(0.8deg);
-    position: sticky;
-    top: 6rem;
-  }
-  .ra-notes-head { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #8e1b2c; margin: 0 0 1rem; }
-  .ra-notes ol { margin: 0; padding-left: 1.4rem; }
-  .ra-notes li { line-height: 1.7; margin: 0 0 0.85rem; font-size: 1.02rem; }
-  .ra-notes li::marker { font-family: var(--font-heading); font-weight: 900; color: #8e1b2c; }
-  .ra-notes-foot { font-style: italic; margin: 0.6rem 0 0; color: #4a4538; }
-  @media (max-width: 900px) { .ra-edge-grid { grid-template-columns: 1fr; } .ra-notes { position: static; } }
-
-  /* ---------- the pack ---------- */
-  .ra-pack { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .ra-pack-item { display: flex; flex-direction: column; position: relative; }
-  .ra-pack-item::after { content: ''; position: absolute; top: -1px; right: -1px; width: 26px; height: 26px; background: linear-gradient(225deg, var(--ra-band) 50%, var(--ra-line) 50%); }
-  .ra-pack-top { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; padding-right: 1.4rem; }
-  .ra-pack-top .ra-tag { white-space: nowrap; }
-  .ra-status { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ra-muted); text-align: right; }
-  .ra-pack-item p { margin: 0 0 1.2rem; line-height: 1.65; font-size: 0.98rem; flex: 1; }
-  .ra-pack-link { font-family: var(--font-mono); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ra-accent); text-decoration: underline; text-underline-offset: 3px; }
-  .ra-pack-nolink { font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.04em; color: var(--ra-muted); }
-  @media (max-width: 1000px) { .ra-pack { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 620px) { .ra-pack { grid-template-columns: 1fr; } }
-
-  /* ---------- sponsor gifts (pinned Capitol) ---------- */
-  .ra-capitol {
+  /* ---------- the doorbusters (pinned newsprint) ---------- */
+  .db-circular {
     background:
-      repeating-linear-gradient(90deg, rgba(122, 91, 14, 0.06) 0 2px, transparent 2px 140px),
-      linear-gradient(180deg, #f6ebd2 0%, #f1e2c2 100%);
-    color: #2a1a0e;
+      repeating-linear-gradient(0deg, rgba(27, 23, 19, 0.03) 0 1px, transparent 1px 4px),
+      #f6f0e1;
+    color: #1b1713;
     padding: 6rem 0;
-    border-top: 6px double #b8952f;
-    border-bottom: 6px double #b8952f;
+    border-top: 10px solid #c1121f;
+    border-bottom: 10px solid #c1121f;
   }
-  .ra-spon-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
-  .ra-spon-photo { max-width: 420px; }
-  .ra-cap-eyebrow { color: #8e1b2c; }
-  .ra-cap-h2 { color: #2a1a0e; font-family: 'Cinzel', serif; font-weight: 700; text-transform: none; font-size: clamp(2.1rem, 4.6vw, 3.6rem); line-height: 1.08; }
-  .ra-cap-copy { font-size: 1.08rem; line-height: 1.78; max-width: 62ch; margin: 0 0 2rem; }
-  .ra-chutes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  .ra-chute { background: #fffaf0; border: 1px solid #d8c393; padding: 1.2rem 1.2rem 1.2rem 1.2rem; position: relative; box-shadow: 0 6px 16px rgba(122, 91, 14, 0.12); }
-  .ra-chute::before { content: ''; position: absolute; top: -12px; left: 1.2rem; width: 46px; height: 23px; border-radius: 46px 46px 0 0; background: linear-gradient(180deg, #e7e9ec, #a9afb7); border: 1px solid #8d939b; }
-  .ra-chute-tag { display: block; font-family: var(--font-mono); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #7a5b0e; margin: 0.3rem 0 0.5rem; }
-  .ra-chute p { margin: 0; line-height: 1.65; font-size: 0.98rem; color: #2a1a0e; }
-  .ra-chute-me { background: #8e1b2c; border-color: #8e1b2c; }
-  .ra-chute-me .ra-chute-tag { color: #f6dc9a; }
-  .ra-chute-me p, .ra-chute-me a { color: #fff; }
-  @media (max-width: 900px) { .ra-spon-grid { grid-template-columns: 1fr; } }
-  @media (max-width: 560px) { .ra-chutes { grid-template-columns: 1fr; } }
+  .db-circ-head { max-width: 760px; margin-bottom: 3rem; }
+  .db-circ-eyebrow { color: #c1121f; }
+  .db-circ-h2 { color: #1b1713; }
+  .db-circ-deck { font-size: 1.1rem; line-height: 1.75; color: #3d352c; margin: 0; }
+  .db-busters { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 2px solid #1b1713; }
+  .db-buster { position: relative; padding: 2.2rem 1.5rem 1.6rem; border: 1px dashed #8f8170; background: #fffcf3; display: flex; flex-direction: column; }
+  .db-buster:nth-child(2), .db-buster:nth-child(4), .db-buster:nth-child(6) { background: #fff6cc; }
+  .db-burst {
+    position: absolute;
+    top: -0.2rem;
+    right: 0.6rem;
+    width: 3.6rem;
+    height: 3.6rem;
+    display: grid;
+    place-items: center;
+    background: #c1121f;
+    color: #fff;
+    font-family: 'Bowlby One', var(--font-heading);
+    font-size: 1rem;
+    clip-path: polygon(50% 0%, 61% 15%, 79% 9%, 79% 27%, 97% 31%, 87% 46%, 100% 59%, 83% 66%, 86% 84%, 68% 82%, 59% 98%, 47% 86%, 32% 97%, 27% 80%, 9% 81%, 14% 64%, 0% 54%, 14% 43%, 6% 27%, 23% 25%, 25% 8%, 41% 14%);
+    transform: rotate(8deg);
+  }
+  .db-buster-name { font-family: var(--font-heading); font-weight: 800; font-size: 1.5rem; line-height: 1.05; margin: 0 4rem 0.5rem 0; color: #1b1713; }
+  .db-buster-was { font-family: var(--font-mono); font-size: 0.9rem; color: #5a5045; margin: 0 0 0.3rem; text-decoration: line-through; text-decoration-color: #c1121f; text-decoration-thickness: 2px; }
+  .db-buster-now { font-family: 'Bowlby One', var(--font-heading); font-size: clamp(2.4rem, 4vw, 3.1rem); line-height: 1; color: #c1121f; margin: 0 0 1rem; }
+  .db-buster-now sup { font-size: 0.45em; color: #1b1713; }
+  .db-buster-now span { display: block; font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #5a5045; margin-top: 0.4rem; }
+  .db-buster-fine { font-family: var(--font-mono); font-size: 0.86rem; line-height: 1.6; color: #2b251f; margin: auto 0 0; padding-top: 0.9rem; border-top: 1px solid #d9cdb3; }
+  .db-ast { color: #c1121f; font-weight: 700; margin-right: 0.15rem; }
+  .db-buster-fine a { color: #c1121f; font-weight: 700; }
+  .db-circ-foot { font-size: 1.05rem; line-height: 1.7; color: #3d352c; margin: 2rem 0 0; max-width: 70ch; }
+  .db-circ-foot a { color: #c1121f; font-weight: 600; }
+  @media (max-width: 960px) { .db-busters { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .db-busters { grid-template-columns: 1fr; } }
 
-  /* ---------- interview ---------- */
-  .ra-int-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
-  @media (max-width: 900px) { .ra-int-grid { grid-template-columns: 1fr; } }
+  /* ---------- fine print ---------- */
+  .db-fine-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .db-fine-photo { position: sticky; top: 6rem; }
+  .db-questions { margin: 1.6rem 0 0; padding: 0; list-style: none; counter-reset: q; }
+  .db-questions li {
+    counter-increment: q;
+    position: relative;
+    padding: 1rem 0 1rem 3.6rem;
+    border-top: 2px dashed var(--db-line);
+    font-size: 1.06rem;
+    line-height: 1.68;
+  }
+  .db-questions li:last-child { border-bottom: 2px dashed var(--db-line); }
+  .db-questions li::before {
+    content: counter(q);
+    position: absolute;
+    left: 0;
+    top: 0.95rem;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--db-accent);
+    color: var(--db-on-accent);
+    font-family: 'Bowlby One', var(--font-heading);
+    font-size: 1rem;
+  }
+  @media (max-width: 900px) { .db-fine-grid { grid-template-columns: 1fr; } .db-fine-photo { position: static; } }
 
-  /* ---------- volunteer ---------- */
-  .ra-volunteer { background: var(--ra-band); border-top: 6px solid var(--ra-accent); }
-  .ra-vol-inner { max-width: 880px; }
-  .ra-vol-h2 span { color: var(--ra-accent); display: block; font-size: 0.55em; }
-  .ra-disclaimer { margin: 3rem 0 0; font-size: 0.9rem; line-height: 1.68; color: var(--ra-muted); border-top: 1px solid var(--ra-line); padding-top: 1.4rem; max-width: 80ch; }
+  /* ---------- receipt (pinned thermal paper) ---------- */
+  .db-rec-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .db-rec-stack { position: relative; display: grid; grid-template-columns: 1fr 0.85fr; gap: 1.4rem; align-items: start; }
+  .db-receipt {
+    background: #fdfcf8;
+    color: #222;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    line-height: 1.5;
+    padding: 1.6rem 1.2rem 1.4rem;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
+    transform: rotate(-1.5deg);
+    -webkit-mask: radial-gradient(circle 6px at 50% 100%, transparent 98%, #000) 0 0 / 14px 100% repeat-x;
+    mask: radial-gradient(circle 6px at 50% 100%, transparent 98%, #000) 0 0 / 14px 100% repeat-x;
+  }
+  .db-rec-store { text-align: center; font-weight: 700; margin: 0; }
+  .db-rec-rule { margin: 0.5rem 0; overflow: hidden; white-space: nowrap; color: #666; }
+  .db-rec-row { display: flex; justify-content: space-between; gap: 0.8rem; padding: 0.15rem 0; }
+  .db-rec-row span:first-child { flex: 1; }
+  .db-rec-row span:last-child { white-space: nowrap; font-weight: 700; }
+  .db-rec-total { font-size: 1rem; font-weight: 700; }
+  .db-rec-foot { text-align: center; margin: 0.4rem 0 0.8rem; }
+  .db-rec-barcode { height: 2.4rem; margin: 0 1rem; background: repeating-linear-gradient(90deg, #222 0 2px, transparent 2px 4px, #222 4px 5px, transparent 5px 8px, #222 8px 11px, transparent 11px 12px); }
+  .db-rec-photo { margin-top: 3rem; }
+  @media (max-width: 960px) { .db-rec-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .db-rec-stack { grid-template-columns: 1fr; } .db-rec-photo { margin-top: 0; } }
+
+  /* ---------- year-round stock ---------- */
+  .db-stock { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .db-card { background: var(--db-surface); border: 2px solid var(--db-line); padding: 1.5rem; color: var(--db-ink); }
+  .db-stock-item { display: flex; flex-direction: column; border-top: 8px solid var(--db-accent); }
+  .db-stock-top { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+  .db-sku { font-family: var(--font-mono); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; color: var(--db-accent); white-space: nowrap; }
+  .db-status { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--db-muted); text-align: right; }
+  .db-stock-item p { margin: 0 0 1.2rem; line-height: 1.65; font-size: 1rem; flex: 1; }
+  .db-stock-link { font-family: var(--font-mono); font-size: 0.86rem; font-weight: 700; color: var(--db-accent); text-decoration: underline; text-underline-offset: 3px; }
+  .db-stock-nolink { font-family: var(--font-mono); font-size: 0.8rem; color: var(--db-muted); }
+  @media (max-width: 1000px) { .db-stock { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 620px) { .db-stock { grid-template-columns: 1fr; } }
+
+  /* ---------- blog teaser + cyber monday ---------- */
+  .db-post-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .db-cyber-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  @media (max-width: 900px) { .db-post-grid, .db-cyber-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- returns ---------- */
+  .db-returns { background: var(--db-band); border-top: 8px solid var(--db-accent); }
+  .db-ret-inner { max-width: 880px; }
+  .db-ret-h2 span { display: block; font-family: var(--font-body); font-style: italic; font-weight: 400; font-size: 0.42em; letter-spacing: 0; color: var(--db-accent); margin-top: 0.5rem; }
+  .db-disclaimer { margin: 3rem 0 0; font-family: var(--font-mono); font-size: 0.84rem; line-height: 1.65; color: var(--db-muted); border-top: 2px dashed var(--db-line); padding-top: 1.4rem; max-width: 80ch; }
 </style>
